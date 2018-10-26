@@ -8,7 +8,7 @@
     <language>en</language>
     <lastBuildDate>Sun, 20 Aug 2017 21:38:52 +0800</lastBuildDate>
     
-	<atom:link href="https://echowings.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://echowings.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,7 +17,19 @@
       <pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate>
       
       <guid>https://echowings.github.io/about/</guid>
-      <description> Steve Dong  A System Administrator A fullstack programmer A Devops Enginer An SRE Enginer  </description>
+      
+        <description>
+
+&lt;h1 id=&#34;steve-dong&#34;&gt;Steve Dong&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A System Administrator&lt;/li&gt;
+&lt;li&gt;A fullstack programmer&lt;/li&gt;
+&lt;li&gt;A Devops Enginer&lt;/li&gt;
+&lt;li&gt;An SRE Enginer&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
     </item>
     
     <item>
@@ -26,7 +38,14 @@
       <pubDate>Fri, 26 Oct 2018 08:57:41 +0800</pubDate>
       
       <guid>https://echowings.github.io/post/fist_blog/</guid>
-      <description>A journey of a thousand miles begins with a single step THis a blog to be build as my knowleage base.</description>
+      
+        <description>
+
+&lt;h1 id=&#34;a-journey-of-a-thousand-miles-begins-with-a-single-step&#34;&gt;A journey of a thousand miles begins with a single step&lt;/h1&gt;
+
+&lt;p&gt;THis a blog to be build as my knowleage base.&lt;/p&gt;
+</description>
+      
     </item>
     
     <item>
@@ -35,8 +54,96 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://echowings.github.io/post/how-to-install-dotnetcore2.1x-and-aspdotnetcore2.1.x-on-rhel6.x-or-centos6.x/</guid>
-      <description>How to install netcore/aspnetcore 2.1.4 on RHEL 6.8 Install RHEL 6.8 Pass
-Install netcore 2.1.4 sdk #!/bin/sh yum install -y wget epel-release yum install -y openssl-devel libnghttp2-devel libidn-devel gcc libtool m4 automake cd /tmp/ curl -O https://curl.haxx.se/download/curl-7.45.0.tar.gz tar -xf curl-7.45.0.tar.gz cd curl-7.45.0 ./configure \ --disable-dict \ --disable-file \ --disable-ftp \ --disable-gopher \ --disable-imap \ --disable-ldap \ --disable-ldaps \ --disable-libcurl-option \ --disable-manual \ --disable-pop3 \ --disable-rtsp \ --disable-smb \ --disable-smtp \ --disable-telnet \ --disable-tftp \ --enable-ipv6 \ --enable-optimize \ --enable-symbol-hiding \ --with-ca-bundle=/etc/pki/tls/certs/ca-bundle.</description>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-install-netcore-aspnetcore-2-1-4-on-rhel-6-8&#34;&gt;How to install netcore/aspnetcore 2.1.4 on RHEL 6.8&lt;/h1&gt;
+
+&lt;h2 id=&#34;install-rhel-6-8&#34;&gt;Install RHEL 6.8&lt;/h2&gt;
+
+&lt;p&gt;Pass&lt;/p&gt;
+
+&lt;h2 id=&#34;install-netcore-2-1-4-sdk&#34;&gt;Install netcore 2.1.4 sdk&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/sh
+
+yum install -y wget epel-release
+yum install -y openssl-devel libnghttp2-devel libidn-devel gcc libtool m4 automake
+cd /tmp/
+
+curl -O https://curl.haxx.se/download/curl-7.45.0.tar.gz
+tar -xf curl-7.45.0.tar.gz
+cd curl-7.45.0
+./configure \
+    --disable-dict \
+    --disable-file \
+    --disable-ftp \
+    --disable-gopher \
+    --disable-imap \
+    --disable-ldap \
+    --disable-ldaps \
+    --disable-libcurl-option \
+    --disable-manual \
+    --disable-pop3 \
+    --disable-rtsp \
+    --disable-smb \
+    --disable-smtp \
+    --disable-telnet \
+    --disable-tftp \
+    --enable-ipv6 \
+    --enable-optimize \
+    --enable-symbol-hiding \
+    --with-ca-bundle=/etc/pki/tls/certs/ca-bundle.crt \
+    --with-nghttp2 \
+    --with-gssapi \
+    --with-ssl \
+    --without-librtmp \
+    --prefix=$PWD/install/usr/local
+
+
+make install
+
+cd install
+tar -czf curl-7_45_0-RHEL6-x64.tgz *
+curl -O http://download.icu-project.org/files/icu4c/57.1/icu4c-57_1-RHEL6-x64.tgz
+tar -xf curl-7_45_0-RHEL6-x64.tgz -C /
+tar -xf icu4c-57_1-RHEL6-x64.tgz -C /
+echo &amp;quot;export LD_LIBRARY_PATH=/usr/local/lib&amp;quot; &amp;gt;&amp;gt; /etc/profile
+export LD_LIBRARY_PATH=/usr/local/lib
+
+
+
+
+cd /tmp/
+mkdir dotnetsdk
+
+curl -O https://download.microsoft.com/download/8/A/7/8A765126-50CA-4C6F-890B-19AE47961E4B/dotnet-sdk-2.1.402-rhel.6-x64.tar.gz
+
+tar -zxvf dotnet-sdk-2.1.402-rhel.6-x64.tar.gz -C dotnetsdk/
+
+mv dotnetsdk /opt/
+ln -s /opt/dotnetsdk/dotnet /usr/bin/dotnet
+
+curl -sSL https://github.com/libuv/libuv/archive/v1.4.2.tar.gz | sudo tar zxfv - -C /usr/local/src
+
+
+# Insall libuv-1.4.2 
+cd /usr/local/src/libuv-1.4.2
+sh autogen.sh
+./configure
+make
+make install
+rm -rf /usr/local/src/libuv-1.4.2 &amp;amp;&amp;amp; cd ~/
+ldconfig
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;##Reference
+1. &lt;a href=&#34;https://github.com/dotnet/core/blob/master/Documentation/build-and-install-rhel6-prerequisites.md&#34;&gt;How to use .NET Core on RHEL 6 / CentOS 6&lt;/a&gt;
+2. &lt;a href=&#34;https://github.com/dotnet/core/blob/master/release-notes/2.1/2.1.4/2.1.4-download.md&#34;&gt;.NET Core 2.1.4&lt;/a&gt;&lt;/p&gt;
+</description>
+      
     </item>
     
   </channel>
