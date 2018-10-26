@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>How to Install Dotnetcore2.1.x and Aspdotnetcore2.1.x on RHEL6.x or CentOS6 - Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>Vyos 01 - Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 
@@ -27,8 +27,9 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="How to install netcore/aspnetcore 2.1.4 on RHEL 6.8 Recently days, we met a scenario that is our client production environment must be RHEL 6.8. But our product is base asp.net core 2.1.x version. Rehat and Microsoft has never say the are support RHEL 6.X version.
-After a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core." />
+  <meta name="description" content=" Learning Networking with Vyos  Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn&amp;rsquo;t web UI, but only command line configration just like JUNOS.
+ At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.
+  Install vyos  Download vyos form the office website: vyos-1.2.0-rc-4-amd64   " />
 
   <meta name="keywords" content="network, devops, sdn, system Administation" />
 
@@ -40,7 +41,7 @@ After a few days research, I found that .net core website is support RHEL 6.X,bu
 <meta name="generator" content="Hugo 0.49.2" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/post/how-to-install-dotnetcore2.1.x-and-aspdotnetcore2.1.x-on-rhel6.x-or-centos6.x/" />
+<link rel="canonical" href="https://blog.stevedong.com/post/learning-build-network-with-vyos/" />
 
 
 
@@ -60,29 +61,32 @@ After a few days research, I found that .net core website is support RHEL 6.X,bu
 
 
 
-<meta property="og:title" content="How to Install Dotnetcore2.1.x and Aspdotnetcore2.1.x on RHEL6.x or CentOS6" />
-<meta property="og:description" content="How to install netcore/aspnetcore 2.1.4 on RHEL 6.8 Recently days, we met a scenario that is our client production environment must be RHEL 6.8. But our product is base asp.net core 2.1.x version. Rehat and Microsoft has never say the are support RHEL 6.X version.
-After a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core." />
+<meta property="og:title" content="Vyos 01" />
+<meta property="og:description" content=" Learning Networking with Vyos  Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn&rsquo;t web UI, but only command line configration just like JUNOS.
+ At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.
+  Install vyos  Download vyos form the office website: vyos-1.2.0-rc-4-amd64   " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/how-to-install-dotnetcore2.1.x-and-aspdotnetcore2.1.x-on-rhel6.x-or-centos6.x/" /><meta property="article:published_time" content="2018-10-26T13:03:10&#43;08:00"/>
-<meta property="article:modified_time" content="2018-10-26T13:03:10&#43;08:00"/>
+<meta property="og:url" content="https://blog.stevedong.com/post/learning-build-network-with-vyos/" /><meta property="article:published_time" content="2018-10-26T18:18:53&#43;08:00"/>
+<meta property="article:modified_time" content="2018-10-26T18:18:53&#43;08:00"/>
 
-<meta itemprop="name" content="How to Install Dotnetcore2.1.x and Aspdotnetcore2.1.x on RHEL6.x or CentOS6">
-<meta itemprop="description" content="How to install netcore/aspnetcore 2.1.4 on RHEL 6.8 Recently days, we met a scenario that is our client production environment must be RHEL 6.8. But our product is base asp.net core 2.1.x version. Rehat and Microsoft has never say the are support RHEL 6.X version.
-After a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core.">
+<meta itemprop="name" content="Vyos 01">
+<meta itemprop="description" content=" Learning Networking with Vyos  Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn&rsquo;t web UI, but only command line configration just like JUNOS.
+ At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.
+  Install vyos  Download vyos form the office website: vyos-1.2.0-rc-4-amd64   ">
 
 
-<meta itemprop="datePublished" content="2018-10-26T13:03:10&#43;08:00" />
-<meta itemprop="dateModified" content="2018-10-26T13:03:10&#43;08:00" />
-<meta itemprop="wordCount" content="247">
+<meta itemprop="datePublished" content="2018-10-26T18:18:53&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-26T18:18:53&#43;08:00" />
+<meta itemprop="wordCount" content="62">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="How to Install Dotnetcore2.1.x and Aspdotnetcore2.1.x on RHEL6.x or CentOS6"/>
-<meta name="twitter:description" content="How to install netcore/aspnetcore 2.1.4 on RHEL 6.8 Recently days, we met a scenario that is our client production environment must be RHEL 6.8. But our product is base asp.net core 2.1.x version. Rehat and Microsoft has never say the are support RHEL 6.X version.
-After a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core."/>
+<meta name="twitter:title" content="Vyos 01"/>
+<meta name="twitter:description" content=" Learning Networking with Vyos  Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn&rsquo;t web UI, but only command line configration just like JUNOS.
+ At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.
+  Install vyos  Download vyos form the office website: vyos-1.2.0-rc-4-amd64   "/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -311,7 +315,7 @@ if (!doNotTrack) {
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">How to Install Dotnetcore2.1.x and Aspdotnetcore2.1.x on RHEL6.x or CentOS6</h1>
+      <h1 class="post-title">Vyos 01</h1>
       
       <div class="post-meta">
         <time datetime="2018-10-26" class="post-time">
@@ -335,9 +339,9 @@ if (!doNotTrack) {
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#how-to-install-netcore-aspnetcore-2-1-4-on-rhel-6-8">How to install netcore/aspnetcore 2.1.4 on RHEL 6.8</a>
+<li><a href="#learning-networking-with-vyos">Learning Networking with Vyos</a>
 <ul>
-<li><a href="#install-netcore-2-1-4-sdk">Install netcore 2.1.4 sdk</a></li>
+<li><a href="#install-vyos">Install vyos</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -348,95 +352,20 @@ if (!doNotTrack) {
     <div class="post-content">
       
 
-<h1 id="how-to-install-netcore-aspnetcore-2-1-4-on-rhel-6-8">How to install netcore/aspnetcore 2.1.4 on RHEL 6.8</h1>
+<h1 id="learning-networking-with-vyos">Learning Networking with Vyos</h1>
 
-<p>Recently days, we met a scenario that is our client production environment must be RHEL 6.8. But our product is base asp.net core 2.1.x version. Rehat and Microsoft has never say the are support RHEL 6.X version.</p>
+<ul>
+<li><p>Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn&rsquo;t web UI, but only command line configration just like JUNOS.</p></li>
 
-<p>After a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core. And you know what? It works well finally!</p>
+<li><p>At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.</p></li>
+</ul>
 
-<h2 id="install-netcore-2-1-4-sdk">Install netcore 2.1.4 sdk</h2>
+<h2 id="install-vyos">Install vyos</h2>
 
-<pre><code class="language-bash">#!/bin/sh
-
-yum install -y wget epel-release
-yum install -y openssl-devel libnghttp2-devel libidn-devel gcc libtool m4 automake
-cd /tmp/
-
-curl -O https://curl.haxx.se/download/curl-7.45.0.tar.gz
-tar -xf curl-7.45.0.tar.gz
-cd curl-7.45.0
-./configure \
-    --disable-dict \
-    --disable-file \
-    --disable-ftp \
-    --disable-gopher \
-    --disable-imap \
-    --disable-ldap \
-    --disable-ldaps \
-    --disable-libcurl-option \
-    --disable-manual \
-    --disable-pop3 \
-    --disable-rtsp \
-    --disable-smb \
-    --disable-smtp \
-    --disable-telnet \
-    --disable-tftp \
-    --enable-ipv6 \
-    --enable-optimize \
-    --enable-symbol-hiding \
-    --with-ca-bundle=/etc/pki/tls/certs/ca-bundle.crt \
-    --with-nghttp2 \
-    --with-gssapi \
-    --with-ssl \
-    --without-librtmp \
-    --prefix=$PWD/install/usr/local
-
-
-make install
-
-cd install
-tar -czf curl-7_45_0-RHEL6-x64.tgz *
-curl -O http://download.icu-project.org/files/icu4c/57.1/icu4c-57_1-RHEL6-x64.tgz
-tar -xf curl-7_45_0-RHEL6-x64.tgz -C /
-tar -xf icu4c-57_1-RHEL6-x64.tgz -C /
-echo &quot;export LD_LIBRARY_PATH=/usr/local/lib&quot; &gt;&gt; /etc/profile
-export LD_LIBRARY_PATH=/usr/local/lib
-
-
-
-
-cd /tmp/
-mkdir dotnetsdk
-
-curl -O https://download.microsoft.com/download/8/A/7/8A765126-50CA-4C6F-890B-19AE47961E4B/dotnet-sdk-2.1.402-rhel.6-x64.tar.gz
-
-tar -zxvf dotnet-sdk-2.1.402-rhel.6-x64.tar.gz -C dotnetsdk/
-
-mv dotnetsdk /opt/
-ln -s /opt/dotnetsdk/dotnet /usr/bin/dotnet
-
-curl -sSL https://github.com/libuv/libuv/archive/v1.4.2.tar.gz | sudo tar zxfv - -C /usr/local/src
-
-
-# Insall libuv-1.4.2 
-cd /usr/local/src/libuv-1.4.2
-sh autogen.sh
-./configure
-make
-make install
-rm -rf /usr/local/src/libuv-1.4.2 &amp;&amp; cd ~/
-ldconfig
-
-
-</code></pre>
-
-<p>##Reference</p>
-
-<ol>
-<li><p><a href="https://github.com/dotnet/core/blob/master/Documentation/build-and-install-rhel6-prerequisites.md">How to use .NET Core on RHEL 6 / CentOS 6</a></p></li>
-
-<li><p><a href="https://github.com/dotnet/core/blob/master/release-notes/2.1/2.1.4/2.1.4-download.md">.NET Core 2.1.4</a></p></li>
-</ol>
+<ul>
+<li>Download vyos form the office website: <a href="https://downloads.vyos.io/testing/1.2.0-rc4/vyos-1.2.0-rc4-amd64.iso">vyos-1.2.0-rc-4-amd64</a></li>
+<li></li>
+</ul>
 
     </div>
 
@@ -467,14 +396,9 @@ ldconfig
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/learning-build-network-with-vyos/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Vyos 01</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
         
-          <a class="next" href="/post/how-to-build-blog-with-hugo-on-github.io/">
-            <span class="next-text nav-default">How to Build Blog With Hugo on Github</span>
+          <a class="next" href="/post/how-to-install-dotnetcore2.1.x-and-aspdotnetcore2.1.x-on-rhel6.x-or-centos6.x/">
+            <span class="next-text nav-default">How to Install Dotnetcore2.1.x and Aspdotnetcore2.1.x on RHEL6.x or CentOS6</span>
             <span class="prev-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -496,10 +420,10 @@ ldconfig
         <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
       <script type="text/javascript">
       const gitment = new Gitment({
-        id: 'how-to-install-dotnetcore2.1.x-and-aspdotnetcore2.1.x-on-RHEL6.x-or-CentOS6.x.md',
-        title: 'How to Install Dotnetcore2.1.x and Aspdotnetcore2.1.x on RHEL6.x or CentOS6',
+        id: 'learning-build-network-with-vyos.md',
+        title: 'Vyos 01',
         link: decodeURI(location.href),
-        desc: 'How to install netcore\/aspnetcore 2.1.4 on RHEL 6.8 Recently days, we met a scenario that is our client production environment must be RHEL 6.8. But our product is base asp.net core 2.1.x version. Rehat and Microsoft has never say the are support RHEL 6.X version.\nAfter a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core.',
+        desc: ' Learning Networking with Vyos  Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn\x26rsquo;t web UI, but only command line configration just like JUNOS.\n At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.\n  Install vyos  Download vyos form the office website: vyos-1.2.0-rc-4-amd64   ',
         owner: 'echowings',
         repo: 'blogcomment',
         oauth: {
