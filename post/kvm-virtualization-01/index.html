@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Vyos 01 - Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>Kvm Virtualization 01 - Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 
@@ -27,9 +27,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content=" Learning Networking with Vyos  Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn&amp;rsquo;t web UI, but only command line configration just like JUNOS.
- At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.
-  Install vyos  Download vyos form the office website: vyos-1.2.0-rc-4-amd64   " />
+  <meta name="description" content="KVM virtualization serial Today we are start to learn kvm vritualizatio" />
 
   <meta name="keywords" content="network, devops, sdn, system Administation" />
 
@@ -41,7 +39,7 @@
 <meta name="generator" content="Hugo 0.49.2" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/post/learning-build-network-with-vyos/" />
+<link rel="canonical" href="https://blog.stevedong.com/post/kvm-virtualization-01/" />
 
 
 
@@ -61,32 +59,26 @@
 
 
 
-<meta property="og:title" content="Vyos 01" />
-<meta property="og:description" content=" Learning Networking with Vyos  Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn&rsquo;t web UI, but only command line configration just like JUNOS.
- At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.
-  Install vyos  Download vyos form the office website: vyos-1.2.0-rc-4-amd64   " />
+<meta property="og:title" content="Kvm Virtualization 01" />
+<meta property="og:description" content="KVM virtualization serial Today we are start to learn kvm vritualizatio" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/learning-build-network-with-vyos/" /><meta property="article:published_time" content="2018-10-26T18:18:53&#43;08:00"/>
-<meta property="article:modified_time" content="2018-10-26T18:18:53&#43;08:00"/>
+<meta property="og:url" content="https://blog.stevedong.com/post/kvm-virtualization-01/" /><meta property="article:published_time" content="2018-10-26T23:08:47&#43;08:00"/>
+<meta property="article:modified_time" content="2018-10-26T23:08:47&#43;08:00"/>
 
-<meta itemprop="name" content="Vyos 01">
-<meta itemprop="description" content=" Learning Networking with Vyos  Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn&rsquo;t web UI, but only command line configration just like JUNOS.
- At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.
-  Install vyos  Download vyos form the office website: vyos-1.2.0-rc-4-amd64   ">
+<meta itemprop="name" content="Kvm Virtualization 01">
+<meta itemprop="description" content="KVM virtualization serial Today we are start to learn kvm vritualizatio">
 
 
-<meta itemprop="datePublished" content="2018-10-26T18:18:53&#43;08:00" />
-<meta itemprop="dateModified" content="2018-10-26T18:18:53&#43;08:00" />
-<meta itemprop="wordCount" content="62">
+<meta itemprop="datePublished" content="2018-10-26T23:08:47&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-26T23:08:47&#43;08:00" />
+<meta itemprop="wordCount" content="11">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Vyos 01"/>
-<meta name="twitter:description" content=" Learning Networking with Vyos  Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn&rsquo;t web UI, but only command line configration just like JUNOS.
- At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.
-  Install vyos  Download vyos form the office website: vyos-1.2.0-rc-4-amd64   "/>
+<meta name="twitter:title" content="Kvm Virtualization 01"/>
+<meta name="twitter:description" content="KVM virtualization serial Today we are start to learn kvm vritualizatio"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -315,7 +307,7 @@ if (!doNotTrack) {
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">Vyos 01</h1>
+      <h1 class="post-title">Kvm Virtualization 01</h1>
       
       <div class="post-meta">
         <time datetime="2018-10-26" class="post-time">
@@ -339,10 +331,7 @@ if (!doNotTrack) {
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#learning-networking-with-vyos">Learning Networking with Vyos</a>
-<ul>
-<li><a href="#install-vyos">Install vyos</a></li>
-</ul></li>
+<li><a href="#kvm-virtualization-serial">KVM virtualization serial</a></li>
 </ul>
 </nav>
   </div>
@@ -352,20 +341,9 @@ if (!doNotTrack) {
     <div class="post-content">
       
 
-<h1 id="learning-networking-with-vyos">Learning Networking with Vyos</h1>
+<h1 id="kvm-virtualization-serial">KVM virtualization serial</h1>
 
-<ul>
-<li><p>Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn&rsquo;t web UI, but only command line configration just like JUNOS.</p></li>
-
-<li><p>At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.</p></li>
-</ul>
-
-<h2 id="install-vyos">Install vyos</h2>
-
-<ul>
-<li>Download vyos form the office website: <a href="https://downloads.vyos.io/testing/1.2.0-rc4/vyos-1.2.0-rc4-amd64.iso">vyos-1.2.0-rc-4-amd64</a></li>
-<li></li>
-</ul>
+<p>Today we are start to learn kvm vritualizatio</p>
 
     </div>
 
@@ -396,14 +374,9 @@ if (!doNotTrack) {
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/kvm-virtualization-01/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Kvm Virtualization 01</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
         
-          <a class="next" href="/post/how-to-install-dotnetcore2.1.x-and-aspdotnetcore2.1.x-on-rhel6.x-or-centos6.x/">
-            <span class="next-text nav-default">How to Install Dotnetcore2.1.x and Aspdotnetcore2.1.x on RHEL6.x or CentOS6</span>
+          <a class="next" href="/post/learning-build-network-with-vyos/">
+            <span class="next-text nav-default">Vyos 01</span>
             <span class="prev-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -425,10 +398,10 @@ if (!doNotTrack) {
         <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
       <script type="text/javascript">
       const gitment = new Gitment({
-        id: 'learning-build-network-with-vyos.md',
-        title: 'Vyos 01',
+        id: 'kvm-virtualization-01.md',
+        title: 'Kvm Virtualization 01',
         link: decodeURI(location.href),
-        desc: ' Learning Networking with Vyos  Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn\x26rsquo;t web UI, but only command line configration just like JUNOS.\n At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.\n  Install vyos  Download vyos form the office website: vyos-1.2.0-rc-4-amd64   ',
+        desc: 'KVM virtualization serial Today we are start to learn kvm vritualizatio',
         owner: 'echowings',
         repo: 'blogcomment',
         oauth: {
