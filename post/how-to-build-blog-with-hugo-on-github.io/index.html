@@ -141,16 +141,6 @@
             <a class="menu-item-link" href="https://blog.stevedong.com/about/">About</a>
           
         
-      </li><li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://echowings.github.com" rel="noopener" target="_blank">
-              MyGitHub
-              <i class="iconfont icon-new-window"></i>
-            </a>
-          
-        
       </li>
     
   </ul>
@@ -293,20 +283,6 @@
 
       </li>
     
-      <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://echowings.github.com" rel="noopener" target="_blank">
-              MyGitHub
-            <i class="iconfont icon-new-window"></i>
-            </a>
-          
-
-        
-
-      </li>
-    
     
   </ul>
 </nav>
@@ -422,7 +398,27 @@
 
   
 
-  
+  <div class="post bg-white">
+      <div id="comments-gitment"></div>
+      <link rel="stylesheet" href="/lib/gitment/gitment-0.0.3.min.css">
+        <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
+      <script type="text/javascript">
+      const gitment = new Gitment({
+        id: 'how-to-build-blog-with-hugo-on-github.io.md',
+        title: 'How to Build Blog With Hugo on Github',
+        link: decodeURI(location.href),
+        desc: ' How to build a blog with Hugo on github.io Hugo on your MacOS Install hugo brew install hugo  ',
+        owner: 'echowings',
+        repo: 'comments',
+        oauth: {
+          client_id: 'f3752c65e5033fc5f6ac',
+          client_secret: '0b0473ebd6348f3cbbaed6ad1d0d0eac71044d56'
+        }
+      })
+      gitment.render('comments-gitment')
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+    </div>
 
   
 
@@ -437,6 +433,9 @@
       </a>
       <a href="https://www.facebook.com/stevedongV" rel="me noopener" class="iconfont icon-facebook"
         title="facebook" target="_blank">
+      </a>
+      <a href="http://localhost:1313" rel="me noopener" class="iconfont icon-weibo"
+        title="weibo" target="_blank">
       </a>
   <a href="https://blog.stevedong.com/index.xml" rel="noopener alternate" type="application/rss&#43;xml" class="iconfont icon-rss"
     title="rss" target="_blank">
