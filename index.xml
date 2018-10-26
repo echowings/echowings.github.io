@@ -190,10 +190,57 @@ ldconfig
 
 &lt;h2 id=&#34;hugo-on-your-macos&#34;&gt;Hugo on your MacOS&lt;/h2&gt;
 
-&lt;h3 id=&#34;install-hugo&#34;&gt;Install hugo&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Setting github&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;create a repo named blogs for store hugo programes.&lt;/li&gt;
+&lt;li&gt;Create another repo named echowings.github.io to host websit.&lt;/li&gt;
+&lt;li&gt;generate ssh key and regist it on github settings.
+&lt;br /&gt;
+
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Install hugo&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew install hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
+&lt;li&gt;&lt;p&gt;Create a blog site.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;	&lt;code&gt;bash
+	hugo new site blogs
+	&lt;/code&gt;
+  - init git&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  cd blogs
+  git init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Add remote repo.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  git remote add origin git@github.com:echowings/blogs.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Add a theme for your hugo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  git submodule add -b master https://github.com/xianmin/hugo-theme-jane.git themes/jane
+  cp -r themes/jane/exampleSite/content ./
+  cp themes/jane/exampleSite/config.toml ./
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Test hugo at local.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  hugo server
 &lt;/code&gt;&lt;/pre&gt;
 </description>
       

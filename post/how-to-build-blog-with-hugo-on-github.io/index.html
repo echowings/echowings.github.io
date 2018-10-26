@@ -27,7 +27,11 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content=" How to build a blog with Hugo on github.io Hugo on your MacOS Install hugo brew install hugo  " />
+  <meta name="description" content="How to build a blog with Hugo on github.io Hugo on your MacOS  Setting github
+ create a repo named blogs for store hugo programes. Create another repo named echowings.github.io to host websit. generate ssh key and regist it on github settings.   Install hugo
+brew install hugo  Create a blog site.
+  	bash hugo new site blogs  - init git
+cd blogs git init   Add remote repo." />
 
   <meta name="keywords" content="network, devops, sdn, system Administation" />
 
@@ -60,25 +64,37 @@
 
 
 <meta property="og:title" content="How to Build Blog With Hugo on Github" />
-<meta property="og:description" content=" How to build a blog with Hugo on github.io Hugo on your MacOS Install hugo brew install hugo  " />
+<meta property="og:description" content="How to build a blog with Hugo on github.io Hugo on your MacOS  Setting github
+ create a repo named blogs for store hugo programes. Create another repo named echowings.github.io to host websit. generate ssh key and regist it on github settings.   Install hugo
+brew install hugo  Create a blog site.
+  	bash hugo new site blogs  - init git
+cd blogs git init   Add remote repo." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/how-to-build-blog-with-hugo-on-github.io/" /><meta property="article:published_time" content="2018-10-26T09:47:14&#43;08:00"/>
 <meta property="article:modified_time" content="2018-10-26T09:47:14&#43;08:00"/>
 
 <meta itemprop="name" content="How to Build Blog With Hugo on Github">
-<meta itemprop="description" content=" How to build a blog with Hugo on github.io Hugo on your MacOS Install hugo brew install hugo  ">
+<meta itemprop="description" content="How to build a blog with Hugo on github.io Hugo on your MacOS  Setting github
+ create a repo named blogs for store hugo programes. Create another repo named echowings.github.io to host websit. generate ssh key and regist it on github settings.   Install hugo
+brew install hugo  Create a blog site.
+  	bash hugo new site blogs  - init git
+cd blogs git init   Add remote repo.">
 
 
 <meta itemprop="datePublished" content="2018-10-26T09:47:14&#43;08:00" />
 <meta itemprop="dateModified" content="2018-10-26T09:47:14&#43;08:00" />
-<meta itemprop="wordCount" content="18">
+<meta itemprop="wordCount" content="96">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Build Blog With Hugo on Github"/>
-<meta name="twitter:description" content=" How to build a blog with Hugo on github.io Hugo on your MacOS Install hugo brew install hugo  "/>
+<meta name="twitter:description" content="How to build a blog with Hugo on github.io Hugo on your MacOS  Setting github
+ create a repo named blogs for store hugo programes. Create another repo named echowings.github.io to host websit. generate ssh key and regist it on github settings.   Install hugo
+brew install hugo  Create a blog site.
+  	bash hugo new site blogs  - init git
+cd blogs git init   Add remote repo."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -333,10 +349,7 @@ if (!doNotTrack) {
 <ul>
 <li><a href="#how-to-build-a-blog-with-hugo-on-github-io">How to build a blog with Hugo on github.io</a>
 <ul>
-<li><a href="#hugo-on-your-macos">Hugo on your MacOS</a>
-<ul>
-<li><a href="#install-hugo">Install hugo</a></li>
-</ul></li>
+<li><a href="#hugo-on-your-macos">Hugo on your MacOS</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -351,10 +364,57 @@ if (!doNotTrack) {
 
 <h2 id="hugo-on-your-macos">Hugo on your MacOS</h2>
 
-<h3 id="install-hugo">Install hugo</h3>
+<ul>
+<li><p>Setting github</p>
+
+<ol>
+<li>create a repo named blogs for store hugo programes.</li>
+<li>Create another repo named echowings.github.io to host websit.</li>
+<li>generate ssh key and regist it on github settings.
+<br />
+
+<br /></li>
+</ol></li>
+
+<li><p>Install hugo</p>
 
 <pre><code class="language-bash">brew install hugo
+</code></pre></li>
 
+<li><p>Create a blog site.</p></li>
+</ul>
+
+<p>	<code>bash
+	hugo new site blogs
+	</code>
+  - init git</p>
+
+<pre><code class="language-bash">  cd blogs
+  git init
+</code></pre>
+
+<ul>
+<li>Add remote repo.
+<br /></li>
+</ul>
+
+<pre><code class="language-bash">  git remote add origin git@github.com:echowings/blogs.git
+</code></pre>
+
+<ul>
+<li>Add a theme for your hugo.</li>
+</ul>
+
+<pre><code class="language-bash">  git submodule add -b master https://github.com/xianmin/hugo-theme-jane.git themes/jane
+  cp -r themes/jane/exampleSite/content ./
+  cp themes/jane/exampleSite/config.toml ./
+</code></pre>
+
+<ul>
+<li>Test hugo at local.</li>
+</ul>
+
+<pre><code class="language-bash">  hugo server
 </code></pre>
 
     </div>
@@ -418,7 +478,7 @@ if (!doNotTrack) {
         id: 'how-to-build-blog-with-hugo-on-github.io.md',
         title: 'How to Build Blog With Hugo on Github',
         link: decodeURI(location.href),
-        desc: ' How to build a blog with Hugo on github.io Hugo on your MacOS Install hugo brew install hugo  ',
+        desc: 'How to build a blog with Hugo on github.io Hugo on your MacOS  Setting github\n create a repo named blogs for store hugo programes. Create another repo named echowings.github.io to host websit. generate ssh key and regist it on github settings.   Install hugo\nbrew install hugo  Create a blog site.\n  \tbash hugo new site blogs  - init git\ncd blogs git init   Add remote repo.',
         owner: 'echowings',
         repo: 'blogcomment',
         oauth: {
