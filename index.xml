@@ -71,32 +71,110 @@
 
 &lt;h2 id=&#34;install-vyos&#34;&gt;Install vyos&lt;/h2&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Download vyos form the office website:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Download Link&lt;/strong&gt;: &lt;a href=&#34;https://downloads.vyos.io/testing/1.2.0-rc4/vyos-1.2.0-rc4-amd64.iso&#34;&gt;vyos-1.2.0-rc-4-amd64&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Write iso image to usb disk&lt;/p&gt;
+&lt;h3 id=&#34;download-vyos-form-the-office-website&#34;&gt;Download vyos form the office website:&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Linux and Mac:&lt;/p&gt;
+&lt;li&gt;&lt;strong&gt;Download Link&lt;/strong&gt;: &lt;a href=&#34;https://downloads.vyos.io/testing/1.2.0-rc4/vyos-1.2.0-rc4-amd64.iso&#34;&gt;vyos-1.2.0-rc-4-amd64&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;write-iso-image-to-usb-disk&#34;&gt;Write iso image to usb disk&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Linux and Mac:
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ddi if=vyos-1.2.0-rc-4-amd64.iso of=/dev/$yourusbdisk bs=1M
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
+&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Windows:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;download &lt;code&gt;rufus&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Rufus:&lt;/strong&gt; &lt;a href=&#34;https://rufus.ie/en_IE&#34;&gt;rufus&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;select dd mode to write disk.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;download &lt;strong&gt;Rufus:&lt;/strong&gt; &lt;a href=&#34;https://rufus.ie/en_IE&#34;&gt;rufus&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;select &lt;code&gt;dd&lt;/code&gt; mode to write disk.&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Set&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3 id=&#34;install-vyos-with-wazard&#34;&gt;Install vyos with wazard.&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;press &lt;code&gt;F11&lt;/code&gt; or set COMS to boot from usb.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Enter Default username and password to login livecd.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;vyos login: vyos
+Password: vyos
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Write image to local driver:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;install image
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Reboot System to boot from local disk.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;reboot now
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;basic-command&#34;&gt;Basic Command&lt;/h2&gt;
+
+&lt;h3 id=&#34;check-vyos-version&#34;&gt;Check vyos version&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;show version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;check-vyos-running-time&#34;&gt;Check vyos running time&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;show system uptime
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;check-system-time-and-timezone&#34;&gt;Check system time and timezone&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;show date
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;reboot-system&#34;&gt;Reboot system&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;reboot now
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;shutdown-system&#34;&gt;Shutdown System&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;poweroff now
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;reset-configuration&#34;&gt;Reset configuration&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;# Enter config mode
+configure
+
+#loading default configure
+load /opt/vyatta/etc/config.boot.default  
+
+# commit loading default configure
+commit
+
+# save to default boot configure file.
+save
+
+#Exit configure mode
+exit
+
+#Reboot system now to finish loading default configuration.
+reboot now
+
+
+
+&lt;/code&gt;&lt;/pre&gt;
 </description>
       
     </item>
