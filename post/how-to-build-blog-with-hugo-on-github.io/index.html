@@ -83,7 +83,7 @@ cd blogs git init   Add remote repo.">
 
 <meta itemprop="datePublished" content="2018-10-26T09:47:14&#43;08:00" />
 <meta itemprop="dateModified" content="2018-10-26T09:47:14&#43;08:00" />
-<meta itemprop="wordCount" content="144">
+<meta itemprop="wordCount" content="164">
 
 
 
@@ -350,7 +350,13 @@ if (!doNotTrack) {
 <ul>
 <li><a href="#how-to-build-a-blog-with-hugo-on-github-io">How to build a blog with Hugo on github.io</a>
 <ul>
-<li><a href="#hugo-on-your-macos">Hugo on your MacOS</a></li>
+<li><a href="#hugo-on-your-macos">Hugo on your MacOS</a>
+<ul>
+<li><a href="#add-a-comment">Add a comment</a>
+<ul>
+<li><a href="#reference">Reference</a></li>
+</ul></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -425,33 +431,37 @@ if (!doNotTrack) {
 
 <p>### Change configure</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">  vi config<span style="color:#f92672">.</span>toml</code></pre></div>
+<h3 id="add-a-comment">Add a comment</h3>
 
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">199
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">//</span> <span style="color:#f92672">...</span> <span style="color:#a6e22e">code</span></code></pre></td></tr></table>
-</div>
-</div>
+<p>Since theme jane has support utterances, we just need to enable utterances apps in github and configure it in config.toml in hugo.</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">section</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;main&#34;</span>&gt;
-  &lt;<span style="color:#f92672">div</span>&gt;
-    &lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;title&#34;</span>&gt;{{ .Title }}&lt;/<span style="color:#f92672">h1</span>&gt;
-    {{ range .Pages }}
-      {{ .Render &#34;summary&#34;}}
-    {{ end }}
-  &lt;/<span style="color:#f92672">div</span>&gt;
-&lt;/<span style="color:#f92672">section</span>&gt;</code></pre></div>
+<ul>
+<li>Create a repo to storage comment. like &ldquo;blogcomment&rdquo;.</li>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">1</span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#66d9ef">string</span>
-<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">2</span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">string</span>
-</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">3</span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">c</span> <span style="color:#66d9ef">string</span>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">4</span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">d</span> <span style="color:#66d9ef">string</span></code></pre></div>
+<li><p>enable utternaces apps.</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!/usr/bin/env pthon</span>
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;hello World&#34;</span></code></pre></div>
+<ol>
+<li>click <a href="https://github.com/apps/utterances">utterances app</a></li>
+<li>Auth utterances to your github repo &ldquo;blogcomment&rdquo;.</li>
+</ol></li>
+
+<li><p>edit blogs/config.toml and append follow lines.</p></li>
+</ul>
+
+<pre><code class="language-configure"> [params.utteranc]
+      enable = true
+      repo=&quot;echowings/blogcomment&quot;
+      issueTerm=&quot;pathname&quot;
+
+</code></pre>
+
+<h4 id="reference">Reference</h4>
+
+<ul>
+<li><a href="https://utteranc.es/">utterances </a></li>
+<li><a href="https://github.com/xianmin/hugo-theme-jane/blob/master/exampleSite/config.toml">hugo-theme-jane/dev-config.toml
+</a></li>
+</ul>
 
     </div>
 
