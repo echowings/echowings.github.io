@@ -37,6 +37,62 @@
     </item>
     
     <item>
+      <title>How to Setup Reverse proxy on IIS</title>
+      <link>https://blog.stevedong.com/post/how-to-setup-reverseproxy-on-iis/</link>
+      <pubDate>Tue, 06 Nov 2018 15:59:44 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-setup-reverseproxy-on-iis/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-setup-reverse-proxy-on-iis&#34;&gt;How to Setup Reverse proxy on IIS&lt;/h1&gt;
+
+&lt;p&gt;I testing it on Server 2016 with IIS 10&lt;/p&gt;
+
+&lt;h2 id=&#34;install-iis-url-rewrite-arr&#34;&gt;Install IIS,URL _REWRITE, ARR&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install IIS.&lt;/li&gt;
+&lt;li&gt;Download and install &lt;a href=&#34;https://www.iis.net/downloads/microsoft/url-rewrite&#34;&gt;URL Rewrite Module 2.1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Download and install &lt;a href=&#34;https://www.iis.net/downloads/microsoft/application-request-routing&#34;&gt;ARR-Application-request-routing&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;setting-reverse-proxy&#34;&gt;Setting Reverse Proxy&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Select Root level in IIS management&lt;/li&gt;
+&lt;li&gt;Click &amp;lsquo;Application Request Routing Cache&amp;rsquo;,then in the right side, click &amp;ldquo;proxy | Server proxy Settings | Check on &amp;ldquo;Enable proxy&amp;rdquo; | save config.&lt;/li&gt;
+&lt;li&gt;Select website in IIS.&lt;/li&gt;
+&lt;li&gt;Click  URL Rewrite&lt;/li&gt;
+&lt;li&gt;Add a black Rule&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Match URL:&lt;/p&gt;
+
+&lt;p&gt;|Requested URL | Using |Pattern |
+  |&amp;mdash;|&amp;mdash;|&amp;mdash;|
+  |Matches the pattern | Regular Expressions | &lt;code&gt;^(.*)&lt;/code&gt; |&lt;/p&gt;
+
+&lt;p&gt;Conditions:&lt;/p&gt;
+
+&lt;p&gt;|Type | Value|
+  |&amp;mdash;|&amp;mdash;|
+  |Logical grouping|Match ALL|
+  |input | &lt;code&gt;{HTTP_HOST}&lt;/code&gt; |
+  |Type | Matches the Pattern |
+  |Patern |&lt;code&gt;^xa-sys-svr:8080$&lt;/code&gt;|&lt;/p&gt;
+
+&lt;p&gt;Server Variables:&lt;/p&gt;
+
+&lt;p&gt;|Type | Value|
+  |&amp;mdash;|&amp;mdash;|
+  |Action Type | Rewrite|
+  |Rewrite URL | &lt;code&gt;http://www.cnblog.com/{R:1}&lt;/code&gt;|&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>Kvm Virtualization 01</title>
       <link>https://blog.stevedong.com/post/kvm-virtualization-01/</link>
       <pubDate>Fri, 26 Oct 2018 23:08:47 +0800</pubDate>
@@ -47,7 +103,15 @@
 
 &lt;h1 id=&#34;kvm-virtualization-serial&#34;&gt;KVM virtualization serial&lt;/h1&gt;
 
-&lt;p&gt;Today we are start to learn kvm vritualizatio&lt;/p&gt;
+&lt;p&gt;Today we are start to learn kvm virtulization
+After try to find which is the right  open source virtulization solution,which include Bhyver, Trolin/smartos,  ovirt, OpenStack.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Openstack is too heavy and it is suitable for you have thousands of host to managament.&lt;/li&gt;
+&lt;li&gt;bhyver is base freebsd, and it has a web managment system named Clonos which write by a russian Less support.&lt;/li&gt;
+&lt;li&gt;smartos/Trolin is a opensolaris base . But few people use it. It has open source version, but the offical website say again and again that &amp;lsquo;you&amp;rsquo;d better to contact us to install it&amp;rsquo;, that means you should pay  for it if you want use it .&lt;/li&gt;
+&lt;li&gt;Ovirt is&lt;/li&gt;
+&lt;/ul&gt;
 </description>
       
     </item>
@@ -96,7 +160,7 @@
 &lt;/ol&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;install-vyos-with-wazard&#34;&gt;Install vyos with wazard.&lt;/h3&gt;
+&lt;h3 id=&#34;install-vyos-with-wizard&#34;&gt;Install vyos with wizard.&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;press &lt;code&gt;F11&lt;/code&gt; or set COMS to boot from usb.&lt;/p&gt;&lt;/li&gt;
@@ -127,32 +191,54 @@ Password: vyos
 
 &lt;h2 id=&#34;basic-command&#34;&gt;Basic Command&lt;/h2&gt;
 
-&lt;h3 id=&#34;check-vyos-version&#34;&gt;Check vyos version&lt;/h3&gt;
+&lt;p&gt;vyos command line include 2 mode: Operation mode and configure mode.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Operation Mode&lt;/strong&gt; shell command start with &lt;code&gt;$&lt;/code&gt;. These command usually show sysytem. information,reboot/shutdown system.
+&lt;strong&gt;Configure Mode&lt;/strong&gt; shell command start with &lt;code&gt;#&lt;/code&gt;. These command usually change configuration of vyos.&lt;/p&gt;
+
+&lt;h3 id=&#34;operation-mode&#34;&gt;Operation Mode&lt;/h3&gt;
+
+&lt;h4 id=&#34;enter-configure-mode&#34;&gt;Enter configure mode&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;configure
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;exit-to-operation-mode&#34;&gt;Exit to operation Mode&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;exit
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;check-vyos-version&#34;&gt;Check vyos version&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;show version
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;check-vyos-running-time&#34;&gt;Check vyos running time&lt;/h3&gt;
+&lt;h4 id=&#34;check-vyos-running-time&#34;&gt;Check vyos running time&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;show system uptime
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;check-system-time-and-timezone&#34;&gt;Check system time and timezone&lt;/h3&gt;
+&lt;h4 id=&#34;check-system-time-and-timezone&#34;&gt;Check system time and timezone&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;show date
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;reboot-system&#34;&gt;Reboot system&lt;/h3&gt;
+&lt;h4 id=&#34;reboot-system&#34;&gt;Reboot system&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;reboot now
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;shutdown-system&#34;&gt;Shutdown System&lt;/h3&gt;
+&lt;h4 id=&#34;shutdown-system&#34;&gt;Shutdown System&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;poweroff now
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;reset-configuration&#34;&gt;Reset configuration&lt;/h3&gt;
+&lt;h4 id=&#34;upgrade-system-image-version&#34;&gt;upgrade system image version&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;reset-configuration&#34;&gt;Reset configuration&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;# Enter config mode
 configure
