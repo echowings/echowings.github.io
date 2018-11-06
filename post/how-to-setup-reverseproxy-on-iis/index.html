@@ -74,7 +74,7 @@ Install IIS,URL _REWRITE, ARR  Install IIS. Download and install URL Rewrite Mod
 
 <meta itemprop="datePublished" content="2018-11-06T15:59:44&#43;08:00" />
 <meta itemprop="dateModified" content="2018-11-06T15:59:44&#43;08:00" />
-<meta itemprop="wordCount" content="128">
+<meta itemprop="wordCount" content="113">
 
 
 
@@ -398,25 +398,79 @@ if (!doNotTrack) {
 
 <p>Match URL:</p>
 
-<p>|Requested URL | Using |Pattern |
-  |&mdash;|&mdash;|&mdash;|
-  |Matches the pattern | Regular Expressions | <code>^(.*)</code> |</p>
+<table>
+<thead>
+<tr>
+<th>Requested URL</th>
+<th>Using</th>
+<th>Pattern</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Matches the pattern</td>
+<td>Regular Expressions</td>
+<td><code>^(.*)</code></td>
+</tr>
+</tbody>
+</table>
 
 <p>Conditions:</p>
 
-<p>|Type | Value|
-  |&mdash;|&mdash;|
-  |Logical grouping|Match ALL|
-  |input | <code>{HTTP_HOST}</code> |
-  |Type | Matches the Pattern |
-  |Patern |<code>^xa-sys-svr:8080$</code>|</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Logical grouping</td>
+<td>Match ALL</td>
+</tr>
+
+<tr>
+<td>input</td>
+<td><code>{HTTP_HOST}</code></td>
+</tr>
+
+<tr>
+<td>Type</td>
+<td>Matches the Pattern</td>
+</tr>
+
+<tr>
+<td>Patern</td>
+<td><code>^xa-sys-svr:8080$</code></td>
+</tr>
+</tbody>
+</table>
 
 <p>Server Variables:</p>
 
-<p>|Type | Value|
-  |&mdash;|&mdash;|
-  |Action Type | Rewrite|
-  |Rewrite URL | <code>http://www.cnblog.com/{R:1}</code>|</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Action Type</td>
+<td>Rewrite</td>
+</tr>
+
+<tr>
+<td>Rewrite URL</td>
+<td><code>http://www.cnblog.com/{R:1}</code></td>
+</tr>
+</tbody>
+</table>
 
     </div>
 
