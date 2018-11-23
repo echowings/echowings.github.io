@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>How to Setup Reverse proxy on IIS - Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>Proxmox 01 - Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 
@@ -27,7 +27,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="How to Setup Reverse proxy on IIS I testing it on Server 2016 with IIS 10 Install IIS,URL _REWRITE, ARR Install IIS. Download and install URL Rewrite Module 2.1 Download and install ARR-Application-request-routing Setting Reverse Proxy Select Root level in IIS management Click &amp;lsquo;Application Request Routing Cache&amp;rsquo;,then in the right side, click &amp;ldquo;proxy | Server proxy Settings | Check on &amp;ldquo;Enable proxy&amp;rdquo; | save config. Select website in IIS. Click" />
+  <meta name="description" content="Proxmox notebook 01 Proxmox won&amp;rsquo;t install- &amp;ldquo;A volume group called pve already exists Solution
+ Boot the proxmox installer USB Select Debug Mode Press &amp;ldquo;CTRL&#43;D&amp;rdquo; to start the installer wizard. Click on abort Run &amp;ldquo;vgdisplay&amp;rdquo; to dislay the LVM PG&amp;rsquo;s. Run &amp;ldquo;vgremode pve &amp;rdquo; to remove pve PG.  Remove &amp;ldquo;No valid Subscription&amp;rdquo; Message sed -i.bak &amp;quot;s/data.status !== &#39;Active&#39;/false/g&amp;quot; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;amp;&amp;amp; systemctl restart pveproxy.service  or change it manually." />
 
   <meta name="keywords" content="network, devops, sdn, system Administation" />
 
@@ -39,7 +40,7 @@
 <meta name="generator" content="Hugo 0.49.2" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/post/how-to-setup-reverseproxy-on-iis/" />
+<link rel="canonical" href="https://blog.stevedong.com/post/proxmox-01/" />
 
 
 
@@ -59,26 +60,29 @@
 
 
 
-<meta property="og:title" content="How to Setup Reverse proxy on IIS" />
-<meta property="og:description" content="How to Setup Reverse proxy on IIS I testing it on Server 2016 with IIS 10 Install IIS,URL _REWRITE, ARR Install IIS. Download and install URL Rewrite Module 2.1 Download and install ARR-Application-request-routing Setting Reverse Proxy Select Root level in IIS management Click &lsquo;Application Request Routing Cache&rsquo;,then in the right side, click &ldquo;proxy | Server proxy Settings | Check on &ldquo;Enable proxy&rdquo; | save config. Select website in IIS. Click" />
+<meta property="og:title" content="Proxmox 01" />
+<meta property="og:description" content="Proxmox notebook 01 Proxmox won&rsquo;t install- &ldquo;A volume group called pve already exists Solution
+ Boot the proxmox installer USB Select Debug Mode Press &ldquo;CTRL&#43;D&rdquo; to start the installer wizard. Click on abort Run &ldquo;vgdisplay&rdquo; to dislay the LVM PG&rsquo;s. Run &ldquo;vgremode pve &rdquo; to remove pve PG.  Remove &ldquo;No valid Subscription&rdquo; Message sed -i.bak &quot;s/data.status !== &#39;Active&#39;/false/g&quot; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  or change it manually." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/how-to-setup-reverseproxy-on-iis/" /><meta property="article:published_time" content="2018-11-06T15:59:44&#43;08:00"/>
-<meta property="article:modified_time" content="2018-11-06T15:59:44&#43;08:00"/>
+<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-01/" /><meta property="article:published_time" content="2018-11-19T13:31:09&#43;08:00"/>
+<meta property="article:modified_time" content="2018-11-19T13:31:09&#43;08:00"/>
 
-<meta itemprop="name" content="How to Setup Reverse proxy on IIS">
-<meta itemprop="description" content="How to Setup Reverse proxy on IIS I testing it on Server 2016 with IIS 10 Install IIS,URL _REWRITE, ARR Install IIS. Download and install URL Rewrite Module 2.1 Download and install ARR-Application-request-routing Setting Reverse Proxy Select Root level in IIS management Click &lsquo;Application Request Routing Cache&rsquo;,then in the right side, click &ldquo;proxy | Server proxy Settings | Check on &ldquo;Enable proxy&rdquo; | save config. Select website in IIS. Click">
+<meta itemprop="name" content="Proxmox 01">
+<meta itemprop="description" content="Proxmox notebook 01 Proxmox won&rsquo;t install- &ldquo;A volume group called pve already exists Solution
+ Boot the proxmox installer USB Select Debug Mode Press &ldquo;CTRL&#43;D&rdquo; to start the installer wizard. Click on abort Run &ldquo;vgdisplay&rdquo; to dislay the LVM PG&rsquo;s. Run &ldquo;vgremode pve &rdquo; to remove pve PG.  Remove &ldquo;No valid Subscription&rdquo; Message sed -i.bak &quot;s/data.status !== &#39;Active&#39;/false/g&quot; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  or change it manually.">
 
 
-<meta itemprop="datePublished" content="2018-11-06T15:59:44&#43;08:00" />
-<meta itemprop="dateModified" content="2018-11-06T15:59:44&#43;08:00" />
-<meta itemprop="wordCount" content="124">
+<meta itemprop="datePublished" content="2018-11-19T13:31:09&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-19T13:31:09&#43;08:00" />
+<meta itemprop="wordCount" content="101">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="How to Setup Reverse proxy on IIS"/>
-<meta name="twitter:description" content="How to Setup Reverse proxy on IIS I testing it on Server 2016 with IIS 10 Install IIS,URL _REWRITE, ARR Install IIS. Download and install URL Rewrite Module 2.1 Download and install ARR-Application-request-routing Setting Reverse Proxy Select Root level in IIS management Click &lsquo;Application Request Routing Cache&rsquo;,then in the right side, click &ldquo;proxy | Server proxy Settings | Check on &ldquo;Enable proxy&rdquo; | save config. Select website in IIS. Click"/>
+<meta name="twitter:title" content="Proxmox 01"/>
+<meta name="twitter:description" content="Proxmox notebook 01 Proxmox won&rsquo;t install- &ldquo;A volume group called pve already exists Solution
+ Boot the proxmox installer USB Select Debug Mode Press &ldquo;CTRL&#43;D&rdquo; to start the installer wizard. Click on abort Run &ldquo;vgdisplay&rdquo; to dislay the LVM PG&rsquo;s. Run &ldquo;vgremode pve &rdquo; to remove pve PG.  Remove &ldquo;No valid Subscription&rdquo; Message sed -i.bak &quot;s/data.status !== &#39;Active&#39;/false/g&quot; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  or change it manually."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -332,11 +336,11 @@ if (!doNotTrack) {
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">How to Setup Reverse proxy on IIS</h1>
+      <h1 class="post-title">Proxmox 01</h1>
       
       <div class="post-meta">
-        <time datetime="2018-11-06" class="post-time">
-          2018-11-06
+        <time datetime="2018-11-19" class="post-time">
+          2018-11-19
         </time>
         
         
@@ -356,10 +360,10 @@ if (!doNotTrack) {
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#how-to-setup-reverse-proxy-on-iis">How to Setup Reverse proxy on IIS</a>
+<li><a href="#proxmox-notebook-01">Proxmox notebook 01</a>
 <ul>
-<li><a href="#install-iis-url-rewrite-arr">Install IIS,URL _REWRITE, ARR</a></li>
-<li><a href="#setting-reverse-proxy">Setting Reverse Proxy</a></li>
+<li><a href="#proxmox-won-t-install-a-volume-group-called-pve-already-exists">Proxmox won&rsquo;t install- &ldquo;A volume group called pve already exists</a></li>
+<li><a href="#remove-no-valid-subscription-message">Remove &ldquo;No valid Subscription&rdquo; Message</a></li>
 <li><a href="#reference">Reference</a></li>
 </ul></li>
 </ul>
@@ -371,109 +375,51 @@ if (!doNotTrack) {
     <div class="post-content">
       
 
-<h1 id="how-to-setup-reverse-proxy-on-iis">How to Setup Reverse proxy on IIS</h1>
+<h1 id="proxmox-notebook-01">Proxmox notebook 01</h1>
 
-<p>I testing it on Server 2016 with IIS 10</p>
+<h2 id="proxmox-won-t-install-a-volume-group-called-pve-already-exists">Proxmox won&rsquo;t install- &ldquo;A volume group called pve already exists</h2>
 
-<h2 id="install-iis-url-rewrite-arr">Install IIS,URL _REWRITE, ARR</h2>
+<p>Solution</p>
 
-<ul>
-<li>Install IIS.</li>
-<li>Download and install <a href="https://www.iis.net/downloads/microsoft/url-rewrite">URL Rewrite Module 2.1</a></li>
-<li>Download and install <a href="https://www.iis.net/downloads/microsoft/application-request-routing">ARR-Application-request-routing</a></li>
-</ul>
+<ol>
+<li>Boot the proxmox installer USB</li>
+<li>Select Debug Mode</li>
+<li>Press &ldquo;CTRL+D&rdquo; to start the installer wizard.</li>
+<li>Click on abort</li>
+<li>Run &ldquo;vgdisplay&rdquo; to dislay the LVM PG&rsquo;s.</li>
+<li>Run &ldquo;vgremode pve &rdquo; to remove pve PG.</li>
+</ol>
 
-<h2 id="setting-reverse-proxy">Setting Reverse Proxy</h2>
+<h2 id="remove-no-valid-subscription-message">Remove &ldquo;No valid Subscription&rdquo; Message</h2>
 
-<ul>
-<li>Select Root level in IIS management</li>
-<li>Click &lsquo;Application Request Routing Cache&rsquo;,then in the right side, click &ldquo;proxy | Server proxy Settings | Check on &ldquo;Enable proxy&rdquo; | save config.</li>
-<li>Select website in IIS.</li>
-<li>Click  URL Rewrite</li>
-<li>Add a black Rule</li>
-</ul>
+<pre><code class="language-shell">sed -i.bak &quot;s/data.status !== 'Active'/false/g&quot; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service
 
-<p>Match URL:</p>
+</code></pre>
 
-<table>
-<thead>
-<tr>
-<th>Requested URL</th>
-<th>Using</th>
-<th>Pattern</th>
-</tr>
-</thead>
+<p>or change it manually.</p>
 
-<tbody>
-<tr>
-<td>Matches the pattern</td>
-<td>Regular Expressions</td>
-<td><code>^(.*)</code></td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-shell">
+cd /usr/share/javascript/proxmox-widget-toolkit
 
-<p>Conditions:</p>
+cp proxmoxlib.js proxmoxlib.js.bak
 
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Value</th>
-</tr>
-</thead>
+nano proxmoxlib.js
 
-<tbody>
-<tr>
-<td>Logical grouping</td>
-<td>Match ALL</td>
-</tr>
+if (data.status !== 'Active') {
 
-<tr>
-<td>input</td>
-<td><code>{HTTP_HOST}</code></td>
-</tr>
+if (false) {
 
-<tr>
-<td>Type</td>
-<td>Matches the Pattern</td>
-</tr>
 
-<tr>
-<td>Patern</td>
-<td><code>^xa-sys-svr:8080$</code></td>
-</tr>
-</tbody>
-</table>
+systemctl restart pveproxy.service
 
-<p>Server Variables:</p>
-
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Value</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Action Type</td>
-<td>Rewrite</td>
-</tr>
-
-<tr>
-<td>Rewrite URL</td>
-<td><code>http://www.cnblog.com/{R:1}</code></td>
-</tr>
-</tbody>
-</table>
+</code></pre>
 
 <h2 id="reference">Reference</h2>
 
-<ul>
-<li><a href="https://my.oschina.net/tanyixiu/blog/123832">用IIS配置反向代理</a></li>
-</ul>
+<ol>
+<li><a href="https://forum.proxmox.com/threads/proxmox-wont-install-a-volume-group-called-pve-already-exists.43724/">Proxmox won&rsquo;t install - &ldquo;A volume group called pve already exists&rdquo;.</a></li>
+<li><a href="https://johnscs.com/remove-proxmox51-subscription-notice/">Remove Proxmox 5.<sup>1</sup>&frasl;<sub>5</sub>.2 Subscription Notice</a></li>
+</ol>
 
     </div>
 
@@ -486,7 +432,7 @@ if (!doNotTrack) {
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">2018-11-06</span>
+    <span class="item-content">2018-11-19</span>
   </p>
   
   <p class="copyright-item">
@@ -504,14 +450,14 @@ if (!doNotTrack) {
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/linux-in-action-01/">
+          <a class="prev" href="/post/how-to-solve-ubuntu18.04-with-error-lc_ctype-message/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Linux in Action 01</span>
+            <span class="prev-text nav-default">How to Slove Ubuntu18 with LC_CTYPE Error</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         
-          <a class="next" href="/post/kvm-virtualization-01/">
-            <span class="next-text nav-default">Kvm Virtualization 01</span>
+          <a class="next" href="/post/linux-in-action-01/">
+            <span class="next-text nav-default">Linux in Action 01</span>
             <span class="prev-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>

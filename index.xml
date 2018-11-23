@@ -37,6 +37,169 @@
     </item>
     
     <item>
+      <title>How to Slove Ubuntu18 with LC_CTYPE Error</title>
+      <link>https://blog.stevedong.com/post/how-to-solve-ubuntu18.04-with-error-lc_ctype-message/</link>
+      <pubDate>Sat, 24 Nov 2018 03:44:25 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-solve-ubuntu18.04-with-error-lc_ctype-message/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-slove-the-problems-that-ubuntu-with-lc-ctype-error&#34;&gt;How to slove the problems that Ubuntu with LC_CTYPE Error&lt;/h1&gt;
+
+&lt;p&gt;Whe you met prolems with this error:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;locale: Cannot set LC_CTYPE to default locale: No such file or directory
+locale: Cannot set LC_MESSAGES to default locale: No such file or directory
+locale: Cannot set LC_ALL to default locale: No such file or directory
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;solution&#34;&gt;Solution&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;chang &lt;code&gt;/etc/default/locale&lt;/code&gt; to :&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;LANG=&amp;quot;en_US.UTF-8&amp;quot;
+LC_NUMERIC=&amp;quot;en_US.UTF-8&amp;quot;
+LC_TIME=&amp;quot;en_US.UTF-8&amp;quot;
+LC_MONETARY=&amp;quot;en_US.UTF-8&amp;quot;
+LC_PAPER=&amp;quot;en_US.UTF-8&amp;quot;
+LC_NAME=&amp;quot;en_US.UTF-8&amp;quot;
+LC_ADDRESS=&amp;quot;en_US.UTF-8&amp;quot;
+LC_TELEPHONE=&amp;quot;en_US.UTF-8&amp;quot;
+LC_MEASUREMENT=&amp;quot;en_US.UTF-8&amp;quot;
+LC_IDENTIFICATION=&amp;quot;en_US.UTF-8&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;run command &lt;code&gt;locale&lt;/code&gt;,and you will see :&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  locale: Cannot set LC_CTYPE to default locale: No such file or directory
+locale: Cannot set LC_MESSAGES to default locale: No such file or directory
+locale: Cannot set LC_ALL to default locale: No such file or directory
+LANG=en_US.UTF-8
+LANGUAGE=
+LC_CTYPE=&amp;quot;zh_CN.UTF-8&amp;quot;
+LC_NUMERIC=en_US.UTF-8
+LC_TIME=en_US.UTF-8
+LC_COLLATE=&amp;quot;en_US.UTF-8&amp;quot;
+LC_MONETARY=en_US.UTF-8
+LC_MESSAGES=&amp;quot;en_US.UTF-8&amp;quot;
+LC_PAPER=en_US.UTF-8
+LC_NAME=en_US.UTF-8
+LC_ADDRESS=en_US.UTF-8
+LC_TELEPHONE=en_US.UTF-8
+LC_MEASUREMENT=en_US.UTF-8
+LC_IDENTIFICATION=en_US.UTF-8
+LC_ALL=
+  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;then run command &lt;code&gt;sudo locale-gen zh_CN.UTF-8&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;run &lt;code&gt;locale -a&lt;/code&gt;, error has gone.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-LANG=en_US.UTF-8&#34;&gt;LANGUAGE=
+LC_CTYPE=zh_CN.UTF-8
+LC_NUMERIC=&amp;quot;en_US.UTF-8&amp;quot;
+LC_TIME=&amp;quot;en_US.UTF-8&amp;quot;
+LC_COLLATE=&amp;quot;en_US.UTF-8&amp;quot;
+LC_MONETARY=&amp;quot;en_US.UTF-8&amp;quot;
+LC_MESSAGES=&amp;quot;en_US.UTF-8&amp;quot;
+LC_PAPER=&amp;quot;en_US.UTF-8&amp;quot;
+LC_NAME=&amp;quot;en_US.UTF-8&amp;quot;
+LC_ADDRESS=&amp;quot;en_US.UTF-8&amp;quot;
+LC_TELEPHONE=&amp;quot;en_US.UTF-8&amp;quot;
+LC_MEASUREMENT=&amp;quot;en_US.UTF-8&amp;quot;
+LC_IDENTIFICATION=&amp;quot;en_US.UTF-8&amp;quot;
+LC_ALL=
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Proxmox 01</title>
+      <link>https://blog.stevedong.com/post/proxmox-01/</link>
+      <pubDate>Mon, 19 Nov 2018 13:31:09 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/proxmox-01/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;proxmox-notebook-01&#34;&gt;Proxmox notebook 01&lt;/h1&gt;
+
+&lt;h2 id=&#34;proxmox-won-t-install-a-volume-group-called-pve-already-exists&#34;&gt;Proxmox won&amp;rsquo;t install- &amp;ldquo;A volume group called pve already exists&lt;/h2&gt;
+
+&lt;p&gt;Solution&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Boot the proxmox installer USB&lt;/li&gt;
+&lt;li&gt;Select Debug Mode&lt;/li&gt;
+&lt;li&gt;Press &amp;ldquo;CTRL+D&amp;rdquo; to start the installer wizard.&lt;/li&gt;
+&lt;li&gt;Click on abort&lt;/li&gt;
+&lt;li&gt;Run &amp;ldquo;vgdisplay&amp;rdquo; to dislay the LVM PG&amp;rsquo;s.&lt;/li&gt;
+&lt;li&gt;Run &amp;ldquo;vgremode pve &amp;rdquo; to remove pve PG.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;remove-no-valid-subscription-message&#34;&gt;Remove &amp;ldquo;No valid Subscription&amp;rdquo; Message&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;sed -i.bak &amp;quot;s/data.status !== &#39;Active&#39;/false/g&amp;quot; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;amp;&amp;amp; systemctl restart pveproxy.service
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;or change it manually.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;
+cd /usr/share/javascript/proxmox-widget-toolkit
+
+cp proxmoxlib.js proxmoxlib.js.bak
+
+nano proxmoxlib.js
+
+if (data.status !== &#39;Active&#39;) {
+
+if (false) {
+
+
+systemctl restart pveproxy.service
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://forum.proxmox.com/threads/proxmox-wont-install-a-volume-group-called-pve-already-exists.43724/&#34;&gt;Proxmox won&amp;rsquo;t install - &amp;ldquo;A volume group called pve already exists&amp;rdquo;.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://johnscs.com/remove-proxmox51-subscription-notice/&#34;&gt;Remove Proxmox 5.&lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;5&lt;/sub&gt;.2 Subscription Notice&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Linux in Action 01</title>
+      <link>https://blog.stevedong.com/post/linux-in-action-01/</link>
+      <pubDate>Fri, 16 Nov 2018 11:53:52 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/linux-in-action-01/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;翻译-linux实战&#34;&gt;[翻译]Linux实战&lt;/h1&gt;
+
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+
+&lt;p&gt;作为IT运维人员或者程序员,不论做什么或做多久.如果你不学习新东西,你可能现在已经已经转行了.不仅仅是平台或者技术图表持续的变更.也不仅仅是业务需求需要新思维.或者一个坏蛋不停使用新路子来攻击你的服务器. 而是所用事情的综合. 你不能承担停止学习的代价.而诀窍就是找到一个方法学习高优先级的技能,而不能让经验成为你成长的阻碍.&lt;/p&gt;
+
+&lt;p&gt;我的意愿和初衷是想让你遍读本书的每一章,然后可以自信地接受挑战(一些以前你不能自信挑战的事情)并战胜之.如果你&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>How to Setup Reverse proxy on IIS</title>
       <link>https://blog.stevedong.com/post/how-to-setup-reverseproxy-on-iis/</link>
       <pubDate>Tue, 06 Nov 2018 15:59:44 +0800</pubDate>
@@ -142,6 +305,12 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://my.oschina.net/tanyixiu/blog/123832&#34;&gt;用IIS配置反向代理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
       
     </item>
