@@ -37,6 +37,36 @@
     </item>
     
     <item>
+      <title>Ssh Login Without Password</title>
+      <link>https://blog.stevedong.com/post/ssh-login-without-password/</link>
+      <pubDate>Thu, 29 Nov 2018 10:07:54 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/ssh-login-without-password/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;ssh-login-linux-unix-without-password&#34;&gt;SSH login linux/unix without password&lt;/h1&gt;
+
+&lt;h2 id=&#34;general-your-key&#34;&gt;General your key&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh-keygen-t rsa
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;copy-your-rsa-pub-to-server-which-you-want-to-login-without-password&#34;&gt;copy your rsa.pub to server which you want to login without password.&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh-copy-id -i ~/.ssh/id_rsa.pub user1@$server-hosts
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;test-login&#34;&gt;Test login.&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh user1@$server-hosts
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>How to Slove Ubuntu18 with LC_CTYPE Error</title>
       <link>https://blog.stevedong.com/post/how-to-solve-ubuntu18.04-with-error-lc_ctype-message/</link>
       <pubDate>Sat, 24 Nov 2018 03:44:25 +0800</pubDate>
