@@ -373,10 +373,10 @@ if (!doNotTrack) {
 <li><a href="#inter-cpu">Inter CPU</a></li>
 <li><a href="#amd-cpu">AMD CPU</a></li>
 </ul></li>
+</ul></li>
 <li><a href="#change-required-modules">Change Required modules</a></li>
 <li><a href="#check-iommu-enable-or-not">Check IOMMU enable or not</a></li>
 <li><a href="#add-pci-e-device-to-vm">Add PCI-E Device to VM</a></li>
-</ul></li>
 <li><a href="#reference">Reference</a></li>
 </ul></li>
 </ul>
@@ -442,7 +442,7 @@ if (!doNotTrack) {
 <pre><code class="language-bash">  update-grub
 </code></pre>
 
-<h3 id="change-required-modules">Change Required modules</h3>
+<h2 id="change-required-modules">Change Required modules</h2>
 
 <p>Edit <code>/etc/modules</code></p>
 
@@ -454,7 +454,7 @@ vfio_pci
 vfio_virqfd
 </code></pre>
 
-<h3 id="check-iommu-enable-or-not">Check IOMMU enable or not</h3>
+<h2 id="check-iommu-enable-or-not">Check IOMMU enable or not</h2>
 
 <ul>
 <li><code>dmesg | grep ecap</code></li>
@@ -482,7 +482,7 @@ done
   		find /sys/kernel/iommu_groups/ -type l 
   	</code></p>
 
-<h3 id="add-pci-e-device-to-vm">Add PCI-E Device to VM</h3>
+<h2 id="add-pci-e-device-to-vm">Add PCI-E Device to VM</h2>
 
 <ol>
 <li>Run <code>lspci</code> to check address of network pci-e adapter device. like this ```hostpci0: 01:00.0</li>
