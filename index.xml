@@ -37,6 +37,131 @@
     </item>
     
     <item>
+      <title>Proxmox Network Adapter Pass Through</title>
+      <link>https://blog.stevedong.com/post/proxmox-network-adapter-pass-through/</link>
+      <pubDate>Fri, 07 Dec 2018 12:24:24 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/proxmox-network-adapter-pass-through/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;proxmox-network-apapter-passw-through&#34;&gt;Proxmox network apapter passw through&lt;/h1&gt;
+
+&lt;p&gt;Long time ago, I konw virtualization is go very good solution to server. But how  about router build in virtualization? After tried to do it, I was failed. because virtual switch made networking very slow. So i just use dedicate server as a router.&lt;/p&gt;
+
+&lt;p&gt;Recently days, I just learn proxmox and find pci-e pass through function. I think maybe it is way to make routing virtualization.&lt;/p&gt;
+
+&lt;p&gt;Here are what I do:&lt;/p&gt;
+
+&lt;h2 id=&#34;enable-vt-d-and-x2apic-mode&#34;&gt;Enable VT-d and X2APic Mode&lt;/h2&gt;
+
+&lt;p&gt;Configure BIOS to enable VT-d and X2APic&lt;/p&gt;
+
+&lt;h2 id=&#34;chang-grub-boot-settings&#34;&gt;Chang Grub boot settings&lt;/h2&gt;
+
+&lt;h3 id=&#34;edit-grub-configure&#34;&gt;Edit grub configure.&lt;/h3&gt;
+
+&lt;p&gt;####Inter CPU&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Edit grub&lt;/p&gt;
+
+&lt;p&gt;Eidt &lt;code&gt;/etc/default/grub&lt;/code&gt;, then change&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;to&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet intel_iommu=on&amp;quot;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Update grub&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  update-grub
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;amd-cpu&#34;&gt;AMD CPU&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Edit grub file.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Edit &lt;code&gt;/etc/default/grub&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Change &lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet&amp;quot;&lt;/code&gt;
+  to &lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet amd_iommu=on&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Update grub&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  update-grub
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;change-required-modules&#34;&gt;Change Required modules&lt;/h3&gt;
+
+&lt;p&gt;Edit &lt;code&gt;/etc/modules&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Add&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vfio
+vfio_iommu_type1
+vfio_pci
+vfio_virqfd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;check-iommu-enable-or-not&#34;&gt;Check IOMMU enable or not&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dmesg | grep ecap&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;script to make sure IOMMU is enabled&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/sh
+if [ $(dmesg | grep ecap | wc -l) -eq 0 ]; then
+    echo &amp;quot;No interrupt remapping support found&amp;quot;
+    exit 1
+fi
+
+for i in $(dmesg | grep ecap | awk &#39;{print $NF}&#39;); do
+    if [ $(( (0x$i &amp;amp; 0xf) &amp;gt;&amp;gt; 3 )) -ne 1 ]; then
+        echo &amp;quot;Interrupt remapping not supported&amp;quot;
+        exit 1
+fi
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Verify IOMMU isolation&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;	&lt;code&gt;python
+  		find /sys/kernel/iommu_groups/ -type l 
+  	&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;add-pci-e-device-to-vm&#34;&gt;Add PCI-E Device to VM&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Run &lt;code&gt;lspci&lt;/code&gt; to check address of network pci-e adapter device. like this ```hostpci0: 01:00.0&lt;/li&gt;
+&lt;li&gt;Add configure of yoru VM  &lt;code&gt;/etc/pve/qemu-server/&amp;lt;vmid&amp;gt;.conf&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Add configure like this to set pci-expres passthrough.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  machine: q35
+  hostpci0: 00:00.0,pcie=1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://pve.proxmox.com/wiki/Pci_passthrough&#34;&gt;Pci passthrough&lt;/a&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>Install Proxmox Ve on Debian 9</title>
       <link>https://blog.stevedong.com/post/install-proxmox-ve-on-debian-9/</link>
       <pubDate>Sat, 01 Dec 2018 18:36:14 +0800</pubDate>
@@ -50,11 +175,17 @@
 &lt;h2 id=&#34;change-your-ip-and-hostname&#34;&gt;Change your ip and hostname&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Chang IP ADDRESS&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chang IP ADDRESS&lt;/strong&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;Change your IP address to static.&lt;/p&gt;
+
 &lt;pre&gt;&lt;code class=&#34;language-vi&#34;&gt;
-Change your IP address to static.
+
+
+
+
 
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -79,7 +210,9 @@ address &lt;em&gt;.&lt;/em&gt;.&lt;em&gt;.&lt;/em&gt;
 netmask &lt;em&gt;.&lt;/em&gt;.&lt;em&gt;.&lt;/em&gt;
 gateway &lt;em&gt;.&lt;/em&gt;.&lt;em&gt;.&lt;/em&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;  - **Change DNS**
+&lt;pre&gt;&lt;code&gt;
+
+  - **Change DNS**
 
   ```vi /etc/resolv.conf```
   
