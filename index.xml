@@ -37,6 +37,115 @@
     </item>
     
     <item>
+      <title>Run Overture on Docker or Freebsd</title>
+      <link>https://blog.stevedong.com/post/run-overture-on-docker-or-freebsd/</link>
+      <pubDate>Tue, 18 Dec 2018 18:47:15 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/run-overture-on-docker-or-freebsd/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;run-overture-on-docker-and-freebsd-12&#34;&gt;Run overture on Docker and FreeBSD 12&lt;/h1&gt;
+
+&lt;h2 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-dockfile&#34;&gt;FROM ubuntu
+
+ENV foo /overture
+WORKDIR ${foo}
+RUN apt-get update &amp;amp;&amp;amp; apt-get install -y ca-certificates
+
+RUN  printf  &amp;quot;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse&amp;quot;  &amp;gt; /etc/apt/sources.list
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install -y wget curl unzip apt-utils vim
+RUN cd /overture
+RUN wget https://github.com/shawn1m/overture/releases/download/v1.5-rc1/overture-linux-amd64.zip
+RUN unzip overture-linux-amd64.zip
+RUN curl https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt | base64 -d | sort -u | sed &#39;/^$\|@@/d&#39;| sed &#39;s#!.\+##; s#|##g; s#@##g; s#http:\/\/##; s#https:\/\/##;&#39; | sed &#39;/\*/d; /apple\.com/d; /sina\.cn/d; /sina\.com\.cn/d; /baidu\.com/d; /qq\.com/d&#39; | sed &#39;/^[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+$/d&#39; | grep &#39;^[0-9a-zA-Z\.-]\+$&#39; | grep &#39;\.&#39; | sed &#39;s#^\.\+##&#39; | sort -u &amp;gt; /tmp/temp_gfwlist.txt
+RUN curl https://raw.githubusercontent.com/hq450/fancyss/master/rules/gfwlist.conf | sed &#39;s/ipset=\/\.//g; s/\/gfwlist//g; /^server/d&#39; &amp;gt; /tmp/temp_koolshare.txt
+RUN cat /tmp/temp_gfwlist.txt /tmp/temp_koolshare.txt | sort -u &amp;gt; gfw_all_domain.txt
+RUN wget https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt
+RUN printf &#39;{ \n   &amp;quot;BindAddress&amp;quot;: &amp;quot;:53&amp;quot;,\n   &amp;quot;PrimaryDNS&amp;quot;: [\n    {\n      &amp;quot;Name&amp;quot;: &amp;quot;DNSPod&amp;quot;,\n      &amp;quot;Address&amp;quot;: &amp;quot;114.114.114.114:53&amp;quot;,\n      &amp;quot;Protocol&amp;quot;: &amp;quot;udp&amp;quot;,\n      &amp;quot;SOCKS5Address&amp;quot;: &amp;quot;&amp;quot;,\n       &amp;quot;Timeout&amp;quot;: 6,\n       &amp;quot;EDNSClientSubnet&amp;quot;: {\n         &amp;quot;Policy&amp;quot;: &amp;quot;auto&amp;quot;,\n         &amp;quot;ExternalIP&amp;quot;: &amp;quot;222.90.74.60&amp;quot;,\n         &amp;quot;NoCookie&amp;quot;: true\n       }\n     }\n   ],\n   &amp;quot;AlternativeDNS&amp;quot;: [\n     {\n       &amp;quot;Name&amp;quot;: &amp;quot;OpenDNS&amp;quot;,\n       &amp;quot;Address&amp;quot;: &amp;quot;208.67.222.222:443&amp;quot;,\n       &amp;quot;Protocol&amp;quot;: &amp;quot;tcp&amp;quot;,\n       &amp;quot;SOCKS5Address&amp;quot;: &amp;quot;&amp;quot;,\n       &amp;quot;Timeout&amp;quot;: 6,\n       &amp;quot;EDNSClientSubnet&amp;quot;: {\n         &amp;quot;Policy&amp;quot;: &amp;quot;manual&amp;quot;,\n         &amp;quot;ExternalIP&amp;quot;: &amp;quot;202.60.225.114&amp;quot;,\n         &amp;quot;NoCookie&amp;quot;: true\n       }\n     }\n   ],\n   &amp;quot;OnlyPrimaryDNS&amp;quot;: false,\n   &amp;quot;IPv6UseAlternativeDNS&amp;quot;: false,\n   &amp;quot;IPNetworkFile&amp;quot;: {\n     &amp;quot;Primary&amp;quot;: &amp;quot;./china_ip_list.txt&amp;quot;,\n     &amp;quot;Alternative&amp;quot;: &amp;quot;./ip_network_alternative_sample&amp;quot;\n   },\n   &amp;quot;DomainFile&amp;quot;: {\n     &amp;quot;Primary&amp;quot;: &amp;quot;./domain_primary_sample&amp;quot;,\n     &amp;quot;Alternative&amp;quot;: &amp;quot;./gfw_all_domain.txt&amp;quot;\n   },\n   &amp;quot;HostsFile&amp;quot;: &amp;quot;./hosts_sample&amp;quot;,\n   &amp;quot;MinimumTTL&amp;quot;: 0,\n   &amp;quot;CacheSize&amp;quot; : 0,\n  &amp;quot;RejectQtype&amp;quot;: [255]\n }&#39; &amp;gt; config.json
+
+CMD [&amp;quot;./overture-linux-amd64&amp;quot;]
+#ENTRYPOINT [&amp;quot;./overture-linux-amd64&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;freebsd-rc-d-file&#34;&gt;FreeBSD rc.d file&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;cat /usr/local/etc/rc.d/overture&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/sh
+# $FreeBSD: head/net/overture/files/overture.in 335066 2018-12-18 11:33:26z SteveDong $
+
+# PROVIDE: overture
+# REQUIRE: LOGIN cleanvar
+# KEYWORD: shutdown
+
+# Add the following lines to /etc/rc.conf to enable overture
+# overture_enable (bool): set to &amp;quot;NO&amp;quot; by default
+# Set to &amp;quot;YES&amp;quot; to enable overture.
+# overture_config(path): overture config file.
+# Default to &amp;quot;/usr/local/etc/overture/config.json&amp;quot;
+
+. /etc/rc.subr
+
+name=&amp;quot;overture&amp;quot;
+rcvar=overture_enable
+
+
+load_rc_config $name
+
+: ${overture_enable:=&amp;quot;NO&amp;quot;}
+: ${overture_user:=&amp;quot;root&amp;quot;}
+: ${overture_group:=&amp;quot;nobody&amp;quot;}
+
+#: ${error_log_file=&amp;quot;/var/log/overture_error&amp;quot;}
+#: ${overture_args:=&amp;quot;-p ${cpu_core} -c ${overture_config} -l ${logfile}&amp;quot;}
+: ${overture_config=&amp;quot;/usr/local/etc/overture/config.json&amp;quot;}
+
+
+
+command=&amp;quot;/usr/sbin/daemon&amp;quot;
+procname=&amp;quot;/usr/local/bin/overture&amp;quot;
+pidfile=&amp;quot;/var/run/overture.pid&amp;quot;
+logfile=&amp;quot;/var/log/overture&amp;quot;
+error_log_file=&amp;quot;/var/log/overture_error&amp;quot;
+requried_files=&amp;quot;${overture_config}&amp;quot;
+
+# find how many cores on your computer
+
+cpu_core=$(cat /var/run/dmesg.boot | grep CPU | grep FreeBSD | awk {&#39;print $5&#39;})
+
+overture_args=&amp;quot;-p ${cpu_core} -c ${overture_config} -l ${logfile} 2&amp;gt;&amp;amp;1 &amp;gt; $error_log_file&amp;quot;
+
+command_args=&amp;quot;-p ${pidfile}  /usr/bin/env ${procname} ${overture_args}&amp;quot;
+
+start_precmd=overture_startprecmd
+
+overture_startprecmd()
+{
+	if [ ! -e ${pidfile} ]; then
+		install -o ${overture_user} -g ${overture_group} /dev/null ${pidfile};
+	fi
+	if [ ! -e ${logfile} ]; then
+		install -o ${overture_user} -g ${overture_group} /dev/null ${logfile};
+	fi
+	if [ ! -e ${error_log_file} ]; then
+		install -o ${overture_user} -g ${overture_group} /dev/null ${error_log_file};
+	fi
+}
+
+load_rc_config $name
+run_rc_command &amp;quot;$1&amp;quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>Proxmox Network Adapter Pass Through</title>
       <link>https://blog.stevedong.com/post/proxmox-network-adapter-pass-through/</link>
       <pubDate>Fri, 07 Dec 2018 12:24:24 +0800</pubDate>
