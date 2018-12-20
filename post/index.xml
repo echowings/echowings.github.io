@@ -6,10 +6,28 @@
     <description>Recent content in Posts on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 18 Dec 2018 18:47:15 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 20 Dec 2018 10:59:36 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Dockerfile for Overure</title>
+      <link>https://blog.stevedong.com/post/dockerfile-for-overure/</link>
+      <pubDate>Thu, 20 Dec 2018 10:59:36 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/dockerfile-for-overure/</guid>
+      <description>FROM alpine:latest ENV VERSION v1.4 WORKDIR /srv RUN set -xe &amp;amp;&amp;amp; \ mkdir /config &amp;amp;&amp;amp; \ apk add --no-cache unzip curl &amp;amp;&amp;amp; \ curl -fsSLO --compressed &amp;quot;https://github.com/shawn1m/overture/releases/download/${VERSION}/overture-linux-amd64.zip&amp;quot; &amp;amp;&amp;amp; \ unzip -o &amp;quot;overture-linux-amd64.zip&amp;quot; -d /srv &amp;amp;&amp;amp; \ curl https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt | base64 -d | sort -u | sed &#39;/^$\|@@/d&#39;| sed &#39;s#!.\+##; s#|##g; s#@##g; s#http:\/\/##; s#https:\/\/##;&#39; | sed &#39;/\*/d; / apple\.com/d; /sina\.cn/d; /sina\.com\.cn/d; /baidu\.com/d; /qq\.com/d&#39; | sed &#39;/^[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+$/d&#39; | grep &#39;^[0-9a-zA-Z\.-]\+$&#39; | grep &#39;\.</description>
+    </item>
+    
+    <item>
+      <title>Install Powerdns and Mysql on Freebsd12</title>
+      <link>https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/</link>
+      <pubDate>Tue, 18 Dec 2018 23:29:00 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/</guid>
+      <description>Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&amp;quot;YES&amp;quot; service mysql-server restart  Database and User Configuration $ mysql mysql&amp;gt; create database powerdns charset = utf8; mysql&amp;gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&amp;gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&amp;gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&amp;gt; FLUSH PRIVILEGES;  For security, we also give the main admin password</description>
+    </item>
     
     <item>
       <title>Run Overture on Docker or Freebsd</title>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on Steve Dong - A System Administrator&#39;s Blog</title>
+    <link>https://blog.stevedong.com/tags/docker/</link>
+    <description>Recent content in Docker on Steve Dong - A System Administrator&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 20 Dec 2018 10:59:36 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.stevedong.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Dockerfile for Overure</title>
+      <link>https://blog.stevedong.com/post/dockerfile-for-overure/</link>
+      <pubDate>Thu, 20 Dec 2018 10:59:36 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/dockerfile-for-overure/</guid>
+      <description>FROM alpine:latest ENV VERSION v1.4 WORKDIR /srv RUN set -xe &amp;amp;&amp;amp; \ mkdir /config &amp;amp;&amp;amp; \ apk add --no-cache unzip curl &amp;amp;&amp;amp; \ curl -fsSLO --compressed &amp;quot;https://github.com/shawn1m/overture/releases/download/${VERSION}/overture-linux-amd64.zip&amp;quot; &amp;amp;&amp;amp; \ unzip -o &amp;quot;overture-linux-amd64.zip&amp;quot; -d /srv &amp;amp;&amp;amp; \ curl https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt | base64 -d | sort -u | sed &#39;/^$\|@@/d&#39;| sed &#39;s#!.\+##; s#|##g; s#@##g; s#http:\/\/##; s#https:\/\/##;&#39; | sed &#39;/\*/d; / apple\.com/d; /sina\.cn/d; /sina\.com\.cn/d; /baidu\.com/d; /qq\.com/d&#39; | sed &#39;/^[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+$/d&#39; | grep &#39;^[0-9a-zA-Z\.-]\+$&#39; | grep &#39;\.</description>
+    </item>
+    
+  </channel>
+</rss>

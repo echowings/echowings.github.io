@@ -37,6 +37,110 @@
     </item>
     
     <item>
+      <title>Dockerfile for Overure</title>
+      <link>https://blog.stevedong.com/post/dockerfile-for-overure/</link>
+      <pubDate>Thu, 20 Dec 2018 10:59:36 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/dockerfile-for-overure/</guid>
+      
+        <description>&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;FROM alpine:latest
+
+ENV VERSION v1.4
+
+WORKDIR /srv
+
+RUN set -xe &amp;amp;&amp;amp; \
+	mkdir /config &amp;amp;&amp;amp; \
+	apk add --no-cache unzip curl &amp;amp;&amp;amp; \
+	curl -fsSLO --compressed &amp;quot;https://github.com/shawn1m/overture/releases/download/${VERSION}/overture-linux-amd64.zip&amp;quot; &amp;amp;&amp;amp; \
+	unzip -o &amp;quot;overture-linux-amd64.zip&amp;quot; -d /srv &amp;amp;&amp;amp; \
+	curl https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt | base64 -d | sort -u | sed &#39;/^$\|@@/d&#39;| sed &#39;s#!.\+##; s#|##g; s#@##g; s#http:\/\/##; s#https:\/\/##;&#39; | sed &#39;/\*/d; /    apple\.com/d; /sina\.cn/d; /sina\.com\.cn/d; /baidu\.com/d; /qq\.com/d&#39; | sed &#39;/^[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+$/d&#39; | grep &#39;^[0-9a-zA-Z\.-]\+$&#39; | grep &#39;\.&#39; | sed &#39;s#^\.\+##&#39; | sort -u &amp;gt; temp_gfwlist.txt &amp;amp;&amp;amp; \
+	curl https://raw.githubusercontent.com/hq450/fancyss/master/rules/gfwlist.conf | sed &#39;s/ipset=\/\.//g; s/\/gfwlist//g; /^server/d&#39; &amp;gt; temp_koolshare.txt  &amp;amp;&amp;amp; \
+	cat temp_gfwlist.txt temp_koolshare.txt | sort -u &amp;gt; gfw_all_domain.txt  &amp;amp;&amp;amp; \
+	curl -fsSLO --compressed  &amp;quot;https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt&amp;quot; &amp;amp;&amp;amp; \
+	sed -i &#39;11s/disable/manual/&#39; /srv/config.json &amp;amp;&amp;amp; \
+	sed -i &#39;24s/disable/manual/&#39; /srv/config.json &amp;amp;&amp;amp; \
+	sed -i &#39;12s/&amp;quot;&amp;quot;/&amp;quot;222.90.74.60&amp;quot;/&#39; /srv/config.json &amp;amp;&amp;amp; \
+	sed -i &#39;25s/&amp;quot;&amp;quot;/&amp;quot;202.60.225.114&amp;quot;/&#39; /srv/config.json &amp;amp;&amp;amp; \
+	sed -i &#39;s/&amp;quot;.\/ip_network_primary_sample&amp;quot;/&amp;quot;\/config\/china_ip_list.txt&amp;quot;/g&#39; /srv/config.json &amp;amp;&amp;amp; \
+	sed -i &#39;s/&amp;quot;.\/domain_alternative_sample&amp;quot;/&amp;quot;\/config\/gfw_all_domain.txt&amp;quot;/g&#39; /srv/config.json &amp;amp;&amp;amp; \
+	rm -rf temp_koolshare.txt temp_gfwlist.txt &amp;amp;&amp;amp; \
+	rm -rf &amp;quot;overture-linux-amd64.zip&amp;quot; &amp;amp;&amp;amp; \
+	cp /srv/config.json /config/ &amp;amp;&amp;amp; \
+	cp /srv/*.txt /config/ &amp;amp;&amp;amp; \
+	apk del unzip curl
+
+VOLUME [ &amp;quot;/config&amp;quot;]
+
+ENTRYPOINT [ &amp;quot;/srv/overture-linux-amd64&amp;quot;, &amp;quot;-c&amp;quot;, &amp;quot;/config/config.json&amp;quot; ]
+#CMD /srv/overture-linux-amd64 -c /config/config.json
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Install Powerdns and Mysql on Freebsd12</title>
+      <link>https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/</link>
+      <pubDate>Tue, 18 Dec 2018 23:29:00 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;install-powerdns-and-mysql-on-freebsd-12&#34;&gt;Install PowerDNS and Mysql on FreeBSD 12&lt;/h1&gt;
+
+&lt;h2 id=&#34;database-installation&#34;&gt;Database Installation&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+pkg install mysql56-server
+
+sysrc mysql_server=&amp;quot;YES&amp;quot;
+
+service mysql-server restart
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;database-and-user-configuration&#34;&gt;Database and User Configuration&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+$ mysql
+
+mysql&amp;gt; create database powerdns charset = utf8;
+
+mysql&amp;gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;;
+
+###mysql&amp;gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;###
+mysql&amp;gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;;
+
+
+mysql&amp;gt; FLUSH PRIVILEGES;
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For security, we also give the main admin password&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ mysqladmin -u root password &amp;quot;PASSWORD_OF_ROOT&amp;quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;install-powerdns&#34;&gt;Install powerdns&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pkg install powerdns
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.a2hosting.com/kb/developer-corner/mysql/managing-mysql-databases-and-users-from-the-command-line&#34;&gt;How to manage MySQL databases and users from the command line&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.v-live.pl/category/sieci/dns/&#34;&gt;PowerDNS, PowerAdmin with Mysql in Freebsd 10.1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>Run Overture on Docker or Freebsd</title>
       <link>https://blog.stevedong.com/post/run-overture-on-docker-or-freebsd/</link>
       <pubDate>Tue, 18 Dec 2018 18:47:15 +0800</pubDate>

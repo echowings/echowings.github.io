@@ -328,6 +328,62 @@ if (!doNotTrack) {
     
       <article class="post bg-white">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/dockerfile-for-overure/">Dockerfile for Overure</a></h1>
+    
+    <div class="post-meta">
+      <time datetime="2018-12-20" class="post-time">
+        2018-12-20
+      </time>
+      
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      FROM alpine:latest ENV VERSION v1.4 WORKDIR /srv RUN set -xe &amp;&amp; \ mkdir /config &amp;&amp; \ apk add --no-cache unzip curl &amp;&amp; \ curl -fsSLO --compressed &quot;https://github.com/shawn1m/overture/releases/download/${VERSION}/overture-linux-amd64.zip&quot; &amp;&amp; \ unzip -o &quot;overture-linux-amd64.zip&quot; -d /srv &amp;&amp; \ curl https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt | base64 -d | sort -u | sed '/^$\|@@/d'| sed 's#!.\+##; s#|##g; s#@##g; s#http:\/\/##; s#https:\/\/##;' | sed '/\*/d; / apple\.com/d; /sina\.cn/d; /sina\.com\.cn/d; /baidu\.com/d; /qq\.com/d' | sed '/^[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+$/d' | grep '^[0-9a-zA-Z\.-]\+$' | grep '\.
+    </div>
+    <div class="read-more">
+      <a href="/post/dockerfile-for-overure/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/install-powerdns-and-mysql-on-freebsd12/">Install Powerdns and Mysql on Freebsd12</a></h1>
+    
+    <div class="post-meta">
+      <time datetime="2018-12-18" class="post-time">
+        2018-12-18
+      </time>
+      
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&quot;YES&quot; service mysql-server restart  Database and User Configuration $ mysql mysql&gt; create database powerdns charset = utf8; mysql&gt; CREATE USER 'powerdns'@'localhost' IDENTIFIED BY 'XianAdmin'; ###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO '%' WITH GRANT OPTION;### mysql&gt; grant all privileges on powerdns.* to 'powerdns'@'localhost' IDENTIFIED BY 'XianAdmin'; mysql&gt; FLUSH PRIVILEGES;  For security, we also give the main admin password
+    </div>
+    <div class="read-more">
+      <a href="/post/install-powerdns-and-mysql-on-freebsd12/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/run-overture-on-docker-or-freebsd/">Run Overture on Docker or Freebsd</a></h1>
     
     <div class="post-meta">
@@ -699,63 +755,6 @@ locale: Cannot set LC_CTYPE to default locale: No such file or directory locale:
     </div>
     <div class="read-more">
       <a href="/post/learning-build-network-with-vyos-01-install-vyos/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/how-to-install-dotnetcore2.1.x-and-aspdotnetcore2.1.x-on-rhel6.x-or-centos6.x/">How to Install Dotnetcore2.1.x and Aspdotnetcore2.1.x on RHEL6.x or CentOS6</a></h1>
-    
-    <div class="post-meta">
-      <time datetime="2018-10-26" class="post-time">
-        2018-10-26
-      </time>
-      
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to install netcore/aspnetcore 2.1.4 on RHEL 6.8 Recently days, we met a scenario that is our client production environment must be RHEL 6.8. But our product is base asp.net core 2.1.x version. Rehat and Microsoft has never say the are support RHEL 6.X version.
-After a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core.
-    </div>
-    <div class="read-more">
-      <a href="/post/how-to-install-dotnetcore2.1.x-and-aspdotnetcore2.1.x-on-rhel6.x-or-centos6.x/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/how-to-build-blog-with-hugo-on-github.io/">How to Build Blog With Hugo on Github</a></h1>
-    
-    <div class="post-meta">
-      <time datetime="2018-10-26" class="post-time">
-        2018-10-26
-      </time>
-      
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to build a blog with Hugo on github.io Hugo on your MacOS Setting github create a repo named blogs for store hugo programes. Create another repo named echowings.github.io to host websit. generate ssh key and regist it on github settings. Install hugo brew install hugo Create a blog site. hugo new site blogs init git cd blogs git init Add remote repo. git remote add origin git@github.com:echowings/blogs.git Add a
-    </div>
-    <div class="read-more">
-      <a href="/post/how-to-build-blog-with-hugo-on-github.io/" class="read-more-link">Read more</a>
     </div>
     
   </div>

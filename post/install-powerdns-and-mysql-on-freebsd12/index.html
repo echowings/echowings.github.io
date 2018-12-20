@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Tags - Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>Install Powerdns and Mysql on Freebsd12 - Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 
@@ -27,7 +27,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="A System Administrator&#39;s Blog." />
+  <meta name="description" content="Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&amp;quot;YES&amp;quot; service mysql-server restart  Database and User Configuration $ mysql mysql&amp;gt; create database powerdns charset = utf8; mysql&amp;gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&amp;gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&amp;gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&amp;gt; FLUSH PRIVILEGES;  For security, we also give the main admin password" />
+
   <meta name="keywords" content="network, devops, sdn, system Administation" />
 
 
@@ -38,8 +39,7 @@
 <meta name="generator" content="Hugo 0.49.2" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/tags/" />
-<link href="https://blog.stevedong.com/tags/index.xml" rel="alternate" type="application/rss+xml" title="Steve Dong - A System Administrator&#39;s Blog" />
+<link rel="canonical" href="https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/" />
 
 
 
@@ -59,18 +59,26 @@
 
 
 
-<meta property="og:title" content="Tags" />
-<meta property="og:description" content="A System Administrator&#39;s Blog." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://blog.stevedong.com/tags/" />
-<meta property="og:updated_time" content="2018-12-18T23:29:00&#43;08:00"/>
+<meta property="og:title" content="Install Powerdns and Mysql on Freebsd12" />
+<meta property="og:description" content="Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&quot;YES&quot; service mysql-server restart  Database and User Configuration $ mysql mysql&gt; create database powerdns charset = utf8; mysql&gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&gt; FLUSH PRIVILEGES;  For security, we also give the main admin password" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/" /><meta property="article:published_time" content="2018-12-18T23:29:00&#43;08:00"/>
+<meta property="article:modified_time" content="2018-12-18T23:29:00&#43;08:00"/>
 
-<meta itemprop="name" content="Tags">
-<meta itemprop="description" content="A System Administrator&#39;s Blog.">
+<meta itemprop="name" content="Install Powerdns and Mysql on Freebsd12">
+<meta itemprop="description" content="Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&quot;YES&quot; service mysql-server restart  Database and User Configuration $ mysql mysql&gt; create database powerdns charset = utf8; mysql&gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&gt; FLUSH PRIVILEGES;  For security, we also give the main admin password">
 
+
+<meta itemprop="datePublished" content="2018-12-18T23:29:00&#43;08:00" />
+<meta itemprop="dateModified" content="2018-12-18T23:29:00&#43;08:00" />
+<meta itemprop="wordCount" content="101">
+
+
+
+<meta itemprop="keywords" content="powerdns,freebsd,mysql,dns," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Tags"/>
-<meta name="twitter:description" content="A System Administrator&#39;s Blog."/>
+<meta name="twitter:title" content="Install Powerdns and Mysql on Freebsd12"/>
+<meta name="twitter:description" content="Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&quot;YES&quot; service mysql-server restart  Database and User Configuration $ mysql mysql&gt; create database powerdns charset = utf8; mysql&gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&gt; FLUSH PRIVILEGES;  For security, we also give the main admin password"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -321,143 +329,168 @@ if (!doNotTrack) {
     <main id="main" class="main bg-llight">
       <div class="content-wrapper">
         <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Install Powerdns and Mysql on Freebsd12</h1>
+      
+      <div class="post-meta">
+        <time datetime="2018-12-18" class="post-time">
+          2018-12-18
+        </time>
+        
+        
+
+        
+        
+
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#install-powerdns-and-mysql-on-freebsd-12">Install PowerDNS and Mysql on FreeBSD 12</a>
+<ul>
+<li><a href="#database-installation">Database Installation</a></li>
+<li><a href="#database-and-user-configuration">Database and User Configuration</a></li>
+<li><a href="#install-powerdns">Install powerdns</a></li>
+<li><a href="#reference">Reference</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<h1 id="install-powerdns-and-mysql-on-freebsd-12">Install PowerDNS and Mysql on FreeBSD 12</h1>
+
+<h2 id="database-installation">Database Installation</h2>
+
+<pre><code class="language-bash">
+pkg install mysql56-server
+
+sysrc mysql_server=&quot;YES&quot;
+
+service mysql-server restart
+
+</code></pre>
+
+<h2 id="database-and-user-configuration">Database and User Configuration</h2>
+
+<pre><code class="language-bash">
+$ mysql
+
+mysql&gt; create database powerdns charset = utf8;
+
+mysql&gt; CREATE USER 'powerdns'@'localhost' IDENTIFIED BY 'XianAdmin';
+
+###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO '%' WITH GRANT OPTION;###
+mysql&gt; grant all privileges on powerdns.* to 'powerdns'@'localhost' IDENTIFIED BY 'XianAdmin';
+
+
+mysql&gt; FLUSH PRIVILEGES;
+
+
+</code></pre>
+
+<p>For security, we also give the main admin password</p>
+
+<pre><code class="language-bash">$ mysqladmin -u root password &quot;PASSWORD_OF_ROOT&quot;
+
+</code></pre>
+
+<h2 id="install-powerdns">Install powerdns</h2>
+
+<pre><code class="language-bash">pkg install powerdns
+</code></pre>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+<li><a href="https://www.a2hosting.com/kb/developer-corner/mysql/managing-mysql-databases-and-users-from-the-command-line">How to manage MySQL databases and users from the command line</a></li>
+<li><a href="http://blog.v-live.pl/category/sieci/dns/">PowerDNS, PowerAdmin with Mysql in Freebsd 10.1</a></li>
+</ul>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Steve Dong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-12-18</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://blog.stevedong.com/tags/powerdns/">powerdns</a>
+          <a href="https://blog.stevedong.com/tags/freebsd/">freebsd</a>
+          <a href="https://blog.stevedong.com/tags/mysql/">mysql</a>
+          <a href="https://blog.stevedong.com/tags/dns/">dns</a>
           
-  
-  
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/dockerfile-for-overure/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Dockerfile for Overure</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/run-overture-on-docker-or-freebsd/">
+            <span class="next-text nav-default">Run Overture on Docker or Freebsd</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
   
   
 
   
   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="tag-cloud" style="padding: 5px 15px">
-      <div class="tag-cloud-title">
-        10 Tags In Total
-      </div>
-      <div class="tag-cloud-tags">
-      
-        
-        
-        
-        
-        
-        
-        
-        <a href="https://blog.stevedong.com/tags/dns/"
-          style="font-size:1rem">dns</a>
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        <a href="https://blog.stevedong.com/tags/docker/"
-          style="font-size:1rem">docker</a>
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        <a href="https://blog.stevedong.com/tags/freebsd/"
-          style="font-size:1rem">freebsd</a>
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        <a href="https://blog.stevedong.com/tags/kvm/"
-          style="font-size:1rem">kvm</a>
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        <a href="https://blog.stevedong.com/tags/mysql/"
-          style="font-size:1rem">mysql</a>
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        <a href="https://blog.stevedong.com/tags/network/"
-          style="font-size:1rem">network</a>
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        <a href="https://blog.stevedong.com/tags/overture/"
-          style="font-size:1rem">overture</a>
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        <a href="https://blog.stevedong.com/tags/powerdns/"
-          style="font-size:1rem">powerdns</a>
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        <a href="https://blog.stevedong.com/tags/proxmox/"
-          style="font-size:1rem">proxmox</a>
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        <a href="https://blog.stevedong.com/tags/vyos/"
-          style="font-size:1rem">vyos</a>
-        
-      
-      </div>
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "echowings/blogcomment"
+            issue-term="pathname"
+            crossorigin="anonymous"
+            async>
+      </script>
     </div>
   
 
+  
+
+  
+
+  
 
         </div>
       </div>
