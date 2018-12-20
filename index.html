@@ -344,7 +344,9 @@ if (!doNotTrack) {
   <div class="post-content">
     
     <div class="post-summary">
-      FROM alpine:latest ENV VERSION v1.4 WORKDIR /srv RUN set -xe &amp;&amp; \ mkdir /config &amp;&amp; \ apk add --no-cache unzip curl &amp;&amp; \ curl -fsSLO --compressed &quot;https://github.com/shawn1m/overture/releases/download/${VERSION}/overture-linux-amd64.zip&quot; &amp;&amp; \ unzip -o &quot;overture-linux-amd64.zip&quot; -d /srv &amp;&amp; \ curl https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt | base64 -d | sort -u | sed '/^$\|@@/d'| sed 's#!.\+##; s#|##g; s#@##g; s#http:\/\/##; s#https:\/\/##;' | sed '/\*/d; / apple\.com/d; /sina\.cn/d; /sina\.com\.cn/d; /baidu\.com/d; /qq\.com/d' | sed '/^[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+$/d' | grep '^[0-9a-zA-Z\.-]\+$' | grep '\.
+      How to Wirte docker file for overture Hence we need to custom overture docker image as we desire, I write this dockerfile.
+How to map VOLUME and copy file from docker images to local disk When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.
+if [ &quot;`ls -A /config`&quot; = &quot;&quot; ]; then cp /srv/config.json /config/ &amp;&amp; cp /srv/*.
     </div>
     <div class="read-more">
       <a href="/post/dockerfile-for-overure/" class="read-more-link">Read more</a>

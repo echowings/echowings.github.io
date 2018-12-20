@@ -43,14 +43,51 @@
       
       <guid>https://blog.stevedong.com/post/dockerfile-for-overure/</guid>
       
-        <description>&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;FROM alpine:latest
+        <description>
+
+&lt;h1 id=&#34;how-to-wirte-docker-file-for-overture&#34;&gt;How to Wirte docker file for overture&lt;/h1&gt;
+
+&lt;p&gt;Hence we need to custom overture docker image as we desire, I write this dockerfile.&lt;/p&gt;
+
+&lt;h2 id=&#34;how-to-map-volume-and-copy-file-from-docker-images-to-local-disk&#34;&gt;How to map VOLUME and copy file from docker images to local disk&lt;/h2&gt;
+
+&lt;p&gt;When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt; if [ &amp;quot;`ls -A /config`&amp;quot; = &amp;quot;&amp;quot; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.txt /config/; fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;overture-dockerfile&#34;&gt;Overture Dockerfile&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#FROM alpine:edge
+FROM alpine:latest
+MAINTAINER steve dong &amp;lt;dongjunbo@gmail.com?
+
+# Environment variables
+##########################
 
 ENV VERSION v1.4
 
+# Change this cron rule to what fits best for you.
+
+ENV CRONTAB_TIME &#39;0 0 * * *&#39;
+
+# Create Volume entry points
+############################
+
+VOLUME [&amp;quot;/config&amp;quot;]
+
+# Set the work directory
+#########################
+
 WORKDIR /srv
 
+# Fix permissions
+#################
+
+# Install required packages
+###########################
 RUN set -xe &amp;amp;&amp;amp; \
-	mkdir /config &amp;amp;&amp;amp; \
+	mkdir -p /config &amp;amp;&amp;amp; \
 	apk add --no-cache unzip curl &amp;amp;&amp;amp; \
 	curl -fsSLO --compressed &amp;quot;https://github.com/shawn1m/overture/releases/download/${VERSION}/overture-linux-amd64.zip&amp;quot; &amp;amp;&amp;amp; \
 	unzip -o &amp;quot;overture-linux-amd64.zip&amp;quot; -d /srv &amp;amp;&amp;amp; \
@@ -66,14 +103,36 @@ RUN set -xe &amp;amp;&amp;amp; \
 	sed -i &#39;s/&amp;quot;.\/domain_alternative_sample&amp;quot;/&amp;quot;\/config\/gfw_all_domain.txt&amp;quot;/g&#39; /srv/config.json &amp;amp;&amp;amp; \
 	rm -rf temp_koolshare.txt temp_gfwlist.txt &amp;amp;&amp;amp; \
 	rm -rf &amp;quot;overture-linux-amd64.zip&amp;quot; &amp;amp;&amp;amp; \
+	chmod 0644 /config/ &amp;amp;&amp;amp; \
 	cp /srv/config.json /config/ &amp;amp;&amp;amp; \
 	cp /srv/*.txt /config/ &amp;amp;&amp;amp; \
 	apk del unzip curl
 
-VOLUME [ &amp;quot;/config&amp;quot;]
+# Expose required ports
+#######################
 
+EXPOSE 53/udp
+
+
+#VOLUME [ &amp;quot;/config&amp;quot;]
+
+# Change Shell
+##############
+SHELL [&amp;quot;/bin/bash&amp;quot;, &amp;quot;-c&amp;quot;]
+CMD [&amp;quot;if [ \&amp;quot;`ls -A /config`\&amp;quot; = \&amp;quot;\&amp;quot; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.txt /config/; fi&amp;quot;]
 ENTRYPOINT [ &amp;quot;/srv/overture-linux-amd64&amp;quot;, &amp;quot;-c&amp;quot;, &amp;quot;/config/config.json&amp;quot; ]
 #CMD /srv/overture-linux-amd64 -c /config/config.json
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;docker-run-command&#34;&gt;Docker run Command&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker run  \
+--restart=always \
+-d \
+-p 53:53/udp \
+-v &amp;quot;/root/overture-docker-data:/config&amp;quot; \
+--name xa-overture-01 \
+overture
 &lt;/code&gt;&lt;/pre&gt;
 </description>
       
