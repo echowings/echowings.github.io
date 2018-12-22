@@ -456,35 +456,28 @@ done
 &lt;pre&gt;&lt;code class=&#34;language-vi&#34;&gt;
 
 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;this-file-describes-the-network-interfaces-available-on-your-system&#34;&gt;This file describes the network interfaces available on your system&lt;/h1&gt;
-
-&lt;h1 id=&#34;and-how-to-activate-them-for-more-information-see-interfaces-5&#34;&gt;and how to activate them. For more information, see interfaces(5).&lt;/h1&gt;
-
-&lt;p&gt;source /etc/network/interfaces.d/*&lt;/p&gt;
-
-&lt;h1 id=&#34;the-loopback-network-interface&#34;&gt;The loopback network interface&lt;/h1&gt;
-
-&lt;p&gt;auto lo
-iface lo inet loopback&lt;/p&gt;
-
-&lt;h1 id=&#34;the-primary-network-interface&#34;&gt;The primary network interface&lt;/h1&gt;
-
-&lt;p&gt;#allow-hotplug eno1
+``` bash
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+source /etc/network/interfaces.d/*
+# The loopback network interface
+auto lo
+iface lo inet loopback
+# The primary network interface
+#allow-hotplug eno1
 auto eno1
 #iface eno1 inet dhcp
 iface eno1 inet static
-address &lt;em&gt;.&lt;/em&gt;.&lt;em&gt;.&lt;/em&gt;
-netmask &lt;em&gt;.&lt;/em&gt;.&lt;em&gt;.&lt;/em&gt;
-gateway &lt;em&gt;.&lt;/em&gt;.&lt;em&gt;.&lt;/em&gt;&lt;/p&gt;
+address *.*.*.*
+netmask *.*.*.*
+gateway *.*.*.* 
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Change DNS&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-  - **Change DNS**
-
-  ```vi /etc/resolv.conf```
-  
+&lt;pre&gt;&lt;code class=&#34;language-vi&#34;&gt;  
 
 
 - **Change hosts**

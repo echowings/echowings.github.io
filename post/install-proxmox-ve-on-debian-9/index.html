@@ -28,9 +28,7 @@
 
 <meta name="author" content="Steve Dong" />
   <meta name="description" content="Install Proxmox on Debian 9 via UTSC Mirrors in china Change your ip and hostname  Chang IP ADDRESS   Change your IP address to static.
- This file describes the network interfaces available on your system and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/*
-The loopback network interface auto lo iface lo inet loopback
-The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address ." />
+``` bash # This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *." />
 
   <meta name="keywords" content="network, devops, sdn, system Administation" />
 
@@ -64,23 +62,19 @@ The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhc
 
 <meta property="og:title" content="Install Proxmox Ve on Debian 9" />
 <meta property="og:description" content="Install Proxmox on Debian 9 via UTSC Mirrors in china Change your ip and hostname  Chang IP ADDRESS   Change your IP address to static.
- This file describes the network interfaces available on your system and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/*
-The loopback network interface auto lo iface lo inet loopback
-The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address ." />
+``` bash # This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/install-proxmox-ve-on-debian-9/" /><meta property="article:published_time" content="2018-12-01T18:36:14&#43;08:00"/>
 <meta property="article:modified_time" content="2018-12-01T18:36:14&#43;08:00"/>
 
 <meta itemprop="name" content="Install Proxmox Ve on Debian 9">
 <meta itemprop="description" content="Install Proxmox on Debian 9 via UTSC Mirrors in china Change your ip and hostname  Chang IP ADDRESS   Change your IP address to static.
- This file describes the network interfaces available on your system and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/*
-The loopback network interface auto lo iface lo inet loopback
-The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address .">
+``` bash # This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.">
 
 
 <meta itemprop="datePublished" content="2018-12-01T18:36:14&#43;08:00" />
 <meta itemprop="dateModified" content="2018-12-01T18:36:14&#43;08:00" />
-<meta itemprop="wordCount" content="230">
+<meta itemprop="wordCount" content="233">
 
 
 
@@ -88,9 +82,7 @@ The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhc
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Install Proxmox Ve on Debian 9"/>
 <meta name="twitter:description" content="Install Proxmox on Debian 9 via UTSC Mirrors in china Change your ip and hostname  Chang IP ADDRESS   Change your IP address to static.
- This file describes the network interfaces available on your system and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/*
-The loopback network interface auto lo iface lo inet loopback
-The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address ."/>
+``` bash # This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -375,10 +367,6 @@ if (!doNotTrack) {
 <ul>
 <li><a href="#change-your-ip-and-hostname">Change your ip and hostname</a></li>
 </ul></li>
-<li><a href="#this-file-describes-the-network-interfaces-available-on-your-system">This file describes the network interfaces available on your system</a></li>
-<li><a href="#and-how-to-activate-them-for-more-information-see-interfaces-5">and how to activate them. For more information, see interfaces(5).</a></li>
-<li><a href="#the-loopback-network-interface">The loopback network interface</a></li>
-<li><a href="#the-primary-network-interface">The primary network interface</a></li>
 </ul>
 </nav>
   </div>
@@ -402,35 +390,28 @@ if (!doNotTrack) {
 <pre><code class="language-vi">
 
 
-</code></pre>
-
-<h1 id="this-file-describes-the-network-interfaces-available-on-your-system">This file describes the network interfaces available on your system</h1>
-
-<h1 id="and-how-to-activate-them-for-more-information-see-interfaces-5">and how to activate them. For more information, see interfaces(5).</h1>
-
-<p>source /etc/network/interfaces.d/*</p>
-
-<h1 id="the-loopback-network-interface">The loopback network interface</h1>
-
-<p>auto lo
-iface lo inet loopback</p>
-
-<h1 id="the-primary-network-interface">The primary network interface</h1>
-
-<p>#allow-hotplug eno1
+``` bash
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+source /etc/network/interfaces.d/*
+# The loopback network interface
+auto lo
+iface lo inet loopback
+# The primary network interface
+#allow-hotplug eno1
 auto eno1
 #iface eno1 inet dhcp
 iface eno1 inet static
-address <em>.</em>.<em>.</em>
-netmask <em>.</em>.<em>.</em>
-gateway <em>.</em>.<em>.</em></p>
+address *.*.*.*
+netmask *.*.*.*
+gateway *.*.*.* 
+</code></pre>
 
-<pre><code>
+<ul>
+<li><strong>Change DNS</strong></li>
+</ul>
 
-  - **Change DNS**
-
-  ```vi /etc/resolv.conf```
-  
+<pre><code class="language-vi">  
 
 
 - **Change hosts**
