@@ -80,7 +80,7 @@ The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhc
 
 <meta itemprop="datePublished" content="2018-12-01T18:36:14&#43;08:00" />
 <meta itemprop="dateModified" content="2018-12-01T18:36:14&#43;08:00" />
-<meta itemprop="wordCount" content="218">
+<meta itemprop="wordCount" content="234">
 
 
 
@@ -379,6 +379,7 @@ if (!doNotTrack) {
 <li><a href="#and-how-to-activate-them-for-more-information-see-interfaces-5">and how to activate them. For more information, see interfaces(5).</a></li>
 <li><a href="#the-loopback-network-interface">The loopback network interface</a></li>
 <li><a href="#the-primary-network-interface">The primary network interface</a></li>
+<li><a href="#add-key">add key</a></li>
 </ul>
 </nav>
   </div>
@@ -400,9 +401,6 @@ if (!doNotTrack) {
 <p>Change your IP address to static.</p>
 
 <pre><code class="language-vi">
-
-
-
 
 
 </code></pre>
@@ -458,33 +456,42 @@ ff02::2 ip6-allrouters
 <li><strong>Add Utsc mirrors source</strong></li>
 </ul>
 
-<pre><code class="language-bash">
-#chang debian source list
-echo &quot;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
-deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
+<pre><code> - ** Perl ALL_LC ERROR**
 
-deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
-deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
+ ```bash
+apt-get autoremove
+export LC_ALL=en_US.UTF-8
+echo &quot;en_US.UTF-8 UTF-8&quot; &gt;&gt; /etc/locale.gen
+locale-gen
+</code></pre>
 
-deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
-deb-src https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
+<p>#chang debian source list
+echo &ldquo;deb <a href="https://mirrors.ustc.edu.cn/debian/">https://mirrors.ustc.edu.cn/debian/</a> stretch main contrib non-free
+deb-src <a href="https://mirrors.ustc.edu.cn/debian/">https://mirrors.ustc.edu.cn/debian/</a> stretch main contrib non-free</p>
 
-deb https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free
-deb-src https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&quot; &gt; /etc/apt/sources.list
+<p>deb <a href="https://mirrors.ustc.edu.cn/debian/">https://mirrors.ustc.edu.cn/debian/</a> stretch-updates main contrib non-free
+deb-src <a href="https://mirrors.ustc.edu.cn/debian/">https://mirrors.ustc.edu.cn/debian/</a> stretch-updates main contrib non-free</p>
 
-#change pve 5.1 update source list
-echo &quot;deb http://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&quot; &gt; /etc/apt/sources.list.d/pve-enterprise.list
+<p>deb <a href="https://mirrors.ustc.edu.cn/debian/">https://mirrors.ustc.edu.cn/debian/</a> stretch-backports main contrib non-free
+deb-src <a href="https://mirrors.ustc.edu.cn/debian/">https://mirrors.ustc.edu.cn/debian/</a> stretch-backports main contrib non-free</p>
 
-#change ceph source list
-echo &quot;deb http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&quot; &gt; /etc/apt/sources.list.d/ceph.list
+<p>deb <a href="https://mirrors.ustc.edu.cn/debian-security/">https://mirrors.ustc.edu.cn/debian-security/</a> stretch/updates main contrib non-free
+deb-src <a href="https://mirrors.ustc.edu.cn/debian-security/">https://mirrors.ustc.edu.cn/debian-security/</a> stretch/updates main contrib non-free&rdquo; &gt; /etc/apt/sources.list</p>
 
-# add key
-wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
+<p>#change pve 5.1 update source list
+echo &ldquo;deb <a href="http://mirrors.ustc.edu.cn/proxmox/debian/pve/">http://mirrors.ustc.edu.cn/proxmox/debian/pve/</a> stretch pve-no-subscription&rdquo; &gt; /etc/apt/sources.list.d/pve-enterprise.list</p>
 
-apt updat &amp;&amp; apt -y dist-ugprade
+<p>#change ceph source list
+echo &ldquo;deb <a href="http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous">http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous</a> stretch main&rdquo; &gt; /etc/apt/sources.list.d/ceph.list</p>
+
+<h1 id="add-key">add key</h1>
+
+<p>wget <a href="http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg">http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg</a> -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg</p>
+
+<p>apt updat &amp;&amp; apt -y dist-ugprade
 apt install proxmox-ve postfix open-iscsi
 update-grub
-</code></pre>
+```</p>
 
     </div>
 
