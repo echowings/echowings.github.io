@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Linux in Action 01 - Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>Proxmox VE 5.x Installation - Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 
@@ -27,7 +27,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="[翻译]Linux实战 前言 作为IT运维人员或者程序员,不论做什么或做多久.如果你不学习新东西,你可能现在已经已经转行了.不仅仅是平台或者技术" />
+  <meta name="description" content="Proxmox notebook 01 Proxmox won&amp;rsquo;t install- &amp;ldquo;A volume group called pve already exists Solution
+ Boot the proxmox installer USB Select Debug Mode Press &amp;ldquo;CTRL&#43;D&amp;rdquo; to start the installer wizard. Click on abort Run &amp;ldquo;vgdisplay&amp;rdquo; to dislay the LVM PG&amp;rsquo;s. Run &amp;ldquo;vgremode pve &amp;rdquo; to remove pve PG.  Remove &amp;ldquo;No valid Subscription&amp;rdquo; Message sed -i.bak &amp;quot;s/data.status !== &#39;Active&#39;/false/g&amp;quot; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;amp;&amp;amp; systemctl restart pveproxy.service  or change it manually." />
 
   <meta name="keywords" content="network, devops, sdn, system Administation" />
 
@@ -39,7 +40,7 @@
 <meta name="generator" content="Hugo 0.49.2" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/post/linux-in-action-01/" />
+<link rel="canonical" href="https://blog.stevedong.com/post/proxmox-installation/" />
 
 
 
@@ -59,26 +60,29 @@
 
 
 
-<meta property="og:title" content="Linux in Action 01" />
-<meta property="og:description" content="[翻译]Linux实战 前言 作为IT运维人员或者程序员,不论做什么或做多久.如果你不学习新东西,你可能现在已经已经转行了.不仅仅是平台或者技术" />
+<meta property="og:title" content="Proxmox VE 5.x Installation" />
+<meta property="og:description" content="Proxmox notebook 01 Proxmox won&rsquo;t install- &ldquo;A volume group called pve already exists Solution
+ Boot the proxmox installer USB Select Debug Mode Press &ldquo;CTRL&#43;D&rdquo; to start the installer wizard. Click on abort Run &ldquo;vgdisplay&rdquo; to dislay the LVM PG&rsquo;s. Run &ldquo;vgremode pve &rdquo; to remove pve PG.  Remove &ldquo;No valid Subscription&rdquo; Message sed -i.bak &quot;s/data.status !== &#39;Active&#39;/false/g&quot; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  or change it manually." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/linux-in-action-01/" /><meta property="article:published_time" content="2018-11-16T11:53:52&#43;08:00"/>
-<meta property="article:modified_time" content="2018-11-16T11:53:52&#43;08:00"/>
+<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-installation/" /><meta property="article:published_time" content="2018-11-19T13:31:09&#43;08:00"/>
+<meta property="article:modified_time" content="2018-11-19T13:31:09&#43;08:00"/>
 
-<meta itemprop="name" content="Linux in Action 01">
-<meta itemprop="description" content="[翻译]Linux实战 前言 作为IT运维人员或者程序员,不论做什么或做多久.如果你不学习新东西,你可能现在已经已经转行了.不仅仅是平台或者技术">
-
-
-<meta itemprop="datePublished" content="2018-11-16T11:53:52&#43;08:00" />
-<meta itemprop="dateModified" content="2018-11-16T11:53:52&#43;08:00" />
-<meta itemprop="wordCount" content="229">
+<meta itemprop="name" content="Proxmox VE 5.x Installation">
+<meta itemprop="description" content="Proxmox notebook 01 Proxmox won&rsquo;t install- &ldquo;A volume group called pve already exists Solution
+ Boot the proxmox installer USB Select Debug Mode Press &ldquo;CTRL&#43;D&rdquo; to start the installer wizard. Click on abort Run &ldquo;vgdisplay&rdquo; to dislay the LVM PG&rsquo;s. Run &ldquo;vgremode pve &rdquo; to remove pve PG.  Remove &ldquo;No valid Subscription&rdquo; Message sed -i.bak &quot;s/data.status !== &#39;Active&#39;/false/g&quot; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  or change it manually.">
 
 
+<meta itemprop="datePublished" content="2018-11-19T13:31:09&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-19T13:31:09&#43;08:00" />
+<meta itemprop="wordCount" content="203">
 
-<meta itemprop="keywords" content="" />
+
+
+<meta itemprop="keywords" content="pve," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Linux in Action 01"/>
-<meta name="twitter:description" content="[翻译]Linux实战 前言 作为IT运维人员或者程序员,不论做什么或做多久.如果你不学习新东西,你可能现在已经已经转行了.不仅仅是平台或者技术"/>
+<meta name="twitter:title" content="Proxmox VE 5.x Installation"/>
+<meta name="twitter:description" content="Proxmox notebook 01 Proxmox won&rsquo;t install- &ldquo;A volume group called pve already exists Solution
+ Boot the proxmox installer USB Select Debug Mode Press &ldquo;CTRL&#43;D&rdquo; to start the installer wizard. Click on abort Run &ldquo;vgdisplay&rdquo; to dislay the LVM PG&rsquo;s. Run &ldquo;vgremode pve &rdquo; to remove pve PG.  Remove &ldquo;No valid Subscription&rdquo; Message sed -i.bak &quot;s/data.status !== &#39;Active&#39;/false/g&quot; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  or change it manually."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -332,13 +336,16 @@ if (!doNotTrack) {
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">Linux in Action 01</h1>
+      <h1 class="post-title">Proxmox VE 5.x Installation</h1>
       
       <div class="post-meta">
-        <time datetime="2018-11-16" class="post-time">
-          2018-11-16
+        <time datetime="2018-11-19" class="post-time">
+          2018-11-19
         </time>
-        
+        <div class="post-category">
+            <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+            
+          </div>
         
 
         
@@ -356,9 +363,12 @@ if (!doNotTrack) {
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#翻译-linux实战">[翻译]Linux实战</a>
+<li><a href="#proxmox-notebook-01">Proxmox notebook 01</a>
 <ul>
-<li><a href="#前言">前言</a></li>
+<li><a href="#proxmox-won-t-install-a-volume-group-called-pve-already-exists">Proxmox won&rsquo;t install- &ldquo;A volume group called pve already exists</a></li>
+<li><a href="#remove-no-valid-subscription-message">Remove &ldquo;No valid Subscription&rdquo; Message</a></li>
+<li><a href="#change-update-source">Change update source</a></li>
+<li><a href="#reference">##Reference</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -369,13 +379,84 @@ if (!doNotTrack) {
     <div class="post-content">
       
 
-<h1 id="翻译-linux实战">[翻译]Linux实战</h1>
+<h1 id="proxmox-notebook-01">Proxmox notebook 01</h1>
 
-<h2 id="前言">前言</h2>
+<h2 id="proxmox-won-t-install-a-volume-group-called-pve-already-exists">Proxmox won&rsquo;t install- &ldquo;A volume group called pve already exists</h2>
 
-<p>作为IT运维人员或者程序员,不论做什么或做多久.如果你不学习新东西,你可能现在已经已经转行了.不仅仅是平台或者技术图表持续的变更.也不仅仅是业务需求需要新思维.或者一个坏蛋不停使用新路子来攻击你的服务器. 而是所用事情的综合. 你不能承担停止学习的代价.而诀窍就是找到一个方法学习高优先级的技能,而不能让经验成为你成长的阻碍.</p>
+<p>Solution</p>
 
-<p>我的意愿和初衷是想让你遍读本书的每一章,然后可以自信地接受挑战(一些以前你不能自信挑战的事情)并战胜之.如果你</p>
+<ol>
+<li>Boot the proxmox installer USB</li>
+<li>Select Debug Mode</li>
+<li>Press &ldquo;CTRL+D&rdquo; to start the installer wizard.</li>
+<li>Click on abort</li>
+<li>Run &ldquo;vgdisplay&rdquo; to dislay the LVM PG&rsquo;s.</li>
+<li>Run &ldquo;vgremode pve &rdquo; to remove pve PG.</li>
+</ol>
+
+<h2 id="remove-no-valid-subscription-message">Remove &ldquo;No valid Subscription&rdquo; Message</h2>
+
+<pre><code class="language-shell">sed -i.bak &quot;s/data.status !== 'Active'/false/g&quot; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service
+
+</code></pre>
+
+<p>or change it manually.</p>
+
+<pre><code class="language-shell">
+cd /usr/share/javascript/proxmox-widget-toolkit
+
+cp proxmoxlib.js proxmoxlib.js.bak
+
+nano proxmoxlib.js
+
+if (data.status !== 'Active') {
+
+if (false) {
+
+
+systemctl restart pveproxy.service
+
+</code></pre>
+
+<h2 id="change-update-source">Change update source</h2>
+
+<pre><code class="language-bash">#chang debian source list
+echo &quot;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
+deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
+
+deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
+deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
+
+deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
+deb-src https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
+
+deb https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free
+deb-src https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&quot; &gt; /etc/apt/sources.list
+
+#change pve 5.1 update source list
+echo &quot;deb http://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&quot; &gt; /etc/apt/sources.list.d/pve-enterprise.list
+
+#change ceph source list
+echo &quot;deb http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&quot; &gt; /etc/apt/sources.list.d/ceph.list
+
+# add key
+wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
+
+apt updat &amp;&amp; apt -y dist-ugprade
+apt install proxmox-ve postfix open-iscsi
+update-grub
+
+
+</code></pre>
+
+<p>```</p>
+
+<h2 id="reference">##Reference</h2>
+
+<ol>
+<li><a href="https://forum.proxmox.com/threads/proxmox-wont-install-a-volume-group-called-pve-already-exists.43724/">Proxmox won&rsquo;t install - &ldquo;A volume group called pve already exists&rdquo;.</a></li>
+<li><a href="https://johnscs.com/remove-proxmox51-subscription-notice/">Remove Proxmox 5.<sup>1</sup>&frasl;<sub>5</sub>.2 Subscription Notice</a></li>
+</ol>
 
     </div>
 
@@ -388,7 +469,7 @@ if (!doNotTrack) {
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">2018-11-16</span>
+    <span class="item-content">2018-11-19</span>
   </p>
   
   <p class="copyright-item">
@@ -401,19 +482,22 @@ if (!doNotTrack) {
     
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          <a href="https://blog.stevedong.com/tags/pve/">pve</a>
+          
+        </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/proxmox-installation/">
+          <a class="prev" href="/post/how-to-solve-ubuntu18.04-with-error-lc_ctype-message/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Proxmox VE 5.x Installation</span>
+            <span class="prev-text nav-default">How to Slove Ubuntu18 with LC_CTYPE Error</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         
-          <a class="next" href="/post/how-to-setup-reverseproxy-on-iis/">
-            <span class="next-text nav-default">How to Setup Reverse proxy on IIS</span>
+          <a class="next" href="/post/linux-in-action-01/">
+            <span class="next-text nav-default">Linux in Action 01</span>
             <span class="prev-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>

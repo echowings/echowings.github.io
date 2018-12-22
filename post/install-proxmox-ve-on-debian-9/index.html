@@ -27,7 +27,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="Install Proxmox on Debian 9 viar UTSC Mirrors in china Change your ip and hostname  Chang IP ADDRESS   Change your IP address to static.
+  <meta name="description" content="Install Proxmox on Debian 9 via UTSC Mirrors in china Change your ip and hostname  Chang IP ADDRESS   Change your IP address to static.
  This file describes the network interfaces available on your system and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/*
 The loopback network interface auto lo iface lo inet loopback
 The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address ." />
@@ -63,7 +63,7 @@ The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhc
 
 
 <meta property="og:title" content="Install Proxmox Ve on Debian 9" />
-<meta property="og:description" content="Install Proxmox on Debian 9 viar UTSC Mirrors in china Change your ip and hostname  Chang IP ADDRESS   Change your IP address to static.
+<meta property="og:description" content="Install Proxmox on Debian 9 via UTSC Mirrors in china Change your ip and hostname  Chang IP ADDRESS   Change your IP address to static.
  This file describes the network interfaces available on your system and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/*
 The loopback network interface auto lo iface lo inet loopback
 The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address ." />
@@ -72,7 +72,7 @@ The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhc
 <meta property="article:modified_time" content="2018-12-01T18:36:14&#43;08:00"/>
 
 <meta itemprop="name" content="Install Proxmox Ve on Debian 9">
-<meta itemprop="description" content="Install Proxmox on Debian 9 viar UTSC Mirrors in china Change your ip and hostname  Chang IP ADDRESS   Change your IP address to static.
+<meta itemprop="description" content="Install Proxmox on Debian 9 via UTSC Mirrors in china Change your ip and hostname  Chang IP ADDRESS   Change your IP address to static.
  This file describes the network interfaces available on your system and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/*
 The loopback network interface auto lo iface lo inet loopback
 The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address .">
@@ -80,14 +80,14 @@ The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhc
 
 <meta itemprop="datePublished" content="2018-12-01T18:36:14&#43;08:00" />
 <meta itemprop="dateModified" content="2018-12-01T18:36:14&#43;08:00" />
-<meta itemprop="wordCount" content="143">
+<meta itemprop="wordCount" content="218">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="pve,debian,ceph," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Install Proxmox Ve on Debian 9"/>
-<meta name="twitter:description" content="Install Proxmox on Debian 9 viar UTSC Mirrors in china Change your ip and hostname  Chang IP ADDRESS   Change your IP address to static.
+<meta name="twitter:description" content="Install Proxmox on Debian 9 via UTSC Mirrors in china Change your ip and hostname  Chang IP ADDRESS   Change your IP address to static.
  This file describes the network interfaces available on your system and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/*
 The loopback network interface auto lo iface lo inet loopback
 The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address ."/>
@@ -350,7 +350,10 @@ if (!doNotTrack) {
         <time datetime="2018-12-01" class="post-time">
           2018-12-01
         </time>
-        
+        <div class="post-category">
+            <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+            
+          </div>
         
 
         
@@ -368,7 +371,7 @@ if (!doNotTrack) {
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#install-proxmox-on-debian-9-viar-utsc-mirrors-in-china">Install Proxmox on Debian 9 viar UTSC Mirrors in china</a>
+<li><a href="#install-proxmox-on-debian-9-via-utsc-mirrors-in-china">Install Proxmox on Debian 9 via UTSC Mirrors in china</a>
 <ul>
 <li><a href="#change-your-ip-and-hostname">Change your ip and hostname</a></li>
 </ul></li>
@@ -385,7 +388,7 @@ if (!doNotTrack) {
     <div class="post-content">
       
 
-<h1 id="install-proxmox-on-debian-9-viar-utsc-mirrors-in-china">Install Proxmox on Debian 9 viar UTSC Mirrors in china</h1>
+<h1 id="install-proxmox-on-debian-9-via-utsc-mirrors-in-china">Install Proxmox on Debian 9 via UTSC Mirrors in china</h1>
 
 <h2 id="change-your-ip-and-hostname">Change your ip and hostname</h2>
 
@@ -455,8 +458,27 @@ ff02::2 ip6-allrouters
 <li><strong>Add Utsc mirrors source</strong></li>
 </ul>
 
-<pre><code class="language-bash">echo &quot;deb http://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&quot; &gt; /etc/apt/sources.list.d/pve-install-repo.list
+<pre><code class="language-bash">
+#chang debian source list
+echo &quot;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
+deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
 
+deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
+deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
+
+deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
+deb-src https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
+
+deb https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free
+deb-src https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&quot; &gt; /etc/apt/sources.list
+
+#change pve 5.1 update source list
+echo &quot;deb http://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&quot; &gt; /etc/apt/sources.list.d/pve-enterprise.list
+
+#change ceph source list
+echo &quot;deb http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&quot; &gt; /etc/apt/sources.list.d/ceph.list
+
+# add key
 wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
 
 apt updat &amp;&amp; apt -y dist-ugprade
@@ -488,7 +510,12 @@ update-grub
     
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          <a href="https://blog.stevedong.com/tags/pve/">pve</a>
+          <a href="https://blog.stevedong.com/tags/debian/">debian</a>
+          <a href="https://blog.stevedong.com/tags/ceph/">ceph</a>
+          
+        </div>
 
       
       <nav class="post-nav">
