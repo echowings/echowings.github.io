@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 20 Aug 2017 21:38:52 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 20 Oct 2018 21:38:52 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,34 +14,159 @@
     <item>
       <title>About</title>
       <link>https://blog.stevedong.com/about/</link>
-      <pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate>
+      <pubDate>Sat, 20 Oct 2018 21:38:52 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/about/</guid>
       
         <description>
 
-&lt;h1 id=&#34;steve-dong&#34;&gt;Steve Dong&lt;/h1&gt;
+&lt;h1 id=&#34;myself&#34;&gt;Myself&lt;/h1&gt;
 
 &lt;ul&gt;
-&lt;li&gt;A System Administrator works in GrapeCity for 10 years.&lt;/li&gt;
-&lt;li&gt;Familary with windows\CentOS\RHEL\Debian\Ubuntu\FreeBSD.&lt;/li&gt;
-&lt;li&gt;Familiary with cisco swith\pfsense\vyos.&lt;/li&gt;
-&lt;li&gt;Familiar with shell/python programming.&lt;/li&gt;
-&lt;li&gt;Familiar with VMware Vsphere and KVM.&lt;/li&gt;
-&lt;li&gt;Familiar with Monitoring system like zabbix\Prometheus.&lt;/li&gt;
-&lt;li&gt;Familiar with docker and kubernet.&lt;/li&gt;
-&lt;li&gt;Faimliar with PC and Server hardware, I can DIY PC or DIY Server.&lt;/li&gt;
+&lt;li&gt;Love coding.&lt;/li&gt;
+&lt;li&gt;Love cooking.&lt;/li&gt;
+&lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
       
     </item>
     
     <item>
-      <title>Dockerfile for Overure</title>
-      <link>https://blog.stevedong.com/post/dockerfile-for-overure/</link>
-      <pubDate>Thu, 20 Dec 2018 10:59:36 +0800</pubDate>
+      <title>Proxmox Ve Network Adapter Pass Through</title>
+      <link>https://blog.stevedong.com/post/proxmox-ve-network-adapter-pass-through/</link>
+      <pubDate>Mon, 24 Dec 2018 16:01:23 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/dockerfile-for-overure/</guid>
+      <guid>https://blog.stevedong.com/post/proxmox-ve-network-adapter-pass-through/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;proxmox-network-adapter-pass-through&#34;&gt;Proxmox Network Adapter Pass Through&lt;/h1&gt;
+
+&lt;p&gt;Long time ago, I konw virtualization is go very good solution to server. But how about router build in virtualization? After tried to do it, I was failed. because virtual switch made networking very slow. So i just use dedicate server as a router.&lt;/p&gt;
+
+&lt;p&gt;Recently days, I just learn proxmox and find pci-e pass through function. I think maybe it is way to make routing virtualization.&lt;/p&gt;
+
+&lt;p&gt;Here are what I do:&lt;/p&gt;
+
+&lt;h2 id=&#34;enable-vt-d-and-x2apic-mode&#34;&gt;Enable VT-d and X2APic Mode&lt;/h2&gt;
+
+&lt;p&gt;Configure BIOS to enable VT-d and X2APic&lt;/p&gt;
+
+&lt;h2 id=&#34;chang-grub-boot-settings&#34;&gt;Chang Grub boot settings&lt;/h2&gt;
+
+&lt;h3 id=&#34;inel-cpu&#34;&gt;Inel CPU&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Edit grub configure.&lt;/li&gt;
+&lt;li&gt;Inter CPU&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Edit grub&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Edit &lt;code&gt;/etc/default/grub&lt;/code&gt;, then change
+&lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet&amp;quot;&lt;/code&gt; to
+&lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet intel_iommu=on&amp;quot;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Update grub&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;update-grub&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;amd-cpu&#34;&gt;AMD CPU&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Edit grub file.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Edit &lt;code&gt;/etc/default/grub&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Change &lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet&amp;quot;&lt;/code&gt;to &lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet amd_iommu=on&amp;quot;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Update grub&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;update-grub&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;##Change Required modules&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Edit /etc/modules&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Add&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;vfio
+vfio_iommu_type1
+vfio_pci
+vfio_virqfd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Check IOMMU enable or not&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;dmesg | grep ecap
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;script to make sure IOMMU is enabled&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/sh
+if [ $(dmesg | grep ecap | wc -l) -eq 0 ]; then
+    echo &amp;quot;No interrupt remapping support found&amp;quot;
+    exit 1
+fi
+
+for i in $(dmesg | grep ecap | awk &#39;{print $NF}&#39;); do
+    if [ $(( (0x$i &amp;amp; 0xf) &amp;gt;&amp;gt; 3 )) -ne 1 ]; then
+        echo &amp;quot;Interrupt remapping not supported&amp;quot;
+        exit 1
+fi
+done
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Verify IOMMU isolation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;find /sys/kernel/iommu_groups/ -type l
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;add-pci-e-device-to-vm&#34;&gt;Add PCI-E Device to VM&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Run &lt;code&gt;lspci&lt;/code&gt; to check address of network pci-e adapter device. like this&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;lspci
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;hostpci0: 01:00.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Add configure of yoru VM &lt;code&gt;/etc/pve/qemu-server/&amp;lt;vmid&amp;gt;.conf&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Add configure like this to set pci-expres passthrough.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  machine: q35
+  hostpci0: 00:00.0,pcie=1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://pve.proxmox.com/wiki/Pci_passthrough&#34;&gt;Pci passthrough&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Dockerfile for Overture</title>
+      <link>https://blog.stevedong.com/post/dockerfile-for-overture/</link>
+      <pubDate>Mon, 24 Dec 2018 00:55:14 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/dockerfile-for-overture/</guid>
       
         <description>
 
@@ -49,16 +174,15 @@
 
 &lt;p&gt;Hence we need to custom overture docker image as we desire, I write this dockerfile.&lt;/p&gt;
 
-&lt;h2 id=&#34;how-to-map-volume-and-copy-file-from-docker-images-to-directory-of-docker-host&#34;&gt;How to map VOLUME and copy file from docker images to directory of docker host.&lt;/h2&gt;
-
-&lt;p&gt;When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt; if [ &amp;quot;`ls -A /config`&amp;quot; = &amp;quot;&amp;quot; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.txt /config/; fi
+&lt;pre&gt;&lt;code class=&#34;language-How&#34;&gt;When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.
+```
+ if [ &amp;quot;`ls -A /config`&amp;quot; = &amp;quot;&amp;quot; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.txt /config/; fi
+``` 
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;overture-dockerfile&#34;&gt;Overture Dockerfile&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#FROM alpine:edge
+&lt;pre&gt;&lt;code class=&#34;language-dockfile&#34;&gt;#FROM alpine:edge
 FROM alpine:latest
 MAINTAINER steve dong &amp;lt;dongjunbo@gmail.com?
 
@@ -107,6 +231,7 @@ RUN set -xe &amp;amp;&amp;amp; \
 	cp /srv/config.json /config/ &amp;amp;&amp;amp; \
 	cp /srv/*.txt /config/ &amp;amp;&amp;amp; \
 	apk del unzip curl
+	
 
 # Expose required ports
 #######################
@@ -126,22 +251,74 @@ ENTRYPOINT [ &amp;quot;/srv/overture-linux-amd64&amp;quot;, &amp;quot;-c&amp;quo
 
 &lt;h2 id=&#34;docker-run-command&#34;&gt;Docker run Command&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker run  \
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;docker run  \
 --restart=always \
 -d \
 -p 53:53/udp \
 -v &amp;quot;/root/overture-docker-data:/config&amp;quot; \
 --name xa-overture-01 \
 overture
+
 &lt;/code&gt;&lt;/pre&gt;
 </description>
       
     </item>
     
     <item>
-      <title>Install Powerdns and Mysql on Freebsd12</title>
+      <title>Debian or Ubuntu Chinese Language Support</title>
+      <link>https://blog.stevedong.com/post/debian-or-ubuntu-chinese-language-support/</link>
+      <pubDate>Mon, 24 Dec 2018 00:39:51 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/debian-or-ubuntu-chinese-language-support/</guid>
+      
+        <description>
+
+&lt;p&gt;Ubuntu Chinese Language Support&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;编辑/etc/environment如下:
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;  vi /etc/environment
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;添加如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  LC_ALL=&amp;quot;en_US.UTF-8&amp;quot;
+  LANG=&amp;quot;zh_CN.UTF-8&amp;quot;
+  UNZIP=&#39;-O CP936&amp;quot;
+  ZIPINFO=&amp;quot;-O CP936&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;重新生成语言设置&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;   sudo locale-gen  en_US en_US.UTF-8 zh_CN zh_CN.UTF-8
+   sudo dpkg-reconfigure locales
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;中文支持&#34;&gt;中文支持&lt;/h2&gt;
+
+&lt;h3 id=&#34;vim中文支持&#34;&gt;vim中文支持&lt;/h3&gt;
+
+&lt;p&gt;编辑~/.vimrc&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;   set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+   set termencoding=utf-8
+   set encoding=utf-8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;中文支持-1&#34;&gt;中文支持&lt;/h3&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Install PowerDNS and Mysql on Freebsd12</title>
       <link>https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/</link>
-      <pubDate>Tue, 18 Dec 2018 23:29:00 +0800</pubDate>
+      <pubDate>Tue, 18 Dec 2018 00:51:47 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/</guid>
       
@@ -151,19 +328,16 @@ overture
 
 &lt;h2 id=&#34;database-installation&#34;&gt;Database Installation&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-pkg install mysql56-server
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pkg install mysql56-server
 
 sysrc mysql_server=&amp;quot;YES&amp;quot;
 
 service mysql-server restart
-
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;database-and-user-configuration&#34;&gt;Database and User Configuration&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-$ mysql
+&lt;pre&gt;&lt;code&gt;$ mysql
 
 mysql&amp;gt; create database powerdns charset = utf8;
 
@@ -176,17 +350,14 @@ mysql&amp;gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;loca
 mysql&amp;gt; FLUSH PRIVILEGES;
 
 
-&lt;/code&gt;&lt;/pre&gt;
+#For security, we also give the main admin password
 
-&lt;p&gt;For security, we also give the main admin password&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ mysqladmin -u root password &amp;quot;PASSWORD_OF_ROOT&amp;quot;
-
+$ mysqladmin -u root password &amp;quot;PASSWORD_OF_ROOT&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;install-powerdns&#34;&gt;Install powerdns&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pkg install powerdns
+&lt;pre&gt;&lt;code&gt;pkg install powerdns
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
@@ -200,21 +371,17 @@ mysql&amp;gt; FLUSH PRIVILEGES;
     </item>
     
     <item>
-      <title>Run Overture on Docker or Freebsd</title>
-      <link>https://blog.stevedong.com/post/run-overture-on-docker-or-freebsd/</link>
-      <pubDate>Tue, 18 Dec 2018 18:47:15 +0800</pubDate>
+      <title>Deploy Overture With Docker and Freebsd</title>
+      <link>https://blog.stevedong.com/post/deploy-overture-with-docker-and-freebsd/</link>
+      <pubDate>Tue, 18 Dec 2018 00:44:13 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/run-overture-on-docker-or-freebsd/</guid>
+      <guid>https://blog.stevedong.com/post/deploy-overture-with-docker-and-freebsd/</guid>
       
         <description>
 
 &lt;h1 id=&#34;run-overture-on-docker-and-freebsd-12&#34;&gt;Run overture on Docker and FreeBSD 12&lt;/h1&gt;
 
-&lt;h2 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-dockfile&#34;&gt;FROM ubuntu
-
-ENV foo /overture
+&lt;pre&gt;&lt;code class=&#34;language-dockerfile&#34;&gt;ENV foo /overture
 WORKDIR ${foo}
 RUN apt-get update &amp;amp;&amp;amp; apt-get install -y ca-certificates
 
@@ -239,7 +406,7 @@ CMD [&amp;quot;./overture-linux-amd64&amp;quot;]
 
 &lt;p&gt;&lt;code&gt;cat /usr/local/etc/rc.d/overture&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/sh
+&lt;pre&gt;&lt;code class=&#34;language-rc.d&#34;&gt;#!/bin/sh
 # $FreeBSD: head/net/overture/files/overture.in 335066 2018-12-18 11:33:26z SteveDong $
 
 # PROVIDE: overture
@@ -302,159 +469,31 @@ overture_startprecmd()
 
 load_rc_config $name
 run_rc_command &amp;quot;$1&amp;quot;
-
 &lt;/code&gt;&lt;/pre&gt;
 </description>
       
     </item>
     
     <item>
-      <title>Proxmox Network Adapter Pass Through</title>
-      <link>https://blog.stevedong.com/post/proxmox-network-adapter-pass-through/</link>
-      <pubDate>Fri, 07 Dec 2018 12:24:24 +0800</pubDate>
+      <title>How to Install ProxmoxVE5</title>
+      <link>https://blog.stevedong.com/post/how-to-install-proxmoxve5.x-on-debian9/</link>
+      <pubDate>Sat, 01 Dec 2018 00:02:28 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/proxmox-network-adapter-pass-through/</guid>
-      
-        <description>
-
-&lt;h1 id=&#34;proxmox-network-apapter-passw-through&#34;&gt;Proxmox network apapter passw through&lt;/h1&gt;
-
-&lt;p&gt;Long time ago, I konw virtualization is go very good solution to server. But how  about router build in virtualization? After tried to do it, I was failed. because virtual switch made networking very slow. So i just use dedicate server as a router.&lt;/p&gt;
-
-&lt;p&gt;Recently days, I just learn proxmox and find pci-e pass through function. I think maybe it is way to make routing virtualization.&lt;/p&gt;
-
-&lt;p&gt;Here are what I do:&lt;/p&gt;
-
-&lt;h2 id=&#34;enable-vt-d-and-x2apic-mode&#34;&gt;Enable VT-d and X2APic Mode&lt;/h2&gt;
-
-&lt;p&gt;Configure BIOS to enable VT-d and X2APic&lt;/p&gt;
-
-&lt;h2 id=&#34;chang-grub-boot-settings&#34;&gt;Chang Grub boot settings&lt;/h2&gt;
-
-&lt;h3 id=&#34;edit-grub-configure&#34;&gt;Edit grub configure.&lt;/h3&gt;
-
-&lt;h4 id=&#34;inter-cpu&#34;&gt;Inter CPU&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Edit grub&lt;/p&gt;
-
-&lt;p&gt;Eidt &lt;code&gt;/etc/default/grub&lt;/code&gt;, then change&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet&amp;quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;to&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet intel_iommu=on&amp;quot;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Update grub&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  update-grub
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;amd-cpu&#34;&gt;AMD CPU&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Edit grub file.
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Edit &lt;code&gt;/etc/default/grub&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Change &lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet&amp;quot;&lt;/code&gt;
-  to &lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet amd_iommu=on&amp;quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Update grub&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  update-grub
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;change-required-modules&#34;&gt;Change Required modules&lt;/h2&gt;
-
-&lt;p&gt;Edit &lt;code&gt;/etc/modules&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Add&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;vfio
-vfio_iommu_type1
-vfio_pci
-vfio_virqfd
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;check-iommu-enable-or-not&#34;&gt;Check IOMMU enable or not&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;dmesg | grep ecap&lt;/code&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;script to make sure IOMMU is enabled&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/sh
-if [ $(dmesg | grep ecap | wc -l) -eq 0 ]; then
-    echo &amp;quot;No interrupt remapping support found&amp;quot;
-    exit 1
-fi
-
-for i in $(dmesg | grep ecap | awk &#39;{print $NF}&#39;); do
-    if [ $(( (0x$i &amp;amp; 0xf) &amp;gt;&amp;gt; 3 )) -ne 1 ]; then
-        echo &amp;quot;Interrupt remapping not supported&amp;quot;
-        exit 1
-fi
-done
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Verify IOMMU isolation&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;	&lt;code&gt;python
-  		find /sys/kernel/iommu_groups/ -type l 
-  	&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;add-pci-e-device-to-vm&#34;&gt;Add PCI-E Device to VM&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Run &lt;code&gt;lspci&lt;/code&gt; to check address of network pci-e adapter device. like this ```hostpci0: 01:00.0&lt;/li&gt;
-&lt;li&gt;Add configure of yoru VM  &lt;code&gt;/etc/pve/qemu-server/&amp;lt;vmid&amp;gt;.conf&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Add configure like this to set pci-expres passthrough.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  machine: q35
-  hostpci0: 00:00.0,pcie=1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://pve.proxmox.com/wiki/Pci_passthrough&#34;&gt;Pci passthrough&lt;/a&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Install Proxmox Ve on Debian 9</title>
-      <link>https://blog.stevedong.com/post/install-proxmox-ve-on-debian-9/</link>
-      <pubDate>Sat, 01 Dec 2018 18:36:14 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/install-proxmox-ve-on-debian-9/</guid>
+      <guid>https://blog.stevedong.com/post/how-to-install-proxmoxve5.x-on-debian9/</guid>
       
         <description>
 
-&lt;h1 id=&#34;install-proxmox-on-debian-9-via-utsc-mirrors-in-china&#34;&gt;Install Proxmox on Debian 9 via UTSC Mirrors in china&lt;/h1&gt;
+&lt;h1 id=&#34;install-proxmox-ve-on-debian-9&#34;&gt;Install Proxmox Ve on Debian 9&lt;/h1&gt;
+
+&lt;h2 id=&#34;install-proxmox-on-debian-9-via-utsc-mirrors-in-china&#34;&gt;Install Proxmox on Debian 9 via UTSC Mirrors in china&lt;/h2&gt;
 
 &lt;h2 id=&#34;change-your-ip-and-hostname&#34;&gt;Change your ip and hostname&lt;/h2&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Chang IP ADDRESS&lt;/strong&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id=&#34;chang-ip-address&#34;&gt;Chang IP ADDRESS&lt;/h2&gt;
 
-&lt;p&gt;Change your IP address to static.&lt;/p&gt;
+&lt;h2 id=&#34;change-your-ip-address-to-static&#34;&gt;Change your IP address to static.&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;vi /etc/network/interfaces
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;vi /etc/network/interfaces&lt;/code&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# This file describes the network interfaces available on your system
 # and how to activate them. For more information, see interfaces(5).
@@ -472,44 +511,36 @@ netmask *.*.*.*
 gateway *.*.*.* 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Change DNS&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id=&#34;change-dns&#34;&gt;Change DNS&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;vi /etc/resolv.conf
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;vi /etc/resolv.conf&lt;/code&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Change hosts&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id=&#34;change-hosts&#34;&gt;Change hosts&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;vi /etc/hosts 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;vi /etc/hosts&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;127.0.0.1       localhost.localdomain localhost
+&lt;pre&gt;&lt;code&gt;127.0.0.1       localhost.localdomain localhost
 10.32.0.60   xa-sys-pve02 xa-sys-pve02 pvelocalhost
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
+
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Perl ALL_LC ERROR&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id=&#34;perl-all-lc-error&#34;&gt;Perl ALL_LC ERROR&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;apt-get autoremove
+&lt;pre&gt;&lt;code&gt;apt-get autoremove
 export LC_ALL=en_US.UTF-8
 echo &amp;quot;en_US.UTF-8 UTF-8&amp;quot; &amp;gt;&amp;gt; /etc/locale.gen
 locale-gen
+
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Add Utsc mirrors source&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id=&#34;add-utsc-mirrors-source&#34;&gt;Add Utsc mirrors source&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#chang debian source list
+&lt;pre&gt;&lt;code&gt;#chang debian source list
 echo &amp;quot;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
 deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
 
@@ -523,10 +554,10 @@ deb https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib no
 deb-src https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&amp;quot; &amp;gt; /etc/apt/sources.list
 
 #change pve 5.1 update source list
-echo &amp;quot;deb http://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&amp;quot; &amp;gt; /etc/apt/sources.list.d/pve-enterprise.list
+echo &amp;quot;deb https://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&amp;quot; &amp;gt; /etc/apt/sources.list.d/pve-enterprise.list
 
 #change ceph source list
-echo &amp;quot;deb http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&amp;quot; &amp;gt; /etc/apt/sources.list.d/ceph.list
+echo &amp;quot;deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&amp;quot; &amp;gt; /etc/apt/sources.list.d/ceph.list
 
 # add key
 wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
@@ -534,17 +565,18 @@ wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /et
 apt updat &amp;amp;&amp;amp; apt -y dist-ugprade
 apt install proxmox-ve postfix open-iscsi
 update-grub
+
 &lt;/code&gt;&lt;/pre&gt;
 </description>
       
     </item>
     
     <item>
-      <title>Iperf_speedtest</title>
-      <link>https://blog.stevedong.com/post/iperf_speedtest/</link>
-      <pubDate>Thu, 29 Nov 2018 18:46:37 +0800</pubDate>
+      <title>How to Testing Network Bandwith With Iperf</title>
+      <link>https://blog.stevedong.com/post/how-to-testing-network-bandwith-with-iperf/</link>
+      <pubDate>Thu, 29 Nov 2018 23:52:57 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/iperf_speedtest/</guid>
+      <guid>https://blog.stevedong.com/post/how-to-testing-network-bandwith-with-iperf/</guid>
       
         <description>
 
@@ -557,107 +589,68 @@ update-grub
 
 &lt;h2 id=&#34;testing-network-speed&#34;&gt;Testing network speed&lt;/h2&gt;
 
-&lt;h3 id=&#34;testing-network-speed-with-udp&#34;&gt;Testing network speed with  UDP&lt;/h3&gt;
+&lt;h3 id=&#34;testing-network-speed-with-udp&#34;&gt;Testing network speed with UDP&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Run command on server&lt;/li&gt;
+&lt;li&gt;Run command on server
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  iperf -s -u
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Run command on client&lt;/li&gt;
+&lt;li&gt;Run command on client
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  iperf -c -u
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;testing-network-speed-with-tcp&#34;&gt;Testing network speed with TCP&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Testing network speed with TCP&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Server side.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  iperf -s
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Client side.&lt;/li&gt;
+&lt;li&gt;Client side.
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    iperf -c
-    ``` 
- 
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  iperf -c
+&lt;/code&gt;&lt;/pre&gt;
 
-## Command for
+&lt;h2 id=&#34;command-for&#34;&gt;Command for&lt;/h2&gt;
 
-  ``` bash
-  -s  server
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  -s  server
   -c client + server IP
   -u udp
   -b bandwith(the max bandwidth
   -t time,how long to send packet.
   -i interval  output per seconds.
-
 &lt;/code&gt;&lt;/pre&gt;
 </description>
       
     </item>
     
     <item>
-      <title>Ubuntu Chinese Language Support and LC_ALL_ERROR</title>
-      <link>https://blog.stevedong.com/post/ubuntu-chinese-language-support-and-lc_all_error/</link>
-      <pubDate>Thu, 29 Nov 2018 16:38:50 +0800</pubDate>
+      <title>How to Remove LC_CTYPE Error</title>
+      <link>https://blog.stevedong.com/post/how-to-remove-lc_ctype-error/</link>
+      <pubDate>Thu, 29 Nov 2018 23:48:32 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/ubuntu-chinese-language-support-and-lc_all_error/</guid>
+      <guid>https://blog.stevedong.com/post/how-to-remove-lc_ctype-error/</guid>
       
-        <description>
-
-&lt;h1 id=&#34;ubuntu的lc-all-error-和中文支持&#34;&gt;Ubuntu的LC_ALL Error 和中文支持&lt;/h1&gt;
-
-&lt;h2 id=&#34;lc-all-error处理办法&#34;&gt;LC_ALL ERROR处理办法&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;编辑&lt;code&gt;/etc/environment&lt;/code&gt;如下:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  vi /etc/environment
+        <description>&lt;pre&gt;&lt;code&gt;apt-get autoremove
+export LC_ALL=en_US.UTF-8
+echo &amp;quot;en_US.UTF-8 UTF-8&amp;quot; &amp;gt;&amp;gt; /etc/locale.gen
+locale-gen
 &lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;添加如下:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  LC_ALL=&amp;quot;en_US.UTF-8&amp;quot;
-  LANG=&amp;quot;zh_CN.UTF-8&amp;quot;
-  UNZIP=&#39;-O CP936&amp;quot;
-  ZIPINFO=&amp;quot;-O CP936&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;重新生成语言设置
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-   sudo locale-gen  en_US en_US.UTF-8 zh_CN zh_CN.UTF-8
-   sudo dpkg-reconfigure locales
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;## 中文支持&lt;/p&gt;
-
-&lt;p&gt;### vim中文支持&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;编辑&lt;code&gt;~/.vimrc&lt;/code&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;   set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
-   set termencoding=utf-8
-   set encoding=utf-8
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;### 中文支持&lt;/p&gt;
 </description>
       
     </item>
@@ -665,26 +658,27 @@ update-grub
     <item>
       <title>Python Development 01</title>
       <link>https://blog.stevedong.com/post/python-development-01/</link>
-      <pubDate>Thu, 29 Nov 2018 10:23:20 +0800</pubDate>
+      <pubDate>Thu, 29 Nov 2018 00:28:31 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/python-development-01/</guid>
       
         <description>
 
-&lt;h1 id=&#34;python开发笔记-01-python开发入门&#34;&gt;python开发笔记-01-python开发入门&lt;/h1&gt;
+&lt;h1 id=&#34;python-development&#34;&gt;Python Development&lt;/h1&gt;
 
-&lt;h2 id=&#34;安装ptyhon开发工具和包&#34;&gt;安装ptyhon开发工具和包&lt;/h2&gt;
+&lt;h2 id=&#34;python开发笔记-01-python开发入门&#34;&gt;python开发笔记-01-python开发入门&lt;/h2&gt;
+
+&lt;h3 id=&#34;安装ptyhon开发工具和包&#34;&gt;安装ptyhon开发工具和包&lt;/h3&gt;
 
 &lt;h3 id=&#34;安装ubuntu-16-04&#34;&gt;安装ubuntu 16.04&lt;/h3&gt;
 
-&lt;p&gt;pass&lt;/p&gt;
+&lt;p&gt;&amp;hellip;pass&amp;hellip;&lt;/p&gt;
 
 &lt;h3 id=&#34;安装系统相关依赖包&#34;&gt;安装系统相关依赖包&lt;/h3&gt;
 
 &lt;p&gt;build-essential包可以批量安装Python在Ubuntu上进行构建时所需的全部工具(gcc,make等).&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
-sudo apt-get -y update &amp;amp;&amp;amp; \
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo apt-get -y update &amp;amp;&amp;amp; \
   sudo apt-get -y upgrade &amp;amp;&amp;amp;  \
   sudo apt-get install -y build-essential \
   libsqlite3-dev \
@@ -696,14 +690,11 @@ sudo apt-get -y update &amp;amp;&amp;amp; \
   tk-dev \
   zip \
   libssl-dev
-
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;安装python相关依赖包&#34;&gt;安装python相关依赖包&lt;/h3&gt;
 
-&lt;ul&gt;
-&lt;li&gt;install python-dev和pip&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;install python-dev和pip&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# Install python-dev
 sudo apt-get -y install python-dev
@@ -712,13 +703,13 @@ sudo apt-get -y install python-dev
 wget https://bootstrap.pypa.io/get-pip.py
 sudo python get-pip.py
 
+
 #在python 3.4和python2.7.9之后加入了 ensurepip模块,也就是安装python的时候默认捆绑安装pip,更新pip使用
 #python -m ensurepip -U
 sudo python -m pip install --upgrade pip
-
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;使用get-pip.py来安装最新版本的pip&lt;/p&gt;
+&lt;p&gt;##使用get-pip.py来安装最新版本的pip&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;查看python版本&lt;/li&gt;
@@ -736,9 +727,8 @@ Python 2.7.12
 pip 18.1 from /usr/local/lib/python2.7/dist-packages/pip (python 2.7)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;通过pip安装开发用的软件&#34;&gt;通过pip安装开发用的软件&lt;/h3&gt;
-
 &lt;ul&gt;
+&lt;li&gt;通过pip安装开发用的软件&lt;/li&gt;
 &lt;li&gt;安装virtualenv包&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -748,19 +738,16 @@ Collecting virtualenv
     100% |################################| 1.9MB 2.5MB/s
 Installing collected packages: virtualenv
 Successfully installed virtualenv-16.1.0
+virtualenv 的使用方法 virtualenv是搭建虚拟的python执行环境.
+  $ virtualenv --version
+  16.1.0
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
-&lt;li&gt;virtualenv 的使用方法
-virtualenv是搭建虚拟的python执行环境.&lt;/li&gt;
+&lt;li&gt;查看当前pip 安装的软件&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  $ virtualenv --version
-  16.1.0
-
-  # 查看当前pip 安装的软件
-
-  $ pip freeze 
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  $ pip freeze 
   ansible==2.7.2
 asn1crypto==0.24.0
 bcrypt==3.1.4
@@ -790,7 +777,6 @@ virtualenv==16.1.0
  New python executable in /home/user1/work/venv/bin/python
 Installing setuptools, pip, wheel...
 done. 
- 
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
@@ -801,38 +787,30 @@ done.
  (venv) user1@python-dev-env:~/work$
 #使用pip freeze查看已经安装pip包为空
  $pip freeze
- 
-
- 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code&gt;- 关闭virtualenv环境
+&lt;ul&gt;
+&lt;li&gt;关闭virtualenv环境&lt;/li&gt;
+&lt;/ul&gt;
 
-``` bash
-$ deactivate
-```
-
-- 删除virtualenv
-
-```bash
-rm -R vienv
-```
-
-###多python版本使用
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ deactivate
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;删除virtualenv&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rm -R vienv
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;多python版本使用&#34;&gt;多python版本使用&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;user1@python-dev-env:~/work$ python3 -V
 Python 3.5.2
 user1@python-dev-env:~/work$ python2 -V
 Python 2.7.12   
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;使用virtualenv 设置不同版本的python
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mkdir -p ~/work/venv-python2
+使用virtualenv 设置不同版本的python 
+mkdir -p ~/work/venv-python2
 mkdir -p ~/work/venv-python3
 cd ~/work
 virtualenv --python=/usr/bin/python2 venv-python2
@@ -844,50 +822,33 @@ deactivate
 source venv-python3/bin/activate
 python -V
 deactivate
-
-   
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;### Mercurial
-   为什么使用 mecurial, python编写.易于上手.内置web管理,支持bitbucket,用TortoiseHg等GUI客户端.
-    - 安装Mercurial&lt;/p&gt;
+&lt;h3 id=&#34;mercurial-为什么使用-mecurial-python编写-易于上手-内置web管理-支持bitbucket-用tortoisehg等gui客户端-安装mercurial&#34;&gt;Mercurial 为什么使用 mecurial, python编写.易于上手.内置web管理,支持bitbucket,用TortoiseHg等GUI客户端. - 安装Mercurial&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;``` bash
-$sudo pip install mercurial
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$sudo pip install mercurial
 Collecting mercurial
+Downloading https://files.pythonhosted.org/packages/6a/f4/4c3d3a2bf950f3261f506284952e23cee2b62e50eb8974aa961228a95e8a/mercurial-4.8.tar.gz (6.9MB) 100% |################################| 6.9MB 1.3MB/s Installing collected packages: mercurial Running setup.py install for mercurial … done Successfully installed mercurial-4.8 
+
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Downloading &lt;a href=&#34;https://files.pythonhosted.org/packages/6a/f4/4c3d3a2bf950f3261f506284952e23cee2b62e50eb8974aa961228a95e8a/mercurial-4.8.tar.gz&#34;&gt;https://files.pythonhosted.org/packages/6a/f4/4c3d3a2bf950f3261f506284952e23cee2b62e50eb8974aa961228a95e8a/mercurial-4.8.tar.gz&lt;/a&gt; (6.9MB)
-    100% |################################| 6.9MB 1.3MB/s
-Installing collected packages: mercurial
-  Running setup.py install for mercurial &amp;hellip; done
-Successfully installed mercurial-4.8
-    ```&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;安装zsh&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;- 安装zsh
-
-```bash
-sudo apt-get install zsh
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo apt-get install zsh
 sh -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;quot;  
 # vi ~/.zhsrc
 plugins=(
+git bundler dotenv osx rake rbenv ruby mercurial )
+
+ZSH_THEME=“agnoster” 
+
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;git
-  bundler
-  dotenv
-  osx
-  rake
-  rbenv
-  ruby
-  mercurial
-  )&lt;/p&gt;
-
-&lt;p&gt;ZSH_THEME=&amp;ldquo;agnoster&amp;rdquo;
-    ```&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;- 查看Mercurial版本
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;查看Mercurial版本&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;   user1@python-dev-env:~$ hg --version
 	Mercurial Distributed SCM (version 4.8)
@@ -898,27 +859,21 @@ plugins=(
 	warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code&gt;- 创建版本库
+&lt;ul&gt;
+&lt;li&gt;创建版本库&lt;/li&gt;
+&lt;/ul&gt;
 
-1. 创建Mercurial的环境设置文件.在主目录下创建.hgrc文件, 括号内的称为节(Section),如[ui]用来设置usernme的属性.username会想版本哭提交时候记录在日志里
-2. [Extensions]用来激活Mercurial附属的扩展工具,将扩展工具名写入[extensions],我们就可以使用该工具了.有一些工具不但要在Extension中设置,还要在pager中设置pager属性
-```
-vi ~/.hgrc
-```
+&lt;ol&gt;
+&lt;li&gt;创建Mercurial的环境设置文件.在主目录下创建.hgrc文件, 括号内的称为节(Section),如[ui]用来设置usernme的属性.username会想版本哭提交时候记录在日志里&lt;/li&gt;
+&lt;li&gt;[Extensions]用来激活Mercurial附属的扩展工具,将扩展工具名写入[extensions],我们就可以使用该工具了.有一些工具不但要在Extension中设置,还要在pager中设置pager属性&lt;/li&gt;
+&lt;/ol&gt;
 
-```
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;vi ~/.hgrc
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;[ui]
-  username=bpbook &lt;a href=&#34;mailto:bpbook@beproud.jp&#34;&gt;bpbook@beproud.jp&lt;/a&gt;
-  [extensions]
-  color=
-  pager=
-  [pager]
-  pager=LESS=&amp;lsquo;FSRX&amp;rsquo; less&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;[ui] username=bpbook bpbook@beproud.jp [extensions] color= pager= [pager] pager=LESS=‘FSRX’ less&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;
-  ``` mercurial
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;  mercurial
   mkdir ~/hgtest
   cd ~/hgtest
   hg init
@@ -956,53 +911,48 @@ vi ~/.hgrc
   
   # 撤销已经提交的内容
   $ hg commit --amend
-  
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;### python代码编辑器&lt;/p&gt;
+&lt;h3 id=&#34;python代码编辑器&#34;&gt;python代码编辑器&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;- vim
+&lt;ul&gt;
+&lt;li&gt;vim&lt;/li&gt;
+&lt;/ul&gt;
 
-``` vim
-&amp;quot; 将“Tab”替换为“空格”
+&lt;pre&gt;&lt;code class=&#34;language-vim&#34;&gt;&amp;quot; 将“Tab”替换为“空格”
 setl expandtab
 &amp;quot; 将“Tab”的“缩进幅度”改为 4
+setl tabstop=4 
+“ 自动缩进时的“缩进幅度”改为 4 
+setl shiftwidth=4 
+“ 按下键盘“Tab”键时插入的空格数 “ 这里设置为 0 就可以插入“tabstop”中设置的空格数了 
+setl softtabstop=0 
+“ 保存时删除行尾的空格 
+autocmd BufWritePre * :%s/\s+$//ge 
+“80 个字符换行 setlocal textwidth=80
+
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;setl tabstop=4
-   &amp;ldquo; 自动缩进时的“缩进幅度”改为 4
-    setl shiftwidth=4
-    &amp;ldquo; 按下键盘“Tab”键时插入的空格数
-    &amp;ldquo; 这里设置为 0 就可以插入“tabstop”中设置的空格数了
-    setl     softtabstop=0
-    &amp;ldquo; 保存时删除行尾的空格
-    autocmd BufWritePre * :%s/\s+$//ge
-    &amp;ldquo;80 个字符换行
-    setlocal textwidth=80&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;install neobundle.vim&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;```
-
- - install neobundle.vim
-
-```bash
- cd ~
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt; cd ~
  curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
  vim ~/.vimrc
  NeoBundle &#39;nvie/vim-flake8&#39;
- ```
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;pbd调试&#34;&gt;pbd调试&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;pbd调试&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;     
-   	def add(x, y):
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;   	def add(x, y):
    	    return x + y
 	x= 0
 	import pdb; pdb.set_trace() x = add(1, 2)
 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$python pdbtest.py
+$python pdbtest.py
     
 &amp;gt; pdbtest.py(7)&amp;lt;module&amp;gt;()
   -&amp;gt; x = add(1, 2)
@@ -1015,13 +965,15 @@ setl expandtab
     <item>
       <title>Ssh Login Without Password</title>
       <link>https://blog.stevedong.com/post/ssh-login-without-password/</link>
-      <pubDate>Thu, 29 Nov 2018 10:07:54 +0800</pubDate>
+      <pubDate>Thu, 29 Nov 2018 00:22:57 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/ssh-login-without-password/</guid>
       
         <description>
 
-&lt;h1 id=&#34;ssh-login-linux-unix-without-password&#34;&gt;SSH login linux/unix without password&lt;/h1&gt;
+&lt;h1 id=&#34;ssh-login-without-password&#34;&gt;Ssh Login Without Password&lt;/h1&gt;
+
+&lt;h2 id=&#34;ssh-login-linux-unix-without-password&#34;&gt;SSH login linux/unix without password&lt;/h2&gt;
 
 &lt;h2 id=&#34;general-your-key&#34;&gt;General your key&lt;/h2&gt;
 
@@ -1031,10 +983,9 @@ setl expandtab
 &lt;h2 id=&#34;copy-your-rsa-pub-to-server-which-you-want-to-login-without-password&#34;&gt;copy your rsa.pub to server which you want to login without password.&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh-copy-id -i ~/.ssh/id_rsa.pub user1@$server-hosts
-
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;test-login&#34;&gt;Test login.&lt;/h2&gt;
+&lt;h2 id=&#34;test-login&#34;&gt;Test login&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh user1@$server-hosts
 &lt;/code&gt;&lt;/pre&gt;
@@ -1043,137 +994,56 @@ setl expandtab
     </item>
     
     <item>
-      <title>How to Slove Ubuntu18 with LC_CTYPE Error</title>
-      <link>https://blog.stevedong.com/post/how-to-solve-ubuntu18.04-with-error-lc_ctype-message/</link>
-      <pubDate>Sat, 24 Nov 2018 03:44:25 +0800</pubDate>
+      <title>Proxmoxve VE V5.x Installation</title>
+      <link>https://blog.stevedong.com/post/proxmoxve-v5.x-installation/</link>
+      <pubDate>Mon, 19 Nov 2018 23:38:39 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/how-to-solve-ubuntu18.04-with-error-lc_ctype-message/</guid>
-      
-        <description>
-
-&lt;h1 id=&#34;how-to-slove-the-problems-that-ubuntu-with-lc-ctype-error&#34;&gt;How to slove the problems that Ubuntu with LC_CTYPE Error&lt;/h1&gt;
-
-&lt;p&gt;Whe you met prolems with this error:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;locale: Cannot set LC_CTYPE to default locale: No such file or directory
-locale: Cannot set LC_MESSAGES to default locale: No such file or directory
-locale: Cannot set LC_ALL to default locale: No such file or directory
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;solution&#34;&gt;Solution&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;chang &lt;code&gt;/etc/default/locale&lt;/code&gt; to :&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;LANG=&amp;quot;en_US.UTF-8&amp;quot;
-LC_NUMERIC=&amp;quot;en_US.UTF-8&amp;quot;
-LC_TIME=&amp;quot;en_US.UTF-8&amp;quot;
-LC_MONETARY=&amp;quot;en_US.UTF-8&amp;quot;
-LC_PAPER=&amp;quot;en_US.UTF-8&amp;quot;
-LC_NAME=&amp;quot;en_US.UTF-8&amp;quot;
-LC_ADDRESS=&amp;quot;en_US.UTF-8&amp;quot;
-LC_TELEPHONE=&amp;quot;en_US.UTF-8&amp;quot;
-LC_MEASUREMENT=&amp;quot;en_US.UTF-8&amp;quot;
-LC_IDENTIFICATION=&amp;quot;en_US.UTF-8&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;run command &lt;code&gt;locale&lt;/code&gt;,and you will see :&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;locale: Cannot set LC_CTYPE to default locale: No such file or directory
-locale: Cannot set LC_MESSAGES to default locale: No such file or directory
-locale: Cannot set LC_ALL to default locale: No such file or directory
-LANG=en_US.UTF-8
-LANGUAGE=
-LC_CTYPE=&amp;quot;zh_CN.UTF-8&amp;quot;
-LC_NUMERIC=en_US.UTF-8
-LC_TIME=en_US.UTF-8
-LC_COLLATE=&amp;quot;en_US.UTF-8&amp;quot;
-LC_MONETARY=en_US.UTF-8
-LC_MESSAGES=&amp;quot;en_US.UTF-8&amp;quot;
-LC_PAPER=en_US.UTF-8
-LC_NAME=en_US.UTF-8
-LC_ADDRESS=en_US.UTF-8
-LC_TELEPHONE=en_US.UTF-8
-LC_MEASUREMENT=en_US.UTF-8
-LC_IDENTIFICATION=en_US.UTF-8
-LC_ALL=
-  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;then run command &lt;code&gt;sudo locale-gen zh_CN.UTF-8&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;run &lt;code&gt;locale -a&lt;/code&gt;, error has gone.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;LANG=en_US.UTF-8
-LANGUAGE=
-LC_CTYPE=zh_CN.UTF-8
-LC_NUMERIC=&amp;quot;en_US.UTF-8&amp;quot;
-LC_TIME=&amp;quot;en_US.UTF-8&amp;quot;
-LC_COLLATE=&amp;quot;en_US.UTF-8&amp;quot;
-LC_MONETARY=&amp;quot;en_US.UTF-8&amp;quot;
-LC_MESSAGES=&amp;quot;en_US.UTF-8&amp;quot;
-LC_PAPER=&amp;quot;en_US.UTF-8&amp;quot;
-LC_NAME=&amp;quot;en_US.UTF-8&amp;quot;
-LC_ADDRESS=&amp;quot;en_US.UTF-8&amp;quot;
-LC_TELEPHONE=&amp;quot;en_US.UTF-8&amp;quot;
-LC_MEASUREMENT=&amp;quot;en_US.UTF-8&amp;quot;
-LC_IDENTIFICATION=&amp;quot;en_US.UTF-8&amp;quot;
-LC_ALL=
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Proxmox VE 5.x Installation</title>
-      <link>https://blog.stevedong.com/post/proxmox-installation/</link>
-      <pubDate>Mon, 19 Nov 2018 13:31:09 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/proxmox-installation/</guid>
+      <guid>https://blog.stevedong.com/post/proxmoxve-v5.x-installation/</guid>
       
         <description>
 
-&lt;h1 id=&#34;proxmox-notebook-01&#34;&gt;Proxmox notebook 01&lt;/h1&gt;
+&lt;h1 id=&#34;proxmox-ve-5-x-installation&#34;&gt;Proxmox VE 5.x Installation&lt;/h1&gt;
 
-&lt;h2 id=&#34;proxmox-won-t-install-a-volume-group-called-pve-already-exists&#34;&gt;Proxmox won&amp;rsquo;t install- &amp;ldquo;A volume group called pve already exists&lt;/h2&gt;
+&lt;h2 id=&#34;proxmox-won-t-install-a-volume-group-called-pve-already-exists&#34;&gt;Proxmox won’t install- “A volume group called pve already exists&lt;/h2&gt;
 
-&lt;p&gt;Solution&lt;/p&gt;
+&lt;p&gt;Solution:&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Boot the proxmox installer USB&lt;/li&gt;
 &lt;li&gt;Select Debug Mode&lt;/li&gt;
-&lt;li&gt;Press &amp;ldquo;CTRL+D&amp;rdquo; to start the installer wizard.&lt;/li&gt;
+&lt;li&gt;Press “CTRL+D” to start the installer wizard.&lt;/li&gt;
 &lt;li&gt;Click on abort&lt;/li&gt;
-&lt;li&gt;Run &amp;ldquo;vgdisplay&amp;rdquo; to dislay the LVM PG&amp;rsquo;s.&lt;/li&gt;
-&lt;li&gt;Run &amp;ldquo;vgremode pve &amp;rdquo; to remove pve PG.&lt;/li&gt;
+&lt;li&gt;Run “vgdisplay” to dislay the LVM PG’s.&lt;/li&gt;
+&lt;li&gt;Run “vgremode pve ” to remove pve PG.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;remove-no-valid-subscription-message&#34;&gt;Remove &amp;ldquo;No valid Subscription&amp;rdquo; Message&lt;/h2&gt;
+&lt;h2 id=&#34;remove-no-valid-subscription-message&#34;&gt;Remove “No valid Subscription” Message&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;sed -i.bak &amp;quot;s/data.status !== &#39;Active&#39;/false/g&amp;quot; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;amp;&amp;amp; systemctl restart pveproxy.service
+&lt;ul&gt;
+&lt;li&gt;shell solution.&lt;/li&gt;
+&lt;/ul&gt;
 
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sed -i.bak &amp;quot;s/data.status !== &#39;Active&#39;/false/g&amp;quot; \ 
+	/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js \ 
+	&amp;amp;&amp;amp; systemctl restart pveproxy.service
+	
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;or change it manually.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;manual solution:&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;
-cd /usr/share/javascript/proxmox-widget-toolkit
-
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd /usr/share/javascript/proxmox-widget-toolkit
 cp proxmoxlib.js proxmoxlib.js.bak
-
 nano proxmoxlib.js
 
+# change 
 if (data.status !== &#39;Active&#39;) {
 
 if (false) {
 
-
+#restart pveproxy.service
 systemctl restart pveproxy.service
-
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;change-update-source&#34;&gt;Change update source&lt;/h2&gt;
@@ -1203,17 +1073,13 @@ wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /et
 apt updat &amp;amp;&amp;amp; apt -y dist-ugprade
 apt install proxmox-ve postfix open-iscsi
 update-grub
-
-
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;```&lt;/p&gt;
-
-&lt;h2 id=&#34;reference&#34;&gt;##Reference&lt;/h2&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://forum.proxmox.com/threads/proxmox-wont-install-a-volume-group-called-pve-already-exists.43724/&#34;&gt;Proxmox won&amp;rsquo;t install - &amp;ldquo;A volume group called pve already exists&amp;rdquo;.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://johnscs.com/remove-proxmox51-subscription-notice/&#34;&gt;Remove Proxmox 5.&lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;5&lt;/sub&gt;.2 Subscription Notice&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://forum.proxmox.com/threads/proxmox-wont-install-a-volume-group-called-pve-already-exists.43724/&#34;&gt;Proxmox won’t install - “A volume group called pve already exists”.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://johnscs.com/remove-proxmox51-subscription-notice/&#34;&gt;Remove Proxmox 5.1 or 5.2 Subscription Notice&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
       
@@ -1222,13 +1088,13 @@ update-grub
     <item>
       <title>Linux in Action 01</title>
       <link>https://blog.stevedong.com/post/linux-in-action-01/</link>
-      <pubDate>Fri, 16 Nov 2018 11:53:52 +0800</pubDate>
+      <pubDate>Fri, 16 Nov 2018 23:34:58 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/linux-in-action-01/</guid>
       
         <description>
 
-&lt;h1 id=&#34;翻译-linux实战&#34;&gt;[翻译]Linux实战&lt;/h1&gt;
+&lt;h1 id=&#34;linux-in-action-翻译-linux实战&#34;&gt;Linux In Action-[翻译]Linux实战&lt;/h1&gt;
 
 &lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 
@@ -1240,15 +1106,15 @@ update-grub
     </item>
     
     <item>
-      <title>How to Setup Reverse proxy on IIS</title>
-      <link>https://blog.stevedong.com/post/how-to-setup-reverseproxy-on-iis/</link>
-      <pubDate>Tue, 06 Nov 2018 15:59:44 +0800</pubDate>
+      <title>How to Setup Reverse Proxy With Iis</title>
+      <link>https://blog.stevedong.com/post/how-to-setup-reverse-proxy-with-iis/</link>
+      <pubDate>Tue, 06 Nov 2018 23:26:18 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/how-to-setup-reverseproxy-on-iis/</guid>
+      <guid>https://blog.stevedong.com/post/how-to-setup-reverse-proxy-with-iis/</guid>
       
         <description>
 
-&lt;h1 id=&#34;how-to-setup-reverse-proxy-on-iis&#34;&gt;How to Setup Reverse proxy on IIS&lt;/h1&gt;
+&lt;h1 id=&#34;how-to-setup-reverse-proxy-with-iis&#34;&gt;How to Setup Reverse proxy with IIS&lt;/h1&gt;
 
 &lt;p&gt;I testing it on Server 2016 with IIS 10&lt;/p&gt;
 
@@ -1264,13 +1130,15 @@ update-grub
 
 &lt;ul&gt;
 &lt;li&gt;Select Root level in IIS management&lt;/li&gt;
-&lt;li&gt;Click &amp;lsquo;Application Request Routing Cache&amp;rsquo;,then in the right side, click &amp;ldquo;proxy | Server proxy Settings | Check on &amp;ldquo;Enable proxy&amp;rdquo; | save config.&lt;/li&gt;
+&lt;li&gt;Click ‘Application Request Routing Cache’,then in the right side, click “proxy | Server proxy Settings | Check on “Enable proxy” | save config.&lt;/li&gt;
 &lt;li&gt;Select website in IIS.&lt;/li&gt;
-&lt;li&gt;Click  URL Rewrite&lt;/li&gt;
-&lt;li&gt;Add a black Rule&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;Click URL Rewrite&lt;/li&gt;
 
-&lt;p&gt;Match URL:&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Add a black Rule&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* Match URL:
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;table&gt;
 &lt;thead&gt;
@@ -1290,7 +1158,8 @@ update-grub
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;Conditions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    * Conditions:
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;table&gt;
 &lt;thead&gt;
@@ -1323,7 +1192,8 @@ update-grub
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;Server Variables:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    * Server Variables:
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;table&gt;
 &lt;thead&gt;
@@ -1356,23 +1226,22 @@ update-grub
     </item>
     
     <item>
-      <title>Kvm Virtualization 01</title>
-      <link>https://blog.stevedong.com/post/kvm-virtualization-01/</link>
-      <pubDate>Fri, 26 Oct 2018 23:08:47 +0800</pubDate>
+      <title>Kvm Virtualization 01 Introduction</title>
+      <link>https://blog.stevedong.com/post/kvm-virtualization-01-introduction/</link>
+      <pubDate>Fri, 26 Oct 2018 23:22:46 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/kvm-virtualization-01/</guid>
+      <guid>https://blog.stevedong.com/post/kvm-virtualization-01-introduction/</guid>
       
         <description>
 
-&lt;h1 id=&#34;kvm-virtualization-serial&#34;&gt;KVM virtualization serial&lt;/h1&gt;
+&lt;h1 id=&#34;kvm-virtualization-01-introduction&#34;&gt;KVM virtualization-01 Introduction&lt;/h1&gt;
 
-&lt;p&gt;Today we are start to learn kvm virtulization
-After try to find which is the right  open source virtulization solution,which include Bhyver, Trolin/smartos,  ovirt, OpenStack.&lt;/p&gt;
+&lt;p&gt;Today we are start to learn kvm virtulization After try to find which is the right open source virtulization solution,which include Bhyver, Trolin/smartos, ovirt, OpenStack.&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Openstack is too heavy and it is suitable for you have thousands of host to managament.&lt;/li&gt;
-&lt;li&gt;bhyver is base freebsd, and it has a web managment system named Clonos which write by a russian Less support.&lt;/li&gt;
-&lt;li&gt;smartos/Trolin is a opensolaris base . But few people use it. It has open source version, but the offical website say again and again that &amp;lsquo;you&amp;rsquo;d better to contact us to install it&amp;rsquo;, that means you should pay  for it if you want use it .&lt;/li&gt;
+&lt;li&gt;bhyver is base freebsd, and it has a web managment system named Clonos which write by a russian Less support.
+smartos/Trolin is a opensolaris base . But few people use it. It has open source version, but the offical website say again and again that ‘you’d better to contact us to install it’, that means you should pay for it if you want use it .&lt;/li&gt;
 &lt;li&gt;Ovirt is&lt;/li&gt;
 &lt;/ul&gt;
 </description>
@@ -1380,136 +1249,114 @@ After try to find which is the right  open source virtulization solution,which i
     </item>
     
     <item>
-      <title>Learning build Network with vyos</title>
-      <link>https://blog.stevedong.com/post/learning-build-network-with-vyos-01-install-vyos/</link>
-      <pubDate>Fri, 26 Oct 2018 18:18:53 +0800</pubDate>
+      <title>Building Network With Vyos 01---Basic Installing and Configuration</title>
+      <link>https://blog.stevedong.com/post/building-network-with-vyos-01-basic-installing-and-configuration/</link>
+      <pubDate>Fri, 26 Oct 2018 22:44:02 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/learning-build-network-with-vyos-01-install-vyos/</guid>
+      <guid>https://blog.stevedong.com/post/building-network-with-vyos-01-basic-installing-and-configuration/</guid>
       
         <description>
 
-&lt;h1 id=&#34;learning-networking-with-vyos&#34;&gt;Learning Networking with Vyos&lt;/h1&gt;
+&lt;h1 id=&#34;building-network-with-vyos-01-basic-installing-and-configuration&#34;&gt;Building Network With Vyos.-.01.Basic Installing and Configuration&lt;/h1&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn&amp;rsquo;t web UI, but only command line configration just like JUNOS.&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn’t web UI, but only command line configration just like JUNOS.&lt;/p&gt;
 
-&lt;li&gt;&lt;p&gt;At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.&lt;/p&gt;
 
 &lt;h2 id=&#34;install-vyos&#34;&gt;Install vyos&lt;/h2&gt;
 
-&lt;h3 id=&#34;download-vyos-form-the-office-website&#34;&gt;Download vyos form the office website:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Download vyos form the office website:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Download Link&lt;/strong&gt;: &lt;a href=&#34;https://downloads.vyos.io/testing/1.2.0-rc4/vyos-1.2.0-rc4-amd64.iso&#34;&gt;vyos-1.2.0-rc-4-amd64&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Download Link: &lt;a href=&#34;https://downloads.vyos.io/testing/1.2.0-rc4/vyos-1.2.0-rc4-amd64.iso&#34;&gt;vyos-1.2.0-rc-4-amd64&lt;/a&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;write-iso-image-to-usb-disk&#34;&gt;Write iso image to usb disk&lt;/h3&gt;
+&lt;h2 id=&#34;write-iso-image-to-usb-disk&#34;&gt;Write iso image to usb disk&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Linux and Mac:
-&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Linux and Mac:&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ddi if=vyos-1.2.0-rc-4-amd64.iso of=/dev/$yourusbdisk bs=1M
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Windows:&lt;/p&gt;
+&lt;li&gt;Windows:&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;ol&gt;
-&lt;li&gt;download &lt;strong&gt;Rufus:&lt;/strong&gt; &lt;a href=&#34;https://rufus.ie/en_IE&#34;&gt;rufus&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;download Rufus: &lt;a href=&#34;https://rufus.ie/en_IE&#34;&gt;&lt;strong&gt;rufus&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;select &lt;code&gt;dd&lt;/code&gt; mode to write disk.&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/ol&gt;
 
-&lt;h3 id=&#34;install-vyos-with-wizard&#34;&gt;Install vyos with wizard.&lt;/h3&gt;
+&lt;h2 id=&#34;install-vyos-with-wizard&#34;&gt;Install vyos with wizard.&lt;/h2&gt;
 
-&lt;ul&gt;
+&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;press &lt;code&gt;F11&lt;/code&gt; or set COMS to boot from usb.&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Enter Default username and password to login livecd.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;Enter Default username and password to login livecd.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;vyos login: vyos
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;vyos login: vyos
 Password: vyos
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;write-image-to-local-driver&#34;&gt;Write image to local driver:&lt;/h2&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Write image to local driver:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;install image
-
-
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;install image
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Reboot System to boot from local disk.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;reboot now
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;reboot now
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;basic-command&#34;&gt;Basic Command&lt;/h2&gt;
 
 &lt;p&gt;vyos command line include 2 mode: Operation mode and configure mode.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Operation Mode&lt;/strong&gt; shell command start with &lt;code&gt;$&lt;/code&gt;. These command usually show sysytem. information,reboot/shutdown system.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Operation Mode
+shell command start with $.
+These command usually show sysytem. information,reboot/shutdown system.&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;&lt;strong&gt;Configure Mode&lt;/strong&gt; shell command start with &lt;code&gt;#&lt;/code&gt;. These command usually change configuration of vyos.&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Configure Mode
+shell command start with #.
+These command usually change configuration of vyos.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&#34;operation-mode&#34;&gt;Operation Mode&lt;/h3&gt;
 
-&lt;h4 id=&#34;enter-configure-mode&#34;&gt;Enter configure mode&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;configure
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;exit-to-operation-mode&#34;&gt;Exit to operation Mode&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;exit
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;check-vyos-version&#34;&gt;Check vyos version&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;show version
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;check-vyos-running-time&#34;&gt;Check vyos running time&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;show system uptime
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;check-system-time-and-timezone&#34;&gt;Check system time and timezone&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;show date
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;reboot-system&#34;&gt;Reboot system&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;reboot now
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;shutdown-system&#34;&gt;Shutdown System&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;poweroff now
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;upgrade-system-image-version&#34;&gt;upgrade system image version&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;reset-configuration&#34;&gt;Reset configuration&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;# Enter config mode
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;# Enter configure mode
 configure
 
+
+#Exit to operation Mode
+exit
+#Check vyos version
+show version
+#Check vyos running time
+show system uptime
+#Check system time and timezone
+show date
+#Reboot system
+reboot now
+#Shutdown System
+poweroff now
+#upgrade system image version
+add system image $URL_or_path
+
+
+#Reset configuration
+# Enter config mode
+configure
 #loading default configure
 load /opt/vyatta/etc/config.boot.default  
-
 # commit loading default configure
 commit
 
@@ -1524,31 +1371,33 @@ reboot now
 
 
 
+#bonding
+
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;bonding&#34;&gt;bonding&lt;/h3&gt;
+&lt;p&gt;&lt;conitune...&gt;&lt;/p&gt;
 </description>
       
     </item>
     
     <item>
-      <title>How to Install Dotnetcore2.1.x and Aspdotnetcore2.1.x on RHEL6.x or CentOS6</title>
-      <link>https://blog.stevedong.com/post/how-to-install-dotnetcore2.1.x-and-aspdotnetcore2.1.x-on-rhel6.x-or-centos6.x/</link>
-      <pubDate>Fri, 26 Oct 2018 13:03:10 +0800</pubDate>
+      <title>How to Install Dotnetcore2.1.x and Asp.net21.x on RHEL6.x CENTOS6</title>
+      <link>https://blog.stevedong.com/post/how-to-install-dotnetcore2.1.x-and-asp.net21.x-on-rhel6.x-centos6.x/</link>
+      <pubDate>Fri, 26 Oct 2018 22:29:04 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/how-to-install-dotnetcore2.1.x-and-aspdotnetcore2.1.x-on-rhel6.x-or-centos6.x/</guid>
+      <guid>https://blog.stevedong.com/post/how-to-install-dotnetcore2.1.x-and-asp.net21.x-on-rhel6.x-centos6.x/</guid>
       
         <description>
 
-&lt;h1 id=&#34;how-to-install-netcore-aspnetcore-2-1-4-on-rhel-6-8&#34;&gt;How to install netcore/aspnetcore 2.1.4 on RHEL 6.8&lt;/h1&gt;
+&lt;h2 id=&#34;how-to-install-netcore-aspnetcore-2-1-4-on-rhel-6-8&#34;&gt;How to install netcore/aspnetcore 2.1.4 on RHEL 6.8&lt;/h2&gt;
 
 &lt;p&gt;Recently days, we met a scenario that is our client production environment must be RHEL 6.8. But our product is base asp.net core 2.1.x version. Rehat and Microsoft has never say the are support RHEL 6.X version.&lt;/p&gt;
 
 &lt;p&gt;After a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core. And you know what? It works well finally!&lt;/p&gt;
 
-&lt;h2 id=&#34;install-netcore-2-1-4-sdk&#34;&gt;Install netcore 2.1.4 sdk&lt;/h2&gt;
+&lt;h3 id=&#34;install-netcore-2-1-4-sdk&#34;&gt;Install netcore 2.1.4 sdk&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/sh
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;#!/bin/sh
 
 yum install -y wget epel-release
 yum install -y openssl-devel libnghttp2-devel libidn-devel gcc libtool m4 automake
@@ -1582,20 +1431,18 @@ cd curl-7.45.0
     --with-ssl \
     --without-librtmp \
     --prefix=$PWD/install/usr/local
+    
+&lt;/code&gt;&lt;/pre&gt;
 
+&lt;h3 id=&#34;make-install&#34;&gt;make install&lt;/h3&gt;
 
-make install
-
-cd install
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd install
 tar -czf curl-7_45_0-RHEL6-x64.tgz *
 curl -O http://download.icu-project.org/files/icu4c/57.1/icu4c-57_1-RHEL6-x64.tgz
 tar -xf curl-7_45_0-RHEL6-x64.tgz -C /
 tar -xf icu4c-57_1-RHEL6-x64.tgz -C /
 echo &amp;quot;export LD_LIBRARY_PATH=/usr/local/lib&amp;quot; &amp;gt;&amp;gt; /etc/profile
 export LD_LIBRARY_PATH=/usr/local/lib
-
-
-
 
 cd /tmp/
 mkdir dotnetsdk
@@ -1619,46 +1466,42 @@ make install
 rm -rf /usr/local/src/libuv-1.4.2 &amp;amp;&amp;amp; cd ~/
 ldconfig
 
-
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 
-&lt;ol&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/dotnet/core/blob/master/Documentation/build-and-install-rhel6-prerequisites.md&#34;&gt;How to use .NET Core on RHEL 6 / CentOS 6&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/dotnet/core/blob/master/release-notes/2.1/2.1.4/2.1.4-download.md&#34;&gt;.NET Core 2.1.4&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/ul&gt;
 </description>
       
     </item>
     
     <item>
       <title>How to Build Blog With Hugo on Github</title>
-      <link>https://blog.stevedong.com/post/how-to-build-blog-with-hugo-on-github.io/</link>
-      <pubDate>Fri, 26 Oct 2018 09:47:14 +0800</pubDate>
+      <link>https://blog.stevedong.com/post/how-to-build-blog-with-hugo-on-github/</link>
+      <pubDate>Fri, 26 Oct 2018 21:57:33 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/how-to-build-blog-with-hugo-on-github.io/</guid>
+      <guid>https://blog.stevedong.com/post/how-to-build-blog-with-hugo-on-github/</guid>
       
         <description>
 
-&lt;h1 id=&#34;how-to-build-a-blog-with-hugo-on-github-io&#34;&gt;How to build a blog with Hugo on github.io&lt;/h1&gt;
-
-&lt;h2 id=&#34;hugo-on-your-macos&#34;&gt;Hugo on your MacOS&lt;/h2&gt;
+&lt;h3 id=&#34;hugo-on-your-macos&#34;&gt;Hugo on your MacOS&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Setting github&lt;/p&gt;
+&lt;li&gt;Setting github&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;ol&gt;
 &lt;li&gt;create a repo named blogs for store hugo programes.&lt;/li&gt;
 &lt;li&gt;Create another repo named echowings.github.io to host websit.&lt;/li&gt;
-&lt;li&gt;generate ssh key and regist it on github settings.
-&lt;br /&gt;
+&lt;li&gt;generate ssh key and regist it on github settings.&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Install hugo&lt;/p&gt;&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;Install hugo&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew install hugo
@@ -1668,8 +1511,7 @@ ldconfig
 &lt;li&gt;Create a blog site.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	
-hugo new site blogs
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;hugo new site blogs
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
@@ -1678,43 +1520,30 @@ hugo new site blogs
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd blogs
 git init
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Add remote repo.
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git remote add origin git@github.com:echowings/blogs.git
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Add a theme for your hugo.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git submodule add -b master https://github.com/xianmin/hugo-theme-jane.git themes/jane
+#Add remote repo. 
+git remote add origin git@github.com:echowings/blogs.git
+#Add a theme for your hugo.
+git submodule add -b master https://github.com/xianmin/hugo-theme-jane.git themes/jane
 cp -r themes/jane/exampleSite/content ./
 cp themes/jane/exampleSite/config.toml ./
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Test hugo at local.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;Test hugo at local.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;hugo server
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
-&lt;ul&gt;
-&lt;li&gt;You can access &lt;a href=&#34;https://localhost:1313&#34;&gt;https://localhost:1313&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;You can access &lt;a href=&#34;http://localhost:1313&#34;&gt;http://localhost:1313&lt;/a&gt; to test your blog in local.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;change-configure&#34;&gt;Change configure&lt;/h3&gt;
+&lt;h4 id=&#34;change-configure&#34;&gt;Change configure&lt;/h4&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Modifiy &lt;code&gt;vi config.toml&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Modifiy vi config.toml&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;#Change URL
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#Change URL
 baseURL = &amp;quot;https://blog.stevedong.com&amp;quot;
 
 #Change Title
@@ -1751,94 +1580,81 @@ name = &amp;quot;Steve Dong&amp;quot;
  	
 	logoTitle= &amp;quot;Steve Dong&amp;quot;
 	keywords = [&amp;quot;network&amp;quot;, &amp;quot;devops&#39;, &amp;quot;System Administrator&amp;quot;]
-	
-
-	
- 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;deploy-your-blog-to-github&#34;&gt;Deploy your blog to github&lt;/h3&gt;
+&lt;h2 id=&#34;deploy-your-blog-to-github&#34;&gt;Deploy your blog to github&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Add repo of blog website.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;  git submodule add --force -b master git@github.com:echowings/echowings.github.io.git public  
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  git submodule add --force -b master \ 
+	git@github.com:echowings/echowings.github.io.git public  
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Run &lt;code&gt;hugo&lt;/code&gt; to generate your blog website.
-&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Run hugo to generate your blog website.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;hugo server
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;publish your website&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd public
+git add.
+git commit -m &amp;quot;YOUR COMMIT MESSAGE&amp;quot;
+git push origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Backup your hugo blog to github&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd ..
+git add.
+git commit -m &amp;quot;YOUR COMMIT MESSAGE&amp;quot;
+git push origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  hugo
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;publish your website&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    cd public
-    git add.
-    git commit -m &amp;quot;YOUR COMMIT MESSAGE&amp;quot;
-    git push origin master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Backup your hugo blog to github
-&lt;br /&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    cd ..
-    git add.
-    git commit -m &amp;quot;YOUR COMMIT MESSAGE&amp;quot;
-    git push origin master
-&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;add-a-comment&#34;&gt;Add a comment&lt;/h3&gt;
 
 &lt;p&gt;Since theme jane has support utterances, we just need to enable utterances apps in github and configure it in config.toml in hugo.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Create a repo to storage comment. like &amp;ldquo;blogcomment&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Create a repo to storage comment. like “blogcomment”.&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;enable utternaces apps.&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;click &lt;a href=&#34;https://github.com/apps/utterances&#34;&gt;utterances app&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Auth utterances to your github repo &amp;ldquo;blogcomment&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Auth utterances to your github repo “blogcomment”.&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;edit blogs/config.toml and append follow lines.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;edit &lt;code&gt;blogs/config.toml&lt;/code&gt; and append follow lines.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[params.utteranc]
+  enable = true
+  repo=&amp;quot;echowings/blogcomment&amp;quot;
+  issueTerm=&amp;quot;pathname&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-configure&#34;&gt; [params.utteranc]
-      enable = true
-      repo=&amp;quot;echowings/blogcomment&amp;quot;
-      issueTerm=&amp;quot;pathname&amp;quot;
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://utteranc.es/&#34;&gt;utterances &lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/xianmin/hugo-theme-jane/blob/master/exampleSite/config.toml&#34;&gt;hugo-theme-jane/dev-config.toml
-&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://keysaim.github.io/post/blog/deploy-hugo-blog-in-github.io/&#34;&gt;如何在github.io搭建Hugo博客站&lt;/a&gt;
-&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://utteranc.es/&#34;&gt;utterances&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/xianmin/hugo-theme-jane/blob/master/exampleSite/config.toml&#34;&gt;hugo-theme-jane/dev-config.toml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://keysaim.github.io/post/blog/deploy-hugo-blog-in-github.io/&#34;&gt;如何在github.io搭建Hugo博客站&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
       
     </item>
     
     <item>
-      <title>Fist_Blog</title>
-      <link>https://blog.stevedong.com/post/fist_blog/</link>
-      <pubDate>Fri, 26 Oct 2018 08:57:41 +0800</pubDate>
+      <title>First_Blog</title>
+      <link>https://blog.stevedong.com/post/first-blog/</link>
+      <pubDate>Fri, 26 Oct 2018 21:46:42 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/fist_blog/</guid>
+      <guid>https://blog.stevedong.com/post/first-blog/</guid>
       
         <description>
 

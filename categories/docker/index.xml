@@ -6,20 +6,28 @@
     <description>Recent content in Docker on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 20 Dec 2018 10:59:36 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 24 Dec 2018 00:55:14 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/categories/docker/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Dockerfile for Overure</title>
-      <link>https://blog.stevedong.com/post/dockerfile-for-overure/</link>
-      <pubDate>Thu, 20 Dec 2018 10:59:36 +0800</pubDate>
+      <title>Dockerfile for Overture</title>
+      <link>https://blog.stevedong.com/post/dockerfile-for-overture/</link>
+      <pubDate>Mon, 24 Dec 2018 00:55:14 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/dockerfile-for-overure/</guid>
+      <guid>https://blog.stevedong.com/post/dockerfile-for-overture/</guid>
       <description>How to Wirte docker file for overture Hence we need to custom overture docker image as we desire, I write this dockerfile.
-How to map VOLUME and copy file from docker images to directory of docker host. When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.
-if [ &amp;quot;`ls -A /config`&amp;quot; = &amp;quot;&amp;quot; ]; then cp /srv/config.</description>
+When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running. ``` if [ &amp;quot;`ls -A /config`&amp;quot; = &amp;quot;&amp;quot; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.txt /config/; fi ```  Overture Dockerfile #FROM alpine:edge FROM alpine:latest MAINTAINER steve dong &amp;lt;dongjunbo@gmail.</description>
+    </item>
+    
+    <item>
+      <title>Deploy Overture With Docker and Freebsd</title>
+      <link>https://blog.stevedong.com/post/deploy-overture-with-docker-and-freebsd/</link>
+      <pubDate>Tue, 18 Dec 2018 00:44:13 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/deploy-overture-with-docker-and-freebsd/</guid>
+      <description>Run overture on Docker and FreeBSD 12 ENV foo /overture WORKDIR ${foo} RUN apt-get update &amp;amp;&amp;amp; apt-get install -y ca-certificates RUN printf &amp;quot;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.</description>
     </item>
     
   </channel>

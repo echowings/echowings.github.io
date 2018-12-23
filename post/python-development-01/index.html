@@ -2,11 +2,9 @@
 <html lang="en" itemscope itemtype="http://schema.org/WebPage">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Python Development 01 - Steve Dong - A System Administrator&#39;s Blog</title>
   
-
-
 
 <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
@@ -16,8 +14,6 @@
 
 
 <meta name="applicable-device" content="pc,mobile">
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 <meta name="theme-color" content="#f8f5ec" />
 <meta name="msapplication-navbutton-color" content="#f8f5ec">
@@ -27,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="python开发笔记-01-python开发入门 安装ptyhon开发工具和包 安装ubuntu 16.04 pass 安装系统相关依赖包 build-essenti" />
+  <meta name="description" content="Python Development python开发笔记-01-python开发入门 安装ptyhon开发工具和包 安装ubuntu 16.04 &amp;hellip;pass&amp;hellip; 安装系统相关依赖包 build-essen" />
 
   <meta name="keywords" content="network, devops, sdn, system Administation" />
 
@@ -36,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.49.2" />
+<meta name="generator" content="Hugo 0.52" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/python-development-01/" />
@@ -54,31 +50,33 @@
 
 
 
-<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+<link rel="stylesheet" href="/sass/jane.min.c8c1ff75dee09b44060a6c38f41b9036bac2512ccdb22d7f296cec12dc786375.css" integrity="sha256-yMH/dd7gm0QGCmw49BuQNrrCUSzNsi1/KWzsEtx4Y3U=" media="screen" crossorigin="anonymous">
+
 
 
 
 
 <meta property="og:title" content="Python Development 01" />
-<meta property="og:description" content="python开发笔记-01-python开发入门 安装ptyhon开发工具和包 安装ubuntu 16.04 pass 安装系统相关依赖包 build-essenti" />
+<meta property="og:description" content="Python Development python开发笔记-01-python开发入门 安装ptyhon开发工具和包 安装ubuntu 16.04 &hellip;pass&hellip; 安装系统相关依赖包 build-essen" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/python-development-01/" /><meta property="article:published_time" content="2018-11-29T10:23:20&#43;08:00"/>
-<meta property="article:modified_time" content="2018-11-29T10:23:20&#43;08:00"/>
+<meta property="og:url" content="https://blog.stevedong.com/post/python-development-01/" /><meta property="article:published_time" content="2018-11-29T00:28:31&#43;08:00"/>
+<meta property="article:modified_time" content="2018-12-24T16:01:23&#43;08:00"/>
 
 <meta itemprop="name" content="Python Development 01">
-<meta itemprop="description" content="python开发笔记-01-python开发入门 安装ptyhon开发工具和包 安装ubuntu 16.04 pass 安装系统相关依赖包 build-essenti">
+<meta itemprop="description" content="Python Development python开发笔记-01-python开发入门 安装ptyhon开发工具和包 安装ubuntu 16.04 &hellip;pass&hellip; 安装系统相关依赖包 build-essen">
 
 
-<meta itemprop="datePublished" content="2018-11-29T10:23:20&#43;08:00" />
-<meta itemprop="dateModified" content="2018-11-29T10:23:20&#43;08:00" />
-<meta itemprop="wordCount" content="1408">
+<meta itemprop="datePublished" content="2018-11-29T00:28:31&#43;08:00" />
+<meta itemprop="dateModified" content="2018-12-24T16:01:23&#43;08:00" />
+<meta itemprop="wordCount" content="1415">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="python," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python Development 01"/>
-<meta name="twitter:description" content="python开发笔记-01-python开发入门 安装ptyhon开发工具和包 安装ubuntu 16.04 pass 安装系统相关依赖包 build-essenti"/>
+<meta name="twitter:description" content="Python Development python开发笔记-01-python开发入门 安装ptyhon开发工具和包 安装ubuntu 16.04 &hellip;pass&hellip; 安装系统相关依赖包 build-essen"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -158,7 +156,16 @@ if (!doNotTrack) {
           
             <a class="menu-item-link" href="https://echowings.github.com" rel="noopener" target="_blank">
               MyGitHub
-              <i class="iconfont icon-new-window"></i>
+              
+              <i class="iconfont">
+                <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M623.36 272.96 473.216 423.04C467.2 429.056 467.072 438.656 472.896 444.416c0 0-6.72-6.656 1.6 1.6C496.064 467.648 528.64 500.224 528.64 500.224 534.464 506.048 544 505.856 550.016 499.904l150.08-150.144 67.328 66.432c9.024 8.96 27.456 4.544 30.4-8.96 19.968-92.608 46.656-227.52 46.656-227.52 6.848-34.496-16.192-56.704-49.92-49.92 0 0-134.656 26.816-227.328 46.784C560.32 178.048 556.352 182.272 554.752 187.136c-3.2 6.208-3.008 14.208 3.776 20.992L623.36 272.96z"></path>
+  <path d="M841.152 457.152c-30.528 0-54.784 24.512-54.784 54.656l0 274.752L237.696 786.56 237.696 237.696l206.016 0c6.656 0 10.752 0 13.248 0C487.68 237.696 512 213.184 512 182.848 512 152.32 487.36 128 456.96 128L183.04 128C153.216 128 128 152.576 128 182.848c0 3.136 0.256 6.272 0.768 9.28C128.256 195.136 128 198.272 128 201.408l0 639.488c0 0.064 0 0.192 0 0.256 0 0.128 0 0.192 0 0.32 0 30.528 24.512 54.784 54.784 54.784l646.976 0c6.592 0 9.728 0 11.712 0 28.736 0 52.928-22.976 54.464-51.968C896 843.264 896 842.304 896 841.344l0-20.352L896 561.408 896 512.128C896 481.792 871.424 457.152 841.152 457.152z"></path>
+</svg>
+
+              </i>
             </a>
           
         
@@ -231,15 +238,7 @@ if (!doNotTrack) {
   
 
   <header id="header" class="header container">
-    
-
-<link rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
-
-<div class="logo-wrapper">
+    <div class="logo-wrapper">
   <a href="/" class="logo">
     
       Steve Dong
@@ -250,7 +249,8 @@ if (!doNotTrack) {
 <nav class="site-navbar">
   <ul id="menu" class="menu">
     
-      <li class="menu-item">
+    
+        <li class="menu-item">
         
           
           
@@ -261,7 +261,7 @@ if (!doNotTrack) {
 
       </li>
     
-      <li class="menu-item">
+        <li class="menu-item">
         
           
           
@@ -272,7 +272,7 @@ if (!doNotTrack) {
 
       </li>
     
-      <li class="menu-item">
+        <li class="menu-item">
         
           
           
@@ -283,7 +283,7 @@ if (!doNotTrack) {
 
       </li>
     
-      <li class="menu-item">
+        <li class="menu-item">
         
           
           
@@ -294,7 +294,7 @@ if (!doNotTrack) {
 
       </li>
     
-      <li class="menu-item">
+        <li class="menu-item">
         
           
           
@@ -305,13 +305,22 @@ if (!doNotTrack) {
 
       </li>
     
-      <li class="menu-item">
+        <li class="menu-item">
         
           
           
             <a class="menu-item-link" href="https://echowings.github.com" rel="noopener" target="_blank">
               MyGitHub
-            <i class="iconfont icon-new-window"></i>
+              
+              <i class="iconfont">
+                <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M623.36 272.96 473.216 423.04C467.2 429.056 467.072 438.656 472.896 444.416c0 0-6.72-6.656 1.6 1.6C496.064 467.648 528.64 500.224 528.64 500.224 534.464 506.048 544 505.856 550.016 499.904l150.08-150.144 67.328 66.432c9.024 8.96 27.456 4.544 30.4-8.96 19.968-92.608 46.656-227.52 46.656-227.52 6.848-34.496-16.192-56.704-49.92-49.92 0 0-134.656 26.816-227.328 46.784C560.32 178.048 556.352 182.272 554.752 187.136c-3.2 6.208-3.008 14.208 3.776 20.992L623.36 272.96z"></path>
+  <path d="M841.152 457.152c-30.528 0-54.784 24.512-54.784 54.656l0 274.752L237.696 786.56 237.696 237.696l206.016 0c6.656 0 10.752 0 13.248 0C487.68 237.696 512 213.184 512 182.848 512 152.32 487.36 128 456.96 128L183.04 128C153.216 128 128 152.576 128 182.848c0 3.136 0.256 6.272 0.768 9.28C128.256 195.136 128 198.272 128 201.408l0 639.488c0 0.064 0 0.192 0 0.256 0 0.128 0 0.192 0 0.32 0 30.528 24.512 54.784 54.784 54.784l646.976 0c6.592 0 9.728 0 11.712 0 28.736 0 52.928-22.976 54.464-51.968C896 843.264 896 842.304 896 841.344l0-20.352L896 561.408 896 512.128C896 481.792 871.424 457.152 841.152 457.152z"></path>
+</svg>
+
+              </i>
             </a>
           
 
@@ -338,7 +347,10 @@ if (!doNotTrack) {
         <time datetime="2018-11-29" class="post-time">
           2018-11-29
         </time>
-        
+        <div class="post-category">
+            <a href="https://blog.stevedong.com/categories/programming/"> programming </a>
+            
+          </div>
         
 
         
@@ -356,15 +368,17 @@ if (!doNotTrack) {
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
+<li><a href="#python-development">Python Development</a>
+<ul>
 <li><a href="#python开发笔记-01-python开发入门">python开发笔记-01-python开发入门</a>
 <ul>
-<li><a href="#安装ptyhon开发工具和包">安装ptyhon开发工具和包</a>
-<ul>
+<li><a href="#安装ptyhon开发工具和包">安装ptyhon开发工具和包</a></li>
 <li><a href="#安装ubuntu-16-04">安装ubuntu 16.04</a></li>
 <li><a href="#安装系统相关依赖包">安装系统相关依赖包</a></li>
 <li><a href="#安装python相关依赖包">安装python相关依赖包</a></li>
-<li><a href="#通过pip安装开发用的软件">通过pip安装开发用的软件</a></li>
-<li><a href="#pbd调试">pbd调试</a></li>
+<li><a href="#多python版本使用">多python版本使用</a></li>
+<li><a href="#mercurial-为什么使用-mecurial-python编写-易于上手-内置web管理-支持bitbucket-用tortoisehg等gui客户端-安装mercurial">Mercurial 为什么使用 mecurial, python编写.易于上手.内置web管理,支持bitbucket,用TortoiseHg等GUI客户端. - 安装Mercurial</a></li>
+<li><a href="#python代码编辑器">python代码编辑器</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -376,20 +390,21 @@ if (!doNotTrack) {
     <div class="post-content">
       
 
-<h1 id="python开发笔记-01-python开发入门">python开发笔记-01-python开发入门</h1>
+<h1 id="python-development">Python Development</h1>
 
-<h2 id="安装ptyhon开发工具和包">安装ptyhon开发工具和包</h2>
+<h2 id="python开发笔记-01-python开发入门">python开发笔记-01-python开发入门</h2>
+
+<h3 id="安装ptyhon开发工具和包">安装ptyhon开发工具和包</h3>
 
 <h3 id="安装ubuntu-16-04">安装ubuntu 16.04</h3>
 
-<p>pass</p>
+<p>&hellip;pass&hellip;</p>
 
 <h3 id="安装系统相关依赖包">安装系统相关依赖包</h3>
 
 <p>build-essential包可以批量安装Python在Ubuntu上进行构建时所需的全部工具(gcc,make等).</p>
 
-<pre><code class="language-bash">
-sudo apt-get -y update &amp;&amp; \
+<pre><code class="language-bash">sudo apt-get -y update &amp;&amp; \
   sudo apt-get -y upgrade &amp;&amp;  \
   sudo apt-get install -y build-essential \
   libsqlite3-dev \
@@ -401,14 +416,11 @@ sudo apt-get -y update &amp;&amp; \
   tk-dev \
   zip \
   libssl-dev
-
 </code></pre>
 
 <h3 id="安装python相关依赖包">安装python相关依赖包</h3>
 
-<ul>
-<li>install python-dev和pip</li>
-</ul>
+<p>install python-dev和pip</p>
 
 <pre><code class="language-bash"># Install python-dev
 sudo apt-get -y install python-dev
@@ -417,13 +429,13 @@ sudo apt-get -y install python-dev
 wget https://bootstrap.pypa.io/get-pip.py
 sudo python get-pip.py
 
+
 #在python 3.4和python2.7.9之后加入了 ensurepip模块,也就是安装python的时候默认捆绑安装pip,更新pip使用
 #python -m ensurepip -U
 sudo python -m pip install --upgrade pip
-
 </code></pre>
 
-<p>使用get-pip.py来安装最新版本的pip</p>
+<p>##使用get-pip.py来安装最新版本的pip</p>
 
 <ul>
 <li>查看python版本</li>
@@ -441,9 +453,8 @@ Python 2.7.12
 pip 18.1 from /usr/local/lib/python2.7/dist-packages/pip (python 2.7)
 </code></pre>
 
-<h3 id="通过pip安装开发用的软件">通过pip安装开发用的软件</h3>
-
 <ul>
+<li>通过pip安装开发用的软件</li>
 <li>安装virtualenv包</li>
 </ul>
 
@@ -453,19 +464,16 @@ Collecting virtualenv
     100% |################################| 1.9MB 2.5MB/s
 Installing collected packages: virtualenv
 Successfully installed virtualenv-16.1.0
+virtualenv 的使用方法 virtualenv是搭建虚拟的python执行环境.
+  $ virtualenv --version
+  16.1.0
 </code></pre>
 
 <ul>
-<li>virtualenv 的使用方法
-virtualenv是搭建虚拟的python执行环境.</li>
+<li>查看当前pip 安装的软件</li>
 </ul>
 
-<pre><code class="language-bash">  $ virtualenv --version
-  16.1.0
-
-  # 查看当前pip 安装的软件
-
-  $ pip freeze 
+<pre><code class="language-bash">  $ pip freeze 
   ansible==2.7.2
 asn1crypto==0.24.0
 bcrypt==3.1.4
@@ -495,7 +503,6 @@ virtualenv==16.1.0
  New python executable in /home/user1/work/venv/bin/python
 Installing setuptools, pip, wheel...
 done. 
- 
 </code></pre>
 
 <ul>
@@ -506,38 +513,30 @@ done.
  (venv) user1@python-dev-env:~/work$
 #使用pip freeze查看已经安装pip包为空
  $pip freeze
- 
-
- 
 </code></pre>
 
-<pre><code>- 关闭virtualenv环境
+<ul>
+<li>关闭virtualenv环境</li>
+</ul>
 
-``` bash
-$ deactivate
-```
-
-- 删除virtualenv
-
-```bash
-rm -R vienv
-```
-
-###多python版本使用
+<pre><code class="language-bash">$ deactivate
 </code></pre>
+
+<ul>
+<li>删除virtualenv</li>
+</ul>
+
+<pre><code class="language-bash">rm -R vienv
+</code></pre>
+
+<h3 id="多python版本使用">多python版本使用</h3>
 
 <pre><code class="language-bash">user1@python-dev-env:~/work$ python3 -V
 Python 3.5.2
 user1@python-dev-env:~/work$ python2 -V
 Python 2.7.12   
-</code></pre>
-
-<ul>
-<li>使用virtualenv 设置不同版本的python
-<br /></li>
-</ul>
-
-<pre><code class="language-bash">mkdir -p ~/work/venv-python2
+使用virtualenv 设置不同版本的python 
+mkdir -p ~/work/venv-python2
 mkdir -p ~/work/venv-python3
 cd ~/work
 virtualenv --python=/usr/bin/python2 venv-python2
@@ -549,50 +548,33 @@ deactivate
 source venv-python3/bin/activate
 python -V
 deactivate
-
-   
 </code></pre>
 
-<p>### Mercurial
-   为什么使用 mecurial, python编写.易于上手.内置web管理,支持bitbucket,用TortoiseHg等GUI客户端.
-    - 安装Mercurial</p>
+<h3 id="mercurial-为什么使用-mecurial-python编写-易于上手-内置web管理-支持bitbucket-用tortoisehg等gui客户端-安装mercurial">Mercurial 为什么使用 mecurial, python编写.易于上手.内置web管理,支持bitbucket,用TortoiseHg等GUI客户端. - 安装Mercurial</h3>
 
-<pre><code>``` bash
-$sudo pip install mercurial
+<pre><code class="language-bash">$sudo pip install mercurial
 Collecting mercurial
+Downloading https://files.pythonhosted.org/packages/6a/f4/4c3d3a2bf950f3261f506284952e23cee2b62e50eb8974aa961228a95e8a/mercurial-4.8.tar.gz (6.9MB) 100% |################################| 6.9MB 1.3MB/s Installing collected packages: mercurial Running setup.py install for mercurial … done Successfully installed mercurial-4.8 
+
 </code></pre>
 
-<p>Downloading <a href="https://files.pythonhosted.org/packages/6a/f4/4c3d3a2bf950f3261f506284952e23cee2b62e50eb8974aa961228a95e8a/mercurial-4.8.tar.gz">https://files.pythonhosted.org/packages/6a/f4/4c3d3a2bf950f3261f506284952e23cee2b62e50eb8974aa961228a95e8a/mercurial-4.8.tar.gz</a> (6.9MB)
-    100% |################################| 6.9MB 1.3MB/s
-Installing collected packages: mercurial
-  Running setup.py install for mercurial &hellip; done
-Successfully installed mercurial-4.8
-    ```</p>
+<ul>
+<li>安装zsh</li>
+</ul>
 
-<pre><code>- 安装zsh
-
-```bash
-sudo apt-get install zsh
+<pre><code class="language-bash">sudo apt-get install zsh
 sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;  
 # vi ~/.zhsrc
 plugins=(
+git bundler dotenv osx rake rbenv ruby mercurial )
+
+ZSH_THEME=“agnoster” 
+
 </code></pre>
 
-<p>git
-  bundler
-  dotenv
-  osx
-  rake
-  rbenv
-  ruby
-  mercurial
-  )</p>
-
-<p>ZSH_THEME=&ldquo;agnoster&rdquo;
-    ```</p>
-
-<pre><code>- 查看Mercurial版本
-</code></pre>
+<ul>
+<li>查看Mercurial版本</li>
+</ul>
 
 <pre><code class="language-bash">   user1@python-dev-env:~$ hg --version
 	Mercurial Distributed SCM (version 4.8)
@@ -603,27 +585,21 @@ plugins=(
 	warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 </code></pre>
 
-<pre><code>- 创建版本库
+<ul>
+<li>创建版本库</li>
+</ul>
 
-1. 创建Mercurial的环境设置文件.在主目录下创建.hgrc文件, 括号内的称为节(Section),如[ui]用来设置usernme的属性.username会想版本哭提交时候记录在日志里
-2. [Extensions]用来激活Mercurial附属的扩展工具,将扩展工具名写入[extensions],我们就可以使用该工具了.有一些工具不但要在Extension中设置,还要在pager中设置pager属性
-```
-vi ~/.hgrc
-```
+<ol>
+<li>创建Mercurial的环境设置文件.在主目录下创建.hgrc文件, 括号内的称为节(Section),如[ui]用来设置usernme的属性.username会想版本哭提交时候记录在日志里</li>
+<li>[Extensions]用来激活Mercurial附属的扩展工具,将扩展工具名写入[extensions],我们就可以使用该工具了.有一些工具不但要在Extension中设置,还要在pager中设置pager属性</li>
+</ol>
 
-```
+<pre><code class="language-bash">vi ~/.hgrc
 </code></pre>
 
-<p>[ui]
-  username=bpbook <a href="mailto:bpbook@beproud.jp">bpbook@beproud.jp</a>
-  [extensions]
-  color=
-  pager=
-  [pager]
-  pager=LESS=&lsquo;FSRX&rsquo; less</p>
+<p><code>[ui] username=bpbook bpbook@beproud.jp [extensions] color= pager= [pager] pager=LESS=‘FSRX’ less</code></p>
 
-<pre><code>
-  ``` mercurial
+<pre><code class="language-python">  mercurial
   mkdir ~/hgtest
   cd ~/hgtest
   hg init
@@ -661,53 +637,48 @@ vi ~/.hgrc
   
   # 撤销已经提交的内容
   $ hg commit --amend
-  
 </code></pre>
 
-<p>### python代码编辑器</p>
+<h3 id="python代码编辑器">python代码编辑器</h3>
 
-<pre><code>- vim
+<ul>
+<li>vim</li>
+</ul>
 
-``` vim
-&quot; 将“Tab”替换为“空格”
+<pre><code class="language-vim">&quot; 将“Tab”替换为“空格”
 setl expandtab
 &quot; 将“Tab”的“缩进幅度”改为 4
+setl tabstop=4 
+“ 自动缩进时的“缩进幅度”改为 4 
+setl shiftwidth=4 
+“ 按下键盘“Tab”键时插入的空格数 “ 这里设置为 0 就可以插入“tabstop”中设置的空格数了 
+setl softtabstop=0 
+“ 保存时删除行尾的空格 
+autocmd BufWritePre * :%s/\s+$//ge 
+“80 个字符换行 setlocal textwidth=80
+
 </code></pre>
 
-<p>setl tabstop=4
-   &ldquo; 自动缩进时的“缩进幅度”改为 4
-    setl shiftwidth=4
-    &ldquo; 按下键盘“Tab”键时插入的空格数
-    &ldquo; 这里设置为 0 就可以插入“tabstop”中设置的空格数了
-    setl     softtabstop=0
-    &ldquo; 保存时删除行尾的空格
-    autocmd BufWritePre * :%s/\s+$//ge
-    &ldquo;80 个字符换行
-    setlocal textwidth=80</p>
+<ul>
+<li>install neobundle.vim</li>
+</ul>
 
-<pre><code>```
-
- - install neobundle.vim
-
-```bash
- cd ~
+<pre><code class="language-bash"> cd ~
  curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
  vim ~/.vimrc
  NeoBundle 'nvie/vim-flake8'
- ```
 </code></pre>
 
-<h3 id="pbd调试">pbd调试</h3>
+<ul>
+<li>pbd调试</li>
+</ul>
 
-<pre><code class="language-python">     
-   	def add(x, y):
+<pre><code class="language-bash">   	def add(x, y):
    	    return x + y
 	x= 0
 	import pdb; pdb.set_trace() x = add(1, 2)
 
-</code></pre>
-
-<pre><code class="language-bash">$python pdbtest.py
+$python pdbtest.py
     
 &gt; pdbtest.py(7)&lt;module&gt;()
   -&gt; x = add(1, 2)
@@ -725,7 +696,7 @@ setl expandtab
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">2018-11-29</span>
+    <span class="item-content">2018-12-24</span>
   </p>
   
   <p class="copyright-item">
@@ -734,29 +705,61 @@ setl expandtab
   </p>
 </div>
 
+
     
     
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    
+    
+  </div>
+</div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          <a href="https://blog.stevedong.com/tags/python/">python</a>
+          
+        </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/ubuntu-chinese-language-support-and-lc_all_error/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Ubuntu Chinese Language Support and LC_ALL_ERROR</span>
+          <a class="prev" href="/post/how-to-remove-lc_ctype-error/">
+            
+            <i class="iconfont">
+              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+            </i>
+            <span class="prev-text nav-default">How to Remove LC_CTYPE Error</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         
           <a class="next" href="/post/ssh-login-without-password/">
             <span class="next-text nav-default">Ssh Login Without Password</span>
             <span class="prev-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
           </a>
       </nav>
     </footer>
   </article>
+
+  
+  
 
   
   
@@ -778,6 +781,10 @@ setl expandtab
   
 
   
+  
+    
+
+
 
         </div>
       </div>
@@ -785,16 +792,41 @@ setl expandtab
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="mailto:dongjunbo@gmail.com" rel="me noopener" class="iconfont icon-email"
-        title="email">
-      </a>
-      <a href="https://www.facebook.com/stevedongV" rel="me noopener" class="iconfont icon-facebook"
-        title="facebook" target="_blank">
-      </a>
-  <a href="https://blog.stevedong.com/index.xml" rel="noopener alternate" type="application/rss&#43;xml" class="iconfont icon-rss"
-    title="rss" target="_blank">
+  
+  
+    <a href="mailto:dongjunbo@gmail.com" rel="me noopener" class="iconfont"
+      title="email" >
+      <svg class="icon" viewBox="0 0 1451 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M664.781909 681.472759 0 97.881301C0 3.997201 71.046997 0 71.046997 0L474.477909 0 961.649408 0 1361.641813 0C1361.641813 0 1432.688811 3.997201 1432.688811 97.881301L771.345323 681.472759C771.345323 681.472759 764.482731 685.154773 753.594283 688.65053L753.594283 688.664858C741.602731 693.493018 729.424896 695.068979 718.077952 694.839748 706.731093 695.068979 694.553173 693.493018 682.561621 688.664858L682.561621 688.65053C671.644501 685.140446 664.781909 681.472759 664.781909 681.472759L664.781909 681.472759ZM718.063616 811.603883C693.779541 811.016482 658.879232 802.205449 619.10784 767.734955 542.989056 701.759633 0 212.052267 0 212.052267L0 942.809523C0 942.809523 0 1024 83.726336 1024L682.532949 1024 753.579947 1024 1348.948139 1024C1432.688811 1024 1432.688811 942.809523 1432.688811 942.809523L1432.688811 212.052267C1432.688811 212.052267 893.138176 701.759633 817.019477 767.734955 777.248 802.205449 742.347691 811.03081 718.063616 811.603883L718.063616 811.603883Z"></path>
+</svg>
+
+    </a>
+  
+    <a href="https://www.facebook.com/stevedongV" rel="me noopener" class="iconfont"
+      title="facebook"  target="_blank"
+      >
+      <svg class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="33" height="33">
+  <path d="M965.7344 2.7648c14.848 0 28.2624 5.5296 40.2432 16.6912C1017.9584 30.5152 1024 43.52 1024 58.2656l0 910.2336c0 14.848-6.0416 27.7504-18.0224 38.8096C993.8944 1018.4704 980.48 1024 965.7344 1024L704.9216 1024 704.9216 629.9648l133.2224 0 19.456-155.4432-152.576 0L705.024 373.0432c0-50.688 25.9072-76.0832 77.7216-76.0832l80.4864 0L863.232 163.5328c-27.7504-5.4272-67.4816-8.192-119.296-8.192-59.1872 0-106.8032 18.0224-142.9504 54.0672C564.736 245.5552 546.7136 296.0384 546.7136 360.7552l0 113.7664L413.4912 474.5216l0 155.4432 133.2224 0L546.7136 1024 55.5008 1024c-14.848 0-27.7504-5.5296-38.8096-16.6912C5.5296 996.2496 0 983.3472 0 968.4992L0 58.2656C0 43.52 5.5296 30.5152 16.6912 19.456c11.0592-11.0592 24.064-16.6912 38.8096-16.6912L965.7344 2.7648z"></path>
+</svg>
+
+    </a>
+
+
+<a href="https://blog.stevedong.com/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+    class="iconfont" title="rss" target="_blank">
+    <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="30" height="30">
+  <path d="M819.157333 1024C819.157333 574.592 449.408 204.8 0 204.8V0c561.706667 0 1024 462.293333 1024 1024h-204.842667zM140.416 743.04a140.8 140.8 0 0 1 140.501333 140.586667A140.928 140.928 0 0 1 140.074667 1024C62.72 1024 0 961.109333 0 883.626667s62.933333-140.544 140.416-140.586667zM678.784 1024h-199.04c0-263.210667-216.533333-479.786667-479.744-479.786667V345.173333c372.352 0 678.784 306.517333 678.784 678.826667z"></path>
+</svg>
+
   </a>
-  </div>
+  
+</div>
 
 <div class="copyright">
   <span class="power-by">
@@ -809,7 +841,16 @@ setl expandtab
     &copy;
     2018
     <span class="heart">
-      <i class="iconfont icon-heart"></i>
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
     </span><span class="author">
         Steve Dong
         
@@ -822,13 +863,26 @@ setl expandtab
     </footer>
 
     <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
+      <i class="iconfont">
+        
+        <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+      </i>
     </div>
   </div>
   
 <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js" integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin="anonymous"></script>
+
 
 
 
@@ -839,6 +893,8 @@ setl expandtab
     <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
     <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
   
+
+
 
 
 

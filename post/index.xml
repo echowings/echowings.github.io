@@ -6,180 +6,180 @@
     <description>Recent content in Posts on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 20 Dec 2018 10:59:36 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 24 Dec 2018 16:01:23 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Dockerfile for Overure</title>
-      <link>https://blog.stevedong.com/post/dockerfile-for-overure/</link>
-      <pubDate>Thu, 20 Dec 2018 10:59:36 +0800</pubDate>
+      <title>Proxmox Ve Network Adapter Pass Through</title>
+      <link>https://blog.stevedong.com/post/proxmox-ve-network-adapter-pass-through/</link>
+      <pubDate>Mon, 24 Dec 2018 16:01:23 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/dockerfile-for-overure/</guid>
-      <description>How to Wirte docker file for overture Hence we need to custom overture docker image as we desire, I write this dockerfile.
-How to map VOLUME and copy file from docker images to directory of docker host. When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.
-if [ &amp;quot;`ls -A /config`&amp;quot; = &amp;quot;&amp;quot; ]; then cp /srv/config.</description>
-    </item>
-    
-    <item>
-      <title>Install Powerdns and Mysql on Freebsd12</title>
-      <link>https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/</link>
-      <pubDate>Tue, 18 Dec 2018 23:29:00 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/</guid>
-      <description>Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&amp;quot;YES&amp;quot; service mysql-server restart  Database and User Configuration $ mysql mysql&amp;gt; create database powerdns charset = utf8; mysql&amp;gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&amp;gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&amp;gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&amp;gt; FLUSH PRIVILEGES;  For security, we also give the main admin password</description>
-    </item>
-    
-    <item>
-      <title>Run Overture on Docker or Freebsd</title>
-      <link>https://blog.stevedong.com/post/run-overture-on-docker-or-freebsd/</link>
-      <pubDate>Tue, 18 Dec 2018 18:47:15 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/run-overture-on-docker-or-freebsd/</guid>
-      <description>Run overture on Docker and FreeBSD 12 Dockerfile FROM ubuntu ENV foo /overture WORKDIR ${foo} RUN apt-get update &amp;amp;&amp;amp; apt-get install -y ca-certificates RUN printf &amp;quot;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.</description>
-    </item>
-    
-    <item>
-      <title>Proxmox Network Adapter Pass Through</title>
-      <link>https://blog.stevedong.com/post/proxmox-network-adapter-pass-through/</link>
-      <pubDate>Fri, 07 Dec 2018 12:24:24 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/proxmox-network-adapter-pass-through/</guid>
-      <description>Proxmox network apapter passw through Long time ago, I konw virtualization is go very good solution to server. But how about router build in virtualization? After tried to do it, I was failed. because virtual switch made networking very slow. So i just use dedicate server as a router.
+      <guid>https://blog.stevedong.com/post/proxmox-ve-network-adapter-pass-through/</guid>
+      <description>Proxmox Network Adapter Pass Through Long time ago, I konw virtualization is go very good solution to server. But how about router build in virtualization? After tried to do it, I was failed. because virtual switch made networking very slow. So i just use dedicate server as a router.
 Recently days, I just learn proxmox and find pci-e pass through function. I think maybe it is way to make routing virtualization.</description>
     </item>
     
     <item>
-      <title>Install Proxmox Ve on Debian 9</title>
-      <link>https://blog.stevedong.com/post/install-proxmox-ve-on-debian-9/</link>
-      <pubDate>Sat, 01 Dec 2018 18:36:14 +0800</pubDate>
+      <title>Dockerfile for Overture</title>
+      <link>https://blog.stevedong.com/post/dockerfile-for-overture/</link>
+      <pubDate>Mon, 24 Dec 2018 00:55:14 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/install-proxmox-ve-on-debian-9/</guid>
-      <description>Install Proxmox on Debian 9 via UTSC Mirrors in china Change your ip and hostname  Chang IP ADDRESS   Change your IP address to static.
-vi /etc/network/interfaces  # This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.</description>
+      <guid>https://blog.stevedong.com/post/dockerfile-for-overture/</guid>
+      <description>How to Wirte docker file for overture Hence we need to custom overture docker image as we desire, I write this dockerfile.
+When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running. ``` if [ &amp;quot;`ls -A /config`&amp;quot; = &amp;quot;&amp;quot; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.txt /config/; fi ```  Overture Dockerfile #FROM alpine:edge FROM alpine:latest MAINTAINER steve dong &amp;lt;dongjunbo@gmail.</description>
     </item>
     
     <item>
-      <title>Iperf_speedtest</title>
-      <link>https://blog.stevedong.com/post/iperf_speedtest/</link>
-      <pubDate>Thu, 29 Nov 2018 18:46:37 +0800</pubDate>
+      <title>Debian or Ubuntu Chinese Language Support</title>
+      <link>https://blog.stevedong.com/post/debian-or-ubuntu-chinese-language-support/</link>
+      <pubDate>Mon, 24 Dec 2018 00:39:51 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/iperf_speedtest/</guid>
-      <description>How to test network speed with iperf Install iperf sudo apt-get install iperf3  Testing network speed Testing network speed with UDP  Run command on server  iperf -s -u   Run command on client  iperf -c -u  Testing network speed with TCP  Server side.  iperf -s   Client side.  iperf -c ``` ## Command for ``` bash -s server -c client + server IP -u udp -b bandwith(the max bandwidth -t time,how long to send packet.</description>
+      <guid>https://blog.stevedong.com/post/debian-or-ubuntu-chinese-language-support/</guid>
+      <description>Ubuntu Chinese Language Support 编辑/etc/environment如下: vi /etc/environment 添加如下: LC_ALL=&amp;quot;en_US.UTF-8&amp;quot; LANG=&amp;quot;zh_CN.UTF-8&amp;quot; UNZIP=&#39;-O CP936&amp;quot; ZIPINFO=&amp;quot;-O CP936&amp;quot; 重新生成语言设置 sudo locale-gen en_US en_US.UTF-8 zh_CN zh_CN.UTF-8 sudo dpkg-reconfigure locales 中文支持 vim中文支持 编辑~/</description>
     </item>
     
     <item>
-      <title>Ubuntu Chinese Language Support and LC_ALL_ERROR</title>
-      <link>https://blog.stevedong.com/post/ubuntu-chinese-language-support-and-lc_all_error/</link>
-      <pubDate>Thu, 29 Nov 2018 16:38:50 +0800</pubDate>
+      <title>Install PowerDNS and Mysql on Freebsd12</title>
+      <link>https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/</link>
+      <pubDate>Tue, 18 Dec 2018 00:51:47 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/ubuntu-chinese-language-support-and-lc_all_error/</guid>
-      <description>Ubuntu的LC_ALL Error 和中文支持 LC_ALL ERROR处理办法 编辑/etc/environment如下: vi /etc/environment 添加如下: LC_ALL=&amp;quot;en_US.UTF-8&amp;quot; LANG=&amp;quot;zh_CN.UTF-8&amp;quot; UNZIP=&#39;-O CP936&amp;quot; ZIPINFO=&amp;quot;-O CP936&amp;quot; 重新生成语言设</description>
+      <guid>https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/</guid>
+      <description>Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&amp;quot;YES&amp;quot; service mysql-server restart  Database and User Configuration $ mysql mysql&amp;gt; create database powerdns charset = utf8; mysql&amp;gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&amp;gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&amp;gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&amp;gt; FLUSH PRIVILEGES; #For security, we also give the main admin password $ mysqladmin -u root password &amp;quot;PASSWORD_OF_ROOT&amp;quot;  Install powerdns pkg install powerdns  Reference  How to manage MySQL databases and users from the command line PowerDNS, PowerAdmin with Mysql in Freebsd 10.</description>
+    </item>
+    
+    <item>
+      <title>Deploy Overture With Docker and Freebsd</title>
+      <link>https://blog.stevedong.com/post/deploy-overture-with-docker-and-freebsd/</link>
+      <pubDate>Tue, 18 Dec 2018 00:44:13 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/deploy-overture-with-docker-and-freebsd/</guid>
+      <description>Run overture on Docker and FreeBSD 12 ENV foo /overture WORKDIR ${foo} RUN apt-get update &amp;amp;&amp;amp; apt-get install -y ca-certificates RUN printf &amp;quot;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.</description>
+    </item>
+    
+    <item>
+      <title>How to Install ProxmoxVE5</title>
+      <link>https://blog.stevedong.com/post/how-to-install-proxmoxve5.x-on-debian9/</link>
+      <pubDate>Sat, 01 Dec 2018 00:02:28 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-install-proxmoxve5.x-on-debian9/</guid>
+      <description>Install Proxmox Ve on Debian 9 Install Proxmox on Debian 9 via UTSC Mirrors in china Change your ip and hostname Chang IP ADDRESS Change your IP address to static. vi /etc/network/interfaces
+# This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.</description>
+    </item>
+    
+    <item>
+      <title>How to Testing Network Bandwith With Iperf</title>
+      <link>https://blog.stevedong.com/post/how-to-testing-network-bandwith-with-iperf/</link>
+      <pubDate>Thu, 29 Nov 2018 23:52:57 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-testing-network-bandwith-with-iperf/</guid>
+      <description>How to test network speed with iperf Install iperf sudo apt-get install iperf3  Testing network speed Testing network speed with UDP  Run command on server   iperf -s -u   Run command on client   iperf -c -u   Testing network speed with TCP
+ Server side.   iperf -s   Client side.   iperf -c  Command for -s server -c client + server IP -u udp -b bandwith(the max bandwidth -t time,how long to send packet.</description>
+    </item>
+    
+    <item>
+      <title>How to Remove LC_CTYPE Error</title>
+      <link>https://blog.stevedong.com/post/how-to-remove-lc_ctype-error/</link>
+      <pubDate>Thu, 29 Nov 2018 23:48:32 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-remove-lc_ctype-error/</guid>
+      <description>apt-get autoremove export LC_ALL=en_US.UTF-8 echo &amp;quot;en_US.UTF-8 UTF-8&amp;quot; &amp;gt;&amp;gt; /etc/locale.gen locale-gen  </description>
     </item>
     
     <item>
       <title>Python Development 01</title>
       <link>https://blog.stevedong.com/post/python-development-01/</link>
-      <pubDate>Thu, 29 Nov 2018 10:23:20 +0800</pubDate>
+      <pubDate>Thu, 29 Nov 2018 00:28:31 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/python-development-01/</guid>
-      <description>python开发笔记-01-python开发入门 安装ptyhon开发工具和包 安装ubuntu 16.04 pass 安装系统相关依赖包 build-essenti</description>
+      <description>Python Development python开发笔记-01-python开发入门 安装ptyhon开发工具和包 安装ubuntu 16.04 &amp;hellip;pass&amp;hellip; 安装系统相关依赖包 build-essen</description>
     </item>
     
     <item>
       <title>Ssh Login Without Password</title>
       <link>https://blog.stevedong.com/post/ssh-login-without-password/</link>
-      <pubDate>Thu, 29 Nov 2018 10:07:54 +0800</pubDate>
+      <pubDate>Thu, 29 Nov 2018 00:22:57 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/ssh-login-without-password/</guid>
-      <description> SSH login linux/unix without password General your key ssh-keygen-t rsa  copy your rsa.pub to server which you want to login without password. ssh-copy-id -i ~/.ssh/id_rsa.pub user1@$server-hosts  Test login. ssh user1@$server-hosts  </description>
+      <description> Ssh Login Without Password SSH login linux/unix without password General your key ssh-keygen-t rsa  copy your rsa.pub to server which you want to login without password. ssh-copy-id -i ~/.ssh/id_rsa.pub user1@$server-hosts  Test login ssh user1@$server-hosts  </description>
     </item>
     
     <item>
-      <title>How to Slove Ubuntu18 with LC_CTYPE Error</title>
-      <link>https://blog.stevedong.com/post/how-to-solve-ubuntu18.04-with-error-lc_ctype-message/</link>
-      <pubDate>Sat, 24 Nov 2018 03:44:25 +0800</pubDate>
+      <title>Proxmoxve VE V5.x Installation</title>
+      <link>https://blog.stevedong.com/post/proxmoxve-v5.x-installation/</link>
+      <pubDate>Mon, 19 Nov 2018 23:38:39 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/how-to-solve-ubuntu18.04-with-error-lc_ctype-message/</guid>
-      <description>How to slove the problems that Ubuntu with LC_CTYPE Error Whe you met prolems with this error:
-locale: Cannot set LC_CTYPE to default locale: No such file or directory locale: Cannot set LC_MESSAGES to default locale: No such file or directory locale: Cannot set LC_ALL to default locale: No such file or directory  Solution  chang /etc/default/locale to :  LANG=&amp;quot;en_US.UTF-8&amp;quot; LC_NUMERIC=&amp;quot;en_US.UTF-8&amp;quot; LC_TIME=&amp;quot;en_US.UTF-8&amp;quot; LC_MONETARY=&amp;quot;en_US.UTF-8&amp;quot; LC_PAPER=&amp;quot;en_US.UTF-8&amp;quot; LC_NAME=&amp;quot;en_US.UTF-8&amp;quot; LC_ADDRESS=&amp;quot;en_US.UTF-8&amp;quot; LC_TELEPHONE=&amp;quot;en_US.UTF-8&amp;quot; LC_MEASUREMENT=&amp;quot;en_US.</description>
-    </item>
-    
-    <item>
-      <title>Proxmox VE 5.x Installation</title>
-      <link>https://blog.stevedong.com/post/proxmox-installation/</link>
-      <pubDate>Mon, 19 Nov 2018 13:31:09 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/proxmox-installation/</guid>
-      <description>Proxmox notebook 01 Proxmox won&amp;rsquo;t install- &amp;ldquo;A volume group called pve already exists Solution
- Boot the proxmox installer USB Select Debug Mode Press &amp;ldquo;CTRL+D&amp;rdquo; to start the installer wizard. Click on abort Run &amp;ldquo;vgdisplay&amp;rdquo; to dislay the LVM PG&amp;rsquo;s. Run &amp;ldquo;vgremode pve &amp;rdquo; to remove pve PG.  Remove &amp;ldquo;No valid Subscription&amp;rdquo; Message sed -i.bak &amp;quot;s/data.status !== &#39;Active&#39;/false/g&amp;quot; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;amp;&amp;amp; systemctl restart pveproxy.service  or change it manually.</description>
+      <guid>https://blog.stevedong.com/post/proxmoxve-v5.x-installation/</guid>
+      <description>Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
+ Boot the proxmox installer USB Select Debug Mode Press “CTRL+D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &amp;quot;s/data.status !== &#39;Active&#39;/false/g&amp;quot; \ /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js \ &amp;amp;&amp;amp; systemctl restart pveproxy.</description>
     </item>
     
     <item>
       <title>Linux in Action 01</title>
       <link>https://blog.stevedong.com/post/linux-in-action-01/</link>
-      <pubDate>Fri, 16 Nov 2018 11:53:52 +0800</pubDate>
+      <pubDate>Fri, 16 Nov 2018 23:34:58 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/linux-in-action-01/</guid>
-      <description>[翻译]Linux实战 前言 作为IT运维人员或者程序员,不论做什么或做多久.如果你不学习新东西,你可能现在已经已经转行了.不仅仅是平台或者技术</description>
+      <description>Linux In Action-[翻译]Linux实战 前言 作为IT运维人员或者程序员,不论做什么或做多久.如果你不学习新东西,你可能现在已经已经转行了.不</description>
     </item>
     
     <item>
-      <title>How to Setup Reverse proxy on IIS</title>
-      <link>https://blog.stevedong.com/post/how-to-setup-reverseproxy-on-iis/</link>
-      <pubDate>Tue, 06 Nov 2018 15:59:44 +0800</pubDate>
+      <title>How to Setup Reverse Proxy With Iis</title>
+      <link>https://blog.stevedong.com/post/how-to-setup-reverse-proxy-with-iis/</link>
+      <pubDate>Tue, 06 Nov 2018 23:26:18 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/how-to-setup-reverseproxy-on-iis/</guid>
-      <description>How to Setup Reverse proxy on IIS I testing it on Server 2016 with IIS 10 Install IIS,URL _REWRITE, ARR Install IIS. Download and install URL Rewrite Module 2.1 Download and install ARR-Application-request-routing Setting Reverse Proxy Select Root level in IIS management Click &amp;lsquo;Application Request Routing Cache&amp;rsquo;,then in the right side, click &amp;ldquo;proxy | Server proxy Settings | Check on &amp;ldquo;Enable proxy&amp;rdquo; | save config. Select website in IIS. Click</description>
+      <guid>https://blog.stevedong.com/post/how-to-setup-reverse-proxy-with-iis/</guid>
+      <description>How to Setup Reverse proxy with IIS I testing it on Server 2016 with IIS 10 Install IIS,URL _REWRITE, ARR Install IIS. Download and install URL Rewrite Module 2.1 Download and install ARR-Application-request-routing Setting Reverse Proxy Select Root level in IIS management Click ‘Application Request Routing Cache’,then in the</description>
     </item>
     
     <item>
-      <title>Kvm Virtualization 01</title>
-      <link>https://blog.stevedong.com/post/kvm-virtualization-01/</link>
-      <pubDate>Fri, 26 Oct 2018 23:08:47 +0800</pubDate>
+      <title>Kvm Virtualization 01 Introduction</title>
+      <link>https://blog.stevedong.com/post/kvm-virtualization-01-introduction/</link>
+      <pubDate>Fri, 26 Oct 2018 23:22:46 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/kvm-virtualization-01/</guid>
-      <description>KVM virtualization serial Today we are start to learn kvm virtulization After try to find which is the right open source virtulization solution,which include Bhyver, Trolin/smartos, ovirt, OpenStack.
+      <guid>https://blog.stevedong.com/post/kvm-virtualization-01-introduction/</guid>
+      <description>KVM virtualization-01 Introduction Today we are start to learn kvm virtulization After try to find which is the right open source virtulization solution,which include Bhyver, Trolin/smartos, ovirt, OpenStack.
  Openstack is too heavy and it is suitable for you have thousands of host to managament. bhyver is base freebsd, and it has a web managment system named Clonos which write by a russian Less support. smartos/Trolin is a opensolaris base .</description>
     </item>
     
     <item>
-      <title>Learning build Network with vyos</title>
-      <link>https://blog.stevedong.com/post/learning-build-network-with-vyos-01-install-vyos/</link>
-      <pubDate>Fri, 26 Oct 2018 18:18:53 +0800</pubDate>
+      <title>Building Network With Vyos 01---Basic Installing and Configuration</title>
+      <link>https://blog.stevedong.com/post/building-network-with-vyos-01-basic-installing-and-configuration/</link>
+      <pubDate>Fri, 26 Oct 2018 22:44:02 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/learning-build-network-with-vyos-01-install-vyos/</guid>
-      <description>Learning Networking with Vyos  Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn&amp;rsquo;t web UI, but only command line configration just like JUNOS.
- At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.
-  Install vyos Download vyos form the office website:  Download Link: vyos-1.2.0-rc-4-amd64  Write iso image to usb disk  Linux and Mac:   ddi if=vyos-1.</description>
+      <guid>https://blog.stevedong.com/post/building-network-with-vyos-01-basic-installing-and-configuration/</guid>
+      <description>Building Network With Vyos.-.01.Basic Installing and Configuration Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn’t web UI, but only command line configration just like JUNOS.
+At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.
+Install vyos  Download vyos form the office website:
+ Download Link: vyos-1.2.0-rc-4-amd64    Write iso image to usb disk  Linux and Mac:  ddi if=vyos-1.</description>
     </item>
     
     <item>
-      <title>How to Install Dotnetcore2.1.x and Aspdotnetcore2.1.x on RHEL6.x or CentOS6</title>
-      <link>https://blog.stevedong.com/post/how-to-install-dotnetcore2.1.x-and-aspdotnetcore2.1.x-on-rhel6.x-or-centos6.x/</link>
-      <pubDate>Fri, 26 Oct 2018 13:03:10 +0800</pubDate>
+      <title>How to Install Dotnetcore2.1.x and Asp.net21.x on RHEL6.x CENTOS6</title>
+      <link>https://blog.stevedong.com/post/how-to-install-dotnetcore2.1.x-and-asp.net21.x-on-rhel6.x-centos6.x/</link>
+      <pubDate>Fri, 26 Oct 2018 22:29:04 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/how-to-install-dotnetcore2.1.x-and-aspdotnetcore2.1.x-on-rhel6.x-or-centos6.x/</guid>
+      <guid>https://blog.stevedong.com/post/how-to-install-dotnetcore2.1.x-and-asp.net21.x-on-rhel6.x-centos6.x/</guid>
       <description>How to install netcore/aspnetcore 2.1.4 on RHEL 6.8 Recently days, we met a scenario that is our client production environment must be RHEL 6.8. But our product is base asp.net core 2.1.x version. Rehat and Microsoft has never say the are support RHEL 6.X version.
 After a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core.</description>
     </item>
     
     <item>
       <title>How to Build Blog With Hugo on Github</title>
-      <link>https://blog.stevedong.com/post/how-to-build-blog-with-hugo-on-github.io/</link>
-      <pubDate>Fri, 26 Oct 2018 09:47:14 +0800</pubDate>
+      <link>https://blog.stevedong.com/post/how-to-build-blog-with-hugo-on-github/</link>
+      <pubDate>Fri, 26 Oct 2018 21:57:33 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/how-to-build-blog-with-hugo-on-github.io/</guid>
-      <description>How to build a blog with Hugo on github.io Hugo on your MacOS Setting github create a repo named blogs for store hugo programes. Create another repo named echowings.github.io to host websit. generate ssh key and regist it on github settings. Install hugo brew install hugo Create a blog site. hugo new site blogs init git cd blogs git init Add remote repo. git remote add origin git@github.com:echowings/blogs.git Add a</description>
+      <guid>https://blog.stevedong.com/post/how-to-build-blog-with-hugo-on-github/</guid>
+      <description>Hugo on your MacOS Setting github create a repo named blogs for store hugo programes. Create another repo named echowings.github.io to host websit. generate ssh key and regist it on github settings. Install hugo brew install hugo Create a blog site. hugo new site blogs init git cd blogs git init #Add remote repo. git remote add origin git@github.com:echowings/blogs.git #Add a theme for your hugo. git submodule add -b master</description>
     </item>
     
     <item>
-      <title>Fist_Blog</title>
-      <link>https://blog.stevedong.com/post/fist_blog/</link>
-      <pubDate>Fri, 26 Oct 2018 08:57:41 +0800</pubDate>
+      <title>First_Blog</title>
+      <link>https://blog.stevedong.com/post/first-blog/</link>
+      <pubDate>Fri, 26 Oct 2018 21:46:42 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/fist_blog/</guid>
+      <guid>https://blog.stevedong.com/post/first-blog/</guid>
       <description>A journey of a thousand miles begins with a single step THis a blog to be build as my knowleage base.</description>
     </item>
     
