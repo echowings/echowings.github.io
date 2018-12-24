@@ -69,7 +69,7 @@
 
 <meta itemprop="datePublished" content="2018-10-26T21:57:33&#43;08:00" />
 <meta itemprop="dateModified" content="2018-10-26T21:57:33&#43;08:00" />
-<meta itemprop="wordCount" content="374">
+<meta itemprop="wordCount" content="444">
 
 
 
@@ -376,6 +376,7 @@ if (!doNotTrack) {
 <ul>
 <li><a href="#change-configure">Change configure</a></li>
 </ul></li>
+<li><a href="#add-syntax-highlight">Add syntax highlight</a></li>
 </ul></li>
 <li><a href="#deploy-your-blog-to-github">Deploy your blog to github</a>
 <ul>
@@ -407,15 +408,18 @@ if (!doNotTrack) {
 <ul>
 <li>Install hugo</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install hugo</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  
+brew install hugo</code></pre></div>
 <ul>
 <li>Create a blog site.</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new site blogs</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  
+hugo new site blogs</code></pre></div>
 <ul>
 <li>init git</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> blogs
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> 
+<span style="color:#366">cd</span> blogs
 git init
 <span style="color:#09f;font-style:italic">#Add remote repo.</span> 
 git remote add origin git@github.com:echowings/blogs.git
@@ -424,10 +428,12 @@ git submodule add -b master https://github.com/xianmin/hugo-theme-jane.git theme
 cp -r themes/jane/exampleSite/content ./
 cp themes/jane/exampleSite/config.toml ./</code></pre></div>
 <ul>
-<li><p>Test hugo at local.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo server</code></pre></div></li>
-
-<li><p>You can access <a href="http://localhost:1313">http://localhost:1313</a> to test your blog in local.</p></li>
+<li>Test hugo at local.</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">	
+hugo server</code></pre></div>
+<ul>
+<li>You can access <a href="http://localhost:1313">http://localhost:1313</a> to test your blog in local.</li>
 </ul>
 
 <h4 id="change-configure">Change configure</h4>
@@ -435,29 +441,29 @@ cp themes/jane/exampleSite/config.toml ./</code></pre></div>
 <ul>
 <li>Modifiy vi config.toml</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#Change URL</span>
-<span style="color:#033">baseURL</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;https://blog.stevedong.com&#34;</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#09f;font-style:italic">#Change URL</span>
+baseURL = <span style="color:#c30">&#34;https://blog.stevedong.com&#34;</span>
 
 <span style="color:#09f;font-style:italic">#Change Title</span>
-<span style="color:#033">title</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;Steve Dong - A System Administrator&#39;s Blog&#34;</span>
+title = <span style="color:#c30">&#34;Steve Dong - A System Administrator&#39;s Blog&#34;</span>
 
 <span style="color:#09f;font-style:italic">#Change theme to jane</span>
-<span style="color:#033">theme</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;jane&#34;</span>
+theme = <span style="color:#c30">&#34;jane&#34;</span>
 
 <span style="color:#09f;font-style:italic">#How many pages will be displayed on homepage.</span>
-<span style="color:#033">pageinate</span> <span style="color:#555">=</span> <span style="color:#f60">15</span>
+pageinate = <span style="color:#f60">15</span>
 
 <span style="color:#09f;font-style:italic"># Display how many pages will be displayed on archive page.</span>
-archive-paginate <span style="color:#555">=</span> <span style="color:#f60">50</span>
+archive<span style="color:#a00;background-color:#faa">-</span>paginate = <span style="color:#f60">50</span>
 
 <span style="color:#09f;font-style:italic">#RSS limite.</span>
-<span style="color:#033">rssLimit</span> <span style="color:#555">=</span> <span style="color:#f60">50</span>
+rssLimit = <span style="color:#f60">50</span>
 
 <span style="color:#09f;font-style:italic">#google analytics related</span>
-<span style="color:#033">googleAnalytics</span><span style="color:#555">=</span> <span style="color:#c30">&#34;UA-xxxxxxxx-X&#34;</span>
+googleAnalytics= <span style="color:#c30">&#34;UA-xxxxxxxx-X&#34;</span>
 
 <span style="color:#09f;font-style:italic"># Chang author</span>
-<span style="color:#033">name</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;Steve Dong&#34;</span>
+name = <span style="color:#c30">&#34;Steve Dong&#34;</span>
 
  <span style="color:#09f;font-style:italic"># Commit the meanu &#34;External Link&#34;</span>
  <span style="color:#09f;font-style:italic">#[[menu.main]]</span>
@@ -467,33 +473,49 @@ archive-paginate <span style="color:#555">=</span> <span style="color:#f60">50</
  
  <span style="color:#09f;font-style:italic">#Change Site creation time</span>
  
- <span style="color:#555">[</span>params<span style="color:#555">]</span>
- 	<span style="color:#033">since</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;2018&#34;</span>
+ [params]
+ 	since = <span style="color:#c30">&#34;2018&#34;</span>
  	
-	<span style="color:#033">logoTitle</span><span style="color:#555">=</span> <span style="color:#c30">&#34;Steve Dong&#34;</span>
-	<span style="color:#033">keywords</span> <span style="color:#555">=</span> <span style="color:#555">[</span><span style="color:#c30">&#34;network&#34;</span>, <span style="color:#c30">&#34;devops&#39;, &#34;</span>System Administrator<span style="color:#c30">&#34;]</span></code></pre></div>
+	logoTitle= <span style="color:#c30">&#34;Steve Dong&#34;</span>
+	keywords = [<span style="color:#c30">&#34;network&#34;</span>, <span style="color:#c30">&#34;devops&#39;, &#34;</span>System Administrator<span style="color:#a00;background-color:#faa">&#34;</span>]</code></pre></div>
+<h3 id="add-syntax-highlight">Add syntax highlight</h3>
+
+<p><code>vi config.toml</code></p>
+
+<p>add</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">pygmentsCodefences = <span style="color:#069;font-weight:bold">true</span> <span style="color:#09f;font-style:italic">#高亮markdown的代码块</span>
+pygmentsCodefencesGuessSyntax = <span style="color:#069;font-weight:bold">true</span> <span style="color:#09f;font-style:italic">#高亮markdown中没有标注语言的代码块</span>
+pygmentsStyle = <span style="color:#c30">&#39;manni&#39;</span> <span style="color:#09f;font-style:italic">#高亮主题</span></code></pre></div>
 <h2 id="deploy-your-blog-to-github">Deploy your blog to github</h2>
 
 <ul>
 <li>Add repo of blog website.</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  git submodule add --force -b master <span style="color:#c30;font-weight:bold">\ </span>
-	git@github.com:echowings/echowings.github.io.git public  </code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   
+git submodule add --force -b <span style="color:#c30;font-weight:bold">\ </span>
+	master git@github.com:echowings/echowings.github.io.git public  
+	</code></pre></div>
 <ul>
 <li><p>Run hugo to generate your blog website.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hugo server</code></pre></div></li>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">    
+hugo server
+    </code></pre></div></li>
 
 <li><p>publish your website</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> public
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    
+<span style="color:#366">cd</span> public
 git add.
 git commit -m <span style="color:#c30">&#34;YOUR COMMIT MESSAGE&#34;</span>
-git push origin master</code></pre></div></li>
+git push origin master
+    </code></pre></div></li>
 
 <li><p>Backup your hugo blog to github</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> ..
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    
+<span style="color:#366">cd</span> ..
 git add.
 git commit -m <span style="color:#c30">&#34;YOUR COMMIT MESSAGE&#34;</span>
-git push origin master</code></pre></div></li>
+git push origin master
+    </code></pre></div></li>
 </ul>
 
 <h3 id="add-a-comment">Add a comment</h3>
@@ -510,19 +532,21 @@ git push origin master</code></pre></div></li>
 <li>Auth utterances to your github repo “blogcomment”.</li>
 </ol></li>
 
-<li><p>edit <code>blogs/config.toml</code> and append follow lines.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#555">[</span>params.utteranc<span style="color:#555">]</span>
-  <span style="color:#366">enable</span> <span style="color:#555">=</span> <span style="color:#366">true</span>
-  <span style="color:#033">repo</span><span style="color:#555">=</span><span style="color:#c30">&#34;echowings/blogcomment&#34;</span>
-  <span style="color:#033">issueTerm</span><span style="color:#555">=</span><span style="color:#c30">&#34;pathname&#34;</span></code></pre></div></li>
+<li><p>edit <code>blogs/config.toml</code> and append follow lines.</p></li>
 </ul>
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">	
+ [params.utteranc]
+      enable = <span style="color:#069;font-weight:bold">true</span>
+      repo=<span style="color:#c30">&#34;echowings/blogcomment&#34;</span>
+      issueTerm=<span style="color:#c30">&#34;pathname&#34;</span>
+      </code></pre></div>
 <h2 id="reference">Reference</h2>
 
 <ol>
 <li><a href="https://utteranc.es/">utterances</a></li>
 <li><a href="https://github.com/xianmin/hugo-theme-jane/blob/master/exampleSite/config.toml">hugo-theme-jane/dev-config.toml</a></li>
 <li><a href="https://keysaim.github.io/post/blog/deploy-hugo-blog-in-github.io/">如何在github.io搭建Hugo博客站</a></li>
+<li><a href="https://steemkr.com/cn/@heyeshuang/chroma-typography-js">用chroma进行语法高亮</a></li>
 </ol>
 
     </div>
