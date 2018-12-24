@@ -69,7 +69,7 @@
 
 <meta itemprop="datePublished" content="2018-10-26T21:57:33&#43;08:00" />
 <meta itemprop="dateModified" content="2018-10-26T21:57:33&#43;08:00" />
-<meta itemprop="wordCount" content="444">
+<meta itemprop="wordCount" content="468">
 
 
 
@@ -381,6 +381,7 @@ if (!doNotTrack) {
 <li><a href="#deploy-your-blog-to-github">Deploy your blog to github</a>
 <ul>
 <li><a href="#add-a-comment">Add a comment</a></li>
+<li><a href="#download-git-and-rebuild-blog-environment">Download git and rebuild blog environment</a></li>
 </ul></li>
 <li><a href="#reference">Reference</a></li>
 </ul></li>
@@ -540,6 +541,11 @@ git push origin master
       repo=<span style="color:#c30">&#34;echowings/blogcomment&#34;</span>
       issueTerm=<span style="color:#c30">&#34;pathname&#34;</span>
       </code></pre></div>
+<h3 id="download-git-and-rebuild-blog-environment">Download git and rebuild blog environment</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">git pulll git@github.com:echowings/blogs.git
+
+<span style="color:#09f;font-style:italic">#if public already exsited  run `rm public`</span>
+git submodule add --force -b master git@github.com:echowings/echowings.github.io.git public</code></pre></div>
 <h2 id="reference">Reference</h2>
 
 <ol>
