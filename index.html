@@ -395,7 +395,8 @@ Recently days, I just learn proxmox and find pci-e pass through function. I thin
     
     <div class="post-summary">
       How to Wirte docker file for overture Hence we need to custom overture docker image as we desire, I write this dockerfile.
-When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running. ``` if [ &#34;`ls -A /config`&#34; = &#34;&#34; ]; then cp /srv/config.json /config/ &amp;&amp; cp /srv/*.txt /config/; fi ```  Overture Dockerfile #FROM alpine:edge FROM alpine:latest MAINTAINER steve dong &lt;dongjunbo@gmail.
+How to map VOLUME and copy file from docker images to directory of docker host. When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.
+if [ &ldquo;ls -A /config&rdquo; = &ldquo;&rdquo; ]; then cp /srv/config.
     </div>
     <div class="read-more">
       <a href="/post/dockerfile-for-overture/" class="read-more-link">Read more</a>

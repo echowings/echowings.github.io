@@ -18,7 +18,8 @@
       
       <guid>https://blog.stevedong.com/post/dockerfile-for-overture/</guid>
       <description>How to Wirte docker file for overture Hence we need to custom overture docker image as we desire, I write this dockerfile.
-When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running. ``` if [ &amp;#34;`ls -A /config`&amp;#34; = &amp;#34;&amp;#34; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.txt /config/; fi ```  Overture Dockerfile #FROM alpine:edge FROM alpine:latest MAINTAINER steve dong &amp;lt;dongjunbo@gmail.</description>
+How to map VOLUME and copy file from docker images to directory of docker host. When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.
+if [ &amp;ldquo;ls -A /config&amp;rdquo; = &amp;ldquo;&amp;rdquo; ]; then cp /srv/config.</description>
     </item>
     
     <item>

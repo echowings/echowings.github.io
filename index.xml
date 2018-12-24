@@ -155,10 +155,12 @@ vfio_virqfd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h1 id=&#34;how-to-wirte-docker-file-for-overture&#34;&gt;How to Wirte docker file for overture&lt;/h1&gt;
 
 &lt;p&gt;Hence we need to custom overture docker image as we desire, I write this dockerfile.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-How to map VOLUME and copy file from docker images to directory of docker host.&#34; data-lang=&#34;How to map VOLUME and copy file from docker images to directory of docker host.&#34;&gt;When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.
-```
- if [ &amp;#34;`ls -A /config`&amp;#34; = &amp;#34;&amp;#34; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.txt /config/; fi
-``` &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;del&gt;How to map VOLUME and copy file from docker images to directory of docker host.&lt;/del&gt;
+&lt;del&gt;When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;del&gt;if [ &amp;ldquo;&lt;code&gt;ls -A /config&lt;/code&gt;&amp;rdquo; = &amp;ldquo;&amp;rdquo; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.txt /config/;fi&lt;/del&gt;&lt;/p&gt;
+
 &lt;h2 id=&#34;overture-dockerfile&#34;&gt;Overture Dockerfile&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-dockfile&#34; data-lang=&#34;dockfile&#34;&gt;#FROM alpine:edge
 FROM alpine:latest
@@ -226,7 +228,7 @@ CMD [&amp;#34;if [ \&amp;#34;`ls -A /config`\&amp;#34; = \&amp;#34;\&amp;#34; ];
 ENTRYPOINT [ &amp;#34;/srv/overture-linux-amd64&amp;#34;, &amp;#34;-c&amp;#34;, &amp;#34;/config/config.json&amp;#34; ]
 #CMD /srv/overture-linux-amd64 -c /config/config.json&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;docker-run-command&#34;&gt;Docker run Command&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker run  &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;docker run  &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;--restart&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;always &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;-d &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;-p &lt;span style=&#34;color:#f60&#34;&gt;53&lt;/span&gt;:53/udp &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
