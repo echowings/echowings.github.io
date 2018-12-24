@@ -18,7 +18,7 @@
       
       <guid>https://blog.stevedong.com/post/dockerfile-for-overture/</guid>
       <description>How to Wirte docker file for overture Hence we need to custom overture docker image as we desire, I write this dockerfile.
-When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running. ``` if [ &amp;quot;`ls -A /config`&amp;quot; = &amp;quot;&amp;quot; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.txt /config/; fi ```  Overture Dockerfile #FROM alpine:edge FROM alpine:latest MAINTAINER steve dong &amp;lt;dongjunbo@gmail.</description>
+When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running. ``` if [ &amp;#34;`ls -A /config`&amp;#34; = &amp;#34;&amp;#34; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.txt /config/; fi ```  Overture Dockerfile #FROM alpine:edge FROM alpine:latest MAINTAINER steve dong &amp;lt;dongjunbo@gmail.</description>
     </item>
     
     <item>
@@ -27,7 +27,7 @@ When define VOLUME, build docker images will not copy file to the path, But we c
       <pubDate>Tue, 18 Dec 2018 00:44:13 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/deploy-overture-with-docker-and-freebsd/</guid>
-      <description>Run overture on Docker and FreeBSD 12 ENV foo /overture WORKDIR ${foo} RUN apt-get update &amp;amp;&amp;amp; apt-get install -y ca-certificates RUN printf &amp;quot;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.</description>
+      <description>Run overture on Docker and FreeBSD 12 ENVfoo /overtureWORKDIR${foo}RUN apt-get update &amp;amp;&amp;amp; apt-get install -y ca-certificatesRUN printf &amp;#34;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse&amp;#34; &amp;gt; /etc/apt/sources.</description>
     </item>
     
   </channel>

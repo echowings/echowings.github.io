@@ -422,10 +422,7 @@ if (!doNotTrack) {
 <ul>
 <li>Linux and Mac:</li>
 </ul>
-
-<pre><code class="language-bash">ddi if=vyos-1.2.0-rc-4-amd64.iso of=/dev/$yourusbdisk bs=1M
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ddi <span style="color:#069;font-weight:bold">if</span><span style="color:#555">=</span>vyos-1.2.0-rc-4-amd64.iso <span style="color:#033">of</span><span style="color:#555">=</span>/dev/<span style="color:#033">$yourusbdisk</span> <span style="color:#033">bs</span><span style="color:#555">=</span>1M</code></pre></div>
 <ul>
 <li>Windows:</li>
 </ul>
@@ -441,24 +438,16 @@ if (!doNotTrack) {
 <li><p>press <code>F11</code> or set COMS to boot from usb.</p></li>
 
 <li><p>Enter Default username and password to login livecd.</p>
-
-<pre><code class="language-bash">vyos login: vyos
-Password: vyos
-</code></pre></li>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vyos login: vyos
+Password: vyos</code></pre></div></li>
 </ol>
 
 <h2 id="write-image-to-local-driver">Write image to local driver:</h2>
-
-<pre><code class="language-bash">install image
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">install image</code></pre></div>
 <ul>
 <li>Reboot System to boot from local disk.</li>
 </ul>
-
-<pre><code class="language-bash">reboot now
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">reboot now</code></pre></div>
 <h2 id="basic-command">Basic Command</h2>
 
 <p>vyos command line include 2 mode: Operation mode and configure mode.</p>
@@ -474,50 +463,46 @@ These command usually change configuration of vyos.</p></li>
 </ul>
 
 <h3 id="operation-mode">Operation Mode</h3>
-
-<pre><code class="language-shell"># Enter configure mode
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># Enter configure mode</span>
 configure
 
 
-#Exit to operation Mode
-exit
-#Check vyos version
+<span style="color:#09f;font-style:italic">#Exit to operation Mode</span>
+<span style="color:#366">exit</span>
+<span style="color:#09f;font-style:italic">#Check vyos version</span>
 show version
-#Check vyos running time
+<span style="color:#09f;font-style:italic">#Check vyos running time</span>
 show system uptime
-#Check system time and timezone
+<span style="color:#09f;font-style:italic">#Check system time and timezone</span>
 show date
-#Reboot system
+<span style="color:#09f;font-style:italic">#Reboot system</span>
 reboot now
-#Shutdown System
+<span style="color:#09f;font-style:italic">#Shutdown System</span>
 poweroff now
-#upgrade system image version
-add system image $URL_or_path
+<span style="color:#09f;font-style:italic">#upgrade system image version</span>
+add system image <span style="color:#033">$URL_or_path</span>
 
 
-#Reset configuration
-# Enter config mode
+<span style="color:#09f;font-style:italic">#Reset configuration</span>
+<span style="color:#09f;font-style:italic"># Enter config mode</span>
 configure
-#loading default configure
+<span style="color:#09f;font-style:italic">#loading default configure</span>
 load /opt/vyatta/etc/config.boot.default  
-# commit loading default configure
+<span style="color:#09f;font-style:italic"># commit loading default configure</span>
 commit
 
-# save to default boot configure file.
+<span style="color:#09f;font-style:italic"># save to default boot configure file.</span>
 save
 
-#Exit configure mode
-exit
+<span style="color:#09f;font-style:italic">#Exit configure mode</span>
+<span style="color:#366">exit</span>
 
-#Reboot system now to finish loading default configuration.
+<span style="color:#09f;font-style:italic">#Reboot system now to finish loading default configuration.</span>
 reboot now
 
 
 
-#bonding
-
-</code></pre>
-
+<span style="color:#09f;font-style:italic">#bonding</span></code></pre></div>
 <p><conitune...></p>
 
     </div>

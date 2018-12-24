@@ -395,7 +395,7 @@ Recently days, I just learn proxmox and find pci-e pass through function. I thin
     
     <div class="post-summary">
       How to Wirte docker file for overture Hence we need to custom overture docker image as we desire, I write this dockerfile.
-When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running. ``` if [ &quot;`ls -A /config`&quot; = &quot;&quot; ]; then cp /srv/config.json /config/ &amp;&amp; cp /srv/*.txt /config/; fi ```  Overture Dockerfile #FROM alpine:edge FROM alpine:latest MAINTAINER steve dong &lt;dongjunbo@gmail.
+When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running. ``` if [ &#34;`ls -A /config`&#34; = &#34;&#34; ]; then cp /srv/config.json /config/ &amp;&amp; cp /srv/*.txt /config/; fi ```  Overture Dockerfile #FROM alpine:edge FROM alpine:latest MAINTAINER steve dong &lt;dongjunbo@gmail.
     </div>
     <div class="read-more">
       <a href="/post/dockerfile-for-overture/" class="read-more-link">Read more</a>
@@ -429,7 +429,7 @@ When define VOLUME, build docker images will not copy file to the path, But we c
   <div class="post-content">
     
     <div class="post-summary">
-      Ubuntu Chinese Language Support 编辑/etc/environment如下: vi /etc/environment 添加如下: LC_ALL=&quot;en_US.UTF-8&quot; LANG=&quot;zh_CN.UTF-8&quot; UNZIP='-O CP936&quot; ZIPINFO=&quot;-O CP936&quot; 重新生成语言设置 sudo locale-gen en_US en_US.UTF-8 zh_CN zh_CN.UTF-8 sudo dpkg-reconfigure locales 中文支持 vim中文支持 编辑~/
+      Ubuntu Chinese Language Support 编辑/etc/environment如下: vi /etc/environment 添加如下: LC_ALL=&#34;en_US.UTF-8&#34; LANG=&#34;zh_CN.UTF-8&#34; UNZIP=&#39;-O CP936&#34; ZIPINFO=&#34;-O CP936&#34; 重新生成语言设置 sudo locale-gen en_US en_US.UTF-8 zh_CN zh_CN.UTF-8 sudo dpkg-reconfigure locales 中文支持 vim中文支持 编辑~/
     </div>
     <div class="read-more">
       <a href="/post/debian-or-ubuntu-chinese-language-support/" class="read-more-link">Read more</a>
@@ -464,7 +464,7 @@ When define VOLUME, build docker images will not copy file to the path, But we c
   <div class="post-content">
     
     <div class="post-summary">
-      Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&quot;YES&quot; service mysql-server restart  Database and User Configuration $ mysql mysql&gt; create database powerdns charset = utf8; mysql&gt; CREATE USER 'powerdns'@'localhost' IDENTIFIED BY 'XianAdmin'; ###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO '%' WITH GRANT OPTION;### mysql&gt; grant all privileges on powerdns.* to 'powerdns'@'localhost' IDENTIFIED BY 'XianAdmin'; mysql&gt; FLUSH PRIVILEGES; #For security, we also give the main admin password $ mysqladmin -u root password &quot;PASSWORD_OF_ROOT&quot;  Install powerdns pkg install powerdns  Reference  How to manage MySQL databases and users from the command line PowerDNS, PowerAdmin with Mysql in Freebsd 10.
+      Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&#34;YES&#34; service mysql-server restart Database and User Configuration $ mysql mysql&gt; create database powerdns charset = utf8; mysql&gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&gt; FLUSH PRIVILEGES; #For security, we also give the main admin password $ mysqladmin -u root password &#34;PASSWORD_OF_ROOT&#34; Install powerdns pkg install powerdns Reference  How to manage MySQL databases and users from the command line PowerDNS, PowerAdmin with Mysql in Freebsd 10.
     </div>
     <div class="read-more">
       <a href="/post/install-powerdns-and-mysql-on-freebsd12/" class="read-more-link">Read more</a>
@@ -499,7 +499,7 @@ When define VOLUME, build docker images will not copy file to the path, But we c
   <div class="post-content">
     
     <div class="post-summary">
-      Run overture on Docker and FreeBSD 12 ENV foo /overture WORKDIR ${foo} RUN apt-get update &amp;&amp; apt-get install -y ca-certificates RUN printf &quot;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.
+      Run overture on Docker and FreeBSD 12 ENVfoo /overtureWORKDIR${foo}RUN apt-get update &amp;&amp; apt-get install -y ca-certificatesRUN printf &#34;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse&#34; &gt; /etc/apt/sources.
     </div>
     <div class="read-more">
       <a href="/post/deploy-overture-with-docker-and-freebsd/" class="read-more-link">Read more</a>
@@ -568,8 +568,8 @@ When define VOLUME, build docker images will not copy file to the path, But we c
   <div class="post-content">
     
     <div class="post-summary">
-      How to test network speed with iperf Install iperf sudo apt-get install iperf3  Testing network speed Testing network speed with UDP  Run command on server   iperf -s -u   Run command on client   iperf -c -u   Testing network speed with TCP
- Server side.   iperf -s   Client side.   iperf -c  Command for -s server -c client + server IP -u udp -b bandwith(the max bandwidth -t time,how long to send packet.
+      How to test network speed with iperf Install iperf sudo apt-get install iperf3 Testing network speed Testing network speed with UDP  Run command on server   iperf -s -u  Run command on client   iperf -c -u  Testing network speed with TCP
+ Server side.   iperf -s  Client side.   iperf -c Command for -s server -c client + server IP -u udp -b bandwith(the max bandwidth -t time,how long to send packet.
     </div>
     <div class="read-more">
       <a href="/post/how-to-testing-network-bandwith-with-iperf/" class="read-more-link">Read more</a>
@@ -671,7 +671,7 @@ When define VOLUME, build docker images will not copy file to the path, But we c
   <div class="post-content">
     
     <div class="post-summary">
-       Ssh Login Without Password SSH login linux/unix without password General your key ssh-keygen-t rsa  copy your rsa.pub to server which you want to login without password. ssh-copy-id -i ~/.ssh/id_rsa.pub user1@$server-hosts  Test login ssh user1@$server-hosts  
+       Ssh Login Without Password SSH login linux/unix without password General your key ssh-keygen-t rsa  copy your rsa.pub to server which you want to login without password. ssh-copy-id -i ~/.ssh/id_rsa.pub user1@$server-hosts Test login ssh user1@$server-hosts
     </div>
     <div class="read-more">
       <a href="/post/ssh-login-without-password/" class="read-more-link">Read more</a>
@@ -706,7 +706,7 @@ When define VOLUME, build docker images will not copy file to the path, But we c
     
     <div class="post-summary">
       Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
- Boot the proxmox installer USB Select Debug Mode Press “CTRL+D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &quot;s/data.status !== 'Active'/false/g&quot; \ /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js \ &amp;&amp; systemctl restart pveproxy.
+ Boot the proxmox installer USB Select Debug Mode Press “CTRL+D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; \  /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js \  &amp;&amp; systemctl restart pveproxy.
     </div>
     <div class="read-more">
       <a href="/post/proxmoxve-v5.x-installation/" class="read-more-link">Read more</a>

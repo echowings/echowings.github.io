@@ -28,7 +28,7 @@ Recently days, I just learn proxmox and find pci-e pass through function. I thin
       
       <guid>https://blog.stevedong.com/post/dockerfile-for-overture/</guid>
       <description>How to Wirte docker file for overture Hence we need to custom overture docker image as we desire, I write this dockerfile.
-When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running. ``` if [ &amp;quot;`ls -A /config`&amp;quot; = &amp;quot;&amp;quot; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.txt /config/; fi ```  Overture Dockerfile #FROM alpine:edge FROM alpine:latest MAINTAINER steve dong &amp;lt;dongjunbo@gmail.</description>
+When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running. ``` if [ &amp;#34;`ls -A /config`&amp;#34; = &amp;#34;&amp;#34; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.txt /config/; fi ```  Overture Dockerfile #FROM alpine:edge FROM alpine:latest MAINTAINER steve dong &amp;lt;dongjunbo@gmail.</description>
     </item>
     
     <item>
@@ -37,7 +37,7 @@ When define VOLUME, build docker images will not copy file to the path, But we c
       <pubDate>Mon, 24 Dec 2018 00:39:51 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/debian-or-ubuntu-chinese-language-support/</guid>
-      <description>Ubuntu Chinese Language Support 编辑/etc/environment如下: vi /etc/environment 添加如下: LC_ALL=&amp;quot;en_US.UTF-8&amp;quot; LANG=&amp;quot;zh_CN.UTF-8&amp;quot; UNZIP=&#39;-O CP936&amp;quot; ZIPINFO=&amp;quot;-O CP936&amp;quot; 重新生成语言设置 sudo locale-gen en_US en_US.UTF-8 zh_CN zh_CN.UTF-8 sudo dpkg-reconfigure locales 中文支持 vim中文支持 编辑~/</description>
+      <description>Ubuntu Chinese Language Support 编辑/etc/environment如下: vi /etc/environment 添加如下: LC_ALL=&amp;#34;en_US.UTF-8&amp;#34; LANG=&amp;#34;zh_CN.UTF-8&amp;#34; UNZIP=&amp;#39;-O CP936&amp;#34; ZIPINFO=&amp;#34;-O CP936&amp;#34; 重新生成语言设置 sudo locale-gen en_US en_US.UTF-8 zh_CN zh_CN.UTF-8 sudo dpkg-reconfigure locales 中文支持 vim中文支持 编辑~/</description>
     </item>
     
     <item>
@@ -46,7 +46,7 @@ When define VOLUME, build docker images will not copy file to the path, But we c
       <pubDate>Tue, 18 Dec 2018 00:51:47 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/</guid>
-      <description>Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&amp;quot;YES&amp;quot; service mysql-server restart  Database and User Configuration $ mysql mysql&amp;gt; create database powerdns charset = utf8; mysql&amp;gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&amp;gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&amp;gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&amp;gt; FLUSH PRIVILEGES; #For security, we also give the main admin password $ mysqladmin -u root password &amp;quot;PASSWORD_OF_ROOT&amp;quot;  Install powerdns pkg install powerdns  Reference  How to manage MySQL databases and users from the command line PowerDNS, PowerAdmin with Mysql in Freebsd 10.</description>
+      <description>Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&amp;#34;YES&amp;#34; service mysql-server restart Database and User Configuration $ mysql mysql&amp;gt; create database powerdns charset = utf8; mysql&amp;gt; CREATE USER &amp;#39;powerdns&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;XianAdmin&amp;#39;; ###mysql&amp;gt; GRANT ALL PRIVILEGES ON powerdns.* TO &amp;#39;%&amp;#39; WITH GRANT OPTION;### mysql&amp;gt; grant all privileges on powerdns.* to &amp;#39;powerdns&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;XianAdmin&amp;#39;; mysql&amp;gt; FLUSH PRIVILEGES; #For security, we also give the main admin password $ mysqladmin -u root password &amp;#34;PASSWORD_OF_ROOT&amp;#34; Install powerdns pkg install powerdns Reference  How to manage MySQL databases and users from the command line PowerDNS, PowerAdmin with Mysql in Freebsd 10.</description>
     </item>
     
     <item>
@@ -55,7 +55,7 @@ When define VOLUME, build docker images will not copy file to the path, But we c
       <pubDate>Tue, 18 Dec 2018 00:44:13 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/deploy-overture-with-docker-and-freebsd/</guid>
-      <description>Run overture on Docker and FreeBSD 12 ENV foo /overture WORKDIR ${foo} RUN apt-get update &amp;amp;&amp;amp; apt-get install -y ca-certificates RUN printf &amp;quot;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.</description>
+      <description>Run overture on Docker and FreeBSD 12 ENVfoo /overtureWORKDIR${foo}RUN apt-get update &amp;amp;&amp;amp; apt-get install -y ca-certificatesRUN printf &amp;#34;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse&amp;#34; &amp;gt; /etc/apt/sources.</description>
     </item>
     
     <item>
@@ -74,8 +74,8 @@ When define VOLUME, build docker images will not copy file to the path, But we c
       <pubDate>Thu, 29 Nov 2018 23:52:57 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/how-to-testing-network-bandwith-with-iperf/</guid>
-      <description>How to test network speed with iperf Install iperf sudo apt-get install iperf3  Testing network speed Testing network speed with UDP  Run command on server   iperf -s -u   Run command on client   iperf -c -u   Testing network speed with TCP
- Server side.   iperf -s   Client side.   iperf -c  Command for -s server -c client + server IP -u udp -b bandwith(the max bandwidth -t time,how long to send packet.</description>
+      <description>How to test network speed with iperf Install iperf sudo apt-get install iperf3 Testing network speed Testing network speed with UDP  Run command on server   iperf -s -u  Run command on client   iperf -c -u  Testing network speed with TCP
+ Server side.   iperf -s  Client side.   iperf -c Command for -s server -c client + server IP -u udp -b bandwith(the max bandwidth -t time,how long to send packet.</description>
     </item>
     
     <item>
@@ -102,7 +102,7 @@ When define VOLUME, build docker images will not copy file to the path, But we c
       <pubDate>Thu, 29 Nov 2018 00:22:57 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/ssh-login-without-password/</guid>
-      <description> Ssh Login Without Password SSH login linux/unix without password General your key ssh-keygen-t rsa  copy your rsa.pub to server which you want to login without password. ssh-copy-id -i ~/.ssh/id_rsa.pub user1@$server-hosts  Test login ssh user1@$server-hosts  </description>
+      <description> Ssh Login Without Password SSH login linux/unix without password General your key ssh-keygen-t rsa  copy your rsa.pub to server which you want to login without password. ssh-copy-id -i ~/.ssh/id_rsa.pub user1@$server-hosts Test login ssh user1@$server-hosts</description>
     </item>
     
     <item>
@@ -112,7 +112,7 @@ When define VOLUME, build docker images will not copy file to the path, But we c
       
       <guid>https://blog.stevedong.com/post/proxmoxve-v5.x-installation/</guid>
       <description>Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
- Boot the proxmox installer USB Select Debug Mode Press “CTRL+D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &amp;quot;s/data.status !== &#39;Active&#39;/false/g&amp;quot; \ /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js \ &amp;amp;&amp;amp; systemctl restart pveproxy.</description>
+ Boot the proxmox installer USB Select Debug Mode Press “CTRL+D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34; \  /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js \  &amp;amp;&amp;amp; systemctl restart pveproxy.</description>
     </item>
     
     <item>

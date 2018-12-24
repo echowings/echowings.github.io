@@ -407,36 +407,25 @@ if (!doNotTrack) {
 <ul>
 <li>Install hugo</li>
 </ul>
-
-<pre><code class="language-bash">brew install hugo
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install hugo</code></pre></div>
 <ul>
 <li>Create a blog site.</li>
 </ul>
-
-<pre><code class="language-bash">hugo new site blogs
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new site blogs</code></pre></div>
 <ul>
 <li>init git</li>
 </ul>
-
-<pre><code class="language-bash">cd blogs
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> blogs
 git init
-#Add remote repo. 
+<span style="color:#09f;font-style:italic">#Add remote repo.</span> 
 git remote add origin git@github.com:echowings/blogs.git
-#Add a theme for your hugo.
+<span style="color:#09f;font-style:italic">#Add a theme for your hugo.</span>
 git submodule add -b master https://github.com/xianmin/hugo-theme-jane.git themes/jane
 cp -r themes/jane/exampleSite/content ./
-cp themes/jane/exampleSite/config.toml ./
-</code></pre>
-
+cp themes/jane/exampleSite/config.toml ./</code></pre></div>
 <ul>
 <li><p>Test hugo at local.</p>
-
-<pre><code class="language-bash">hugo server
-</code></pre></li>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo server</code></pre></div></li>
 
 <li><p>You can access <a href="http://localhost:1313">http://localhost:1313</a> to test your blog in local.</p></li>
 </ul>
@@ -446,77 +435,65 @@ cp themes/jane/exampleSite/config.toml ./
 <ul>
 <li>Modifiy vi config.toml</li>
 </ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#Change URL</span>
+<span style="color:#033">baseURL</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;https://blog.stevedong.com&#34;</span>
 
-<pre><code class="language-bash">#Change URL
-baseURL = &quot;https://blog.stevedong.com&quot;
+<span style="color:#09f;font-style:italic">#Change Title</span>
+<span style="color:#033">title</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;Steve Dong - A System Administrator&#39;s Blog&#34;</span>
 
-#Change Title
-title = &quot;Steve Dong - A System Administrator's Blog&quot;
+<span style="color:#09f;font-style:italic">#Change theme to jane</span>
+<span style="color:#033">theme</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;jane&#34;</span>
 
-#Change theme to jane
-theme = &quot;jane&quot;
+<span style="color:#09f;font-style:italic">#How many pages will be displayed on homepage.</span>
+<span style="color:#033">pageinate</span> <span style="color:#555">=</span> <span style="color:#f60">15</span>
 
-#How many pages will be displayed on homepage.
-pageinate = 15
+<span style="color:#09f;font-style:italic"># Display how many pages will be displayed on archive page.</span>
+archive-paginate <span style="color:#555">=</span> <span style="color:#f60">50</span>
 
-# Display how many pages will be displayed on archive page.
-archive-paginate = 50
+<span style="color:#09f;font-style:italic">#RSS limite.</span>
+<span style="color:#033">rssLimit</span> <span style="color:#555">=</span> <span style="color:#f60">50</span>
 
-#RSS limite.
-rssLimit = 50
+<span style="color:#09f;font-style:italic">#google analytics related</span>
+<span style="color:#033">googleAnalytics</span><span style="color:#555">=</span> <span style="color:#c30">&#34;UA-xxxxxxxx-X&#34;</span>
 
-#google analytics related
-googleAnalytics= &quot;UA-xxxxxxxx-X&quot;
+<span style="color:#09f;font-style:italic"># Chang author</span>
+<span style="color:#033">name</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;Steve Dong&#34;</span>
 
-# Chang author
-name = &quot;Steve Dong&quot;
-
- # Commit the meanu &quot;External Link&quot;
- #[[menu.main]]
- #  name = &quot;MyGitHub&quot;
- #  weight = 50
- #  url = &quot;https://echowings.github.com&quot;
+ <span style="color:#09f;font-style:italic"># Commit the meanu &#34;External Link&#34;</span>
+ <span style="color:#09f;font-style:italic">#[[menu.main]]</span>
+ <span style="color:#09f;font-style:italic">#  name = &#34;MyGitHub&#34;</span>
+ <span style="color:#09f;font-style:italic">#  weight = 50</span>
+ <span style="color:#09f;font-style:italic">#  url = &#34;https://echowings.github.com&#34;</span>
  
- #Change Site creation time
+ <span style="color:#09f;font-style:italic">#Change Site creation time</span>
  
- [params]
- 	since = &quot;2018&quot;
+ <span style="color:#555">[</span>params<span style="color:#555">]</span>
+ 	<span style="color:#033">since</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;2018&#34;</span>
  	
-	logoTitle= &quot;Steve Dong&quot;
-	keywords = [&quot;network&quot;, &quot;devops', &quot;System Administrator&quot;]
-</code></pre>
-
+	<span style="color:#033">logoTitle</span><span style="color:#555">=</span> <span style="color:#c30">&#34;Steve Dong&#34;</span>
+	<span style="color:#033">keywords</span> <span style="color:#555">=</span> <span style="color:#555">[</span><span style="color:#c30">&#34;network&#34;</span>, <span style="color:#c30">&#34;devops&#39;, &#34;</span>System Administrator<span style="color:#c30">&#34;]</span></code></pre></div>
 <h2 id="deploy-your-blog-to-github">Deploy your blog to github</h2>
 
 <ul>
 <li>Add repo of blog website.</li>
 </ul>
-
-<pre><code class="language-bash">  git submodule add --force -b master \ 
-	git@github.com:echowings/echowings.github.io.git public  
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  git submodule add --force -b master <span style="color:#c30;font-weight:bold">\ </span>
+	git@github.com:echowings/echowings.github.io.git public  </code></pre></div>
 <ul>
 <li><p>Run hugo to generate your blog website.</p>
-
-<pre><code class="language-shell">hugo server
-</code></pre></li>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hugo server</code></pre></div></li>
 
 <li><p>publish your website</p>
-
-<pre><code class="language-bash">cd public
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> public
 git add.
-git commit -m &quot;YOUR COMMIT MESSAGE&quot;
-git push origin master
-</code></pre></li>
+git commit -m <span style="color:#c30">&#34;YOUR COMMIT MESSAGE&#34;</span>
+git push origin master</code></pre></div></li>
 
 <li><p>Backup your hugo blog to github</p>
-
-<pre><code class="language-bash">cd ..
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> ..
 git add.
-git commit -m &quot;YOUR COMMIT MESSAGE&quot;
-git push origin master
-</code></pre></li>
+git commit -m <span style="color:#c30">&#34;YOUR COMMIT MESSAGE&#34;</span>
+git push origin master</code></pre></div></li>
 </ul>
 
 <h3 id="add-a-comment">Add a comment</h3>
@@ -534,12 +511,10 @@ git push origin master
 </ol></li>
 
 <li><p>edit <code>blogs/config.toml</code> and append follow lines.</p>
-
-<pre><code class="language-bash">[params.utteranc]
-  enable = true
-  repo=&quot;echowings/blogcomment&quot;
-  issueTerm=&quot;pathname&quot;
-</code></pre></li>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#555">[</span>params.utteranc<span style="color:#555">]</span>
+  <span style="color:#366">enable</span> <span style="color:#555">=</span> <span style="color:#366">true</span>
+  <span style="color:#033">repo</span><span style="color:#555">=</span><span style="color:#c30">&#34;echowings/blogcomment&#34;</span>
+  <span style="color:#033">issueTerm</span><span style="color:#555">=</span><span style="color:#c30">&#34;pathname&#34;</span></code></pre></div></li>
 </ul>
 
 <h2 id="reference">Reference</h2>

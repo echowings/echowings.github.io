@@ -397,55 +397,51 @@ if (!doNotTrack) {
 <p>After a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core. And you know what? It works well finally!</p>
 
 <h3 id="install-netcore-2-1-4-sdk">Install netcore 2.1.4 sdk</h3>
-
-<pre><code class="language-shell">#!/bin/sh
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#099">#!/bin/sh
+</span><span style="color:#099"></span>
 yum install -y wget epel-release
 yum install -y openssl-devel libnghttp2-devel libidn-devel gcc libtool m4 automake
-cd /tmp/
+<span style="color:#366">cd</span> /tmp/
 
 curl -O https://curl.haxx.se/download/curl-7.45.0.tar.gz
 tar -xf curl-7.45.0.tar.gz
-cd curl-7.45.0
-./configure \
-    --disable-dict \
-    --disable-file \
-    --disable-ftp \
-    --disable-gopher \
-    --disable-imap \
-    --disable-ldap \
-    --disable-ldaps \
-    --disable-libcurl-option \
-    --disable-manual \
-    --disable-pop3 \
-    --disable-rtsp \
-    --disable-smb \
-    --disable-smtp \
-    --disable-telnet \
-    --disable-tftp \
-    --enable-ipv6 \
-    --enable-optimize \
-    --enable-symbol-hiding \
-    --with-ca-bundle=/etc/pki/tls/certs/ca-bundle.crt \
-    --with-nghttp2 \
-    --with-gssapi \
-    --with-ssl \
-    --without-librtmp \
-    --prefix=$PWD/install/usr/local
-    
-</code></pre>
-
+<span style="color:#366">cd</span> curl-7.45.0
+./configure <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --disable-dict <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --disable-file <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --disable-ftp <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --disable-gopher <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --disable-imap <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --disable-ldap <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --disable-ldaps <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --disable-libcurl-option <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --disable-manual <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --disable-pop3 <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --disable-rtsp <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --disable-smb <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --disable-smtp <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --disable-telnet <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --disable-tftp <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --enable-ipv6 <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --enable-optimize <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --enable-symbol-hiding <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --with-ca-bundle<span style="color:#555">=</span>/etc/pki/tls/certs/ca-bundle.crt <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --with-nghttp2 <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --with-gssapi <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --with-ssl <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --without-librtmp <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    --prefix<span style="color:#555">=</span><span style="color:#033">$PWD</span>/install/usr/local
+    </code></pre></div>
 <h3 id="make-install">make install</h3>
-
-<pre><code class="language-bash">cd install
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> install
 tar -czf curl-7_45_0-RHEL6-x64.tgz *
 curl -O http://download.icu-project.org/files/icu4c/57.1/icu4c-57_1-RHEL6-x64.tgz
 tar -xf curl-7_45_0-RHEL6-x64.tgz -C /
 tar -xf icu4c-57_1-RHEL6-x64.tgz -C /
-echo &quot;export LD_LIBRARY_PATH=/usr/local/lib&quot; &gt;&gt; /etc/profile
-export LD_LIBRARY_PATH=/usr/local/lib
+<span style="color:#366">echo</span> <span style="color:#c30">&#34;export LD_LIBRARY_PATH=/usr/local/lib&#34;</span> &gt;&gt; /etc/profile
+<span style="color:#366">export</span> <span style="color:#033">LD_LIBRARY_PATH</span><span style="color:#555">=</span>/usr/local/lib
 
-cd /tmp/
+<span style="color:#366">cd</span> /tmp/
 mkdir dotnetsdk
 
 curl -O https://download.microsoft.com/download/8/A/7/8A765126-50CA-4C6F-890B-19AE47961E4B/dotnet-sdk-2.1.402-rhel.6-x64.tar.gz
@@ -458,17 +454,14 @@ ln -s /opt/dotnetsdk/dotnet /usr/bin/dotnet
 curl -sSL https://github.com/libuv/libuv/archive/v1.4.2.tar.gz | sudo tar zxfv - -C /usr/local/src
 
 
-# Insall libuv-1.4.2 
-cd /usr/local/src/libuv-1.4.2
+<span style="color:#09f;font-style:italic"># Insall libuv-1.4.2</span> 
+<span style="color:#366">cd</span> /usr/local/src/libuv-1.4.2
 sh autogen.sh
 ./configure
 make
 make install
-rm -rf /usr/local/src/libuv-1.4.2 &amp;&amp; cd ~/
-ldconfig
-
-</code></pre>
-
+rm -rf /usr/local/src/libuv-1.4.2 <span style="color:#555">&amp;&amp;</span> <span style="color:#366">cd</span> ~/
+ldconfig</code></pre></div>
 <h2 id="reference">Reference</h2>
 
 <ul>

@@ -403,23 +403,20 @@ if (!doNotTrack) {
 <h2 id="change-your-ip-address-to-static">Change your IP address to static.</h2>
 
 <p><code>vi /etc/network/interfaces</code></p>
-
-<pre><code class="language-bash"># This file describes the network interfaces available on your system
-# and how to activate them. For more information, see interfaces(5).
-source /etc/network/interfaces.d/*
-# The loopback network interface
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># This file describes the network interfaces available on your system</span>
+<span style="color:#09f;font-style:italic"># and how to activate them. For more information, see interfaces(5).</span>
+<span style="color:#366">source</span> /etc/network/interfaces.d/*
+<span style="color:#09f;font-style:italic"># The loopback network interface</span>
 auto lo
 iface lo inet loopback
-# The primary network interface
-#allow-hotplug eno1
+<span style="color:#09f;font-style:italic"># The primary network interface</span>
+<span style="color:#09f;font-style:italic">#allow-hotplug eno1</span>
 auto eno1
-#iface eno1 inet dhcp
+<span style="color:#09f;font-style:italic">#iface eno1 inet dhcp</span>
 iface eno1 inet static
 address *.*.*.*
 netmask *.*.*.*
-gateway *.*.*.* 
-</code></pre>
-
+gateway *.*.*.* </code></pre></div>
 <h2 id="change-dns">Change DNS</h2>
 
 <p><code>vi /etc/resolv.conf</code></p>
@@ -427,56 +424,44 @@ gateway *.*.*.*
 <h2 id="change-hosts">Change hosts</h2>
 
 <p><code>vi /etc/hosts</code></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f60">127</span>.0.0.1       localhost.localdomain localhost
+<span style="color:#f60">10</span>.32.0.60   xa-sys-pve02 xa-sys-pve02 pvelocalhost
 
-<pre><code>127.0.0.1       localhost.localdomain localhost
-10.32.0.60   xa-sys-pve02 xa-sys-pve02 pvelocalhost
-
-# The following lines are desirable for IPv6 capable hosts
+<span style="color:#09f;font-style:italic"># The following lines are desirable for IPv6 capable hosts</span>
 ::1     localhost ip6-localhost ip6-loopback
 ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters
-
-</code></pre>
-
+ff02::2 ip6-allrouters</code></pre></div>
 <h2 id="perl-all-lc-error">Perl ALL_LC ERROR</h2>
-
-<pre><code>apt-get autoremove
-export LC_ALL=en_US.UTF-8
-echo &quot;en_US.UTF-8 UTF-8&quot; &gt;&gt; /etc/locale.gen
-locale-gen
-
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt-get autoremove
+<span style="color:#366">export</span> <span style="color:#033">LC_ALL</span><span style="color:#555">=</span>en_US.UTF-8
+<span style="color:#366">echo</span> <span style="color:#c30">&#34;en_US.UTF-8 UTF-8&#34;</span> &gt;&gt; /etc/locale.gen
+locale-gen</code></pre></div>
 <h2 id="add-utsc-mirrors-source">Add Utsc mirrors source</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#chang debian source list</span>
+<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
+</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
+</span><span style="color:#c30">
+</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
+</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
+</span><span style="color:#c30">
+</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
+</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
+</span><span style="color:#c30">
+</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free
+</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&#34;</span> &gt; /etc/apt/sources.list
 
-<pre><code>#chang debian source list
-echo &quot;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
-deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
+<span style="color:#09f;font-style:italic">#change pve 5.1 update source list</span>
+<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&#34;</span> &gt; /etc/apt/sources.list.d/pve-enterprise.list
 
-deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
-deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
+<span style="color:#09f;font-style:italic">#change ceph source list</span>
+<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&#34;</span> &gt; /etc/apt/sources.list.d/ceph.list
 
-deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
-deb-src https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
-
-deb https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free
-deb-src https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&quot; &gt; /etc/apt/sources.list
-
-#change pve 5.1 update source list
-echo &quot;deb https://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&quot; &gt; /etc/apt/sources.list.d/pve-enterprise.list
-
-#change ceph source list
-echo &quot;deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&quot; &gt; /etc/apt/sources.list.d/ceph.list
-
-# add key
+<span style="color:#09f;font-style:italic"># add key</span>
 wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
 
-apt updat &amp;&amp; apt -y dist-ugprade
+apt updat <span style="color:#555">&amp;&amp;</span> apt -y dist-ugprade
 apt install proxmox-ve postfix open-iscsi
-update-grub
-
-</code></pre>
-
+update-grub</code></pre></div>
     </div>
 
     
