@@ -32,6 +32,64 @@
     </item>
     
     <item>
+      <title>Macos Update Time via Ntpserver</title>
+      <link>https://blog.stevedong.com/post/macos-update-time-via-ntpserver/</link>
+      <pubDate>Wed, 26 Dec 2018 09:26:04 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/macos-update-time-via-ntpserver/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-update-time-via-ntpserver&#34;&gt;How to update time via ntpserver&lt;/h1&gt;
+
+&lt;p&gt;Today, My MBP is out of power. I cannot surfing internet. and the brower tell me my time was wrong. Then I checked my time in my MBB, I&amp;rsquo;m back in time jan 1, 2018. Wow, I got extra whole year time!&lt;/p&gt;
+
+&lt;h1 id=&#34;majove-update-time&#34;&gt;Majove update time&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo sntp -sS time.asia.apple.com&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;When you&amp;rsquo;re getting this error&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kod_init_kod_db&lt;span style=&#34;color:#555&#34;&gt;()&lt;/span&gt;: Cannot open KoD db file /var/db/ntp-kod: No such file or directory&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can solved the problems with:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo touch /var/db/ntp-kod
+sudo chmod &lt;span style=&#34;color:#f60&#34;&gt;666&lt;/span&gt; /var/db/ntp-kod&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;disable-no-subscription-warning&#34;&gt;Disable No subscription warning&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -i.bak &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34;&lt;/span&gt; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; systemctl restart pveproxy.service&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://apple.stackexchange.com/questions/117864/how-can-i-tell-if-my-mac-is-keeping-the-clock-updated-properly?noredirect=1&amp;amp;lq=1&#34;&gt;How can I tell if my Mac is keeping the clock updated properly?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Learning Flask 01</title>
+      <link>https://blog.stevedong.com/post/learning-flask-01/</link>
+      <pubDate>Tue, 25 Dec 2018 06:11:03 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/learning-flask-01/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;learning-flask-01&#34;&gt;learning Flask 01&lt;/h1&gt;
+
+&lt;h2 id=&#34;installation-and-configure-of-anaconda&#34;&gt;Installation and configure of anaconda&lt;/h2&gt;
+
+&lt;h3 id=&#34;installaltion-homebrew&#34;&gt;Installaltion homebrew&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ruby -e &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt;$&lt;span style=&#34;color:#c30&#34;&gt; (curl - fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;installation-of-pyenv&#34;&gt;Installation of pyenv&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Installing pyenv&lt;/span&gt;
+brew install pyenv&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;install-anaconda-2-and-anaconda-3&#34;&gt;Install anaconda 2 and anaconda 3&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Download anaconda from &lt;a href=&#34;https://www.anaconda.com/download/&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>Proxmox Ve Network Adapter Pass Through</title>
       <link>https://blog.stevedong.com/post/proxmox-ve-network-adapter-pass-through/</link>
       <pubDate>Mon, 24 Dec 2018 16:01:23 +0800</pubDate>
@@ -425,7 +483,7 @@ run_rc_command &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt;&lt;
     </item>
     
     <item>
-      <title>How to Install ProxmoxVE5</title>
+      <title>How to nstall ProxmoxVE 5.x on Debian 9</title>
       <link>https://blog.stevedong.com/post/how-to-install-proxmoxve5.x-on-debian9/</link>
       <pubDate>Sat, 01 Dec 2018 00:02:28 +0800</pubDate>
       
@@ -433,15 +491,9 @@ run_rc_command &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt;&lt;
       
         <description>
 
-&lt;h1 id=&#34;install-proxmox-ve-on-debian-9&#34;&gt;Install Proxmox Ve on Debian 9&lt;/h1&gt;
-
-&lt;h2 id=&#34;install-proxmox-on-debian-9-via-utsc-mirrors-in-china&#34;&gt;Install Proxmox on Debian 9 via UTSC Mirrors in china&lt;/h2&gt;
-
-&lt;h2 id=&#34;change-your-ip-and-hostname&#34;&gt;Change your ip and hostname&lt;/h2&gt;
+&lt;h1 id=&#34;install-proxmox-ve-5-x-on-debian-9&#34;&gt;Install Proxmox VE 5.x on Debian 9&lt;/h1&gt;
 
 &lt;h2 id=&#34;chang-ip-address&#34;&gt;Chang IP ADDRESS&lt;/h2&gt;
-
-&lt;h2 id=&#34;change-your-ip-address-to-static&#34;&gt;Change your IP address to static.&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;vi /etc/network/interfaces&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# This file describes the network interfaces available on your system&lt;/span&gt;
@@ -462,7 +514,7 @@ gateway *.*.*.* &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;code&gt;vi /etc/resolv.conf&lt;/code&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;change-hosts&#34;&gt;Change hosts&lt;/h2&gt;
+&lt;h2 id=&#34;change-your-ip-and-hostname&#34;&gt;Change your ip and hostname&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;vi /etc/hosts&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#f60&#34;&gt;127&lt;/span&gt;.0.0.1       localhost.localdomain localhost
@@ -478,7 +530,9 @@ ff02::2 ip6-allrouters&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;en_US.UTF-8 UTF-8&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/locale.gen
 locale-gen&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;add-utsc-mirrors-source&#34;&gt;Add Utsc mirrors source&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#chang debian source list&lt;/span&gt;
+
+&lt;p&gt;before to chang source need to install&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt install apt-transport-https&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#chang debian source list&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
@@ -498,11 +552,56 @@ locale-gen&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&amp;#34;&lt;/span&gt; &amp;gt; /etc/apt/sources.list.d/ceph.list
 
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# add key&lt;/span&gt;
-wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
-
-apt updat &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y dist-ugprade
+wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;install-proxmox-ve&#34;&gt;Install proxmox VE&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt update &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y dist-ugprade
 apt install proxmox-ve postfix open-iscsi
-update-grub&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+update-grub&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;q-a&#34;&gt;Q&amp;amp;A&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;When you got error like this, please make sure hosts file is set without wrong. like this&lt;code&gt;10.32.0.60   xa-sys-pve02 xa-sys-pve02 pvelocalhost&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;Setting up pve-manager &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;5&lt;/span&gt;.2-1&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt; ...
+Job &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;for&lt;/span&gt; pvestatd.service failed because the control process exited with error code.
+See &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;systemctl status pvestatd.service&amp;#34;&lt;/span&gt; and &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;journalctl -xe&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;for&lt;/span&gt; details.
+pvestatd.service couldn&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;t start.
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;dpkg: error processing package pve-manager (--configure):
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt; subprocess installed post-installation script returned error exit status 1
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Processing triggers for man-db (2.7.6.1-2) ...
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;dpkg: dependency problems prevent configuration of proxmox-ve:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt; proxmox-ve depends on pve-manager; however:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  Package pve-manager is not configured yet.
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;dpkg: error processing package proxmox-ve (--configure):
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt; dependency problems - leaving unconfigured
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Errors were encountered while processing:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt; pve-manager
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt; proxmox-ve
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;E: Sub-process /usr/bin/dpkg returned an error code (1)
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Setting up pve-manager (5.2-1) ...
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Job for pvestatd.service failed because the control process exited with error code.
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;See &amp;#34;systemctl status pvestatd.service&amp;#34; and &amp;#34;journalctl -xe&amp;#34; for details.
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;pvestatd.service couldn&amp;#39;&lt;/span&gt;t start.
+dpkg: error processing package pve-manager &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;--configure&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;:
+ subprocess installed post-installation script returned error &lt;span style=&#34;color:#366&#34;&gt;exit&lt;/span&gt; status &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;
+dpkg: dependency problems prevent configuration of proxmox-ve:
+ proxmox-ve depends on pve-manager; however:
+  Package pve-manager is not configured yet.
+
+dpkg: error processing package proxmox-ve &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;--configure&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;:
+ dependency problems - leaving unconfigured
+Errors were encountered &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;while&lt;/span&gt; processing:
+ pve-manager
+ proxmox-ve&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;install-openvswitch-switch&#34;&gt;Install openvswitch-switch&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt-get install openvsiwtch-switch&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://forum.proxmox.com/threads/problem-with-installing-proxmox-ve-on-debian.44316/&#34;&gt;Problem with installing Proxmox-VE on Debian&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
       
     </item>
     
