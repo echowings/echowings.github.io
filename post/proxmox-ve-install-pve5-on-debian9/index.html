@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Proxmox Ve Network Adapter Pass Through - Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>How to nstall ProxmoxVE 5.x on Debian 9 - Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,8 +23,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="Proxmox Network Adapter Pass Through Long time ago, I konw virtualization is go very good solution to server. But how about router build in virtualization? After tried to do it, I was failed. because virtual switch made networking very slow. So i just use dedicate server as a router.
-Recently days, I just learn proxmox and find pci-e pass through function. I think maybe it is way to make routing virtualization." />
+  <meta name="description" content="Install Proxmox VE 5.x on Debian 9 Chang IP ADDRESS vi /etc/network/interfaces
+# This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *.*.*.* gateway *." />
 
   <meta name="keywords" content="network, devops, sdn, system Administation" />
 
@@ -36,7 +36,7 @@ Recently days, I just learn proxmox and find pci-e pass through function. I thin
 <meta name="generator" content="Hugo 0.52" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/post/proxmox-ve-network-adapter-pass-through/" />
+<link rel="canonical" href="https://blog.stevedong.com/post/proxmox-ve-install-pve5-on-debian9/" />
 
 
 
@@ -58,28 +58,29 @@ Recently days, I just learn proxmox and find pci-e pass through function. I thin
 
 
 
-<meta property="og:title" content="Proxmox Ve Network Adapter Pass Through" />
-<meta property="og:description" content="Proxmox Network Adapter Pass Through Long time ago, I konw virtualization is go very good solution to server. But how about router build in virtualization? After tried to do it, I was failed. because virtual switch made networking very slow. So i just use dedicate server as a router.
-Recently days, I just learn proxmox and find pci-e pass through function. I think maybe it is way to make routing virtualization." />
+<meta property="og:title" content="How to nstall ProxmoxVE 5.x on Debian 9" />
+<meta property="og:description" content="Install Proxmox VE 5.x on Debian 9 Chang IP ADDRESS vi /etc/network/interfaces
+# This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *.*.*.* gateway *." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-network-adapter-pass-through/" /><meta property="article:published_time" content="2018-12-24T16:01:23&#43;08:00"/>
-<meta property="article:modified_time" content="2018-12-24T16:01:23&#43;08:00"/>
+<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-install-pve5-on-debian9/" /><meta property="article:published_time" content="2018-12-01T00:02:28&#43;08:00"/>
+<meta property="article:modified_time" content="2018-12-26T01:52:23&#43;08:00"/>
 
-<meta itemprop="name" content="Proxmox Ve Network Adapter Pass Through">
-<meta itemprop="description" content="Proxmox Network Adapter Pass Through Long time ago, I konw virtualization is go very good solution to server. But how about router build in virtualization? After tried to do it, I was failed. because virtual switch made networking very slow. So i just use dedicate server as a router.
-Recently days, I just learn proxmox and find pci-e pass through function. I think maybe it is way to make routing virtualization.">
-
-
-<meta itemprop="dateModified" content="2018-12-24T16:01:23&#43;08:00" />
-<meta itemprop="wordCount" content="257">
+<meta itemprop="name" content="How to nstall ProxmoxVE 5.x on Debian 9">
+<meta itemprop="description" content="Install Proxmox VE 5.x on Debian 9 Chang IP ADDRESS vi /etc/network/interfaces
+# This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *.*.*.* gateway *.">
 
 
+<meta itemprop="datePublished" content="2018-12-01T00:02:28&#43;08:00" />
+<meta itemprop="dateModified" content="2018-12-26T01:52:23&#43;08:00" />
+<meta itemprop="wordCount" content="500">
 
-<meta itemprop="keywords" content="PVE,pass through," />
+
+
+<meta itemprop="keywords" content="PVE,debian," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Proxmox Ve Network Adapter Pass Through"/>
-<meta name="twitter:description" content="Proxmox Network Adapter Pass Through Long time ago, I konw virtualization is go very good solution to server. But how about router build in virtualization? After tried to do it, I was failed. because virtual switch made networking very slow. So i just use dedicate server as a router.
-Recently days, I just learn proxmox and find pci-e pass through function. I think maybe it is way to make routing virtualization."/>
+<meta name="twitter:title" content="How to nstall ProxmoxVE 5.x on Debian 9"/>
+<meta name="twitter:description" content="Install Proxmox VE 5.x on Debian 9 Chang IP ADDRESS vi /etc/network/interfaces
+# This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *.*.*.* gateway *."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -344,11 +345,11 @@ if (!doNotTrack) {
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">Proxmox Ve Network Adapter Pass Through</h1>
+      <h1 class="post-title">How to nstall ProxmoxVE 5.x on Debian 9</h1>
       
       <div class="post-meta">
-        <time datetime="2018-12-24" class="post-time">
-          2018-12-24
+        <time datetime="2018-12-01" class="post-time">
+          2018-12-01
         </time>
         <div class="post-category">
             <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
@@ -371,15 +372,17 @@ if (!doNotTrack) {
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#proxmox-network-adapter-pass-through">Proxmox Network Adapter Pass Through</a>
+<li><a href="#install-proxmox-ve-5-x-on-debian-9">Install Proxmox VE 5.x on Debian 9</a>
 <ul>
-<li><a href="#enable-vt-d-and-x2apic-mode">Enable VT-d and X2APic Mode</a></li>
-<li><a href="#chang-grub-boot-settings">Chang Grub boot settings</a>
-<ul>
-<li><a href="#inel-cpu">Inel CPU</a></li>
-<li><a href="#amd-cpu">AMD CPU</a></li>
-</ul></li>
-<li><a href="#add-pci-e-device-to-vm">Add PCI-E Device to VM</a></li>
+<li><a href="#chang-ip-address">Chang IP ADDRESS</a></li>
+<li><a href="#change-dns">Change DNS</a></li>
+<li><a href="#change-your-ip-and-hostname">Change your ip and hostname</a></li>
+<li><a href="#perl-all-lc-error">Perl ALL_LC ERROR</a></li>
+<li><a href="#add-utsc-mirrors-source">Add Utsc mirrors source</a></li>
+<li><a href="#install-proxmox-ve">Install proxmox VE</a></li>
+<li><a href="#q-a">Q&amp;A</a></li>
+<li><a href="#install-openvswitch-switch">Install openvswitch-switch</a></li>
+<li><a href="#proxmox-q-a">proxmox Q&amp;A</a></li>
 <li><a href="#reference">Reference</a></li>
 </ul></li>
 </ul>
@@ -391,104 +394,132 @@ if (!doNotTrack) {
     <div class="post-content">
       
 
-<h1 id="proxmox-network-adapter-pass-through">Proxmox Network Adapter Pass Through</h1>
+<h1 id="install-proxmox-ve-5-x-on-debian-9">Install Proxmox VE 5.x on Debian 9</h1>
 
-<p>Long time ago, I konw virtualization is go very good solution to server. But how about router build in virtualization? After tried to do it, I was failed. because virtual switch made networking very slow. So i just use dedicate server as a router.</p>
+<h2 id="chang-ip-address">Chang IP ADDRESS</h2>
 
-<p>Recently days, I just learn proxmox and find pci-e pass through function. I think maybe it is way to make routing virtualization.</p>
+<p><code>vi /etc/network/interfaces</code></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># This file describes the network interfaces available on your system</span>
+<span style="color:#09f;font-style:italic"># and how to activate them. For more information, see interfaces(5).</span>
+<span style="color:#366">source</span> /etc/network/interfaces.d/*
+<span style="color:#09f;font-style:italic"># The loopback network interface</span>
+auto lo
+iface lo inet loopback
+<span style="color:#09f;font-style:italic"># The primary network interface</span>
+<span style="color:#09f;font-style:italic">#allow-hotplug eno1</span>
+auto eno1
+<span style="color:#09f;font-style:italic">#iface eno1 inet dhcp</span>
+iface eno1 inet static
+address *.*.*.*
+netmask *.*.*.*
+gateway *.*.*.* </code></pre></div>
+<h2 id="change-dns">Change DNS</h2>
 
-<p>Here are what I do:</p>
+<p><code>vi /etc/resolv.conf</code></p>
 
-<h2 id="enable-vt-d-and-x2apic-mode">Enable VT-d and X2APic Mode</h2>
+<h2 id="change-your-ip-and-hostname">Change your ip and hostname</h2>
 
-<p>Configure BIOS to enable VT-d and X2APic</p>
+<p><code>vi /etc/hosts</code></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f60">127</span>.0.0.1       localhost.localdomain localhost
+<span style="color:#f60">10</span>.32.0.60   xa-sys-pve02 xa-sys-pve02 pvelocalhost
 
-<h2 id="chang-grub-boot-settings">Chang Grub boot settings</h2>
+<span style="color:#09f;font-style:italic"># The following lines are desirable for IPv6 capable hosts</span>
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters</code></pre></div>
+<h2 id="perl-all-lc-error">Perl ALL_LC ERROR</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">echo</span> <span style="color:#c30">&#39;en_US.UTF-8&#39;</span> &gt;&gt; /etc/environment
+apt-get autoremove
+<span style="color:#366">export</span> <span style="color:#033">LC_ALL</span><span style="color:#555">=</span>en_US.UTF-8
+<span style="color:#366">echo</span> <span style="color:#c30">&#34;en_US.UTF-8 UTF-8&#34;</span> &gt;&gt; /etc/locale.gen
+locale-gen
+dpkg-reconfigure locales</code></pre></div>
+<h2 id="add-utsc-mirrors-source">Add Utsc mirrors source</h2>
 
-<h3 id="inel-cpu">Inel CPU</h3>
+<p>before to chang source need to install</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt install apt-transport-https</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#chang debian source list</span>
+<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
+</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
+</span><span style="color:#c30">
+</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
+</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
+</span><span style="color:#c30">
+</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
+</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
+</span><span style="color:#c30">
+</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free
+</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&#34;</span> &gt; /etc/apt/sources.list
 
-<ul>
-<li>Edit grub configure.</li>
-<li>Inter CPU</li>
+<span style="color:#09f;font-style:italic">#change pve 5.1 update source list</span>
+<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&#34;</span> &gt; /etc/apt/sources.list.d/pve-enterprise.list
 
-<li><p>Edit grub</p></li>
+<span style="color:#09f;font-style:italic">#change ceph source list</span>
+<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&#34;</span> &gt; /etc/apt/sources.list.d/ceph.list
 
-<li><p>Edit <code>/etc/default/grub</code>, then change
-<code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet&quot;</code> to
-<code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet intel_iommu=on&quot;</code></p></li>
-
-<li><p>Update grub</p></li>
-</ul>
-
-<p><code>update-grub</code></p>
-
-<h3 id="amd-cpu">AMD CPU</h3>
-
-<ul>
-<li>Edit grub file.</li>
-
-<li><p>Edit <code>/etc/default/grub</code></p></li>
-
-<li><p>Change <code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet&quot;</code>to <code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet amd_iommu=on&quot;</code></p></li>
-
-<li><p>Update grub</p></li>
-</ul>
-
-<p><code>update-grub</code></p>
-
-<p>##Change Required modules</p>
-
-<ul>
-<li>Edit /etc/modules</li>
-</ul>
-
-<p>Add</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vfio
-vfio_iommu_type1
-vfio_pci
-vfio_virqfd</code></pre></div>
-<ul>
-<li>Check IOMMU enable or not</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">dmesg | grep ecap</code></pre></div>
-<ul>
-<li>script to make sure IOMMU is enabled</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#099">#!/bin/sh
-</span><span style="color:#099"></span><span style="color:#069;font-weight:bold">if</span> <span style="color:#555">[</span> <span style="color:#069;font-weight:bold">$(</span>dmesg | grep ecap | wc -l<span style="color:#069;font-weight:bold">)</span> -eq <span style="color:#f60">0</span> <span style="color:#555">]</span>; <span style="color:#069;font-weight:bold">then</span>
-    <span style="color:#366">echo</span> <span style="color:#c30">&#34;No interrupt remapping support found&#34;</span>
-    <span style="color:#366">exit</span> <span style="color:#f60">1</span>
-<span style="color:#069;font-weight:bold">fi</span>
-
-<span style="color:#069;font-weight:bold">for</span> i in <span style="color:#069;font-weight:bold">$(</span>dmesg | grep ecap | awk <span style="color:#c30">&#39;{print $NF}&#39;</span><span style="color:#069;font-weight:bold">)</span>; <span style="color:#069;font-weight:bold">do</span>
-    <span style="color:#069;font-weight:bold">if</span> <span style="color:#555">[</span> <span style="color:#069;font-weight:bold">$((</span> <span style="color:#555">(</span><span style="color:#f60">0</span>x<span style="color:#033">$i</span> <span style="color:#555">&amp;</span> <span style="color:#f60">0</span>xf<span style="color:#555">)</span> &gt;&gt; <span style="color:#f60">3</span> <span style="color:#069;font-weight:bold">))</span> -ne <span style="color:#f60">1</span> <span style="color:#555">]</span>; <span style="color:#069;font-weight:bold">then</span>
-        <span style="color:#366">echo</span> <span style="color:#c30">&#34;Interrupt remapping not supported&#34;</span>
-        <span style="color:#366">exit</span> <span style="color:#f60">1</span>
-<span style="color:#069;font-weight:bold">fi</span>
-<span style="color:#069;font-weight:bold">done</span></code></pre></div>
-<ul>
-<li>Verify IOMMU isolation</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">find /sys/kernel/iommu_groups/ -type l</code></pre></div>
-<h2 id="add-pci-e-device-to-vm">Add PCI-E Device to VM</h2>
+<span style="color:#09f;font-style:italic"># add key</span>
+wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg</code></pre></div>
+<h2 id="install-proxmox-ve">Install proxmox VE</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt update <span style="color:#555">&amp;&amp;</span> apt -y dist-ugprade
+apt install proxmox-ve postfix open-iscsi
+update-grub</code></pre></div>
+<h2 id="q-a">Q&amp;A</h2>
 
 <ul>
-<li>Run <code>lspci</code> to check address of network pci-e adapter device. like this</li>
+<li>When you got error like this, please make sure hosts file is set without wrong. like this<code>10.32.0.60   xa-sys-pve02 xa-sys-pve02 pvelocalhost</code></li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">lspci</code></pre></div>
-<pre><code>hostpci0: 01:00.0
-</code></pre>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Setting up pve-manager <span style="color:#555">(</span><span style="color:#f60">5</span>.2-1<span style="color:#555">)</span> ...
+Job <span style="color:#069;font-weight:bold">for</span> pvestatd.service failed because the control process exited with error code.
+See <span style="color:#c30">&#34;systemctl status pvestatd.service&#34;</span> and <span style="color:#c30">&#34;journalctl -xe&#34;</span> <span style="color:#069;font-weight:bold">for</span> details.
+pvestatd.service couldn<span style="color:#c30">&#39;t start.
+</span><span style="color:#c30">dpkg: error processing package pve-manager (--configure):
+</span><span style="color:#c30"> subprocess installed post-installation script returned error exit status 1
+</span><span style="color:#c30">Processing triggers for man-db (2.7.6.1-2) ...
+</span><span style="color:#c30">dpkg: dependency problems prevent configuration of proxmox-ve:
+</span><span style="color:#c30"> proxmox-ve depends on pve-manager; however:
+</span><span style="color:#c30">  Package pve-manager is not configured yet.
+</span><span style="color:#c30">
+</span><span style="color:#c30">dpkg: error processing package proxmox-ve (--configure):
+</span><span style="color:#c30"> dependency problems - leaving unconfigured
+</span><span style="color:#c30">Errors were encountered while processing:
+</span><span style="color:#c30"> pve-manager
+</span><span style="color:#c30"> proxmox-ve
+</span><span style="color:#c30">E: Sub-process /usr/bin/dpkg returned an error code (1)
+</span><span style="color:#c30">Setting up pve-manager (5.2-1) ...
+</span><span style="color:#c30">Job for pvestatd.service failed because the control process exited with error code.
+</span><span style="color:#c30">See &#34;systemctl status pvestatd.service&#34; and &#34;journalctl -xe&#34; for details.
+</span><span style="color:#c30">pvestatd.service couldn&#39;</span>t start.
+dpkg: error processing package pve-manager <span style="color:#555">(</span>--configure<span style="color:#555">)</span>:
+ subprocess installed post-installation script returned error <span style="color:#366">exit</span> status <span style="color:#f60">1</span>
+dpkg: dependency problems prevent configuration of proxmox-ve:
+ proxmox-ve depends on pve-manager; however:
+  Package pve-manager is not configured yet.
+
+dpkg: error processing package proxmox-ve <span style="color:#555">(</span>--configure<span style="color:#555">)</span>:
+ dependency problems - leaving unconfigured
+Errors were encountered <span style="color:#069;font-weight:bold">while</span> processing:
+ pve-manager
+ proxmox-ve</code></pre></div>
+<h2 id="install-openvswitch-switch">Install openvswitch-switch</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt-get install openvsiwtch-switch</code></pre></div>
+<h2 id="proxmox-q-a">proxmox Q&amp;A</h2>
 
 <ul>
-<li>Add configure of yoru VM <code>/etc/pve/qemu-server/&lt;vmid&gt;.conf</code></li>
-<li>Add configure like this to set pci-expres passthrough.</li>
+<li>Error 1: <code>command '/sbin/sgdisk /dev/sde -U R' failed: exit code 3</code></li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  machine: q35
-  hostpci0: <span style="color:#f60">00</span>:00.0,pcie<span style="color:#555">=</span><span style="color:#f60">1</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/sbin/sgdisk /dev/sdf -U R -g
+***************************************************************
+Found invalid GPT and valid MBR; converting MBR to GPT format
+in memory.
+***************************************************************</code></pre></div>
+<ul>
+<li>Error 2: `Driver &lsquo;pcspkr&rsquo; is already registered, aborting&hellip;</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> <span style="color:#09f;font-style:italic"># echo &#34;blacklist pcspkr&#34; &gt; /etc/modprobe.d/blacklist-pcspkr.conf</span></code></pre></div>
 <h2 id="reference">Reference</h2>
 
 <ul>
-<li><a href="https://pve.proxmox.com/wiki/Pci_passthrough">Pci passthrough</a></li>
+<li><a href="https://forum.proxmox.com/threads/problem-with-installing-proxmox-ve-on-debian.44316/">Problem with installing Proxmox-VE on Debian</a></li>
+<li><a href="https://forum.proxmox.com/threads/error-driver-pcspkr-is-already-registered-aborting.37967/">Error: Driver &lsquo;pcspkr&rsquo; is already registered, aborting&hellip;</a></li>
 </ul>
 
     </div>
@@ -502,7 +533,7 @@ vfio_virqfd</code></pre></div>
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">2018-12-24</span>
+    <span class="item-content">2018-12-26</span>
   </p>
   
   <p class="copyright-item">
@@ -527,14 +558,14 @@ vfio_virqfd</code></pre></div>
     <footer class="post-footer">
       <div class="post-tags">
           <a href="https://blog.stevedong.com/tags/pve/">PVE</a>
-          <a href="https://blog.stevedong.com/tags/pass-through/">pass through</a>
+          <a href="https://blog.stevedong.com/tags/debian/">debian</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/learning-flask-01/">
+          <a class="prev" href="/post/deploy-overture-with-docker-and-freebsd/">
             
             <i class="iconfont">
               <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -544,12 +575,12 @@ vfio_virqfd</code></pre></div>
 </svg>
 
             </i>
-            <span class="prev-text nav-default">Learning Flask 01</span>
+            <span class="prev-text nav-default">Deploy Overture With Docker and Freebsd</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         
-          <a class="next" href="/post/dockerfile-for-overture/">
-            <span class="next-text nav-default">Dockerfile for Overture</span>
+          <a class="next" href="/post/how-to-testing-network-bandwith-with-iperf/">
+            <span class="next-text nav-default">How to Testing Network Bandwith With Iperf</span>
             <span class="prev-text nav-mobile">Next</span>
             
             <i class="iconfont">

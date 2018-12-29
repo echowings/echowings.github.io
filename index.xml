@@ -32,6 +32,31 @@
     </item>
     
     <item>
+      <title>Cisco Ssh Error</title>
+      <link>https://blog.stevedong.com/post/cisco-ssh-error/</link>
+      <pubDate>Sat, 29 Dec 2018 12:19:12 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/cisco-ssh-error/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;cisco-ssh-error&#34;&gt;cisco ssh error&lt;/h1&gt;
+
+&lt;p&gt;When you met error like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ssh  cisco@10.32.3.1
+Unable to negotiate with &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt;.32.3.1 port &lt;span style=&#34;color:#f60&#34;&gt;22&lt;/span&gt;: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Solution:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ ssh -l &amp;lt;USERNAME&amp;gt; -oHostKeyAlgorithms&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;+ssh-dss -oKexAlgorithms&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;+diffie-hellman-group1-sha1 &amp;lt;HOST&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://community.cisco.com/t5/vpn-and-anyconnect/ssh-failed-on-3750-switch/td-p/3043810&#34;&gt;SSH failed on 3750 switch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>Macos Update Time via Ntpserver</title>
       <link>https://blog.stevedong.com/post/macos-update-time-via-ntpserver/</link>
       <pubDate>Wed, 26 Dec 2018 09:26:04 +0800</pubDate>
@@ -484,10 +509,10 @@ run_rc_command &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt;&lt;
     
     <item>
       <title>How to nstall ProxmoxVE 5.x on Debian 9</title>
-      <link>https://blog.stevedong.com/post/how-to-install-proxmoxve5.x-on-debian9/</link>
+      <link>https://blog.stevedong.com/post/proxmox-ve-install-pve5-on-debian9/</link>
       <pubDate>Sat, 01 Dec 2018 00:02:28 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/how-to-install-proxmoxve5.x-on-debian9/</guid>
+      <guid>https://blog.stevedong.com/post/proxmox-ve-install-pve5-on-debian9/</guid>
       
         <description>
 
@@ -525,10 +550,12 @@ gateway *.*.*.* &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;perl-all-lc-error&#34;&gt;Perl ALL_LC ERROR&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt-get autoremove
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;en_US.UTF-8&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; /etc/environment
+apt-get autoremove
 &lt;span style=&#34;color:#366&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;LC_ALL&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;en_US.UTF-8
 &lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;en_US.UTF-8 UTF-8&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/locale.gen
-locale-gen&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+locale-gen
+dpkg-reconfigure locales&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;add-utsc-mirrors-source&#34;&gt;Add Utsc mirrors source&lt;/h2&gt;
 
 &lt;p&gt;before to chang source need to install&lt;/p&gt;
@@ -596,10 +623,25 @@ Errors were encountered &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;
  proxmox-ve&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;install-openvswitch-switch&#34;&gt;Install openvswitch-switch&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt-get install openvsiwtch-switch&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;proxmox-q-a&#34;&gt;proxmox Q&amp;amp;A&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Error 1: &lt;code&gt;command &#39;/sbin/sgdisk /dev/sde -U R&#39; failed: exit code 3&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;/sbin/sgdisk /dev/sdf -U R -g
+***************************************************************
+Found invalid GPT and valid MBR; converting MBR to GPT format
+in memory.
+***************************************************************&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Error 2: `Driver &amp;lsquo;pcspkr&amp;rsquo; is already registered, aborting&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt; &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# echo &amp;#34;blacklist pcspkr&amp;#34; &amp;gt; /etc/modprobe.d/blacklist-pcspkr.conf&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://forum.proxmox.com/threads/problem-with-installing-proxmox-ve-on-debian.44316/&#34;&gt;Problem with installing Proxmox-VE on Debian&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://forum.proxmox.com/threads/error-driver-pcspkr-is-already-registered-aborting.37967/&#34;&gt;Error: Driver &amp;lsquo;pcspkr&amp;rsquo; is already registered, aborting&amp;hellip;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
       
@@ -945,10 +987,10 @@ git bundler dotenv osx rake rbenv ruby mercurial &lt;span style=&#34;color:#555&
     
     <item>
       <title>Proxmoxve VE V5.x Installation</title>
-      <link>https://blog.stevedong.com/post/proxmoxve-v5.x-installation/</link>
+      <link>https://blog.stevedong.com/post/proxmox-ve-v5.x-installation/</link>
       <pubDate>Mon, 19 Nov 2018 23:38:39 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/proxmoxve-v5.x-installation/</guid>
+      <guid>https://blog.stevedong.com/post/proxmox-ve-v5.x-installation/</guid>
       
         <description>
 

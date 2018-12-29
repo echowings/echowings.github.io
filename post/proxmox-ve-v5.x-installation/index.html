@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Ssh · Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>Proxmoxve VE V5.x Installation - Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -22,8 +22,10 @@
 
 <meta name="mobile-web-app-capable" content="yes">
 
-<meta name="author" content="Steve Dong" />
-  <meta name="description" content="A System Administrator&#39;s Blog." />
+<meta name="author" content="steve dong" />
+  <meta name="description" content="Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
+ Boot the proxmox installer USB Select Debug Mode Press “CTRL&#43;D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34; \  /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js \  &amp;amp;&amp;amp; systemctl restart pveproxy." />
+
   <meta name="keywords" content="network, devops, sdn, system Administation" />
 
 
@@ -34,8 +36,7 @@
 <meta name="generator" content="Hugo 0.52" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/tags/ssh/" />
-<link href="https://blog.stevedong.com/tags/ssh/index.xml" rel="alternate" type="application/rss+xml" title="Steve Dong - A System Administrator&#39;s Blog" />
+<link rel="canonical" href="https://blog.stevedong.com/post/proxmox-ve-v5.x-installation/" />
 
 
 
@@ -57,18 +58,29 @@
 
 
 
-<meta property="og:title" content="Ssh" />
-<meta property="og:description" content="A System Administrator&#39;s Blog." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://blog.stevedong.com/tags/ssh/" />
-<meta property="og:updated_time" content="2018-12-29T12:19:12&#43;08:00"/>
+<meta property="og:title" content="Proxmoxve VE V5.x Installation" />
+<meta property="og:description" content="Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
+ Boot the proxmox installer USB Select Debug Mode Press “CTRL&#43;D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; \  /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js \  &amp;&amp; systemctl restart pveproxy." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-v5.x-installation/" /><meta property="article:published_time" content="2018-11-19T23:38:39&#43;08:00"/>
+<meta property="article:modified_time" content="2018-11-19T23:38:39&#43;08:00"/>
 
-<meta itemprop="name" content="Ssh">
-<meta itemprop="description" content="A System Administrator&#39;s Blog.">
+<meta itemprop="name" content="Proxmoxve VE V5.x Installation">
+<meta itemprop="description" content="Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
+ Boot the proxmox installer USB Select Debug Mode Press “CTRL&#43;D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; \  /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js \  &amp;&amp; systemctl restart pveproxy.">
 
+
+<meta itemprop="datePublished" content="2018-11-19T23:38:39&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-19T23:38:39&#43;08:00" />
+<meta itemprop="wordCount" content="211">
+
+
+
+<meta itemprop="keywords" content="PVE," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Ssh"/>
-<meta name="twitter:description" content="A System Administrator&#39;s Blog."/>
+<meta name="twitter:title" content="Proxmoxve VE V5.x Installation"/>
+<meta name="twitter:description" content="Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
+ Boot the proxmox installer USB Select Debug Mode Press “CTRL&#43;D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; \  /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js \  &amp;&amp; systemctl restart pveproxy."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -330,64 +342,221 @@ if (!doNotTrack) {
     <main id="main" class="main bg-llight">
       <div class="content-wrapper">
         <div id="content" class="content container">
-          
-
-<section id="archive" class="archive">
-  
+          <article class="post bg-white">
     
-      <div class="archive-title tag">
-        <h2 class="archive-name">Tag: Ssh</h2>
+    <header class="post-header">
+      <h1 class="post-title">Proxmoxve VE V5.x Installation</h1>
+      
+      <div class="post-meta">
+        <time datetime="2018-11-19" class="post-time">
+          2018-11-19
+        </time>
+        <div class="post-category">
+            <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+            
+          </div>
+        
+
+        
+        
+
+        
+        
       </div>
+    </header>
+
     
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#proxmox-ve-5-x-installation">Proxmox VE 5.x Installation</a>
+<ul>
+<li><a href="#proxmox-won-t-install-a-volume-group-called-pve-already-exists">Proxmox won’t install- “A volume group called pve already exists</a></li>
+<li><a href="#remove-no-valid-subscription-message">Remove “No valid Subscription” Message</a></li>
+<li><a href="#change-update-source">Change update source</a></li>
+<li><a href="#reference">Reference</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<h1 id="proxmox-ve-5-x-installation">Proxmox VE 5.x Installation</h1>
+
+<h2 id="proxmox-won-t-install-a-volume-group-called-pve-already-exists">Proxmox won’t install- “A volume group called pve already exists</h2>
+
+<p>Solution:</p>
+
+<ol>
+<li>Boot the proxmox installer USB</li>
+<li>Select Debug Mode</li>
+<li>Press “CTRL+D” to start the installer wizard.</li>
+<li>Click on abort</li>
+<li>Run “vgdisplay” to dislay the LVM PG’s.</li>
+<li>Run “vgremode pve ” to remove pve PG.</li>
+</ol>
+
+<h2 id="remove-no-valid-subscription-message">Remove “No valid Subscription” Message</h2>
+
+<ul>
+<li>shell solution.</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i.bak <span style="color:#c30">&#34;s/data.status !== &#39;Active&#39;/false/g&#34;</span> <span style="color:#c30;font-weight:bold">\ </span>
+	/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js <span style="color:#c30;font-weight:bold">\ </span>
+	<span style="color:#555">&amp;&amp;</span> systemctl restart pveproxy.service
+	</code></pre></div>
+<ul>
+<li>manual solution:</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> /usr/share/javascript/proxmox-widget-toolkit
+cp proxmoxlib.js proxmoxlib.js.bak
+nano proxmoxlib.js
+
+<span style="color:#09f;font-style:italic"># change</span> 
+<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span>data.status !<span style="color:#555">==</span> <span style="color:#c30">&#39;Active&#39;</span><span style="color:#555">)</span> <span style="color:#555">{</span>
+
+<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span><span style="color:#366">false</span><span style="color:#555">)</span> <span style="color:#555">{</span>
+
+<span style="color:#09f;font-style:italic">#restart pveproxy.service</span>
+systemctl restart pveproxy.service</code></pre></div>
+<h2 id="change-update-source">Change update source</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#chang debian source list</span>
+<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
+</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
+</span><span style="color:#c30">
+</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
+</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
+</span><span style="color:#c30">
+</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
+</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
+</span><span style="color:#c30">
+</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free
+</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&#34;</span> &gt; /etc/apt/sources.list
+
+<span style="color:#09f;font-style:italic">#change pve 5.1 update source list</span>
+<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&#34;</span> &gt; /etc/apt/sources.list.d/pve-enterprise.list
+
+<span style="color:#09f;font-style:italic">#change ceph source list</span>
+<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&#34;</span> &gt; /etc/apt/sources.list.d/ceph.list
+
+<span style="color:#09f;font-style:italic"># add key</span>
+wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
+
+apt updat <span style="color:#555">&amp;&amp;</span> apt -y dist-ugprade
+apt install proxmox-ve postfix open-iscsi
+update-grub</code></pre></div>
+<h2 id="reference">Reference</h2>
+
+<ol>
+<li><a href="https://forum.proxmox.com/threads/proxmox-wont-install-a-volume-group-called-pve-already-exists.43724/">Proxmox won’t install - “A volume group called pve already exists”.</a></li>
+<li><a href="https://johnscs.com/remove-proxmox51-subscription-notice/">Remove Proxmox 5.1 or 5.2 Subscription Notice</a></li>
+</ol>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">steve dong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-11-19</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    
+    
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://blog.stevedong.com/tags/pve/">PVE</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/ssh-login-without-password/">
+            
+            <i class="iconfont">
+              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+            </i>
+            <span class="prev-text nav-default">Ssh Login Without Password</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/linux-in-action-01/">
+            <span class="next-text nav-default">Linux in Action 01</span>
+            <span class="prev-text nav-mobile">Next</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
+  
   
 
   
-    <div class="archive-post">
-      <time datetime="2018-12-29" class="archive-post-time">
-        2018-12-29
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/cisco-ssh-error/" class="archive-post-link">
-          Cisco Ssh Error
-        </a>
-      </span>
+  
+
+  
+  
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "echowings/blogcomment"
+            issue-term="pathname"
+            crossorigin="anonymous"
+            async>
+      </script>
     </div>
   
-    <div class="archive-post">
-      <time datetime="2018-11-29" class="archive-post-time">
-        2018-11-29
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/ssh-login-without-password/" class="archive-post-link">
-          Ssh Login Without Password
-        </a>
-      </span>
-    </div>
-  
-</section>
-
-
-
-
-
 
   
-  
+
   
 
   
   
-
-  
-  
-
-  
-  
-
-  
-  
-
-
+    
 
 
 
