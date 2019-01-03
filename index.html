@@ -361,7 +361,8 @@ if (!doNotTrack) {
     <div class="post-summary">
        cisco ssh error When you met error like this:
 ssh cisco@10.32.3.1 Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1 Solution:
-$ ssh -l &lt;USERNAME&gt; -oHostKeyAlgorithms=+ssh-dss -oKexAlgorithms=+diffie-hellman-group1-sha1 &lt;HOST&gt; Reference  SSH failed on 3750 switch  
+$ ssh -l &lt;USERNAME&gt; -oHostKeyAlgorithms=+ssh-dss -oKexAlgorithms=+diffie-hellman-group1-sha1 &lt;HOST&gt; or
+ssh -l &lt;username&gt; -o HostKeyAlgorithms=+ssh-dss -o KexAlgorithms=+diffie-hellman-group1-sha1 -c 3des-cbc &lt;hostname&gt; Reference  SSH failed on 3750 switch SSH Not Working After Update To 10.13.2 (HighSierra)  
     </div>
     <div class="read-more">
       <a href="/post/cisco-ssh-error/" class="read-more-link">Read more</a>
@@ -953,7 +954,9 @@ if [ &ldquo;ls -A /config&rdquo; = &ldquo;&rdquo; ]; then cp /srv/config.
 
   <span class="copyright-year">
     &copy;
-    2018
+    
+      2018 -
+    2019
     <span class="heart">
       
       <i class="iconfont">

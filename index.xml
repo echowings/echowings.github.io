@@ -47,10 +47,13 @@
 Unable to negotiate with &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt;.32.3.1 port &lt;span style=&#34;color:#f60&#34;&gt;22&lt;/span&gt;: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Solution:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ ssh -l &amp;lt;USERNAME&amp;gt; -oHostKeyAlgorithms&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;+ssh-dss -oKexAlgorithms&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;+diffie-hellman-group1-sha1 &amp;lt;HOST&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ssh -l &amp;lt;username&amp;gt; -o &lt;span style=&#34;color:#033&#34;&gt;HostKeyAlgorithms&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;+ssh-dss -o &lt;span style=&#34;color:#033&#34;&gt;KexAlgorithms&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;+diffie-hellman-group1-sha1 -c 3des-cbc &amp;lt;hostname&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://community.cisco.com/t5/vpn-and-anyconnect/ssh-failed-on-3750-switch/td-p/3043810&#34;&gt;SSH failed on 3750 switch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://discussions.apple.com/thread/8196671&#34;&gt;SSH Not Working After Update To 10.13.2 (HighSierra)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
       

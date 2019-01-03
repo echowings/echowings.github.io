@@ -25,7 +25,8 @@
 <meta name="author" content="Steve Dong" />
   <meta name="description" content=" cisco ssh error When you met error like this:
 ssh cisco@10.32.3.1 Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1 Solution:
-$ ssh -l &amp;lt;USERNAME&amp;gt; -oHostKeyAlgorithms=&#43;ssh-dss -oKexAlgorithms=&#43;diffie-hellman-group1-sha1 &amp;lt;HOST&amp;gt; Reference  SSH failed on 3750 switch  " />
+$ ssh -l &amp;lt;USERNAME&amp;gt; -oHostKeyAlgorithms=&#43;ssh-dss -oKexAlgorithms=&#43;diffie-hellman-group1-sha1 &amp;lt;HOST&amp;gt; or
+ssh -l &amp;lt;username&amp;gt; -o HostKeyAlgorithms=&#43;ssh-dss -o KexAlgorithms=&#43;diffie-hellman-group1-sha1 -c 3des-cbc &amp;lt;hostname&amp;gt; Reference  SSH failed on 3750 switch SSH Not Working After Update To 10.13.2 (HighSierra)  " />
 
   <meta name="keywords" content="network, devops, sdn, system Administation" />
 
@@ -62,7 +63,8 @@ $ ssh -l &amp;lt;USERNAME&amp;gt; -oHostKeyAlgorithms=&#43;ssh-dss -oKexAlgorith
 <meta property="og:title" content="Cisco Ssh Error" />
 <meta property="og:description" content=" cisco ssh error When you met error like this:
 ssh cisco@10.32.3.1 Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1 Solution:
-$ ssh -l &lt;USERNAME&gt; -oHostKeyAlgorithms=&#43;ssh-dss -oKexAlgorithms=&#43;diffie-hellman-group1-sha1 &lt;HOST&gt; Reference  SSH failed on 3750 switch  " />
+$ ssh -l &lt;USERNAME&gt; -oHostKeyAlgorithms=&#43;ssh-dss -oKexAlgorithms=&#43;diffie-hellman-group1-sha1 &lt;HOST&gt; or
+ssh -l &lt;username&gt; -o HostKeyAlgorithms=&#43;ssh-dss -o KexAlgorithms=&#43;diffie-hellman-group1-sha1 -c 3des-cbc &lt;hostname&gt; Reference  SSH failed on 3750 switch SSH Not Working After Update To 10.13.2 (HighSierra)  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/cisco-ssh-error/" /><meta property="article:published_time" content="2018-12-29T12:19:12&#43;08:00"/>
 <meta property="article:modified_time" content="2018-12-29T12:19:12&#43;08:00"/>
@@ -70,12 +72,13 @@ $ ssh -l &lt;USERNAME&gt; -oHostKeyAlgorithms=&#43;ssh-dss -oKexAlgorithms=&#43;
 <meta itemprop="name" content="Cisco Ssh Error">
 <meta itemprop="description" content=" cisco ssh error When you met error like this:
 ssh cisco@10.32.3.1 Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1 Solution:
-$ ssh -l &lt;USERNAME&gt; -oHostKeyAlgorithms=&#43;ssh-dss -oKexAlgorithms=&#43;diffie-hellman-group1-sha1 &lt;HOST&gt; Reference  SSH failed on 3750 switch  ">
+$ ssh -l &lt;USERNAME&gt; -oHostKeyAlgorithms=&#43;ssh-dss -oKexAlgorithms=&#43;diffie-hellman-group1-sha1 &lt;HOST&gt; or
+ssh -l &lt;username&gt; -o HostKeyAlgorithms=&#43;ssh-dss -o KexAlgorithms=&#43;diffie-hellman-group1-sha1 -c 3des-cbc &lt;hostname&gt; Reference  SSH failed on 3750 switch SSH Not Working After Update To 10.13.2 (HighSierra)  ">
 
 
 <meta itemprop="datePublished" content="2018-12-29T12:19:12&#43;08:00" />
 <meta itemprop="dateModified" content="2018-12-29T12:19:12&#43;08:00" />
-<meta itemprop="wordCount" content="41">
+<meta itemprop="wordCount" content="60">
 
 
 
@@ -84,7 +87,8 @@ $ ssh -l &lt;USERNAME&gt; -oHostKeyAlgorithms=&#43;ssh-dss -oKexAlgorithms=&#43;
 <meta name="twitter:title" content="Cisco Ssh Error"/>
 <meta name="twitter:description" content=" cisco ssh error When you met error like this:
 ssh cisco@10.32.3.1 Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1 Solution:
-$ ssh -l &lt;USERNAME&gt; -oHostKeyAlgorithms=&#43;ssh-dss -oKexAlgorithms=&#43;diffie-hellman-group1-sha1 &lt;HOST&gt; Reference  SSH failed on 3750 switch  "/>
+$ ssh -l &lt;USERNAME&gt; -oHostKeyAlgorithms=&#43;ssh-dss -oKexAlgorithms=&#43;diffie-hellman-group1-sha1 &lt;HOST&gt; or
+ssh -l &lt;username&gt; -o HostKeyAlgorithms=&#43;ssh-dss -o KexAlgorithms=&#43;diffie-hellman-group1-sha1 -c 3des-cbc &lt;hostname&gt; Reference  SSH failed on 3750 switch SSH Not Working After Update To 10.13.2 (HighSierra)  "/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -396,10 +400,13 @@ if (!doNotTrack) {
 Unable to negotiate with <span style="color:#f60">10</span>.32.3.1 port <span style="color:#f60">22</span>: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1</code></pre></div>
 <p>Solution:</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ssh -l &lt;USERNAME&gt; -oHostKeyAlgorithms<span style="color:#555">=</span>+ssh-dss -oKexAlgorithms<span style="color:#555">=</span>+diffie-hellman-group1-sha1 &lt;HOST&gt;</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh -l &lt;username&gt; -o <span style="color:#033">HostKeyAlgorithms</span><span style="color:#555">=</span>+ssh-dss -o <span style="color:#033">KexAlgorithms</span><span style="color:#555">=</span>+diffie-hellman-group1-sha1 -c 3des-cbc &lt;hostname&gt;</code></pre></div>
 <h2 id="reference">Reference</h2>
 
 <ul>
 <li><a href="https://community.cisco.com/t5/vpn-and-anyconnect/ssh-failed-on-3750-switch/td-p/3043810">SSH failed on 3750 switch</a></li>
+<li><a href="https://discussions.apple.com/thread/8196671">SSH Not Working After Update To 10.13.2 (HighSierra)</a></li>
 </ul>
 
     </div>
@@ -544,7 +551,9 @@ Unable to negotiate with <span style="color:#f60">10</span>.32.3.1 port <span st
 
   <span class="copyright-year">
     &copy;
-    2018
+    
+      2018 -
+    2019
     <span class="heart">
       
       <i class="iconfont">
