@@ -72,7 +72,7 @@
 
 <meta itemprop="datePublished" content="2019-01-08T11:47:31&#43;08:00" />
 <meta itemprop="dateModified" content="2019-01-08T11:47:31&#43;08:00" />
-<meta itemprop="wordCount" content="378">
+<meta itemprop="wordCount" content="376">
 
 
 
@@ -417,93 +417,82 @@ vgdisplay
 <p>Remember <code>24319</code> from <code>Free  PE / Size       24319 / &lt;95.00 GiB</code></p>
 
 <h2 id="list-logical-volume">list logical volume</h2>
-
-<pre><code>lvdisplay
-</code></pre>
-
-<pre><code>  --- Logical volume ---
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">lvdisplay</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  --- Logical volume ---
   LV Path                /dev/ubuntu-vg/ubuntu-lv
   LV Name                ubuntu-lv
   VG Name                ubuntu-vg
   LV UUID                Pi0Id7-riMg-BtmN-sfdF-gIjX-KrCp-TxxCBt
   LV Write Access        read/write
-  LV Creation host, time ubuntu-server, 2018-12-12 03:43:02 +0000
+  LV Creation host, <span style="color:#366">time</span> ubuntu-server, <span style="color:#f60">2018</span>-12-12 <span style="color:#f60">03</span>:43:02 +0000
   LV Status              available
-  # open                 1
-  LV Size                4.00 GiB
-  Current LE             1024
-  Segments               1
+  <span style="color:#09f;font-style:italic"># open                 1</span>
+  LV Size                <span style="color:#f60">4</span>.00 GiB
+  Current LE             <span style="color:#f60">1024</span>
+  Segments               <span style="color:#f60">1</span>
   Allocation             inherit
   Read ahead sectors     auto
-  - currently set to     256
-  Block device           253:0
-</code></pre>
-
+  - currently <span style="color:#366">set</span> to     <span style="color:#f60">256</span>
+  Block device           <span style="color:#f60">253</span>:0</code></pre></div>
 <p>Remember LV Path: <code>/dev/ubuntu-vg/ubuntu-lv</code></p>
 
 <h2 id="extend-free-pe-to-lvm">Extend Free PE to lvm</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lvextend -l +24319 /dev/ubuntu-vg/ubuntu-lv```" data-lang="lvextend -l +24319 /dev/ubuntu-vg/ubuntu-lv```">``` bash
-root@template-ubutu1804:/home/autotest# vgdisplay
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">lvextend -l +24319 /dev/ubuntu-vg/ubuntu-lv</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@template-ubutu1804:/home/autotest# vgdisplay
   --- Volume group ---
   VG Name               ubuntu-vg
   System ID
   Format                lvm2
-  Metadata Areas        1
-  Metadata Sequence No  3
+  Metadata Areas        <span style="color:#f60">1</span>
+  Metadata Sequence No  <span style="color:#f60">3</span>
   VG Access             read/write
   VG Status             resizable
-  MAX LV                0
-  Cur LV                1
-  Open LV               1
-  Max PV                0
-  Cur PV                1
-  Act PV                1
-  VG Size               &lt;99.00 GiB
-  PE Size               4.00 MiB
-  Total PE              25343
-  Alloc PE / Size       25343 / &lt;99.00 GiB
-  Free  PE / Size       0 / 0
+  MAX LV                <span style="color:#f60">0</span>
+  Cur LV                <span style="color:#f60">1</span>
+  Open LV               <span style="color:#f60">1</span>
+  Max PV                <span style="color:#f60">0</span>
+  Cur PV                <span style="color:#f60">1</span>
+  Act PV                <span style="color:#f60">1</span>
+  VG Size               &lt;<span style="color:#f60">99</span>.00 GiB
+  PE Size               <span style="color:#f60">4</span>.00 MiB
+  Total PE              <span style="color:#f60">25343</span>
+  Alloc PE / Size       <span style="color:#f60">25343</span> / &lt;<span style="color:#f60">99</span>.00 GiB
+  Free  PE / Size       <span style="color:#f60">0</span> / <span style="color:#f60">0</span>
   VG UUID               KblInT-Z6k6-1NM3-ybyV-eufy-y1vc-BiIoEM
   
 resize2fs /dev/ubuntu-vg/ubuntu-lv
-resize2fs 1.44.1 (24-Mar-2018)
+resize2fs <span style="color:#f60">1</span>.44.1 <span style="color:#555">(</span><span style="color:#f60">24</span>-Mar-2018<span style="color:#555">)</span>
 Filesystem at /dev/ubuntu-vg/ubuntu-lv is mounted on /; on-line resizing required
-old_desc_blocks = 1, new_desc_blocks = 13
-The filesystem on /dev/ubuntu-vg/ubuntu-lv is now 25951232 (4k) blocks long. </code></pre></div>
+<span style="color:#033">old_desc_blocks</span> <span style="color:#555">=</span> <span style="color:#f60">1</span>, <span style="color:#033">new_desc_blocks</span> <span style="color:#555">=</span> <span style="color:#f60">13</span>
+The filesystem on /dev/ubuntu-vg/ubuntu-lv is now <span style="color:#f60">25951232</span> <span style="color:#555">(</span>4k<span style="color:#555">)</span> blocks long. </code></pre></div>
 <h2 id="check-volume-group-information">Check volume group information</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vgdisplay```" data-lang="vgdisplay```">``` bash
-root@template-ubutu1804:/home/autotest# vgdisplay
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vgdisplay</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@template-ubutu1804:/home/autotest# vgdisplay
   --- Volume group ---
   VG Name               ubuntu-vg
   System ID
   Format                lvm2
-  Metadata Areas        1
-  Metadata Sequence No  3
+  Metadata Areas        <span style="color:#f60">1</span>
+  Metadata Sequence No  <span style="color:#f60">3</span>
   VG Access             read/write
   VG Status             resizable
-  MAX LV                0
-  Cur LV                1
-  Open LV               1
-  Max PV                0
-  Cur PV                1
-  Act PV                1
-  VG Size               &lt;99.00 GiB
-  PE Size               4.00 MiB
-  Total PE              25343
-  Alloc PE / Size       25343 / &lt;99.00 GiB
-  Free  PE / Size       0 / 0</code></pre></div>
+  MAX LV                <span style="color:#f60">0</span>
+  Cur LV                <span style="color:#f60">1</span>
+  Open LV               <span style="color:#f60">1</span>
+  Max PV                <span style="color:#f60">0</span>
+  Cur PV                <span style="color:#f60">1</span>
+  Act PV                <span style="color:#f60">1</span>
+  VG Size               &lt;<span style="color:#f60">99</span>.00 GiB
+  PE Size               <span style="color:#f60">4</span>.00 MiB
+  Total PE              <span style="color:#f60">25343</span>
+  Alloc PE / Size       <span style="color:#f60">25343</span> / &lt;<span style="color:#f60">99</span>.00 GiB
+  Free  PE / Size       <span style="color:#f60">0</span> / <span style="color:#f60">0</span></code></pre></div>
 <p>You will see <code>Alloc PE</code> size is <code>25343</code>, size of <code>Free PE</code> is <code>0</code>.</p>
 
 <h2 id="brief-of-command">Brief of command</h2>
-
-<pre><code>vgdisplay 
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vgdisplay 
 lvdisplay
 lvextend -l +24319 /dev/ubuntu-vg/ubuntu-lv
 resize2fs /dev/ubuntu-vg/ubuntu-lv
 vgdisplay
-lvdisplay
-</code></pre>
-
+lvdisplay</code></pre></div>
     </div>
 
     
