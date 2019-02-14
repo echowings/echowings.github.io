@@ -72,7 +72,7 @@ Stop all the vm on proxmox VE  stop all virtual machines with shell command.  se
 
 <meta itemprop="datePublished" content="2019-02-14T11:44:28&#43;08:00" />
 <meta itemprop="dateModified" content="2019-02-14T11:44:28&#43;08:00" />
-<meta itemprop="wordCount" content="126">
+<meta itemprop="wordCount" content="145">
 
 
 
@@ -430,8 +430,14 @@ if (!doNotTrack) {
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  cat /sys/module/kvm_intel/parameters/nested                    
   Y</code></pre></div>
 <p>## Change VM cpu type
-  Change VM cpu type to host and boot it up.</p>
-
+  ~<del>Change VM cpu type to host and boot it up.</del>~</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  vi /etc/pve/qemu-server/xxx.conf</code></pre></div>
+<p>Add a args to the config file</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">  #intel cpu<span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>  args: -cpu host,+vmx<span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>  <span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>  #amd cpu<span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>  args: -cpu host,+svm</code></pre></div>
 <h2 id="reference">Reference</h2>
 
 <ul>

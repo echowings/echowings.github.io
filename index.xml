@@ -83,8 +83,14 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;  cat /sys/module/kvm_intel/parameters/nested                    
   Y&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;## Change VM cpu type
-  Change VM cpu type to host and boot it up.&lt;/p&gt;
-
+  ~&lt;del&gt;Change VM cpu type to host and boot it up.&lt;/del&gt;~&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;  vi /etc/pve/qemu-server/xxx.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Add a args to the config file&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;  #intel cpu&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&lt;/span&gt;  args: -cpu host,+vmx&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&lt;/span&gt;  #amd cpu&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&lt;/span&gt;  args: -cpu host,+svm&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 
 &lt;ul&gt;
