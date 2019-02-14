@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>How to Enable Proxmoxve Nested Virtualization - Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,9 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="A System Administrator&#39;s Blog." />
+  <meta name="description" content="How to enable Proxmox VE nested virtualization To enable nested virtualization on Proxmox VE, we need to stop all the vm and enable nested virtualization to linux kernel. then change vm settings
+Stop all the vm on proxmox VE  stop all virtual machines with shell command.  service pve-manager stop  stop all the virtual machine with admin web.   bulk stop  Enable nested module in linux kernel  Check nested support status  cat /sys/module/kvm_intel/parameters/nested N  enable nested support on." />
+
   <meta name="keywords" content="network, devops, sdn, system Administation" />
 
 
@@ -34,8 +36,7 @@
 <meta name="generator" content="Hugo 0.52" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/" />
-<link href="https://blog.stevedong.com/index.xml" rel="alternate" type="application/rss+xml" title="Steve Dong - A System Administrator&#39;s Blog" />
+<link rel="canonical" href="https://blog.stevedong.com/post/how-to-enable-proxmoxve-nested-virtualization/" />
 
 
 
@@ -57,18 +58,29 @@
 
 
 
-<meta property="og:title" content="Steve Dong - A System Administrator&#39;s Blog" />
-<meta property="og:description" content="A System Administrator&#39;s Blog." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2018-11-19T23:38:39&#43;08:00"/>
+<meta property="og:title" content="How to Enable Proxmoxve Nested Virtualization" />
+<meta property="og:description" content="How to enable Proxmox VE nested virtualization To enable nested virtualization on Proxmox VE, we need to stop all the vm and enable nested virtualization to linux kernel. then change vm settings
+Stop all the vm on proxmox VE  stop all virtual machines with shell command.  service pve-manager stop  stop all the virtual machine with admin web.   bulk stop  Enable nested module in linux kernel  Check nested support status  cat /sys/module/kvm_intel/parameters/nested N  enable nested support on." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.stevedong.com/post/how-to-enable-proxmoxve-nested-virtualization/" /><meta property="article:published_time" content="2019-02-14T11:44:28&#43;08:00"/>
+<meta property="article:modified_time" content="2019-02-14T11:44:28&#43;08:00"/>
 
-<meta itemprop="name" content="Steve Dong - A System Administrator&#39;s Blog">
-<meta itemprop="description" content="A System Administrator&#39;s Blog.">
+<meta itemprop="name" content="How to Enable Proxmoxve Nested Virtualization">
+<meta itemprop="description" content="How to enable Proxmox VE nested virtualization To enable nested virtualization on Proxmox VE, we need to stop all the vm and enable nested virtualization to linux kernel. then change vm settings
+Stop all the vm on proxmox VE  stop all virtual machines with shell command.  service pve-manager stop  stop all the virtual machine with admin web.   bulk stop  Enable nested module in linux kernel  Check nested support status  cat /sys/module/kvm_intel/parameters/nested N  enable nested support on.">
 
+
+<meta itemprop="datePublished" content="2019-02-14T11:44:28&#43;08:00" />
+<meta itemprop="dateModified" content="2019-02-14T11:44:28&#43;08:00" />
+<meta itemprop="wordCount" content="126">
+
+
+
+<meta itemprop="keywords" content="pve," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Steve Dong - A System Administrator&#39;s Blog"/>
-<meta name="twitter:description" content="A System Administrator&#39;s Blog."/>
+<meta name="twitter:title" content="How to Enable Proxmoxve Nested Virtualization"/>
+<meta name="twitter:description" content="How to enable Proxmox VE nested virtualization To enable nested virtualization on Proxmox VE, we need to stop all the vm and enable nested virtualization to linux kernel. then change vm settings
+Stop all the vm on proxmox VE  stop all virtual machines with shell command.  service pve-manager stop  stop all the virtual machine with admin web.   bulk stop  Enable nested module in linux kernel  Check nested support status  cat /sys/module/kvm_intel/parameters/nested N  enable nested support on."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -242,7 +254,7 @@ if (!doNotTrack) {
   <ul id="menu" class="menu">
     
     
-        <li class="menu-item active">
+        <li class="menu-item">
         
           
           
@@ -330,365 +342,187 @@ if (!doNotTrack) {
     <main id="main" class="main bg-llight">
       <div class="content-wrapper">
         <div id="content" class="content container">
-          
-  <section id="posts" class="posts">
+          <article class="post bg-white">
     
-    
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
+    <header class="post-header">
+      <h1 class="post-title">How to Enable Proxmoxve Nested Virtualization</h1>
       
-      <a class="post-link" href="/post/proxmox-ve-v5.x-installation/">Proxmoxve VE V5.x Installation</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2018-11-19" class="post-time">
-        2018-11-19
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
- Boot the proxmox installer USB Select Debug Mode Press “CTRL+D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; \  /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js \  &amp;&amp; systemctl restart pveproxy.
-    </div>
-    <div class="read-more">
-      <a href="/post/proxmox-ve-v5.x-installation/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
+      <div class="post-meta">
+        <time datetime="2019-02-14" class="post-time">
+          2019-02-14
+        </time>
+        <div class="post-category">
+            <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+            
+          </div>
+        
+
+        
+        
+
+        
+        
+      </div>
+    </header>
 
     
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/linux-in-action-01/">Linux in Action 01</a>
-    </h1>
     
-    <div class="post-meta">
-      <time datetime="2018-11-16" class="post-time">
-        2018-11-16
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Linux In Action-[翻译]Linux实战 前言 作为IT运维人员或者程序员,不论做什么或做多久.如果你不学习新东西,你可能现在已经已经转行了.不
-    </div>
-    <div class="read-more">
-      <a href="/post/linux-in-action-01/" class="read-more-link">Read more</a>
-    </div>
-    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#how-to-enable-proxmox-ve-nested-virtualization">How to enable Proxmox VE nested virtualization</a>
+<ul>
+<li><a href="#stop-all-the-vm-on-proxmox-ve">Stop all the vm on proxmox VE</a></li>
+<li><a href="#enable-nested-module-in-linux-kernel">Enable nested module in linux kernel</a></li>
+<li><a href="#reference">Reference</a></li>
+</ul></li>
+</ul>
+</nav>
   </div>
-</article>
+</div>
 
     
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
+    <div class="post-content">
       
-      <a class="post-link" href="/post/how-to-setup-reverse-proxy-with-iis/">How to Setup Reverse Proxy With Iis</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2018-11-06" class="post-time">
-        2018-11-06
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/reverse-proxy/"> reverse proxy </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
+
+<h1 id="how-to-enable-proxmox-ve-nested-virtualization">How to enable Proxmox VE nested virtualization</h1>
+
+<p>To enable nested virtualization on Proxmox VE, we need to stop all the vm and enable nested virtualization to linux kernel. then change vm settings</p>
+
+<h2 id="stop-all-the-vm-on-proxmox-ve">Stop all the vm on proxmox VE</h2>
+
+<ul>
+<li>stop all virtual machines with shell command.</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">service pve-manager stop</code></pre></div>
+<ul>
+<li>stop all the virtual machine with admin web.</li>
+</ul>
+
+<pre><code> bulk stop
+</code></pre>
+
+<h2 id="enable-nested-module-in-linux-kernel">Enable nested module in linux kernel</h2>
+
+<ol>
+<li>Check nested support status</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  cat /sys/module/kvm_intel/parameters/nested
+  N</code></pre></div>
+<ol>
+<li>enable nested support on.</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  <span style="color:#09f;font-style:italic">#for intel cpu</span>
+  <span style="color:#366">echo</span> <span style="color:#c30">&#34;options kvm-intel nested=Y&#34;</span> &gt; /etc/modprobe.d/kvm-intel.conf
   
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to Setup Reverse proxy with IIS I testing it on Server 2016 with IIS 10 Install IIS,URL _REWRITE, ARR Install IIS. Download and install URL Rewrite Module 2.1 Download and install ARR-Application-request-routing Setting Reverse Proxy Select Root level in IIS management Click ‘Application Request Routing Cache’,then in the
+  <span style="color:#09f;font-style:italic">#for amd cpu</span>
+  <span style="color:#366">echo</span> <span style="color:#c30">&#34;options kvm-amd nested=1&#34;</span> &gt; /etc/modprobe.d/kvm-amd.conf</code></pre></div>
+<ol>
+<li>Reload the kernel module.</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  modprobe -r kvm_intel
+  modprobe kvm_intel</code></pre></div>
+<ol>
+<li>Check again.</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  cat /sys/module/kvm_intel/parameters/nested                    
+  Y</code></pre></div>
+<p>## Change VM cpu type
+  Change VM cpu type to host and boot it up.</p>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+<li><a href="https://pve.proxmox.com/wiki/Nested_Virtualization">Nested Virtualization</a></li>
+</ul>
+
     </div>
-    <div class="read-more">
-      <a href="/post/how-to-setup-reverse-proxy-with-iis/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
 
     
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/kvm-virtualization-01-introduction/">Kvm Virtualization 01 Introduction</a>
-    </h1>
     
-    <div class="post-meta">
-      <time datetime="2018-10-26" class="post-time">
-        2018-10-26
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Steve Dong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-02-14</span>
+  </p>
   
-  <div class="post-content">
-    
-    <div class="post-summary">
-      KVM virtualization-01 Introduction Today we are start to learn kvm virtulization After try to find which is the right open source virtulization solution,which include Bhyver, Trolin/smartos, ovirt, OpenStack.
- Openstack is too heavy and it is suitable for you have thousands of host to managament. bhyver is base freebsd, and it has a web managment system named Clonos which write by a russian Less support. smartos/Trolin is a opensolaris base .
-    </div>
-    <div class="read-more">
-      <a href="/post/kvm-virtualization-01-introduction/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
 
     
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/building-network-with-vyos-01-basic-installing-and-configuration/">Building Network With Vyos 01---Basic Installing and Configuration</a>
-    </h1>
     
-    <div class="post-meta">
-      <time datetime="2018-10-26" class="post-time">
-        2018-10-26
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/networking/"> networking </a>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    
+    
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://blog.stevedong.com/tags/pve/">pve</a>
           
         </div>
+
       
-      
-      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/how-to-extend-lvm-allocted-pe-with-freee-pe/">
+            <span class="next-text nav-default">How to Extend Lvm Allocted PE With Freee PE</span>
+            <span class="prev-text nav-mobile">Next</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "echowings/blogcomment"
+            issue-term="pathname"
+            crossorigin="anonymous"
+            async>
+      </script>
     </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Building Network With Vyos.-.01.Basic Installing and Configuration Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn’t web UI, but only command line configration just like JUNOS.
-At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.
-Install vyos  Download vyos form the office website:
- Download Link: vyos-1.2.0-rc-4-amd64    Write iso image to usb disk  Linux and Mac:  ddi if=vyos-1.
-    </div>
-    <div class="read-more">
-      <a href="/post/building-network-with-vyos-01-basic-installing-and-configuration/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/how-to-install-dotnetcore2.1.x-and-asp.net21.x-on-rhel6.x-centos6.x/">How to Install Dotnetcore2.1.x and Asp.net21.x on RHEL6.x CENTOS6</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2018-10-26" class="post-time">
-        2018-10-26
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/develop/"> develop </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to install netcore/aspnetcore 2.1.4 on RHEL 6.8 Recently days, we met a scenario that is our client production environment must be RHEL 6.8. But our product is base asp.net core 2.1.x version. Rehat and Microsoft has never say the are support RHEL 6.X version.
-After a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core.
-    </div>
-    <div class="read-more">
-      <a href="/post/how-to-install-dotnetcore2.1.x-and-asp.net21.x-on-rhel6.x-centos6.x/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/how-to-build-blog-with-hugo-on-github/">How to Build Blog With Hugo on Github</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2018-10-26" class="post-time">
-        2018-10-26
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/hugo/"> hugo </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Hugo on your MacOS Setting github create a repo named blogs for store hugo programes. Create another repo named echowings.github.io to host websit. generate ssh key and regist it on github settings. Install hugo brew install hugo Create a blog site. hugo new site blogs init git cd blogs git init #Add remote repo. git remote add origin git@github.com:echowings/blogs.git #Add a theme for your hugo. git submodule add -b master
-    </div>
-    <div class="read-more">
-      <a href="/post/how-to-build-blog-with-hugo-on-github/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/first-blog/">First_Blog</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2018-10-26" class="post-time">
-        2018-10-26
-      </time>
-      <div class="post-category">
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      A journey of a thousand miles begins with a single step THis a blog to be build as my knowleage base.
-    </div>
-    <div class="read-more">
-      <a href="/post/first-blog/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/magerat-reverse-proxy-from-apache-to-nginx-on-azure/"></a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="0001-01-01" class="post-time">
-        0001-01-01
-      </time>
-      
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Magerat Reverse Proxy from Apache to Nginx on Azure High Available 关于高科用，初步考虑使用Azure 的Kubernete 或者site availble 来做。 这个大约需要2天时间调查，最终确定那个更好。
- 基于Azure的Kubernete，以服务形式提供的K8s，我们不用考虑服务高科用. SLB是以服务形式提供，Ingress 是nginx  Site available  site available如果适用的话，是个不错的选择。
-Nginx Reverse proxy topology Nginx作为反向代理的大体的功能如下图所示，高科用使用azure的k8s或者site available实现，拓扑图我们可以简化为如下的图片。
-Convert apache reverse proxy rule nginx 这个工作是核心。
- 保证转化的100%功能覆盖； 关于这个的实施过程大约需要2周左右来手动重写规则，并在azure测试。目前的新的需求可以暂时在已经交付的nginx反向代理www.grapecitydev.com上修改直接商产使用； 迁移虚拟机的测试工作，我计划k8s或者site-available的高科用基础上构建，使用修改host名字的方式来创建grapecity.com的反向代理，迁移并测试没有问题之后。可以让周老师帮我们检查一下，防止有没有错误或者纰漏。 切换过程的平稳过度； 这一点的话，第一点基本可以保障。dns切换的话，抽个时间和周老师确认切换日期，如果有问题，修复时间比较久的话，可以回退，旧的apache服务器需要保留一段时间，等新的反向代理稳定运行1个月或者半年时间之后再停掉。  Dcumnent and Unit test. 文档化操作和自动测试和自动发布。
-文档化操作 nginx 服务器使用docker-compose编写，很方便做自动化测试和自动化发布。目前的手动方式：
-# Modify nginx config file vi nginx.conf # Enter docker instance docker exec -it $docker-instance-name /bin/sh # Testing config file of nginx nginx -t # reload nginx service nginx -s reload 自动化测试于自动发布 初步的计划，是通过git来做配置文件版本，通过jenkins来跑自动测试脚本以及自动发布到nginx反向代理的生产环境。 通过修改host来模拟测试，并发布到生产环境，这样可以最大的减少人为操作的错误概率。
-    </div>
-    <div class="read-more">
-      <a href="/post/magerat-reverse-proxy-from-apache-to-nginx-on-azure/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-  </section>
-
-  
   
 
-
-
   
-  
+
   
 
   
   
-
-  
-  
-
-  
-  
-
-  
-  
-  <nav class="pagination">
-    <ul>
-      
-      <li >
-        <a href="/">1</a>
-      </li>
-      
-      <li  class="active" >
-        <a href="/page/2/">2</a>
-      </li>
-      
-    </ul>
-  </nav>
-
-  
-  
-
-
+    
 
 
 

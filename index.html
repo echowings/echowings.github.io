@@ -339,6 +339,41 @@ if (!doNotTrack) {
   <header class="post-header">
     <h1 class="post-title">
       
+      <a class="post-link" href="/post/how-to-enable-proxmoxve-nested-virtualization/">How to Enable Proxmoxve Nested Virtualization</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-02-14" class="post-time">
+        2019-02-14
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to enable Proxmox VE nested virtualization To enable nested virtualization on Proxmox VE, we need to stop all the vm and enable nested virtualization to linux kernel. then change vm settings
+Stop all the vm on proxmox VE  stop all virtual machines with shell command.  service pve-manager stop  stop all the virtual machine with admin web.   bulk stop  Enable nested module in linux kernel  Check nested support status  cat /sys/module/kvm_intel/parameters/nested N  enable nested support on.
+    </div>
+    <div class="read-more">
+      <a href="/post/how-to-enable-proxmoxve-nested-virtualization/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
       <a class="post-link" href="/post/how-to-extend-lvm-allocted-pe-with-freee-pe/">How to Extend Lvm Allocted PE With Freee PE</a>
     </h1>
     
@@ -818,41 +853,6 @@ if [ &ldquo;ls -A /config&rdquo; = &ldquo;&rdquo; ]; then cp /srv/config.
     </div>
     <div class="read-more">
       <a href="/post/ssh-login-without-password/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/proxmox-ve-v5.x-installation/">Proxmoxve VE V5.x Installation</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2018-11-19" class="post-time">
-        2018-11-19
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
- Boot the proxmox installer USB Select Debug Mode Press “CTRL+D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; \  /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js \  &amp;&amp; systemctl restart pveproxy.
-    </div>
-    <div class="read-more">
-      <a href="/post/proxmox-ve-v5.x-installation/" class="read-more-link">Read more</a>
     </div>
     
   </div>
