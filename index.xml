@@ -32,6 +32,30 @@
     </item>
     
     <item>
+      <title>How to Enable Docker in Lxc</title>
+      <link>https://blog.stevedong.com/post/how-to-enable-docker-in-lxc/</link>
+      <pubDate>Sat, 23 Mar 2019 12:08:34 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-enable-docker-in-lxc/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-install-docker-ce-in-lxc-container-in-pve&#34;&gt;How to install docker-ce in lxc container in pve&lt;/h1&gt;
+
+&lt;p&gt;Proxmox is now support docker directly. To install docker in host without proxmox support. It will be lost HA function.&lt;/p&gt;
+
+&lt;p&gt;Deploy a vm then install docker-ce in the vm, it works. but take a lot resource than directly install docker in proxmox.&lt;/p&gt;
+
+&lt;p&gt;Is there a way to take less performance ,at the same time we cant easly mange it with proxmox ?The answer is run docker in lxc.&lt;/p&gt;
+
+&lt;h2 id=&#34;download-lxc-images&#34;&gt;Download lxc images&lt;/h2&gt;
+
+&lt;p&gt;First thing first, choose&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>Docker Compose to Build Prometheus</title>
       <link>https://blog.stevedong.com/post/docker-compose-to-build-prometheus/</link>
       <pubDate>Thu, 21 Feb 2019 11:02:41 +0800</pubDate>
@@ -1216,9 +1240,7 @@ git bundler dotenv osx rake rbenv ruby mercurial &lt;span style=&#34;color:#555&
 &lt;ul&gt;
 &lt;li&gt;shell solution.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -i.bak &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\ &lt;/span&gt;
-	/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\ &lt;/span&gt;
-	&lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; systemctl restart pveproxy.service
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -i.bak &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34;&lt;/span&gt; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; systemctl restart pveproxy.service
 	&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;manual solution:&lt;/li&gt;

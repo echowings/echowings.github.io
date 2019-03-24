@@ -6,10 +6,21 @@
     <description>Recent content in Pve on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 14 Feb 2019 11:44:28 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 23 Mar 2019 12:08:34 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/tags/pve/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Enable Docker in Lxc</title>
+      <link>https://blog.stevedong.com/post/how-to-enable-docker-in-lxc/</link>
+      <pubDate>Sat, 23 Mar 2019 12:08:34 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-enable-docker-in-lxc/</guid>
+      <description>How to install docker-ce in lxc container in pve Proxmox is now support docker directly. To install docker in host without proxmox support. It will be lost HA function.
+Deploy a vm then install docker-ce in the vm, it works. but take a lot resource than directly install docker in proxmox.
+Is there a way to take less performance ,at the same time we cant easly mange it with proxmox ?</description>
+    </item>
     
     <item>
       <title>How to Enable Proxmoxve Nested Virtualization</title>
@@ -48,7 +59,7 @@ Recently days, I just learn proxmox and find pci-e pass through function. I thin
       
       <guid>https://blog.stevedong.com/post/proxmox-ve-v5.x-installation/</guid>
       <description>Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
- Boot the proxmox installer USB Select Debug Mode Press “CTRL+D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34; \  /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js \  &amp;amp;&amp;amp; systemctl restart pveproxy.</description>
+ Boot the proxmox installer USB Select Debug Mode Press “CTRL+D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;amp;&amp;amp; systemctl restart pveproxy.service   manual solution:  cd /usr/share/javascript/proxmox-widget-toolkit cp proxmoxlib.</description>
     </item>
     
   </channel>
