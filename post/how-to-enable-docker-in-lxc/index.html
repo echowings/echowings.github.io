@@ -75,7 +75,7 @@ Is there a way to take less performance ,at the same time we cant easly mange it
 
 <meta itemprop="datePublished" content="2019-03-23T12:08:34&#43;08:00" />
 <meta itemprop="dateModified" content="2019-03-23T12:08:34&#43;08:00" />
-<meta itemprop="wordCount" content="740">
+<meta itemprop="wordCount" content="758">
 
 
 
@@ -391,6 +391,7 @@ if (!doNotTrack) {
 <li><a href="#option4-install-docker-in-lxc">Option4: Install docker in LXC</a></li>
 <li><a href="#install-docker-compose">Install docker-compose</a></li>
 </ul></li>
+<li><a href="#reference">Reference</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -583,7 +584,17 @@ For more examples and ideas, visit:
  https://docs.docker.com/get-started/
  </code></pre></div>
 <h3 id="install-docker-compose">Install docker-compose</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">apt install docke-compose</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo curl -L <span style="color:#c30">&#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-</span><span style="color:#069;font-weight:bold">$(</span>uname -s<span style="color:#069;font-weight:bold">)</span><span style="color:#c30">-</span><span style="color:#069;font-weight:bold">$(</span>uname -m<span style="color:#069;font-weight:bold">)</span><span style="color:#c30">&#34;</span> -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</code></pre></div>
+<h2 id="reference">Reference</h2>
+
+<ul>
+<li><a href="https://docs.docker.com/compose/install/">Install Docker Compose</a></li>
+</ul>
+
     </div>
 
     
