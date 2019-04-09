@@ -69,7 +69,7 @@
 
 <meta itemprop="datePublished" content="2019-04-09T10:02:33&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-09T10:02:33&#43;08:00" />
-<meta itemprop="wordCount" content="422">
+<meta itemprop="wordCount" content="447">
 
 
 
@@ -375,6 +375,9 @@ if (!doNotTrack) {
 <li><a href="#install-plugin">Install Plugin</a></li>
 <li><a href="#let-vim-support-nginx-syntax-highlight">Let vim support nginx syntax highlight</a></li>
 <li><a href="#let-vim-remember-last-opened-position">Let vim remember last opened position</a></li>
+</ul></li>
+<li><a href="#change-tab-to-4-space">Change tab to 4 space</a>
+<ul>
 <li><a href="#reference">Reference</a></li>
 </ul></li>
 </ul>
@@ -458,7 +461,7 @@ echo &quot;au BufRead,BufNewFile /usr/local/etc/nginx/vhosts/* set ft=nginx&quot
 </code></pre>
 
 <h2 id="let-vim-remember-last-opened-position">Let vim remember last opened position</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat &gt;&gt; ~/.vimrc <span style="color:#c30">&lt;&lt; EOF
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt;&gt; ~/.vimrc <span style="color:#c30">&lt;&lt; EOF
 </span><span style="color:#c30">&#34; Uncomment the following to have Vim jump to the last position when                                                       
 </span><span style="color:#c30">&#34; reopening a file
 </span><span style="color:#c30">if has(&#34;autocmd&#34;)
@@ -466,11 +469,18 @@ echo &quot;au BufRead,BufNewFile /usr/local/etc/nginx/vhosts/* set ft=nginx&quot
 </span><span style="color:#c30">    \| exe &#34;normal! g&#39;\&#34;&#34; | endif
 </span><span style="color:#c30">endif
 </span><span style="color:#c30">EOF</span></code></pre></div>
+<h1 id="change-tab-to-4-space">Change tab to 4 space</h1>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt;&gt; ~/.vimrc &lt;&lt;EOF
+<span style="color:#366">set</span> <span style="color:#033">tabstop</span><span style="color:#555">=</span><span style="color:#f60">4</span>
+<span style="color:#366">set</span> <span style="color:#033">shiftwidth</span><span style="color:#555">=</span><span style="color:#f60">4</span>
+<span style="color:#366">set</span> <span style="color:#033">softtabstop</span><span style="color:#555">=</span><span style="color:#f60">4</span>
+<span style="color:#366">set</span> expandtab</code></pre></div>
 <h2 id="reference">Reference</h2>
 
 <ul>
 <li><a href="http://aleonchen.com/2017/02/06/vim/">让Vim支持Nginx语法高亮 -Ubuntu</a></li>
 <li><a href="https://stackoverflow.com/questions/774560/in-vim-how-do-i-get-a-file-to-open-at-the-same-line-number-i-closed-it-at-last">In vim, how do I get a file to open at the same line number I closed it at last time?</a></li>
+<li><a href="https://stackoverflow.com/questions/2054627/how-do-i-change-tab-size-in-vim">How do I change tab size in Vim?</a></li>
 </ul>
 
     </div>
