@@ -47,56 +47,53 @@
 &lt;p&gt;vundle is a plugin manage tools for vim&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;edit-vim-configure-file&#34;&gt;Edit vim configure file&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;cat &amp;gt; ~/.vimrc &amp;lt;&amp;lt;EOF
-set nocompatible              &amp;quot; be iMproved, required
-filetype off                  &amp;quot; required
-syntax on
-&amp;quot; set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-&amp;quot; alternatively, pass a path where Vundle should install plugins
-&amp;quot;call vundle#begin(&#39;~/some/path/here&#39;)
-&amp;quot; let Vundle manage Vundle, required
-Plugin &#39;VundleVim/Vundle.vim&#39;
-&amp;quot; The following are examples of different formats supported.
-&amp;quot; Keep Plugin commands between vundle#begin/end.
-&amp;quot; plugin on GitHub repo
-Plugin &#39;tpope/vim-fugitive&#39;
-&amp;quot; plugin from http://vim-scripts.org/vim/scripts.html
-&amp;quot; Plugin &#39;L9&#39;
-&amp;quot; Git plugin not hosted on GitHub
-Plugin &#39;git://git.wincent.com/command-t.git&#39;
-&amp;quot; git repos on your local machine (i.e. when working on your own plugin)
-&amp;quot; Plugin &#39;file:///home/gmarik/path/to/plugin&#39;
-&amp;quot; The sparkup vim script is in a subdirectory of this repo called vim.
-&amp;quot; Pass the path to set the runtimepath properly.
-Plugin &#39;rstacruz/sparkup&#39;, {&#39;rtp&#39;: &#39;vim/&#39;}
-&amp;quot; Install L9 and avoid a Naming conflict if you&#39;ve already installed a
-&amp;quot; different version somewhere else.
-Plugin &#39;ascenator/L9&#39;, {&#39;name&#39;: &#39;newL9&#39;}
-Plugin &#39;morhetz/gruvbox&#39;
-Plugin &#39;vim-airline/vim-airline&#39;
-Plugin &#39;vim-airline/vim-airline-themes&#39;
-&amp;quot; All of your Plugins must be added before the following line
-call vundle#end()            &amp;quot; required
-filetype plugin indent on    &amp;quot; required
-&amp;quot; To ignore plugin indent changes, instead use:
-&amp;quot;filetype plugin on
-&amp;quot;
-&amp;quot; Brief help
-&amp;quot; :PluginList       - lists configured plugins
-&amp;quot; :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-&amp;quot; :PluginSearch foo - searches for foo; append `!` to refresh local cache
-&amp;quot; :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-&amp;quot;
-&amp;quot; see :h vundle for more details or wiki for FAQ
-&amp;quot; Put your non-Plugin stuff after this line
-EOF
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat &amp;gt; ~/.vimrc &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;set nocompatible              &amp;#34; be iMproved, required
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;filetype off                  &amp;#34; required
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;syntax on
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; set the runtime path to include Vundle and initialize
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;set rtp+=~/.vim/bundle/Vundle.vim
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;call vundle#begin()
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; alternatively, pass a path where Vundle should install plugins
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;call vundle#begin(&amp;#39;~/some/path/here&amp;#39;)
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; let Vundle manage Vundle, required
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Plugin &amp;#39;VundleVim/Vundle.vim&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; The following are examples of different formats supported.
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; Keep Plugin commands between vundle#begin/end.
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; plugin on GitHub repo
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Plugin &amp;#39;tpope/vim-fugitive&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; plugin from http://vim-scripts.org/vim/scripts.html
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; Plugin &amp;#39;L9&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; Git plugin not hosted on GitHub
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Plugin &amp;#39;git://git.wincent.com/command-t.git&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; git repos on your local machine (i.e. when working on your own plugin)
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; Plugin &amp;#39;file:///home/gmarik/path/to/plugin&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; The sparkup vim script is in a subdirectory of this repo called vim.
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; Pass the path to set the runtimepath properly.
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Plugin &amp;#39;rstacruz/sparkup&amp;#39;, {&amp;#39;rtp&amp;#39;: &amp;#39;vim/&amp;#39;}
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; Install L9 and avoid a Naming conflict if you&amp;#39;ve already installed a
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; different version somewhere else.
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Plugin &amp;#39;ascenator/L9&amp;#39;, {&amp;#39;name&amp;#39;: &amp;#39;newL9&amp;#39;}
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Plugin &amp;#39;morhetz/gruvbox&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Plugin &amp;#39;vim-airline/vim-airline&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Plugin &amp;#39;vim-airline/vim-airline-themes&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; All of your Plugins must be added before the following line
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;call vundle#end()            &amp;#34; required
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;filetype plugin indent on    &amp;#34; required
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; To ignore plugin indent changes, instead use:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;filetype plugin on
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; Brief help
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; :PluginList       - lists configured plugins
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; :PluginSearch foo - searches for foo; append `!` to refresh local cache
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; see :h vundle for more details or wiki for FAQ
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; Put your non-Plugin stuff after this line
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;install-plugin&#34;&gt;Install Plugin&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;vim&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;vim&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Enter &lt;code&gt;:PluginInstall&lt;/code&gt; then wait for the installation process finished.
 then &lt;code&gt;vim ~/.vimrc&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;colorscheme gruvbox&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;
@@ -104,13 +101,10 @@ then &lt;code&gt;vim ~/.vimrc&lt;/code&gt;&lt;/p&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;let&lt;/span&gt; g:gruvbox_contrast_dark=&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;hard&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;let&lt;/span&gt; g:airline_theme=&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;simple&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;let-vim-support-nginx-syntax-highlight&#34;&gt;Let vim support nginx syntax highlight&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;mkdir -p ~/.vim/syntax/
-wget -O ~/.vim/syntax/nginx.vim http://www.vim.org/scripts/download_script.php?src_id=14376
-# /usr/local/etc/nginx/vhosts/* change it as you wish
-echo &amp;quot;au BufRead,BufNewFile /usr/local/etc/nginx/vhosts/* set ft=nginx&amp;quot; &amp;gt;&amp;gt; ~/.vim/filetype.vim
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mkdir -p ~/.vim/syntax/
+wget -O ~/.vim/syntax/nginx.vim http://www.vim.org/scripts/download_script.php?src_id&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;14376&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# /usr/local/etc/nginx/vhosts/* change it as you wish&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;au BufRead,BufNewFile /usr/local/etc/nginx/vhosts/* set ft=nginx&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; ~/.vim/filetype.vim&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;let-vim-remember-last-opened-position&#34;&gt;Let vim remember last opened position&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat &amp;gt;&amp;gt; ~/.vimrc &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt; EOF
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; Uncomment the following to have Vim jump to the last position when                                                       
