@@ -75,7 +75,7 @@ Is there a way to take less performance ,at the same time we cant easly mange it
 
 <meta itemprop="datePublished" content="2019-03-23T12:08:34&#43;08:00" />
 <meta itemprop="dateModified" content="2019-03-23T12:08:34&#43;08:00" />
-<meta itemprop="wordCount" content="758">
+<meta itemprop="wordCount" content="902">
 
 
 
@@ -390,6 +390,7 @@ if (!doNotTrack) {
 <li><a href="#option-3-create-a-lxc-from-image">Option 3: create a lxc from image</a></li>
 <li><a href="#option4-install-docker-in-lxc">Option4: Install docker in LXC</a></li>
 <li><a href="#install-docker-compose">Install docker-compose</a></li>
+<li><a href="#fixed-root-shell-path-cause-login-failed">Fixed root shell path  cause login failed</a></li>
 </ul></li>
 <li><a href="#reference">Reference</a></li>
 </ul></li>
@@ -589,6 +590,37 @@ For more examples and ideas, visit:
 sudo chmod +x /usr/local/bin/docker-compose
 
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</code></pre></div>
+<h3 id="fixed-root-shell-path-cause-login-failed">Fixed root shell path  cause login failed</h3>
+
+<p>When I setup zsh and set wrong zsh.then I cannot login and ssh
+The error like this. I can not boot to single user mode.</p>
+
+<pre><code>Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.18-12-pve x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Ubuntu's Kubernetes 1.14 distributions can bypass Docker and use containerd
+   directly, see https://bit.ly/ubuntu-containerd or try it now with
+
+     snap install microk8s --classic
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+Cannot execute zsh: No such file or directory
+</code></pre>
+
+<p><strong>Solution:</strong> I wounder that is a a command like docker command <code>docker exec -it $dockername /bin/sh</code>
+Bingo! Here we go:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">lxc-attach -n <span style="color:#033">$lxc_pid</span> /bin/sh
+<span style="color:#09f;font-style:italic">#for example:</span>
+lxc-attach -n <span style="color:#f60">103</span> /bin/sh
+vi /etc/password
+<span style="color:#09f;font-style:italic">#then change root shell path to /bin/sh</span></code></pre></div>
+<p>After reboot and I can login again.</p>
+
 <h2 id="reference">Reference</h2>
 
 <ul>

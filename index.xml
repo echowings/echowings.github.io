@@ -369,6 +369,37 @@ For more examples and ideas, visit:
 sudo chmod +x /usr/local/bin/docker-compose
 
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;fixed-root-shell-path-cause-login-failed&#34;&gt;Fixed root shell path  cause login failed&lt;/h3&gt;
+
+&lt;p&gt;When I setup zsh and set wrong zsh.then I cannot login and ssh
+The error like this. I can not boot to single user mode.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.18-12-pve x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Ubuntu&#39;s Kubernetes 1.14 distributions can bypass Docker and use containerd
+   directly, see https://bit.ly/ubuntu-containerd or try it now with
+
+     snap install microk8s --classic
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+Cannot execute zsh: No such file or directory
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt; I wounder that is a a command like docker command &lt;code&gt;docker exec -it $dockername /bin/sh&lt;/code&gt;
+Bingo! Here we go:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;lxc-attach -n &lt;span style=&#34;color:#033&#34;&gt;$lxc_pid&lt;/span&gt; /bin/sh
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#for example:&lt;/span&gt;
+lxc-attach -n &lt;span style=&#34;color:#f60&#34;&gt;103&lt;/span&gt; /bin/sh
+vi /etc/password
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#then change root shell path to /bin/sh&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;After reboot and I can login again.&lt;/p&gt;
+
 &lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 
 &lt;ul&gt;
@@ -2245,6 +2276,1330 @@ nginx -s reload&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;RESTFUL API和Web管理&lt;/p&gt;
 </description>
+      
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://blog.stevedong.com/post/reverse-proxy-for-wynwx.grapecity.com/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/reverse-proxy-for-wynwx.grapecity.com/</guid>
+      
+        <description>
+
+&lt;h4 id=&#34;reverse-proxy-for-wynwx-grapecity-com&#34;&gt;Reverse proxy for wynwx.grapecity.com&lt;/h4&gt;
+
+&lt;p&gt;^&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://blog.stevedong.com/post/grapeseed.com.cn%E5%9F%9F%E5%90%8D%E5%A4%87%E6%A1%88%E8%BF%87%E6%B8%A1%E6%96%B9%E6%A1%88/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/grapeseed.com.cn%E5%9F%9F%E5%90%8D%E5%A4%87%E6%A1%88%E8%BF%87%E6%B8%A1%E6%96%B9%E6%A1%88/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;grapeseed-com-cn域名备案过渡方案&#34;&gt;grapeseed.com.cn域名备案过渡方案&lt;/h1&gt;
+
+&lt;p&gt;为了解决grapeseed.com域名备案更换空档期，保障葡萄籽的国内部分网站正常运行，通过昨天的测试，接下来的迁移过程如下。&lt;/p&gt;
+
+&lt;h2 id=&#34;域名备案更换前要做的工作&#34;&gt;域名备案更换前要做的工作&lt;/h2&gt;
+
+&lt;p&gt;对于世纪互联的网站，一共有两个 &lt;code&gt;admin.grapeseed.com.cn&lt;/code&gt;和 &lt;code&gt;support.grapeseed.com.cn&lt;/code&gt;, 其中&lt;code&gt;admin.grapeseed.com.cn&lt;/code&gt;已经迁移完毕，我们&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;域名&lt;/th&gt;
+&lt;th&gt;AzureCN的服务名称&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;admin.grapeseed.com.cn&lt;/td&gt;
+&lt;td&gt;gso2020-admin.chinacloudsites.cn&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;support.grapseed.com.cn&lt;/td&gt;
+&lt;td&gt;?&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;仅仅需要做&lt;code&gt;support.grapeseed.com.cn&lt;/code&gt;
+迁移步骤如下:&lt;/p&gt;
+
+&lt;p&gt;|步骤 | 内容 |执行人 |执行时间 |
+|&amp;mdash;|&amp;mdash;|&amp;mdash;|&amp;mdash;|&amp;mdash;|
+|01 |support.grapeseed.com.cn的azure对应的域名|Hardy Zong| 2019年4月3日下班之前|
+|02 |support.grapeseed.com.cn反向代理规则更改|Steve Dong|2019年4月3日23:00之前|
+|03 |support.grapesee.com.cn的cname修改为&lt;code&gt;gs-agent.eastasia.cloudapp.azure.com&lt;/code&gt; | Nick Gou| 2019年4月4日8:00~10:00 |&lt;/p&gt;
+
+&lt;h2 id=&#34;域名备案变更&#34;&gt;域名备案变更&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;步骤&lt;/th&gt;
+&lt;th&gt;内容&lt;/th&gt;
+&lt;th&gt;执行人&lt;/th&gt;
+&lt;th&gt;执行时间&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;01&lt;/td&gt;
+&lt;td&gt;grapseed.com.cn备案变更&lt;/td&gt;
+&lt;td&gt;Nick Gou&lt;/td&gt;
+&lt;td&gt;2019年4月5日&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;域名备案变更后的工作&#34;&gt;域名备案变更后的工作&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;步骤&lt;/th&gt;
+&lt;th&gt;内容&lt;/th&gt;
+&lt;th&gt;执行人&lt;/th&gt;
+&lt;th&gt;执行时间&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;01&lt;/td&gt;
+&lt;td&gt;确认grapeseed.com.cn备案完成&lt;/td&gt;
+&lt;td&gt;苟军川&lt;/td&gt;
+&lt;td&gt;备案完成之日&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;02&lt;/td&gt;
+&lt;td&gt;确定恢复域名指向时间&lt;/td&gt;
+&lt;td&gt;Peter Wang&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;03&lt;/td&gt;
+&lt;td&gt;把admin/support的二级域名指向还原到azure cn站点&lt;/td&gt;
+&lt;td&gt;Nick Gou，Hardy Zong&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;04&lt;/td&gt;
+&lt;td&gt;撤销回收香港的反向代理服务器&lt;/td&gt;
+&lt;td&gt;Ted Zhao、Steve Dong&lt;/td&gt;
+&lt;td&gt;dns复原完毕的2天后&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://blog.stevedong.com/post/http-settings/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/http-settings/</guid>
+      
+        <description>
+
+&lt;h3 id=&#34;gc-com-megert-to-nginx&#34;&gt;GC.COM Megert to nginx&lt;/h3&gt;
+
+&lt;h1 id=&#34;http-settings&#34;&gt;http settings&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-apache&#34; data-lang=&#34;apache&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# redirect for Google Apps&lt;/span&gt;
+
+
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#if http access to /en/*, always redirect to https&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTPS} &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;off&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{HTTP_HOST} ^(www\.grapecity\.com)$  [NC]&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(.*grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/en$ [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/en/(.*)$ [NC]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteRule ^.*$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^(.*)$ https://www.grapecity.com$1 [L,R=301]
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;###### 新Webサイト(co.jp)移行用ルール　ここから ######&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;### Specific case&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/support/powernews/column/$ http://www.grapecity.com/tools/support/powernews/column [NC,R,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;###&lt;/span&gt;
+
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;### This is the rule to add slash to the last of URL which is not end with slash.&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !/$
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !\.[^/\.]+$
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !^/tools/downloads/trialreg(.*)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !^/tools/aboutus/contact(.*)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !^/tools/support/powernews/column(.*)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !^/en/(.*)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !^/vn/(.*)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; .* %{REQUEST_URI}/ [L,R]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;###&lt;/span&gt;
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;### Excluding rules for the other region&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# URL&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/en/(.*)$ [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/vn/(.*)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^.*$ - [NC,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;###&lt;/span&gt;
+
+
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;### Redirect rules for Enterprise Solutions site (co.jp)&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Top page&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/enterprise/$ https://www.grapecity.co.jp/enterprise [NC,R=301,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;###&lt;/span&gt;
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;### Redirect rules for new DeveloperTools site (co.jp)&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# El Tabelle SheetからSPREADへの移行情報&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/eltabellesheet(.*)$ http://download.grapecity.com/PDF/migration/spreadwin-migration-eltabelle.pdf [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ActiveReports for .NET特設&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/activereports/$ https://www.grapecity.co.jp/developer/activereports [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ActiveReports for .NET導入事例&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/activereports/case-ar.htm(.*)$ https://www.grapecity.co.jp/developer/activereports#usecase [NC,R=301,L,NE]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ActiveReports for .NET 12.0Jデモ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/activereports/demo/clickonce.htm(.*)$ https://www.grapecity.co.jp/developer/activereports/demo [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ActiveReports for .NETサンプル帳票&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/activereports/sample.htm(.*)$ https://www.grapecity.co.jp/developer/activereports/sample [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 「カレンダー」x「グリッド」の新提案&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/calendargridwin/$ https://www.grapecity.co.jp/developer/multirowplus-winforms/calendargrid-winforms [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# サンプル画面集&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/calendargridwin/sample.htm$ https://www.grapecity.co.jp/developer/multirowplus-winforms/sample [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# デモアプリケーション(calendargridwin)&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/calendargridwin/demo/clickonce.htm$ https://www.grapecity.co.jp/developer/multirowplus-winforms/demo/calendargrid [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# デモアプリケーション(multirow winforms)&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/multirow-winforms/demo/clickonce.htm$ https://www.grapecity.co.jp/developer/multirowplus-winforms/demo/multirow [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# InputMan for WPF 1.0Jデモ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/inputmanwpf1/demo/clickonce.htm(.*)$ https://www.grapecity.co.jp/developer/inputmanplus-wpf/demo [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# SPREADデモ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/spread-winforms/demo/clickonce.htm(.*)$ https://www.grapecity.co.jp/developer/spread-winforms/demo [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# SPREAD特設&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/spread/(.*)$ https://www.grapecity.co.jp/developer/spread [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# MultiRowPlus for Windows Forms 10.0Jサンプル画面集&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/multirow-winforms/sample.htm(.*)$ https://www.grapecity.co.jp/developer/multirowplus-winforms/sample [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# JPAddress辞書更新サービス&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/jpaddress/dictionaryupdate(.*)$ https://www.grapecity.co.jp/developer/inputman/jpaddress-dictionaryupdate [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# セミナー開催報告&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/event-report/sbs/(.*)$ https://www.sbsnt.co.jp/ [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# エス・ビー・エス株式会社の導入支援パートナー紹介&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/solution-partner/sbs.htm(.*)$ https://www.sbsnt.co.jp/ [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 株式会社エクサの導入支援パートナー紹介&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/solution-partner/exa.htm(.*)$ https://www.grapecity.co.jp/developer/about-us/solution-partner/exa [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 株式会社マーベリックの導入支援パートナー紹介&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/solution-partner/marvelic.htm(.*)$ https://www.grapecity.co.jp/developer/about-us/solution-partner/marvelic [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 5/2鈴木綾さんより依頼&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/cdata/article-basic/introduction.htm(.*)$ https://gcsf.grapecity.com/products/grapecity-spreadsheet.htm [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ナレッジベース(ショートカット)&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/support/kb/(.*)$ https://dev.grapecity.co.jp/support/kb/detail.asp [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ナレッジベース&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/support/technical/knowledge.asp$ https://dev.grapecity.co.jp/support/kb/ [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ナレッジベース(詳細)&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/support/technical/knowledge_detail.asp(.*?)$ https://dev.grapecity.co.jp/support/kb/detail.asp [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# C1ナレッジベース(詳細)&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/specific/componentone/kb/detail.asp(.*)$ https://dev.grapecity.co.jp/support/kb/detail.asp [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# C1 ナレッジベース（ショートカット）一覧の検索条件の指定(product_idが無ければ付加)&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/specific/componentone/kb/(.*)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{QUERY_STRING} ^.*=1.*$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{QUERY_STRING} !^.*product_id.*$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{QUERY_STRING} !^id=.*$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^.*$ %{REQUEST_URI}?%{QUERY_STRING}&amp;amp;product_id= [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/specific/componentone/kb/(.*)$ https://dev.grapecity.co.jp/support/kb/ [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# C1ナレッジベース クエリストリング変換用ルール&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/c1/kb/$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{QUERY_STRING} ^c=(.*)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^.*$ - [NC,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# C1ナレッジベース(ショートカット)一覧&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{QUERY_STRING} !^.*=.*$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/c1/kb/$ https://dev.grapecity.co.jp/support/kb/ [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# C1ナレッジベース(ショートカット)本編&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/c1/kb/(.*)$ https://dev.grapecity.co.jp/support/kb/detail.asp [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;### 2018/06/07 ES鈴木さんより依頼 ここから&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#1&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/jp/$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{QUERY_STRING} ^fg/server$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/jp/$ https://license.forguncy.com/serverlicense/Home#/detail#pageTop? [NC,R=301,L,NE]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#2&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/jp/$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{QUERY_STRING} ^fg/develop$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/jp/$ http://download.grapecity.com/trial/forguncy/forguncy.zip? [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#3&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/jp/$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{QUERY_STRING} ^forguncy2$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/jp/$ http://download.grapecity.com/trial/forguncy/forguncy2.zip? [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#4&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/jp/$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{QUERY_STRING} ^forguncy3$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/jp/$ http://download.grapecity.com/trial/forguncy/forguncy3.zip? [NC,R=301,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;### 2018/06/07 ES鈴木さんより依頼 ここまで&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 短縮URL作成システム(クリック測定)&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/jp/(.*)$ https://dev.grapecity.co.jp/surl/ [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# SPREAD for ASP.NETデモ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/spreadasp10/demo/performance_demo.htm(.*)$ http://demo.grapecity.com/spread/aspnet10performance/ [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# /tools/sys/dl/cdata/の強制リダイレクト&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/sys/dl/cdata/$ https://www.grapecity.co.jp/developer/ [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Java製品の連絡先情報変更&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/support/user/java.htm$ https://www.grapecity.co.jp/developer/support/user/java-changecontact [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Java製品の登録内容の変更&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteRule ^/tools/support/user/update.htm$ https://www.grapecity.co.jp/developer/support/user/java-changeuser [NC,R=301,L]&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Java製品 ホスト名変更の申し込み&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/support/license/application_change.htm$ https://www.grapecity.co.jp/developer/license/java/changehostname [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Java製品 ライセンスキー発行の申し込み&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/support/license/application_key.htm$ https://www.grapecity.co.jp/developer/license/java/licensekey [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Java製品 バージョンアップの申し込み&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/support/license/application_verup.htm$ https://www.grapecity.co.jp/developer/license/java/verup [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Java製品 バージョンアップ版のダウンロード&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/support/license/application_verupdownload.htm$ https://www.grapecity.co.jp/developer/license/java/verupdownload [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ライセンス認証 2018/08/24&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !^/tools/support/license/form.htm$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/support/license/(.*)$ https://www.grapecity.co.jp/developer/support/license [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# PlusPak特設&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/pluspak-winforms/$ https://www.grapecity.co.jp/developer/winforms [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# PlusPak特設 記事&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/pluspak-winforms/article/(.*)$ https://www.grapecity.co.jp/developer/winforms#tech-document [NC,R=301,L,NE]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# PlusPak特設 バーコードギャラリー&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/pluspak-winforms/barcode-gallery/(.*)$ https://www.grapecity.co.jp/developer/inputmanplus-winforms [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# WinForms特設 快適な入力画面を実現&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/winforms/comfortable-input.htm$ https://www.grapecity.co.jp/developer/winforms/comfortable-input [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# WinForms特設 入力画面の開発工数比較&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/winforms/control-comparison.htm$ https://www.grapecity.co.jp/developer/winforms/control-comparison [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# WinForms特設 グリッドの使い分けで適切なデータ表現&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/winforms/grid-proper-use.htm$ https://www.grapecity.co.jp/developer/winforms/grid-proper-use [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# WinForms特設&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/winforms/(.*)$ https://www.grapecity.co.jp/developer/winforms [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# WPF特設&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/wpf/$ https://www.grapecity.co.jp/developer/wpf [NC,R=301,L]
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;### 2018/08/21 金子さんより依頼 Proxy for DSC&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#まず/developerにリダイレクト&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/feedback/(.*)$  http://www.grapecity.com/developer/feedback/$1 [NC,R=301,L]
+
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/mail-magazine/default_reg.htm$  http://www.grapecity.com/developer/info/mail-magazine/default_reg.htm [NC,R=301,L]
+
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/info/mail-magazine/default_unreg.htm$  http://www.grapecity.com/developer/info/mail-magazine/default_unreg.htm [NC,R=301,L]
+
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/purchase/form.htm$  http://www.grapecity.com/developer/purchase/form.htm [NC,R=301,L]
+
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/support/powernews/column/(.*)$  http://www.grapecity.com/developer/support/powernews/column/$1 [NC,R=301,L]
+
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/support/user/(.*)$  http://www.grapecity.com/developer/support/user/$1 [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;### 2018/08/23追加&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/support/license/form.htm$  http://www.grapecity.com/developer/support/license/form.htm [NC,R=301,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;###&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#13.78.62.219(DSC)へのプロキシ設定&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/developer/(.*)$  http://13.78.62.219/developer/$1 [P,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;### 2018/08/21 金子さんより依頼 ここまで&lt;/span&gt;
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;## リダイレクト対象外URL&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# CSS,etc..&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/favicon.ico$ [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/common/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/img/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/support/css/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/support/images/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/jscript/(.*) [NC,OR]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{REQUEST_URI} ^/tools/support/technical/js/(.*) [NC,OR]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{REQUEST_URI} ^/tools/support/technical/images/(.*) [NC,OR]&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/support/license/js/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/specific/componentone/css/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/specific/componentone/js/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/specific/componentone/kb/js/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/specific/componentone/images/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/specific/componentone/images/favicon.ico$ [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/specific/images/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/specific/css/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/purchase/css/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/purchase/js/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/purchase/images/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/css/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/js/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/WebResource.axd(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/ScriptResource.axd(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/services/(.*) [NC,OR]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 対象外ページ&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;## 2018/10/03&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/editblockcontrol.aspx(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/fckeditor/(.*) [NC,OR]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;## 2018/11/26&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/error404.htm$ [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/error500-100.htm$ [NC,OR]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;##&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{REQUEST_URI} ^/tools/support/technical/knowledge.asp(.*) [NC,OR]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{REQUEST_URI} ^/tools/support/technical/knowledge_detail.asp(.*) [NC,OR]&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/support/technical/mail/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/support/technical/knowledge-google.htm [NC,OR]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{REQUEST_URI} ^/tools/support/kb/(.*) [NC,OR]&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/support/user/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/support/license/application_(.*).htm$ [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/purchase/form.htm$ [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/downloads/trialreg/(.*)$ [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/feedback/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/info/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/sys/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/specific/componentone/kb/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/specific/componentone/kb/detail.asp(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/specific/download/installer/vsview_truewebchart_server.asp$ [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/specific/download/installer/reportdesigner_distribution.asp$ [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/login(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/admin(.*) [NC,OR]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{REQUEST_URI} ^/tools/jp/(.*) [NC,OR]&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/support/powernews/column(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/tools/c1/kb/(.*) [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^.*$ - [NC,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;###&lt;/span&gt;
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ActiveReports for .NET 11.0J&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/activereportsnet11/(.*) https://www.grapecity.co.jp/developer/activereports [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# CalendarGrid for Windows Forms 1.0J&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/calendargridwin1/(.*) https://www.grapecity.co.jp/developer/multirowplus-winforms [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ComponentOne Studio&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/componentone/(.*) https://www.grapecity.co.jp/developer/componentone-studio [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# FlexGrid&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/flexgrid/(.*) https://www.grapecity.co.jp/developer/componentone-studio [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# InputManPlus for ASP.NET 10.0J&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/inputmanplusasp10/(.*) https://www.grapecity.co.jp/developer/inputmanplus-aspnet [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# InputManPlus for Windows Forms 10.0J&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/inputmanpluswin10/(.*) https://www.grapecity.co.jp/developer/inputmanplus-winforms [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# InputMan for WPF 1.0J&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/inputmanwpf1/(.*) https://www.grapecity.co.jp/developer/inputman-wpf [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# LEADTOOLS 19.0J&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/leadtools190/(.*) https://leadtools.grapecity.com/ [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# MultiRowPlus for Windows Forms 10.0J&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/multirowpluswin10/(.*) https://www.grapecity.co.jp/developer/multirowplus-winforms [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# MultiTouch for Windows Forms 1.0J&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/multitouchwin1/(.*) https://www.grapecity.co.jp/developer/multitouch-winforms [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Secure iNetSuite for .NET 4.0J&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/secureinetsuite4/(.*) https://www.grapecity.co.jp/developer/secure-inetsuite [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# SPREAD for ASP.NET 10.0J&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/spreadasp10/(.*) https://www.grapecity.co.jp/developer/spread-aspnet [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# SPREAD for Windows Forms 10.0J&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/spreadwin10/(.*) https://www.grapecity.co.jp/developer/spread-winforms [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# SPREAD for WPF 1.0J&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/spreadwpf1/(.*) https://www.grapecity.co.jp/developer/spread-wpf [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# SPREAD for WPF 2.0J&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/spreadwpf2/(.*) https://www.grapecity.co.jp/developer/spread-wpf [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# TrueChart&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/truechart/(.*) https://www.grapecity.co.jp/developer/componentone-studio [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Elixir Report 8.7J&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/elixirreport87/(.*) https://www.grapecity.co.jp/developer/elixir-report [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# JBarCode 3.0J&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/jbarcode3/(.*) https://www.grapecity.co.jp/developer/jbarcode [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# JClass DesktopViews 6.5［英語版］&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/jclassdesktopviews65/(.*) https://www.grapecity.co.jp/developer/jclass-desktopviews [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# JClass ServerChart 6.2J&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/jclassserverchart62/(.*) https://www.grapecity.co.jp/developer/jclass-serverchart [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# JClass ServerReport 6.2J&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/jclassserverreport62/(.*) https://www.grapecity.co.jp/developer/jclass-serverreport [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# WebCharts3D 5.4J&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/webcharts3d54/(.*) https://www.grapecity.co.jp/developer/webcharts3d [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# SpreadJS&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/spreadjs/(.*) https://www.grapecity.co.jp/developer/spreadjs [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Wijmo&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/wijmo/(.*) https://www.grapecity.co.jp/developer/wijmo [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# proxy for C1 jp !旧設定から引継ぎ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/c1/wijmo/$  https://www.grapecity.co.jp/developer/wijmo [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ComponentOne Studio for Xamarin&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/xamarin/(.*) https://www.grapecity.co.jp/developer/componentone-studio/xamarin [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ActiveXパック&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/products/activexpack/(.*) https://www.grapecity.co.jp/developer/activexpack [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# サポート＆サービス&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/support/$ https://www.grapecity.co.jp/developer/support [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 製品の対応環境&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/support/technical/environment/(.*) https://www.grapecity.co.jp/developer/support/system [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# サポートポリシー&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/support/technical/policy_(.*).htm$ https://www.grapecity.co.jp/developer/support/technical/support-policy [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 製品のサポート状況&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/support/technical/list_(.*).htm$ http://download.grapecity.com/pdf/support/support_status.pdf [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ライセンス認証/認証解除/再認証&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/support/license/((.*)activation(.*)|(.*)deactivation(.*)|(.*)reactivation(.*))$ https://www.grapecity.co.jp/developer/support/license [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ダウンロード&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/downloads/$ https://www.grapecity.co.jp/developer/download [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# トライアル版&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/downloads/trial/$ https://www.grapecity.co.jp/developer/download [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# アップデート&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/downloads/update(.*)$ https://www.grapecity.co.jp/developer/download/update [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# お問合せ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/aboutus/contact(.*)$ https://www.grapecity.co.jp/developer/about-us/contact [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 製品のご購入&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !^/tools/purchase/form.htm$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/purchase/(.*) https://www.grapecity.co.jp/developer/purchase [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# redirect for shop !旧設定から引継ぎ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/shop/(.*)$  https://www.grapecity.co.jp/developer/purchase [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# その他製品&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteRule ^/tools/products/(.*)$ https://www.grapecity.co.jp/developer/$1 [NC,R=301,L]&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# トップページその他ページ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/tools/.*$ https://www.grapecity.co.jp/developer? [NC,R=301,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;###&lt;/span&gt;
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;### Redirect rules for new ComponentOne Studio site (co.jp)&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;## リダイレクト対象外URL1 (Port 8083)&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# CSS,etc..&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/JavaScript/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/App_Themes/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/WebResource.axd(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/ScriptResource.axd(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/newimages/(.*) [NC,OR]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{REQUEST_URI} ^/help/web/(.*) [NC,OR]&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/favicon.ico$ [NC,OR]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 除外ページ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/c1live/(.*) [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/c1live/(.*)$ http://40.115.187.69:8083/c1live/$1 [P,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;## リダイレクト対象外URL2 (Port 8081)&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# CSS,etc..&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/JavaScript/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/App_Themes/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/WebResource.axd(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/ScriptResource.axd(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/newimages/(.*) [NC,OR]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{REQUEST_URI} ^/help/web/(.*) [NC,OR]&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/favicon.ico$ [NC,OR]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 除外ページ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/downloads/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/support(.*)$ [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/EspressoService.svc(.*)$ [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/members/(.*) [NC,OR]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{REQUEST_URI} ^/superpages/regchange/(.*) [NC,OR]&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/accountrecovery/(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/forgotpassword(.*) [NC,OR]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/myaccount/(.*) [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^(.*)$ http://40.115.187.69:8081/$1 [P,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;###&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 製品情報&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/$ https://www.grapecity.co.jp/developer/componentone-studio [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Studio Enterprise&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/studioenterprise/(.*) https://www.grapecity.co.jp/developer/componentone-studio [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Studio for WinForms&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/studiowinforms/(.*) https://www.grapecity.co.jp/developer/componentone-studio/winforms [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Studio for WinForms コントロール&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/(.*)winforms/(.*) https://www.grapecity.co.jp/developer/controls/winforms/$1 [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# FlexPivot for WinForms&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/flexpivotwf/(.*) https://www.grapecity.co.jp/developer/controls/winforms/flexpivot [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# FlexChart for WinForms&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/flexchartwf/(.*) https://www.grapecity.co.jp/developer/controls/winforms/flexchart [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Zip for WinForms&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/zipnet/(.*) https://www.grapecity.co.jp/developer/controls/studio/zip [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# FlexPie for WinForms&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/flexpiewf/(.*) https://www.grapecity.co.jp/developer/controls/winforms/flexpie [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# PDF for .NET&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/pdfnet/(.*) https://www.grapecity.co.jp/developer/controls/winforms/pdf [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# TreeView for WinForms&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/treeviewwf/(.*) https://www.grapecity.co.jp/developer/controls/winforms/treeview [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Studio for WPF&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/studiowpf/(.*) https://www.grapecity.co.jp/developer/componentone-studio/wpf [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Studio for WPF コントロール&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/(.*)-wpf/(.*) https://www.grapecity.co.jp/developer/controls/wpf/$1 [NC,R=301,L]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/(.*)wpf/(.*) https://www.grapecity.co.jp/developer/controls/wpf/$1 [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Studio for ASP.NET MVC&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/studioaspmvc/(.*) https://www.grapecity.co.jp/developer/componentone-studio/aspnet-mvc [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Studio for ASP.NET MVC コントロール&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/(.*)aspmvc/(.*) https://www.grapecity.co.jp/developer/controls/aspmvc/$1 [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Web API&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/webapi/(.*) https://www.grapecity.co.jp/developer/componentone-studio/web-api [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# MVC Classic&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/mvcclassic/(.*) https://www.grapecity.co.jp/developer/componentone-studio [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Studio for ASP.NET Web Forms&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/studioaspnet/(.*) https://www.grapecity.co.jp/developer/componentone-studio/aspnet-webforms [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Studio for ASP.NET Web Forms コントロール&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/(.*)aspnet/(.*) https://www.grapecity.co.jp/developer/componentone-studio [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# PDF for .NET&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/pdf/(.*) https://www.grapecity.co.jp/developer/componentone-studio [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Excel for .NET&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/excel/(.*) https://www.grapecity.co.jp/developer/componentone-studio [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Studio for Silverlight&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/studiosilverlight/(.*) https://www.grapecity.co.jp/developer/componentone-studio/silverlight [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Studio for Silverlight コントロール&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/(.*)silverlight/(.*) https://www.grapecity.co.jp/developer/componentone-studio [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# CoverFlow for Silverlight&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/coverflow/(.*) https://www.grapecity.co.jp/developer/componentone-studio [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# UWP&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/studiouwp/(.*) https://www.grapecity.co.jp/developer/componentone-studio/uwp [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# UWP コントロール&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/(.*)-uwp/(.*) https://www.grapecity.co.jp/developer/controls/uwp/$1 [NC,R=301,L]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/(.*)uwp/(.*) https://www.grapecity.co.jp/developer/controls/uwp/$1 [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Studio for Xamarin&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superproducts/xamarin/$ https://www.grapecity.co.jp/developer/componentone-studio/xamarin [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# オンラインデモ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superpages/demo/$ https://www.grapecity.co.jp/developer/componentone-studio/demo [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 導入事例&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superpages/(.*)casestudy(.*)/$ https://www.grapecity.co.jp/developer/about-us/case [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ご購入&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superpages/purchase/$ https://www.grapecity.co.jp/developer/purchase [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 購入のご相談&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/purchase/$ https://www.grapecity.co.jp/developer/purchase [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ダウンロード&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superpages/download/$ https://www.grapecity.co.jp/developer/download [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ダウンロード(実体URL)&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superwebpage.aspx(.*) https://www.grapecity.co.jp/developer/download? [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# サポート&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superpages/supportinfo/$ https://www.grapecity.co.jp/developer/support [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ユーザー登録について&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superpages/regchange/$ https://www.grapecity.co.jp/developer/license/componentone/regchange [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# お問合せ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/superpages/contact/$ https://www.grapecity.co.jp/developer/about-us/contact [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# コンポーネント活用術&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/techarticle/(.*) https://codezine.jp/component/grapecity/2 [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# C1 共通ヘルプ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/help/web/common/c1studio/(.*) http://docs.grapecity.com/help/c1/common/c1studio [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# C1 Live ヘルプ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/help/web/common/c1live/(.*) http://docs.grapecity.com/help/c1/common/c1live [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# for ASP.NET MVC ヘルプ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/help/web/aspmvc/aspmvc_helpers/(.*) http://docs.grapecity.com/help/c1/aspnet-mvc/aspmvc_helpers [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# for ASP.NET Web Forms ユーザーガイド&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/help/web/aspnet/aspnet_gettingstarted/(.*) http://docs.grapecity.com/help/c1/aspnet/aspnet_gettingstarted [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# for ASP.NET Web Forms ヘルプ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/help/web/aspnet/aspwij_(.*)/(.*) http://docs.grapecity.com/help/c1/aspnet/aspwij_$1 [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# for WPF／for Silverlight ヘルプ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/help/web/xaml/xaml_(.*)/(.*) http://docs.grapecity.com/help/web/xaml/xaml_$1 [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# for Xamarin ヘルプ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/help/web/xamarin/xf/(.*) http://docs.grapecity.com/help/c1/xamarin/xf [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# for Xamarin.Android ヘルプ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/help/web/xamarin/android/(.*) http://docs.grapecity.com/help/c1/xamarin/android [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# for Xamarin.iOS ヘルプ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/help/web/xamarin/ios/(.*) http://docs.grapecity.com/help/c1/xamarin/ios [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# for UWP ヘルプ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/help/web/uwp/uwp_(.*?)/(.*) http://docs.grapecity.com/help/c1/uwp/uwp_$1 [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# for WinForms ヘルプ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/help/web/winforms/winforms_(.*?)/(.*) http://docs.grapecity.com/help/c1/winforms/winforms_$1 [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# for WinForms／for ASP.NET Web Forms ヘルプ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/help/web/winasp/winasp_(.*?)/(.*) http://docs.grapecity.com/help/c1/winforms-aspnet/winasp_$1 [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# for WinRT XAML ヘルプ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/help/web/winrtxaml/winrtxaml_(.*?)/(.*) http://docs.grapecity.com/help/c1/winrt-xaml/winrtxaml_$1 [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# for WPF ヘルプ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/help/web/wpf/wpf_(.*?)/(.*) http://docs.grapecity.com/help/c1/wpf/wpf_$1 [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# proxy for C1 jp !旧設定から引継ぎ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/wijmo/$  https://www.grapecity.co.jp/developer/wijmo [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# その他製品&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteRule ^/superproducts/(.*) https://www.grapecity.co.jp/developer/$1 [NC,R=301,L]&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# トップページ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !^/downloads/(.*) [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !^/support/$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !^/members/(.*) [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !^/myaccount/(.*) [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !^/c1live/UpdateService.asmx(.*) [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/$ https://www.grapecity.co.jp/developer/componentone-studio [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# その他ページ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !^/downloads/(.*) [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !^/support/$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !^/members/(.*) [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !^/myaccount/(.*) [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} !^/c1live/UpdateService.asmx(.*) [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^.*$ https://www.grapecity.co.jp/developer? [NC,R=301,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;###&lt;/span&gt;
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;### Redirect rules for new Wijmo site (co.jp)&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 製品情報&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/products/$ https://www.grapecity.co.jp/developer/wijmo [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Wijmo Enterprise&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/products/wijmo-enterprise/$ https://www.grapecity.co.jp/developer/wijmo [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Wijmo 5&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/products/wijmo-5/$ https://www.grapecity.co.jp/developer/wijmo/core [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# MultiRow&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/products/multirow/$ https://www.grapecity.co.jp/developer/wijmo/multirow [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ピボットテーブル（OLAP）&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/products/olap/$ https://www.grapecity.co.jp/developer/wijmo/olap [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# FinancialChart&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/products/financial-chart/$ https://www.grapecity.co.jp/developer/wijmo/financialchart [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# FlexSheet&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/products/flexsheet/$ https://www.grapecity.co.jp/developer/wijmo/flexsheet [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ReportViewer&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/products/reportviewer/$ https://www.grapecity.co.jp/developer/wijmo/reportviewer [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Wijmo 3&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/products/wijmo-3/$ https://www.grapecity.co.jp/developer/wijmo/wijmo-3 [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# kintone連携&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/kintone/$ https://www.grapecity.co.jp/developer/wijmo [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Angular 2&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/angular-2/$ https://www.grapecity.co.jp/developer/wijmo/angular [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# React&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/reactjs/$ https://www.grapecity.co.jp/developer/wijmo/react [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# サポート&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/support/$ https://www.grapecity.co.jp/developer/support [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 製品のご購入&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/purchase/$ https://www.grapecity.co.jp/developer/purchase [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ダウンロード&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/download/$ https://www.grapecity.co.jp/developer/download [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 必要システム&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/environment/$ https://www.grapecity.co.jp/developer/wijmo#system [NC,R=301,L,NE]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Wijmo 5 ヘルプ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/5/docs/(.*) http://demo.grapecity.com/wijmo/help/$1 [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# プレイWijmo&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/5/playwijmo/(.*) http://demo.grapecity.com/wijmo/playwijmo/$1 [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Wijmo 3 ヘルプ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/docs/wijmo/(.*) http://docs.grapecity.com/help/wijmo-3 [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# トップページ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/$ https://www.grapecity.co.jp/developer/wijmo [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# その他ページ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo\.c1\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^.*$ https://www.grapecity.co.jp/developer/? [NC,R=301,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;###&lt;/span&gt;
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;### Redirect rules for new SPREAD site (co.jp)&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;## リダイレクト対象外URL&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 対象外ページ&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{REQUEST_URI} ^/wp-login.php(.*) [NC,OR]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{REQUEST_URI} ^/wp-admin/(.*) [NC]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{HTTP_HOST} ^(jp\.spread\.grapecity\.com)$ [NC]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteRule ^.*$ - [NC,L]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;###&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ダウンロード&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(jp\.spread\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/spreadjs/download/(.*) https://www.grapecity.co.jp/developer/download [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ASP.NET MVCでの使い方&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(jp\.spread\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/spreadjs/techinfo/aspnetmvc/$ http://download.grapecity.com/PDF/article/spreadjs9-howtousemvc.pdf [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ご購入 (SpreadJSライセンス)&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(jp\.spread\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/spreadjs/purchase/license/$ https://www.grapecity.co.jp/developer/license/javascript [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ご購入&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(jp\.spread\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/spreadjs/purchase/(.*) https://www.grapecity.co.jp/developer/purchase [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 導入事例&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(jp\.spread\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/spreadjs/case/(.*) https://www.grapecity.co.jp/developer/about-us/case [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 更新履歴&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(jp\.spread\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/spreadjs/news/update/(.*) http://download.grapecity.com/others/spreadjs-9j/update.html [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# オンラインデモ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(jp\.spread\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/spreadjs/demo/$ https://www.grapecity.co.jp/developer/spreadjs#resources [NC,R=301,L,NE]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ASP.NET vs JavaScript&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(jp\.spread\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/techinfo/jsvsaspnet/$ http://download.grapecity.com/PDF/article/spread_asp_vs_js.pdf [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# ブログ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(jp\.spread\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/blogs/(.*) http://devlog.grapecity.co.jp [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# トップページ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(jp\.spread\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^(/|/spreadjs/)$ https://www.grapecity.co.jp/developer/spreadjs [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# その他ページ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(jp\.spread\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^.*$ https://www.grapecity.co.jp/developer/? [NC,R=301,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;###&lt;/span&gt;
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;### Redirect rules for new ActiveReportServer site (co.jp)&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# トップページ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(jp\.activereportsserver\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^.*$ https://www.grapecity.co.jp/developer/support/info? [NC,R=301,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;###&lt;/span&gt;
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;### Redirect rules for new Leyser site (co.jp)&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# トップページ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/leyser/(.*)$ https://www.grapecity.co.jp/leyser/$1 [NC,R=301,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;###&lt;/span&gt;
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;### Redirect rules for new Corporate site (co.jp)&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Corpサイト各種ページ&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/jp/(.*)$ https://www.grapecity.co.jp/$1 [NC,R=301,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;###&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;###### 新Webサイト(co.jp)移行用ルール　ここまで ######&lt;/span&gt;
+
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# redirect for shop&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(shop\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteRule ^(.*)$  http://www.grapecity.com/tools/purchase$1  [R,L]&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^(.*)$  https://www.grapecity.co.jp/developer/purchase [NC,R=301,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# redirect for boc.co.jp&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.boc\.co\.jp)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/(register/inet.*)$  https://www.grapecity.com/japan/$1  [NC,R,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# redirect for Click s&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(www\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/([A-Z0-9]{12}\.clk)$  &lt;span style=&#34;color:#c30&#34;&gt;/tools/jp/&lt;/span&gt;?$1  [R,L]
+
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/c1live/(.*)$  http://40.115.187.69:8083/c1live/$1 [P,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteRule ^/c1live/(.*)$  http://180.37.128.174:8083/c1live/$1 [P,L]&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(c1\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^(.*)$  http://40.115.187.69:8081/$1 [P,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteRule ^(.*)$  http://180.37.128.174:8081/$1 [P,L]&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(wijmo.c1\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^(.*)$  http://40.115.187.69:8082/$1 [P,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteRule ^(.*)$  http://180.37.128.174/$1 [P,L]&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(nuget.c1\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^(.*)$  http://40.115.187.69/$1 [P,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteRule ^(.*)$  http://180.37.128.174/$1 [P,L]&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Proxy for C2 stoped on 2016/09/13&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{HTTP_HOST} ^(c2\.grapecity\.com)$  [NC]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteRule ^/c1live/(.*)$  http://104.41.172.127:8083/c1live/$1 [P,L]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{HTTP_HOST} ^(c2\.grapecity\.com)$  [NC]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteRule ^(.*)$  http://104.41.172.127:8081/$1 [P,L]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{HTTP_HOST} ^(wijmo.c2\.grapecity\.com)$  [NC]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteRule ^(.*)$  http://104.41.172.127/$1 [P,L]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{HTTP_HOST} ^(nuget.c2\.grapecity\.com)$  [NC]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteRule ^(.*)$  http://104.41.172.127/$1 [P,L]&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# proxy for Demo server&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(dotnetdemo\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^(.*)$  http://www.grapecity.com/japan/tools/$1  [R,L]
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteRule ^(.*)$  http://210.160.205.61/$1 [P,L]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{HTTP_HOST} ^(tools\.grapecity\.com)$  [NC]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteRule ^(.*)$  http://210.160.205.61/$1 [P,L]&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# redirect for download&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(download\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/pdf/support/spreadjs_supportpolicy.pdf$  http://download2.grapecity.com/pdf/support/javascript_supportpolicy.pdf  [R,L]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(download\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/(.*)/$  http://download2.grapecity.com/$1/index.html  [R,L]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(download\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^/(.*)$  http://download2.grapecity.com/$1  [R,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{HTTP_HOST} ^(download\.grapecity\.com)$  [NC]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteRule ^/(.*)/$  http://download.grapecity.com.s3.amazonaws.com/$1/index.html  [R,L]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteCond %{HTTP_HOST} ^(download\.grapecity\.com)$  [NC]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RewriteRule ^/(.*)$  http://download.grapecity.com.s3.amazonaws.com/$1  [R,L]&lt;/span&gt;
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# grapeseed&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(grapeseed\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^.*$  http://www.grapeseed.com/  [R,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# forguncy&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(forguncy\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^.*$  http://www.forguncy.com/  [R,L]
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Temp for Chris2017/11/28&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} ^(grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REQUEST_URI} ^/expensify.txt$ [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^(.*)$ http://www.grapecity.com$1 [L,R=301]
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;###########################################################################&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# redirect to www.grapecity.com&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{HTTP_HOST} !^(www\.grapecity\.com)$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REMOTE_ADDR} !^127\.0\.0\.1$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteCond&lt;/span&gt; %{REMOTE_ADDR} !^210\.160\.205\.17$  [NC]
+&lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; ^.*$  http://www.grapecity.com/  [R,L]
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#SSLProxyEngine on&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RequestHeader set X_HTTPS %{HTTPS}s&lt;/span&gt;
+
+
+&lt;span style=&#34;color:#366&#34;&gt;ProxyHTMLExtended&lt;/span&gt; &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;On&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;ProxyPreserveHost&lt;/span&gt; &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;On&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#ProxyHTMLLogVerbose On&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#ProxyPreserveHost On&lt;/span&gt;
+
+&lt;span style=&#34;color:#366&#34;&gt;Header&lt;/span&gt; unset X-Powered-By
+&lt;span style=&#34;color:#366&#34;&gt;Header&lt;/span&gt; unset X-AspNet-Version
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# CACHE&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#ExpiresActive On&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#ExpiresByType application/x-shockwave-flash &amp;#34;access plus 1 days&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#ExpiresByType text/css &amp;#34;access plus 1 days&amp;#34;&lt;/span&gt;
+
+
+
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;Location&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;/Japan/&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;RewriteEngine&lt;/span&gt; &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;On&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;RewriteBase&lt;/span&gt; /
+        &lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; Japan/(.*) &lt;span style=&#34;color:#c30&#34;&gt;/japan/&lt;/span&gt;$1 [R=303,L]
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;/Location&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;Location&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;/japan/&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;SetEnv&lt;/span&gt;  proxy-nokeepalive &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPass&lt;/span&gt; balancer://gcwebsendai/japan/ stickysession=LBRT
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPassReverse&lt;/span&gt; http://www.grapecity.com/japan/
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;/Location&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;Location&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;/shop/&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;SetEnv&lt;/span&gt;  proxy-nokeepalive &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPass&lt;/span&gt; balancer://gcwebsendai/shop/ stickysession=LBRT
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPassReverse&lt;/span&gt; http://www.grapecity.com/shop/
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;/Location&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;Location&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;/tools/jp/&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;SetEnv&lt;/span&gt;  proxy-nokeepalive &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPass&lt;/span&gt; balancer://gcwebsendai/tools/jp/ stickysession=LBRT
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPassReverse&lt;/span&gt; http://www.grapecity.com/tools/jp/
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;/Location&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;Location&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;/tools/common/&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;SetEnv&lt;/span&gt;  proxy-nokeepalive &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPass&lt;/span&gt; balancer://gcwebsendai/tools/common/ stickysession=LBRT
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPassReverse&lt;/span&gt; http://www.grapecity.com/tools/common/
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;/Location&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;Location&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;/tools/feedback/&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;SetEnv&lt;/span&gt;  proxy-nokeepalive &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPass&lt;/span&gt; balancer://gcwebsendai/tools/feedback/ stickysession=LBRT
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPassReverse&lt;/span&gt; http://www.grapecity.com/tools/feedback/
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;/Location&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;Location&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;/tools/info/&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;SetEnv&lt;/span&gt;  proxy-nokeepalive &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPass&lt;/span&gt; balancer://gcwebsendai/tools/info/ stickysession=LBRT
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPassReverse&lt;/span&gt; http://www.grapecity.com/tools/info/
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;/Location&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;Location&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;/tools/purchase/&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;SetEnv&lt;/span&gt;  proxy-nokeepalive &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPass&lt;/span&gt; balancer://gcwebsendai/tools/purchase/ stickysession=LBRT
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPassReverse&lt;/span&gt; http://www.grapecity.com/tools/purchase/
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;/Location&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;Location&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;/tools/specific/&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;SetEnv&lt;/span&gt;  proxy-nokeepalive &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPass&lt;/span&gt; balancer://gcwebsendai/tools/specific/ stickysession=LBRT
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPassReverse&lt;/span&gt; http://www.grapecity.com/tools/specific/
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;/Location&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;Location&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;/tools/support/&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;SetEnv&lt;/span&gt;  proxy-nokeepalive &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPass&lt;/span&gt; balancer://gcwebsendai/tools/support/ stickysession=LBRT
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPassReverse&lt;/span&gt; http://www.grapecity.com/tools/support/
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;/Location&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;Location&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;/tools/c1/&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;SetEnv&lt;/span&gt;  proxy-nokeepalive &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPass&lt;/span&gt; balancer://gcwebsendai/tools/c1/ stickysession=LBRT
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPassReverse&lt;/span&gt; http://www.grapecity.com/tools/c1/
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;/Location&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;Location&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;/tools/services/update/&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;SetEnv&lt;/span&gt;  proxy-nokeepalive &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#        ProxyPass http://app.grapecity.com/tools/services/update/ min=5&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPass&lt;/span&gt; https://54.65.245.213/tools/services/update/ &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;min&lt;/span&gt;=5
+        &lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#366&#34;&gt;Reverse&lt;/span&gt; http://www.grapecity.com/tools/services/update/
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;/Location&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;## Request by Alex on 2018/12/21&lt;/span&gt;
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;Location&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;/en/exceldemo/&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;SetEnv&lt;/span&gt;  proxy-nokeepalive &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPass&lt;/span&gt; balancer://usgcexceldemo/ stickysession=LBRT
+        &lt;span style=&#34;color:#366&#34;&gt;ProxyPassReverse&lt;/span&gt; http://www.grapecity.com/en/exceldemo/
+        &lt;span style=&#34;color:#366&#34;&gt;RequestHeader&lt;/span&gt; set Host gcexceldemo.azurewebsites.net
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;/Location&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#ProxyPass /tools/support_test/ http://pds.cloudapp.net/tools/support/ min=5&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#ProxyPassReverse /tools/support_test/ http://www.grapecity.com/tools/support_test/&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#ProxyPass /tools/ balancer://toolwebntt/tools/&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#ProxyPassReverse /tools/ http://www.grapecity.com/tools/&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#ProxyPass /tools/ http://180.37.128.166/tools/ min=5&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;ProxyPass&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;/tools/&lt;/span&gt; http://13.78.62.219/tools/ &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;min&lt;/span&gt;=5
+&lt;span style=&#34;color:#366&#34;&gt;ProxyPassReverse&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;/tools/&lt;/span&gt; http://www.grapecity.com/tools/
+
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;Location&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;/Tools/&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;RewriteEngine&lt;/span&gt; &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;On&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;RewriteBase&lt;/span&gt; /
+        &lt;span style=&#34;color:#366&#34;&gt;RewriteRule&lt;/span&gt; Tools/(.*) &lt;span style=&#34;color:#c30&#34;&gt;/tools/&lt;/span&gt;$1 [R=303,L]
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;/Location&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color:#366&#34;&gt;SetEnv&lt;/span&gt;  proxy-nokeepalive &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;ProxyPass&lt;/span&gt; / balancer://gcwebntt/
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#ProxyPassReverse / http://www.grapecity.com/&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;ProxyPassReverse&lt;/span&gt; / http://23.102.69.244/
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#&amp;lt;Location /&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#        RedirectMatch temp ^\/us$ /us/&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#        RedirectMatch temp ^\/us\/powertools$ /us/powertools/&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#        RedirectMatch temp ^\/cn$ /cn/&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#        RedirectMatch temp ^\/tools$ /tools/&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#        SetEnv  proxy-nokeepalive 1&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#        ProxyPass balancer://gcwebntt/ stickysession=LBRT&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#        ProxyPassReverse http://www.grapecity.com/&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#&amp;lt;/Location&amp;gt;&lt;/span&gt;
+
+
+
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;Proxy&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;balancer://gcwebntt/&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;BalancerMember&lt;/span&gt; https://23.102.69.244 route=1 loadfactor=10 timeout=160 connectiontimeout=1 retry=0 max=50
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#       BalancerMember https://180.37.128.165 route=1 loadfactor=10 timeout=160 connectiontimeout=1 retry=0 max=50&lt;/span&gt;
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;/Proxy&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;Proxy&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;balancer://toolwebntt/&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;BalancerMember&lt;/span&gt; https://13.78.62.219 route=1 loadfactor=10 timeout=160 connectiontimeout=1 retry=0 max=50
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;/Proxy&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;Proxy&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;balancer://gcwebsendai/&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;BalancerMember&lt;/span&gt; https://210.160.205.80 route=1 loadfactor=10 timeout=160 connectiontimeout=1 retry=0 max=50
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;/Proxy&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;## Request by Alex on 2018/12/21&lt;/span&gt;
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;Proxy&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;balancer://usgcexceldemo/&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#366&#34;&gt;BalancerMember&lt;/span&gt; http://gcexceldemo.azurewebsites.net:80 route=1 loadfactor=10 timeout=160 connectiontimeout=1 retry=0 max=50
+&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;&amp;lt;/Proxy&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     
