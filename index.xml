@@ -32,6 +32,50 @@
     </item>
     
     <item>
+      <title>How to Setup Oh My Zsh</title>
+      <link>https://blog.stevedong.com/post/how-to-setup-oh-my-zsh/</link>
+      <pubDate>Wed, 10 Apr 2019 12:18:04 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-setup-oh-my-zsh/</guid>
+      
+        <description>
+
+&lt;p&gt;#How to setup Oh-My-Zsh&lt;/p&gt;
+
+&lt;h2 id=&#34;install-support-application&#34;&gt;Install support application&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;apt install git curl wget zsh&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;install-zsh&#34;&gt;Install zsh&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;via curl&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;  sh -c &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;$(&lt;/span&gt;curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;via wget&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;  sh -c &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;$(&lt;/span&gt;wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;change-zsh-settings&#34;&gt;Change zsh settings&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;change theme
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;   &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#change theme froy robbyrussell to agnoster&lt;/span&gt;
+   sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/ZSH_THEME=\&amp;#34;robbyrussell\&amp;#34;/ZSH_THEME=\&amp;#34;agnoster\&amp;#34;/g&amp;#39;&lt;/span&gt; ~/.zshrc
+	&lt;span style=&#34;color:#c30&#34;&gt;```&lt;/span&gt;
+  - change plugin support
+
+  &lt;span style=&#34;color:#c30&#34;&gt;```&lt;/span&gt;bash
+sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\trbenv\n\truby\n\tpython\n)/g&amp;#39;&lt;/span&gt; ~/.zshrc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;switch-default-bash-to-zsh&#34;&gt;Switch default bash to zsh&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;chsh -s /bin/zsh
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>How to Setup Vim</title>
       <link>https://blog.stevedong.com/post/how-to-setup-vim/</link>
       <pubDate>Tue, 09 Apr 2019 10:02:33 +0800</pubDate>

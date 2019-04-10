@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>How to Setup Vim - Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>How to Setup Oh My Zsh - Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -22,8 +22,9 @@
 
 <meta name="mobile-web-app-capable" content="yes">
 
-<meta name="author" content="Steve Dong" />
-  <meta name="description" content="How to setup vim Install vundle vundle is a plugin manage tools for vim git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim Edit vim configure file cat &amp;gt; ~/.vimrc &amp;lt;&amp;lt;EOF set nocompatible &amp;#34; be iMproved, required filetype off &amp;#34; required syntax on &amp;#34; set the runtime path to include Vundle and initialize set rtp&#43;=~/.vim/bundle/Vundle.vim call vundle#begin() &amp;#34; alternatively, pass a path where Vundle should install plugins &amp;#34;call vundle#begin(&amp;#39;~/some/path/here&amp;#39;) &amp;#34; let Vundle manage Vundle, required" />
+<meta name="author" content="steve dong" />
+  <meta name="description" content=" #How to setup Oh-My-Zsh
+Install support application apt install git curl wget zsh Install zsh  via curl  sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;#34;  via wget  sh -c &amp;#34;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&amp;#34; Change zsh settings  change theme   #change theme froy robbyrussell to agnoster sed -i &amp;#39;s/ZSH_THEME=\&amp;#34;robbyrussell\&amp;#34;/ZSH_THEME=\&amp;#34;agnoster\&amp;#34;/g&amp;#39; ~/.zshrc ``` - change plugin support ```bash sed -i &amp;#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\trbenv\n\truby\n\tpython\n)/g&amp;#39; ~/.zshrc Switch default bash to zsh chsh -s /bin/zsh  " />
 
   <meta name="keywords" content="network, devops, sdn, system Administation" />
 
@@ -35,7 +36,7 @@
 <meta name="generator" content="Hugo 0.52" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/post/how-to-setup-vim/" />
+<link rel="canonical" href="https://blog.stevedong.com/post/how-to-setup-oh-my-zsh/" />
 
 
 
@@ -57,26 +58,29 @@
 
 
 
-<meta property="og:title" content="How to Setup Vim" />
-<meta property="og:description" content="How to setup vim Install vundle vundle is a plugin manage tools for vim git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim Edit vim configure file cat &gt; ~/.vimrc &lt;&lt;EOF set nocompatible &#34; be iMproved, required filetype off &#34; required syntax on &#34; set the runtime path to include Vundle and initialize set rtp&#43;=~/.vim/bundle/Vundle.vim call vundle#begin() &#34; alternatively, pass a path where Vundle should install plugins &#34;call vundle#begin(&#39;~/some/path/here&#39;) &#34; let Vundle manage Vundle, required" />
+<meta property="og:title" content="How to Setup Oh My Zsh" />
+<meta property="og:description" content=" #How to setup Oh-My-Zsh
+Install support application apt install git curl wget zsh Install zsh  via curl  sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34;  via wget  sh -c &#34;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&#34; Change zsh settings  change theme   #change theme froy robbyrussell to agnoster sed -i &#39;s/ZSH_THEME=\&#34;robbyrussell\&#34;/ZSH_THEME=\&#34;agnoster\&#34;/g&#39; ~/.zshrc ``` - change plugin support ```bash sed -i &#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\trbenv\n\truby\n\tpython\n)/g&#39; ~/.zshrc Switch default bash to zsh chsh -s /bin/zsh  " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/how-to-setup-vim/" /><meta property="article:published_time" content="2019-04-09T10:02:33&#43;08:00"/>
-<meta property="article:modified_time" content="2019-04-09T10:02:33&#43;08:00"/>
+<meta property="og:url" content="https://blog.stevedong.com/post/how-to-setup-oh-my-zsh/" /><meta property="article:published_time" content="2019-04-10T12:18:04&#43;08:00"/>
+<meta property="article:modified_time" content="2019-04-10T12:18:04&#43;08:00"/>
 
-<meta itemprop="name" content="How to Setup Vim">
-<meta itemprop="description" content="How to setup vim Install vundle vundle is a plugin manage tools for vim git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim Edit vim configure file cat &gt; ~/.vimrc &lt;&lt;EOF set nocompatible &#34; be iMproved, required filetype off &#34; required syntax on &#34; set the runtime path to include Vundle and initialize set rtp&#43;=~/.vim/bundle/Vundle.vim call vundle#begin() &#34; alternatively, pass a path where Vundle should install plugins &#34;call vundle#begin(&#39;~/some/path/here&#39;) &#34; let Vundle manage Vundle, required">
-
-
-<meta itemprop="datePublished" content="2019-04-09T10:02:33&#43;08:00" />
-<meta itemprop="dateModified" content="2019-04-09T10:02:33&#43;08:00" />
-<meta itemprop="wordCount" content="447">
+<meta itemprop="name" content="How to Setup Oh My Zsh">
+<meta itemprop="description" content=" #How to setup Oh-My-Zsh
+Install support application apt install git curl wget zsh Install zsh  via curl  sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34;  via wget  sh -c &#34;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&#34; Change zsh settings  change theme   #change theme froy robbyrussell to agnoster sed -i &#39;s/ZSH_THEME=\&#34;robbyrussell\&#34;/ZSH_THEME=\&#34;agnoster\&#34;/g&#39; ~/.zshrc ``` - change plugin support ```bash sed -i &#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\trbenv\n\truby\n\tpython\n)/g&#39; ~/.zshrc Switch default bash to zsh chsh -s /bin/zsh  ">
 
 
+<meta itemprop="datePublished" content="2019-04-10T12:18:04&#43;08:00" />
+<meta itemprop="dateModified" content="2019-04-10T12:18:04&#43;08:00" />
+<meta itemprop="wordCount" content="63">
 
-<meta itemprop="keywords" content="vim," />
+
+
+<meta itemprop="keywords" content="zsh," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="How to Setup Vim"/>
-<meta name="twitter:description" content="How to setup vim Install vundle vundle is a plugin manage tools for vim git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim Edit vim configure file cat &gt; ~/.vimrc &lt;&lt;EOF set nocompatible &#34; be iMproved, required filetype off &#34; required syntax on &#34; set the runtime path to include Vundle and initialize set rtp&#43;=~/.vim/bundle/Vundle.vim call vundle#begin() &#34; alternatively, pass a path where Vundle should install plugins &#34;call vundle#begin(&#39;~/some/path/here&#39;) &#34; let Vundle manage Vundle, required"/>
+<meta name="twitter:title" content="How to Setup Oh My Zsh"/>
+<meta name="twitter:description" content=" #How to setup Oh-My-Zsh
+Install support application apt install git curl wget zsh Install zsh  via curl  sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34;  via wget  sh -c &#34;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&#34; Change zsh settings  change theme   #change theme froy robbyrussell to agnoster sed -i &#39;s/ZSH_THEME=\&#34;robbyrussell\&#34;/ZSH_THEME=\&#34;agnoster\&#34;/g&#39; ~/.zshrc ``` - change plugin support ```bash sed -i &#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\trbenv\n\truby\n\tpython\n)/g&#39; ~/.zshrc Switch default bash to zsh chsh -s /bin/zsh  "/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -341,14 +345,14 @@ if (!doNotTrack) {
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">How to Setup Vim</h1>
+      <h1 class="post-title">How to Setup Oh My Zsh</h1>
       
       <div class="post-meta">
-        <time datetime="2019-04-09" class="post-time">
-          2019-04-09
+        <time datetime="2019-04-10" class="post-time">
+          2019-04-10
         </time>
         <div class="post-category">
-            <a href="https://blog.stevedong.com/categories/vim/"> vim </a>
+            <a href="https://blog.stevedong.com/categories/zsh/"> zsh </a>
             
           </div>
         
@@ -368,17 +372,12 @@ if (!doNotTrack) {
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#how-to-setup-vim">How to setup vim</a>
+<li>
 <ul>
-<li><a href="#install-vundle">Install vundle</a></li>
-<li><a href="#edit-vim-configure-file">Edit vim configure file</a></li>
-<li><a href="#install-plugin">Install Plugin</a></li>
-<li><a href="#let-vim-support-nginx-syntax-highlight">Let vim support nginx syntax highlight</a></li>
-<li><a href="#let-vim-remember-last-opened-position">Let vim remember last opened position</a></li>
-</ul></li>
-<li><a href="#change-tab-to-4-space">Change tab to 4 space</a>
-<ul>
-<li><a href="#reference">Reference</a></li>
+<li><a href="#install-support-application">Install support application</a></li>
+<li><a href="#install-zsh">Install zsh</a></li>
+<li><a href="#change-zsh-settings">Change zsh settings</a></li>
+<li><a href="#switch-default-bash-to-zsh">Switch default bash to zsh</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -389,93 +388,37 @@ if (!doNotTrack) {
     <div class="post-content">
       
 
-<h1 id="how-to-setup-vim">How to setup vim</h1>
+<p>#How to setup Oh-My-Zsh</p>
 
-<h2 id="install-vundle">Install vundle</h2>
-
-<p>vundle is a plugin manage tools for vim</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim</code></pre></div>
-<h2 id="edit-vim-configure-file">Edit vim configure file</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt; ~/.vimrc <span style="color:#c30">&lt;&lt;EOF
-</span><span style="color:#c30">set nocompatible              &#34; be iMproved, required
-</span><span style="color:#c30">filetype off                  &#34; required
-</span><span style="color:#c30">syntax on
-</span><span style="color:#c30">&#34; set the runtime path to include Vundle and initialize
-</span><span style="color:#c30">set rtp+=~/.vim/bundle/Vundle.vim
-</span><span style="color:#c30">call vundle#begin()
-</span><span style="color:#c30">&#34; alternatively, pass a path where Vundle should install plugins
-</span><span style="color:#c30">&#34;call vundle#begin(&#39;~/some/path/here&#39;)
-</span><span style="color:#c30">&#34; let Vundle manage Vundle, required
-</span><span style="color:#c30">Plugin &#39;VundleVim/Vundle.vim&#39;
-</span><span style="color:#c30">&#34; The following are examples of different formats supported.
-</span><span style="color:#c30">&#34; Keep Plugin commands between vundle#begin/end.
-</span><span style="color:#c30">&#34; plugin on GitHub repo
-</span><span style="color:#c30">Plugin &#39;tpope/vim-fugitive&#39;
-</span><span style="color:#c30">&#34; plugin from http://vim-scripts.org/vim/scripts.html
-</span><span style="color:#c30">&#34; Plugin &#39;L9&#39;
-</span><span style="color:#c30">&#34; Git plugin not hosted on GitHub
-</span><span style="color:#c30">Plugin &#39;git://git.wincent.com/command-t.git&#39;
-</span><span style="color:#c30">&#34; git repos on your local machine (i.e. when working on your own plugin)
-</span><span style="color:#c30">&#34; Plugin &#39;file:///home/gmarik/path/to/plugin&#39;
-</span><span style="color:#c30">&#34; The sparkup vim script is in a subdirectory of this repo called vim.
-</span><span style="color:#c30">&#34; Pass the path to set the runtimepath properly.
-</span><span style="color:#c30">Plugin &#39;rstacruz/sparkup&#39;, {&#39;rtp&#39;: &#39;vim/&#39;}
-</span><span style="color:#c30">&#34; Install L9 and avoid a Naming conflict if you&#39;ve already installed a
-</span><span style="color:#c30">&#34; different version somewhere else.
-</span><span style="color:#c30">Plugin &#39;ascenator/L9&#39;, {&#39;name&#39;: &#39;newL9&#39;}
-</span><span style="color:#c30">Plugin &#39;morhetz/gruvbox&#39;
-</span><span style="color:#c30">Plugin &#39;vim-airline/vim-airline&#39;
-</span><span style="color:#c30">Plugin &#39;vim-airline/vim-airline-themes&#39;
-</span><span style="color:#c30">&#34; All of your Plugins must be added before the following line
-</span><span style="color:#c30">call vundle#end()            &#34; required
-</span><span style="color:#c30">filetype plugin indent on    &#34; required
-</span><span style="color:#c30">&#34; To ignore plugin indent changes, instead use:
-</span><span style="color:#c30">&#34;filetype plugin on
-</span><span style="color:#c30">&#34;
-</span><span style="color:#c30">&#34; Brief help
-</span><span style="color:#c30">&#34; :PluginList       - lists configured plugins
-</span><span style="color:#c30">&#34; :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-</span><span style="color:#c30">&#34; :PluginSearch foo - searches for foo; append `!` to refresh local cache
-</span><span style="color:#c30">&#34; :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-</span><span style="color:#c30">&#34;
-</span><span style="color:#c30">&#34; see :h vundle for more details or wiki for FAQ
-</span><span style="color:#c30">&#34; Put your non-Plugin stuff after this line
-</span><span style="color:#c30">EOF</span></code></pre></div>
-<h2 id="install-plugin">Install Plugin</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vim</code></pre></div>
-<p>Enter <code>:PluginInstall</code> then wait for the installation process finished.
-then <code>vim ~/.vimrc</code></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">colorscheme gruvbox<span style="color:#a00;background-color:#faa">
-</span><span style="color:#a00;background-color:#faa"></span>set background=<span style="color:#366">dark</span><span style="color:#09f;font-style:italic">    &#34; Setting dark mode</span><span style="color:#a00;background-color:#faa">
-</span><span style="color:#a00;background-color:#faa"></span><span style="color:#069;font-weight:bold">let</span> g:gruvbox_contrast_dark=<span style="color:#c30">&#39;hard&#39;</span><span style="color:#a00;background-color:#faa">
-</span><span style="color:#a00;background-color:#faa"></span><span style="color:#069;font-weight:bold">let</span> g:airline_theme=<span style="color:#c30">&#39;simple&#39;</span></code></pre></div>
-<h2 id="let-vim-support-nginx-syntax-highlight">Let vim support nginx syntax highlight</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir -p ~/.vim/syntax/
-wget -O ~/.vim/syntax/nginx.vim http://www.vim.org/scripts/download_script.php?src_id<span style="color:#555">=</span><span style="color:#f60">14376</span>
-<span style="color:#09f;font-style:italic"># /usr/local/etc/nginx/vhosts/* change it as you wish</span>
-<span style="color:#366">echo</span> <span style="color:#c30">&#34;au BufRead,BufNewFile /usr/local/etc/nginx/vhosts/* set ft=nginx&#34;</span> &gt;&gt; ~/.vim/filetype.vim</code></pre></div>
-<h2 id="let-vim-remember-last-opened-position">Let vim remember last opened position</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt;&gt; ~/.vimrc <span style="color:#c30">&lt;&lt; EOF
-</span><span style="color:#c30">&#34; Uncomment the following to have Vim jump to the last position when                                                       
-</span><span style="color:#c30">&#34; reopening a file
-</span><span style="color:#c30">if has(&#34;autocmd&#34;)
-</span><span style="color:#c30">  au BufReadPost * if line(&#34;&#39;\&#34;&#34;) &gt; 0 &amp;&amp; line(&#34;&#39;\&#34;&#34;) &lt;= line(&#34;$&#34;)
-</span><span style="color:#c30">    \| exe &#34;normal! g&#39;\&#34;&#34; | endif
-</span><span style="color:#c30">endif
-</span><span style="color:#c30">EOF</span></code></pre></div>
-<h1 id="change-tab-to-4-space">Change tab to 4 space</h1>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt;&gt; ~/.vimrc &lt;&lt;EOF
-<span style="color:#366">set</span> <span style="color:#033">tabstop</span><span style="color:#555">=</span><span style="color:#f60">4</span>
-<span style="color:#366">set</span> <span style="color:#033">shiftwidth</span><span style="color:#555">=</span><span style="color:#f60">4</span>
-<span style="color:#366">set</span> <span style="color:#033">softtabstop</span><span style="color:#555">=</span><span style="color:#f60">4</span>
-<span style="color:#366">set</span> expandtab</code></pre></div>
-<h2 id="reference">Reference</h2>
+<h2 id="install-support-application">Install support application</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">apt install git curl wget zsh</code></pre></div>
+<h2 id="install-zsh">Install zsh</h2>
 
 <ul>
-<li><a href="http://aleonchen.com/2017/02/06/vim/">让Vim支持Nginx语法高亮 -Ubuntu</a></li>
-<li><a href="https://stackoverflow.com/questions/774560/in-vim-how-do-i-get-a-file-to-open-at-the-same-line-number-i-closed-it-at-last">In vim, how do I get a file to open at the same line number I closed it at last time?</a></li>
-<li><a href="https://stackoverflow.com/questions/2054627/how-do-i-change-tab-size-in-vim">How do I change tab size in Vim?</a></li>
+<li>via curl</li>
 </ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  sh -c <span style="color:#c30">&#34;</span><span style="color:#069;font-weight:bold">$(</span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span style="color:#069;font-weight:bold">)</span><span style="color:#c30">&#34;</span></code></pre></div>
+<ul>
+<li>via wget</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  sh -c <span style="color:#c30">&#34;</span><span style="color:#069;font-weight:bold">$(</span>wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -<span style="color:#069;font-weight:bold">)</span><span style="color:#c30">&#34;</span></code></pre></div>
+<h2 id="change-zsh-settings">Change zsh settings</h2>
+
+<ul>
+<li>change theme
+<br /></li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">   <span style="color:#09f;font-style:italic">#change theme froy robbyrussell to agnoster</span>
+   sed -i <span style="color:#c30">&#39;s/ZSH_THEME=\&#34;robbyrussell\&#34;/ZSH_THEME=\&#34;agnoster\&#34;/g&#39;</span> ~/.zshrc
+	<span style="color:#c30">```</span>
+  - change plugin support
+
+  <span style="color:#c30">```</span>bash
+sed -i <span style="color:#c30">&#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\trbenv\n\truby\n\tpython\n)/g&#39;</span> ~/.zshrc</code></pre></div>
+<h2 id="switch-default-bash-to-zsh">Switch default bash to zsh</h2>
+
+<pre><code>chsh -s /bin/zsh
+</code></pre>
 
     </div>
 
@@ -484,11 +427,11 @@ wget -O ~/.vim/syntax/nginx.vim http://www.vim.org/scripts/download_script.php?s
 <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">Author</span>
-    <span class="item-content">Steve Dong</span>
+    <span class="item-content">steve dong</span>
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">2019-04-09</span>
+    <span class="item-content">2019-04-10</span>
   </p>
   
   <p class="copyright-item">
@@ -500,41 +443,19 @@ wget -O ~/.vim/syntax/nginx.vim http://www.vim.org/scripts/download_script.php?s
 
     
     
-<div class="post-reward">
-  <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">Reward</label>
-  <div class="qr-code">
-    
-    
-    
-  </div>
-</div>
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="https://blog.stevedong.com/tags/vim/">vim</a>
+          <a href="https://blog.stevedong.com/tags/zsh/">zsh</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/how-to-setup-oh-my-zsh/">
-            
-            <i class="iconfont">
-              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-            </i>
-            <span class="prev-text nav-default">How to Setup Oh My Zsh</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
         
-          <a class="next" href="/post/how-to-enable-docker-in-lxc/">
-            <span class="next-text nav-default">How to Enable Docker in Lxc</span>
+          <a class="next" href="/post/how-to-setup-vim/">
+            <span class="next-text nav-default">How to Setup Vim</span>
             <span class="prev-text nav-mobile">Next</span>
             
             <i class="iconfont">

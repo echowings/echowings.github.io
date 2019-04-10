@@ -339,6 +339,41 @@ if (!doNotTrack) {
   <header class="post-header">
     <h1 class="post-title">
       
+      <a class="post-link" href="/post/how-to-setup-oh-my-zsh/">How to Setup Oh My Zsh</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-04-10" class="post-time">
+        2019-04-10
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/zsh/"> zsh </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+       #How to setup Oh-My-Zsh
+Install support application apt install git curl wget zsh Install zsh  via curl  sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34;  via wget  sh -c &#34;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&#34; Change zsh settings  change theme   #change theme froy robbyrussell to agnoster sed -i &#39;s/ZSH_THEME=\&#34;robbyrussell\&#34;/ZSH_THEME=\&#34;agnoster\&#34;/g&#39; ~/.zshrc ``` - change plugin support ```bash sed -i &#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\trbenv\n\truby\n\tpython\n)/g&#39; ~/.zshrc Switch default bash to zsh chsh -s /bin/zsh  
+    </div>
+    <div class="read-more">
+      <a href="/post/how-to-setup-oh-my-zsh/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
       <a class="post-link" href="/post/how-to-setup-vim/">How to Setup Vim</a>
     </h1>
     
@@ -818,41 +853,6 @@ if [ &ldquo;ls -A /config&rdquo; = &ldquo;&rdquo; ]; then cp /srv/config.
     </div>
     <div class="read-more">
       <a href="/post/proxmox-ve-install-pve5-on-debian9/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/how-to-testing-network-bandwith-with-iperf/">How to Testing Network Bandwith With Iperf</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2018-11-29" class="post-time">
-        2018-11-29
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to test network speed with iperf Install iperf sudo apt-get install iperf3 Testing network speed Testing network speed with UDP  Run command on server   iperf -s -u  Run command on client   iperf -c -u  Testing network speed with TCP
- Server side.   iperf -s  Client side.   iperf -c Command for -s server -c client + server IP -u udp -b bandwith(the max bandwidth -t time,how long to send packet.
-    </div>
-    <div class="read-more">
-      <a href="/post/how-to-testing-network-bandwith-with-iperf/" class="read-more-link">Read more</a>
     </div>
     
   </div>
