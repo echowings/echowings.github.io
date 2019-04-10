@@ -594,24 +594,21 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</code></pre></d
 
 <p>When I setup zsh and set wrong zsh.then I cannot login and ssh
 The error like this. I can not boot to single user mode.</p>
-
-<pre><code>Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.18-12-pve x86_64)
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Welcome to Ubuntu <span style="color:#f60">18</span>.04.2 LTS <span style="color:#555">(</span>GNU/Linux <span style="color:#f60">4</span>.15.18-12-pve x86_64<span style="color:#555">)</span>
 
  * Documentation:  https://help.ubuntu.com
  * Management:     https://landscape.canonical.com
  * Support:        https://ubuntu.com/advantage
 
- * Ubuntu's Kubernetes 1.14 distributions can bypass Docker and use containerd
+ * Ubuntu<span style="color:#a00;background-color:#faa">&#39;</span>s Kubernetes <span style="color:#f60">1</span>.14 distributions can bypass Docker and use containerd
    directly, see https://bit.ly/ubuntu-containerd or try it now with
 
      snap install microk8s --classic
 
- * Canonical Livepatch is available for installation.
+ * Canonical Livepatch is available <span style="color:#069;font-weight:bold">for</span> installation.
    - Reduce system reboots and improve kernel security. Activate at:
      https://ubuntu.com/livepatch
-Cannot execute zsh: No such file or directory
-</code></pre>
-
+Cannot execute zsh: No such file or directory</code></pre></div>
 <p><strong>Solution:</strong> I wounder that is a a command like docker command <code>docker exec -it $dockername /bin/sh</code>
 Bingo! Here we go:</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">lxc-attach -n <span style="color:#033">$lxc_pid</span> /bin/sh

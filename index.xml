@@ -373,24 +373,21 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose&lt;/code&gt;&lt
 
 &lt;p&gt;When I setup zsh and set wrong zsh.then I cannot login and ssh
 The error like this. I can not boot to single user mode.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.18-12-pve x86_64)
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;Welcome to Ubuntu &lt;span style=&#34;color:#f60&#34;&gt;18&lt;/span&gt;.04.2 LTS &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;GNU/Linux &lt;span style=&#34;color:#f60&#34;&gt;4&lt;/span&gt;.15.18-12-pve x86_64&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
 
  * Documentation:  https://help.ubuntu.com
  * Management:     https://landscape.canonical.com
  * Support:        https://ubuntu.com/advantage
 
- * Ubuntu&#39;s Kubernetes 1.14 distributions can bypass Docker and use containerd
+ * Ubuntu&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&amp;#39;&lt;/span&gt;s Kubernetes &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;.14 distributions can bypass Docker and use containerd
    directly, see https://bit.ly/ubuntu-containerd or try it now with
 
      snap install microk8s --classic
 
- * Canonical Livepatch is available for installation.
+ * Canonical Livepatch is available &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;for&lt;/span&gt; installation.
    - Reduce system reboots and improve kernel security. Activate at:
      https://ubuntu.com/livepatch
-Cannot execute zsh: No such file or directory
-&lt;/code&gt;&lt;/pre&gt;
-
+Cannot execute zsh: No such file or directory&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt; I wounder that is a a command like docker command &lt;code&gt;docker exec -it $dockername /bin/sh&lt;/code&gt;
 Bingo! Here we go:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;lxc-attach -n &lt;span style=&#34;color:#033&#34;&gt;$lxc_pid&lt;/span&gt; /bin/sh
