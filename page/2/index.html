@@ -790,7 +790,7 @@ Convert apache reverse proxy rule nginx 这个工作是核心。
   <header class="post-header">
     <h1 class="post-title">
       
-      <a class="post-link" href="/post/reverse-proxy-for-wynwx.grapecity.com/"></a>
+      <a class="post-link" href="/post/http-settings/"></a>
     </h1>
     
     <div class="post-meta">
@@ -807,45 +807,10 @@ Convert apache reverse proxy rule nginx 这个工作是核心。
   <div class="post-content">
     
     <div class="post-summary">
-      Reverse proxy for wynwx.grapecity.com ^
+      GC.COM Megert to nginx http settings # redirect for Google Apps #if http access to /en/*, always redirect to https RewriteCond %{HTTPS} off #RewriteCond %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC] RewriteCond %{HTTP_HOST} ^(.*grapecity\.com)$ [NC] RewriteCond %{REQUEST_URI} ^/en$ [NC,OR] RewriteCond %{REQUEST_URI} ^/en/(.*)$ [NC] #RewriteRule ^.*$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L] RewriteRule ^(.*)$ https://www.grapecity.com$1 [L,R=301] ###### 新Webサイト(co.jp)移行用ルール　ここから ###### ### Specific case RewriteCond %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC] RewriteRule ^/tools/support/powernews/column/$ http://www.grapecity.com/tools/support/powernews/column [NC,R,L] ### ### This is the rule to add slash to the last of URL which is not end with slash.
     </div>
     <div class="read-more">
-      <a href="/post/reverse-proxy-for-wynwx.grapecity.com/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/grapeseed.com.cn%E5%9F%9F%E5%90%8D%E5%A4%87%E6%A1%88%E8%BF%87%E6%B8%A1%E6%96%B9%E6%A1%88/"></a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="0001-01-01" class="post-time">
-        0001-01-01
-      </time>
-      
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      grapeseed.com.cn域名备案过渡方案 为了解决grapeseed.com域名备案更换空档期，保障葡萄籽的国内部分网站正常运行，通过昨天的测试，接下来的迁移过程如下。
-域名备案更换前要做的工作 对于世纪互联的网站，一共有两个 admin.grapeseed.com.cn和 support.grapeseed.com.cn, 其中admin.grapeseed.com.cn已经迁移完毕，我们
-   域名 AzureCN的服务名称     admin.grapeseed.com.cn gso2020-admin.chinacloudsites.cn   support.grapseed.com.cn ?    仅仅需要做support.grapeseed.com.cn 迁移步骤如下:
-|步骤 | 内容 |执行人 |执行时间 | |&mdash;|&mdash;|&mdash;|&mdash;|&mdash;| |01 |support.grapeseed.com.cn的azure对应的域名|Hardy Zong| 2019年4月3日下班之前| |02 |support.grapeseed.com.cn反向代理规则更改|Steve Dong|2019年4月3日23:00之前| |03 |support.grapesee.com.cn的cname修改为gs-agent.eastasia.cloudapp.azure.com | Nick Gou| 2019年4月4日8:00~10:00 |
-域名备案变更    步骤 内容 执行人 执行时间     01 grapseed.com.cn备案变更 Nick Gou 2019年4月5日    域名备案变更后的工作    步骤 内容 执行人 执行时间     01 确认grapeseed.
-    </div>
-    <div class="read-more">
-      <a href="/post/grapeseed.com.cn%E5%9F%9F%E5%90%8D%E5%A4%87%E6%A1%88%E8%BF%87%E6%B8%A1%E6%96%B9%E6%A1%88/" class="read-more-link">Read more</a>
+      <a href="/post/http-settings/" class="read-more-link">Read more</a>
     </div>
     
   </div>
@@ -883,10 +848,6 @@ Convert apache reverse proxy rule nginx 这个工作是核心。
       
       <li  class="active" >
         <a href="/page/2/">2</a>
-      </li>
-      
-      <li >
-        <a href="/page/3/">3</a>
       </li>
       
     </ul>
