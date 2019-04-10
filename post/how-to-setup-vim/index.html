@@ -69,7 +69,7 @@
 
 <meta itemprop="datePublished" content="2019-04-09T10:02:33&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-09T10:02:33&#43;08:00" />
-<meta itemprop="wordCount" content="447">
+<meta itemprop="wordCount" content="452">
 
 
 
@@ -444,11 +444,13 @@ if (!doNotTrack) {
 <h2 id="install-plugin">Install Plugin</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vim</code></pre></div>
 <p>Enter <code>:PluginInstall</code> then wait for the installation process finished.
-then <code>vim ~/.vimrc</code></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">colorscheme gruvbox<span style="color:#a00;background-color:#faa">
+then run the commands:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">cat &gt;&gt; ~/.vimrc &lt;&lt;EOF<span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>colorscheme gruvbox<span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span>set background=<span style="color:#366">dark</span><span style="color:#09f;font-style:italic">    &#34; Setting dark mode</span><span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span><span style="color:#069;font-weight:bold">let</span> g:gruvbox_contrast_dark=<span style="color:#c30">&#39;hard&#39;</span><span style="color:#a00;background-color:#faa">
-</span><span style="color:#a00;background-color:#faa"></span><span style="color:#069;font-weight:bold">let</span> g:airline_theme=<span style="color:#c30">&#39;simple&#39;</span></code></pre></div>
+</span><span style="color:#a00;background-color:#faa"></span><span style="color:#069;font-weight:bold">let</span> g:airline_theme=<span style="color:#c30">&#39;simple&#39;</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>EOF</code></pre></div>
 <h2 id="let-vim-support-nginx-syntax-highlight">Let vim support nginx syntax highlight</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir -p ~/.vim/syntax/
 wget -O ~/.vim/syntax/nginx.vim http://www.vim.org/scripts/download_script.php?src_id<span style="color:#555">=</span><span style="color:#f60">14376</span>
@@ -464,11 +466,12 @@ wget -O ~/.vim/syntax/nginx.vim http://www.vim.org/scripts/download_script.php?s
 </span><span style="color:#c30">endif
 </span><span style="color:#c30">EOF</span></code></pre></div>
 <h1 id="change-tab-to-4-space">Change tab to 4 space</h1>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt;&gt; ~/.vimrc &lt;&lt;EOF
-<span style="color:#366">set</span> <span style="color:#033">tabstop</span><span style="color:#555">=</span><span style="color:#f60">4</span>
-<span style="color:#366">set</span> <span style="color:#033">shiftwidth</span><span style="color:#555">=</span><span style="color:#f60">4</span>
-<span style="color:#366">set</span> <span style="color:#033">softtabstop</span><span style="color:#555">=</span><span style="color:#f60">4</span>
-<span style="color:#366">set</span> expandtab</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt;&gt; ~/.vimrc <span style="color:#c30">&lt;&lt;EOF
+</span><span style="color:#c30">set tabstop=4
+</span><span style="color:#c30">set shiftwidth=4
+</span><span style="color:#c30">set softtabstop=4
+</span><span style="color:#c30">set expandtab
+</span><span style="color:#c30">EOF</span></code></pre></div>
 <h2 id="reference">Reference</h2>
 
 <ul>

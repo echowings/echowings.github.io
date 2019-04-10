@@ -32,6 +32,48 @@
     </item>
     
     <item>
+      <title>How to Build a Kms Server</title>
+      <link>https://blog.stevedong.com/post/how-to-build-a-kms-server/</link>
+      <pubDate>Thu, 11 Apr 2019 00:17:37 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-build-a-kms-server/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-build-a-kms-server&#34;&gt;How to build a kms server&lt;/h1&gt;
+
+&lt;h2 id=&#34;docker-mode&#34;&gt;docker mode&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;  docker pull luodaoyi/kms-server
+  
+  docker run -itd -p &lt;span style=&#34;color:#f60&#34;&gt;1688&lt;/span&gt;:1688 --name kms luodaoyi/kms-server
+  
+  docker update --restart&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;always &lt;span style=&#34;color:#033&#34;&gt;$dockername&lt;/span&gt;
+  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;## docker compose&lt;/p&gt;
+
+&lt;p&gt;docker-compose.yml&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;version:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;3&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;services:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;frontend:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;image:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;luodaoyi/kms-server&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;container_name:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;mykms&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;ports:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;            &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;1688&lt;/span&gt;:&lt;span style=&#34;color:#f60&#34;&gt;1688&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;restart:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;docker-compose start the container&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt; docker-compose up -d&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/flyhorstar/article/details/87269141&#34;&gt;blog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>How to Setup Oh My Zsh</title>
       <link>https://blog.stevedong.com/post/how-to-setup-oh-my-zsh/</link>
       <pubDate>Wed, 10 Apr 2019 12:18:04 +0800</pubDate>
@@ -137,11 +179,13 @@ sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/ZSH_THEME=\&amp;#34;rob
 &lt;h2 id=&#34;install-plugin&#34;&gt;Install Plugin&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;vim&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Enter &lt;code&gt;:PluginInstall&lt;/code&gt; then wait for the installation process finished.
-then &lt;code&gt;vim ~/.vimrc&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;colorscheme gruvbox&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;
+then run the commands:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;cat &amp;gt;&amp;gt; ~/.vimrc &amp;lt;&amp;lt;EOF&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&lt;/span&gt;colorscheme gruvbox&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&lt;/span&gt;set background=&lt;span style=&#34;color:#366&#34;&gt;dark&lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;    &amp;#34; Setting dark mode&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;let&lt;/span&gt; g:gruvbox_contrast_dark=&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;hard&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;let&lt;/span&gt; g:airline_theme=&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;simple&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;let&lt;/span&gt; g:airline_theme=&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;simple&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&lt;/span&gt;EOF&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;let-vim-support-nginx-syntax-highlight&#34;&gt;Let vim support nginx syntax highlight&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mkdir -p ~/.vim/syntax/
 wget -O ~/.vim/syntax/nginx.vim http://www.vim.org/scripts/download_script.php?src_id&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;14376&lt;/span&gt;
@@ -157,11 +201,12 @@ wget -O ~/.vim/syntax/nginx.vim http://www.vim.org/scripts/download_script.php?s
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;endif
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h1 id=&#34;change-tab-to-4-space&#34;&gt;Change tab to 4 space&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat &amp;gt;&amp;gt; ~/.vimrc &amp;lt;&amp;lt;EOF
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;tabstop&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;4&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;shiftwidth&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;4&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;softtabstop&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;4&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; expandtab&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat &amp;gt;&amp;gt; ~/.vimrc &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;set tabstop=4
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;set shiftwidth=4
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;set softtabstop=4
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;set expandtab
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 
 &lt;ul&gt;
