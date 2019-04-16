@@ -72,7 +72,7 @@
 
 <meta itemprop="datePublished" content="2018-12-01T00:02:28&#43;08:00" />
 <meta itemprop="dateModified" content="2018-12-26T01:52:23&#43;08:00" />
-<meta itemprop="wordCount" content="500">
+<meta itemprop="wordCount" content="516">
 
 
 
@@ -428,11 +428,23 @@ gateway *.*.*.* </code></pre></div>
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters</code></pre></div>
 <h2 id="perl-all-lc-error">Perl ALL_LC ERROR</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">echo</span> <span style="color:#c30">&#39;en_US.UTF-8&#39;</span> &gt;&gt; /etc/environment
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">export</span> <span style="color:#033">LANGUAGE</span><span style="color:#555">=</span>en_US.UTF-8
+<span style="color:#366">export</span> <span style="color:#033">LANG</span><span style="color:#555">=</span>en_US.UTF-8
+<span style="color:#366">export</span> <span style="color:#033">LC_ALL</span><span style="color:#555">=</span>en_US.UTF-8
+<span style="color:#09f;font-style:italic">#locale-gen en_US.UTF-8</span>
+cat &gt;&gt; /etc/environment <span style="color:#c30">&lt;&lt;EOF
+</span><span style="color:#c30">LC_ALL=en_US.UTF-8
+</span><span style="color:#c30">LANG=en_US.UTF-8
+</span><span style="color:#c30">EOF</span>
+
+
+
+
+<span style="color:#366">echo</span> <span style="color:#c30">&#39;en_US.UTF-8&#39;</span> &gt;&gt; /etc/environment
 apt-get autoremove
 <span style="color:#366">export</span> <span style="color:#033">LC_ALL</span><span style="color:#555">=</span>en_US.UTF-8
 <span style="color:#366">echo</span> <span style="color:#c30">&#34;en_US.UTF-8 UTF-8&#34;</span> &gt;&gt; /etc/locale.gen
-locale-gen
+locale-gen en_US.UTF-8
 dpkg-reconfigure locales</code></pre></div>
 <h2 id="add-utsc-mirrors-source">Add Utsc mirrors source</h2>
 

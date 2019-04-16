@@ -69,7 +69,7 @@
 
 <meta itemprop="datePublished" content="2019-03-23T12:08:34&#43;08:00" />
 <meta itemprop="dateModified" content="2019-03-23T12:08:34&#43;08:00" />
-<meta itemprop="wordCount" content="905">
+<meta itemprop="wordCount" content="913">
 
 
 
@@ -448,7 +448,11 @@ TASK OK</code></pre></div>
 <h3 id="option-2-download-lxc-with-shell">Option 2: Download LXC with shell</h3>
 
 <p>####Fix Perl LC_ALL ERROR</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat &gt;&gt; /etc/environment <span style="color:#c30">&lt;&lt;EOF
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">export</span> <span style="color:#033">LANGUAGE</span><span style="color:#555">=</span>en_US.UTF-8
+<span style="color:#366">export</span> <span style="color:#033">LANG</span><span style="color:#555">=</span>en_US.UTF-8
+<span style="color:#366">export</span> <span style="color:#033">LC_ALL</span><span style="color:#555">=</span>en_US.UTF-8
+<span style="color:#09f;font-style:italic">#locale-gen en_US.UTF-8</span>
+cat &gt;&gt; /etc/environment <span style="color:#c30">&lt;&lt;EOF
 </span><span style="color:#c30">LC_ALL=en_US.UTF-8
 </span><span style="color:#c30">LANG=en_US.UTF-8
 </span><span style="color:#c30">EOF</span></code></pre></div>
