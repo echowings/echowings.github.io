@@ -338,6 +338,43 @@ if (!doNotTrack) {
   <header class="post-header">
     <h1 class="post-title">
       
+      <a class="post-link" href="/post/magerat-reverse-proxy-from-apache-to-nginx-on-azure/"></a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="0001-01-01" class="post-time">
+        0001-01-01
+      </time>
+      
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      Magerat Reverse Proxy from Apache to Nginx on Azure High Available 关于高科用，初步考虑使用Azure 的Kubernete 或者site availble 来做。 这个大约需要2天时间调查，最终确定那个更好。
+ 基于Azure的Kubernete，以服务形式提供的K8s，我们不用考虑服务高科用. SLB是以服务形式提供，Ingress 是nginx  Site available  site available如果适用的话，是个不错的选择。
+Nginx Reverse proxy topology Nginx作为反向代理的大体的功能如下图所示，高科用使用azure的k8s或者site available实现，拓扑图我们可以简化为如下的图片。
+Convert apache reverse proxy rule nginx 这个工作是核心。
+ 保证转化的100%功能覆盖； 关于这个的实施过程大约需要2周左右来手动重写规则，并在azure测试。目前的新的需求可以暂时在已经交付的nginx反向代理www.grapecitydev.com上修改直接商产使用； 迁移虚拟机的测试工作，我计划k8s或者site-available的高科用基础上构建，使用修改host名字的方式来创建grapecity.com的反向代理，迁移并测试没有问题之后。可以让周老师帮我们检查一下，防止有没有错误或者纰漏。 切换过程的平稳过度； 这一点的话，第一点基本可以保障。dns切换的话，抽个时间和周老师确认切换日期，如果有问题，修复时间比较久的话，可以回退，旧的apache服务器需要保留一段时间，等新的反向代理稳定运行1个月或者半年时间之后再停掉。  Dcumnent and Unit test. 文档化操作和自动测试和自动发布。
+文档化操作 nginx 服务器使用docker-compose编写，很方便做自动化测试和自动化发布。目前的手动方式：
+# Modify nginx config file vi nginx.conf # Enter docker instance docker exec -it $docker-instance-name /bin/sh # Testing config file of nginx nginx -t # reload nginx service nginx -s reload 自动化测试于自动发布 初步的计划，是通过git来做配置文件版本，通过jenkins来跑自动测试脚本以及自动发布到nginx反向代理的生产环境。 通过修改host来模拟测试，并发布到生产环境，这样可以最大的减少人为操作的错误概率。
+    </div>
+    <div class="read-more">
+      <a href="/post/magerat-reverse-proxy-from-apache-to-nginx-on-azure/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
       <a class="post-link" href="/post/http-settings/"></a>
     </h1>
     
