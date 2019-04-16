@@ -32,6 +32,79 @@
     </item>
     
     <item>
+      <title>Librenms Deploy Librenms With Docker Container</title>
+      <link>https://blog.stevedong.com/post/librenms-deploy-librenms-with-docker-container/</link>
+      <pubDate>Tue, 16 Apr 2019 16:56:08 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/librenms-deploy-librenms-with-docker-container/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-deploy-librenms-monitoring-system-with-docker-container&#34;&gt;How to deploy librenms monitoring system with docker container&lt;/h1&gt;
+
+&lt;p&gt;Librenms is a very light and easy handle moniting software. It is suitable for us to monitoring server,networdevice, printer etc via snmp.&lt;/p&gt;
+
+&lt;p&gt;At now, docker is easy for software deployment. After deploy librenms in ubuntu vm, I have a try to deploy librenms with docker-compose.&lt;/p&gt;
+
+&lt;h2 id=&#34;install-librenms-with-docker-compose&#34;&gt;Install librenms with docker-compose&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mkdir -p /data/librenms
+&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /data/librenms
+wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/.env
+wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/docker-compose.yml
+wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/librenms.env
+touch acme.json
+chmod &lt;span style=&#34;color:#f60&#34;&gt;600&lt;/span&gt; acme.json&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;change-docker-compose-yml&#34;&gt;Change &lt;code&gt;docker-compose.yml&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;vi docker-compose.yml&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;change &lt;code&gt;services | traefik | command&lt;/code&gt; section&lt;/p&gt;
+
+&lt;p&gt;``` shell&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&amp;rdquo;&amp;ndash;docker.domain=mydomain.net&amp;rdquo;
+```
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Change `services |&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;KEY&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;VALUE&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;hostname&lt;/td&gt;
+&lt;td&gt;mylibrenms&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;domainname&lt;/td&gt;
+&lt;td&gt;mydomain.net&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Chang &lt;code&gt;syslog-ng&lt;/code&gt; section&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;| &lt;strong&gt;KEY&lt;/strong&gt; | &lt;strong&gt;VALUE&lt;/strong&gt; |
+   |&amp;mdash;|&amp;mdash;|
+   |hostname|mylibrenms|
+   |domainname|mydomain.net|&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker-compose up -d
+docker-compose logs -f&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      
+    </item>
+    
+    <item>
       <title>How to Fix Linux Perl LC_ALL_ERROR</title>
       <link>https://blog.stevedong.com/post/how-to-fix-linux-perl-lc_all_error/</link>
       <pubDate>Tue, 16 Apr 2019 14:36:34 +0800</pubDate>
