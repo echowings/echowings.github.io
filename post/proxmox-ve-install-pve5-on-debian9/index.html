@@ -450,7 +450,7 @@ dpkg-reconfigure locales</code></pre></div>
 </span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free
 </span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&#34;</span> &gt; /etc/apt/sources.list
 
-<span style="color:#09f;font-style:italic">#change pve 5.1 update source list</span>
+<span style="color:#09f;font-style:italic">#change pve 5.x update source list</span>
 <span style="color:#366">echo</span> <span style="color:#c30">&#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&#34;</span> &gt; /etc/apt/sources.list.d/pve-enterprise.list
 
 <span style="color:#09f;font-style:italic">#change ceph source list</span>
@@ -459,7 +459,7 @@ dpkg-reconfigure locales</code></pre></div>
 <span style="color:#09f;font-style:italic"># add key</span>
 wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg</code></pre></div>
 <h2 id="install-proxmox-ve">Install proxmox VE</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt update <span style="color:#555">&amp;&amp;</span> apt -y dist-ugprade
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt update <span style="color:#555">&amp;&amp;</span> apt -y ugprade
 apt install proxmox-ve postfix open-iscsi
 update-grub</code></pre></div>
 <h2 id="q-a">Q&amp;A</h2>
