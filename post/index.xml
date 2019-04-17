@@ -329,14 +329,5 @@ Convert apache reverse proxy rule nginx 这个工作是核心。
 # Modify nginx config file vi nginx.conf # Enter docker instance docker exec -it $docker-instance-name /bin/sh # Testing config file of nginx nginx -t # reload nginx service nginx -s reload 自动化测试于自动发布 初步的计划，是通过git来做配置文件版本，通过jenkins来跑自动测试脚本以及自动发布到nginx反向代理的生产环境。 通过修改host来模拟测试，并发布到生产环境，这样可以最大的减少人为操作的错误概率。</description>
     </item>
     
-    <item>
-      <title></title>
-      <link>https://blog.stevedong.com/post/http-settings/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/http-settings/</guid>
-      <description>GC.COM Megert to nginx http settings # redirect for Google Apps #if http access to /en/*, always redirect to https RewriteCond %{HTTPS} off #RewriteCond %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC] RewriteCond %{HTTP_HOST} ^(.*grapecity\.com)$ [NC] RewriteCond %{REQUEST_URI} ^/en$ [NC,OR] RewriteCond %{REQUEST_URI} ^/en/(.*)$ [NC] #RewriteRule ^.*$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L] RewriteRule ^(.*)$ https://www.grapecity.com$1 [L,R=301] ###### 新Webサイト(co.jp)移行用ルール　ここから ###### ### Specific case RewriteCond %{HTTP_HOST} ^(www\.grapecity\.com)$ [NC] RewriteRule ^/tools/support/powernews/column/$ http://www.grapecity.com/tools/support/powernews/column [NC,R,L] ### ### This is the rule to add slash to the last of URL which is not end with slash.</description>
-    </item>
-    
   </channel>
 </rss>
