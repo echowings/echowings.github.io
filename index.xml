@@ -61,32 +61,39 @@ chmod &lt;span style=&#34;color:#f60&#34;&gt;600&lt;/span&gt; acme.json&lt;/code
 &lt;ul&gt;
 &lt;li&gt;change &lt;code&gt;services | traefik | command&lt;/code&gt; section&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;  	   - &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;--docker.domain=mydomain.net&amp;#34;&lt;/span&gt;
-  	&lt;span style=&#34;color:#c30&#34;&gt;```&lt;/span&gt;
-  
-  - Change &lt;span style=&#34;color:#c30&#34;&gt;`&lt;/span&gt;services | &lt;span style=&#34;color:#c30&#34;&gt;`&lt;/span&gt;
- 
-	|**KEY**| **VALUE**|
-	|---|---|
-	|hostname| mylibrenms|
-	|domainname| mydomain.net|
-	
-  - Chang &lt;span style=&#34;color:#c30&#34;&gt;`&lt;/span&gt;syslog-ng&lt;span style=&#34;color:#c30&#34;&gt;`&lt;/span&gt; section
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;  	   - &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;--docker.domain=mydomain.net&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Change &lt;code&gt;services |&lt;/code&gt;&lt;/p&gt;
 
-   | **KEY** | **VALUE** |
-   |---|---|
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;KEY&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;VALUE&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;hostname&lt;/td&gt;
+&lt;td&gt;mylibrenms&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;domainname&lt;/td&gt;
+&lt;td&gt;mydomain.net&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Chang &lt;code&gt;syslog-ng&lt;/code&gt; section&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;| &lt;strong&gt;KEY&lt;/strong&gt; | &lt;strong&gt;VALUE&lt;/strong&gt; |
+   |&amp;mdash;|&amp;mdash;|
    |hostname|mylibrenms|
-   |domainname|mydomain.net|
-   
-   
-
-
-
-
-
-
-&lt;span style=&#34;color:#c30&#34;&gt;```&lt;/span&gt;shell
-docker-compose up -d
+   |domainname|mydomain.net|&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker-compose up -d
 docker-compose logs -f&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
