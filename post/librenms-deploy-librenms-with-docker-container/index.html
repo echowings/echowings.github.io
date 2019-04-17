@@ -75,7 +75,7 @@ Install librenms with docker-compose mkdir -p /data/librenms cd /data/librenms w
 
 <meta itemprop="datePublished" content="2019-04-16T16:56:08&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-16T16:56:08&#43;08:00" />
-<meta itemprop="wordCount" content="115">
+<meta itemprop="wordCount" content="119">
 
 
 
@@ -411,47 +411,35 @@ chmod <span style="color:#f60">600</span> acme.json</code></pre></div>
 <p><code>vi docker-compose.yml</code></p>
 
 <ul>
-<li><p>change <code>services | traefik | command</code> section</p>
-
-<p>``` shell</p>
-
-<ul>
-<li>&rdquo;&ndash;docker.domain=mydomain.net&rdquo;
-```
+<li>change <code>services | traefik | command</code> section
 <br /></li>
-</ul></li>
-
-<li><p>Change `services |</p>
-
-<table>
-<thead>
-<tr>
-<th><strong>KEY</strong></th>
-<th><strong>VALUE</strong></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>hostname</td>
-<td>mylibrenms</td>
-</tr>
-
-<tr>
-<td>domainname</td>
-<td>mydomain.net</td>
-</tr>
-</tbody>
-</table></li>
-
-<li><p>Chang <code>syslog-ng</code> section</p></li>
 </ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  	   - <span style="color:#c30">&#34;--docker.domain=mydomain.net&#34;</span>
+  	<span style="color:#c30">```</span>
+  
+  - Change <span style="color:#c30">`</span>services | <span style="color:#c30">`</span>
+ 
+	|**KEY**| **VALUE**|
+	|---|---|
+	|hostname| mylibrenms|
+	|domainname| mydomain.net|
+	
+  - Chang <span style="color:#c30">`</span>syslog-ng<span style="color:#c30">`</span> section
 
-<p>| <strong>KEY</strong> | <strong>VALUE</strong> |
-   |&mdash;|&mdash;|
+   | **KEY** | **VALUE** |
+   |---|---|
    |hostname|mylibrenms|
-   |domainname|mydomain.net|</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker-compose up -d
+   |domainname|mydomain.net|
+   
+   
+
+
+
+
+
+
+<span style="color:#c30">```</span>shell
+docker-compose up -d
 docker-compose logs -f</code></pre></div>
     </div>
 
