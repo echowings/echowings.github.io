@@ -25,7 +25,7 @@
 <meta name="author" content="Steve Dong" />
   <meta name="description" content="How to conifugre wireguard in vyos WireGuard is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
  Wireguard  Today I will try to deploy wireguard with two vyos .
-Site-to-Sit mode |--------------------------------| |---------------------------------| | Server | | Client | | |-----cloud ----| wan:${wan-address} | | wireguard tunnel interface:wg01| | Wireguard tunnel interface:wg01 | |--------------------------------| |---------------------------------| Server configuration # Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one." />
+Site-to-Sit mode Toplogy |--------------------------------| |---------------------------------| | Server | | Client | | |-----cloud ----| wan:${wan-address} | | wireguard tunnel interface:wg01| | Wireguard tunnel interface:wg01 | |--------------------------------| |---------------------------------| Server configuration # Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one." />
 
   <meta name="keywords" content="network, devops, sdn, system Administation" />
 
@@ -62,7 +62,7 @@ Site-to-Sit mode |--------------------------------| |---------------------------
 <meta property="og:title" content="Vyos How to Setup Wireguard" />
 <meta property="og:description" content="How to conifugre wireguard in vyos WireGuard is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
  Wireguard  Today I will try to deploy wireguard with two vyos .
-Site-to-Sit mode |--------------------------------| |---------------------------------| | Server | | Client | | |-----cloud ----| wan:${wan-address} | | wireguard tunnel interface:wg01| | Wireguard tunnel interface:wg01 | |--------------------------------| |---------------------------------| Server configuration # Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one." />
+Site-to-Sit mode Toplogy |--------------------------------| |---------------------------------| | Server | | Client | | |-----cloud ----| wan:${wan-address} | | wireguard tunnel interface:wg01| | Wireguard tunnel interface:wg01 | |--------------------------------| |---------------------------------| Server configuration # Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/vyos-how-to-setup-wireguard/" /><meta property="article:published_time" content="2019-04-17T12:31:08&#43;08:00"/>
 <meta property="article:modified_time" content="2019-04-17T12:31:08&#43;08:00"/>
@@ -70,12 +70,12 @@ Site-to-Sit mode |--------------------------------| |---------------------------
 <meta itemprop="name" content="Vyos How to Setup Wireguard">
 <meta itemprop="description" content="How to conifugre wireguard in vyos WireGuard is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
  Wireguard  Today I will try to deploy wireguard with two vyos .
-Site-to-Sit mode |--------------------------------| |---------------------------------| | Server | | Client | | |-----cloud ----| wan:${wan-address} | | wireguard tunnel interface:wg01| | Wireguard tunnel interface:wg01 | |--------------------------------| |---------------------------------| Server configuration # Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one.">
+Site-to-Sit mode Toplogy |--------------------------------| |---------------------------------| | Server | | Client | | |-----cloud ----| wan:${wan-address} | | wireguard tunnel interface:wg01| | Wireguard tunnel interface:wg01 | |--------------------------------| |---------------------------------| Server configuration # Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one.">
 
 
 <meta itemprop="datePublished" content="2019-04-17T12:31:08&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-17T12:31:08&#43;08:00" />
-<meta itemprop="wordCount" content="609">
+<meta itemprop="wordCount" content="610">
 
 
 
@@ -84,7 +84,7 @@ Site-to-Sit mode |--------------------------------| |---------------------------
 <meta name="twitter:title" content="Vyos How to Setup Wireguard"/>
 <meta name="twitter:description" content="How to conifugre wireguard in vyos WireGuard is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
  Wireguard  Today I will try to deploy wireguard with two vyos .
-Site-to-Sit mode |--------------------------------| |---------------------------------| | Server | | Client | | |-----cloud ----| wan:${wan-address} | | wireguard tunnel interface:wg01| | Wireguard tunnel interface:wg01 | |--------------------------------| |---------------------------------| Server configuration # Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one."/>
+Site-to-Sit mode Toplogy |--------------------------------| |---------------------------------| | Server | | Client | | |-----cloud ----| wan:${wan-address} | | wireguard tunnel interface:wg01| | Wireguard tunnel interface:wg01 | |--------------------------------| |---------------------------------| Server configuration # Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -410,7 +410,8 @@ if (!doNotTrack) {
 <p>Today I will try to deploy wireguard  with two vyos .</p>
 
 <h2 id="site-to-sit-mode">Site-to-Sit mode</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">|--------------------------------|               |---------------------------------|
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Toplogy
+|--------------------------------|               |---------------------------------|
 |      Server                    |               |        Client                   | 
 |                                |-----cloud ----|  wan:<span style="color:#a00">${</span><span style="color:#033">wan</span>-address<span style="color:#a00">}</span>             |                            
 | wireguard tunnel interface:wg01|               | Wireguard tunnel interface:wg01 |
