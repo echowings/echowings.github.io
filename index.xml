@@ -66,15 +66,35 @@ show wireguard privkey
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Show the public key&lt;/span&gt;
 show wireguard pubkey
 
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Enter configuration mode&lt;/span&gt;
+configure
 
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#set virtual network interfaces for wireguard&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 address &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.100.1/24&amp;#39;&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer CLIENT1 allowed-ips &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.100.1/24&amp;#39;&lt;/span&gt; 
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer CLIENT1 persistent-keepalive &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;15&amp;#39;&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer CLIENT1 pubkey &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;${client-pubkey}&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set Wireguard listen port&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 port &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;50100&amp;#39;&lt;/span&gt;
 
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set wireguard allow client ip ranges to access.&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer CLIENT1 allowed-ips &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.200.1/24&amp;#39;&lt;/span&gt; 
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set how offten to send keep alives in seconds&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer CLIENT1 persistent-keepalive &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;15&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set client public key&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer CLIENT1 pubkey &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;${client-pubkey}&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#set static routing&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; protocols static interface-route &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.200.0/24&amp;#39;&lt;/span&gt; next-hop-interface wg01
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#make configuration applied&lt;/span&gt;
 commit
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Save configuration&lt;/span&gt;
 save
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Test wireguard connection.&lt;/span&gt;
+ping &lt;span style=&#34;color:#f60&#34;&gt;172&lt;/span&gt;.16.200.1
 
 
  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -89,17 +109,121 @@ show wireguard privkey
 show wireguard pubkey
 
 
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set wireguard virtual network interfaces&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 address &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.200.1/24&amp;#39;&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer SERVER allow-ips &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.100.0/24&amp;#39;&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer SERVER endpoint &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;${server-wan-address}:50100&amp;#39;&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer SERVER pubkey &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;${server-pubkey}&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set wireguard virtual network listen port&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 port &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;50100&amp;#39;&lt;/span&gt;
 
-commit save&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#set wireguard accept packets of network.&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer SERVER allow-ips &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.100.0/24&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set connection to server&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer SERVER endpoint &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;${server-wan-address}:50100&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set public key for server&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer SERVER pubkey &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;${server-pubkey}&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set how offten to send keep alives in seconds&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 per SERVEr persistent-keepalive &lt;span style=&#34;color:#f60&#34;&gt;15&lt;/span&gt;
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#set static routing to client.&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; protocols static interface-route &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.100.0/24&amp;#39;&lt;/span&gt; next-hop-interface wg01
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Make the settings applied!&lt;/span&gt;
+commit 
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#save configuration&lt;/span&gt;
+save
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Test wireguard connection&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;all-client-routing-via-server&#34;&gt;All Client routing via SERVER&lt;/h2&gt;
+
+&lt;h3 id=&#34;server-configuration-1&#34;&gt;Server configuration&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;## Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one.&lt;/span&gt;
+generate wireguard keypair
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Show the private key&lt;/span&gt;
+show wireguard privkey 
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Show the public key&lt;/span&gt;
+show wireguard pubkey
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Enter configuration mode&lt;/span&gt;
+configure
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#set virtual network interfaces for wireguard&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 address &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.100.1/24&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set Wireguard listen port&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 port &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;50100&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set wireguard allow client ip ranges to access.&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer CLIENT1 allowed-ips &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.200.1/24&amp;#39;&lt;/span&gt; 
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set how offten to send keep alives in seconds&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer CLIENT1 persistent-keepalive &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;15&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set client public key&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer CLIENT1 pubkey &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;${client-pubkey}&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#set static routing&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; protocols static interface-route &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.200.0/24&amp;#39;&lt;/span&gt; next-hop-interface wg01
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#make configuration applied&lt;/span&gt;
+commit
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Save configuration&lt;/span&gt;
+save
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Test wireguard connection.&lt;/span&gt;
+ping &lt;span style=&#34;color:#f60&#34;&gt;172&lt;/span&gt;.16.200.1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;client-configuration-1&#34;&gt;Client configuration&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one.&lt;/span&gt;
+generate wireguard keypair
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Show the private key&lt;/span&gt;
+show wireguard privkey 
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Show the public key&lt;/span&gt;
+show wireguard pubkey
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set wireguard virtual network interfaces&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 address &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.200.1/24&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set wireguard virtual network listen port&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 port &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;50100&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#set wireguard accept packets of network.&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer SERVER allow-ips &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.100.0/24&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set connection to server&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer SERVER endpoint &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;${server-wan-address}:50100&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set public key for server&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer SERVER pubkey &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;${server-pubkey}&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set how offten to send keep alives in seconds&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 per SERVEr persistent-keepalive &lt;span style=&#34;color:#f60&#34;&gt;15&lt;/span&gt;
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#set static routing to client.&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; protocols static interface-route &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.100.0/24&amp;#39;&lt;/span&gt; next-hop-interface wg01
+
+commit 
+save
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Test Wireguard connection.&lt;/span&gt;
+ping &lt;span style=&#34;color:#f60&#34;&gt;172&lt;/span&gt;.16.100.1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;[]()&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.vyos.net/wiki/Wireguard&#34;&gt;Wireguard&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;[]()&lt;/li&gt;
 &lt;/ul&gt;
 </description>
