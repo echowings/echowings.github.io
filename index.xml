@@ -165,6 +165,10 @@ configure
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set wireguard allow client ip ranges to access.&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer CLIENT1 allowed-ips &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.200.1/24&amp;#39;&lt;/span&gt; 
 
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set wireguard allow client ip ranges to access.&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer CLIENT1 allowed-ips &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;0.0.0.0/0&amp;#39;&lt;/span&gt; 
+
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set how offten to send keep alives in seconds&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer CLIENT1 persistent-keepalive &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;15&amp;#39;&lt;/span&gt;
 
@@ -851,7 +855,15 @@ vi /etc/password
 &lt;ul&gt;
 &lt;li&gt;stop all virtual machines with shell command.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;service pve-manager stop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;root@xa-sys-pve01:~# pvesh create /nodes/localhost/stopall
+Stopping VM &lt;span style=&#34;color:#f60&#34;&gt;116&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;timeout&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;180&lt;/span&gt; seconds&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
+Stopping VM &lt;span style=&#34;color:#f60&#34;&gt;115&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;timeout&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;180&lt;/span&gt; seconds&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
+Stopping CT &lt;span style=&#34;color:#f60&#34;&gt;112&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;timeout&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;60&lt;/span&gt; seconds&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
+Stopping CT &lt;span style=&#34;color:#f60&#34;&gt;111&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;timeout&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;60&lt;/span&gt; seconds&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
+Stopping CT &lt;span style=&#34;color:#f60&#34;&gt;108&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;timeout&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;60&lt;/span&gt; seconds&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
+Stopping CT &lt;span style=&#34;color:#f60&#34;&gt;106&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;timeout&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;60&lt;/span&gt; seconds&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
+Stopping VM &lt;span style=&#34;color:#f60&#34;&gt;101&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;timeout&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;180&lt;/span&gt; seconds&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
+UPID:xa-sys-pve01:0036EA66:01992199:5CB98D6C:stopall::root@pam:&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;stop all the virtual machine with admin web.&lt;/li&gt;
 &lt;/ul&gt;

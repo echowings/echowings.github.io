@@ -75,11 +75,11 @@ Site-to-Sit mode Toplogy |--------------------------------| |-------------------
 
 <meta itemprop="datePublished" content="2019-04-17T12:31:08&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-17T12:31:08&#43;08:00" />
-<meta itemprop="wordCount" content="610">
+<meta itemprop="wordCount" content="626">
 
 
 
-<meta itemprop="keywords" content="vyos,wirguard," />
+<meta itemprop="keywords" content="vyos,wirguard,networking," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Vyos How to Setup Wireguard"/>
 <meta name="twitter:description" content="How to conifugre wireguard in vyos WireGuard is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
@@ -524,6 +524,10 @@ configure
 <span style="color:#09f;font-style:italic">#Set wireguard allow client ip ranges to access.</span>
 <span style="color:#366">set</span> interfaces wireguard wg01 peer CLIENT1 allowed-ips <span style="color:#c30">&#39;172.16.200.1/24&#39;</span> 
 
+
+<span style="color:#09f;font-style:italic">#Set wireguard allow client ip ranges to access.</span>
+<span style="color:#366">set</span> interfaces wireguard wg01 peer CLIENT1 allowed-ips <span style="color:#c30">&#39;0.0.0.0/0&#39;</span> 
+
 <span style="color:#09f;font-style:italic">#Set how offten to send keep alives in seconds</span>
 <span style="color:#366">set</span> interfaces wireguard wg01 peer CLIENT1 persistent-keepalive <span style="color:#c30">&#39;15&#39;</span>
 
@@ -615,6 +619,7 @@ ping <span style="color:#f60">172</span>.16.100.1</code></pre></div>
       <div class="post-tags">
           <a href="https://blog.stevedong.com/tags/vyos/">vyos</a>
           <a href="https://blog.stevedong.com/tags/wirguard/">wirguard</a>
+          <a href="https://blog.stevedong.com/tags/networking/">networking</a>
           
         </div>
 
