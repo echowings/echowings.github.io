@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Proxmox Ve How to Convert Vmware Esxi Virtual Machine to Kvm Virtual Machine - Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>Proxmox VE - How to Convert Vmware Esxi VM to proxmox-VE VM - Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="How to convert vmware esix virutal Macine to KVM virutal machine V2V Convert vmware virtual machines to kvm virtual machine is easy.
+  <meta name="description" content="How to convert vmware esix VM to proxmox-VE VM V2V Convert vmware virtual machines to kvm virtual machine is easy.
 Convert windows VM  Remove VWware tools Uninstall vmware tools and reboot vm.
  Switch disk mode to IDE
  Download Mergeide, unzip it and run it,then reboot your vm.
@@ -63,8 +63,8 @@ scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/l
 
 
 
-<meta property="og:title" content="Proxmox Ve How to Convert Vmware Esxi Virtual Machine to Kvm Virtual Machine" />
-<meta property="og:description" content="How to convert vmware esix virutal Macine to KVM virutal machine V2V Convert vmware virtual machines to kvm virtual machine is easy.
+<meta property="og:title" content="Proxmox VE - How to Convert Vmware Esxi VM to proxmox-VE VM" />
+<meta property="og:description" content="How to convert vmware esix VM to proxmox-VE VM V2V Convert vmware virtual machines to kvm virtual machine is easy.
 Convert windows VM  Remove VWware tools Uninstall vmware tools and reboot vm.
  Switch disk mode to IDE
  Download Mergeide, unzip it and run it,then reboot your vm.
@@ -75,8 +75,8 @@ scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/l
 <meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-how-to-convert-vmware-esxi-virtual-machine-to-kvm-virtual-machine/" /><meta property="article:published_time" content="2019-04-26T22:12:14&#43;08:00"/>
 <meta property="article:modified_time" content="2019-04-26T22:12:14&#43;08:00"/>
 
-<meta itemprop="name" content="Proxmox Ve How to Convert Vmware Esxi Virtual Machine to Kvm Virtual Machine">
-<meta itemprop="description" content="How to convert vmware esix virutal Macine to KVM virutal machine V2V Convert vmware virtual machines to kvm virtual machine is easy.
+<meta itemprop="name" content="Proxmox VE - How to Convert Vmware Esxi VM to proxmox-VE VM">
+<meta itemprop="description" content="How to convert vmware esix VM to proxmox-VE VM V2V Convert vmware virtual machines to kvm virtual machine is easy.
 Convert windows VM  Remove VWware tools Uninstall vmware tools and reboot vm.
  Switch disk mode to IDE
  Download Mergeide, unzip it and run it,then reboot your vm.
@@ -87,14 +87,14 @@ scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/l
 
 <meta itemprop="datePublished" content="2019-04-26T22:12:14&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-26T22:12:14&#43;08:00" />
-<meta itemprop="wordCount" content="147">
+<meta itemprop="wordCount" content="217">
 
 
 
 <meta itemprop="keywords" content="pve," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Proxmox Ve How to Convert Vmware Esxi Virtual Machine to Kvm Virtual Machine"/>
-<meta name="twitter:description" content="How to convert vmware esix virutal Macine to KVM virutal machine V2V Convert vmware virtual machines to kvm virtual machine is easy.
+<meta name="twitter:title" content="Proxmox VE - How to Convert Vmware Esxi VM to proxmox-VE VM"/>
+<meta name="twitter:description" content="How to convert vmware esix VM to proxmox-VE VM V2V Convert vmware virtual machines to kvm virtual machine is easy.
 Convert windows VM  Remove VWware tools Uninstall vmware tools and reboot vm.
  Switch disk mode to IDE
  Download Mergeide, unzip it and run it,then reboot your vm.
@@ -365,7 +365,7 @@ if (!doNotTrack) {
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">Proxmox Ve How to Convert Vmware Esxi Virtual Machine to Kvm Virtual Machine</h1>
+      <h1 class="post-title">Proxmox VE - How to Convert Vmware Esxi VM to proxmox-VE VM</h1>
       
       <div class="post-meta">
         <time datetime="2019-04-26" class="post-time">
@@ -392,7 +392,7 @@ if (!doNotTrack) {
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#how-to-convert-vmware-esix-virutal-macine-to-kvm-virutal-machine">How to convert vmware esix virutal Macine to KVM virutal machine</a>
+<li><a href="#how-to-convert-vmware-esix-vm-to-proxmox-ve-vm">How to convert vmware esix VM to proxmox-VE VM</a>
 <ul>
 <li><a href="#v2v">V2V</a>
 <ul>
@@ -410,7 +410,7 @@ if (!doNotTrack) {
     <div class="post-content">
       
 
-<h1 id="how-to-convert-vmware-esix-virutal-macine-to-kvm-virutal-machine">How to convert vmware esix virutal Macine to KVM virutal machine</h1>
+<h1 id="how-to-convert-vmware-esix-vm-to-proxmox-ve-vm">How to convert vmware esix VM to proxmox-VE VM</h1>
 
 <h2 id="v2v">V2V</h2>
 
@@ -430,17 +430,29 @@ Uninstall vmware tools and reboot vm.</p></li>
 </ul>
 
 <p>Shutdown your vm.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  
+  scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk</code></pre></div>
 <ul>
 <li>Convert vmdk file to qcow2</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  qemu-img convert -f raw source-vm-flate.vmdk -O qcow2 source-vm-flate.qcow2
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  
+  qemu-img convert -f raw source-vm-flate.vmdk -O qcow2 source-vm-flate.qcow2
   
   </code></pre></div>
 <ul>
-<li>Create a  vm  which os type is same as original vm and replace the disk with source-vm-flate.qcow2
+<li><p>Create a  vm  which os type is same as original vm and replace the disk with source-vm-flate.qcow2</p></li>
 
-<br /></li>
+<li><p>Download <a href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso">virtio-win.iso</a>  and upload iso image to proxmox ve host storage.</p></li>
+
+<li><p>Mount iso in cdrom device in vm settings.</p></li>
+
+<li><p>Add and virtoIO Block disk and install driver from cdrom. Then reboot the vm.</p></li>
+
+<li><p>Change <code>Bus/Device</code> in <code>Hard Disk</code> to <code>VirtIO Block</code>.</p></li>
+
+<li><p>change netork device  model type to <code>VirtIO(paravirtualized)</code>.</p></li>
+
+<li><p>delete the added the last disk.</p></li>
 </ul>
 
 <h3 id="convert-linux-or-freebsd-vm">Convert Linux or freebsd VM</h3>
@@ -458,12 +470,17 @@ Uninstall vmware tools and reboot vm.</p></li>
   </code></pre></div>
 <ul>
 <li>Create a  vm  which os type is same as original vm and replace the disk with source-vm-flate.qcow2</li>
+<li>Change <code>Bus/Device</code> in <code>Hard Disk</code> to <code>VirtIO Block</code>.</li>
+<li>change netork device  model type to <code>VirtIO(paravirtualized)</code>.
+
+<br /></li>
 </ul>
 
 <h2 id="reference">Reference</h2>
 
 <ul>
 <li><a href="https://pve.proxmox.com/wiki/Migration_of_servers_to_Proxmox_VE">Migration of servers to Proxmox VE</a></li>
+<li><a href="https://pve.proxmox.com/wiki/Windows_VirtIO_Drivers">Windows VirtIO Drivers</a></li>
 </ul>
 
     </div>
