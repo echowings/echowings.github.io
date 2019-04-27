@@ -339,6 +339,45 @@ if (!doNotTrack) {
   <header class="post-header">
     <h1 class="post-title">
       
+      <a class="post-link" href="/post/proxmox-ve-how-to-convert-vmware-esxi-virtual-machine-to-kvm-virtual-machine/">Proxmox Ve How to Convert Vmware Esxi Virtual Machine to Kvm Virtual Machine</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-04-26" class="post-time">
+        2019-04-26
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to convert vmware esix virutal Macine to KVM virutal machine V2V Convert vmware virtual machines to kvm virtual machine is easy.
+Convert windows VM  Remove VWware tools Uninstall vmware tools and reboot vm.
+ Switch disk mode to IDE
+  Download Mergeide, unzip it and run it,then reboot your vm.
+ Copy *-flat.vmdk file to proxmxo ve host.  Shutdown your vm.
+scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk  Convert vmdk file to qcow2  qemu-img convert -f raw source-vm-flate.
+    </div>
+    <div class="read-more">
+      <a href="/post/proxmox-ve-how-to-convert-vmware-esxi-virtual-machine-to-kvm-virtual-machine/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
       <a class="post-link" href="/post/vyos-how-to-setup-wireguard/">Vyos How to Setup Wireguard</a>
     </h1>
     
@@ -819,41 +858,6 @@ kod_init_kod_db(): Cannot open KoD db file /var/db/ntp-kod: No such file or dire
     </div>
     <div class="read-more">
       <a href="/post/learning-flask-01/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/proxmox-ve-network-adapter-pass-through/">Proxmox Ve Network Adapter Pass Through</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2018-12-24" class="post-time">
-        2018-12-24
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Proxmox Network Adapter Pass Through Long time ago, I konw virtualization is go very good solution to server. But how about router build in virtualization? After tried to do it, I was failed. because virtual switch made networking very slow. So i just use dedicate server as a router.
-Recently days, I just learn proxmox and find pci-e pass through function. I think maybe it is way to make routing virtualization.
-    </div>
-    <div class="read-more">
-      <a href="/post/proxmox-ve-network-adapter-pass-through/" class="read-more-link">Read more</a>
     </div>
     
   </div>

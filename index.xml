@@ -32,6 +32,75 @@
     </item>
     
     <item>
+      <title>Proxmox Ve How to Convert Vmware Esxi Virtual Machine to Kvm Virtual Machine</title>
+      <link>https://blog.stevedong.com/post/proxmox-ve-how-to-convert-vmware-esxi-virtual-machine-to-kvm-virtual-machine/</link>
+      <pubDate>Fri, 26 Apr 2019 22:12:14 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/proxmox-ve-how-to-convert-vmware-esxi-virtual-machine-to-kvm-virtual-machine/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-convert-vmware-esix-virutal-macine-to-kvm-virutal-machine&#34;&gt;How to convert vmware esix virutal Macine to KVM virutal machine&lt;/h1&gt;
+
+&lt;h2 id=&#34;v2v&#34;&gt;V2V&lt;/h2&gt;
+
+&lt;p&gt;Convert vmware virtual machines to kvm virtual machine is easy.&lt;/p&gt;
+
+&lt;h3 id=&#34;convert-windows-vm&#34;&gt;Convert windows VM&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Remove VWware tools
+Uninstall vmware tools and reboot vm.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Switch disk mode to IDE&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Download &lt;a href=&#34;https://pve.proxmox.com/wiki/File:Mergeide.zip&#34;&gt;Mergeide&lt;/a&gt;, unzip it and run it,then reboot your vm.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Copy *-flat.vmdk file to proxmxo ve host.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Shutdown your vm.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Convert vmdk file to qcow2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;  qemu-img convert -f raw source-vm-flate.vmdk -O qcow2 source-vm-flate.qcow2
+  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Create a  vm  which os type is same as original vm and replace the disk with source-vm-flate.qcow2
+
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;convert-linux-or-freebsd-vm&#34;&gt;Convert Linux or freebsd VM&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Copy *-flat.vmdk file to proxmxo ve host.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Shutdown your vm.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Convert vmdk file to qcow2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;  qemu-img convert -f raw source-vm-flate.vmdk -O qcow2 source-vm-flate.qcow2
+  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Create a  vm  which os type is same as original vm and replace the disk with source-vm-flate.qcow2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://pve.proxmox.com/wiki/Migration_of_servers_to_Proxmox_VE&#34;&gt;Migration of servers to Proxmox VE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>Vyos How to Setup Wireguard</title>
       <link>https://blog.stevedong.com/post/vyos-how-to-setup-wireguard/</link>
       <pubDate>Wed, 17 Apr 2019 12:31:08 +0800</pubDate>

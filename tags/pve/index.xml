@@ -6,10 +6,24 @@
     <description>Recent content in Pve on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 16 Apr 2019 12:12:58 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 26 Apr 2019 22:12:14 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/tags/pve/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Proxmox Ve How to Convert Vmware Esxi Virtual Machine to Kvm Virtual Machine</title>
+      <link>https://blog.stevedong.com/post/proxmox-ve-how-to-convert-vmware-esxi-virtual-machine-to-kvm-virtual-machine/</link>
+      <pubDate>Fri, 26 Apr 2019 22:12:14 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/proxmox-ve-how-to-convert-vmware-esxi-virtual-machine-to-kvm-virtual-machine/</guid>
+      <description>How to convert vmware esix virutal Macine to KVM virutal machine V2V Convert vmware virtual machines to kvm virtual machine is easy.
+Convert windows VM  Remove VWware tools Uninstall vmware tools and reboot vm.
+ Switch disk mode to IDE
+  Download Mergeide, unzip it and run it,then reboot your vm.
+ Copy *-flat.vmdk file to proxmxo ve host.  Shutdown your vm.
+scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk  Convert vmdk file to qcow2  qemu-img convert -f raw source-vm-flate.</description>
+    </item>
     
     <item>
       <title>Proxmov Ve How to Upgrade Pve</title>
