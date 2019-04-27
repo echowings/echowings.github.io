@@ -32,6 +32,34 @@
     </item>
     
     <item>
+      <title>Proxmox Ve How to Chang Network of Hosting Without Reboot Proxmox Ve</title>
+      <link>https://blog.stevedong.com/post/proxmox-ve-how-to-chang-network-of-hosting-without-reboot-proxmox-ve/</link>
+      <pubDate>Sat, 27 Apr 2019 11:36:16 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/proxmox-ve-how-to-chang-network-of-hosting-without-reboot-proxmox-ve/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-change-network-settings-of-proxmox-ve-host-without-rebooting&#34;&gt;How to change Network settings of proxmox-ve host without rebooting.&lt;/h1&gt;
+
+&lt;p&gt;Eache time when  I want to change network settings like change netowrks and I must reboot to apply it. It is really trouble me.&lt;/p&gt;
+
+&lt;h2 id=&#34;solution&#34;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;Proxmox VE is based on debian. After check interface of network with the path &lt;code&gt;/etc/network/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;I found that each time when i change network settings. There will be a named &lt;code&gt;interfaces.new&lt;/code&gt; created and it content new network settings wait for apply when i reboot. So I try to backup the old networking interfaces settings and replace it with the new file.&lt;/p&gt;
+
+&lt;h3 id=&#34;backup-interfaces&#34;&gt;Backup interfaces&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cp /etc/network/interfaces /etc/network/interfaces.old&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;copy-interface-new-to-interface&#34;&gt;Copy interface.new to interface&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cp /etc/network/interfaces.new /etc/network/interfaces&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;reboot-networking-service&#34;&gt;Reboot networking service&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;systemctl restart networking&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      
+    </item>
+    
+    <item>
       <title>Proxmox VE - How to Convert Vmware Esxi VM to proxmox-VE VM</title>
       <link>https://blog.stevedong.com/post/proxmox-ve-how-to-convert-vmware-esxi-virtual-machine-to-kvm-virtual-machine/</link>
       <pubDate>Fri, 26 Apr 2019 22:12:14 +0800</pubDate>
