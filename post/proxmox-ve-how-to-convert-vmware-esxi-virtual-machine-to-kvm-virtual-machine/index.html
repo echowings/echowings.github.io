@@ -435,9 +435,9 @@ Uninstall vmware tools and reboot vm.</p></li>
 <ul>
 <li>Convert vmdk file to qcow2</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  		  	
   qemu-img convert -f raw source-vm-flate.vmdk -O qcow2 source-vm-flate.qcow2
-  
+     	
   </code></pre></div>
 <ul>
 <li><p>Create a  vm  which os type is same as original vm and replace the disk with source-vm-flate.qcow2</p></li>
@@ -463,13 +463,15 @@ Uninstall vmware tools and reboot vm.</p></li>
 
 <p>Shutdown your vm.</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  
-scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk</code></pre></div>
+scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk
+	
+	</code></pre></div>
 <ul>
 <li>Convert vmdk file to qcow2</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  	
   qemu-img convert -f raw source-vm-flate.vmdk -O qcow2 source-vm-flate.qcow2
-  </code></pre></div>
+  	</code></pre></div>
 <ul>
 <li>Create a  vm  which os type is same as original vm and replace the disk with source-vm-flate.qcow2</li>
 <li>Change <code>Bus/Device</code> in <code>Hard Disk</code> to <code>VirtIO Block</code>.</li>
