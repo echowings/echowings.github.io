@@ -26,8 +26,9 @@
   <meta name="description" content="How to convert vmware esix virutal Macine to KVM virutal machine V2V Convert vmware virtual machines to kvm virtual machine is easy.
 Convert windows VM  Remove VWware tools Uninstall vmware tools and reboot vm.
  Switch disk mode to IDE
-  Download Mergeide, unzip it and run it,then reboot your vm.
- Copy *-flat.vmdk file to proxmxo ve host.  Shutdown your vm.
+ Download Mergeide, unzip it and run it,then reboot your vm.
+ Copy *-flat.vmdk file to proxmxo ve host.
+  Shutdown your vm.
 scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk  Convert vmdk file to qcow2  qemu-img convert -f raw source-vm-flate." />
 
   <meta name="keywords" content="network, devops, sdn, system Administation" />
@@ -66,8 +67,9 @@ scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/l
 <meta property="og:description" content="How to convert vmware esix virutal Macine to KVM virutal machine V2V Convert vmware virtual machines to kvm virtual machine is easy.
 Convert windows VM  Remove VWware tools Uninstall vmware tools and reboot vm.
  Switch disk mode to IDE
-  Download Mergeide, unzip it and run it,then reboot your vm.
- Copy *-flat.vmdk file to proxmxo ve host.  Shutdown your vm.
+ Download Mergeide, unzip it and run it,then reboot your vm.
+ Copy *-flat.vmdk file to proxmxo ve host.
+  Shutdown your vm.
 scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk  Convert vmdk file to qcow2  qemu-img convert -f raw source-vm-flate." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-how-to-convert-vmware-esxi-virtual-machine-to-kvm-virtual-machine/" /><meta property="article:published_time" content="2019-04-26T22:12:14&#43;08:00"/>
@@ -77,8 +79,9 @@ scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/l
 <meta itemprop="description" content="How to convert vmware esix virutal Macine to KVM virutal machine V2V Convert vmware virtual machines to kvm virtual machine is easy.
 Convert windows VM  Remove VWware tools Uninstall vmware tools and reboot vm.
  Switch disk mode to IDE
-  Download Mergeide, unzip it and run it,then reboot your vm.
- Copy *-flat.vmdk file to proxmxo ve host.  Shutdown your vm.
+ Download Mergeide, unzip it and run it,then reboot your vm.
+ Copy *-flat.vmdk file to proxmxo ve host.
+  Shutdown your vm.
 scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk  Convert vmdk file to qcow2  qemu-img convert -f raw source-vm-flate.">
 
 
@@ -94,8 +97,9 @@ scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/l
 <meta name="twitter:description" content="How to convert vmware esix virutal Macine to KVM virutal machine V2V Convert vmware virtual machines to kvm virtual machine is easy.
 Convert windows VM  Remove VWware tools Uninstall vmware tools and reboot vm.
  Switch disk mode to IDE
-  Download Mergeide, unzip it and run it,then reboot your vm.
- Copy *-flat.vmdk file to proxmxo ve host.  Shutdown your vm.
+ Download Mergeide, unzip it and run it,then reboot your vm.
+ Copy *-flat.vmdk file to proxmxo ve host.
+  Shutdown your vm.
 scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk  Convert vmdk file to qcow2  qemu-img convert -f raw source-vm-flate."/>
 
 <!--[if lte IE 9]>
@@ -419,20 +423,19 @@ if (!doNotTrack) {
 Uninstall vmware tools and reboot vm.</p></li>
 
 <li><p>Switch disk mode to IDE</p></li>
-</ul>
 
-<p>Download <a href="https://pve.proxmox.com/wiki/File:Mergeide.zip">Mergeide</a>, unzip it and run it,then reboot your vm.</p>
+<li><p>Download <a href="https://pve.proxmox.com/wiki/File:Mergeide.zip">Mergeide</a>, unzip it and run it,then reboot your vm.</p></li>
 
-<ul>
-<li>Copy *-flat.vmdk file to proxmxo ve host.</li>
+<li><p>Copy *-flat.vmdk file to proxmxo ve host.</p></li>
 </ul>
 
 <p>Shutdown your vm.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  scp root@10.32.0.22:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk</code></pre></div>
 <ul>
 <li>Convert vmdk file to qcow2</li>
 </ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  qemu-img convert -f raw source-vm-flate.vmdk -O qcow2 source-vm-flate.qcow2
+  
   </code></pre></div>
 <ul>
 <li>Create a  vm  which os type is same as original vm and replace the disk with source-vm-flate.qcow2
