@@ -326,9 +326,175 @@ Uninstall vmware tools and reboot vm.&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Switch disk mode to IDE&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Download &lt;a href=&#34;https://pve.proxmox.com/wiki/File:Mergeide.zip&#34;&gt;Mergeide&lt;/a&gt;, unzip it and run it,then reboot your vm.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Download &lt;a href=&#34;https://pve.proxmox.com/wiki/File:Mergeide.zip&#34;&gt;Mergeide&lt;/a&gt;, unzip it and run it,then reboot your vm. or you can save follow code as &lt;code&gt;mergeide.reg&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;Windows Registry Editor Version &lt;span style=&#34;color:#f60&#34;&gt;5&lt;/span&gt;.00
 
-&lt;li&gt;&lt;p&gt;Copy *-flat.vmdk file to proxmxo ve host.&lt;/p&gt;&lt;/li&gt;
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;rimary_ide_channel&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;atapi&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\s&lt;/span&gt;econdary_ide_channel&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;atapi&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\*&lt;/span&gt;pnp0600&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;atapi&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\*&lt;/span&gt;azt0502&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;atapi&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\g&lt;/span&gt;endisk&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E967-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;disk&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#cc_0101&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_0e11&amp;amp;dev_ae33&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_1039&amp;amp;dev_0601&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_1039&amp;amp;dev_5513&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_1042&amp;amp;dev_1000&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_105a&amp;amp;dev_4d33&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_1095&amp;amp;dev_0640&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_1095&amp;amp;dev_0646&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_1095&amp;amp;dev_0646&amp;amp;REV_05&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_1095&amp;amp;dev_0646&amp;amp;REV_07&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_1095&amp;amp;dev_0648&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_1095&amp;amp;dev_0649&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_1097&amp;amp;dev_0038&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_10ad&amp;amp;dev_0001&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_10ad&amp;amp;dev_0150&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_10b9&amp;amp;dev_5215&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_10b9&amp;amp;dev_5219&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_10b9&amp;amp;dev_5229&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_1106&amp;amp;dev_0571&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pciide&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_8086&amp;amp;dev_1222&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;intelide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_8086&amp;amp;dev_1230&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;intelide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_8086&amp;amp;dev_2411&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;intelide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_8086&amp;amp;dev_2421&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;intelide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_8086&amp;amp;dev_7010&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;intelide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_8086&amp;amp;dev_7111&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;intelide&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;ontrol&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;riticalDeviceDatabase&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\p&lt;/span&gt;ci#ven_8086&amp;amp;dev_7199&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ClassGUID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Service&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;intelide&amp;#34;&lt;/span&gt;
+
+;Add driver &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;for&lt;/span&gt; Atapi &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;requires Atapi.sys in Drivers directory&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;ervices&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\a&lt;/span&gt;tapi&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ErrorControl&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;dword:00000001
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Group&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;SCSI miniport&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Start&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;dword:00000000
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Tag&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;dword:00000019
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Type&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;dword:00000001
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;DisplayName&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Standard IDE/ESDI Hard Disk Controller&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ImagePath&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;hex&lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;:53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,44,00,&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\ &lt;/span&gt;
+  &lt;span style=&#34;color:#f60&#34;&gt;52&lt;/span&gt;,00,49,00,56,00,45,00,52,00,53,00,5c,00,61,00,74,00,61,00,70,00,69,00,2e,&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\ &lt;/span&gt;
+  &lt;span style=&#34;color:#f60&#34;&gt;00&lt;/span&gt;,73,00,79,00,73,00,00,00
+
+;Add driver &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;for&lt;/span&gt; intelide &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;requires intelide.sys in drivers directory&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;ervices&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\I&lt;/span&gt;ntelIde&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ErrorControl&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;dword:00000001
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Group&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;System Bus Extender&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Start&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;dword:00000000
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Tag&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;dword:00000004
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Type&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;dword:00000001
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ImagePath&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;hex&lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;:53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,44,00,&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\ &lt;/span&gt;
+  &lt;span style=&#34;color:#f60&#34;&gt;52&lt;/span&gt;,00,49,00,56,00,45,00,52,00,53,00,5c,00,69,00,6e,00,74,00,65,00,6c,00,69,&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\ &lt;/span&gt;
+  &lt;span style=&#34;color:#f60&#34;&gt;00&lt;/span&gt;,64,00,65,00,2e,00,73,00,79,00,73,00,00,00
+
+
+;Add driver &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;for&lt;/span&gt; Pciide &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;requires Pciide.sys and Pciidex.sys in Drivers directory&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;HKEY_LOCAL_MACHINE&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;YSTEM&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\C&lt;/span&gt;urrentControlSet&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\S&lt;/span&gt;ervices&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\P&lt;/span&gt;CIIde&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ErrorControl&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;dword:00000001
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Group&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;System Bus Extender&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Start&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;dword:00000000
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Tag&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;dword:00000003
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Type&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;dword:00000001
+&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ImagePath&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;hex&lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;:53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,44,00,&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\ &lt;/span&gt;
+  &lt;span style=&#34;color:#f60&#34;&gt;52&lt;/span&gt;,00,49,00,56,00,45,00,52,00,53,00,5c,00,70,00,63,00,69,00,69,00,64,00,65,&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\ &lt;/span&gt;
+  &lt;span style=&#34;color:#f60&#34;&gt;00&lt;/span&gt;,2e,00,73,00,79,00,73,00,00,00
+
+  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Copy *-flat.vmdk file to proxmxo ve host.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Shutdown your vm.&lt;/p&gt;
@@ -364,9 +530,7 @@ Uninstall vmware tools and reboot vm.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Shutdown your vm.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;  
-scp root@xx.xx.xx.xx:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk
-	
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;scp root@xx.xx.xx.xx:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk
 	&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;Convert vmdk file to qcow2&lt;/li&gt;
@@ -1871,15 +2035,15 @@ run_rc_command &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt;&lt;
     </item>
     
     <item>
-      <title>How to nstall ProxmoxVE 5.x on Debian 9</title>
-      <link>https://blog.stevedong.com/post/proxmox-ve-install-pve5-on-debian9/</link>
+      <title>How to install ProxmoxVE 5.x on Debian 9</title>
+      <link>https://blog.stevedong.com/post/proxmox-ve-how-to-install-proxmoxve5-on-debian9/</link>
       <pubDate>Sat, 01 Dec 2018 00:02:28 +0800</pubDate>
       
-      <guid>https://blog.stevedong.com/post/proxmox-ve-install-pve5-on-debian9/</guid>
+      <guid>https://blog.stevedong.com/post/proxmox-ve-how-to-install-proxmoxve5-on-debian9/</guid>
       
         <description>
 
-&lt;h1 id=&#34;install-proxmox-ve-5-x-on-debian-9&#34;&gt;Install Proxmox VE 5.x on Debian 9&lt;/h1&gt;
+&lt;h1 id=&#34;how-to-install-proxmox-ve-5-x-on-debian-9&#34;&gt;How to Install Proxmox VE 5.x on Debian 9&lt;/h1&gt;
 
 &lt;h2 id=&#34;chang-ip-address&#34;&gt;Chang IP ADDRESS&lt;/h2&gt;
 
@@ -1920,17 +2084,7 @@ ff02::2 ip6-allrouters&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 cat &amp;gt;&amp;gt; /etc/environment &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;LC_ALL=en_US.UTF-8
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;LANG=en_US.UTF-8
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
-
-
-
-
-&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;en_US.UTF-8&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; /etc/environment
-apt-get autoremove
-&lt;span style=&#34;color:#366&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;LC_ALL&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;en_US.UTF-8
-&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;en_US.UTF-8 UTF-8&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/locale.gen
-locale-gen en_US.UTF-8
-dpkg-reconfigure locales&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;add-utsc-mirrors-source&#34;&gt;Add Utsc mirrors source&lt;/h2&gt;
 
 &lt;p&gt;before to chang source need to install&lt;/p&gt;
@@ -1948,17 +2102,38 @@ dpkg-reconfigure locales&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&amp;#34;&lt;/span&gt; &amp;gt; /etc/apt/sources.list
 
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#change pve 5.x update source list&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&amp;#34;&lt;/span&gt; &amp;gt; /etc/apt/sources.list.d/pve-enterprise.list
+&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/apt/sources.list
 
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#change ceph source list&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&amp;#34;&lt;/span&gt; &amp;gt; /etc/apt/sources.list.d/ceph.list
+&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/apt/sources.list
 
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# add key&lt;/span&gt;
 wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;install-proxmox-ve&#34;&gt;Install proxmox VE&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt update &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y ugprade
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt update &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y dis-ugprade
 apt install proxmox-ve postfix open-iscsi
 update-grub&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;remove-no-valid-subscription-message&#34;&gt;Remove “No valid Subscription” Message&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;shell solution.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -i.bak &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34;&lt;/span&gt; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; systemctl restart pveproxy.service
+	&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;manual solution:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /usr/share/javascript/proxmox-widget-toolkit
+cp proxmoxlib.js proxmoxlib.js.bak
+nano proxmoxlib.js
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# change&lt;/span&gt; 
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;data.status !&lt;span style=&#34;color:#555&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;Active&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
+
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#366&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#restart pveproxy.service&lt;/span&gt;
+systemctl restart pveproxy.service&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;q-a&#34;&gt;Q&amp;amp;A&lt;/h2&gt;
 
 &lt;ul&gt;
@@ -2428,7 +2603,7 @@ systemctl restart pveproxy.service&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# add key&lt;/span&gt;
 wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
 
-apt updat &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y ugprade
+apt updat &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y dist-ugprade
 update-grub&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 
