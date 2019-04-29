@@ -42,7 +42,7 @@
 
 &lt;h1 id=&#34;build-hyper-converged-infrastructure-with-ceph-on-pve&#34;&gt;Build Hyper-Converged Infrastructure with ceph on PVE&amp;rdquo;&lt;/h1&gt;
 
-&lt;p&gt;Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is  enterprise-ready. Today I will builda HCI with ceph on proxmox VE 5.x.&lt;/p&gt;
+&lt;p&gt;Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is  enterprise-ready. Today I will build a HCI with ceph on proxmox VE 5.x.&lt;/p&gt;
 
 &lt;p&gt;It will end nightmare that someone or montoring system tell you that your service was down, you need be a fire fighter to fixed as soon as possible under tremendous pressure form your boss. With proxmox ve , We can say &amp;lsquo;no more!&amp;rdquo;&lt;/p&gt;
 
@@ -127,9 +127,6 @@ pvecm status&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat &amp;gt;&amp;gt; /etc/systemd/timesyncd.conf &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt; EOF
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;NTP=192.168.0.2 192.168.0.3
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
-cat &amp;gt;&amp;gt; /etc/systemd/timesyncd.conf &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt; EOF
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;NTP=10.32.0.2 10.32.0.3
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;Or if you can sync ntp with aliyun ntp server in china.&lt;/li&gt;

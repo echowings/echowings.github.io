@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="Build Hyper-Converged Infrastructure with ceph on PVE&amp;rdquo; Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is enterprise-ready. Today I will builda HCI with ceph on proxmox VE 5.x.
+  <meta name="description" content="Build Hyper-Converged Infrastructure with ceph on PVE&amp;rdquo; Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is enterprise-ready. Today I will build a HCI with ceph on proxmox VE 5.x.
 It will end nightmare that someone or montoring system tell you that your service was down, you need be a fire fighter to fixed as soon as possible under tremendous pressure form your boss. With proxmox ve , We can say &amp;lsquo;no more!" />
 
   <meta name="keywords" content="network, devops, sdn, system Administation" />
@@ -59,7 +59,7 @@ It will end nightmare that someone or montoring system tell you that your servic
 
 
 <meta property="og:title" content="Build Hyper-Converged Infrastructure With Ceph on PVE" />
-<meta property="og:description" content="Build Hyper-Converged Infrastructure with ceph on PVE&rdquo; Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is enterprise-ready. Today I will builda HCI with ceph on proxmox VE 5.x.
+<meta property="og:description" content="Build Hyper-Converged Infrastructure with ceph on PVE&rdquo; Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is enterprise-ready. Today I will build a HCI with ceph on proxmox VE 5.x.
 It will end nightmare that someone or montoring system tell you that your service was down, you need be a fire fighter to fixed as soon as possible under tremendous pressure form your boss. With proxmox ve , We can say &lsquo;no more!" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-build-hyper-converged-infrastructure-with-ceph-on-pve/" />
@@ -67,20 +67,20 @@ It will end nightmare that someone or montoring system tell you that your servic
 <meta property="article:modified_time" content="2019-04-29T10:56:16&#43;08:00"/>
 
 <meta itemprop="name" content="Build Hyper-Converged Infrastructure With Ceph on PVE">
-<meta itemprop="description" content="Build Hyper-Converged Infrastructure with ceph on PVE&rdquo; Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is enterprise-ready. Today I will builda HCI with ceph on proxmox VE 5.x.
+<meta itemprop="description" content="Build Hyper-Converged Infrastructure with ceph on PVE&rdquo; Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is enterprise-ready. Today I will build a HCI with ceph on proxmox VE 5.x.
 It will end nightmare that someone or montoring system tell you that your service was down, you need be a fire fighter to fixed as soon as possible under tremendous pressure form your boss. With proxmox ve , We can say &lsquo;no more!">
 
 
 <meta itemprop="datePublished" content="2019-04-29T10:56:16&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-29T10:56:16&#43;08:00" />
-<meta itemprop="wordCount" content="626">
+<meta itemprop="wordCount" content="619">
 
 
 
 <meta itemprop="keywords" content="pve,HCI,ceph,cluster," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Build Hyper-Converged Infrastructure With Ceph on PVE"/>
-<meta name="twitter:description" content="Build Hyper-Converged Infrastructure with ceph on PVE&rdquo; Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is enterprise-ready. Today I will builda HCI with ceph on proxmox VE 5.x.
+<meta name="twitter:description" content="Build Hyper-Converged Infrastructure with ceph on PVE&rdquo; Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is enterprise-ready. Today I will build a HCI with ceph on proxmox VE 5.x.
 It will end nightmare that someone or montoring system tell you that your service was down, you need be a fire fighter to fixed as soon as possible under tremendous pressure form your boss. With proxmox ve , We can say &lsquo;no more!"/>
 
 <!--[if lte IE 9]>
@@ -418,7 +418,7 @@ if (!doNotTrack) {
 
 <h1 id="build-hyper-converged-infrastructure-with-ceph-on-pve">Build Hyper-Converged Infrastructure with ceph on PVE&rdquo;</h1>
 
-<p>Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is  enterprise-ready. Today I will builda HCI with ceph on proxmox VE 5.x.</p>
+<p>Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is  enterprise-ready. Today I will build a HCI with ceph on proxmox VE 5.x.</p>
 
 <p>It will end nightmare that someone or montoring system tell you that your service was down, you need be a fire fighter to fixed as soon as possible under tremendous pressure form your boss. With proxmox ve , We can say &lsquo;no more!&rdquo;</p>
 
@@ -503,9 +503,6 @@ pvecm status</code></pre></div>
 </ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt;&gt; /etc/systemd/timesyncd.conf <span style="color:#c30">&lt;&lt; EOF
 </span><span style="color:#c30">NTP=192.168.0.2 192.168.0.3
-</span><span style="color:#c30">EOF</span>
-cat &gt;&gt; /etc/systemd/timesyncd.conf <span style="color:#c30">&lt;&lt; EOF
-</span><span style="color:#c30">NTP=10.32.0.2 10.32.0.3
 </span><span style="color:#c30">EOF</span></code></pre></div>
 <ul>
 <li>Or if you can sync ntp with aliyun ntp server in china.</li>
