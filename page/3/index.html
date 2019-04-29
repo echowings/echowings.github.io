@@ -62,7 +62,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
 
-<meta property="og:updated_time" content="2019-04-29T10:56:16&#43;08:00"/>
+<meta property="og:updated_time" content="2019-04-29T21:43:15&#43;08:00"/>
 
 <meta itemprop="name" content="Steve Dong - A System Administrator&#39;s Blog">
 <meta itemprop="description" content="A System Administrator&#39;s Blog.">
@@ -335,6 +335,41 @@ if (!doNotTrack) {
   <section id="posts" class="posts">
     
     
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/proxmox-ve-v5.x-installation/">Proxmoxve VE V5.x Installation</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2018-11-19" class="post-time">
+        2018-11-19
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
+ Boot the proxmox installer USB Select Debug Mode Press “CTRL+D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service   manual solution:  cd /usr/share/javascript/proxmox-widget-toolkit cp proxmoxlib.
+    </div>
+    <div class="read-more">
+      <a href="/post/proxmox-ve-v5.x-installation/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
     
       <article class="post bg-white">
   <header class="post-header">

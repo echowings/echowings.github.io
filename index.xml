@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 29 Apr 2019 10:56:16 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 29 Apr 2019 21:43:15 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -26,6 +26,72 @@
 &lt;li&gt;Love coding.&lt;/li&gt;
 &lt;li&gt;Love cooking.&lt;/li&gt;
 &lt;li&gt;Love hacking.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>How to Compile Nginx With Source Code</title>
+      <link>https://blog.stevedong.com/post/nginx-how-to-compile-nginx-with-source-code/</link>
+      <pubDate>Mon, 29 Apr 2019 21:43:15 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/nginx-how-to-compile-nginx-with-source-code/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-compile-nginx-with-source-code&#34;&gt;How to compile nginx with source code&lt;/h1&gt;
+
+&lt;h2 id=&#34;download-source-code&#34;&gt;Download source code&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Access &lt;a href=&#34;https://www.nginx.org&#34;&gt;nginx.org&lt;/a&gt; to download latest stable version of nginx.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;  wget  https://nginx.org/download/nginx-1.16.0.tar.gz
+  tar -zxvf nginx-1.16.0.tar.gz&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;compile-source-code&#34;&gt;Compile source code&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;  &lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; nginx-1.16.0
+  apt update &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt install -y gcc build-essential
+  ./configure --prefix&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;/home/echowings/nginx
+  make
+  make install
+  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;trouble-shooting&#34;&gt;Trouble shooting&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PCRE missing error.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;  ./configure: error: the HTTP rewrite module requires the PCRE library.
+
+You can either disable the module by using —without–http_rewrite_module
+
+option, or install the PCRE library into the system, or build the PCRE library
+
+statically from the &lt;span style=&#34;color:#366&#34;&gt;source&lt;/span&gt; with nginx by using —with–pcre&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&amp;amp;lt;path&amp;amp;gt; option.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We need to install pcre library to support it.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt; &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Install pcre for rhel or centos&lt;/span&gt;
+ yum install pcre-devel
+ 
+ &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Install pcre for debian or ubuntu&lt;/span&gt;
+ apt install -y libpcre3 libpcre3-dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;gzip error.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;  ./configure: error: the HTTP gzip module requires the zlib library.
+You can either disable the module by using --without-http_gzip_module
+option, or install the zlib library into the system, or build the zlib library
+statically from the &lt;span style=&#34;color:#366&#34;&gt;source&lt;/span&gt; with nginx by using --with-zlib&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&amp;lt;path&amp;gt; option.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We need to install gzip library.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;  &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# For rhel or centos&lt;/span&gt;
+  yum install zlib-devel 
+  
+  &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# For debian or ubuntu&lt;/span&gt;
+  apt install zlib1g zlib1g-dev
+  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;## Reference&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.techietown.info/2017/07/install-pcre-pcre-devel-ubuntu-using-apt-get/&#34;&gt;How to install pcre and pcre-devel on ubuntu using apt-get?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
       
