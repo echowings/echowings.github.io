@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>DIY Thin Itx PC - Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>How to Install Snmp Service on Promxox Ve - Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="Option 1 :Intel Pentium G4560/8G RAM/ 1TB nvme ssd No. type details quantity UnitPrice Total Price 01 机箱 立人E-T4超薄迷你Thin-ITX立式台式机HTPC电脑空机箱支持VESA背挂 1 ¥90(90.00*" />
+  <meta name="description" content="How to install snmp service on proxmox ve How to setup snmp service to let us to use librenms to moniting our proxmox ve healthy status is very important for us.
+Install snmpd on proxmox ve apt update apt install -y snmpd Configure snmpd.conf  backup original configuration file.  mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.backup  Create a new config file.  cat &amp;gt; /etc/snmp/snmpd.conf &amp;lt;&amp;lt; EOF # this create a SNMPv1/SNMPv2c community named &amp;#34;&amp;#34; # and restricts access to LAN adresses 192." />
 
   <meta name="keywords" content="network, devops, sdn, system Administation" />
 
@@ -35,7 +36,7 @@
 <meta name="generator" content="Hugo 0.55.4" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/post/diy-thin-itx-pc/" />
+<link rel="canonical" href="https://blog.stevedong.com/post/proxmox-ve-how-to-install-snmp-service-on-promxox-ve/" />
 
 
 
@@ -57,27 +58,30 @@
 
 
 
-<meta property="og:title" content="DIY Thin Itx PC" />
-<meta property="og:description" content="Option 1 :Intel Pentium G4560/8G RAM/ 1TB nvme ssd No. type details quantity UnitPrice Total Price 01 机箱 立人E-T4超薄迷你Thin-ITX立式台式机HTPC电脑空机箱支持VESA背挂 1 ¥90(90.00*" />
+<meta property="og:title" content="How to Install Snmp Service on Promxox Ve" />
+<meta property="og:description" content="How to install snmp service on proxmox ve How to setup snmp service to let us to use librenms to moniting our proxmox ve healthy status is very important for us.
+Install snmpd on proxmox ve apt update apt install -y snmpd Configure snmpd.conf  backup original configuration file.  mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.backup  Create a new config file.  cat &gt; /etc/snmp/snmpd.conf &lt;&lt; EOF # this create a SNMPv1/SNMPv2c community named &#34;&#34; # and restricts access to LAN adresses 192." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/diy-thin-itx-pc/" />
-<meta property="article:published_time" content="2019-04-27T12:25:36&#43;08:00"/>
-<meta property="article:modified_time" content="2019-04-27T12:25:36&#43;08:00"/>
+<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-how-to-install-snmp-service-on-promxox-ve/" />
+<meta property="article:published_time" content="2019-04-27T20:29:36&#43;08:00"/>
+<meta property="article:modified_time" content="2019-04-27T20:29:36&#43;08:00"/>
 
-<meta itemprop="name" content="DIY Thin Itx PC">
-<meta itemprop="description" content="Option 1 :Intel Pentium G4560/8G RAM/ 1TB nvme ssd No. type details quantity UnitPrice Total Price 01 机箱 立人E-T4超薄迷你Thin-ITX立式台式机HTPC电脑空机箱支持VESA背挂 1 ¥90(90.00*">
-
-
-<meta itemprop="datePublished" content="2019-04-27T12:25:36&#43;08:00" />
-<meta itemprop="dateModified" content="2019-04-27T12:25:36&#43;08:00" />
-<meta itemprop="wordCount" content="1151">
+<meta itemprop="name" content="How to Install Snmp Service on Promxox Ve">
+<meta itemprop="description" content="How to install snmp service on proxmox ve How to setup snmp service to let us to use librenms to moniting our proxmox ve healthy status is very important for us.
+Install snmpd on proxmox ve apt update apt install -y snmpd Configure snmpd.conf  backup original configuration file.  mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.backup  Create a new config file.  cat &gt; /etc/snmp/snmpd.conf &lt;&lt; EOF # this create a SNMPv1/SNMPv2c community named &#34;&#34; # and restricts access to LAN adresses 192.">
 
 
+<meta itemprop="datePublished" content="2019-04-27T20:29:36&#43;08:00" />
+<meta itemprop="dateModified" content="2019-04-27T20:29:36&#43;08:00" />
+<meta itemprop="wordCount" content="158">
 
-<meta itemprop="keywords" content="DIY,hardware," />
+
+
+<meta itemprop="keywords" content="pve,snmp,librenms," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="DIY Thin Itx PC"/>
-<meta name="twitter:description" content="Option 1 :Intel Pentium G4560/8G RAM/ 1TB nvme ssd No. type details quantity UnitPrice Total Price 01 机箱 立人E-T4超薄迷你Thin-ITX立式台式机HTPC电脑空机箱支持VESA背挂 1 ¥90(90.00*"/>
+<meta name="twitter:title" content="How to Install Snmp Service on Promxox Ve"/>
+<meta name="twitter:description" content="How to install snmp service on proxmox ve How to setup snmp service to let us to use librenms to moniting our proxmox ve healthy status is very important for us.
+Install snmpd on proxmox ve apt update apt install -y snmpd Configure snmpd.conf  backup original configuration file.  mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.backup  Create a new config file.  cat &gt; /etc/snmp/snmpd.conf &lt;&lt; EOF # this create a SNMPv1/SNMPv2c community named &#34;&#34; # and restricts access to LAN adresses 192."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -342,14 +346,14 @@ if (!doNotTrack) {
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">DIY Thin Itx PC</h1>
+      <h1 class="post-title">How to Install Snmp Service on Promxox Ve</h1>
       
       <div class="post-meta">
         <time datetime="2019-04-27" class="post-time">
           2019-04-27
         </time>
         <div class="post-category">
-            <a href="https://blog.stevedong.com/categories/hardware/"> Hardware </a>
+            <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
             
           </div>
         
@@ -369,10 +373,14 @@ if (!doNotTrack) {
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
-<li>
+<li><a href="#how-to-install-snmp-service-on-proxmox-ve">How to install snmp service on proxmox ve</a>
 <ul>
-<li><a href="#option-1-intel-pentium-g4560-8g-ram-1tb-nvme-ssd">Option 1 :Intel Pentium G4560/8G RAM/ 1TB nvme ssd</a></li>
-<li><a href="#optiion-2-intel-i5-8400-6-core-8g-ram-1tb-nvme-ssd">Optiion 2 :Intel i5 8400 6 core/8G RAM/ 1TB nvme ssd</a></li>
+<li><a href="#install-snmpd-on-proxmox-ve">Install snmpd on proxmox ve</a></li>
+<li><a href="#configure-snmpd-conf">Configure snmpd.conf</a></li>
+<li><a href="#firewall-allow-lan-can-access">Firewall allow lan can access</a></li>
+<li><a href="#restart-snmpd-service-to-apply-settings">Restart snmpd service to apply settings</a></li>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#reference">Reference</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -383,237 +391,49 @@ if (!doNotTrack) {
     <div class="post-content">
       
 
-<h2 id="option-1-intel-pentium-g4560-8g-ram-1tb-nvme-ssd">Option 1 :Intel Pentium G4560/8G RAM/ 1TB nvme ssd</h2>
+<h1 id="how-to-install-snmp-service-on-proxmox-ve">How to install snmp service on proxmox ve</h1>
 
-<table>
-<thead>
-<tr>
-<th>No.</th>
-<th>type</th>
-<th>details</th>
-<th>quantity</th>
-<th>UnitPrice</th>
-<th>Total Price</th>
-</tr>
-</thead>
+<p>How to setup snmp service to let us to use librenms to moniting our proxmox ve healthy status is very important for us.</p>
 
-<tbody>
-<tr>
-<td>01</td>
-<td>机箱</td>
-<td><a href="https://item.taobao.com/item.htm?id=534857489261&amp;scm=20140619.rec.2429537308.534857489261">立人E-T4超薄迷你Thin-ITX立式台式机HTPC电脑空机箱支持VESA背挂</a></td>
-<td>1</td>
-<td>¥90(90.00*1.04)</td>
-<td>93.00</td>
-</tr>
+<h2 id="install-snmpd-on-proxmox-ve">Install snmpd on proxmox ve</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">apt update
+apt install -y snmpd</code></pre></div>
+<h2 id="configure-snmpd-conf">Configure snmpd.conf</h2>
 
-<tr>
-<td>02</td>
-<td>CPU</td>
-<td><a href="https://item.jd.com/4167802.html?jd_pop=68e8eedb-d94b-4d9b-90e5-f45e43cd1f59&amp;abt=3#crumb-wrap">英特尔（Intel）奔腾双核G4560 盒装CPU处理器    </a></td>
-<td>1</td>
-<td>￥599.00</td>
-<td>599.00</td>
-</tr>
+<ul>
+<li>backup original configuration file.</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.backup</code></pre></div>
+<ul>
+<li>Create a new config file.</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt; /etc/snmp/snmpd.conf <span style="color:#c30">&lt;&lt; EOF
+</span><span style="color:#c30"># this create a  SNMPv1/SNMPv2c community named &#34;&#34;
+</span><span style="color:#c30"># and restricts access to LAN adresses 192.168.0.0/22 (last two 0&#39;s are ranges)
+</span><span style="color:#c30">rocommunity OkayWorld 192.168.0.0/22
+</span><span style="color:#c30"># setup info
+</span><span style="color:#c30">syslocation  &#34;rack 1, room 3, serverrroom&#34;
+</span><span style="color:#c30">syscontact  &#34;xxx@xxx.xxx&#34;
+</span><span style="color:#c30"># open up
+</span><span style="color:#c30">agentAddress  udp:161
+</span><span style="color:#c30"># run as
+</span><span style="color:#c30">agentuser  root
+</span><span style="color:#c30"># dont log connection from UDP:
+</span><span style="color:#c30">dontLogTCPWrappersConnects yes
+</span><span style="color:#c30"># fix for disks larger then 2TB
+</span><span style="color:#c30">realStorageUnits 0
+</span><span style="color:#c30">EOF</span></code></pre></div>
+<h2 id="firewall-allow-lan-can-access">Firewall allow lan can access</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">iptables -A INPUT -s <span style="color:#f60">192</span>.168.0.0/22 -p udp --dport <span style="color:#f60">161</span> -j ACCEPT</code></pre></div>
+<h2 id="restart-snmpd-service-to-apply-settings">Restart snmpd service to apply settings</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart snmpd</code></pre></div>
+<h2 id="testing">Testing</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">snmpwalk -c OkayWorld -v1 <span style="color:#033">$servername</span>$ SNMPv2-MIB::sysDescr.0</code></pre></div>
+<h2 id="reference">Reference</h2>
 
-<tr>
-<td>03</td>
-<td>视频转换接头</td>
-<td><a href="https://item.jd.com/5160386.html#crumb-wrap">山泽(SAMZHE)HDMI转VGA转换器带音频供电接口 高清视频转接头 电脑华为小米盒子接电视投影仪1080p 黑 ZH-22</a></td>
-<td>1</td>
-<td>￥35.90</td>
-<td>35.90</td>
-</tr>
-
-<tr>
-<td>04</td>
-<td>键鼠套装</td>
-<td><a href="https://item.jd.com/2291748.html">罗技（Logitech）MK275 无线光电键鼠套装 无线鼠标无线键盘套装</a></td>
-<td>1</td>
-<td>99.00</td>
-<td>99</td>
-</tr>
-
-<tr>
-<td>05</td>
-<td>主板</td>
-<td><a href="https://item.taobao.com/item.htm?id=587272133214&amp;tracelogww=ltckbburl">ASUS/华硕PRIME H310T2 R2.0 THIN ITX小主板 迷你主机一体机HTPC</a></td>
-<td>1</td>
-<td>¥ 699</td>
-<td>755</td>
-</tr>
-
-<tr>
-<td>06</td>
-<td>电源适配器</td>
-<td><a href="https://item.taobao.com/item.htm?spm=a1z10.5-c.w4002-17511240392.20.44c47365cIMEzk&amp;id=18283712549">酷鱼19V-7.1A足135W电源适配器/技嘉华硕微星ITX主板通用7.4X5.0</a></td>
-<td>1</td>
-<td>¥129.00</td>
-<td>139.32(129 * 1.08)</td>
-</tr>
-
-<tr>
-<td>07</td>
-<td>内存</td>
-<td><a href="https://detail.tmall.com/item.htm?id=546597769363&amp;spm=0.0.0.0&amp;skuId=3813291359835">三星内存条8g DDR4 2666 8G 16G笔记本内存条四代吃鸡内存原厂兼容戴尔华硕联想苹果笔记本内存条</a></td>
-<td>1</td>
-<td>¥ 319.00</td>
-<td>¥319.00</td>
-</tr>
-
-<tr>
-<td>08</td>
-<td>WiFi套件</td>
-<td><a href="https://item.taobao.com/item.htm?spm=a1z09.2.0.0.1097dcfdM8oysD&amp;id=537236266618&amp;_u=iebjch9df5">INTELAC7265 M.2 NGFF1000M/5G/2.4G/4.0网卡华硕H110T技嘉H110TN</a></td>
-<td>1</td>
-<td>￥135.00</td>
-<td>￥145.80(135*1.08)</td>
-</tr>
-
-<tr>
-<td>09</td>
-<td>cpu散热器</td>
-<td><a href="https://detail.tmall.com/item.htm?spm=a230r.1.14.1.76bf523MbXdki&amp;id=43878066181&amp;cm_id=140105335569ed55e27b&amp;abbucket=14">ID-COOLING IS-20i 26 Intel平台CPU散热器8CM HTP超薄温控风扇</a></td>
-<td>1</td>
-<td>¥ 38.00</td>
-<td>¥ 38.00</td>
-</tr>
-
-<tr>
-<td>10</td>
-<td>SSD</td>
-<td><a href="https://item.jd.com/100002183461.html#crumb-wrap">三星（SAMSUNG）1TB SSD固态硬盘 M.2接口(NVMe协议) 970 EVO Plus（MZ-V7S1T0B）</a></td>
-<td>1</td>
-<td>￥1899.00</td>
-<td>￥1899.00</td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>Sum</td>
-<td>￥4123.02</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="optiion-2-intel-i5-8400-6-core-8g-ram-1tb-nvme-ssd">Optiion 2 :Intel i5 8400 6 core/8G RAM/ 1TB nvme ssd</h2>
-
-<table>
-<thead>
-<tr>
-<th>No.</th>
-<th>type</th>
-<th>details</th>
-<th>quantity</th>
-<th>UnitPrice</th>
-<th>Total Price</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>01</td>
-<td>机箱</td>
-<td><a href="https://item.taobao.com/item.htm?id=534857489261&amp;scm=20140619.rec.2429537308.534857489261">立人E-T4超薄迷你Thin-ITX立式台式机HTPC电脑空机箱支持VESA背挂</a></td>
-<td>1</td>
-<td>¥90(90.00*1.04)</td>
-<td>93.00</td>
-</tr>
-
-<tr>
-<td>02</td>
-<td>CPU</td>
-<td><a href="https://item.jd.com/5008397.html">英特尔（Intel） i5 8400 酷睿六核 盒装CPU处理器    </a></td>
-<td>1</td>
-<td>￥1549.00</td>
-<td>1549.00</td>
-</tr>
-
-<tr>
-<td>03</td>
-<td>视频转换接头</td>
-<td><a href="https://item.jd.com/5160386.html#crumb-wrap">山泽(SAMZHE)HDMI转VGA转换器带音频供电接口 高清视频转接头 电脑华为小米盒子接电视投影仪1080p 黑 ZH-22</a></td>
-<td>1</td>
-<td>￥35.90</td>
-<td>35.90</td>
-</tr>
-
-<tr>
-<td>04</td>
-<td>键鼠套装</td>
-<td><a href="https://item.jd.com/2291748.html">罗技（Logitech）MK275 无线光电键鼠套装 无线鼠标无线键盘套装</a></td>
-<td>1</td>
-<td>99.00</td>
-<td>99</td>
-</tr>
-
-<tr>
-<td>05</td>
-<td>主板</td>
-<td><a href="https://item.taobao.com/item.htm?id=587272133214&amp;tracelogww=ltckbburl">ASUS/华硕PRIME H310T2 R2.0 THIN ITX小主板 迷你主机一体机HTPC</a></td>
-<td>1</td>
-<td>¥ 699</td>
-<td>755</td>
-</tr>
-
-<tr>
-<td>06</td>
-<td>电源适配器</td>
-<td><a href="https://item.taobao.com/item.htm?spm=a1z10.5-c.w4002-17511240392.20.44c47365cIMEzk&amp;id=18283712549">酷鱼19V-7.1A足135W电源适配器/技嘉华硕微星ITX主板通用7.4X5.0</a></td>
-<td>1</td>
-<td>¥129.00</td>
-<td>139.32(129 * 1.08)</td>
-</tr>
-
-<tr>
-<td>07</td>
-<td>内存</td>
-<td><a href="https://detail.tmall.com/item.htm?id=546597769363&amp;spm=0.0.0.0&amp;skuId=3813291359835">三星内存条8g DDR4 2666 8G 16G笔记本内存条四代吃鸡内存原厂兼容戴尔华硕联想苹果笔记本内存条</a></td>
-<td>1</td>
-<td>¥ 319.00</td>
-<td>¥319.00</td>
-</tr>
-
-<tr>
-<td>08</td>
-<td>WiFi套件</td>
-<td><a href="https://item.taobao.com/item.htm?spm=a1z09.2.0.0.1097dcfdM8oysD&amp;id=537236266618&amp;_u=iebjch9df5">INTELAC7265 M.2 NGFF1000M/5G/2.4G/4.0网卡华硕H110T技嘉H110TN</a></td>
-<td>1</td>
-<td>135.00</td>
-<td>￥145.80(135*1.08)</td>
-</tr>
-
-<tr>
-<td>09</td>
-<td>cpu散热器</td>
-<td><a href="https://item.taobao.com/item.htm?id=527079297198&amp;tracelogww=ltckbburl">超薄21mm 1150/1151/ CPU散热器 CPU风扇 适用于立人T3机箱</a></td>
-<td>1</td>
-<td>¥ 89.00</td>
-<td>93.45（89*1.05）</td>
-</tr>
-
-<tr>
-<td>10</td>
-<td>SSD</td>
-<td><a href="https://item.jd.com/100002183461.html#crumb-wrap">三星（SAMSUNG）1TB SSD固态硬盘 M.2接口(NVMe协议) 970 EVO Plus（MZ-V7S1T0B）</a></td>
-<td>1</td>
-<td>￥1899.00</td>
-<td>￥1899.00</td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>Sum</td>
-<td>￥5128.47</td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li>[](<a href="https://www.svennd.be/how-to-install-snmp-service-on-proxmox/">https://www.svennd.be/how-to-install-snmp-service-on-proxmox/</a>)</li>
+</ul>
 
     </div>
 
@@ -638,27 +458,19 @@ if (!doNotTrack) {
 
     
     
-<div class="post-reward">
-  <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">Reward</label>
-  <div class="qr-code">
-    
-    
-    
-  </div>
-</div>
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="https://blog.stevedong.com/tags/diy/">DIY</a>
-          <a href="https://blog.stevedong.com/tags/hardware/">hardware</a>
+          <a href="https://blog.stevedong.com/tags/pve/">pve</a>
+          <a href="https://blog.stevedong.com/tags/snmp/">snmp</a>
+          <a href="https://blog.stevedong.com/tags/librenms/">librenms</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/proxmox-ve-how-to-install-snmp-service-on-promxox-ve/">
+          <a class="prev" href="/post/proxmox-ve-build-hyper-converged-infrastructure-with-ceph-on-pve/">
             
             <i class="iconfont">
               <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -668,12 +480,12 @@ if (!doNotTrack) {
 </svg>
 
             </i>
-            <span class="prev-text nav-default">How to Install Snmp Service on Promxox Ve</span>
+            <span class="prev-text nav-default">Build Hyper-Converged Infrastructure With Ceph on PVE</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         
-          <a class="next" href="/post/proxmox-ve-how-to-chang-network-of-hosting-without-reboot-proxmox-ve/">
-            <span class="next-text nav-default">Proxmox Ve How to Chang Network of Hosting Without Reboot Proxmox Ve</span>
+          <a class="next" href="/post/diy-thin-itx-pc/">
+            <span class="next-text nav-default">DIY Thin Itx PC</span>
             <span class="prev-text nav-mobile">Next</span>
             
             <i class="iconfont">

@@ -217,6 +217,62 @@ cp /etc/ceph/ceph.client.admin.keyring ceph/my-ceph-storage.keyring&lt;/code&gt;
     </item>
     
     <item>
+      <title>How to Install Snmp Service on Promxox Ve</title>
+      <link>https://blog.stevedong.com/post/proxmox-ve-how-to-install-snmp-service-on-promxox-ve/</link>
+      <pubDate>Sat, 27 Apr 2019 20:29:36 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/proxmox-ve-how-to-install-snmp-service-on-promxox-ve/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-install-snmp-service-on-proxmox-ve&#34;&gt;How to install snmp service on proxmox ve&lt;/h1&gt;
+
+&lt;p&gt;How to setup snmp service to let us to use librenms to moniting our proxmox ve healthy status is very important for us.&lt;/p&gt;
+
+&lt;h2 id=&#34;install-snmpd-on-proxmox-ve&#34;&gt;Install snmpd on proxmox ve&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;apt update
+apt install -y snmpd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;configure-snmpd-conf&#34;&gt;Configure snmpd.conf&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;backup original configuration file.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.backup&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Create a new config file.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat &amp;gt; /etc/snmp/snmpd.conf &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt; EOF
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# this create a  SNMPv1/SNMPv2c community named &amp;#34;&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# and restricts access to LAN adresses 192.168.0.0/22 (last two 0&amp;#39;s are ranges)
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;rocommunity OkayWorld 192.168.0.0/22
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# setup info
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;syslocation  &amp;#34;rack 1, room 3, serverrroom&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;syscontact  &amp;#34;xxx@xxx.xxx&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# open up
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;agentAddress  udp:161
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# run as
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;agentuser  root
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# dont log connection from UDP:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;dontLogTCPWrappersConnects yes
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# fix for disks larger then 2TB
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;realStorageUnits 0
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;firewall-allow-lan-can-access&#34;&gt;Firewall allow lan can access&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;iptables -A INPUT -s &lt;span style=&#34;color:#f60&#34;&gt;192&lt;/span&gt;.168.0.0/22 -p udp --dport &lt;span style=&#34;color:#f60&#34;&gt;161&lt;/span&gt; -j ACCEPT&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;restart-snmpd-service-to-apply-settings&#34;&gt;Restart snmpd service to apply settings&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;systemctl restart snmpd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;testing&#34;&gt;Testing&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;snmpwalk -c OkayWorld -v1 &lt;span style=&#34;color:#033&#34;&gt;$servername&lt;/span&gt;$ SNMPv2-MIB::sysDescr.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[](&lt;a href=&#34;https://www.svennd.be/how-to-install-snmp-service-on-proxmox/&#34;&gt;https://www.svennd.be/how-to-install-snmp-service-on-proxmox/&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>DIY Thin Itx PC</title>
       <link>https://blog.stevedong.com/post/diy-thin-itx-pc/</link>
       <pubDate>Sat, 27 Apr 2019 12:25:36 +0800</pubDate>
