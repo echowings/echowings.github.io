@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 27 Apr 2019 12:25:36 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 29 Apr 2019 10:56:16 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -27,6 +27,190 @@
 &lt;li&gt;Love cooking.&lt;/li&gt;
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Build Hyper-Converged Infrastructure With Ceph on PVE</title>
+      <link>https://blog.stevedong.com/post/proxmox-ve-build-hyper-converged-infrastructure-with-ceph-on-pve/</link>
+      <pubDate>Mon, 29 Apr 2019 10:56:16 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/proxmox-ve-build-hyper-converged-infrastructure-with-ceph-on-pve/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;build-hyper-converged-infrastructure-with-ceph-on-pve&#34;&gt;Build Hyper-Converged Infrastructure with ceph on PVE&amp;rdquo;&lt;/h1&gt;
+
+&lt;p&gt;Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is  enterprise-ready. Today I will builda HCI with ceph on proxmox VE 5.x.&lt;/p&gt;
+
+&lt;h2 id=&#34;perequest&#34;&gt;Perequest&lt;/h2&gt;
+
+&lt;h3 id=&#34;hardware&#34;&gt;Hardware&lt;/h3&gt;
+
+&lt;p&gt;We need got 3 host each of them have two disk(1 for install proxmox-ve 5.x, another for install ceph). Each host i prepared 2 disk . 128GB SSD for  intall proxmox ve .  another disk is a 1TB sata(It is really slowly, but for lab testing is enough).&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Host name&lt;/th&gt;
+&lt;th&gt;Host IP&lt;/th&gt;
+&lt;th&gt;Disk01 for install PVE&lt;/th&gt;
+&lt;th&gt;Disk02 for ceph&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;pve-test01&lt;/td&gt;
+&lt;td&gt;192.168.0.85&lt;/td&gt;
+&lt;td&gt;/dev/sda&lt;/td&gt;
+&lt;td&gt;/dev/sdb&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;pve-test02&lt;/td&gt;
+&lt;td&gt;192.168.0.86&lt;/td&gt;
+&lt;td&gt;/dev/sda&lt;/td&gt;
+&lt;td&gt;/dev/sdb&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;pve-test03&lt;/td&gt;
+&lt;td&gt;192.168.0.87&lt;/td&gt;
+&lt;td&gt;/dev/sda&lt;/td&gt;
+&lt;td&gt;/dev/sdb&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;software&#34;&gt;Software&lt;/h3&gt;
+
+&lt;h4 id=&#34;install-proxmox-ve-or-install-proxmox-ve-5-x-on-debian-9&#34;&gt;Install proxmox ve or install proxmox ve 5.x on debian 9&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install proxmox VE 5.x, please follow user guide : &lt;a href=&#34;https://blog.stevedong.com/post/proxmox-ve-v5.x-installation/&#34;&gt;Proxmoxve VE V5.x Installation&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Install Proxmox VE 5.x on debian 9: &lt;a href=&#34;https://blog.stevedong.com/post/proxmox-ve-how-to-install-proxmoxve5-on-debian9/&#34;&gt;How to install ProxmoxVE 5.x on Debian 9&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;delete-disk-partition-on-2rd-disk&#34;&gt;Delete disk partition on 2rd disk.&lt;/h4&gt;
+
+&lt;p&gt;If the disk has data, we can use &lt;code&gt;fdisk /dev/sdb&lt;/code&gt; to delete partition of sdb.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;fdisk /dev/sdb
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Repeat enter m to delete partiton of sdb.&lt;/span&gt;
+m
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Save configuration with w.&lt;/span&gt;
+w&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;create-pve-cluster&#34;&gt;Create PVE Cluster&lt;/h3&gt;
+
+&lt;h4 id=&#34;create-pve-cluster-operating-on-proxmox-ve-node-pve-test01&#34;&gt;Create pve cluster:Operating on proxmox ve node &lt;code&gt;pve-test01&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;Login via ssh to &lt;code&gt;pve-test01&lt;/code&gt; the first proxmox ve node. Use a unique name for your cluster, the name cannot be changed later.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;pvecm create mycloud&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To check the state of cluster:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;pvecm status&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;to-join-node-to-pve-cluser-operate-on-proxmox-ve-node&#34;&gt;To join node to pve cluser:Operate on proxmox ve node.&lt;/h4&gt;
+
+&lt;p&gt;Run coomand like these on the rest of pve nodes.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# 192.168.0.85 is the ip address of pve node `pve-test01`&lt;/span&gt;
+pvecm add &lt;span style=&#34;color:#f60&#34;&gt;192&lt;/span&gt;.168.0.85 
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Check pve cluster status on `pve-test02`&lt;/span&gt;
+pvecm status&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;setup-ntp-servic-for-proxmox-ve&#34;&gt;Setup NTP Servic for proxmox ve&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If you have a lan ntp server setup like this. mutilpy ntp server separated with blank space.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat &amp;gt;&amp;gt; /etc/systemd/timesyncd.conf &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt; EOF
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;NTP=192.168.0.2 192.168.0.3
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
+cat &amp;gt;&amp;gt; /etc/systemd/timesyncd.conf &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt; EOF
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;NTP=10.32.0.2 10.32.0.3
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Or if you can sync ntp with aliyun ntp server in china.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt; cat &amp;gt;&amp;gt; /etc/systemd/timesyncd.conf &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt; EOF
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt; NTP=ntp1.aliyun.com ntp2.aliyun.com
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt; EOF&lt;/span&gt;
+ &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Restart systemd-timesyncd service to apply settings&lt;/span&gt;
+systemctl restart systemd-timesyncd
+ &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;ceph-setup&#34;&gt;Ceph Setup&lt;/h3&gt;
+
+&lt;h4 id=&#34;install-ceph-on-all-of-pve-nodes&#34;&gt;Install ceph on all of pve nodes.&lt;/h4&gt;
+
+&lt;p&gt;Run Each host with this command to install ceph on&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Install ceph&lt;/span&gt;
+pveceph install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;create-ceph-storage-network-on-master-node&#34;&gt;Create ceph storage network on master node&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# pve-node-01(10.32.0.85)&lt;/span&gt;
+pveceph init --network &lt;span style=&#34;color:#f60&#34;&gt;192&lt;/span&gt;.168.0.0/24&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;run-all-the-command-on-each-node&#34;&gt;Run all the command on each node&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Create mon moniting service&lt;/span&gt;
+pveceph createmon
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Create OSD service&lt;/span&gt; 
+pveceph createdosd /dev/sdb
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Check ost status&lt;/span&gt;
+ceph osd stat
+ceph osd tree&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;create-ceph-cluster-resource-pool-on-master-node&#34;&gt;Create ceph cluster resource pool on master node&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;ceph osd pool creae pvepool1 &lt;span style=&#34;color:#f60&#34;&gt;128&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;128&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;copy-storage-id-and-key-to-the-right-position&#34;&gt;copy storage ID and key to the right position&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Run the command on master node.&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /etc/pve/priv/
+mkdir ceph
+cp /etc/ceph/ceph.client.admin.keyring ceph/my-ceph-storage.keyring&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;check-ceph-cluster-status&#34;&gt;Check ceph cluster status&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;ceph -s&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;create-osd-on-proxmox-ve-portal&#34;&gt;Create OSD on proxmox ve portal&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;your can access portal on each node&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://192.168.0.85/8006&#34;&gt;https://192.168.0.&lt;sup&gt;85&lt;/sup&gt;&amp;frasl;&lt;sub&gt;8006&lt;/sub&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://192.168.0.86/8006&#34;&gt;https://192.168.0.&lt;sup&gt;86&lt;/sup&gt;&amp;frasl;&lt;sub&gt;8006&lt;/sub&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://192.168.0.87/8006&#34;&gt;https://192.168.0.&lt;sup&gt;87&lt;/sup&gt;&amp;frasl;&lt;sub&gt;8006&lt;/sub&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create OSD.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;Datacenter&amp;rdquo; | &amp;ldquo;Storage&amp;rdquo; | &amp;ldquo;Add&amp;rdquo; | &amp;ldquo;RBD&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;setup-ha&#34;&gt;Setup HA&lt;/h2&gt;
+
+&lt;h3 id=&#34;create-vm-or-lxc-on-one-node&#34;&gt;Create vm or lxc on one node&lt;/h3&gt;
+
+&lt;p&gt;Create a VM or LXC on one node and run it.&lt;/p&gt;
+
+&lt;h3 id=&#34;setup-the-vm-or-lxc-in-ha-mode&#34;&gt;Setup the vm or lxc in HA mode&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;Datacenter&amp;rdquo; | &amp;ldquo;HA&amp;rdquo; | &amp;ldquo;Resources&amp;rdquo; | &amp;ldquo;Add&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Add: Resource:Container/Virtual Machine&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;|Name | value|
+ |&amp;mdash; |&amp;mdash;|
+ |VM:  |${VM-you-created} |
+ |Max Restart: | 1 |
+ |Max Relocate: | 1 |
+ |Group | |
+ |request State: | started|&lt;/p&gt;
+
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://pve.proxmox.com/wiki/High_Availability_Cluster&#34;&gt;High Availability Cluster&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pve.proxmox.com/wiki/Proxmox_VE_2.0_Cluster&#34;&gt;Proxmox VE 2.0 Cluster&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.kclouder.cn/proxmoxceph/&#34;&gt;PROXMOX+CEPH TO BUILD HCI&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
       
     </item>
