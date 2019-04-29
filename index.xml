@@ -2104,7 +2104,7 @@ cat &amp;gt;&amp;gt; /etc/environment &lt;span style=&#34;color:#c30&#34;&gt;&am
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#change pve 5.x update source list&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/apt/sources.list
 
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#change ceph source list&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#change ceph source list to utsc mirrors&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/apt/sources.list
 
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# add key&lt;/span&gt;
@@ -2134,6 +2134,12 @@ nano proxmoxlib.js
 
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#restart pveproxy.service&lt;/span&gt;
 systemctl restart pveproxy.service&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;remove-ceph-sourcelist&#34;&gt;Remove ceph sourcelist&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Delete Enterprise subscription.&lt;/span&gt;
+rm -rf /etc/apt/sources.list.d/pve-enterprise.lis
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Delete proxmox ve offical ceph source.&lt;/span&gt; 
+rm -rf /etc/apt/sources.list.d/ceph.list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;q-a&#34;&gt;Q&amp;amp;A&lt;/h2&gt;
 
 &lt;ul&gt;
