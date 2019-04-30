@@ -25,7 +25,7 @@
 <meta name="author" content="Steve Dong" />
   <meta name="description" content=" How to build a kms server Option 1: docker mode docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername  Option 2: docker compose docker-compose.yml
 version:&amp;#39;3&amp;#39;services:frontend:image:luodaoyi/kms-servercontainer_name:mykmsports:-1688:1688restart:always docker-compose start the container
-docker-compose up -d Reference  blog  " />
+docker-compose up -d Active Script echo &amp;#34;To active office&amp;#34; cd &amp;#34;%programfiles%\Microsoft Office\Office16&amp;#34; cscript ospp.vbs /sethst:xx.xx.xx.xx cscript ospp.vbs /act echo &amp;#34;to active windows&amp;#34; slmgr /skms xxx.xxx.xxx.xxx slmgr /ato Reference  blog  " />
 
   <meta name="keywords" content="network, devops, sdn, system Administation" />
 
@@ -62,7 +62,7 @@ docker-compose up -d Reference  blog  " />
 <meta property="og:title" content="How to Build a Kms Server" />
 <meta property="og:description" content=" How to build a kms server Option 1: docker mode docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername  Option 2: docker compose docker-compose.yml
 version:&#39;3&#39;services:frontend:image:luodaoyi/kms-servercontainer_name:mykmsports:-1688:1688restart:always docker-compose start the container
-docker-compose up -d Reference  blog  " />
+docker-compose up -d Active Script echo &#34;To active office&#34; cd &#34;%programfiles%\Microsoft Office\Office16&#34; cscript ospp.vbs /sethst:xx.xx.xx.xx cscript ospp.vbs /act echo &#34;to active windows&#34; slmgr /skms xxx.xxx.xxx.xxx slmgr /ato Reference  blog  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/how-to-build-a-kms-server/" />
 <meta property="article:published_time" content="2019-04-11T00:17:37&#43;08:00"/>
@@ -71,12 +71,12 @@ docker-compose up -d Reference  blog  " />
 <meta itemprop="name" content="How to Build a Kms Server">
 <meta itemprop="description" content=" How to build a kms server Option 1: docker mode docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername  Option 2: docker compose docker-compose.yml
 version:&#39;3&#39;services:frontend:image:luodaoyi/kms-servercontainer_name:mykmsports:-1688:1688restart:always docker-compose start the container
-docker-compose up -d Reference  blog  ">
+docker-compose up -d Active Script echo &#34;To active office&#34; cd &#34;%programfiles%\Microsoft Office\Office16&#34; cscript ospp.vbs /sethst:xx.xx.xx.xx cscript ospp.vbs /act echo &#34;to active windows&#34; slmgr /skms xxx.xxx.xxx.xxx slmgr /ato Reference  blog  ">
 
 
 <meta itemprop="datePublished" content="2019-04-11T00:17:37&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-11T00:17:37&#43;08:00" />
-<meta itemprop="wordCount" content="40">
+<meta itemprop="wordCount" content="64">
 
 
 
@@ -85,7 +85,7 @@ docker-compose up -d Reference  blog  ">
 <meta name="twitter:title" content="How to Build a Kms Server"/>
 <meta name="twitter:description" content=" How to build a kms server Option 1: docker mode docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername  Option 2: docker compose docker-compose.yml
 version:&#39;3&#39;services:frontend:image:luodaoyi/kms-servercontainer_name:mykmsports:-1688:1688restart:always docker-compose start the container
-docker-compose up -d Reference  blog  "/>
+docker-compose up -d Active Script echo &#34;To active office&#34; cd &#34;%programfiles%\Microsoft Office\Office16&#34; cscript ospp.vbs /sethst:xx.xx.xx.xx cscript ospp.vbs /act echo &#34;to active windows&#34; slmgr /skms xxx.xxx.xxx.xxx slmgr /ato Reference  blog  "/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -381,6 +381,7 @@ if (!doNotTrack) {
 <ul>
 <li><a href="#option-1-docker-mode">Option 1: docker mode</a></li>
 <li><a href="#option-2-docker-compose">Option 2: docker compose</a></li>
+<li><a href="#active-script">Active Script</a></li>
 <li><a href="#reference">Reference</a></li>
 </ul></li>
 </ul>
@@ -416,6 +417,15 @@ if (!doNotTrack) {
 </span><span style="color:#bbb"> </span></code></pre></div>
 <p>docker-compose start the container</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> docker-compose up -d</code></pre></div>
+<h2 id="active-script">Active Script</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#069;font-weight:bold">echo</span> <span style="color:#c30">&#34;To active office&#34;</span>
+<span style="color:#069;font-weight:bold">cd</span> <span style="color:#c30">&#34;</span><span style="color:#033">%programfiles%</span><span style="color:#c30">\Microsoft Office\Office16&#34;</span>
+cscript ospp.vbs /sethst:xx.xx.xx.xx
+cscript ospp.vbs /act
+
+<span style="color:#069;font-weight:bold">echo</span> <span style="color:#c30">&#34;to active windows&#34;</span>
+slmgr /skms xxx.xxx.xxx.xxx
+slmgr /ato</code></pre></div>
 <h2 id="reference">Reference</h2>
 
 <ul>
