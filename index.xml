@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 29 Apr 2019 21:43:15 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 01 May 2019 17:57:17 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -27,6 +27,122 @@
 &lt;li&gt;Love cooking.&lt;/li&gt;
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>How to Install Centos 7 on Proxmox Ve</title>
+      <link>https://blog.stevedong.com/post/how-to-install-centos-7-on-proxmox-ve/</link>
+      <pubDate>Wed, 01 May 2019 17:57:17 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-install-centos-7-on-proxmox-ve/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-install-centos-7-on-proxmox-ve&#34;&gt;How to Install CentOS 7 on Proxmox VE&lt;/h1&gt;
+
+&lt;p&gt;Today I want to deploy kubernetes ,follow the book, it need to install centos 7.
+Okay! Deploy a centos 7 firstly.&lt;/p&gt;
+
+&lt;h2 id=&#34;install-centos-7&#34;&gt;Install Centos 7&lt;/h2&gt;
+
+&lt;h3 id=&#34;download-latest-image-of-centos-7&#34;&gt;Download latest image of centos 7&lt;/h3&gt;
+
+&lt;p&gt;Download CentOS 7 images from mirrors.ustc.edu.cn&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Download centos 7 images form here:&lt;a href=&#34;http://mirrors.ustc.edu.cn/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-Minimal-1810.iso&#34;&gt;CentOS-7-x86_64-Minimal-1810.iso&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;install-centos-7-1&#34;&gt;Install Centos 7&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Uploading this images to datatstore of pve&lt;/li&gt;
+&lt;li&gt;Create a centos 7 vm on pve&lt;/li&gt;
+&lt;li&gt;boot and install centos step by step.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;setup-centos-7&#34;&gt;Setup Centos 7&lt;/h2&gt;
+
+&lt;h3 id=&#34;change-yum-update-repo&#34;&gt;Change yum update repo&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+
+&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# CentOS-Base.repo
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;#
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# The mirror system uses the connecting IP address of the client and the
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# update status of each mirror to pick mirrors that are updated to and
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# geographically close to the client.  You should use this for CentOS updates
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# unless you are manually picking other mirrors.
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;#
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# If the mirrorlist= does not work for you, as a fall back you can try the
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# remarked out baseurl= line instead.
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;#
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;#
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;[base]
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;name=CentOS-&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$releasever&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt; - Base
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;#mirrorlist=http://mirrorlist.centos.org/?release=&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$releasever&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;amp;arch=&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$basearch&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;amp;repo=os
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;baseurl=https://mirrors.ustc.edu.cn/centos/&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$releasever&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;/os/&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$basearch&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;/
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;gpgcheck=1
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;#released updates
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;[updates]
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;name=CentOS-&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$releasever&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt; - Updates
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# mirrorlist=http://mirrorlist.centos.org/?release=&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$releasever&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;amp;arch=&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$basearch&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;amp;repo=updates
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;baseurl=https://mirrors.ustc.edu.cn/centos/&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$releasever&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;/updates/&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$basearch&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;/
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;gpgcheck=1
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;#additional packages that may be useful
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;[extras]
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;name=CentOS-&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$releasever&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt; - Extras
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# mirrorlist=http://mirrorlist.centos.org/?release=&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$releasever&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;amp;arch=&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$basearch&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;amp;repo=extras
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;baseurl=https://mirrors.ustc.edu.cn/centos/&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$releasever&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;/extras/&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$basearch&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;/
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;gpgcheck=1
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;#additional packages that extend functionality of existing packages
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;[centosplus]
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;name=CentOS-&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$releasever&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt; - Plus
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# mirrorlist=http://mirrorlist.centos.org/?release=&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$releasever&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;amp;arch=&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$basearch&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;amp;repo=centosplus
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;baseurl=https://mirrors.ustc.edu.cn/centos/&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$releasever&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;/centosplus/&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$basearch&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;/
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;gpgcheck=1
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;enabled=0
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt; &amp;gt; /etc/yum.repos.d/CentOS-Base.repo &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;install-epel-and-change-to-mirrors-ustc-edu-cn&#34;&gt;Install epel and change to mirrors.ustc.edu.cn&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo yum install -y epel-release
+sudo sed -e &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s!^mirrorlist=!#mirrorlist=!g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;         -e &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s!^#baseurl=!baseurl=!g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;         -e &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s!//download\.fedoraproject\.org/pub!//mirrors.ustc.edu.cn!g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;         -e &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s!http://mirrors\.ustc!https://mirrors.ustc!g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;         -i /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel-testing.repo
+
+
+yum makecache&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;install-software&#34;&gt;Install software&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;yum install git vim zsh qemu-guest-agent  curl wget &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;setup-vim&#34;&gt;Setup vim&lt;/h3&gt;
+
+&lt;p&gt;Please follow this article to setup vim:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.stevedong.com/post/how-to-setup-vim/&#34;&gt;How to Setup Vim&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;install-oh-my-zsh&#34;&gt;Install oh-my-zsh&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/robbyrussell/oh-my-zsh&#34;&gt;robbyrussell/oh-my-zsh&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://mirrors.ustc.edu.cn/help/epel.html&#34;&gt;EPEL repo usergude&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.tecmint.com/how-to-enable-epel-repository-for-rhel-centos-6-5/&#34;&gt;How to Enable EPEL Repository for RHEL/CentOS 7.x/6.x/5.x
+&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://mirrors.ustc.edu.cn/help/centos.html&#34;&gt;CentOS 源使用帮助&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
       
     </item>
