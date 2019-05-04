@@ -73,7 +73,7 @@ Install snmpd on proxmox ve apt update apt install -y snmpd Configure snmpd.conf
 
 <meta itemprop="datePublished" content="2019-04-27T20:29:36&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-27T20:29:36&#43;08:00" />
-<meta itemprop="wordCount" content="164">
+<meta itemprop="wordCount" content="205">
 
 
 
@@ -380,6 +380,10 @@ if (!doNotTrack) {
 <li><a href="#firewall-allow-lan-can-access">Firewall allow lan can access</a></li>
 <li><a href="#restart-snmpd-service-to-apply-settings">Restart snmpd service to apply settings</a></li>
 <li><a href="#testing">Testing</a></li>
+<li><a href="#qa">QA</a>
+<ul>
+<li><a href="#error-on-subcontainer-ia-addr-insert-1">error on subcontainer &lsquo;ia_addr&rsquo; insert (-1)</a></li>
+</ul></li>
 <li><a href="#reference">Reference</a></li>
 </ul></li>
 </ul>
@@ -429,10 +433,19 @@ apt install -y snmpd</code></pre></div>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart snmpd</code></pre></div>
 <h2 id="testing">Testing</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">snmpwalk -c OkayWorld -v1 <span style="color:#033">$servername</span>$ SNMPv2-MIB::sysDescr.0</code></pre></div>
+<h2 id="qa">QA</h2>
+
+<h3 id="error-on-subcontainer-ia-addr-insert-1">error on subcontainer &lsquo;ia_addr&rsquo; insert (-1)</h3>
+
+<p>After systemd migration starting from Debian 9 Stretch, you need to change <code>/lib/systemd/system/snmpd.service</code> file, not <code>/etc/default/snmpd</code> file:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i <span style="color:#c30">&#34;s|-Lsd|-LS6d|&#34;</span> /lib/systemd/system/snmpd.service
+systemctl daemon-reload
+systemctl restart  snmpd</code></pre></div>
 <h2 id="reference">Reference</h2>
 
 <ul>
 <li><a href="https://www.svennd.be/how-to-install-snmp-service-on-proxmox/">how to install SNMP service on Proxmox</a></li>
+<li><a href="https://linux-tips.com/t/how-can-i-disable-snmpd-ia-addr-insert-messages/281/2">How can I disable snmpd ia_addr insert messages?</a></li>
 </ul>
 
     </div>
