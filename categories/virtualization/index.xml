@@ -6,10 +6,19 @@
     <description>Recent content in virtualization on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 29 Apr 2019 10:56:16 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 07 May 2019 12:06:58 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/categories/virtualization/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Import Disk to Ceph</title>
+      <link>https://blog.stevedong.com/post/proxmox-how-to-import-disk-to-ceph/</link>
+      <pubDate>Tue, 07 May 2019 12:06:58 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/proxmox-how-to-import-disk-to-ceph/</guid>
+      <description>Convert Disk to RAW #qcow2 qemu-img convert -f qcow2 xxx.qcow2 -O raw xxxx.raw #vmware qemu-img convert -f vmdk xxx-flat.vmdk -O raw xxx.raw Import RAW to ceph rbd list --pool ${ceph-pool-name} rbd import ./xxx.raw --pool ${ceph-pool-name} rbd rm ${old-file-rm} --pool ${ceph-pool-name] rbd mv xxx.raw ${old-file-rm) rbd list --poll ${ceph-pool-name} Reference 将qcow2格式的虚拟机文件导入到ceph</description>
+    </item>
     
     <item>
       <title>Build Hyper-Converged Infrastructure With Ceph on PVE</title>

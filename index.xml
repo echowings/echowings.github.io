@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 01 May 2019 19:14:51 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 07 May 2019 12:06:58 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -26,6 +26,36 @@
 &lt;li&gt;Love coding.&lt;/li&gt;
 &lt;li&gt;Love cooking.&lt;/li&gt;
 &lt;li&gt;Love hacking.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>How to Import Disk to Ceph</title>
+      <link>https://blog.stevedong.com/post/proxmox-how-to-import-disk-to-ceph/</link>
+      <pubDate>Tue, 07 May 2019 12:06:58 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/proxmox-how-to-import-disk-to-ceph/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;convert-disk-to-raw&#34;&gt;Convert Disk to RAW&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#qcow2&lt;/span&gt;
+qemu-img convert  -f qcow2  xxx.qcow2 -O raw xxxx.raw
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#vmware&lt;/span&gt;
+qemu-img convert -f vmdk xxx-flat.vmdk -O raw xxx.raw&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;import-raw-to-ceph&#34;&gt;Import RAW to ceph&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;rbd list --pool &lt;span style=&#34;color:#a00&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;ceph&lt;/span&gt;-pool-name&lt;span style=&#34;color:#a00&#34;&gt;}&lt;/span&gt;
+rbd import ./xxx.raw --pool &lt;span style=&#34;color:#a00&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;ceph&lt;/span&gt;-pool-name&lt;span style=&#34;color:#a00&#34;&gt;}&lt;/span&gt;
+rbd rm &lt;span style=&#34;color:#a00&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;old&lt;/span&gt;-file-rm&lt;span style=&#34;color:#a00&#34;&gt;}&lt;/span&gt; --pool &lt;span style=&#34;color:#a00&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;ceph&lt;/span&gt;-pool-name]
+rbd mv xxx.raw &lt;span style=&#34;color:#a00&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;old&lt;/span&gt;-file-rm)
+
+rbd list --poll &lt;span style=&#34;color:#a00&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;ceph&lt;/span&gt;-pool-name&lt;span style=&#34;color:#a00&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/Packet886/article/details/80522425&#34;&gt;将qcow2格式的虚拟机文件导入到ceph池里&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
       

@@ -62,7 +62,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
 
-<meta property="og:updated_time" content="2019-05-01T19:14:51&#43;08:00"/>
+<meta property="og:updated_time" content="2019-05-07T12:06:58&#43;08:00"/>
 
 <meta itemprop="name" content="Steve Dong - A System Administrator&#39;s Blog">
 <meta itemprop="description" content="A System Administrator&#39;s Blog.">
@@ -335,6 +335,40 @@ if (!doNotTrack) {
   <section id="posts" class="posts">
     
     
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/proxmox-how-to-import-disk-to-ceph/">How to Import Disk to Ceph</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-05-07" class="post-time">
+        2019-05-07
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      Convert Disk to RAW #qcow2 qemu-img convert -f qcow2 xxx.qcow2 -O raw xxxx.raw #vmware qemu-img convert -f vmdk xxx-flat.vmdk -O raw xxx.raw Import RAW to ceph rbd list --pool ${ceph-pool-name} rbd import ./xxx.raw --pool ${ceph-pool-name} rbd rm ${old-file-rm} --pool ${ceph-pool-name] rbd mv xxx.raw ${old-file-rm) rbd list --poll ${ceph-pool-name} Reference 将qcow2格式的虚拟机文件导入到ceph
+    </div>
+    <div class="read-more">
+      <a href="/post/proxmox-how-to-import-disk-to-ceph/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
     
       <article class="post bg-white">
   <header class="post-header">
@@ -824,40 +858,6 @@ docker-compose up -d Active Script echo &#34;To active office&#34; cd &#34;%prog
     </div>
     <div class="read-more">
       <a href="/post/how-to-setup-oh-my-zsh/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/how-to-setup-vim/">How to Setup Vim</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-04-09" class="post-time">
-        2019-04-09
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/vim/"> vim </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to setup vim Install vundle vundle is a plugin manage tools for vim git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim Edit vim configure file cat &gt; ~/.vimrc &lt;&lt;EOF set nocompatible &#34; be iMproved, required filetype off &#34; required syntax on &#34; set the runtime path to include Vundle and initialize set rtp+=~/.vim/bundle/Vundle.vim call vundle#begin() &#34; alternatively, pass a path where Vundle should install plugins &#34;call vundle#begin(&#39;~/some/path/here&#39;) &#34; let Vundle manage Vundle, required
-    </div>
-    <div class="read-more">
-      <a href="/post/how-to-setup-vim/" class="read-more-link">Read more</a>
     </div>
     
   </div>

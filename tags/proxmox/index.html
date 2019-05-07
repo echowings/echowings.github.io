@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Install Kubernetes on CentOS7 - Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>proxmox · Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,9 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content=" Install Kubernetes on Centos 7 Disable and stop firewall # Disable firewall service systemctl disable firewalld # Stop firewall service systemctl stop firewalld Install etcd and kubernetes Install etcd and kubernetes and it will also install docker.
-yum install -y etcd kubernetes Start service in order systemctl start etcd systemctl start docker systemctl start kube-apiserver systemctl start kube-controller-manager systemctl start kube-scheduler systemctl start kubelet systemctl start start kube-proxy" />
-
+  <meta name="description" content="A System Administrator&#39;s Blog." />
   <meta name="keywords" content="network, devops, sdn, system Administation" />
 
 
@@ -36,7 +34,8 @@ yum install -y etcd kubernetes Start service in order systemctl start etcd syste
 <meta name="generator" content="Hugo 0.55.4" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/post/install-kubernetes-on-centos7/" />
+<link rel="canonical" href="https://blog.stevedong.com/tags/proxmox/" />
+<link href="%7balternate%20%7bRSS%20application/rss&#43;xml%20%20index%20alternate%20%20false%20false%20true%20false%20false%7d%20/tags/proxmox/index.xml%20https://blog.stevedong.com/tags/proxmox/index.xml%7d" rel="alternate" type="application/rss+xml" title="Steve Dong - A System Administrator&#39;s Blog" />
 
 
 
@@ -58,30 +57,19 @@ yum install -y etcd kubernetes Start service in order systemctl start etcd syste
 
 
 
-<meta property="og:title" content="Install Kubernetes on CentOS7" />
-<meta property="og:description" content=" Install Kubernetes on Centos 7 Disable and stop firewall # Disable firewall service systemctl disable firewalld # Stop firewall service systemctl stop firewalld Install etcd and kubernetes Install etcd and kubernetes and it will also install docker.
-yum install -y etcd kubernetes Start service in order systemctl start etcd systemctl start docker systemctl start kube-apiserver systemctl start kube-controller-manager systemctl start kube-scheduler systemctl start kubelet systemctl start start kube-proxy" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/install-kubernetes-on-centos7/" />
-<meta property="article:published_time" content="2019-05-01T19:14:51&#43;08:00"/>
-<meta property="article:modified_time" content="2019-05-01T19:14:51&#43;08:00"/>
+<meta property="og:title" content="proxmox" />
+<meta property="og:description" content="A System Administrator&#39;s Blog." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://blog.stevedong.com/tags/proxmox/" />
 
-<meta itemprop="name" content="Install Kubernetes on CentOS7">
-<meta itemprop="description" content=" Install Kubernetes on Centos 7 Disable and stop firewall # Disable firewall service systemctl disable firewalld # Stop firewall service systemctl stop firewalld Install etcd and kubernetes Install etcd and kubernetes and it will also install docker.
-yum install -y etcd kubernetes Start service in order systemctl start etcd systemctl start docker systemctl start kube-apiserver systemctl start kube-controller-manager systemctl start kube-scheduler systemctl start kubelet systemctl start start kube-proxy">
+<meta property="og:updated_time" content="2019-05-07T12:06:58&#43;08:00"/>
 
+<meta itemprop="name" content="proxmox">
+<meta itemprop="description" content="A System Administrator&#39;s Blog.">
 
-<meta itemprop="datePublished" content="2019-05-01T19:14:51&#43;08:00" />
-<meta itemprop="dateModified" content="2019-05-01T19:14:51&#43;08:00" />
-<meta itemprop="wordCount" content="68">
-
-
-
-<meta itemprop="keywords" content="k8s,devops,centos," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Install Kubernetes on CentOS7"/>
-<meta name="twitter:description" content=" Install Kubernetes on Centos 7 Disable and stop firewall # Disable firewall service systemctl disable firewalld # Stop firewall service systemctl stop firewalld Install etcd and kubernetes Install etcd and kubernetes and it will also install docker.
-yum install -y etcd kubernetes Start service in order systemctl start etcd systemctl start docker systemctl start kube-apiserver systemctl start kube-controller-manager systemctl start kube-scheduler systemctl start kubelet systemctl start start kube-proxy"/>
+<meta name="twitter:title" content="proxmox"/>
+<meta name="twitter:description" content="A System Administrator&#39;s Blog."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -343,172 +331,53 @@ if (!doNotTrack) {
     <main id="main" class="main bg-llight">
       <div class="content-wrapper">
         <div id="content" class="content container">
-          <article class="post bg-white">
-    
-    <header class="post-header">
-      <h1 class="post-title">Install Kubernetes on CentOS7</h1>
-      
-      <div class="post-meta">
-        <time datetime="2019-05-01" class="post-time">
-          2019-05-01
-        </time>
-        <div class="post-category">
-            <a href="https://blog.stevedong.com/categories/devops/"> devops </a>
-            
-          </div>
-        
-
-        
-        
-
-        
-        
-      </div>
-    </header>
-
-    
-    
-<div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Table of Contents</h2>
-  <div class="post-toc-content">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#install-kubernetes-on-centos-7">Install Kubernetes on Centos 7</a>
-<ul>
-<li><a href="#disable-and-stop-firewall">Disable and stop firewall</a></li>
-<li><a href="#install-etcd-and-kubernetes">Install etcd and kubernetes</a></li>
-<li><a href="#start-service-in-order">Start service in order</a></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
-
-    
-    <div class="post-content">
-      
-
-<h1 id="install-kubernetes-on-centos-7">Install Kubernetes on Centos 7</h1>
-
-<h2 id="disable-and-stop-firewall">Disable and stop firewall</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># Disable firewall service</span>
-systemctl disable firewalld
-
-<span style="color:#09f;font-style:italic"># Stop firewall service</span>
-systemctl stop firewalld</code></pre></div>
-<h2 id="install-etcd-and-kubernetes">Install etcd and kubernetes</h2>
-
-<p>Install etcd and kubernetes and it will also install docker.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">yum install -y etcd kubernetes</code></pre></div>
-<h2 id="start-service-in-order">Start service in order</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">systemctl start etcd
-systemctl start docker
-systemctl start kube-apiserver
-systemctl start kube-controller-manager
-systemctl start kube-scheduler
-systemctl start kubelet
-systemctl start start kube-proxy</code></pre></div>
-    </div>
-
-    
-    
-<div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Steve Dong</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">2019-05-01</span>
-  </p>
-  
-  <p class="copyright-item">
-    <span class="item-title">License</span>
-    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
-  </p>
-</div>
-
-
-    
-    
-<div class="post-reward">
-  <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">Reward</label>
-  <div class="qr-code">
-    
-    
-    
-  </div>
-</div>
-
-    <footer class="post-footer">
-      <div class="post-tags">
-          <a href="https://blog.stevedong.com/tags/k8s/">k8s</a>
-          <a href="https://blog.stevedong.com/tags/devops/">devops</a>
-          <a href="https://blog.stevedong.com/tags/centos/">centos</a>
           
-        </div>
 
-      
-      <nav class="post-nav">
-        
-          <a class="prev" href="/post/proxmox-how-to-import-disk-to-ceph/">
-            
-            <i class="iconfont">
-              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-            </i>
-            <span class="prev-text nav-default">How to Import Disk to Ceph</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        
-          <a class="next" href="/post/how-to-install-centos-7-on-proxmox-ve/">
-            <span class="next-text nav-default">How to Install Centos 7 on Proxmox VE</span>
-            <span class="prev-text nav-mobile">Next</span>
-            
-            <i class="iconfont">
-              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
-</svg>
-
-            </i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-
-  
-  
-
-  
-  
-
-  
-  
-    <div class="post bg-white">
-      <script src="https://utteranc.es/client.js"
-            repo= "echowings/blogcomment"
-            issue-term="pathname"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-      </script>
-    </div>
-  
-
-  
-
-  
-
-  
+<section id="archive" class="archive">
   
     
+      <div class="archive-title tag">
+        <h2 class="archive-name">Tag: proxmox</h2>
+      </div>
+    
+  
+
+  
+    <div class="archive-post">
+      <time datetime="2019-05-07" class="archive-post-time">
+        2019-05-07
+      </time>
+      <span class="archive-post-title">
+        <a href="/post/proxmox-how-to-import-disk-to-ceph/" class="archive-post-link">
+          How to Import Disk to Ceph
+        </a>
+      </span>
+    </div>
+  
+</section>
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
 
 
 

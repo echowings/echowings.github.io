@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Install Kubernetes on CentOS7 - Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>How to Import Disk to Ceph - Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,8 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content=" Install Kubernetes on Centos 7 Disable and stop firewall # Disable firewall service systemctl disable firewalld # Stop firewall service systemctl stop firewalld Install etcd and kubernetes Install etcd and kubernetes and it will also install docker.
-yum install -y etcd kubernetes Start service in order systemctl start etcd systemctl start docker systemctl start kube-apiserver systemctl start kube-controller-manager systemctl start kube-scheduler systemctl start kubelet systemctl start start kube-proxy" />
+  <meta name="description" content="Convert Disk to RAW #qcow2 qemu-img convert -f qcow2 xxx.qcow2 -O raw xxxx.raw #vmware qemu-img convert -f vmdk xxx-flat.vmdk -O raw xxx.raw Import RAW to ceph rbd list --pool ${ceph-pool-name} rbd import ./xxx.raw --pool ${ceph-pool-name} rbd rm ${old-file-rm} --pool ${ceph-pool-name] rbd mv xxx.raw ${old-file-rm) rbd list --poll ${ceph-pool-name} Reference 将qcow2格式的虚拟机文件导入到ceph" />
 
   <meta name="keywords" content="network, devops, sdn, system Administation" />
 
@@ -36,7 +35,7 @@ yum install -y etcd kubernetes Start service in order systemctl start etcd syste
 <meta name="generator" content="Hugo 0.55.4" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/post/install-kubernetes-on-centos7/" />
+<link rel="canonical" href="https://blog.stevedong.com/post/proxmox-how-to-import-disk-to-ceph/" />
 
 
 
@@ -58,30 +57,27 @@ yum install -y etcd kubernetes Start service in order systemctl start etcd syste
 
 
 
-<meta property="og:title" content="Install Kubernetes on CentOS7" />
-<meta property="og:description" content=" Install Kubernetes on Centos 7 Disable and stop firewall # Disable firewall service systemctl disable firewalld # Stop firewall service systemctl stop firewalld Install etcd and kubernetes Install etcd and kubernetes and it will also install docker.
-yum install -y etcd kubernetes Start service in order systemctl start etcd systemctl start docker systemctl start kube-apiserver systemctl start kube-controller-manager systemctl start kube-scheduler systemctl start kubelet systemctl start start kube-proxy" />
+<meta property="og:title" content="How to Import Disk to Ceph" />
+<meta property="og:description" content="Convert Disk to RAW #qcow2 qemu-img convert -f qcow2 xxx.qcow2 -O raw xxxx.raw #vmware qemu-img convert -f vmdk xxx-flat.vmdk -O raw xxx.raw Import RAW to ceph rbd list --pool ${ceph-pool-name} rbd import ./xxx.raw --pool ${ceph-pool-name} rbd rm ${old-file-rm} --pool ${ceph-pool-name] rbd mv xxx.raw ${old-file-rm) rbd list --poll ${ceph-pool-name} Reference 将qcow2格式的虚拟机文件导入到ceph" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/install-kubernetes-on-centos7/" />
-<meta property="article:published_time" content="2019-05-01T19:14:51&#43;08:00"/>
-<meta property="article:modified_time" content="2019-05-01T19:14:51&#43;08:00"/>
+<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-how-to-import-disk-to-ceph/" />
+<meta property="article:published_time" content="2019-05-07T12:06:58&#43;08:00"/>
+<meta property="article:modified_time" content="2019-05-07T12:06:58&#43;08:00"/>
 
-<meta itemprop="name" content="Install Kubernetes on CentOS7">
-<meta itemprop="description" content=" Install Kubernetes on Centos 7 Disable and stop firewall # Disable firewall service systemctl disable firewalld # Stop firewall service systemctl stop firewalld Install etcd and kubernetes Install etcd and kubernetes and it will also install docker.
-yum install -y etcd kubernetes Start service in order systemctl start etcd systemctl start docker systemctl start kube-apiserver systemctl start kube-controller-manager systemctl start kube-scheduler systemctl start kubelet systemctl start start kube-proxy">
-
-
-<meta itemprop="datePublished" content="2019-05-01T19:14:51&#43;08:00" />
-<meta itemprop="dateModified" content="2019-05-01T19:14:51&#43;08:00" />
-<meta itemprop="wordCount" content="68">
+<meta itemprop="name" content="How to Import Disk to Ceph">
+<meta itemprop="description" content="Convert Disk to RAW #qcow2 qemu-img convert -f qcow2 xxx.qcow2 -O raw xxxx.raw #vmware qemu-img convert -f vmdk xxx-flat.vmdk -O raw xxx.raw Import RAW to ceph rbd list --pool ${ceph-pool-name} rbd import ./xxx.raw --pool ${ceph-pool-name} rbd rm ${old-file-rm} --pool ${ceph-pool-name] rbd mv xxx.raw ${old-file-rm) rbd list --poll ${ceph-pool-name} Reference 将qcow2格式的虚拟机文件导入到ceph">
 
 
+<meta itemprop="datePublished" content="2019-05-07T12:06:58&#43;08:00" />
+<meta itemprop="dateModified" content="2019-05-07T12:06:58&#43;08:00" />
+<meta itemprop="wordCount" content="72">
 
-<meta itemprop="keywords" content="k8s,devops,centos," />
+
+
+<meta itemprop="keywords" content="proxmox,ceph," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Install Kubernetes on CentOS7"/>
-<meta name="twitter:description" content=" Install Kubernetes on Centos 7 Disable and stop firewall # Disable firewall service systemctl disable firewalld # Stop firewall service systemctl stop firewalld Install etcd and kubernetes Install etcd and kubernetes and it will also install docker.
-yum install -y etcd kubernetes Start service in order systemctl start etcd systemctl start docker systemctl start kube-apiserver systemctl start kube-controller-manager systemctl start kube-scheduler systemctl start kubelet systemctl start start kube-proxy"/>
+<meta name="twitter:title" content="How to Import Disk to Ceph"/>
+<meta name="twitter:description" content="Convert Disk to RAW #qcow2 qemu-img convert -f qcow2 xxx.qcow2 -O raw xxxx.raw #vmware qemu-img convert -f vmdk xxx-flat.vmdk -O raw xxx.raw Import RAW to ceph rbd list --pool ${ceph-pool-name} rbd import ./xxx.raw --pool ${ceph-pool-name} rbd rm ${old-file-rm} --pool ${ceph-pool-name] rbd mv xxx.raw ${old-file-rm) rbd list --poll ${ceph-pool-name} Reference 将qcow2格式的虚拟机文件导入到ceph"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -346,14 +342,14 @@ if (!doNotTrack) {
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">Install Kubernetes on CentOS7</h1>
+      <h1 class="post-title">How to Import Disk to Ceph</h1>
       
       <div class="post-meta">
-        <time datetime="2019-05-01" class="post-time">
-          2019-05-01
+        <time datetime="2019-05-07" class="post-time">
+          2019-05-07
         </time>
         <div class="post-category">
-            <a href="https://blog.stevedong.com/categories/devops/"> devops </a>
+            <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
             
           </div>
         
@@ -373,11 +369,11 @@ if (!doNotTrack) {
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#install-kubernetes-on-centos-7">Install Kubernetes on Centos 7</a>
+<li>
 <ul>
-<li><a href="#disable-and-stop-firewall">Disable and stop firewall</a></li>
-<li><a href="#install-etcd-and-kubernetes">Install etcd and kubernetes</a></li>
-<li><a href="#start-service-in-order">Start service in order</a></li>
+<li><a href="#convert-disk-to-raw">Convert Disk to RAW</a></li>
+<li><a href="#import-raw-to-ceph">Import RAW to ceph</a></li>
+<li><a href="#reference">Reference</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -388,26 +384,24 @@ if (!doNotTrack) {
     <div class="post-content">
       
 
-<h1 id="install-kubernetes-on-centos-7">Install Kubernetes on Centos 7</h1>
+<h2 id="convert-disk-to-raw">Convert Disk to RAW</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic">#qcow2</span>
+qemu-img convert  -f qcow2  xxx.qcow2 -O raw xxxx.raw
+<span style="color:#09f;font-style:italic">#vmware</span>
+qemu-img convert -f vmdk xxx-flat.vmdk -O raw xxx.raw</code></pre></div>
+<h2 id="import-raw-to-ceph">Import RAW to ceph</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rbd list --pool <span style="color:#a00">${</span><span style="color:#033">ceph</span>-pool-name<span style="color:#a00">}</span>
+rbd import ./xxx.raw --pool <span style="color:#a00">${</span><span style="color:#033">ceph</span>-pool-name<span style="color:#a00">}</span>
+rbd rm <span style="color:#a00">${</span><span style="color:#033">old</span>-file-rm<span style="color:#a00">}</span> --pool <span style="color:#a00">${</span><span style="color:#033">ceph</span>-pool-name]
+rbd mv xxx.raw <span style="color:#a00">${</span><span style="color:#033">old</span>-file-rm)
 
-<h2 id="disable-and-stop-firewall">Disable and stop firewall</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># Disable firewall service</span>
-systemctl disable firewalld
+rbd list --poll <span style="color:#a00">${</span><span style="color:#033">ceph</span>-pool-name<span style="color:#a00">}</span></code></pre></div>
+<h2 id="reference">Reference</h2>
 
-<span style="color:#09f;font-style:italic"># Stop firewall service</span>
-systemctl stop firewalld</code></pre></div>
-<h2 id="install-etcd-and-kubernetes">Install etcd and kubernetes</h2>
+<ul>
+<li><a href="https://blog.csdn.net/Packet886/article/details/80522425">将qcow2格式的虚拟机文件导入到ceph池里</a></li>
+</ul>
 
-<p>Install etcd and kubernetes and it will also install docker.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">yum install -y etcd kubernetes</code></pre></div>
-<h2 id="start-service-in-order">Start service in order</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">systemctl start etcd
-systemctl start docker
-systemctl start kube-apiserver
-systemctl start kube-controller-manager
-systemctl start kube-scheduler
-systemctl start kubelet
-systemctl start start kube-proxy</code></pre></div>
     </div>
 
     
@@ -419,7 +413,7 @@ systemctl start start kube-proxy</code></pre></div>
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">2019-05-01</span>
+    <span class="item-content">2019-05-07</span>
   </p>
   
   <p class="copyright-item">
@@ -443,31 +437,17 @@ systemctl start start kube-proxy</code></pre></div>
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="https://blog.stevedong.com/tags/k8s/">k8s</a>
-          <a href="https://blog.stevedong.com/tags/devops/">devops</a>
-          <a href="https://blog.stevedong.com/tags/centos/">centos</a>
+          <a href="https://blog.stevedong.com/tags/proxmox/">proxmox</a>
+          <a href="https://blog.stevedong.com/tags/ceph/">ceph</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/proxmox-how-to-import-disk-to-ceph/">
-            
-            <i class="iconfont">
-              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-            </i>
-            <span class="prev-text nav-default">How to Import Disk to Ceph</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
         
-          <a class="next" href="/post/how-to-install-centos-7-on-proxmox-ve/">
-            <span class="next-text nav-default">How to Install Centos 7 on Proxmox VE</span>
+          <a class="next" href="/post/install-kubernetes-on-centos7/">
+            <span class="next-text nav-default">Install Kubernetes on CentOS7</span>
             <span class="prev-text nav-mobile">Next</span>
             
             <i class="iconfont">
