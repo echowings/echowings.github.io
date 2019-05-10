@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.4" />
+<meta name="generator" content="Hugo 0.55.5" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/how-to-build-blog-with-hugo-on-github/" />
@@ -501,9 +501,11 @@ git submodule add --force -b <span style="color:#c30;font-weight:bold">\ </span>
 <li><p>Run hugo to generate your blog website.</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">    
 hugo server
-    </code></pre></div></li>
-
-<li><p>publish your website</p>
+    </code></pre></div>
+<ul>
+<li>publish your website
+<br /></li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    
 <span style="color:#366">cd</span> public
 git add.
@@ -517,31 +519,32 @@ git push origin master
 git add.
 git commit -m <span style="color:#c30">&#34;YOUR COMMIT MESSAGE&#34;</span>
 git push origin master
-    </code></pre></div></li>
-</ul>
-
+    </code></pre></div>
 <h3 id="add-a-comment">Add a comment</h3>
 
 <p>Since theme jane has support utterances, we just need to enable utterances apps in github and configure it in config.toml in hugo.</p>
 
 <ul>
 <li>Create a repo to storage comment. like “blogcomment”.</li>
-
-<li><p>enable utternaces apps.</p>
+<li>enable utternaces apps.</li>
+</ul>
 
 <ol>
 <li>click <a href="https://github.com/apps/utterances">utterances app</a></li>
 <li>Auth utterances to your github repo “blogcomment”.</li>
-</ol></li>
+</ol>
 
-<li><p>edit <code>blogs/config.toml</code> and append follow lines.</p></li>
+<ul>
+<li>edit <code>blogs/config.toml</code> and append follow lines.</li>
 </ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">	
- [params.utteranc]
-      enable = <span style="color:#069;font-weight:bold">true</span>
-      repo=<span style="color:#c30">&#34;echowings/blogcomment&#34;</span>
-      issueTerm=<span style="color:#c30">&#34;pathname&#34;</span>
-      </code></pre></div>
+[params.utteranc]
+  enable = <span style="color:#069;font-weight:bold">true</span>
+  repo=<span style="color:#c30">&#34;echowings/blogcomment&#34;</span>
+  issueTerm=<span style="color:#c30">&#34;pathname&#34;</span>
+      </code></pre></div></li>
+</ul>
+
 <h3 id="download-git-and-rebuild-blog-environment">Download git and rebuild blog environment</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">git pulll git@github.com:echowings/blogs.git
 

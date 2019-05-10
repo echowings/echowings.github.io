@@ -1909,11 +1909,11 @@ Stopping CT &lt;span style=&#34;color:#f60&#34;&gt;106&lt;/span&gt; &lt;span sty
 Stopping VM &lt;span style=&#34;color:#f60&#34;&gt;101&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;timeout&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;180&lt;/span&gt; seconds&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
 UPID:xa-sys-pve01:0036EA66:01992199:5CB98D6C:stopall::root@pam:&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
-&lt;li&gt;stop all the virtual machine with admin web.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;stop all the virtual machine with admin web.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt; bulk stop
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;bulk stop
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&#34;enable-nested-module-in-linux-kernel&#34;&gt;Enable nested module in linux kernel&lt;/h2&gt;
 
@@ -2379,12 +2379,11 @@ ENTRYPOINT [ &amp;#34;/srv/overture-linux-amd64&amp;#34;, &amp;#34;-c&amp;#34;, 
 &lt;p&gt;Ubuntu Chinese Language Support&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;编辑/etc/environment如下:
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;编辑/etc/environment如下:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;  vi /etc/environment
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;vi /etc/environment
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;添加如下:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;  &lt;span style=&#34;color:#033&#34;&gt;LC_ALL&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;en_US.UTF-8&amp;#34;&lt;/span&gt;
@@ -3128,7 +3127,7 @@ systemctl restart pveproxy.service&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# add key&lt;/span&gt;
 wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
 
-apt updat &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y dist-ugprade
+apt update &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y dist-ugprade
 update-grub&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 
@@ -3351,14 +3350,13 @@ smartos/Trolin is a opensolaris base . But few people use it. It has open source
 
 &lt;li&gt;&lt;p&gt;Enter Default username and password to login livecd.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;vyos login: vyos
-Password: vyos&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
+Password: vyos&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;write-image-to-local-driver&#34;&gt;Write image to local driver:&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;install image&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;Reboot System to boot from local disk.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;reboot now&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;basic-command&#34;&gt;Basic Command&lt;/h2&gt;
 
@@ -3627,9 +3625,11 @@ git submodule add --force -b &lt;span style=&#34;color:#c30;font-weight:bold&#34
 &lt;li&gt;&lt;p&gt;Run hugo to generate your blog website.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;    
 hugo server
-    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;publish your website&lt;/p&gt;
+    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;publish your website
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;    
 &lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; public
 git add.
@@ -3643,31 +3643,32 @@ git push origin master
 git add.
 git commit -m &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;YOUR COMMIT MESSAGE&amp;#34;&lt;/span&gt;
 git push origin master
-    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
+    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&#34;add-a-comment&#34;&gt;Add a comment&lt;/h3&gt;
 
 &lt;p&gt;Since theme jane has support utterances, we just need to enable utterances apps in github and configure it in config.toml in hugo.&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Create a repo to storage comment. like “blogcomment”.&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;enable utternaces apps.&lt;/p&gt;
+&lt;li&gt;enable utternaces apps.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;ol&gt;
 &lt;li&gt;click &lt;a href=&#34;https://github.com/apps/utterances&#34;&gt;utterances app&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Auth utterances to your github repo “blogcomment”.&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;li&gt;&lt;p&gt;edit &lt;code&gt;blogs/config.toml&lt;/code&gt; and append follow lines.&lt;/p&gt;&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;edit &lt;code&gt;blogs/config.toml&lt;/code&gt; and append follow lines.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;	
- [params.utteranc]
-      enable = &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;true&lt;/span&gt;
-      repo=&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;echowings/blogcomment&amp;#34;&lt;/span&gt;
-      issueTerm=&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pathname&amp;#34;&lt;/span&gt;
-      &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+[params.utteranc]
+  enable = &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;true&lt;/span&gt;
+  repo=&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;echowings/blogcomment&amp;#34;&lt;/span&gt;
+  issueTerm=&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pathname&amp;#34;&lt;/span&gt;
+      &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h3 id=&#34;download-git-and-rebuild-blog-environment&#34;&gt;Download git and rebuild blog environment&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;git pulll git@github.com:echowings/blogs.git
 
