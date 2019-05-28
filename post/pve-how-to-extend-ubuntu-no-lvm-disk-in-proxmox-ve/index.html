@@ -381,7 +381,7 @@ if (!doNotTrack) {
 <ul>
 <li><a href="#resizing-disk-images">Resizing disk images</a></li>
 <li><a href="#enlarge-the-partition-in-the-virtual-disk">Enlarge the partition in the virtual disk</a></li>
-<li><a href="#enlarge-partition-in-the-virtual-disk-with-parted">Enlarge partition in the virtual disk with parted</a></li>
+<li><a href="#enlarge-partition-with-resize2f">Enlarge partition with <code>resize2f</code></a></li>
 <li><a href="#swell">Swell</a></li>
 </ul></li>
 </ul>
@@ -442,21 +442,20 @@ Number  Start   End     Size    File system  Name  Flags
  <span style="color:#f60">1</span>      1049kB  2097kB  1049kB                     bios_grub
  <span style="color:#f60">2</span>      30720kB  30GB   30GB   ext4</code></pre></div>
 <ul>
-<li><code>resizepart</code></li>
+<li>Resize partition with command <code>resizepart</code>.</li>
 </ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#555">(</span>parted<span style="color:#555">)</span> resizepart</code></pre></div>
 <ul>
-<li>select partition which i want to resize. <code>2</code></li>
+<li>select partition which I wanted to resize. <code>2</code></li>
 </ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Partition number? <span style="color:#f60">2</span></code></pre></div>
 <ul>
-<li><p>Enter <code>y</code> to continue.</p>
-
-<pre><code>Warning: Partition /dev/sda2 is being used. Are you sure you want to continue?
-Yes/No? y
-</code></pre></li>
-
-<li><p>Enter size <code>200GB</code></p></li>
+<li>Enter <code>y</code> to continue.</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Warning: Partition /dev/sda2 is being used. Are you sure you want to <span style="color:#069;font-weight:bold">continue</span>?
+Yes/No? y</code></pre></div>
+<ul>
+<li>Enter size <code>200GB</code></li>
 </ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">End?  <span style="color:#555">[</span>30GB<span style="color:#555">]</span>? 200GB
 <span style="color:#555">(</span>parted<span style="color:#555">)</span> print
@@ -473,7 +472,7 @@ Number  Start   End     Size    File system  Name  Flags
 <li>Quit parted with <code>quit</code>.</li>
 </ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#555">(</span>parted<span style="color:#555">)</span> :quit</code></pre></div>
-<h2 id="enlarge-partition-in-the-virtual-disk-with-parted">Enlarge partition in the virtual disk with parted</h2>
+<h2 id="enlarge-partition-with-resize2f">Enlarge partition with <code>resize2f</code></h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">resize2f /dev/sda2 99G
 <span style="color:#09f;font-style:italic"># Show size of partition</span>
 df -h </code></pre></div>

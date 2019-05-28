@@ -89,21 +89,20 @@ Number  Start   End     Size    File system  Name  Flags
  &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;      1049kB  2097kB  1049kB                     bios_grub
  &lt;span style=&#34;color:#f60&#34;&gt;2&lt;/span&gt;      30720kB  30GB   30GB   ext4&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;resizepart&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Resize partition with command &lt;code&gt;resizepart&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;parted&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt; resizepart&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
-&lt;li&gt;select partition which i want to resize. &lt;code&gt;2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;select partition which I wanted to resize. &lt;code&gt;2&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;Partition number? &lt;span style=&#34;color:#f60&#34;&gt;2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Enter &lt;code&gt;y&lt;/code&gt; to continue.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Warning: Partition /dev/sda2 is being used. Are you sure you want to continue?
-Yes/No? y
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Enter size &lt;code&gt;200GB&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;y&lt;/code&gt; to continue.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;Warning: Partition /dev/sda2 is being used. Are you sure you want to &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;continue&lt;/span&gt;?
+Yes/No? y&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Enter size &lt;code&gt;200GB&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;End?  &lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;30GB&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;? 200GB
 &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;parted&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt; print
@@ -120,7 +119,7 @@ Number  Start   End     Size    File system  Name  Flags
 &lt;li&gt;Quit parted with &lt;code&gt;quit&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;parted&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt; :quit&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&#34;enlarge-partition-in-the-virtual-disk-with-parted&#34;&gt;Enlarge partition in the virtual disk with parted&lt;/h2&gt;
+&lt;h2 id=&#34;enlarge-partition-with-resize2f&#34;&gt;Enlarge partition with &lt;code&gt;resize2f&lt;/code&gt;&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;resize2f /dev/sda2 99G
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Show size of partition&lt;/span&gt;
 df -h &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
