@@ -31,7 +31,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.5" />
+<meta name="generator" content="Hugo 0.55.6" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/" />
@@ -62,7 +62,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
 
-<meta property="og:updated_time" content="2019-05-15T12:11:14&#43;08:00"/>
+<meta property="og:updated_time" content="2019-05-28T15:20:53&#43;08:00"/>
 
 <meta itemprop="name" content="Steve Dong - A System Administrator&#39;s Blog">
 <meta itemprop="description" content="A System Administrator&#39;s Blog.">
@@ -335,6 +335,78 @@ if (!doNotTrack) {
   <section id="posts" class="posts">
     
     
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/pve-how-to-extend-ubuntu-no-lvm-disk-in-proxmox-ve/">How to Extend Ubuntu No Lvm Disk in Proxmox VE</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-05-28" class="post-time">
+        2019-05-28
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to resize disk(no lvm) in proxmox ve Today I met a problem that I need to extend disk image for a ubuntu server which is a virtual machine hosted in proxmox ve.
+Resizing disk images First thing first, I need resize the disk images of the virtual machine.I can do it both in command line or via web management interface.
+ Extend disk size of virtual machine via shell command  # Extend disk size of virtual machine with vid 136 with 100G qm resize 136 virtio0 +100G  Extend disk size of virtual machien via web interface  &quot;Datacenter&quot; | &quot;$Node&quot; | $VIRTUAL_MACHINE | &quot;HARDWARE&quot; | &quot;HARD DISK(SCSI0)&quot; | &quot;RESIZE DISK&quot; | &quot;size Increment(GiB) | &quot;100&quot; | &quot;Resize disk&quot;
+    </div>
+    <div class="read-more">
+      <a href="/post/pve-how-to-extend-ubuntu-no-lvm-disk-in-proxmox-ve/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/how-to-install-overture-on-vyos1.2/">How to Install Overture on VYOS 1.2.1 release</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-05-18" class="post-time">
+        2019-05-18
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/dns/"> dns </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to install overture on Vyos 1.2 I need to build a dns forwarding server to anti dns cache pollution.overture is a good choice for me. it writen in go with good performance. Here we go!
+Download ovrture you can check overture version from here
+ Login vyos .  cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&#34; sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64 cd overture-linux-amd64 sudo curl -fsSLO https://raw.
+    </div>
+    <div class="read-more">
+      <a href="/post/how-to-install-overture-on-vyos1.2/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
     
       <article class="post bg-white">
   <header class="post-header">
@@ -787,78 +859,6 @@ Install librenms with docker-compose mkdir -p /data/librenms cd /data/librenms w
     </div>
     <div class="read-more">
       <a href="/post/how-to-fix-linux-perl-lc_all_error/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/proxmox-ve-how-to-upgrade-pve/">Proxmov Ve How to Upgrade Pve</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-04-16" class="post-time">
-        2019-04-16
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to ugrade Proxmove VE If your proxmox ve server in china ,Change utsc mirrors will speed up your proxmoxve upgrade speed.
-Here are the steps.
-1. Change debian,pve,ceph upgrade source, and upgrade your PVE #chang debian source list echo &#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free deb-src https://mirrors.
-    </div>
-    <div class="read-more">
-      <a href="/post/proxmox-ve-how-to-upgrade-pve/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/how-to-build-a-kms-server/">How to Build a Kms Server</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-04-11" class="post-time">
-        2019-04-11
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/docker/"> docker </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-       How to build a kms server Option 1: docker mode docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername  Option 2: docker compose docker-compose.yml
-version:&#39;3&#39;services:frontend:image:luodaoyi/kms-servercontainer_name:mykmsports:-1688:1688restart:always docker-compose start the container
-docker-compose up -d Active Script echo &#34;To active office&#34; cd &#34;%programfiles%\Microsoft Office\Office16&#34; cscript ospp.vbs /sethst:xx.xx.xx.xx cscript ospp.vbs /act echo &#34;to active windows&#34; slmgr /skms xxx.xxx.xxx.xxx slmgr /ato Reference  blog  
-    </div>
-    <div class="read-more">
-      <a href="/post/how-to-build-a-kms-server/" class="read-more-link">Read more</a>
     </div>
     
   </div>
