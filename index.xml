@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 28 May 2019 15:20:53 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 05 Jun 2019 11:52:23 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -26,6 +26,41 @@
 &lt;li&gt;Love coding.&lt;/li&gt;
 &lt;li&gt;Love cooking.&lt;/li&gt;
 &lt;li&gt;Love hacking.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>How to Install driver of Mellanox ConnetcX 3 10Gbps Network Adpater in Promxox-VE 5.x or Debian 9</title>
+      <link>https://blog.stevedong.com/post/how-to-install-mellanox-connetcx-3-10gbps-network-adpater-in-promxo-ve-5.x-or-debian9.x/</link>
+      <pubDate>Wed, 05 Jun 2019 11:52:23 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-install-mellanox-connetcx-3-10gbps-network-adpater-in-promxo-ve-5.x-or-debian9.x/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-install-dirver-of-mellanox-connectx-3-10gbps-netowrk-adapter-in-proxmox-ve-5-x-or-diban-9&#34;&gt;How to install dirver of mellanox ConnectX 3 10Gbps netowrk adapter in proxmox-ve 5.x or diban 9&lt;/h1&gt;
+
+&lt;p&gt;To &lt;/p&gt;
+
+&lt;h2 id=&#34;install-dependencies-software&#34;&gt;Install dependencies software&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#dependencies&lt;/span&gt;
+apt-get -y install debhelper autotools-dev dkms zlib1g-dev python
+wget quilt python-libxml2 swig dpatch graphviz chrpath pve-headers&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;download-driver-for-mellanox-connectx-3-for-debian-9-6&#34;&gt;Download driver for mellanox connectx 3 for debian 9.6&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;wget http://content.mellanox.com/ofed/MLNX_EN-4.6-1.0.1.1/mlnx-en-4.6-1.0.1.1-debian9.6-x86_64.tgz&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;install-drivers&#34;&gt;Install drivers&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;tar -zxvf mlnx-en-4.6-1.0.1.1-debian9.6-x86_64.tgz
+&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; mlnx-en-4.6-1.0.1.1-debian9.6-x86_64
+chmod +x install
+./install --skip-distro-check&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;swell&#34;&gt;Swell&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.mellanox.com/page/products_dyn?product_family=27&#34;&gt;Mellanox EN Driver for Linux
+&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://forums.servethehome.com/index.php?resources/install-mellanox-driver-proxmox-ve-5-1.35/&#34;&gt;How-to Guide Install Mellanox Driver Proxmox VE 5.1&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
       
