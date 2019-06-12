@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 05 Jun 2019 11:52:23 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 12 Jun 2019 11:22:48 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -26,6 +26,146 @@
 &lt;li&gt;Love coding.&lt;/li&gt;
 &lt;li&gt;Love cooking.&lt;/li&gt;
 &lt;li&gt;Love hacking.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Build Ubuntu 18.04 server with cloudinit suport</title>
+      <link>https://blog.stevedong.com/post/build-ubuntu18.04-with-cloudinit-support/</link>
+      <pubDate>Wed, 12 Jun 2019 11:22:48 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/build-ubuntu18.04-with-cloudinit-support/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;build-ubuntu-18-04-with-cloudinit-support-on-proxmox-ve&#34;&gt;Build Ubuntu 18.04 with cloudinit support on proxmox VE&lt;/h1&gt;
+
+&lt;p&gt;To create a ubuntu images from iso file is not flexible for us to clone and deploy a new virtual machine. we can now setting networking, hostname or other configuration before boot the server with configuration. If we want to expand the capicity of the disk, we need a lot of command to reach the goal.&lt;/p&gt;
+
+&lt;p&gt;With cloudinit images it is easy to do that.&lt;/p&gt;
+
+&lt;h2 id=&#34;downlaod-ubuntu-18-04-cloudinit-images&#34;&gt;Downlaod ubuntu 18.04 cloudinit images&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#download cloudinit images of ubuntu 18.04 for kvm&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#change directory to dicrectory of image storage.&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /var/lib/vz/images
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Option 1: For China User,Download images from ustc mirror for china users&lt;/span&gt;
+wget http://mirrors.ustc.edu.cn/ubuntu-cloud-images/bionic/current/bionic-server-cloudimg-amd64.img
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Option 2: For other country,Download images from offical website.&lt;/span&gt;
+wget https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;create-cloudinit-template&#34;&gt;Create cloudinit template&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# create a new VM with name template-ubuntu18.04server-cloudinit&lt;/span&gt;
+qm create &lt;span style=&#34;color:#f60&#34;&gt;9000&lt;/span&gt; --memory &lt;span style=&#34;color:#f60&#34;&gt;4096&lt;/span&gt; --net0 virtio,bridge&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;vmbr0  --name template-ubuntu18.04server-cloudinit
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# import the downloaded disk to local-lvm storage&lt;/span&gt;
+qm importdisk &lt;span style=&#34;color:#f60&#34;&gt;9000&lt;/span&gt; bionic-server-cloudimg-amd64.img local-lvm
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Attach the new disk to the vm as scsi driver&lt;/span&gt;
+qm &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;9000&lt;/span&gt; --scsihw virtio-scisc-pci --sisi0 local-lvm:9000/vm-9000-disk-0.raw&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;add-cloud-init-cdrom-drive&#34;&gt;Add Cloud-init CDROM drive&lt;/h2&gt;
+
+&lt;p&gt;The next step is to configure a CDROM drive which will be used to pass the Cloud-init data to the VM.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;qm &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;9000&lt;/span&gt; --ide2 local-lvm:cloudinit&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Make the virtual machine boot from cdrom  to make cloud init running firstly.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;qm &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;900&lt;/span&gt; --boot c --bootdisk scsi0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;configure a serial console.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;qm &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;9000&lt;/span&gt; --serial0 socket --vga serial0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Convert the vm to template. We can not run the vm directly.
+By the way, to convert template to vm just edit vm configuration file to delete &lt;code&gt;template: 1&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;vi /etc/pve/qemu-server/9000.conf
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#The delete `template: 1`&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;deploy-virtual-machine&#34;&gt;Deploy virtual machine&lt;/h2&gt;
+
+&lt;p&gt;Login PVE web gui and right click template with ID &lt;code&gt;9000&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Change &lt;code&gt;Mode:&lt;/code&gt; to &lt;code&gt;Full Clone&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Change &lt;code&gt;Name:&lt;/code&gt; to &amp;lsquo;xa-wyn-autotest01`(This step also set hostname of the VM.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;change-vm-settings&#34;&gt;Change VM settings.&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Select the deployed VM on the pve gui.&lt;/li&gt;
+&lt;li&gt;Then Click &lt;code&gt;Cloud-init&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Change &amp;ldquo;User&amp;rdquo; to any username you wanted.&lt;/li&gt;
+&lt;li&gt;Change &amp;ldquo;Password&amp;rdquo; for the user.&lt;/li&gt;
+&lt;li&gt;SSH public key: you can upload your ssh publickey to the vm.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Options&amp;rdquo;|&amp;ldquo;Qemu-Agent&amp;rdquo; | check on &amp;ldquo;Qemua Agent&amp;rdquo; and &amp;ldquo;Run guest-trim after clone disk&amp;rdquo;.
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;settings-after-booting&#34;&gt;Settings after booting.&lt;/h2&gt;
+
+&lt;p&gt;After booting and the cloudinit will running to setting the vm as you wanted.
+ After that we need change something base on our location.&lt;/p&gt;
+
+&lt;h3 id=&#34;install-some-software&#34;&gt;Install some software&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;apt update &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y dist-upgrade
+apt install -y vim apt-transport-https qemu-guest-agent vim net-tools&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then you can check &amp;ldquo;Summary&amp;rdquo; of the VM with &amp;ldquo;IPS&amp;rsquo;. We cant seed the ip address in pve web gui.&lt;/p&gt;
+
+&lt;h3 id=&#34;chang-sourcelist-to-mirrors-ustc-com&#34;&gt;Chang sourcelist to mirrors.ustc.com&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF &amp;gt; /etc/apt/souces.list
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;## Not recommended
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
+
+apt update &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y dist-upgrade&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;install-docker&#34;&gt;Install docker&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;apt-get -y install &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    apt-transport-https &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    ca-certificates &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    curl &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    gnupg-agent &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    software-properties-common  &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+apt-key fingerprint 0EBFCD88
+sudo add-apt-repository &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;   &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;   &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;$(&lt;/span&gt;lsb_release -cs&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt; \
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;   stable&amp;#34;&lt;/span&gt;
+
+sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/download.docker.com/mirrors.ustc.edu.cn\/docker-ce/g&amp;#39;&lt;/span&gt; /etc/apt/sources.list
+
+apt-get update
+apt-get install -y docker-ce docker-ce-cli containerd.io&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;instlal-docker-compose&#34;&gt;Instlal Docker-compose&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo curl -L &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;$(&lt;/span&gt;uname -s&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;$(&lt;/span&gt;uname -m&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt; -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;extend-disk-size-of-vm&#34;&gt;Extend disk size of vm.&lt;/h3&gt;
+
+&lt;p&gt;Shutdown the vm then change disk size as you wish ,After that start the vm. Extend disk is easy.&lt;/p&gt;
+
+&lt;h2 id=&#34;swell&#34;&gt;Swell&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://pve.proxmox.com/pve-docs/qm.1.html&#34;&gt;qm command&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pve.proxmox.com/wiki/Cloud-Init_Support&#34;&gt;Cloud-Init Support&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
       
