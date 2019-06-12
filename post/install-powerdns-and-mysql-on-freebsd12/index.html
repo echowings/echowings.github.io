@@ -25,7 +25,7 @@
 <meta name="author" content="Steve Dong" />
   <meta name="description" content="Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&amp;#34;YES&amp;#34; service mysql-server restart Database and User Configuration $ mysql mysql&amp;gt; create database powerdns charset = utf8; mysql&amp;gt; CREATE USER &amp;#39;powerdns&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;XianAdmin&amp;#39;; ###mysql&amp;gt; GRANT ALL PRIVILEGES ON powerdns.* TO &amp;#39;%&amp;#39; WITH GRANT OPTION;### mysql&amp;gt; grant all privileges on powerdns.* to &amp;#39;powerdns&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;XianAdmin&amp;#39;; mysql&amp;gt; FLUSH PRIVILEGES; #For security, we also give the main admin password $ mysqladmin -u root password &amp;#34;PASSWORD_OF_ROOT&amp;#34; Install powerdns pkg install powerdns Reference  How to manage MySQL databases and users from the command line PowerDNS, PowerAdmin with Mysql in Freebsd 10." />
 
-  <meta name="keywords" content="network, devops, sdn, system Administation" />
+  <meta name="keywords" content="proxmox ve, network, devops, sdn, system Administation" />
 
 
 
