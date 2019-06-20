@@ -73,7 +73,7 @@ With cloudinit images it is easy to do that.">
 
 <meta itemprop="datePublished" content="2019-06-12T11:22:48&#43;08:00" />
 <meta itemprop="dateModified" content="2019-06-12T11:22:48&#43;08:00" />
-<meta itemprop="wordCount" content="600">
+<meta itemprop="wordCount" content="609">
 
 
 
@@ -387,6 +387,7 @@ if (!doNotTrack) {
 <li><a href="#install-docker">Install docker</a></li>
 <li><a href="#instlal-docker-compose">Instlal Docker-compose</a></li>
 <li><a href="#extend-disk-size-of-vm">Extend disk size of vm.</a></li>
+<li><a href="#enable-root-can-login-ssh-with-password">Enable root can login ssh with password</a></li>
 </ul></li>
 <li><a href="#swell">Swell</a></li>
 </ul></li>
@@ -425,7 +426,8 @@ qm create <span style="color:#f60">9000</span> --memory <span style="color:#f60"
 qm importdisk <span style="color:#f60">9000</span> bionic-server-cloudimg-amd64.img local-lvm
 
 <span style="color:#09f;font-style:italic"># Attach the new disk to the vm as scsi driver</span>
-qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --scsihw virtio-scisc-pci --sisi0 local-lvm:9000/vm-9000-disk-0.raw</code></pre></div>
+
+qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --scsihw virtio-scsi-pci --scsi0 local-lvm:9000/vm-9000-disk-0.raw</code></pre></div>
 <h2 id="add-cloud-init-cdrom-drive">Add Cloud-init CDROM drive</h2>
 
 <p>The next step is to configure a CDROM drive which will be used to pass the Cloud-init data to the VM.</p>
@@ -471,7 +473,7 @@ apt install -y vim apt-transport-https qemu-guest-agent vim net-tools</code></pr
 <p>Then you can check &ldquo;Summary&rdquo; of the VM with &ldquo;IPS&rsquo;. We cant seed the ip address in pve web gui.</p>
 
 <h3 id="chang-sourcelist-to-mirrors-ustc-com">Chang sourcelist to mirrors.ustc.com</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#366">echo</span> <span style="color:#c30">&lt;&lt;EOF &gt; /etc/apt/souces.list
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat <span style="color:#c30">&lt;&lt;EOF &gt; /etc/apt/souces.list
 </span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
 </span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
 </span><span style="color:#c30">
@@ -520,6 +522,8 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</code></pre></d
 
 <p>Shutdown the vm then change disk size as you wish ,After that start the vm. Extend disk is easy.</p>
 
+<h3 id="enable-root-can-login-ssh-with-password">Enable root can login ssh with password</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -i </code></pre></div>
 <h2 id="swell">Swell</h2>
 
 <ul>

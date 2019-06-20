@@ -66,7 +66,8 @@ qm create &lt;span style=&#34;color:#f60&#34;&gt;9000&lt;/span&gt; --memory &lt;
 qm importdisk &lt;span style=&#34;color:#f60&#34;&gt;9000&lt;/span&gt; bionic-server-cloudimg-amd64.img local-lvm
 
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Attach the new disk to the vm as scsi driver&lt;/span&gt;
-qm &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;9000&lt;/span&gt; --scsihw virtio-scisc-pci --sisi0 local-lvm:9000/vm-9000-disk-0.raw&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+qm &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;9000&lt;/span&gt; --scsihw virtio-scsi-pci --scsi0 local-lvm:9000/vm-9000-disk-0.raw&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;add-cloud-init-cdrom-drive&#34;&gt;Add Cloud-init CDROM drive&lt;/h2&gt;
 
 &lt;p&gt;The next step is to configure a CDROM drive which will be used to pass the Cloud-init data to the VM.&lt;/p&gt;
@@ -112,7 +113,7 @@ apt install -y vim apt-transport-https qemu-guest-agent vim net-tools&lt;/code&g
 &lt;p&gt;Then you can check &amp;ldquo;Summary&amp;rdquo; of the VM with &amp;ldquo;IPS&amp;rsquo;. We cant seed the ip address in pve web gui.&lt;/p&gt;
 
 &lt;h3 id=&#34;chang-sourcelist-to-mirrors-ustc-com&#34;&gt;Chang sourcelist to mirrors.ustc.com&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF &amp;gt; /etc/apt/souces.list
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF &amp;gt; /etc/apt/souces.list
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
@@ -161,6 +162,8 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose&lt;/code&gt;&lt
 
 &lt;p&gt;Shutdown the vm then change disk size as you wish ,After that start the vm. Extend disk is easy.&lt;/p&gt;
 
+&lt;h3 id=&#34;enable-root-can-login-ssh-with-password&#34;&gt;Enable root can login ssh with password&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sed -i &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;swell&#34;&gt;Swell&lt;/h2&gt;
 
 &lt;ul&gt;
