@@ -433,7 +433,7 @@ qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --sc
 <p>The next step is to configure a CDROM drive which will be used to pass the Cloud-init data to the VM.</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --ide2 local-lvm:cloudinit</code></pre></div>
 <p>Make the virtual machine boot from cdrom  to make cloud init running firstly.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">qm <span style="color:#366">set</span> <span style="color:#f60">900</span> --boot c --bootdisk scsi0</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --boot c --bootdisk scsi0</code></pre></div>
 <p>configure a serial console.</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --serial0 socket --vga serial0</code></pre></div>
 <p>Convert the vm to template. We can not run the vm directly.
