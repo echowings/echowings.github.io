@@ -73,7 +73,7 @@
 
 <meta itemprop="datePublished" content="2018-11-19T23:38:39&#43;08:00" />
 <meta itemprop="dateModified" content="2018-11-19T23:38:39&#43;08:00" />
-<meta itemprop="wordCount" content="204">
+<meta itemprop="wordCount" content="207">
 
 
 
@@ -440,14 +440,13 @@ systemctl restart pveproxy.service</code></pre></div>
 </span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&#34;</span> &gt; /etc/apt/sources.list
 
 <span style="color:#09f;font-style:italic">#change pve 5.x update source list</span>
-<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&#34;</span> &gt; /etc/apt/sources.list.d/pve-enterprise.list
+<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&#34;</span> &gt;&gt; /etc/apt/sources.list
 
-<span style="color:#09f;font-style:italic">#change ceph source list</span>
-<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&#34;</span> &gt; /etc/apt/sources.list.d/ceph.list
+<span style="color:#09f;font-style:italic">#change ceph source list to utsc mirrors</span>
+<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&#34;</span> &gt;&gt; /etc/apt/sources.list
 
 <span style="color:#09f;font-style:italic"># add key</span>
 wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
-
 apt update <span style="color:#555">&amp;&amp;</span> apt -y dist-upgrade
 update-grub</code></pre></div>
 <h2 id="reference">Reference</h2>
