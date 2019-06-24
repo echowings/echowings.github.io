@@ -3790,8 +3790,15 @@ systemctl restart pveproxy.service&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# add key&lt;/span&gt;
 wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
+
 apt update &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y dist-upgrade
 update-grub&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;remove-sourcelist-of-pve-enterprise-subscription-and-ceph&#34;&gt;Remove sourcelist of pve enterprise subscription and ceph&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Delete Enterprise subscription.&lt;/span&gt;
+rm -rf /etc/apt/sources.list.d/pve-enterprise.list
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Delete proxmox ve offical ceph source.&lt;/span&gt; 
+rm -rf /etc/apt/sources.list.d/ceph.list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 
 &lt;ol&gt;

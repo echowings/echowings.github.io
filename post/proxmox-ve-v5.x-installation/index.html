@@ -73,7 +73,7 @@
 
 <meta itemprop="datePublished" content="2018-11-19T23:38:39&#43;08:00" />
 <meta itemprop="dateModified" content="2018-11-19T23:38:39&#43;08:00" />
-<meta itemprop="wordCount" content="207">
+<meta itemprop="wordCount" content="232">
 
 
 
@@ -378,6 +378,9 @@ if (!doNotTrack) {
 <li><a href="#proxmox-won-t-install-a-volume-group-called-pve-already-exists">Proxmox won’t install- “A volume group called pve already exists</a></li>
 <li><a href="#remove-no-valid-subscription-message">Remove “No valid Subscription” Message</a></li>
 <li><a href="#change-update-source">Change update source</a></li>
+</ul></li>
+<li><a href="#remove-sourcelist-of-pve-enterprise-subscription-and-ceph">Remove sourcelist of pve enterprise subscription and ceph</a>
+<ul>
 <li><a href="#reference">Reference</a></li>
 </ul></li>
 </ul>
@@ -447,8 +450,15 @@ systemctl restart pveproxy.service</code></pre></div>
 
 <span style="color:#09f;font-style:italic"># add key</span>
 wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
+
 apt update <span style="color:#555">&amp;&amp;</span> apt -y dist-upgrade
 update-grub</code></pre></div>
+<h1 id="remove-sourcelist-of-pve-enterprise-subscription-and-ceph">Remove sourcelist of pve enterprise subscription and ceph</h1>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># Delete Enterprise subscription.</span>
+rm -rf /etc/apt/sources.list.d/pve-enterprise.list
+
+<span style="color:#09f;font-style:italic"># Delete proxmox ve offical ceph source.</span> 
+rm -rf /etc/apt/sources.list.d/ceph.list</code></pre></div>
 <h2 id="reference">Reference</h2>
 
 <ol>
