@@ -25,7 +25,7 @@
 <meta name="author" content="Steve Dong" />
   <meta name="description" content="How to install overture on Vyos 1.2 I need to build a dns forwarding server to anti dns cache pollution.overture is a good choice for me. it writen in go with good performance. Here we go!
 Download ovrture you can check overture version from here
- Login vyos .  cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &amp;#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&amp;#34; sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64 cd overture-linux-amd64 sudo curl -fsSLO https://raw." />
+ Login vyos .  sudo su cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &amp;#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&amp;#34; sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64 cd overture-linux-amd64 sudo curl -fsSLO https://raw." />
 
   <meta name="keywords" content="proxmox ve, network, devops, sdn, system Administation" />
 
@@ -62,7 +62,7 @@ Download ovrture you can check overture version from here
 <meta property="og:title" content="How to Install Overture on VYOS 1.2.1 release" />
 <meta property="og:description" content="How to install overture on Vyos 1.2 I need to build a dns forwarding server to anti dns cache pollution.overture is a good choice for me. it writen in go with good performance. Here we go!
 Download ovrture you can check overture version from here
- Login vyos .  cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&#34; sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64 cd overture-linux-amd64 sudo curl -fsSLO https://raw." />
+ Login vyos .  sudo su cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&#34; sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64 cd overture-linux-amd64 sudo curl -fsSLO https://raw." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/how-to-install-overture-on-vyos1.2/" />
 <meta property="article:published_time" content="2019-05-18T01:35:52&#43;08:00"/>
@@ -71,12 +71,12 @@ Download ovrture you can check overture version from here
 <meta itemprop="name" content="How to Install Overture on VYOS 1.2.1 release">
 <meta itemprop="description" content="How to install overture on Vyos 1.2 I need to build a dns forwarding server to anti dns cache pollution.overture is a good choice for me. it writen in go with good performance. Here we go!
 Download ovrture you can check overture version from here
- Login vyos .  cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&#34; sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64 cd overture-linux-amd64 sudo curl -fsSLO https://raw.">
+ Login vyos .  sudo su cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&#34; sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64 cd overture-linux-amd64 sudo curl -fsSLO https://raw.">
 
 
 <meta itemprop="datePublished" content="2019-05-18T01:35:52&#43;08:00" />
 <meta itemprop="dateModified" content="2019-05-18T01:35:52&#43;08:00" />
-<meta itemprop="wordCount" content="305">
+<meta itemprop="wordCount" content="371">
 
 
 
@@ -85,7 +85,7 @@ Download ovrture you can check overture version from here
 <meta name="twitter:title" content="How to Install Overture on VYOS 1.2.1 release"/>
 <meta name="twitter:description" content="How to install overture on Vyos 1.2 I need to build a dns forwarding server to anti dns cache pollution.overture is a good choice for me. it writen in go with good performance. Here we go!
 Download ovrture you can check overture version from here
- Login vyos .  cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&#34; sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64 cd overture-linux-amd64 sudo curl -fsSLO https://raw."/>
+ Login vyos .  sudo su cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&#34; sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64 cd overture-linux-amd64 sudo curl -fsSLO https://raw."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -400,16 +400,45 @@ Here we go!</p>
 <ul>
 <li>Login vyos .</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#366">cd</span> /tmp/
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo su 
+<span style="color:#366">cd</span> /tmp/
 sudo mkdir overture-linux-amd64
 sudo curl -fsSLO --compressed <span style="color:#c30">&#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&#34;</span> 
 sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64
 <span style="color:#366">cd</span> overture-linux-amd64
+
 sudo curl -fsSLO https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt
+
 sudo curl -fsSLO https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt
+
 curl https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt | base64 -d | sort -u | sed <span style="color:#c30">&#39;/^$\|@@/d&#39;</span>| sed <span style="color:#c30">&#39;s#!.\+##; s#|##g; s#@##g; s#http:\/\/##; s#https:\/\/##;&#39;</span> | sed <span style="color:#c30">&#39;/\*/d; /apple\.com/d; /sina\.cn/d; /sina\.com\.cn/d; /baidu\.com/d; /qq\.com/d&#39;</span> | sed <span style="color:#c30">&#39;/^[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+$/d&#39;</span> | grep <span style="color:#c30">&#39;^[0-9a-zA-Z\.-]\+$&#39;</span> | grep <span style="color:#c30">&#39;\.&#39;</span> | sed <span style="color:#c30">&#39;s#^\.\+##&#39;</span> | sort -u &gt; /tmp/temp_gfwlist.txt
+
 curl https://raw.githubusercontent.com/hq450/fancyss/master/rules/gfwlist.conf | sed <span style="color:#c30">&#39;s/ipset=\/\.//g; s/\/gfwlist//g; /^server/d&#39;</span> &gt; /tmp/temp_koolshare.txt
 cat /tmp/temp_gfwlist.txt /tmp/temp_koolshare.txt | sort -u &gt; gfw_all_domain.txt
+
+<span style="color:#09f;font-style:italic">#Download china domain list from https://github.com/felixonmars/dnsmasq-china-list</span>
+curl -fsSLO --compressed https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/accelerated-domains.china.conf
+
+<span style="color:#09f;font-style:italic">#Downlaod apple china domain list</span>
+curl -fsSLO --compressed https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/apple.china.conf
+
+<span style="color:#09f;font-style:italic">#Download google china domain list</span>
+curl -fsSLO --compressed https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/google.china.conf
+
+<span style="color:#09f;font-style:italic">#Download cdn in china list</span>
+curl -fsSLO --compressed https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/cdn-testlist.txt
+
+
+#
+cat accelerated-domains.china.conf  cdn-testlist.txt google.china.conf apple.china.conf | sort -u &gt; china_domain.txt
+
+
+<span style="color:#09f;font-style:italic"># Strip useless characters in the configure file.</span>
+sed -i <span style="color:#c30">&#39;s/server=\///g&#39;</span> china_domain.txt
+sed -i <span style="color:#c30">&#39;s/\/114.114.114.114//g&#39;</span> china_domain.txt
+
+
+
 
 sudo mv config.json config.json.origin
 
@@ -462,9 +491,9 @@ sudo bash -c <span style="color:#c30">&#39;cat &gt; config.json&#39;</span> <spa
 </span><span style="color:#c30">     &#34;Primary&#34;: &#34;/etc/overture/china_ip_list.txt&#34;
 </span><span style="color:#c30">     },
 </span><span style="color:#c30">  &#34;DomainFile&#34;: {
+</span><span style="color:#c30">  	  &#34;Primary&#34;: &#34;/etc/overture/china_domain.txt&#34;,
 </span><span style="color:#c30">     &#34;Alternative&#34;: &#34;/etc/overture/gfw_all_domain.txt&#34; 
 </span><span style="color:#c30">    },
-</span><span style="color:#c30">  &#34;DomainBase64Decode&#34;: true,
 </span><span style="color:#c30">  &#34;HostsFile&#34;: &#34;/etc/overture/hosts_sample&#34;, 
 </span><span style="color:#c30">  &#34;MinimumTTL&#34;: 86400,
 </span><span style="color:#c30">  &#34;CacheSize&#34;: 604800,

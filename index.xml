@@ -338,16 +338,45 @@ Here we go!&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Login vyos .&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /tmp/
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo su 
+&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /tmp/
 sudo mkdir overture-linux-amd64
 sudo curl -fsSLO --compressed &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&amp;#34;&lt;/span&gt; 
 sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64
 &lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; overture-linux-amd64
+
 sudo curl -fsSLO https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt
+
 sudo curl -fsSLO https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt
+
 curl https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt | base64 -d | sort -u | sed &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;/^$\|@@/d&amp;#39;&lt;/span&gt;| sed &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s#!.\+##; s#|##g; s#@##g; s#http:\/\/##; s#https:\/\/##;&amp;#39;&lt;/span&gt; | sed &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;/\*/d; /apple\.com/d; /sina\.cn/d; /sina\.com\.cn/d; /baidu\.com/d; /qq\.com/d&amp;#39;&lt;/span&gt; | sed &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;/^[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+$/d&amp;#39;&lt;/span&gt; | grep &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;^[0-9a-zA-Z\.-]\+$&amp;#39;&lt;/span&gt; | grep &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;\.&amp;#39;&lt;/span&gt; | sed &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s#^\.\+##&amp;#39;&lt;/span&gt; | sort -u &amp;gt; /tmp/temp_gfwlist.txt
+
 curl https://raw.githubusercontent.com/hq450/fancyss/master/rules/gfwlist.conf | sed &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/ipset=\/\.//g; s/\/gfwlist//g; /^server/d&amp;#39;&lt;/span&gt; &amp;gt; /tmp/temp_koolshare.txt
 cat /tmp/temp_gfwlist.txt /tmp/temp_koolshare.txt | sort -u &amp;gt; gfw_all_domain.txt
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Download china domain list from https://github.com/felixonmars/dnsmasq-china-list&lt;/span&gt;
+curl -fsSLO --compressed https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/accelerated-domains.china.conf
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Downlaod apple china domain list&lt;/span&gt;
+curl -fsSLO --compressed https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/apple.china.conf
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Download google china domain list&lt;/span&gt;
+curl -fsSLO --compressed https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/google.china.conf
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Download cdn in china list&lt;/span&gt;
+curl -fsSLO --compressed https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/cdn-testlist.txt
+
+
+#
+cat accelerated-domains.china.conf  cdn-testlist.txt google.china.conf apple.china.conf | sort -u &amp;gt; china_domain.txt
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Strip useless characters in the configure file.&lt;/span&gt;
+sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/server=\///g&amp;#39;&lt;/span&gt; china_domain.txt
+sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/\/114.114.114.114//g&amp;#39;&lt;/span&gt; china_domain.txt
+
+
+
 
 sudo mv config.json config.json.origin
 
@@ -400,9 +429,9 @@ sudo bash -c &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;cat &amp;gt; config
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;     &amp;#34;Primary&amp;#34;: &amp;#34;/etc/overture/china_ip_list.txt&amp;#34;
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;     },
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;DomainFile&amp;#34;: {
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  	  &amp;#34;Primary&amp;#34;: &amp;#34;/etc/overture/china_domain.txt&amp;#34;,
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;     &amp;#34;Alternative&amp;#34;: &amp;#34;/etc/overture/gfw_all_domain.txt&amp;#34; 
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    },
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;DomainBase64Decode&amp;#34;: true,
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;HostsFile&amp;#34;: &amp;#34;/etc/overture/hosts_sample&amp;#34;, 
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;MinimumTTL&amp;#34;: 86400,
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;CacheSize&amp;#34;: 604800,
