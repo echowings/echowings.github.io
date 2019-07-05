@@ -3260,7 +3260,7 @@ gateway *.*.*.* &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;code&gt;vi /etc/hosts&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#f60&#34;&gt;127&lt;/span&gt;.0.0.1       localhost.localdomain localhost
-&lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt;.32.0.60   xa-sys-pve02 xa-sys-pve02 pvelocalhost
+&lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt;.32.0.60   xa-sys-pve02 pvelocalhost
 
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# The following lines are desirable for IPv6 capable hosts&lt;/span&gt;
 ::1     localhost ip6-localhost ip6-loopback
@@ -3300,7 +3300,7 @@ cat &amp;gt;&amp;gt; /etc/environment &lt;span style=&#34;color:#c30&#34;&gt;&am
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# add key&lt;/span&gt;
 wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;install-proxmox-ve&#34;&gt;Install proxmox VE&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt update &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y dis-ugprade
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt update &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y dist-ugprade
 apt install proxmox-ve postfix open-iscsi
 update-grub&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;remove-no-valid-subscription-message&#34;&gt;Remove “No valid Subscription” Message&lt;/h2&gt;
