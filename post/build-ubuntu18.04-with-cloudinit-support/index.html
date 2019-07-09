@@ -73,7 +73,7 @@ With cloudinit images it is easy to do that.">
 
 <meta itemprop="datePublished" content="2019-06-12T11:22:48&#43;08:00" />
 <meta itemprop="dateModified" content="2019-06-12T11:22:48&#43;08:00" />
-<meta itemprop="wordCount" content="636">
+<meta itemprop="wordCount" content="633">
 
 
 
@@ -395,7 +395,7 @@ if (!doNotTrack) {
 <li><a href="#install-docker">Install docker</a></li>
 <li><a href="#instlal-docker-compose">Instlal Docker-compose</a></li>
 <li><a href="#extend-disk-size-of-vm">Extend disk size of vm.</a></li>
-<li><a href="#enable-root-can-login-ssh-with-password">Enable root can login ssh with password</a></li>
+<li><a href="#enable-ssh-password-authentication">Enable SSH password Authentication</a></li>
 </ul></li>
 <li><a href="#swell">Swell</a></li>
 </ul></li>
@@ -534,7 +534,7 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</code></pre></d
 
 <p>Shutdown the vm then change disk size as you wish ,After that start the vm. Extend disk is easy.</p>
 
-<h3 id="enable-root-can-login-ssh-with-password">Enable root can login ssh with password</h3>
+<h3 id="enable-ssh-password-authentication">Enable SSH password Authentication</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo sed -i <span style="color:#c30">&#39;s/PasswordAuthentication\ no/PasswordAuthentication\ yes/g&#39;</span> sshd_config
 sudo systemctl daemon-reload
 sudo systemctl restart sshd</code></pre></div>
