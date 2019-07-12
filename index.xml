@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 12 Jun 2019 11:22:48 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jul 2019 14:04:03 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -27,6 +27,78 @@
 &lt;li&gt;Love cooking.&lt;/li&gt;
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>How to Setup Cloud Init in Proxmoxve</title>
+      <link>https://blog.stevedong.com/post/how-to-setup-cloud-init-in-proxmoxve/</link>
+      <pubDate>Fri, 12 Jul 2019 14:04:03 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-setup-cloud-init-in-proxmoxve/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-setup-cloud-init-in-prxmox-ve&#34;&gt;How to setup cloud-init in prxmox ve&lt;/h1&gt;
+
+&lt;p&gt;Cloud-init can help us to deploy or change settings of linux virutal machine via  api or manually by ourself.&lt;/p&gt;
+
+&lt;p&gt;There are two ways to setup cloud-init: command line or change settings in GUI.&lt;/p&gt;
+
+&lt;h2 id=&#34;option-1-download-cloud-init-image-and-setup-with-shell&#34;&gt;Option 1: Download cloud-init image and setup with shell&lt;/h2&gt;
+
+&lt;p&gt;Please reference my blog &lt;a href=&#34;./post/build-ubuntu18.04-with-cloudinit-support/&#34;&gt;Build Ubuntu 18.04 server with cloudinit support&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;option-2-manually-setup-cloud-init&#34;&gt;Option 2: Manually Setup cloud-init&lt;/h2&gt;
+
+&lt;p&gt;We can do this with 2 steps. 1st step is to install linux(centos,debian,ubunt etc).&lt;/p&gt;
+
+&lt;h3 id=&#34;install-a-linux&#34;&gt;Install a linux&lt;/h3&gt;
+
+&lt;p&gt;I think this step is easy.&lt;/p&gt;
+
+&lt;h3 id=&#34;install-and-setup-cloud-init&#34;&gt;Install and setup cloud-init&lt;/h3&gt;
+
+&lt;p&gt;After installed an linux.&lt;/p&gt;
+
+&lt;h4 id=&#34;debian-ubuntu&#34;&gt;debian/ubuntu&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;apt update &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y dist-upgrade
+apt install -y cloud-init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;rhel-centos&#34;&gt;RHEL/Centos&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;yum upate 
+yum install -y cloud-init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;create-a-cloud-init-boot-disk&#34;&gt;Create a cloud-init boot disk&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;shutdown the vm &lt;code&gt;shutdown -h now&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;select the vm in PVE web GUI.&lt;/li&gt;
+&lt;li&gt;Then click &lt;code&gt;Hardware&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;click &lt;code&gt;Add&lt;/code&gt; button and select &lt;code&gt;Cloudinit drive&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Select Storage on the storage.&lt;/li&gt;
+&lt;li&gt;Then Click &lt;code&gt;Create&lt;/code&gt; to create cloudinit drive.&lt;/li&gt;
+&lt;li&gt;Right click the VM and click &lt;code&gt;start&lt;/code&gt; to boot the VM.
+
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;change-some-settings&#34;&gt;Change some settings&lt;/h2&gt;
+
+&lt;p&gt;After setup cloud-init, Seem like it automatically reset your sourelist to default settings and we couldn&amp;rsquo;t login via ssh with password.&lt;/p&gt;
+
+&lt;h3 id=&#34;enable-password-authentication&#34;&gt;Enable password authentication&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/PasswordAuthentication\ no/PasswordAuthentication\ yes/g&amp;#39;&lt;/span&gt; /etc/ssh/sshd_config
+sudo systemctl daemon-reload
+sudo systemctl restart sshd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;permit-root-can-loing-with-password&#34;&gt;Permit root can loing with password&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/g&amp;#39;&lt;/span&gt; /etc/ssh/sshd_config
+sudo systemctl daemon-reload
+sudo systemctl restart sshd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;permit-modified-sourelist&#34;&gt;Permit modified sourelist&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo cat &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt; EOF &amp;gt;&amp;gt; /etc/cloud/cloud.cfg
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;apt_preserve_sources_list: true
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then you can change sourelist without worried about the sourcelist will be overwriten by cloud-init&lt;/p&gt;
 </description>
       
     </item>

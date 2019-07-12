@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>pve · Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>How to Setup Cloud Init in Proxmoxve - Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,11 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="A System Administrator&#39;s Blog." />
+  <meta name="description" content="How to setup cloud-init in prxmox ve Cloud-init can help us to deploy or change settings of linux virutal machine via api or manually by ourself.
+There are two ways to setup cloud-init: command line or change settings in GUI.
+Option 1: Download cloud-init image and setup with shell Please reference my blog Build Ubuntu 18.04 server with cloudinit support
+Option 2: Manually Setup cloud-init We can do this with 2 steps." />
+
   <meta name="keywords" content="proxmox ve, network, devops, sdn, system Administation" />
 
 
@@ -34,8 +38,7 @@
 <meta name="generator" content="Hugo 0.55.6" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/tags/pve/" />
-<link href="%7balternate%20%7bRSS%20application/rss&#43;xml%20%20index%20alternate%20%20false%20false%20true%20false%20false%200%7d%20/tags/pve/index.xml%20https://blog.stevedong.com/tags/pve/index.xml%7d" rel="alternate" type="application/rss+xml" title="Steve Dong - A System Administrator&#39;s Blog" />
+<link rel="canonical" href="https://blog.stevedong.com/post/how-to-setup-cloud-init-in-proxmoxve/" />
 
 
 
@@ -57,19 +60,36 @@
 
 
 
-<meta property="og:title" content="pve" />
-<meta property="og:description" content="A System Administrator&#39;s Blog." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://blog.stevedong.com/tags/pve/" />
+<meta property="og:title" content="How to Setup Cloud Init in Proxmoxve" />
+<meta property="og:description" content="How to setup cloud-init in prxmox ve Cloud-init can help us to deploy or change settings of linux virutal machine via api or manually by ourself.
+There are two ways to setup cloud-init: command line or change settings in GUI.
+Option 1: Download cloud-init image and setup with shell Please reference my blog Build Ubuntu 18.04 server with cloudinit support
+Option 2: Manually Setup cloud-init We can do this with 2 steps." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.stevedong.com/post/how-to-setup-cloud-init-in-proxmoxve/" />
+<meta property="article:published_time" content="2019-07-12T14:04:03&#43;08:00"/>
+<meta property="article:modified_time" content="2019-07-12T14:04:03&#43;08:00"/>
 
-<meta property="og:updated_time" content="2019-07-12T14:04:03&#43;08:00"/>
+<meta itemprop="name" content="How to Setup Cloud Init in Proxmoxve">
+<meta itemprop="description" content="How to setup cloud-init in prxmox ve Cloud-init can help us to deploy or change settings of linux virutal machine via api or manually by ourself.
+There are two ways to setup cloud-init: command line or change settings in GUI.
+Option 1: Download cloud-init image and setup with shell Please reference my blog Build Ubuntu 18.04 server with cloudinit support
+Option 2: Manually Setup cloud-init We can do this with 2 steps.">
 
-<meta itemprop="name" content="pve">
-<meta itemprop="description" content="A System Administrator&#39;s Blog.">
 
+<meta itemprop="datePublished" content="2019-07-12T14:04:03&#43;08:00" />
+<meta itemprop="dateModified" content="2019-07-12T14:04:03&#43;08:00" />
+<meta itemprop="wordCount" content="253">
+
+
+
+<meta itemprop="keywords" content="pve,cloud-init,linux," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="pve"/>
-<meta name="twitter:description" content="A System Administrator&#39;s Blog."/>
+<meta name="twitter:title" content="How to Setup Cloud Init in Proxmoxve"/>
+<meta name="twitter:description" content="How to setup cloud-init in prxmox ve Cloud-init can help us to deploy or change settings of linux virutal machine via api or manually by ourself.
+There are two ways to setup cloud-init: command line or change settings in GUI.
+Option 1: Download cloud-init image and setup with shell Please reference my blog Build Ubuntu 18.04 server with cloudinit support
+Option 2: Manually Setup cloud-init We can do this with 2 steps."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -339,170 +359,215 @@ if (!doNotTrack) {
     <main id="main" class="main bg-llight">
       <div class="content-wrapper">
         <div id="content" class="content container">
-          
-
-<section id="archive" class="archive">
-  
+          <article class="post bg-white">
     
-      <div class="archive-title tag">
-        <h2 class="archive-name">Tag: pve</h2>
+    <header class="post-header">
+      <h1 class="post-title">How to Setup Cloud Init in Proxmoxve</h1>
+      
+      <div class="post-meta">
+        <time datetime="2019-07-12" class="post-time">
+          2019-07-12
+        </time>
+        <div class="post-category">
+            <a href="https://blog.stevedong.com/categories/index/"> index </a>
+            
+          </div>
+        
+
+        
+        
+
+        
+        
       </div>
+    </header>
+
     
-  
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#how-to-setup-cloud-init-in-prxmox-ve">How to setup cloud-init in prxmox ve</a>
+<ul>
+<li><a href="#option-1-download-cloud-init-image-and-setup-with-shell">Option 1: Download cloud-init image and setup with shell</a></li>
+<li><a href="#option-2-manually-setup-cloud-init">Option 2: Manually Setup cloud-init</a>
+<ul>
+<li><a href="#install-a-linux">Install a linux</a></li>
+<li><a href="#install-and-setup-cloud-init">Install and setup cloud-init</a>
+<ul>
+<li><a href="#debian-ubuntu">debian/ubuntu</a></li>
+<li><a href="#rhel-centos">RHEL/Centos</a></li>
+</ul></li>
+<li><a href="#create-a-cloud-init-boot-disk">Create a cloud-init boot disk</a></li>
+</ul></li>
+<li><a href="#change-some-settings">Change some settings</a>
+<ul>
+<li><a href="#enable-password-authentication">Enable password authentication</a></li>
+<li><a href="#permit-root-can-loing-with-password">Permit root can loing with password</a></li>
+<li><a href="#permit-modified-sourelist">Permit modified sourelist</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
 
-  
-    <div class="archive-post">
-      <time datetime="2019-07-12" class="archive-post-time">
-        2019-07-12
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/how-to-setup-cloud-init-in-proxmoxve/" class="archive-post-link">
-          How to Setup Cloud Init in Proxmoxve
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2019-06-12" class="archive-post-time">
-        2019-06-12
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/build-ubuntu18.04-with-cloudinit-support/" class="archive-post-link">
-          Build Ubuntu 18.04 server with cloudinit support
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2019-06-05" class="archive-post-time">
-        2019-06-05
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/how-to-install-mellanox-connetcx-3-10gbps-network-adpater-in-promxo-ve-5.x-or-debian9.x/" class="archive-post-link">
-          How to Install driver of Mellanox ConnetcX 3 10Gbps Network Adpater in Promxox-VE 5.x or Debian 9
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2019-05-28" class="archive-post-time">
-        2019-05-28
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/pve-how-to-extend-ubuntu-no-lvm-disk-in-proxmox-ve/" class="archive-post-link">
-          How to Extend Ubuntu No Lvm Disk in Proxmox VE
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2019-05-15" class="archive-post-time">
-        2019-05-15
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/proxmox-ve-how-to-fixed-upgrade-error/" class="archive-post-link">
-          Proxmox Ve How to Fixed Upgrade Error
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2019-05-07" class="archive-post-time">
-        2019-05-07
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/proxmox-how-to-import-disk-to-ceph/" class="archive-post-link">
-          How to Import Disk to Ceph
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2019-05-01" class="archive-post-time">
-        2019-05-01
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/how-to-install-centos-7-on-proxmox-ve/" class="archive-post-link">
-          How to Install Centos 7 on Proxmox VE
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2019-04-29" class="archive-post-time">
-        2019-04-29
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/proxmox-ve-build-hyper-converged-infrastructure-with-ceph-on-pve/" class="archive-post-link">
-          Build Hyper-Converged Infrastructure With Ceph on PVE
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2019-04-27" class="archive-post-time">
-        2019-04-27
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/proxmox-ve-how-to-install-snmp-service-on-promxox-ve/" class="archive-post-link">
-          How to Install Snmp Service on Promxox VE
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2019-04-27" class="archive-post-time">
-        2019-04-27
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/proxmox-ve-how-to-chang-network-of-hosting-without-reboot-proxmox-ve/" class="archive-post-link">
-          Proxmox Ve How to Chang Network of Hosting Without Reboot Proxmox Ve
-        </a>
-      </span>
-    </div>
-  
-</section>
-
-
-
-
-
-
-  
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-  <nav class="pagination">
-    <ul>
+    
+    <div class="post-content">
       
-      <li  class="active" >
-        <a href="/tags/pve/">1</a>
-      </li>
+
+<h1 id="how-to-setup-cloud-init-in-prxmox-ve">How to setup cloud-init in prxmox ve</h1>
+
+<p>Cloud-init can help us to deploy or change settings of linux virutal machine via  api or manually by ourself.</p>
+
+<p>There are two ways to setup cloud-init: command line or change settings in GUI.</p>
+
+<h2 id="option-1-download-cloud-init-image-and-setup-with-shell">Option 1: Download cloud-init image and setup with shell</h2>
+
+<p>Please reference my blog <a href="./post/build-ubuntu18.04-with-cloudinit-support/">Build Ubuntu 18.04 server with cloudinit support</a></p>
+
+<h2 id="option-2-manually-setup-cloud-init">Option 2: Manually Setup cloud-init</h2>
+
+<p>We can do this with 2 steps. 1st step is to install linux(centos,debian,ubunt etc).</p>
+
+<h3 id="install-a-linux">Install a linux</h3>
+
+<p>I think this step is easy.</p>
+
+<h3 id="install-and-setup-cloud-init">Install and setup cloud-init</h3>
+
+<p>After installed an linux.</p>
+
+<h4 id="debian-ubuntu">debian/ubuntu</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">apt update <span style="color:#555">&amp;&amp;</span> apt -y dist-upgrade
+apt install -y cloud-init</code></pre></div>
+<h4 id="rhel-centos">RHEL/Centos</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">yum upate 
+yum install -y cloud-init</code></pre></div>
+<h3 id="create-a-cloud-init-boot-disk">Create a cloud-init boot disk</h3>
+
+<ol>
+<li>shutdown the vm <code>shutdown -h now</code></li>
+<li>select the vm in PVE web GUI.</li>
+<li>Then click <code>Hardware</code>.</li>
+<li>click <code>Add</code> button and select <code>Cloudinit drive</code>.</li>
+<li>Select Storage on the storage.</li>
+<li>Then Click <code>Create</code> to create cloudinit drive.</li>
+<li>Right click the VM and click <code>start</code> to boot the VM.
+
+<br /></li>
+</ol>
+
+<h2 id="change-some-settings">Change some settings</h2>
+
+<p>After setup cloud-init, Seem like it automatically reset your sourelist to default settings and we couldn&rsquo;t login via ssh with password.</p>
+
+<h3 id="enable-password-authentication">Enable password authentication</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo sed -i <span style="color:#c30">&#39;s/PasswordAuthentication\ no/PasswordAuthentication\ yes/g&#39;</span> /etc/ssh/sshd_config
+sudo systemctl daemon-reload
+sudo systemctl restart sshd</code></pre></div>
+<h3 id="permit-root-can-loing-with-password">Permit root can loing with password</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo sed -i <span style="color:#c30">&#39;s/#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/g&#39;</span> /etc/ssh/sshd_config
+sudo systemctl daemon-reload
+sudo systemctl restart sshd</code></pre></div>
+<h3 id="permit-modified-sourelist">Permit modified sourelist</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo cat <span style="color:#c30">&lt;&lt; EOF &gt;&gt; /etc/cloud/cloud.cfg
+</span><span style="color:#c30">apt_preserve_sources_list: true
+</span><span style="color:#c30">EOF</span></code></pre></div>
+<p>Then you can change sourelist without worried about the sourcelist will be overwriten by cloud-init</p>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Steve Dong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-07-12</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    
+    
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://blog.stevedong.com/tags/pve/">pve</a>
+          <a href="https://blog.stevedong.com/tags/cloud-init/">cloud-init</a>
+          <a href="https://blog.stevedong.com/tags/linux/">linux</a>
+          
+        </div>
+
       
-      <li >
-        <a href="/tags/pve/page/2/">2</a>
-      </li>
-      
-    </ul>
-  </nav>
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/build-ubuntu18.04-with-cloudinit-support/">
+            <span class="next-text nav-default">Build Ubuntu 18.04 server with cloudinit support</span>
+            <span class="prev-text nav-mobile">Next</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
 
   
   
 
+  
+  
 
+  
 
+  
+  
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "echowings/blogcomment"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+  
 
+  
+
+  
+
+  
+
+    
 
         </div>
       </div>
@@ -605,6 +670,13 @@ if (!doNotTrack) {
 
 <script type="text/javascript" src="/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js" integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin="anonymous"></script>
 
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 
 
