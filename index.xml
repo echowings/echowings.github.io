@@ -344,14 +344,14 @@ chmod &lt;span style=&#34;color:#f60&#34;&gt;600&lt;/span&gt; acme.json&lt;/code
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/\&amp;#34;--docker.domain=example.com\&amp;#34;/\&amp;#34;--docker.domain=private.local\&amp;#34;/g&amp;#39;&lt;/span&gt; docker-compose.yml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
-&lt;li&gt;Change &lt;code&gt;services: | treafik: | command: | - &amp;quot;--acme.email=&amp;quot;&lt;/code&gt; to &lt;code&gt;- &amp;quot;--acme.email=&amp;quot;myname@mydomain.local&amp;quot;&lt;/code&gt;
+&lt;li&gt;Change &lt;code&gt;services: | treafik: | command: | - &amp;quot;--acme.email=&amp;quot;&lt;/code&gt; to &lt;code&gt;- &amp;quot;--acme.email=&amp;quot;myname@private.local&amp;quot;&lt;/code&gt;
 &lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;  sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/\&amp;#34;--acme.email=webmaster@example.com\&amp;#34;/\&amp;#34;--acme.email=myname@private.local\&amp;#34;/g&amp;#39;&lt;/span&gt; docker-compose.yml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&#34;change-smtp-config&#34;&gt;Change smtp config&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Change &lt;code&gt;services: | smtp: | environment: | - &amp;quot;SERVER_HOSTNAME=&amp;quot;&lt;/code&gt; to &lt;code&gt;- &amp;quot;SERVER_HOSTNAME=mylibrenms.mydomain.local&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Change &lt;code&gt;services: | smtp: | environment: | - &amp;quot;SERVER_HOSTNAME=&amp;quot;&lt;/code&gt; to &lt;code&gt;- &amp;quot;SERVER_HOSTNAME=mylibrenms.private.local&amp;quot;&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;bash
 sed -i &#39;s/-\ \&amp;quot;SERVER_HOSTNAME=librenms.example.com\&amp;quot;/-\ \&amp;quot;SERVER_HOSTNAME=mylibrenms.private.local\&amp;quot;/g&#39; docker-compose.yml&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
@@ -360,7 +360,7 @@ sed -i &#39;s/-\ \&amp;quot;SERVER_HOSTNAME=librenms.example.com\&amp;quot;/-\ \
 &lt;h3 id=&#34;change-librenms-config&#34;&gt;Change librenms config&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Change &lt;code&gt;services: | librenms: | domainname:&lt;/code&gt; to &lt;code&gt;domainname: mydomain.local&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Change &lt;code&gt;services: | librenms: | domainname:&lt;/code&gt; to &lt;code&gt;domainname: private.local&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/domainname:\ example.com/domainname:\ private.local/g&amp;#39;&lt;/span&gt; docker-compose.yml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
@@ -376,7 +376,7 @@ sed -i &#39;s/-\ \&amp;quot;SERVER_HOSTNAME=librenms.example.com\&amp;quot;/-\ \
 &lt;h3 id=&#34;change-cron-config&#34;&gt;Change cron config&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Change &lt;code&gt;services: | cron: | domainname:&lt;/code&gt; to &lt;code&gt;domainname: mydomain.local&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Change &lt;code&gt;services: | cron: | domainname:&lt;/code&gt; to &lt;code&gt;domainname: private.local&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Change &lt;code&gt;services: | cron: | hostname:&lt;/code&gt; to &lt;code&gt;hostname: mylibrenms&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -384,7 +384,7 @@ sed -i &#39;s/-\ \&amp;quot;SERVER_HOSTNAME=librenms.example.com\&amp;quot;/-\ \
 &lt;h3 id=&#34;change-syslog-ng&#34;&gt;Change syslog-ng:&lt;/h3&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Change &lt;code&gt;services: | syslog-ng: | domainname:&lt;/code&gt; to &lt;code&gt;domainname: mydomain.local&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Change &lt;code&gt;services: | syslog-ng: | domainname:&lt;/code&gt; to &lt;code&gt;domainname: private.local&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;Change &lt;code&gt;services: | syslog-ng: | hostname:&lt;/code&gt; to &lt;code&gt;hostname: mylibrenms&lt;/code&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 

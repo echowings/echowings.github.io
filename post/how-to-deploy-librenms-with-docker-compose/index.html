@@ -496,14 +496,14 @@ chmod <span style="color:#f60">600</span> acme.json</code></pre></div>
 </ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i <span style="color:#c30">&#39;s/\&#34;--docker.domain=example.com\&#34;/\&#34;--docker.domain=private.local\&#34;/g&#39;</span> docker-compose.yml</code></pre></div>
 <ul>
-<li>Change <code>services: | treafik: | command: | - &quot;--acme.email=&quot;</code> to <code>- &quot;--acme.email=&quot;myname@mydomain.local&quot;</code>
+<li>Change <code>services: | treafik: | command: | - &quot;--acme.email=&quot;</code> to <code>- &quot;--acme.email=&quot;myname@private.local&quot;</code>
 <br /></li>
 </ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  sed -i <span style="color:#c30">&#39;s/\&#34;--acme.email=webmaster@example.com\&#34;/\&#34;--acme.email=myname@private.local\&#34;/g&#39;</span> docker-compose.yml</code></pre></div>
 <h3 id="change-smtp-config">Change smtp config</h3>
 
 <ul>
-<li><p>Change <code>services: | smtp: | environment: | - &quot;SERVER_HOSTNAME=&quot;</code> to <code>- &quot;SERVER_HOSTNAME=mylibrenms.mydomain.local&quot;</code></p>
+<li><p>Change <code>services: | smtp: | environment: | - &quot;SERVER_HOSTNAME=&quot;</code> to <code>- &quot;SERVER_HOSTNAME=mylibrenms.private.local&quot;</code></p>
 
 <p><code>bash
 sed -i 's/-\ \&quot;SERVER_HOSTNAME=librenms.example.com\&quot;/-\ \&quot;SERVER_HOSTNAME=mylibrenms.private.local\&quot;/g' docker-compose.yml</code></p></li>
@@ -512,7 +512,7 @@ sed -i 's/-\ \&quot;SERVER_HOSTNAME=librenms.example.com\&quot;/-\ \&quot;SERVER
 <h3 id="change-librenms-config">Change librenms config</h3>
 
 <ul>
-<li>Change <code>services: | librenms: | domainname:</code> to <code>domainname: mydomain.local</code>.</li>
+<li>Change <code>services: | librenms: | domainname:</code> to <code>domainname: private.local</code>.</li>
 </ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i <span style="color:#c30">&#39;s/domainname:\ example.com/domainname:\ private.local/g&#39;</span> docker-compose.yml</code></pre></div>
 <ul>
@@ -528,7 +528,7 @@ sed -i 's/-\ \&quot;SERVER_HOSTNAME=librenms.example.com\&quot;/-\ \&quot;SERVER
 <h3 id="change-cron-config">Change cron config</h3>
 
 <ul>
-<li><p>Change <code>services: | cron: | domainname:</code> to <code>domainname: mydomain.local</code>.</p></li>
+<li><p>Change <code>services: | cron: | domainname:</code> to <code>domainname: private.local</code>.</p></li>
 
 <li><p>Change <code>services: | cron: | hostname:</code> to <code>hostname: mylibrenms</code>.</p></li>
 </ul>
@@ -536,7 +536,7 @@ sed -i 's/-\ \&quot;SERVER_HOSTNAME=librenms.example.com\&quot;/-\ \&quot;SERVER
 <h3 id="change-syslog-ng">Change syslog-ng:</h3>
 
 <ol>
-<li>Change <code>services: | syslog-ng: | domainname:</code> to <code>domainname: mydomain.local</code>.</li>
+<li>Change <code>services: | syslog-ng: | domainname:</code> to <code>domainname: private.local</code>.</li>
 <li>Change <code>services: | syslog-ng: | hostname:</code> to <code>hostname: mylibrenms</code>.</li>
 </ol>
 
