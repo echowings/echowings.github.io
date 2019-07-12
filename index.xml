@@ -253,6 +253,159 @@ sudo systemctl restart sshd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     </item>
     
     <item>
+      <title>How to Deploy Librenms With Dockercompose</title>
+      <link>https://blog.stevedong.com/post/how-to-deploy-librenms-with-docker-compose/</link>
+      <pubDate>Wed, 05 Jun 2019 21:47:54 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-deploy-librenms-with-docker-compose/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-deploy-librenms-with-docker-compsoe&#34;&gt;How to deploy librenms with docker-compsoe&lt;/h1&gt;
+
+&lt;p&gt;Librenms is a very light and easy handle moniting software. It is suitable for us to monitoring server,networdevice, printer etc via snmp.&lt;/p&gt;
+
+&lt;p&gt;At now, docker is easy for software deployment. After deploy librenms in ubuntu vm, I have a try to deploy librenms with docker-compose.&lt;/p&gt;
+
+&lt;h2 id=&#34;download-config-files&#34;&gt;Download config files&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mkdir librenms-docker-compose
+&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; librenms-docker-compose
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Download .env file&lt;/span&gt;
+wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/.env
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Download docker-compose file&lt;/span&gt;
+wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/docker-compose.yml
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Download librenms.env file&lt;/span&gt;
+wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/librenms.env
+
+touch acme.json
+chmod &lt;span style=&#34;color:#f60&#34;&gt;600&lt;/span&gt; acme.json&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;librenms-server-configuration&#34;&gt;librenms server configuration&lt;/h2&gt;
+
+&lt;p&gt;As show below , I will deploy a librenms via docker  in my lan network. the host name is &lt;code&gt;mylibrenms&lt;/code&gt;,my local domain name is &lt;code&gt;mydomain.local&lt;/code&gt;.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;value&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Librenms host name&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;mylibrenms&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Domain name&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;private.local&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Name&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;myname&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;mail account&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;myname@private.local&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;snmp community&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;public&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;modify-env&#34;&gt;Modify &lt;code&gt;.env&lt;/code&gt;&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;vi .env&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Change configure :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#033&#34;&gt;MYSQL_DATABASE&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;mylibrenms
+&lt;span style=&#34;color:#033&#34;&gt;MYSQL_USER&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;mylibrenms
+&lt;span style=&#34;color:#033&#34;&gt;MYSQL_PASSWORD&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;mylibrenmspassword
+
+&lt;span style=&#34;color:#033&#34;&gt;SMTP_SERVER&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;smtp.private.local
+&lt;span style=&#34;color:#033&#34;&gt;SMTP_USERNAME&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;myname@private.local
+&lt;span style=&#34;color:#033&#34;&gt;SMTP_PASSWORD&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;myPassword
+
+&lt;span style=&#34;color:#033&#34;&gt;TZ&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;Asia/Chongqing
+&lt;span style=&#34;color:#033&#34;&gt;PUID&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;1000&lt;/span&gt;
+&lt;span style=&#34;color:#033&#34;&gt;PGID&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;1000&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;modify-docker-compose-yml&#34;&gt;Modify &lt;code&gt;docker-compose.yml&lt;/code&gt;&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;vi docker-compose.yml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;change-treafik-config&#34;&gt;Change treafik config&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Change &lt;code&gt;services: | treafik: | command: | - &amp;quot;--docker.domain=&amp;quot;&lt;/code&gt; to &lt;code&gt;--docker.domain=private.local&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/\&amp;#34;--docker.domain=example.com\&amp;#34;/\&amp;#34;--docker.domain=private.local\&amp;#34;/g&amp;#39;&lt;/span&gt; docker-compose.yml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Change &lt;code&gt;services: | treafik: | command: | - &amp;quot;--acme.email=&amp;quot;&lt;/code&gt; to &lt;code&gt;- &amp;quot;--acme.email=&amp;quot;myname@mydomain.local&amp;quot;&lt;/code&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;  sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/\&amp;#34;--acme.email=webmaster@example.com\&amp;#34;/\&amp;#34;--acme.email=myname@private.local\&amp;#34;/g&amp;#39;&lt;/span&gt; docker-compose.yml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;change-smtp-config&#34;&gt;Change smtp config&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Change &lt;code&gt;services: | smtp: | environment: | - &amp;quot;SERVER_HOSTNAME=&amp;quot;&lt;/code&gt; to &lt;code&gt;- &amp;quot;SERVER_HOSTNAME=mylibrenms.mydomain.local&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+sed -i &#39;s/-\ \&amp;quot;SERVER_HOSTNAME=librenms.example.com\&amp;quot;/-\ \&amp;quot;SERVER_HOSTNAME=mylibrenms.private.local\&amp;quot;/g&#39; docker-compose.yml&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;change-librenms-config&#34;&gt;Change librenms config&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Change &lt;code&gt;services: | librenms: | domainname:&lt;/code&gt; to &lt;code&gt;domainname: mydomain.local&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/domainname:\ example.com/domainname:\ private.local/g&amp;#39;&lt;/span&gt; docker-compose.yml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Change &lt;code&gt;services: | librenms: | hostname:&lt;/code&gt; to &lt;code&gt;hostname; mylibrenms&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;  sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/hostname:\ librenms/hostname:\ mylibrenms/g&amp;#39;&lt;/span&gt; docker-compose.yml
+  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Change &lt;code&gt;services: | librenms: | labels: | - &amp;quot; traefik.frontend.rule=&amp;quot;&lt;/code&gt; to &lt;code&gt;- &amp;quot;traefik.frontend.rule=Host:mylibrenms&amp;quot;&lt;/code&gt;.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/-\ \&amp;#34;traefik.frontend.rule=Host:librenms.example.com\&amp;#34;/-\ \&amp;#34;traefik.frontend.rule=Host:mylibrenms.private.local\&amp;#34;/g&amp;#39;&lt;/span&gt; docker-compose.yml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;change-cron-config&#34;&gt;Change cron config&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Change &lt;code&gt;services: | cron: | domainname:&lt;/code&gt; to &lt;code&gt;domainname: mydomain.local&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Change &lt;code&gt;services: | cron: | hostname:&lt;/code&gt; to &lt;code&gt;hostname: mylibrenms&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;change-syslog-ng&#34;&gt;Change syslog-ng:&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Change &lt;code&gt;services: | syslog-ng: | domainname:&lt;/code&gt; to &lt;code&gt;domainname: mydomain.local&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Change &lt;code&gt;services: | syslog-ng: | hostname:&lt;/code&gt; to &lt;code&gt;hostname: mylibrenms&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;modify-librenms-env&#34;&gt;Modify &lt;code&gt;librenms.env&lt;/code&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Change &lt;code&gt;LIBRENMS_SNMP_COMMUNITY=&lt;/code&gt; to &lt;code&gt;LIBRENMS_SNMP_COMMUNITY=public&lt;/code&gt;.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt; sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/LIBRENMS_SNMP_COMMUNITY=librenmsdocker/LIBRENMS_SNMP_COMMUNITY=public/g&amp;#39;&lt;/span&gt; librenms.env&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;run-docker-compose-to-up-librenms-containers&#34;&gt;Run docker-compose to up librenms containers&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker-compose up -d&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;enable-proxmox-app-moniting&#34;&gt;enable proxmox app moniting&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt; EOF &amp;gt; librenms/config.php
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;?php
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;$config[&amp;#39;enable_proxmox&amp;#39;] = true;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      
+    </item>
+    
+    <item>
       <title>How to Install driver of Mellanox ConnetcX 3 10Gbps Network Adpater in Promxox-VE 5.x or Debian 9</title>
       <link>https://blog.stevedong.com/post/how-to-install-mellanox-connetcx-3-10gbps-network-adpater-in-promxo-ve-5.x-or-debian9.x/</link>
       <pubDate>Wed, 05 Jun 2019 11:52:23 +0800</pubDate>
@@ -2032,8 +2185,8 @@ ping &lt;span style=&#34;color:#f60&#34;&gt;172&lt;/span&gt;.16.100.1&lt;/code&g
 &lt;p&gt;At now, docker is easy for software deployment. After deploy librenms in ubuntu vm, I have a try to deploy librenms with docker-compose.&lt;/p&gt;
 
 &lt;h2 id=&#34;install-librenms-with-docker-compose&#34;&gt;Install librenms with docker-compose&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mkdir -p /data/librenms
-&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /data/librenms
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mkdir -p librenms-docker-compose
+&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; ./librenms-docker-compose
 wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/.env
 wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/docker-compose.yml
 wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/librenms.env
