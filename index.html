@@ -62,7 +62,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
 
-<meta property="og:updated_time" content="2019-07-12T14:04:03&#43;08:00"/>
+<meta property="og:updated_time" content="2019-07-15T17:07:51&#43;08:00"/>
 
 <meta itemprop="name" content="Steve Dong - A System Administrator&#39;s Blog">
 <meta itemprop="description" content="A System Administrator&#39;s Blog.">
@@ -343,6 +343,42 @@ if (!doNotTrack) {
   <section id="posts" class="posts">
     
     
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/change-rhel6.8-yum-repo-to-centos6/">How to change RHEL6 yum repo to centos6</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-07-15" class="post-time">
+        2019-07-15
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to change RHEL6 yum repo to centos6 Today I will show you how to setup rhel6 at proxmox VE.
+After installed REHL6.8,We didn&rsquo;t have RHEL subscription,but how to get update and install software via yum ? The right answer is to change yum repo.
+Fix perl error export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable RHEL subsription subscription-manager config --rhsm.manage_repos=0 Chang yum repo to Centos 6  delete rhel yum software  rpm -qa | grep yum rpm -qa | grep yum | xargs rpm -e --nodeps  Download centos yum software  mkdir -p /tmp/yum cd /tmp/yum wget http://mirrors.
+    </div>
+    <div class="read-more">
+      <a href="/post/change-rhel6.8-yum-repo-to-centos6/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
     
       <article class="post bg-white">
   <header class="post-header">
@@ -830,42 +866,6 @@ Install snmpd on proxmox ve apt update apt install -y snmpd Configure snmpd.conf
     </div>
     <div class="read-more">
       <a href="/post/diy-thin-itx-pc/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/proxmox-ve-how-to-chang-network-of-hosting-without-reboot-proxmox-ve/">Proxmox Ve How to Chang Network of Hosting Without Reboot Proxmox Ve</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-04-27" class="post-time">
-        2019-04-27
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to change Network settings of proxmox-ve host without rebooting. Eache time when I want to change network settings like change netowrks and I must reboot to apply it. It is really trouble me.
-Solution Proxmox VE is based on debian. After check interface of network with the path /etc/network/
-I found that each time when i change network settings. There will be a named interfaces.new created and it content new network settings wait for apply when i reboot.
-    </div>
-    <div class="read-more">
-      <a href="/post/proxmox-ve-how-to-chang-network-of-hosting-without-reboot-proxmox-ve/" class="read-more-link">Read more</a>
     </div>
     
   </div>

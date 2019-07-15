@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 12 Jul 2019 14:04:03 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jul 2019 17:07:51 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -28,6 +28,78 @@
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
+      
+    </item>
+    
+    <item>
+      <title>How to change RHEL6 yum repo to centos6</title>
+      <link>https://blog.stevedong.com/post/change-rhel6.8-yum-repo-to-centos6/</link>
+      <pubDate>Mon, 15 Jul 2019 17:07:51 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/change-rhel6.8-yum-repo-to-centos6/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-change-rhel6-yum-repo-to-centos6&#34;&gt;How to change RHEL6 yum repo to centos6&lt;/h1&gt;
+
+&lt;p&gt;Today I will show you how to setup rhel6 at proxmox VE.&lt;/p&gt;
+
+&lt;p&gt;After installed REHL6.8,We didn&amp;rsquo;t have RHEL subscription,but how to get update and install software via yum ? The right answer is to change yum repo.&lt;/p&gt;
+
+&lt;h2 id=&#34;fix-perl-error&#34;&gt;Fix perl error&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;LANGUAGE&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;en_US.UTF-8
+&lt;span style=&#34;color:#366&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;LANG&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;en_US.UTF-8
+&lt;span style=&#34;color:#366&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;LC_ALL&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;en_US.UTF-8
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#locale-gen en_US.UTF-8&lt;/span&gt;
+cat &amp;gt;&amp;gt; /etc/environment &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;LC_ALL=en_US.UTF-8
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;LANG=en_US.UTF-8
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;disable-rhel-subsription&#34;&gt;Disable RHEL subsription&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;subscription-manager config --rhsm.manage_repos&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;chang-yum-repo-to-centos-6&#34;&gt;Chang yum repo to Centos 6&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;delete rhel yum software&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;rpm -qa | grep yum
+rpm -qa | grep yum | xargs rpm -e --nodeps&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Download  centos yum software&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mkdir -p /tmp/yum
+&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /tmp/yum
+wget http://mirrors.163.com/centos/6/os/x86_64/Packages/python-iniparse-0.3.1-2.1.el6.noarch.rpm
+wget http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-3.2.29-81.el6.centos.noarch.rpm
+wget http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-metadata-parser-1.1.2-16.el6.x86_64.rpm
+wget http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-plugin-fastestmirror-1.1.30-41.el6.noarch.rpm&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Install centos yum software&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;rpm -ivh python-iniparse-0.3.1-2.1.el6.noarch.rpm
+rpm -ivh yum-metadata-parser-1.1.2-16.el6.x86_64.rpm
+rpm -ivh yum-3.2.29-81.el6.centos.noarch.rpm yum-plugin-fastestmirror-1.1.30-41.el6.noarch.rpm&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Delete other repos file&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;rm -rf /etc/yum.repos.d/*&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Download yum.repos file of centos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS6-Base-163.repo
+sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/$releasever/6/g&amp;#39;&lt;/span&gt; CentOS-Base.repo
+yum clean all
+yum makecache&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;install-cloud-ini-and-qemu-guest-agent&#34;&gt;Install cloud-ini and qemu-guest-agent&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;yum update
+yum install cloud-init qemu-guest-agent&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then enable qemu agent in &lt;code&gt;option&lt;/code&gt; and  add a cloud-init disk in vm settings on proxmox ve.&lt;/p&gt;
+
+&lt;h2 id=&#34;change-ssh-config-to-allow-user-login-with-password&#34;&gt;Change SSH config to allow user login with password&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/PasswordAuthentication\ no/PasswordAuthentication\ yes/g&amp;#39;&lt;/span&gt; /etc/ssh/sshd_config
+sudo sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/g&amp;#39;&lt;/span&gt; /etc/ssh/sshd_config
+sudo service ssh restart
+sudo service sshd restart&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     
