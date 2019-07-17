@@ -1861,12 +1861,22 @@ systemctl restart  snmpd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;I found that each time when i change network settings. There will be a named &lt;code&gt;interfaces.new&lt;/code&gt; created and it content new network settings wait for apply when i reboot. So I try to backup the old networking interfaces settings and replace it with the new file.&lt;/p&gt;
 
-&lt;h3 id=&#34;backup-interfaces&#34;&gt;Backup interfaces&lt;/h3&gt;
+&lt;h3 id=&#34;manual-change&#34;&gt;Manual change&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Backup interfaces&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cp /etc/network/interfaces /etc/network/interfaces.old&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;copy-interface-new-to-interface&#34;&gt;Copy interface.new to interface&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Copy interface.new to interface&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cp /etc/network/interfaces.new /etc/network/interfaces&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;reboot-networking-service&#34;&gt;Reboot networking service&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;systemctl restart networking&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;ul&gt;
+&lt;li&gt;Reboot networking service&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;systemctl restart networking&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;scirpt-change&#34;&gt;Scirpt change&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mv interfaces interfaces.backup &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; mv interfaces.new interfaces &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; systemctl restart networking.service&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     

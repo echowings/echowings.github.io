@@ -76,7 +76,7 @@ I found that each time when i change network settings. There will be a named int
 
 <meta itemprop="datePublished" content="2019-04-27T11:36:16&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-27T11:36:16&#43;08:00" />
-<meta itemprop="wordCount" content="114">
+<meta itemprop="wordCount" content="129">
 
 
 
@@ -389,9 +389,8 @@ if (!doNotTrack) {
 <ul>
 <li><a href="#solution">Solution</a>
 <ul>
-<li><a href="#backup-interfaces">Backup interfaces</a></li>
-<li><a href="#copy-interface-new-to-interface">Copy interface.new to interface</a></li>
-<li><a href="#reboot-networking-service">Reboot networking service</a></li>
+<li><a href="#manual-change">Manual change</a></li>
+<li><a href="#scirpt-change">Scirpt change</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -413,12 +412,22 @@ if (!doNotTrack) {
 
 <p>I found that each time when i change network settings. There will be a named <code>interfaces.new</code> created and it content new network settings wait for apply when i reboot. So I try to backup the old networking interfaces settings and replace it with the new file.</p>
 
-<h3 id="backup-interfaces">Backup interfaces</h3>
+<h3 id="manual-change">Manual change</h3>
+
+<ul>
+<li>Backup interfaces</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cp /etc/network/interfaces /etc/network/interfaces.old</code></pre></div>
-<h3 id="copy-interface-new-to-interface">Copy interface.new to interface</h3>
+<ul>
+<li>Copy interface.new to interface</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cp /etc/network/interfaces.new /etc/network/interfaces</code></pre></div>
-<h3 id="reboot-networking-service">Reboot networking service</h3>
+<ul>
+<li>Reboot networking service</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">systemctl restart networking</code></pre></div>
+<h3 id="scirpt-change">Scirpt change</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mv interfaces interfaces.backup <span style="color:#555">&amp;&amp;</span> mv interfaces.new interfaces <span style="color:#555">&amp;&amp;</span> systemctl restart networking.service</code></pre></div>
     </div>
 
     
