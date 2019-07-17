@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 15 Jul 2019 17:07:51 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jul 2019 16:07:55 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -28,6 +28,103 @@
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
+      
+    </item>
+    
+    <item>
+      <title>Setting Pve6 after installed</title>
+      <link>https://blog.stevedong.com/post/settings-pve6.0-after-installed/</link>
+      <pubDate>Wed, 17 Jul 2019 16:07:55 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/settings-pve6.0-after-installed/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;setting-pve-6-x&#34;&gt;Setting PVE 6.x&lt;/h1&gt;
+
+&lt;p&gt;After installed PVE 6.0, What we need to do ?&lt;/p&gt;
+
+&lt;h2 id=&#34;download-pve-6-x-iso-file-in-mirrors-ustc-edu-cn&#34;&gt;Download PVE 6.x iSO file in mirrors.ustc.edu.cn&lt;/h2&gt;
+
+&lt;p&gt;Download iso images from here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://mirrors.ustc.edu.cn/proxmox/iso/&#34;&gt;http://mirrors.ustc.edu.cn/proxmox/iso/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;fixe-perl-error-waring&#34;&gt;Fixe Perl error waring&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;LANGUAGE&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;en_US.UTF-8
+&lt;span style=&#34;color:#366&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;LANG&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;en_US.UTF-8
+&lt;span style=&#34;color:#366&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;LC_ALL&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;en_US.UTF-8
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#locale-gen en_US.UTF-8&lt;/span&gt;
+cat &amp;gt;&amp;gt; /etc/environment &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;LC_ALL=en_US.UTF-8
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;LANG=en_US.UTF-8
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;disable-subscription-warning&#34;&gt;Disable subscription Warning&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Disable subscription warning via script&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -i.bak &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34;&lt;/span&gt; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; systemctl restart pveproxy.service&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Manually disable subscription warning&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /usr/share/javascript/proxmox-widget-toolkit
+cp proxmoxlib.js proxmoxlib.js.bak
+nano proxmoxlib.js
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# change the value as show below&lt;/span&gt;
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;data.status !&lt;span style=&#34;color:#555&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;Active&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#to&lt;/span&gt;
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#366&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#restart pveproxy.service&lt;/span&gt;
+systemctl restart pveproxy.service&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;chang-apt-sourcelist-to-mirrors-ustc-edu-cn&#34;&gt;Chang  apt sourcelist to mirrors.ustc.edu.cn&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Backup sources.list&lt;/span&gt;
+mv /etc/apt/sources.list /etc/apt/sources.list.backup
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Change debian 10 sourcelist to mirrors.ustc.edu.cn&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# https://mirrors.ustc.edu.cn/repogen/&lt;/span&gt;
+
+cat &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt; EOF &amp;gt; /etc/apt/sources.list
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Add pve-no-subscription with mirrors.ustc.edu.cn&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#change pve 5.x update source list&lt;/span&gt;
+cat &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt; EOF &amp;gt;&amp;gt; /etc/apt/sources.list
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/proxmox/debian/pve/ buster pve-no-subscription
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;##change ceph source list to utsc mirrors&lt;/span&gt;
+cat &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt; EOF &amp;gt;&amp;gt;  /etc/apt/sources.list
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-nautilus/ buster main
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Add Key&lt;/span&gt;
+wget https://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-6.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-6.x.gpg
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Delete `pve-enterprise.list`&lt;/span&gt;
+rm -rf /etc/apt/sources.list.d/pve-enterprise.list
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Upgrade pve&lt;/span&gt;
+apt update &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y dist-upgrade
+pveupdate &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; pveupgrade -y
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# update grub settings&lt;/span&gt;
+update-grub&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;install-openvswitch&#34;&gt;Install openvswitch&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt install -y openvswitch-switch&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     
@@ -4669,22 +4766,6 @@ git submodule add --force -b master git@github.com:echowings/echowings.github.io
 &lt;li&gt;&lt;a href=&#34;https://keysaim.github.io/post/blog/deploy-hugo-blog-in-github.io/&#34;&gt;如何在github.io搭建Hugo博客站&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://steemkr.com/cn/@heyeshuang/chroma-typography-js&#34;&gt;用chroma进行语法高亮&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>First_Blog</title>
-      <link>https://blog.stevedong.com/post/first-blog/</link>
-      <pubDate>Fri, 26 Oct 2018 21:46:42 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/first-blog/</guid>
-      
-        <description>
-
-&lt;h1 id=&#34;a-journey-of-a-thousand-miles-begins-with-a-single-step&#34;&gt;A journey of a thousand miles begins with a single step&lt;/h1&gt;
-
-&lt;p&gt;THis a blog to be build as my knowleage base.&lt;/p&gt;
 </description>
       
     </item>
