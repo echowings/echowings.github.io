@@ -263,11 +263,31 @@ sudo systemctl restart sshd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/g&amp;#39;&lt;/span&gt; /etc/ssh/sshd_config
 sudo systemctl daemon-reload
 sudo systemctl restart sshd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;change-machine-id&#34;&gt;Change machine-id&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;rm /var/lib/dbus/machine-id
+truncate -s &lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt;  /etc/machine-id
+ln -s /etc/machine-id /var/lib/dbus/machine-id&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;change-hostname-with-ubuntu-18-04&#34;&gt;change hostname with ubuntu 18.04&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/preserve_hostname:\ false/preserve_hostname:\ true/g&amp;#39;&lt;/span&gt; /etc/cloud/cloud.cfg
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#check settings&lt;/span&gt;
+cat /etc/cloud/cloud.cfg |grep preserve_hostname
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# If it works and you will see:&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#preserve_hostname: true&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set hostname to myserver-forloadbalance2-node175&lt;/span&gt;
+hostnamectl set-hostname myserver-forloadbalance2-node-175
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# reboot host&lt;/span&gt;
+reboot now&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&#34;permit-modified-sourelist&#34;&gt;Permit modified sourelist&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo cat &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt; EOF &amp;gt;&amp;gt; /etc/cloud/cloud.cfg
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;apt_preserve_sources_list: true
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Then you can change sourelist without worried about the sourcelist will be overwriten by cloud-init&lt;/p&gt;
+
+&lt;p&gt;##
+  - &lt;a href=&#34;https://jaylacroix.com/fixing-ubuntu-18-04-virtual-machines-that-fight-over-the-same-ip-address/&#34;&gt;Machines that fight over the same IP address&lt;/a&gt;&lt;/p&gt;
 </description>
       
     </item>

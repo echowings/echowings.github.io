@@ -79,7 +79,7 @@ Option 2: Manually Setup cloud-init We can do this with 2 steps.">
 
 <meta itemprop="datePublished" content="2019-07-12T14:04:03&#43;08:00" />
 <meta itemprop="dateModified" content="2019-07-12T14:04:03&#43;08:00" />
-<meta itemprop="wordCount" content="253">
+<meta itemprop="wordCount" content="314">
 
 
 
@@ -406,6 +406,8 @@ if (!doNotTrack) {
 <ul>
 <li><a href="#enable-password-authentication">Enable password authentication</a></li>
 <li><a href="#permit-root-can-loing-with-password">Permit root can loing with password</a></li>
+<li><a href="#change-machine-id">Change machine-id</a></li>
+<li><a href="#change-hostname-with-ubuntu-18-04">change hostname with ubuntu 18.04</a></li>
 <li><a href="#permit-modified-sourelist">Permit modified sourelist</a></li>
 </ul></li>
 </ul></li>
@@ -472,11 +474,31 @@ sudo systemctl restart sshd</code></pre></div>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo sed -i <span style="color:#c30">&#39;s/#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/g&#39;</span> /etc/ssh/sshd_config
 sudo systemctl daemon-reload
 sudo systemctl restart sshd</code></pre></div>
+<h3 id="change-machine-id">Change machine-id</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm /var/lib/dbus/machine-id
+truncate -s <span style="color:#f60">0</span>  /etc/machine-id
+ln -s /etc/machine-id /var/lib/dbus/machine-id</code></pre></div>
+<h3 id="change-hostname-with-ubuntu-18-04">change hostname with ubuntu 18.04</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i <span style="color:#c30">&#39;s/preserve_hostname:\ false/preserve_hostname:\ true/g&#39;</span> /etc/cloud/cloud.cfg
+
+<span style="color:#09f;font-style:italic">#check settings</span>
+cat /etc/cloud/cloud.cfg |grep preserve_hostname
+<span style="color:#09f;font-style:italic"># If it works and you will see:</span>
+<span style="color:#09f;font-style:italic">#preserve_hostname: true</span>
+
+<span style="color:#09f;font-style:italic">#Set hostname to myserver-forloadbalance2-node175</span>
+hostnamectl set-hostname myserver-forloadbalance2-node-175
+
+<span style="color:#09f;font-style:italic"># reboot host</span>
+reboot now</code></pre></div>
 <h3 id="permit-modified-sourelist">Permit modified sourelist</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo cat <span style="color:#c30">&lt;&lt; EOF &gt;&gt; /etc/cloud/cloud.cfg
 </span><span style="color:#c30">apt_preserve_sources_list: true
 </span><span style="color:#c30">EOF</span></code></pre></div>
 <p>Then you can change sourelist without worried about the sourcelist will be overwriten by cloud-init</p>
+
+<p>##
+  - <a href="https://jaylacroix.com/fixing-ubuntu-18-04-virtual-machines-that-fight-over-the-same-ip-address/">Machines that fight over the same IP address</a></p>
 
     </div>
 
