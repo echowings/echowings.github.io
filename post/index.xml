@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 17 Jul 2019 16:07:55 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jul 2019 12:23:01 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Modify Template in Proxmox Ve</title>
+      <link>https://blog.stevedong.com/post/how-to-modify-template-in-proxmox-ve/</link>
+      <pubDate>Thu, 18 Jul 2019 12:23:01 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-modify-template-in-proxmox-ve/</guid>
+      <description> How to Modify Template im Proxox VE Sometime I wonder how to convert template back to vm and modify it and convert it back to vm? Here is the solution
+Convert Template to VM Delete template: 1 in vm config.
+sed -i &amp;#39;s/template:\ 1//g&amp;#39; /etc/pve/qemu-server/{vm-id}.conf Change access permission of VM disk cd /var/lib/vz/images/1{VM-ID}/ chattr -i * chmod 755 * Then covert it back to template </description>
+    </item>
     
     <item>
       <title>Insatll Promxox VE 6.x</title>
@@ -502,15 +513,6 @@ After a few days research, I found that .net core website is support RHEL 6.X,bu
       
       <guid>https://blog.stevedong.com/post/how-to-build-blog-with-hugo-on-github/</guid>
       <description>Hugo on your MacOS Setting github create a repo named blogs for store hugo programes. Create another repo named echowings.github.io to host websit. generate ssh key and regist it on github settings. Install hugo brew install hugo Create a blog site. hugo new site blogs init git cd blogs git init #Add remote repo. git remote add origin git@github.com:echowings/blogs.git #Add a theme for your hugo. git submodule add -b master</description>
-    </item>
-    
-    <item>
-      <title>First_Blog</title>
-      <link>https://blog.stevedong.com/post/first-blog/</link>
-      <pubDate>Fri, 26 Oct 2018 21:46:42 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/first-blog/</guid>
-      <description>A journey of a thousand miles begins with a single step THis a blog to be build as my knowleage base.</description>
     </item>
     
   </channel>

@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 17 Jul 2019 16:07:55 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jul 2019 12:23:01 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -27,6 +27,32 @@
 &lt;li&gt;Love cooking.&lt;/li&gt;
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>How to Modify Template in Proxmox Ve</title>
+      <link>https://blog.stevedong.com/post/how-to-modify-template-in-proxmox-ve/</link>
+      <pubDate>Thu, 18 Jul 2019 12:23:01 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-modify-template-in-proxmox-ve/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-modify-template-im-proxox-ve&#34;&gt;How to Modify Template im Proxox VE&lt;/h1&gt;
+
+&lt;p&gt;Sometime I wonder how to convert template back to vm and modify it and convert it back to vm? Here is the solution&lt;/p&gt;
+
+&lt;h2 id=&#34;convert-template-to-vm&#34;&gt;Convert Template to VM&lt;/h2&gt;
+
+&lt;p&gt;Delete &lt;code&gt;template: 1&lt;/code&gt; in vm config.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/template:\ 1//g&amp;#39;&lt;/span&gt; /etc/pve/qemu-server/&lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;vm-id&lt;span style=&#34;color:#555&#34;&gt;}&lt;/span&gt;.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;change-access-permission-of-vm-disk&#34;&gt;Change access permission of VM disk&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /var/lib/vz/images/1&lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;VM-ID&lt;span style=&#34;color:#555&#34;&gt;}&lt;/span&gt;/
+chattr -i *
+chmod &lt;span style=&#34;color:#f60&#34;&gt;755&lt;/span&gt; *&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;then-covert-it-back-to-template&#34;&gt;Then covert it back to template&lt;/h2&gt;
 </description>
       
     </item>
@@ -4620,182 +4646,6 @@ ldconfig&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/dotnet/core/blob/master/release-notes/2.1/2.1.4/2.1.4-download.md&#34;&gt;.NET Core 2.1.4&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>How to Build Blog With Hugo on Github</title>
-      <link>https://blog.stevedong.com/post/how-to-build-blog-with-hugo-on-github/</link>
-      <pubDate>Fri, 26 Oct 2018 21:57:33 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/how-to-build-blog-with-hugo-on-github/</guid>
-      
-        <description>
-
-&lt;h3 id=&#34;hugo-on-your-macos&#34;&gt;Hugo on your MacOS&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Setting github&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-&lt;li&gt;create a repo named blogs for store hugo programes.&lt;/li&gt;
-&lt;li&gt;Create another repo named echowings.github.io to host websit.&lt;/li&gt;
-&lt;li&gt;generate ssh key and regist it on github settings.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Install hugo&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;  
-brew install hugo&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;Create a blog site.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;  
-hugo new site blogs&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;init git&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt; 
-&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; blogs
-git init
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Add remote repo.&lt;/span&gt; 
-git remote add origin git@github.com:echowings/blogs.git
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Add a theme for your hugo.&lt;/span&gt;
-git submodule add -b master https://github.com/xianmin/hugo-theme-jane.git themes/jane
-cp -r themes/jane/exampleSite/content ./
-cp themes/jane/exampleSite/config.toml ./&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;Test hugo at local.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;	
-hugo server&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;You can access &lt;a href=&#34;http://localhost:1313&#34;&gt;http://localhost:1313&lt;/a&gt; to test your blog in local.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;change-configure&#34;&gt;Change configure&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Modifiy vi config.toml&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Change URL&lt;/span&gt;
-baseURL = &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;https://blog.stevedong.com&amp;#34;&lt;/span&gt;
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Change Title&lt;/span&gt;
-title = &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Steve Dong - A System Administrator&amp;#39;s Blog&amp;#34;&lt;/span&gt;
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Change theme to jane&lt;/span&gt;
-theme = &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;jane&amp;#34;&lt;/span&gt;
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#How many pages will be displayed on homepage.&lt;/span&gt;
-pageinate = &lt;span style=&#34;color:#f60&#34;&gt;15&lt;/span&gt;
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Display how many pages will be displayed on archive page.&lt;/span&gt;
-archive&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;-&lt;/span&gt;paginate = &lt;span style=&#34;color:#f60&#34;&gt;50&lt;/span&gt;
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#RSS limite.&lt;/span&gt;
-rssLimit = &lt;span style=&#34;color:#f60&#34;&gt;50&lt;/span&gt;
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#google analytics related&lt;/span&gt;
-googleAnalytics= &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;UA-xxxxxxxx-X&amp;#34;&lt;/span&gt;
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Chang author&lt;/span&gt;
-name = &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Steve Dong&amp;#34;&lt;/span&gt;
-
- &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Commit the meanu &amp;#34;External Link&amp;#34;&lt;/span&gt;
- &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#[[menu.main]]&lt;/span&gt;
- &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#  name = &amp;#34;MyGitHub&amp;#34;&lt;/span&gt;
- &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#  weight = 50&lt;/span&gt;
- &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#  url = &amp;#34;https://echowings.github.com&amp;#34;&lt;/span&gt;
- 
- &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Change Site creation time&lt;/span&gt;
- 
- [params]
- 	since = &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;2018&amp;#34;&lt;/span&gt;
- 	
-	logoTitle= &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Steve Dong&amp;#34;&lt;/span&gt;
-	keywords = [&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;network&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;devops&amp;#39;, &amp;#34;&lt;/span&gt;System Administrator&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&amp;#34;&lt;/span&gt;]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;add-syntax-highlight&#34;&gt;Add syntax highlight&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;vi config.toml&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;add&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;pygmentsCodefences = &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;true&lt;/span&gt; &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#高亮markdown的代码块&lt;/span&gt;
-pygmentsCodefencesGuessSyntax = &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;true&lt;/span&gt; &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#高亮markdown中没有标注语言的代码块&lt;/span&gt;
-pygmentsStyle = &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;manni&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#高亮主题&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&#34;deploy-your-blog-to-github&#34;&gt;Deploy your blog to github&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Add repo of blog website.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;   
-git submodule add --force -b &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\ &lt;/span&gt;
-	master git@github.com:echowings/echowings.github.io.git public  
-	&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Run hugo to generate your blog website.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;    
-hugo server
-    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;publish your website
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;    
-&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; public
-git add.
-git commit -m &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;YOUR COMMIT MESSAGE&amp;#34;&lt;/span&gt;
-git push origin master
-    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Backup your hugo blog to github&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;    
-&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; ..
-git add.
-git commit -m &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;YOUR COMMIT MESSAGE&amp;#34;&lt;/span&gt;
-git push origin master
-    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;add-a-comment&#34;&gt;Add a comment&lt;/h3&gt;
-
-&lt;p&gt;Since theme jane has support utterances, we just need to enable utterances apps in github and configure it in config.toml in hugo.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Create a repo to storage comment. like “blogcomment”.&lt;/li&gt;
-&lt;li&gt;enable utternaces apps.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-&lt;li&gt;click &lt;a href=&#34;https://github.com/apps/utterances&#34;&gt;utterances app&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Auth utterances to your github repo “blogcomment”.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-&lt;li&gt;edit &lt;code&gt;blogs/config.toml&lt;/code&gt; and append follow lines.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;	
-[params.utteranc]
-  enable = &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;true&lt;/span&gt;
-  repo=&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;echowings/blogcomment&amp;#34;&lt;/span&gt;
-  issueTerm=&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;pathname&amp;#34;&lt;/span&gt;
-      &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;download-git-and-rebuild-blog-environment&#34;&gt;Download git and rebuild blog environment&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;git pulll git@github.com:echowings/blogs.git
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#if public already exsited  run `rm public`&lt;/span&gt;
-git submodule add --force -b master git@github.com:echowings/echowings.github.io.git public&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://utteranc.es/&#34;&gt;utterances&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/xianmin/hugo-theme-jane/blob/master/exampleSite/config.toml&#34;&gt;hugo-theme-jane/dev-config.toml&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://keysaim.github.io/post/blog/deploy-hugo-blog-in-github.io/&#34;&gt;如何在github.io搭建Hugo博客站&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://steemkr.com/cn/@heyeshuang/chroma-typography-js&#34;&gt;用chroma进行语法高亮&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
 </description>
       
     </item>
