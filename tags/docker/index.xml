@@ -6,10 +6,21 @@
     <description>Recent content in docker on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 16 Apr 2019 16:56:08 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jul 2019 16:58:29 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Configure Debian 10 as a Docker Server</title>
+      <link>https://blog.stevedong.com/post/how-to-configure-debian-10-as-a-docker-server/</link>
+      <pubDate>Fri, 26 Jul 2019 16:58:29 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-configure-debian-10-as-a-docker-server/</guid>
+      <description>How to configure debian 10 as a docker server After try to install docker in LXC with proxmox ve, there will be some issues to make docker stop working. At last, I gave up and brance pure linux as docker sever.
+Install debian 10 in promxox ve Configure deiban 10 vm with &amp;lsquo;qemu-agent&amp;rsquo; checked.
+After install deiban 10  Change source list  mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.</description>
+    </item>
     
     <item>
       <title>Librenms Deploy Librenms With Docker Container</title>
@@ -60,6 +71,15 @@ if [ &amp;ldquo;ls -A /config&amp;rdquo; = &amp;ldquo;&amp;rdquo; ]; then cp /sr
       
       <guid>https://blog.stevedong.com/post/deploy-overture-with-docker-and-freebsd/</guid>
       <description>Run overture on Docker and FreeBSD 12 ENVfoo /overtureWORKDIR${foo}RUN apt-get update &amp;amp;&amp;amp; apt-get install -y ca-certificatesRUN printf &amp;#34;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse&amp;#34; &amp;gt; /etc/apt/sources.</description>
+    </item>
+    
+    <item>
+      <title>How to Deploy Docker in Debian 10</title>
+      <link>https://blog.stevedong.com/post/how-to-deploy-docker-in-debian-10/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-deploy-docker-in-debian-10/</guid>
+      <description> How to deploy docker in debian 10 cat &amp;lt;&amp;lt; EOF &amp;gt; /etc/docker/aemon.json\n{\n &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://docker.mirrors.ustc.edu.cn/&amp;#34;]\n}\n\nEOF systemctl retart docker systemctl restart docker Install docker-compose sudo curl -L &amp;#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)&amp;#34; -o /usr/local/bin/docker-compose sudo chmod +x /usr/local/bin/docker-compose sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</description>
     </item>
     
   </channel>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>First_Blog - Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>How to Configure Debian 10 as a Docker Server - Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -22,8 +22,10 @@
 
 <meta name="mobile-web-app-capable" content="yes">
 
-<meta name="author" content="steve dong" />
-  <meta name="description" content="A journey of a thousand miles begins with a single step THis a blog to be build as my knowleage base." />
+<meta name="author" content="Steve Dong" />
+  <meta name="description" content="How to configure debian 10 as a docker server After try to install docker in LXC with proxmox ve, there will be some issues to make docker stop working. At last, I gave up and brance pure linux as docker sever.
+Install debian 10 in promxox ve Configure deiban 10 vm with &amp;lsquo;qemu-agent&amp;rsquo; checked.
+After install deiban 10  Change source list  mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources." />
 
   <meta name="keywords" content="proxmox ve, network, devops, sdn, system Administation" />
 
@@ -35,7 +37,7 @@
 <meta name="generator" content="Hugo 0.55.6" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/post/first-blog/" />
+<link rel="canonical" href="https://blog.stevedong.com/post/how-to-configure-debian-10-as-a-docker-server/" />
 
 
 
@@ -57,27 +59,33 @@
 
 
 
-<meta property="og:title" content="First_Blog" />
-<meta property="og:description" content="A journey of a thousand miles begins with a single step THis a blog to be build as my knowleage base." />
+<meta property="og:title" content="How to Configure Debian 10 as a Docker Server" />
+<meta property="og:description" content="How to configure debian 10 as a docker server After try to install docker in LXC with proxmox ve, there will be some issues to make docker stop working. At last, I gave up and brance pure linux as docker sever.
+Install debian 10 in promxox ve Configure deiban 10 vm with &lsquo;qemu-agent&rsquo; checked.
+After install deiban 10  Change source list  mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/first-blog/" />
-<meta property="article:published_time" content="2018-10-26T21:46:42&#43;08:00"/>
-<meta property="article:modified_time" content="2018-10-26T21:46:42&#43;08:00"/>
+<meta property="og:url" content="https://blog.stevedong.com/post/how-to-configure-debian-10-as-a-docker-server/" />
+<meta property="article:published_time" content="2019-07-26T16:58:29&#43;08:00"/>
+<meta property="article:modified_time" content="2019-07-26T16:58:29&#43;08:00"/>
 
-<meta itemprop="name" content="First_Blog">
-<meta itemprop="description" content="A journey of a thousand miles begins with a single step THis a blog to be build as my knowleage base.">
-
-
-<meta itemprop="datePublished" content="2018-10-26T21:46:42&#43;08:00" />
-<meta itemprop="dateModified" content="2018-10-26T21:46:42&#43;08:00" />
-<meta itemprop="wordCount" content="21">
+<meta itemprop="name" content="How to Configure Debian 10 as a Docker Server">
+<meta itemprop="description" content="How to configure debian 10 as a docker server After try to install docker in LXC with proxmox ve, there will be some issues to make docker stop working. At last, I gave up and brance pure linux as docker sever.
+Install debian 10 in promxox ve Configure deiban 10 vm with &lsquo;qemu-agent&rsquo; checked.
+After install deiban 10  Change source list  mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.">
 
 
+<meta itemprop="datePublished" content="2019-07-26T16:58:29&#43;08:00" />
+<meta itemprop="dateModified" content="2019-07-26T16:58:29&#43;08:00" />
+<meta itemprop="wordCount" content="311">
 
-<meta itemprop="keywords" content="," />
+
+
+<meta itemprop="keywords" content="docker,debian,linux,pve," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="First_Blog"/>
-<meta name="twitter:description" content="A journey of a thousand miles begins with a single step THis a blog to be build as my knowleage base."/>
+<meta name="twitter:title" content="How to Configure Debian 10 as a Docker Server"/>
+<meta name="twitter:description" content="How to configure debian 10 as a docker server After try to install docker in LXC with proxmox ve, there will be some issues to make docker stop working. At last, I gave up and brance pure linux as docker sever.
+Install debian 10 in promxox ve Configure deiban 10 vm with &lsquo;qemu-agent&rsquo; checked.
+After install deiban 10  Change source list  mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -350,13 +358,14 @@ if (!doNotTrack) {
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">First_Blog</h1>
+      <h1 class="post-title">How to Configure Debian 10 as a Docker Server</h1>
       
       <div class="post-meta">
-        <time datetime="2018-10-26" class="post-time">
-          2018-10-26
+        <time datetime="2019-07-26" class="post-time">
+          2019-07-26
         </time>
         <div class="post-category">
+            <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
             
           </div>
         
@@ -376,7 +385,28 @@ if (!doNotTrack) {
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#a-journey-of-a-thousand-miles-begins-with-a-single-step">A journey of a thousand miles begins with a single step</a></li>
+<li><a href="#how-to-configure-debian-10-as-a-docker-server">How to configure debian 10 as a docker server</a>
+<ul>
+<li><a href="#install-debian-10-in-promxox-ve">Install debian 10 in promxox ve</a></li>
+<li><a href="#after-install-deiban-10">After install deiban 10</a></li>
+<li><a href="#vim-setting">vim setting</a></li>
+<li><a href="#cloud-init">cloud-init</a></li>
+<li><a href="#install-docker-on-debian-10">Install docker on debian 10</a>
+<ul>
+<li><a href="#step-1-install-dependency-packages">Step 1: Install Dependency packages</a></li>
+<li><a href="#step-2-add-docker-s-offical-gpg-key">Step 2: Add docker&rsquo;s offical GPG key:</a></li>
+<li><a href="#step-3-add-the-docker-repository-to-debian-10">Step 3: Add the docker repository to Debian 10</a></li>
+<li><a href="#step-4-change-docker-repository-to-mirrors-ustc-edu-cn">Step 4: Change docker repository to <code>mirrors.ustc.edu.cn</code></a></li>
+<li><a href="#step-5-install-docker-and-docker-compose-on-debian-10">Step 5: Install docker and docker-compose on debian 10</a></li>
+<li><a href="#step-6-chang-docker-hub-mirrors-to-mirrors-ustc-edu-cn">Step 6: Chang docker hub mirrors to <code>mirrors.ustc.edu.cn</code></a></li>
+</ul></li>
+<li><a href="#change-some-settings">Change Some settings</a>
+<ul>
+<li><a href="#enable-password-authentication">Enable password authentication</a></li>
+<li><a href="#permit-root-can-loing-with-password">Permit root can loing with password</a></li>
+<li><a href="#change-machine-id">Change machine-id</a></li>
+</ul></li>
+</ul></li>
 </ul>
 </nav>
   </div>
@@ -386,9 +416,96 @@ if (!doNotTrack) {
     <div class="post-content">
       
 
-<h1 id="a-journey-of-a-thousand-miles-begins-with-a-single-step">A journey of a thousand miles begins with a single step</h1>
+<h1 id="how-to-configure-debian-10-as-a-docker-server">How to configure debian 10 as a docker server</h1>
 
-<p>THis a blog to be build as my knowleage base.</p>
+<p>After try to install docker in LXC with proxmox ve, there will be some issues to make docker stop working. At last, I gave up and brance pure linux as docker sever.</p>
+
+<h2 id="install-debian-10-in-promxox-ve">Install debian 10 in promxox ve</h2>
+
+<p>Configure deiban 10 vm with &lsquo;qemu-agent&rsquo; checked.</p>
+
+<h2 id="after-install-deiban-10">After install deiban 10</h2>
+
+<ul>
+<li>Change source list</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mv /etc/apt/sources.list /etc/apt/sources.list.backup
+wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.list
+apt update <span style="color:#555">&amp;&amp;</span> apt -y dist-upgrade
+
+apt install -y openssh-server git vim cloud-init apt-transport-https
+sed -i <span style="color:#c30">&#39;s/http/https/g&#39;</span> /etc/apt/sources.list
+apt update <span style="color:#555">&amp;&amp;</span> apt -y dist-upgrade</code></pre></div>
+<ul>
+<li>To fix perl error warning</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">export</span> <span style="color:#033">LANGUAGE</span><span style="color:#555">=</span>en_US.UTF-8
+<span style="color:#366">export</span> <span style="color:#033">LANG</span><span style="color:#555">=</span>en_US.UTF-8
+<span style="color:#366">export</span> <span style="color:#033">LC_ALL</span><span style="color:#555">=</span>en_US.UTF-8
+<span style="color:#09f;font-style:italic">#locale-gen en_US.UTF-8</span>
+cat &gt;&gt; /etc/environment <span style="color:#c30">&lt;&lt;EOF
+</span><span style="color:#c30">LC_ALL=en_US.UTF-8
+</span><span style="color:#c30">LANG=en_US.UTF-8
+</span><span style="color:#c30">EOF</span></code></pre></div>
+<h2 id="vim-setting">vim setting</h2>
+
+<ul>
+<li><a href="https://blog.stevedong.com/post/how-to-setup-vim/">How to Setup Vim</a></li>
+</ul>
+
+<h2 id="cloud-init">cloud-init</h2>
+
+<ul>
+<li><a href="https://blog.stevedong.com/post/how-to-setup-cloud-init-in-proxmoxve/">How to Setup Cloud Init in Proxmoxve</a></li>
+</ul>
+
+<h2 id="install-docker-on-debian-10">Install docker on debian 10</h2>
+
+<h3 id="step-1-install-dependency-packages">Step 1: Install Dependency packages</h3>
+
+<p>Start the installation by ensuring that all the packages used by docker as dependencies are installed.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get -y install <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    apt-transport-https <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    ca-certificates <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    curl <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    gnupg2 <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>    software-properties-common
+ </code></pre></div>
+<h3 id="step-2-add-docker-s-offical-gpg-key">Step 2: Add docker&rsquo;s offical GPG key:</h3>
+
+<p>Import Docker GPG key used for signing Docker packages:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+apt-key fingerprint 0EBFCD88</code></pre></div>
+<h3 id="step-3-add-the-docker-repository-to-debian-10">Step 3: Add the docker repository to Debian 10</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo add-apt-repository <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>   <span style="color:#c30">&#34;deb [arch=amd64] https://download.docker.com/linux/debian \
+</span><span style="color:#c30">   </span><span style="color:#069;font-weight:bold">$(</span>lsb_release -cs<span style="color:#069;font-weight:bold">)</span><span style="color:#c30"> \
+</span><span style="color:#c30">   stable&#34;</span></code></pre></div>
+<h3 id="step-4-change-docker-repository-to-mirrors-ustc-edu-cn">Step 4: Change docker repository to <code>mirrors.ustc.edu.cn</code></h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i <span style="color:#c30">&#39;s/download.docker.com/mirrors.ustc.edu.cn\/docker-ce/g&#39;</span> /etc/apt/sources.list</code></pre></div>
+<h3 id="step-5-install-docker-and-docker-compose-on-debian-10">Step 5: Install docker and docker-compose on debian 10</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt update
+apt -y install docker-ce docker-compose</code></pre></div>
+<h3 id="step-6-chang-docker-hub-mirrors-to-mirrors-ustc-edu-cn">Step 6: Chang docker hub mirrors to <code>mirrors.ustc.edu.cn</code></h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat <span style="color:#c30">&lt;&lt; EOF &gt; /etc/default/docker
+</span><span style="color:#c30">DOCKER_OPTS=&#34;--registry-mirror=https://docker.mirrors.ustc.edu.cn/&#34;
+</span><span style="color:#c30">EOF</span>
+systemctl restart docker</code></pre></div>
+<h2 id="change-some-settings">Change Some settings</h2>
+
+<h3 id="enable-password-authentication">Enable password authentication</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo sed -i <span style="color:#c30">&#39;s/PasswordAuthentication\ no/PasswordAuthentication\ yes/g&#39;</span> /etc/ssh/sshd_config
+sudo systemctl daemon-reload
+sudo systemctl restart sshd</code></pre></div>
+<h3 id="permit-root-can-loing-with-password">Permit root can loing with password</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo sed -i <span style="color:#c30">&#39;s/#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/g&#39;</span> /etc/ssh/sshd_config
+sudo systemctl daemon-reload
+sudo systemctl restart sshd</code></pre></div>
+<h3 id="change-machine-id">Change machine-id</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm /var/lib/dbus/machine-id
+truncate -s <span style="color:#f60">0</span>  /etc/machine-id
+ln -s /etc/machine-id /var/lib/dbus/machine-id</code></pre></div>
+<p>&mdash;THE END&mdash;</p>
 
     </div>
 
@@ -397,12 +514,12 @@ if (!doNotTrack) {
 <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">Author</span>
-    <span class="item-content">steve dong</span>
+    <span class="item-content">Steve Dong</span>
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2018-10-26
+      2019-07-26
       
     </span>
   </p>
@@ -416,31 +533,31 @@ if (!doNotTrack) {
 
     
     
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    
+    
+  </div>
+</div>
 
     <footer class="post-footer">
       <div class="post-tags">
+          <a href="https://blog.stevedong.com/tags/docker/">docker</a>
+          <a href="https://blog.stevedong.com/tags/debian/">debian</a>
+          <a href="https://blog.stevedong.com/tags/linux/">linux</a>
+          <a href="https://blog.stevedong.com/tags/pve/">pve</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/how-to-build-blog-with-hugo-on-github/">
-            
-            <i class="iconfont">
-              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-            </i>
-            <span class="prev-text nav-default">How to Build Blog With Hugo on Github</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
         
-          <a class="next" href="/post/gcvpn-settings/">
-            <span class="next-text nav-default"></span>
+          <a class="next" href="/post/how-to-modify-template-in-proxmox-ve/">
+            <span class="next-text nav-default">How to Modify Template in Proxmox Ve</span>
             <span class="prev-text nav-mobile">Next</span>
             
             <i class="iconfont">
@@ -586,6 +703,13 @@ if (!doNotTrack) {
 
 <script type="text/javascript" src="/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js" integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin="anonymous"></script>
 
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 
 

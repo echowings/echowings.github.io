@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 18 Jul 2019 12:23:01 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jul 2019 16:58:29 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -27,6 +27,109 @@
 &lt;li&gt;Love cooking.&lt;/li&gt;
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>How to Configure Debian 10 as a Docker Server</title>
+      <link>https://blog.stevedong.com/post/how-to-configure-debian-10-as-a-docker-server/</link>
+      <pubDate>Fri, 26 Jul 2019 16:58:29 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-configure-debian-10-as-a-docker-server/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-configure-debian-10-as-a-docker-server&#34;&gt;How to configure debian 10 as a docker server&lt;/h1&gt;
+
+&lt;p&gt;After try to install docker in LXC with proxmox ve, there will be some issues to make docker stop working. At last, I gave up and brance pure linux as docker sever.&lt;/p&gt;
+
+&lt;h2 id=&#34;install-debian-10-in-promxox-ve&#34;&gt;Install debian 10 in promxox ve&lt;/h2&gt;
+
+&lt;p&gt;Configure deiban 10 vm with &amp;lsquo;qemu-agent&amp;rsquo; checked.&lt;/p&gt;
+
+&lt;h2 id=&#34;after-install-deiban-10&#34;&gt;After install deiban 10&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Change source list&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mv /etc/apt/sources.list /etc/apt/sources.list.backup
+wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.list
+apt update &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y dist-upgrade
+
+apt install -y openssh-server git vim cloud-init apt-transport-https
+sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/http/https/g&amp;#39;&lt;/span&gt; /etc/apt/sources.list
+apt update &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y dist-upgrade&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;To fix perl error warning&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;LANGUAGE&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;en_US.UTF-8
+&lt;span style=&#34;color:#366&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;LANG&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;en_US.UTF-8
+&lt;span style=&#34;color:#366&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;LC_ALL&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;en_US.UTF-8
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#locale-gen en_US.UTF-8&lt;/span&gt;
+cat &amp;gt;&amp;gt; /etc/environment &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;LC_ALL=en_US.UTF-8
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;LANG=en_US.UTF-8
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;vim-setting&#34;&gt;vim setting&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.stevedong.com/post/how-to-setup-vim/&#34;&gt;How to Setup Vim&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;cloud-init&#34;&gt;cloud-init&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.stevedong.com/post/how-to-setup-cloud-init-in-proxmoxve/&#34;&gt;How to Setup Cloud Init in Proxmoxve&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;install-docker-on-debian-10&#34;&gt;Install docker on debian 10&lt;/h2&gt;
+
+&lt;h3 id=&#34;step-1-install-dependency-packages&#34;&gt;Step 1: Install Dependency packages&lt;/h3&gt;
+
+&lt;p&gt;Start the installation by ensuring that all the packages used by docker as dependencies are installed.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get -y install &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    apt-transport-https &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    ca-certificates &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    curl &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    gnupg2 &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    software-properties-common
+ &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;step-2-add-docker-s-offical-gpg-key&#34;&gt;Step 2: Add docker&amp;rsquo;s offical GPG key:&lt;/h3&gt;
+
+&lt;p&gt;Import Docker GPG key used for signing Docker packages:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+apt-key fingerprint 0EBFCD88&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;step-3-add-the-docker-repository-to-debian-10&#34;&gt;Step 3: Add the docker repository to Debian 10&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo add-apt-repository &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;   &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb [arch=amd64] https://download.docker.com/linux/debian \
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;   &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;$(&lt;/span&gt;lsb_release -cs&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt; \
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;   stable&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;step-4-change-docker-repository-to-mirrors-ustc-edu-cn&#34;&gt;Step 4: Change docker repository to &lt;code&gt;mirrors.ustc.edu.cn&lt;/code&gt;&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/download.docker.com/mirrors.ustc.edu.cn\/docker-ce/g&amp;#39;&lt;/span&gt; /etc/apt/sources.list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;step-5-install-docker-and-docker-compose-on-debian-10&#34;&gt;Step 5: Install docker and docker-compose on debian 10&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt update
+apt -y install docker-ce docker-compose&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;step-6-chang-docker-hub-mirrors-to-mirrors-ustc-edu-cn&#34;&gt;Step 6: Chang docker hub mirrors to &lt;code&gt;mirrors.ustc.edu.cn&lt;/code&gt;&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;cat &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt; EOF &amp;gt; /etc/default/docker
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;DOCKER_OPTS=&amp;#34;--registry-mirror=https://docker.mirrors.ustc.edu.cn/&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
+systemctl restart docker&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;change-some-settings&#34;&gt;Change Some settings&lt;/h2&gt;
+
+&lt;h3 id=&#34;enable-password-authentication&#34;&gt;Enable password authentication&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/PasswordAuthentication\ no/PasswordAuthentication\ yes/g&amp;#39;&lt;/span&gt; /etc/ssh/sshd_config
+sudo systemctl daemon-reload
+sudo systemctl restart sshd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;permit-root-can-loing-with-password&#34;&gt;Permit root can loing with password&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/g&amp;#39;&lt;/span&gt; /etc/ssh/sshd_config
+sudo systemctl daemon-reload
+sudo systemctl restart sshd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;change-machine-id&#34;&gt;Change machine-id&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;rm /var/lib/dbus/machine-id
+truncate -s &lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt;  /etc/machine-id
+ln -s /etc/machine-id /var/lib/dbus/machine-id&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;mdash;THE END&amp;mdash;&lt;/p&gt;
 </description>
       
     </item>
@@ -4554,98 +4657,6 @@ reboot now
 
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#bonding&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;conitune...&gt;&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>How to Install Dotnetcore2.1.x and Asp.net21.x on RHEL6.x CENTOS6</title>
-      <link>https://blog.stevedong.com/post/how-to-install-dotnetcore2.1.x-and-asp.net21.x-on-rhel6.x-centos6.x/</link>
-      <pubDate>Fri, 26 Oct 2018 22:29:04 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/how-to-install-dotnetcore2.1.x-and-asp.net21.x-on-rhel6.x-centos6.x/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;how-to-install-netcore-aspnetcore-2-1-4-on-rhel-6-8&#34;&gt;How to install netcore/aspnetcore 2.1.4 on RHEL 6.8&lt;/h2&gt;
-
-&lt;p&gt;Recently days, we met a scenario that is our client production environment must be RHEL 6.8. But our product is base asp.net core 2.1.x version. Rehat and Microsoft has never say the are support RHEL 6.X version.&lt;/p&gt;
-
-&lt;p&gt;After a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core. And you know what? It works well finally!&lt;/p&gt;
-
-&lt;h3 id=&#34;install-netcore-2-1-4-sdk&#34;&gt;Install netcore 2.1.4 sdk&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#099&#34;&gt;#!/bin/sh
-&lt;/span&gt;&lt;span style=&#34;color:#099&#34;&gt;&lt;/span&gt;
-yum install -y wget epel-release
-yum install -y openssl-devel libnghttp2-devel libidn-devel gcc libtool m4 automake
-&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /tmp/
-
-curl -O https://curl.haxx.se/download/curl-7.45.0.tar.gz
-tar -xf curl-7.45.0.tar.gz
-&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; curl-7.45.0
-./configure &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --disable-dict &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --disable-file &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --disable-ftp &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --disable-gopher &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --disable-imap &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --disable-ldap &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --disable-ldaps &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --disable-libcurl-option &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --disable-manual &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --disable-pop3 &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --disable-rtsp &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --disable-smb &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --disable-smtp &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --disable-telnet &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --disable-tftp &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --enable-ipv6 &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --enable-optimize &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --enable-symbol-hiding &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --with-ca-bundle&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;/etc/pki/tls/certs/ca-bundle.crt &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --with-nghttp2 &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --with-gssapi &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --with-ssl &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --without-librtmp &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    --prefix&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$PWD&lt;/span&gt;/install/usr/local
-    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;make-install&#34;&gt;make install&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; install
-tar -czf curl-7_45_0-RHEL6-x64.tgz *
-curl -O http://download.icu-project.org/files/icu4c/57.1/icu4c-57_1-RHEL6-x64.tgz
-tar -xf curl-7_45_0-RHEL6-x64.tgz -C /
-tar -xf icu4c-57_1-RHEL6-x64.tgz -C /
-&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;export LD_LIBRARY_PATH=/usr/local/lib&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/profile
-&lt;span style=&#34;color:#366&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;LD_LIBRARY_PATH&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;/usr/local/lib
-
-&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /tmp/
-mkdir dotnetsdk
-
-curl -O https://download.microsoft.com/download/8/A/7/8A765126-50CA-4C6F-890B-19AE47961E4B/dotnet-sdk-2.1.402-rhel.6-x64.tar.gz
-
-tar -zxvf dotnet-sdk-2.1.402-rhel.6-x64.tar.gz -C dotnetsdk/
-
-mv dotnetsdk /opt/
-ln -s /opt/dotnetsdk/dotnet /usr/bin/dotnet
-
-curl -sSL https://github.com/libuv/libuv/archive/v1.4.2.tar.gz | sudo tar zxfv - -C /usr/local/src
-
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Insall libuv-1.4.2&lt;/span&gt; 
-&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /usr/local/src/libuv-1.4.2
-sh autogen.sh
-./configure
-make
-make install
-rm -rf /usr/local/src/libuv-1.4.2 &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; ~/
-ldconfig&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/dotnet/core/blob/master/Documentation/build-and-install-rhel6-prerequisites.md&#34;&gt;How to use .NET Core on RHEL 6 / CentOS 6&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/dotnet/core/blob/master/release-notes/2.1/2.1.4/2.1.4-download.md&#34;&gt;.NET Core 2.1.4&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
       
     </item>
