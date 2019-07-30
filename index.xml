@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 26 Jul 2019 16:58:29 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jul 2019 16:22:52 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -26,6 +26,188 @@
 &lt;li&gt;Love coding.&lt;/li&gt;
 &lt;li&gt;Love cooking.&lt;/li&gt;
 &lt;li&gt;Love hacking.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>How to Deploy Bookstack With Docker Compose</title>
+      <link>https://blog.stevedong.com/post/how-to-deploy-bookstack-with-docker-compose/</link>
+      <pubDate>Tue, 30 Jul 2019 16:22:52 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-deploy-bookstack-with-docker-compose/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-deploy-bookstack-with-docker-compose&#34;&gt;How to Deploy Bookstack with Docker Compose&lt;/h1&gt;
+
+&lt;p&gt;Bookstack is a good opensource solution for enterprie document management with light footprinting. It support auth like ldap,active directory,google,azure,aws,slack etc. and it can export document as pdf file.&lt;/p&gt;
+
+&lt;h2 id=&#34;prepared&#34;&gt;Prepared&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.stevedong.com/post/how-to-configure-debian-10-as-a-docker-server/&#34;&gt;Install docker  and docker-compose on debian 10&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Information for bookstack installation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Hostname&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;mybookstack&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Domainame&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;mydomain.local&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;AD Auth User&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;stevedong&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Domain Controller IP&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&amp;lt;domain contoller IP&amp;gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Time Zone&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Asia/Shanghai&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;how-to-fix-export-chinese-pdf-document-with-error&#34;&gt;How to fix export chinese pdf document with error&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Install chinese fonts on docker server host&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt install fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;customized dockerfile with option:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;environments:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# To let bookstack export pdf with chinese language supported.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;WKHTMLTOPDF=/usr/bin/wkhtmltopdf&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# To let bookstack export pdf with chinese language supported.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;LANG=C.UTF-&lt;span style=&#34;color:#f60&#34;&gt;8&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;volumes:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;	&lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# To let bookstack export pdf with chinese language supported.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/usr/share/fonts/truetype:/usr/share/fonts/truetype&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;enable-active-directory-auth&#34;&gt;Enable Active Directory Auth&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;- &lt;span style=&#34;color:#033&#34;&gt;AUTH_METHOD&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;ldap
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# LDAP Settings&lt;/span&gt;
+- &lt;span style=&#34;color:#033&#34;&gt;LDAP_SERVER&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;ldap://&amp;lt;Domain_controller_IP&amp;gt;:389
+- &lt;span style=&#34;color:#033&#34;&gt;LDAP_BASE_DN&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;dc&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;mydomain,dc&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#366&#34;&gt;local&lt;/span&gt;
+- &lt;span style=&#34;color:#033&#34;&gt;LDAP_DN&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;stevedong@mydomain.local
+- &lt;span style=&#34;color:#033&#34;&gt;LDAP_PASS&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&amp;lt;password of AD USER&amp;gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#use double $$ since we are using docker&lt;/span&gt;
+- &lt;span style=&#34;color:#033&#34;&gt;LDAP_USER_FILTER&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=(&lt;/span&gt;&amp;amp;&lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;sAMAccountName&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$$&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;user&lt;span style=&#34;color:#555&#34;&gt;}))&lt;/span&gt;
+- &lt;span style=&#34;color:#033&#34;&gt;LDAP_VERSION&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;3&lt;/span&gt;
+- &lt;span style=&#34;color:#033&#34;&gt;LDAP_EMAIL_ATTRIBUT&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;mail
+- &lt;span style=&#34;color:#033&#34;&gt;LDAP_DISPLAY_NAME_ATTRIBUTE&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;cn&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;save follow content to &lt;code&gt;Docker-compose.yml&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;bookstack:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;image:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;linuxserver/bookstack&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;container_name:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;bookstack&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;environment:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;TZ=Asia/Shanghai&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;PUID=&lt;span style=&#34;color:#f60&#34;&gt;1000&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;PGID=&lt;span style=&#34;color:#f60&#34;&gt;1000&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;DB_HOST=bookstack_db&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;DB_USER=bookstack&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;DB_PASS=&amp;lt;changepassword&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;      - DB_DATABASE=bookstackapp&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;APP_ENV=production&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;APP_DEBUG=&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#- APP_LANG=zh_CN&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;APP_URL=http://mybookstack.mydomain.local&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# General auth&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Change to local auth with replace `ldap` with `standard`&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;AUTH_METHOD=ldap&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# LDAP Settings&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;LDAP_SERVER=ldap://&amp;lt;Domain_controller_IP&amp;gt;:&lt;span style=&#34;color:#f60&#34;&gt;389&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;LDAP_BASE_DN=dc=mydomain,dc=local&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#- LDAP_DN=cn=stevedong,dc=mydomain,dc=local&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;LDAP_DN=stevedong@mydomain.local&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;LDAP_PASS=&amp;lt;password&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;of&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;AD&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;USER&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;      #use double $$ since we are using docker&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;LDAP_USER_FILTER=(&lt;span style=&#34;color:#099&#34;&gt;&amp;amp;(sAMAccountName=$${user}))&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;LDAP_VERSION=&lt;span style=&#34;color:#f60&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;LDAP_EMAIL_ATTRIBUT=mail&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#- LDAP_EMAIL_ATTRIBUT=false&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;LDAP_DISPLAY_NAME_ATTRIBUTE=cn&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#AD Group Sync&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;LDAP_USER_TO_GROUPS=&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;LDAP_GROUP_ATTRIBUTE=&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;memberof&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;LDAP_REMOVE_FROM_GROUPS=&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;LDAP_AUTO_CONFIRM_EMAIL=&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;LDAP_TLS_INSECURE=&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# To let bookstack export pdf with chinese language supported.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;WKHTMLTOPDF=/usr/bin/wkhtmltopdf&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# To let bookstack export pdf with chinese language supported.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;LANG=C.UTF-&lt;span style=&#34;color:#f60&#34;&gt;8&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;volumes:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;./bookstack_config:/config&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#mapped docker server fonts to docker&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/usr/share/fonts/truetype:/usr/share/fonts/truetype&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;ports:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;80&lt;/span&gt;:&lt;span style=&#34;color:#f60&#34;&gt;80&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;restart:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;unless-stopped&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;depends_on:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;bookstack_db&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;bookstack_db:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;image:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;linuxserver/mariadb&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;container_name:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;bookstack_db&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;environment:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;PUID=&lt;span style=&#34;color:#f60&#34;&gt;1000&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;PGID=&lt;span style=&#34;color:#f60&#34;&gt;1000&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;MYSQL_ROOT_PASSWORD=&amp;lt;mysql&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;password&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;      - TZ=Asia/Shanghai&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;MYSQL_DATABASE=bookstackapp&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;MYSQL_USER=bookstack&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;MYSQL_PASSWORD=&amp;lt;mysql&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;password&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;    volumes:&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;-&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;./db_config:/config&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;restart:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;unless-stopped&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;run-docker-compose&#34;&gt;Run Docker-compose&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;change value to fit your environment&lt;/li&gt;
+&lt;li&gt;Run bookstack with command &lt;code&gt;docker-compose up -d&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Test for you can login bookstak with an active directory user account.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;change-ad-user-role-from-viewer-to-admin&#34;&gt;Change AD user role from viewer to Admin&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;stop docker-compose &lt;code&gt;docker-compose down&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Modify &lt;code&gt;Docker-compose.yml&lt;/code&gt; to change  &lt;code&gt;- AUTH_METHOD=ldap&lt;/code&gt; to &lt;code&gt;- AUTH_METHOD=standard&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Start docker-compsoe &lt;code&gt;docker-compsoe up -d&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Login bookstack with username &lt;code&gt;admin@admin.com&lt;/code&gt; and password &lt;code&gt;password&lt;/code&gt;.Then change your AD user account role from guest to admin.&lt;/li&gt;
+&lt;li&gt;Then stop docker with command &lt;code&gt;docker-compsoe down&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Modify &lt;code&gt;Docker-compose.yml&lt;/code&gt; to change &lt;code&gt;-AUTH_METHOD=standard&lt;/code&gt; back to &lt;code&gt;-AUTH_METHOD=ldap&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Start bookstack dockers with command &lt;code&gt;docker-composed up -d&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Then you can login bookstack with your AD account as an administrator.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/solidnerd/docker-bookstack&#34;&gt;solidnerd/docker-bookstack&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/linuxserver/docker-bookstack&#34;&gt;linuxserver/docker-bookstack&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.rylander.io/2017/06/09/install-and-configure-bookstack-using-docker-and-ldap/&#34;&gt;Install and Configure BookStack Using Docker and LDAP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hub.docker.com/r/successage/bookstack&#34;&gt;successage/bookstack&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
       
@@ -4541,122 +4723,6 @@ rm -rf /etc/apt/sources.list.d/ceph.list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 smartos/Trolin is a opensolaris base . But few people use it. It has open source version, but the offical website say again and again that ‘you’d better to contact us to install it’, that means you should pay for it if you want use it .&lt;/li&gt;
 &lt;li&gt;Ovirt is&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Building Network With Vyos 01---Basic Installing and Configuration</title>
-      <link>https://blog.stevedong.com/post/building-network-with-vyos-01-basic-installing-and-configuration/</link>
-      <pubDate>Fri, 26 Oct 2018 22:44:02 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/building-network-with-vyos-01-basic-installing-and-configuration/</guid>
-      
-        <description>
-
-&lt;h1 id=&#34;building-network-with-vyos-01-basic-installing-and-configuration&#34;&gt;Building Network With Vyos.-.01.Basic Installing and Configuration&lt;/h1&gt;
-
-&lt;p&gt;Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn’t web UI, but only command line configration just like JUNOS.&lt;/p&gt;
-
-&lt;p&gt;At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.&lt;/p&gt;
-
-&lt;h2 id=&#34;install-vyos&#34;&gt;Install vyos&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Download vyos form the office website:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Download Link: &lt;a href=&#34;https://downloads.vyos.io/testing/1.2.0-rc4/vyos-1.2.0-rc4-amd64.iso&#34;&gt;vyos-1.2.0-rc-4-amd64&lt;/a&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;write-iso-image-to-usb-disk&#34;&gt;Write iso image to usb disk&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Linux and Mac:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ddi &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;if&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;vyos-1.2.0-rc-4-amd64.iso &lt;span style=&#34;color:#033&#34;&gt;of&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;/dev/&lt;span style=&#34;color:#033&#34;&gt;$yourusbdisk&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;bs&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;1M&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;Windows:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-&lt;li&gt;download Rufus: &lt;a href=&#34;https://rufus.ie/en_IE&#34;&gt;&lt;strong&gt;rufus&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;select &lt;code&gt;dd&lt;/code&gt; mode to write disk.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;install-vyos-with-wizard&#34;&gt;Install vyos with wizard.&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;press &lt;code&gt;F11&lt;/code&gt; or set COMS to boot from usb.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Enter Default username and password to login livecd.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;vyos login: vyos
-Password: vyos&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&#34;write-image-to-local-driver&#34;&gt;Write image to local driver:&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;install image&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;Reboot System to boot from local disk.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;reboot now&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&#34;basic-command&#34;&gt;Basic Command&lt;/h2&gt;
-
-&lt;p&gt;vyos command line include 2 mode: Operation mode and configure mode.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Operation Mode
-shell command start with $.
-These command usually show sysytem. information,reboot/shutdown system.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Configure Mode
-shell command start with #.
-These command usually change configuration of vyos.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;operation-mode&#34;&gt;Operation Mode&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Enter configure mode&lt;/span&gt;
-configure
-
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Exit to operation Mode&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;exit&lt;/span&gt;
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Check vyos version&lt;/span&gt;
-show version
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Check vyos running time&lt;/span&gt;
-show system uptime
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Check system time and timezone&lt;/span&gt;
-show date
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Reboot system&lt;/span&gt;
-reboot now
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Shutdown System&lt;/span&gt;
-poweroff now
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#upgrade system image version&lt;/span&gt;
-add system image &lt;span style=&#34;color:#033&#34;&gt;$URL_or_path&lt;/span&gt;
-
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Reset configuration&lt;/span&gt;
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Enter config mode&lt;/span&gt;
-configure
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#loading default configure&lt;/span&gt;
-load /opt/vyatta/etc/config.boot.default  
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# commit loading default configure&lt;/span&gt;
-commit
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# save to default boot configure file.&lt;/span&gt;
-save
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Exit configure mode&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;exit&lt;/span&gt;
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Reboot system now to finish loading default configuration.&lt;/span&gt;
-reboot now
-
-
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#bonding&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;conitune...&gt;&lt;/p&gt;
 </description>
       
     </item>

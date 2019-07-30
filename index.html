@@ -62,7 +62,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
 
-<meta property="og:updated_time" content="2019-07-26T16:58:29&#43;08:00"/>
+<meta property="og:updated_time" content="2019-07-30T16:22:52&#43;08:00"/>
 
 <meta itemprop="name" content="Steve Dong - A System Administrator&#39;s Blog">
 <meta itemprop="description" content="A System Administrator&#39;s Blog.">
@@ -343,6 +343,41 @@ if (!doNotTrack) {
   <section id="posts" class="posts">
     
     
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/how-to-deploy-bookstack-with-docker-compose/">How to Deploy Bookstack With Docker Compose</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-07-30" class="post-time">
+        2019-07-30
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/linux/"> Linux </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to Deploy Bookstack with Docker Compose Bookstack is a good opensource solution for enterprie document management with light footprinting. It support auth like ldap,active directory,google,azure,aws,slack etc. and it can export document as pdf file.
+Prepared  Install docker and docker-compose on debian 10 Information for bookstack installation.     Type Value     Hostname mybookstack   Domainame mydomain.local   AD Auth User stevedong   Domain Controller IP &lt;domain contoller IP&gt;   Time Zone Asia/Shanghai    How to fix export chinese pdf document with error  Install chinese fonts on docker server host  apt install fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy  customized dockerfile with option:  environments:# To let bookstack export pdf with chinese language supported.
+    </div>
+    <div class="read-more">
+      <a href="/post/how-to-deploy-bookstack-with-docker-compose/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
     
       <article class="post bg-white">
   <header class="post-header">
@@ -837,40 +872,6 @@ yum install -y etcd kubernetes Start service in order systemctl start etcd syste
     </div>
     <div class="read-more">
       <a href="/post/how-to-install-centos-7-on-proxmox-ve/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/nginx-how-to-compile-nginx-with-source-code/">How to Compile Nginx With Source Code</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-04-29" class="post-time">
-        2019-04-29
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/nginx/"> nginx </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to compile nginx with source code Download source code  Access nginx.org to download latest stable version of nginx.  wget https://nginx.org/download/nginx-1.16.0.tar.gz tar -zxvf nginx-1.16.0.tar.gz Compile source code cd nginx-1.16.0 apt update &amp;&amp; apt install -y gcc build-essential ./configure --prefix=/home/echowings/nginx make make install  Trouble shooting  PCRE missing error.  ./configure: error: the HTTP rewrite module requires the PCRE library. You can either disable the module by using —without–http_rewrite_module option, or install the PCRE library into the system, or build the PCRE library statically from the source with nginx by using —with–pcre=&amp;lt;path&amp;gt; option.
-    </div>
-    <div class="read-more">
-      <a href="/post/nginx-how-to-compile-nginx-with-source-code/" class="read-more-link">Read more</a>
     </div>
     
   </div>
