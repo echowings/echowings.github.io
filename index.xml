@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 30 Jul 2019 16:22:52 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 08 Aug 2019 13:58:35 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -28,6 +28,189 @@
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
+      
+    </item>
+    
+    <item>
+      <title>How to Setup Vyos as a Firewall</title>
+      <link>https://blog.stevedong.com/post/how-to-setup-vyos-as-a-firewall/</link>
+      <pubDate>Thu, 08 Aug 2019 13:58:35 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-setup-vyos-as-a-firewall/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-setup-vyos-as-a-firewall&#34;&gt;How to Setup Vyos as a Firewall&lt;/h1&gt;
+
+&lt;h2 id=&#34;setup-interface&#34;&gt;Setup interface&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Interface&lt;/th&gt;
+&lt;th&gt;IP Address&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;eth0&lt;/td&gt;
+&lt;td&gt;pppoe&lt;/td&gt;
+&lt;td&gt;WAN&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;eth1&lt;/td&gt;
+&lt;td&gt;192.168.68.&lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;24&lt;/sub&gt;&lt;/td&gt;
+&lt;td&gt;DMZ&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;eth2&lt;/td&gt;
+&lt;td&gt;10.0.0.&lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;24&lt;/sub&gt;&lt;/td&gt;
+&lt;td&gt;LAN&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interface ethernet eth0 pppoe &lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt; user-id &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;&amp;lt;pppoe accout&amp;gt;&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interface ethernet eth0 pppoe &lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt; password &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;&amp;lt;pppoe password&amp;gt;&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interface ethernet eth0 pppoe &lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt; name-server &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;none&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interface ethernet eth0 description &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;WAN&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interface ethernet eth1 address &lt;span style=&#34;color:#f60&#34;&gt;192&lt;/span&gt;.168.68.1/24
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interface ethernet eth1 description DMZ
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interface ethernet eth2 address &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt;.0.0.1/24
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interface ethernet eth2 description &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;LAN&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;dhcp-server&#34;&gt;DHCP Server&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; shared-network-name lan.local subnet &lt;span style=&#34;color:#f60&#34;&gt;192&lt;/span&gt;.168.68.0/24 default-router &lt;span style=&#34;color:#f60&#34;&gt;192&lt;/span&gt;.168.68.1
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; shared-network-name lan.local subnet &lt;span style=&#34;color:#f60&#34;&gt;192&lt;/span&gt;.168.68.0/24 dns-server &lt;span style=&#34;color:#f60&#34;&gt;192&lt;/span&gt;.168.68.1
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; shared-network-name lan.local subnet &lt;span style=&#34;color:#f60&#34;&gt;192&lt;/span&gt;.168.68.0/24 domain-name lan.local
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; shared-network-name lan.local subnet &lt;span style=&#34;color:#f60&#34;&gt;192&lt;/span&gt;.168.68.0/24 range &lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt; start &lt;span style=&#34;color:#f60&#34;&gt;192&lt;/span&gt;.168.50
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; shared-network-name lan.local subnet &lt;span style=&#34;color:#f60&#34;&gt;192&lt;/span&gt;.168.68.0/24 range &lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt; stop &lt;span style=&#34;color:#f60&#34;&gt;192&lt;/span&gt;.168.68.254&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;dns-forwarding&#34;&gt;DNS forwarding&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; cache-size &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; listen-address &lt;span style=&#34;color:#f60&#34;&gt;192&lt;/span&gt;.168.68.1
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; name-server &amp;lt;public dns server ip ,like &lt;span style=&#34;color:#f60&#34;&gt;8&lt;/span&gt;.8.8.8&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;set-loging-banner&#34;&gt;Set loging banner&lt;/h2&gt;
+
+&lt;p&gt;You are able to set post-login or pre-login messages with the following lines:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; system login banner pre-login &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;UNAUTHORIZED USE OF THIS SYSTEM IS PROHIBITED\n&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; system login banner post-login &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Welcome to VyOS&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;nat&#34;&gt;NAT&lt;/h2&gt;
+
+&lt;h3 id=&#34;snat&#34;&gt;SNAT&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#366&#34;&gt;source&lt;/span&gt; rule &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt; outbound-interface pppoe0
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#366&#34;&gt;source&lt;/span&gt; rule &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt; &lt;span style=&#34;color:#366&#34;&gt;source&lt;/span&gt; address &lt;span style=&#34;color:#f60&#34;&gt;192&lt;/span&gt;.168.68.0/24
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#366&#34;&gt;source&lt;/span&gt; rule &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt; translation address masquerade&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;dnat&#34;&gt;DNAT&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; nat destination rule &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt; destination address &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;10.0.0.5&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; nat destination rule &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt; destination port &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;3389&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; nat destination rule &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt; inbound-interface &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;eth2&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; nat destination rule &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt; protocol &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;tcp_udp&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; nat destination rule &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt; translation address &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;192.168.68.50&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; nat destination rule &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt; translation port &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;3389&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;default-routing&#34;&gt;Default routing&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; static interface-route &lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt;.0.0.0/0 next-hop-interface pppoe0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;setting-of-firewall&#34;&gt;Setting of firewall&lt;/h2&gt;
+
+&lt;h3 id=&#34;zone-base-firewall&#34;&gt;Zone base firewall&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Chang firewall to statue firewall&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall state-policy established action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;accept&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall state-policy related action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;accept&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall state-policy invalid action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;drop&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Set Zone for interfaces&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone dmz interface &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;eth1&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone private interface &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;eth2&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone &lt;span style=&#34;color:#366&#34;&gt;local&lt;/span&gt; local-zone
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone public interface &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;pppoe0&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# define firewall policy&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name dmz-local default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;drop&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name dmz-local rule &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt; action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;accept&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name dmz-local rule &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt; destination address &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;192.168.68.1&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name dmz-local rule &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt; destination port &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;53&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name dmz-local rule &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt; protocol &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;udp&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name dmz-local rule &lt;span style=&#34;color:#f60&#34;&gt;11&lt;/span&gt; action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;accept&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name dmz-local rule &lt;span style=&#34;color:#f60&#34;&gt;11&lt;/span&gt; icmp type-name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;echo-request&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name dmz-local rule &lt;span style=&#34;color:#f60&#34;&gt;11&lt;/span&gt; protocol &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;icmp&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name dmz-private default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;drop&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name dmz-private rule &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt; action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;accept&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name dmz-private rule &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt; destination address &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;192.168.68.1&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name dmz-private rule &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt; destination port &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;53&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name dmz-private rule &lt;span style=&#34;color:#f60&#34;&gt;10&lt;/span&gt; protocol &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;udp&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name dmz-public default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;accept&amp;#39;&lt;/span&gt;
+
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name local-dmz default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;accept&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name local-private default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;accept&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name local-public default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;accept&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name private-dmz default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;accept&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name private-local default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;accept&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Allow ping&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name private-local rule &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt; action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;accept&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name private-local rule &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt; icmp type-name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;echo-request&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name private-local rule &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt; protocol &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;icmp&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name private-public default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;accept&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name public-dmz default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;drop&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name public-local default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;drop&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall name public-private default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;drop&amp;#39;&lt;/span&gt;
+
+
+
+
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone dmz default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;drop&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone dmz from &lt;span style=&#34;color:#366&#34;&gt;local&lt;/span&gt; firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;local-dmz&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone dmz from private firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;private-dmz&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone dmz from public firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;public-dmz&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone &lt;span style=&#34;color:#366&#34;&gt;local&lt;/span&gt; from dmz firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;dmz-local&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone &lt;span style=&#34;color:#366&#34;&gt;local&lt;/span&gt; from private firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;private-local&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone &lt;span style=&#34;color:#366&#34;&gt;local&lt;/span&gt; from public firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;public-local&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone private default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;drop&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone private from dmz firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;dmz-private&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone private from &lt;span style=&#34;color:#366&#34;&gt;local&lt;/span&gt; firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;local-private&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone private from public firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;public-private&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone public default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;drop&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone public from dmz firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;dmz-public&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone public from &lt;span style=&#34;color:#366&#34;&gt;local&lt;/span&gt; firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;local-public&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone public from private firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;private-public&amp;#39;&lt;/span&gt;
+
+
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall all-ping &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;enable&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall broadcast-ping &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;disable&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall config-trap &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;disable&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall receive-redirects &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;disable&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall send-redirects &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;enable&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall source-validation &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;disable&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall syn-cookies &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;enable&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall twa-hazards-protection &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;disable&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall ip-src-route &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;disable&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall ipv6-receive-redirects &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;disable&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall ipv6-src-route &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;disable&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall log-martians &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;enable&amp;#39;&lt;/span&gt;
+
+
+commit
+save&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     
@@ -4699,29 +4882,6 @@ rm -rf /etc/apt/sources.list.d/ceph.list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://my.oschina.net/tanyixiu/blog/123832&#34;&gt;用IIS配置反向代理&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Kvm Virtualization 01 Introduction</title>
-      <link>https://blog.stevedong.com/post/kvm-virtualization-01-introduction/</link>
-      <pubDate>Fri, 26 Oct 2018 23:22:46 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/kvm-virtualization-01-introduction/</guid>
-      
-        <description>
-
-&lt;h1 id=&#34;kvm-virtualization-01-introduction&#34;&gt;KVM virtualization-01 Introduction&lt;/h1&gt;
-
-&lt;p&gt;Today we are start to learn kvm virtulization After try to find which is the right open source virtulization solution,which include Bhyver, Trolin/smartos, ovirt, OpenStack.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Openstack is too heavy and it is suitable for you have thousands of host to managament.&lt;/li&gt;
-&lt;li&gt;bhyver is base freebsd, and it has a web managment system named Clonos which write by a russian Less support.
-smartos/Trolin is a opensolaris base . But few people use it. It has open source version, but the offical website say again and again that ‘you’d better to contact us to install it’, that means you should pay for it if you want use it .&lt;/li&gt;
-&lt;li&gt;Ovirt is&lt;/li&gt;
 &lt;/ul&gt;
 </description>
       
