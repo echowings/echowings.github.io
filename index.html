@@ -348,7 +348,7 @@ if (!doNotTrack) {
   <header class="post-header">
     <h1 class="post-title">
       
-      <a class="post-link" href="/post/proxmoxve/how-to-change-default-settings-for-proxmox-ve/">How to Change Default Settings for Proxmox Ve</a>
+      <a class="post-link" href="/post/proxmoxve/how-to-change-default-swap-settings-for-proxmox-ve/">How to Change Default Swap Settings for Proxmox Ve</a>
     </h1>
     
     <div class="post-meta">
@@ -371,7 +371,7 @@ if (!doNotTrack) {
        How to change default swap settings for Proxmox VE  Check Default swap policy from value 60 to 0  cat /proc/sys/vm/swappiness #default value is 60 , it means when the memory remain 60, the swap will be enable   Change swap policy  # Temp to change default swap enable when memory remain 0. sysctl vm.swappiness=0 # Permanent to change swapp cat &lt;&lt; EOF &gt;&gt; /etc/sysctl.conf vm.swappiness=0 #apply settings sysctl -p # check cat /proc/sys/vm/swappiness  Vacuum swap  swapoff -a swapon -a
     </div>
     <div class="read-more">
-      <a href="/post/proxmoxve/how-to-change-default-settings-for-proxmox-ve/" class="read-more-link">Read more</a>
+      <a href="/post/proxmoxve/how-to-change-default-swap-settings-for-proxmox-ve/" class="read-more-link">Read more</a>
     </div>
     
   </div>
