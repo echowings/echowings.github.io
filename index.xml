@@ -62,13 +62,13 @@
 
 &lt;tr&gt;
 &lt;td&gt;eth1&lt;/td&gt;
-&lt;td&gt;192.168.68.&lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;24&lt;/sub&gt;&lt;/td&gt;
+&lt;td&gt;192.168.68.1 / 24&lt;/td&gt;
 &lt;td&gt;DMZ&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
 &lt;td&gt;eth2&lt;/td&gt;
-&lt;td&gt;10.0.0.&lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;24&lt;/sub&gt;&lt;/td&gt;
+&lt;td&gt;10.0.0.1 / 24&lt;/td&gt;
 &lt;td&gt;LAN&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -175,6 +175,9 @@
 
 
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone dmz default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;drop&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone private default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;drop&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone public default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;drop&amp;#39;&lt;/span&gt;
+
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone dmz from &lt;span style=&#34;color:#366&#34;&gt;local&lt;/span&gt; firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;local-dmz&amp;#39;&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone dmz from private firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;private-dmz&amp;#39;&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone dmz from public firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;public-dmz&amp;#39;&lt;/span&gt;
@@ -183,12 +186,11 @@
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone &lt;span style=&#34;color:#366&#34;&gt;local&lt;/span&gt; from private firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;private-local&amp;#39;&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone &lt;span style=&#34;color:#366&#34;&gt;local&lt;/span&gt; from public firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;public-local&amp;#39;&lt;/span&gt;
 
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone private default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;drop&amp;#39;&lt;/span&gt;
+
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone private from dmz firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;dmz-private&amp;#39;&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone private from &lt;span style=&#34;color:#366&#34;&gt;local&lt;/span&gt; firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;local-private&amp;#39;&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone private from public firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;public-private&amp;#39;&lt;/span&gt;
 
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone public default-action &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;drop&amp;#39;&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone public from dmz firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;dmz-public&amp;#39;&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone public from &lt;span style=&#34;color:#366&#34;&gt;local&lt;/span&gt; firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;local-public&amp;#39;&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; zone-policy zone public from private firewall name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;private-public&amp;#39;&lt;/span&gt;

@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="How to Setup Vyos as a Firewall Setup interface    Interface IP Address Description     eth0 pppoe WAN   eth1 192.168.68.1&amp;frasl;24 DMZ   eth2 10.0.0.1&amp;frasl;24 LAN    set interface ethernet eth0 pppoe 0 user-id &amp;#39;&amp;lt;pppoe accout&amp;gt;&amp;#39; set interface ethernet eth0 pppoe 0 password &amp;#39;&amp;lt;pppoe password&amp;gt;&amp;#39; set interface ethernet eth0 pppoe 0 name-server &amp;#39;none&amp;#39; set interface ethernet eth0 description &amp;#39;WAN&amp;#39; set interface ethernet eth1 address 192." />
+  <meta name="description" content="How to Setup Vyos as a Firewall Setup interface    Interface IP Address Description     eth0 pppoe WAN   eth1 192.168.68.1 / 24 DMZ   eth2 10.0.0.1 / 24 LAN    set interface ethernet eth0 pppoe 0 user-id &amp;#39;&amp;lt;pppoe accout&amp;gt;&amp;#39; set interface ethernet eth0 pppoe 0 password &amp;#39;&amp;lt;pppoe password&amp;gt;&amp;#39; set interface ethernet eth0 pppoe 0 name-server &amp;#39;none&amp;#39; set interface ethernet eth0 description &amp;#39;WAN&amp;#39; set interface ethernet eth1 address 192." />
 
   <meta name="keywords" content="proxmox ve, network, devops, sdn, system Administation" />
 
@@ -58,26 +58,26 @@
 
 
 <meta property="og:title" content="How to Setup Vyos as a Firewall" />
-<meta property="og:description" content="How to Setup Vyos as a Firewall Setup interface    Interface IP Address Description     eth0 pppoe WAN   eth1 192.168.68.1&frasl;24 DMZ   eth2 10.0.0.1&frasl;24 LAN    set interface ethernet eth0 pppoe 0 user-id &#39;&lt;pppoe accout&gt;&#39; set interface ethernet eth0 pppoe 0 password &#39;&lt;pppoe password&gt;&#39; set interface ethernet eth0 pppoe 0 name-server &#39;none&#39; set interface ethernet eth0 description &#39;WAN&#39; set interface ethernet eth1 address 192." />
+<meta property="og:description" content="How to Setup Vyos as a Firewall Setup interface    Interface IP Address Description     eth0 pppoe WAN   eth1 192.168.68.1 / 24 DMZ   eth2 10.0.0.1 / 24 LAN    set interface ethernet eth0 pppoe 0 user-id &#39;&lt;pppoe accout&gt;&#39; set interface ethernet eth0 pppoe 0 password &#39;&lt;pppoe password&gt;&#39; set interface ethernet eth0 pppoe 0 name-server &#39;none&#39; set interface ethernet eth0 description &#39;WAN&#39; set interface ethernet eth1 address 192." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/how-to-setup-vyos-as-a-firewall/" />
 <meta property="article:published_time" content="2019-08-08T13:58:35&#43;08:00"/>
 <meta property="article:modified_time" content="2019-08-08T13:58:35&#43;08:00"/>
 
 <meta itemprop="name" content="How to Setup Vyos as a Firewall">
-<meta itemprop="description" content="How to Setup Vyos as a Firewall Setup interface    Interface IP Address Description     eth0 pppoe WAN   eth1 192.168.68.1&frasl;24 DMZ   eth2 10.0.0.1&frasl;24 LAN    set interface ethernet eth0 pppoe 0 user-id &#39;&lt;pppoe accout&gt;&#39; set interface ethernet eth0 pppoe 0 password &#39;&lt;pppoe password&gt;&#39; set interface ethernet eth0 pppoe 0 name-server &#39;none&#39; set interface ethernet eth0 description &#39;WAN&#39; set interface ethernet eth1 address 192.">
+<meta itemprop="description" content="How to Setup Vyos as a Firewall Setup interface    Interface IP Address Description     eth0 pppoe WAN   eth1 192.168.68.1 / 24 DMZ   eth2 10.0.0.1 / 24 LAN    set interface ethernet eth0 pppoe 0 user-id &#39;&lt;pppoe accout&gt;&#39; set interface ethernet eth0 pppoe 0 password &#39;&lt;pppoe password&gt;&#39; set interface ethernet eth0 pppoe 0 name-server &#39;none&#39; set interface ethernet eth0 description &#39;WAN&#39; set interface ethernet eth1 address 192.">
 
 
 <meta itemprop="datePublished" content="2019-08-08T13:58:35&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-08T13:58:35&#43;08:00" />
-<meta itemprop="wordCount" content="679">
+<meta itemprop="wordCount" content="683">
 
 
 
 <meta itemprop="keywords" content="vyos,firewall,network," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Setup Vyos as a Firewall"/>
-<meta name="twitter:description" content="How to Setup Vyos as a Firewall Setup interface    Interface IP Address Description     eth0 pppoe WAN   eth1 192.168.68.1&frasl;24 DMZ   eth2 10.0.0.1&frasl;24 LAN    set interface ethernet eth0 pppoe 0 user-id &#39;&lt;pppoe accout&gt;&#39; set interface ethernet eth0 pppoe 0 password &#39;&lt;pppoe password&gt;&#39; set interface ethernet eth0 pppoe 0 name-server &#39;none&#39; set interface ethernet eth0 description &#39;WAN&#39; set interface ethernet eth1 address 192."/>
+<meta name="twitter:description" content="How to Setup Vyos as a Firewall Setup interface    Interface IP Address Description     eth0 pppoe WAN   eth1 192.168.68.1 / 24 DMZ   eth2 10.0.0.1 / 24 LAN    set interface ethernet eth0 pppoe 0 user-id &#39;&lt;pppoe accout&gt;&#39; set interface ethernet eth0 pppoe 0 password &#39;&lt;pppoe password&gt;&#39; set interface ethernet eth0 pppoe 0 name-server &#39;none&#39; set interface ethernet eth0 description &#39;WAN&#39; set interface ethernet eth1 address 192."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -425,13 +425,13 @@ if (!doNotTrack) {
 
 <tr>
 <td>eth1</td>
-<td>192.168.68.<sup>1</sup>&frasl;<sub>24</sub></td>
+<td>192.168.68.1 / 24</td>
 <td>DMZ</td>
 </tr>
 
 <tr>
 <td>eth2</td>
-<td>10.0.0.<sup>1</sup>&frasl;<sub>24</sub></td>
+<td>10.0.0.1 / 24</td>
 <td>LAN</td>
 </tr>
 </tbody>
@@ -538,6 +538,9 @@ if (!doNotTrack) {
 
 
 <span style="color:#366">set</span> zone-policy zone dmz default-action <span style="color:#c30">&#39;drop&#39;</span>
+<span style="color:#366">set</span> zone-policy zone private default-action <span style="color:#c30">&#39;drop&#39;</span>
+<span style="color:#366">set</span> zone-policy zone public default-action <span style="color:#c30">&#39;drop&#39;</span>
+
 <span style="color:#366">set</span> zone-policy zone dmz from <span style="color:#366">local</span> firewall name <span style="color:#c30">&#39;local-dmz&#39;</span>
 <span style="color:#366">set</span> zone-policy zone dmz from private firewall name <span style="color:#c30">&#39;private-dmz&#39;</span>
 <span style="color:#366">set</span> zone-policy zone dmz from public firewall name <span style="color:#c30">&#39;public-dmz&#39;</span>
@@ -546,12 +549,11 @@ if (!doNotTrack) {
 <span style="color:#366">set</span> zone-policy zone <span style="color:#366">local</span> from private firewall name <span style="color:#c30">&#39;private-local&#39;</span>
 <span style="color:#366">set</span> zone-policy zone <span style="color:#366">local</span> from public firewall name <span style="color:#c30">&#39;public-local&#39;</span>
 
-<span style="color:#366">set</span> zone-policy zone private default-action <span style="color:#c30">&#39;drop&#39;</span>
+
 <span style="color:#366">set</span> zone-policy zone private from dmz firewall name <span style="color:#c30">&#39;dmz-private&#39;</span>
 <span style="color:#366">set</span> zone-policy zone private from <span style="color:#366">local</span> firewall name <span style="color:#c30">&#39;local-private&#39;</span>
 <span style="color:#366">set</span> zone-policy zone private from public firewall name <span style="color:#c30">&#39;public-private&#39;</span>
 
-<span style="color:#366">set</span> zone-policy zone public default-action <span style="color:#c30">&#39;drop&#39;</span>
 <span style="color:#366">set</span> zone-policy zone public from dmz firewall name <span style="color:#c30">&#39;dmz-public&#39;</span>
 <span style="color:#366">set</span> zone-policy zone public from <span style="color:#366">local</span> firewall name <span style="color:#c30">&#39;local-public&#39;</span>
 <span style="color:#366">set</span> zone-policy zone public from private firewall name <span style="color:#c30">&#39;private-public&#39;</span>
