@@ -6,10 +6,19 @@
     <description>Recent content in PVE on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 26 Jul 2019 16:58:29 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 09 Aug 2019 16:16:39 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/tags/pve/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Change Default Settings for Proxmox Ve</title>
+      <link>https://blog.stevedong.com/post/proxmoxve/how-to-change-default-settings-for-proxmox-ve/</link>
+      <pubDate>Fri, 09 Aug 2019 16:16:39 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/proxmoxve/how-to-change-default-settings-for-proxmox-ve/</guid>
+      <description> How to change default swap settings for Proxmox VE  Check Default swap policy from value 60 to 0  cat /proc/sys/vm/swappiness #default value is 60 , it means when the memory remain 60, the swap will be enable   Change swap policy  # Temp to change default swap enable when memory remain 0. sysctl vm.swappiness=0 # Permanent to change swapp cat &amp;lt;&amp;lt; EOF &amp;gt;&amp;gt; /etc/sysctl.conf vm.swappiness=0 #apply settings sysctl -p # check cat /proc/sys/vm/swappiness  Vacuum swap  swapoff -a swapon -a</description>
+    </item>
     
     <item>
       <title>How to Configure Debian 10 as a Docker Server</title>

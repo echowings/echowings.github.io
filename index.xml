@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 08 Aug 2019 13:58:35 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 09 Aug 2019 16:16:39 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -28,6 +28,47 @@
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
+      
+    </item>
+    
+    <item>
+      <title>How to Change Default Settings for Proxmox Ve</title>
+      <link>https://blog.stevedong.com/post/proxmoxve/how-to-change-default-settings-for-proxmox-ve/</link>
+      <pubDate>Fri, 09 Aug 2019 16:16:39 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/proxmoxve/how-to-change-default-settings-for-proxmox-ve/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-change-default-swap-settings-for-proxmox-ve&#34;&gt;How to change default swap settings for Proxmox VE&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Check Default swap policy from value 60 to 0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt; cat /proc/sys/vm/swappiness
+ &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#default value is 60 , it means when the memory remain 60, the swap will be enable&lt;/span&gt;
+ &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Change swap policy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt; &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Temp to change default swap enable when memory remain 0.&lt;/span&gt;
+ sysctl vm.swappiness&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt;
+ 
+ &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Permanent to change swapp&lt;/span&gt;
+ cat &amp;lt;&amp;lt; EOF &amp;gt;&amp;gt; /etc/sysctl.conf
+ vm.swappiness&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt;
+ 
+ &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#apply settings&lt;/span&gt;
+ sysctl -p
+ 
+ 
+ &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# check&lt;/span&gt; 
+  cat /proc/sys/vm/swappiness&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Vacuum swap&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;swapoff -a
+swapon -a&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     
@@ -4765,126 +4806,6 @@ rm -rf /etc/apt/sources.list.d/ceph.list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;作为IT运维人员或者程序员,不论做什么或做多久.如果你不学习新东西,你可能现在已经已经转行了.不仅仅是平台或者技术图表持续的变更.也不仅仅是业务需求需要新思维.或者一个坏蛋不停使用新路子来攻击你的服务器. 而是所用事情的综合. 你不能承担停止学习的代价.而诀窍就是找到一个方法学习高优先级的技能,而不能让经验成为你成长的阻碍.&lt;/p&gt;
 
 &lt;p&gt;我的意愿和初衷是想让你遍读本书的每一章,然后可以自信地接受挑战(一些以前你不能自信挑战的事情)并战胜之.如果你&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>How to Setup Reverse Proxy With Iis</title>
-      <link>https://blog.stevedong.com/post/how-to-setup-reverse-proxy-with-iis/</link>
-      <pubDate>Tue, 06 Nov 2018 23:26:18 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/how-to-setup-reverse-proxy-with-iis/</guid>
-      
-        <description>
-
-&lt;h1 id=&#34;how-to-setup-reverse-proxy-with-iis&#34;&gt;How to Setup Reverse proxy with IIS&lt;/h1&gt;
-
-&lt;p&gt;I testing it on Server 2016 with IIS 10&lt;/p&gt;
-
-&lt;h2 id=&#34;install-iis-url-rewrite-arr&#34;&gt;Install IIS,URL _REWRITE, ARR&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Install IIS.&lt;/li&gt;
-&lt;li&gt;Download and install &lt;a href=&#34;https://www.iis.net/downloads/microsoft/url-rewrite&#34;&gt;URL Rewrite Module 2.1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Download and install &lt;a href=&#34;https://www.iis.net/downloads/microsoft/application-request-routing&#34;&gt;ARR-Application-request-routing&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;setting-reverse-proxy&#34;&gt;Setting Reverse Proxy&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Select Root level in IIS management&lt;/li&gt;
-&lt;li&gt;Click ‘Application Request Routing Cache’,then in the right side, click “proxy | Server proxy Settings | Check on “Enable proxy” | save config.&lt;/li&gt;
-&lt;li&gt;Select website in IIS.&lt;/li&gt;
-&lt;li&gt;Click URL Rewrite&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Add a black Rule&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* Match URL:
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Requested URL&lt;/th&gt;
-&lt;th&gt;Using&lt;/th&gt;
-&lt;th&gt;Pattern&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Matches the pattern&lt;/td&gt;
-&lt;td&gt;Regular Expressions&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;^(.*)&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;pre&gt;&lt;code&gt;    * Conditions:
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Type&lt;/th&gt;
-&lt;th&gt;Value&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Logical grouping&lt;/td&gt;
-&lt;td&gt;Match ALL&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;input&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;{HTTP_HOST}&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;Type&lt;/td&gt;
-&lt;td&gt;Matches the Pattern&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;Patern&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;^xa-sys-svr:8080$&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;pre&gt;&lt;code&gt;    * Server Variables:
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Type&lt;/th&gt;
-&lt;th&gt;Value&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Action Type&lt;/td&gt;
-&lt;td&gt;Rewrite&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;Rewrite URL&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;http://www.cnblog.com/{R:1}&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://my.oschina.net/tanyixiu/blog/123832&#34;&gt;用IIS配置反向代理&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
       
     </item>
