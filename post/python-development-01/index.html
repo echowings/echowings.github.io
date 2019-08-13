@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.56.3" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/python-development-01/" />
@@ -51,7 +51,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.31c4b7729c8d71cc152f8de4203d90bfd8a04f7eab69372de7234ebf55b7701b.css" integrity="sha256-McS3cpyNccwVL43kID2Qv9igT36raTct5yNOv1W3cBs=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
 
 
 
@@ -61,9 +61,8 @@
 <meta property="og:description" content="Python Development python开发笔记-01-python开发入门 安装ptyhon开发工具和包 安装ubuntu 16.04 &hellip;pass&hellip; 安装系统相关依赖包 build-essen" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/python-development-01/" />
-<meta property="article:published_time" content="2018-11-29T00:28:31&#43;08:00"/>
-<meta property="article:modified_time" content="2018-12-24T16:01:23&#43;08:00"/>
-
+<meta property="article:published_time" content="2018-11-29T00:28:31+08:00" />
+<meta property="article:modified_time" content="2018-12-24T16:01:23+08:00" />
 <meta itemprop="name" content="Python Development 01">
 <meta itemprop="description" content="Python Development python开发笔记-01-python开发入门 安装ptyhon开发工具和包 安装ubuntu 16.04 &hellip;pass&hellip; 安装系统相关依赖包 build-essen">
 
@@ -441,33 +440,30 @@ sudo python -m pip install --upgrade pip</code></pre></div>
 <p>##使用get-pip.py来安装最新版本的pip</p>
 
 <ul>
-<li>查看python版本</li>
-</ul>
+<li><p>查看python版本</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#033">$python</span> -V
-Python <span style="color:#f60">2</span>.7.12</code></pre></div>
-<ul>
-<li>查看pip版本</li>
-</ul>
+Python <span style="color:#f60">2</span>.7.12</code></pre></div></li>
+
+<li><p>查看pip版本</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pip --version
-pip <span style="color:#f60">18</span>.1 from /usr/local/lib/python2.7/dist-packages/pip <span style="color:#555">(</span>python <span style="color:#f60">2</span>.7<span style="color:#555">)</span></code></pre></div>
-<ul>
-<li>通过pip安装开发用的软件</li>
-<li>安装virtualenv包</li>
-</ul>
+pip <span style="color:#f60">18</span>.1 from /usr/local/lib/python2.7/dist-packages/pip <span style="color:#555">(</span>python <span style="color:#f60">2</span>.7<span style="color:#555">)</span></code></pre></div></li>
+
+<li><p>通过pip安装开发用的软件</p></li>
+
+<li><p>安装virtualenv包</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#033">$sudo</span> pip insetall virtualenv
 Collecting virtualenv
-  Downloading https://files.pythonhosted.org/packages/7c/17/9b7b6cddfd255388b58c61e25b091047f6814183e1d63741c8df8dcd65a2/virtualenv-16.1.0-py2.py3-none-any.whl <span style="color:#555">(</span><span style="color:#f60">1</span>.9MB<span style="color:#555">)</span>
-    <span style="color:#f60">100</span>% |<span style="color:#09f;font-style:italic">################################| 1.9MB 2.5MB/s</span>
+Downloading https://files.pythonhosted.org/packages/7c/17/9b7b6cddfd255388b58c61e25b091047f6814183e1d63741c8df8dcd65a2/virtualenv-16.1.0-py2.py3-none-any.whl <span style="color:#555">(</span><span style="color:#f60">1</span>.9MB<span style="color:#555">)</span>
+<span style="color:#f60">100</span>% |<span style="color:#09f;font-style:italic">################################| 1.9MB 2.5MB/s</span>
 Installing collected packages: virtualenv
 Successfully installed virtualenv-16.1.0
 virtualenv 的使用方法 virtualenv是搭建虚拟的python执行环境.
-  $ virtualenv --version
-  <span style="color:#f60">16</span>.1.0</code></pre></div>
-<ul>
-<li>查看当前pip 安装的软件</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  $ pip freeze 
-  <span style="color:#033">ansible</span><span style="color:#555">==</span><span style="color:#f60">2</span>.7.2
+$ virtualenv --version
+<span style="color:#f60">16</span>.1.0</code></pre></div></li>
+
+<li><p>查看当前pip 安装的软件</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pip freeze 
+<span style="color:#033">ansible</span><span style="color:#555">==</span><span style="color:#f60">2</span>.7.2
 <span style="color:#033">asn1crypto</span><span style="color:#555">==</span><span style="color:#f60">0</span>.24.0
 <span style="color:#033">bcrypt</span><span style="color:#555">==</span><span style="color:#f60">3</span>.1.4
 <span style="color:#033">cffi</span><span style="color:#555">==</span><span style="color:#f60">1</span>.11.5
@@ -483,31 +479,29 @@ virtualenv 的使用方法 virtualenv是搭建虚拟的python执行环境.
 <span style="color:#033">PyNaCl</span><span style="color:#555">==</span><span style="color:#f60">1</span>.3.0
 <span style="color:#033">PyYAML</span><span style="color:#555">==</span><span style="color:#f60">3</span>.13
 <span style="color:#033">six</span><span style="color:#555">==</span><span style="color:#f60">1</span>.11.0
-<span style="color:#033">virtualenv</span><span style="color:#555">==</span><span style="color:#f60">16</span>.1.0</code></pre></div>
-<ul>
-<li>搭建virtualenv环境</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> <span style="color:#033">$mkdir</span> ~/work
- <span style="color:#033">$cd</span> ~/work
- <span style="color:#033">$virtualenv</span> venv
- New python executable in /home/user1/work/venv/bin/python
+<span style="color:#033">virtualenv</span><span style="color:#555">==</span><span style="color:#f60">16</span>.1.0</code></pre></div></li>
+
+<li><p>搭建virtualenv环境</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#033">$mkdir</span> ~/work
+<span style="color:#033">$cd</span> ~/work
+<span style="color:#033">$virtualenv</span> venv
+New python executable in /home/user1/work/venv/bin/python
 Installing setuptools, pip, wheel...
-<span style="color:#069;font-weight:bold">done</span>. </code></pre></div>
-<ul>
-<li>启动virtualenv 环境</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> <span style="color:#033">$source</span> venv/bin/activate
- <span style="color:#555">(</span>venv<span style="color:#555">)</span> user1@python-dev-env:~/work$
+<span style="color:#069;font-weight:bold">done</span>. </code></pre></div></li>
+
+<li><p>启动virtualenv 环境</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#033">$source</span> venv/bin/activate
+<span style="color:#555">(</span>venv<span style="color:#555">)</span> user1@python-dev-env:~/work$
 <span style="color:#09f;font-style:italic">#使用pip freeze查看已经安装pip包为空</span>
- <span style="color:#033">$pip</span> freeze</code></pre></div>
-<ul>
-<li>关闭virtualenv环境</li>
+<span style="color:#033">$pip</span> freeze</code></pre></div></li>
+
+<li><p>关闭virtualenv环境</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ deactivate</code></pre></div></li>
+
+<li><p>删除virtualenv</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -R vienv</code></pre></div></li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ deactivate</code></pre></div>
-<ul>
-<li>删除virtualenv</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -R vienv</code></pre></div>
+
 <h3 id="多python版本使用">多python版本使用</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">user1@python-dev-env:~/work$ python3 -V
 Python <span style="color:#f60">3</span>.5.2
@@ -531,34 +525,34 @@ deactivate</code></pre></div>
 Collecting mercurial
 Downloading https://files.pythonhosted.org/packages/6a/f4/4c3d3a2bf950f3261f506284952e23cee2b62e50eb8974aa961228a95e8a/mercurial-4.8.tar.gz <span style="color:#555">(</span><span style="color:#f60">6</span>.9MB<span style="color:#555">)</span> <span style="color:#f60">100</span>% |<span style="color:#09f;font-style:italic">################################| 6.9MB 1.3MB/s Installing collected packages: mercurial Running setup.py install for mercurial … done Successfully installed mercurial-4.8</span> </code></pre></div>
 <ul>
-<li>安装zsh</li>
-</ul>
+<li><p>安装zsh</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get install zsh
 sh -c <span style="color:#c30">&#34;</span><span style="color:#069;font-weight:bold">$(</span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span style="color:#069;font-weight:bold">)</span><span style="color:#c30">&#34;</span>  
 <span style="color:#09f;font-style:italic"># vi ~/.zhsrc</span>
 <span style="color:#033">plugins</span><span style="color:#555">=(</span>
 git bundler dotenv osx rake rbenv ruby mercurial <span style="color:#555">)</span>
 
-<span style="color:#033">ZSH_THEME</span><span style="color:#555">=</span>“agnoster” </code></pre></div>
-<ul>
-<li>查看Mercurial版本</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   user1@python-dev-env:~$ hg --version
+<span style="color:#033">ZSH_THEME</span><span style="color:#555">=</span>“agnoster” </code></pre></div></li>
+
+<li><p>查看Mercurial版本</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">user1@python-dev-env:~$ hg --version
 	Mercurial Distributed SCM <span style="color:#555">(</span>version <span style="color:#f60">4</span>.8<span style="color:#555">)</span>
 	<span style="color:#555">(</span>see https://mercurial-scm.org <span style="color:#069;font-weight:bold">for</span> more information<span style="color:#555">)</span>
 
 	Copyright <span style="color:#555">(</span>C<span style="color:#555">)</span> <span style="color:#f60">2005</span>-2018 Matt Mackall and others
 	This is free software; see the <span style="color:#366">source</span> <span style="color:#069;font-weight:bold">for</span> copying conditions. There is NO
-	warranty; not even <span style="color:#069;font-weight:bold">for</span> MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</code></pre></div>
-<ul>
-<li>创建版本库</li>
+	warranty; not even <span style="color:#069;font-weight:bold">for</span> MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</code></pre></div></li>
+
+<li><p>创建版本库</p></li>
 </ul>
 
 <ol>
 <li>创建Mercurial的环境设置文件.在主目录下创建.hgrc文件, 括号内的称为节(Section),如[ui]用来设置usernme的属性.username会想版本哭提交时候记录在日志里</li>
-<li>[Extensions]用来激活Mercurial附属的扩展工具,将扩展工具名写入[extensions],我们就可以使用该工具了.有一些工具不但要在Extension中设置,还要在pager中设置pager属性</li>
+
+<li><p>[Extensions]用来激活Mercurial附属的扩展工具,将扩展工具名写入[extensions],我们就可以使用该工具了.有一些工具不但要在Extension中设置,还要在pager中设置pager属性</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi ~/.hgrc</code></pre></div></li>
 </ol>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi ~/.hgrc</code></pre></div>
+
 <p><code>[ui] username=bpbook bpbook@beproud.jp [extensions] color= pager= [pager] pager=LESS=‘FSRX’ less</code></p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">  mercurial
   mkdir <span style="color:#555">~/</span>hgtest
@@ -601,11 +595,10 @@ git bundler dotenv osx rake rbenv ruby mercurial <span style="color:#555">)</spa
 <h3 id="python代码编辑器">python代码编辑器</h3>
 
 <ul>
-<li>vim</li>
-</ul>
+<li><p>vim</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#09f;font-style:italic">&#34; 将“Tab”替换为“空格”</span><span style="color:#a00;background-color:#faa">
-</span><span style="color:#a00;background-color:#faa"></span>setl expandtab<span style="color:#09f;font-style:italic">
-</span><span style="color:#09f;font-style:italic">&#34; 将“Tab”的“缩进幅度”改为 4</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>setl expandtab<span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span><span style="color:#09f;font-style:italic">&#34; 将“Tab”的“缩进幅度”改为 4</span><span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span>setl tabstop=<span style="color:#f60">4</span> <span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span>“ 自动缩进时的“缩进幅度”改为 <span style="color:#f60">4</span> <span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span>setl shiftwidth=<span style="color:#f60">4</span> <span style="color:#a00;background-color:#faa">
@@ -615,25 +608,26 @@ git bundler dotenv osx rake rbenv ruby mercurial <span style="color:#555">)</spa
 </span><span style="color:#a00;background-color:#faa"></span>autocmd BufWritePre * :%s<span style="color:#3aa">/\s+$/</span>/ge <span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span>“<span style="color:#f60">80</span> 个字符换行 setlocal textwidth=<span style="color:#f60">80</span></code></pre></div>
 <ul>
-<li>install neobundle.vim</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> <span style="color:#366">cd</span> ~
- curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
- vim ~/.vimrc
- NeoBundle <span style="color:#c30">&#39;nvie/vim-flake8&#39;</span></code></pre></div>
-<ul>
-<li>pbd调试</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   	def add<span style="color:#555">(</span>x, y<span style="color:#555">)</span>:
-   	    <span style="color:#069;font-weight:bold">return</span> x + y
+<li><p>install neobundle.vim</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> ~
+curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
+vim ~/.vimrc
+NeoBundle <span style="color:#c30">&#39;nvie/vim-flake8&#39;</span></code></pre></div></li>
+</ul></li>
+
+<li><p>pbd调试</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">	def add<span style="color:#555">(</span>x, y<span style="color:#555">)</span>:
+	    <span style="color:#069;font-weight:bold">return</span> x + y
 	<span style="color:#033">x</span><span style="color:#555">=</span> <span style="color:#f60">0</span>
 	import pdb; pdb.set_trace<span style="color:#555">()</span> <span style="color:#033">x</span> <span style="color:#555">=</span> add<span style="color:#555">(</span><span style="color:#f60">1</span>, <span style="color:#f60">2</span><span style="color:#555">)</span>
 
 <span style="color:#033">$python</span> pdbtest.py
     
 &gt; pdbtest.py<span style="color:#555">(</span><span style="color:#f60">7</span><span style="color:#555">)</span>&lt;module&gt;<span style="color:#555">()</span>
-  -&gt; <span style="color:#033">x</span> <span style="color:#555">=</span> add<span style="color:#555">(</span><span style="color:#f60">1</span>, <span style="color:#f60">2</span><span style="color:#555">)</span>
-  <span style="color:#555">(</span>Pdb<span style="color:#555">)</span></code></pre></div>
+-&gt; <span style="color:#033">x</span> <span style="color:#555">=</span> add<span style="color:#555">(</span><span style="color:#f60">1</span>, <span style="color:#f60">2</span><span style="color:#555">)</span>
+<span style="color:#555">(</span>Pdb<span style="color:#555">)</span></code></pre></div></li>
+</ul>
+
     </div>
 
     

@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.56.3" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/how-to-enable-docker-in-lxc/" />
@@ -51,7 +51,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.31c4b7729c8d71cc152f8de4203d90bfd8a04f7eab69372de7234ebf55b7701b.css" integrity="sha256-McS3cpyNccwVL43kID2Qv9igT36raTct5yNOv1W3cBs=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
 
 
 
@@ -61,9 +61,8 @@
 <meta property="og:description" content="How to install docker-ce in lxc container in pve At now, Proxmox is base debian and it can be install docker directly. To install docker in host without proxmox support. It will be lost HA function. Deploy a vm then install docker-ce in the vm, it works. but take a lot resource than directly install docker in proxmox. Is there a way to take less performance ,at the same time" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/how-to-enable-docker-in-lxc/" />
-<meta property="article:published_time" content="2019-03-23T12:08:34&#43;08:00"/>
-<meta property="article:modified_time" content="2019-03-23T12:08:34&#43;08:00"/>
-
+<meta property="article:published_time" content="2019-03-23T12:08:34+08:00" />
+<meta property="article:modified_time" content="2019-03-23T12:08:34+08:00" />
 <meta itemprop="name" content="How to Enable Docker in Lxc">
 <meta itemprop="description" content="How to install docker-ce in lxc container in pve At now, Proxmox is base debian and it can be install docker directly. To install docker in host without proxmox support. It will be lost HA function. Deploy a vm then install docker-ce in the vm, it works. but take a lot resource than directly install docker in proxmox. Is there a way to take less performance ,at the same time">
 
@@ -421,8 +420,8 @@ if (!doNotTrack) {
 <ul>
 <li>Login your PVE;</li>
 <li>Follow  the path to click the gui to redirect to the right  lxc download page. <code>&quot;Datacenter&quot; | &quot;$PVE_HOST&quot; | &quot;Local(PVE Storage)&quot; | &quot;Content&quot; | &quot;Templates&quot;</code></li>
-<li>select &ldquo;ubuntu-18.04-standard&rdquo;, then click download. wating for it finishd download the lxc image.</li>
-</ul>
+
+<li><p>select &ldquo;ubuntu-18.04-standard&rdquo;, then click download. wating for it finishd download the lxc image.</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Virtual Environment <span style="color:#f60">5</span>.3-9
 Search
 Storage <span style="color:#c30">&#39;local&#39;</span> on node <span style="color:#c30">&#39;xa-sys-pve02&#39;</span>
@@ -439,10 +438,10 @@ HTTP request sent, awaiting response... <span style="color:#f60">200</span> OK
 Length: <span style="color:#f60">213430501</span> <span style="color:#555">(</span>204M<span style="color:#555">)</span> <span style="color:#555">[</span>application/octet-stream<span style="color:#555">]</span>
 Saving to: <span style="color:#c30">&#39;/var/lib/vz/template/cache/ubuntu-18.04-standard_18.04.1-1_amd64.tar.gz.tmp.31383&#39;</span>
 
-     0K ........ ........ ........ ........ ........ ........  <span style="color:#f60">1</span>% <span style="color:#f60">99</span>.8K 34m17s
-  3072K ........ ........ ........ ........ ........ ........  <span style="color:#f60">2</span>%  220K 24m34s
-  6144K ........ ........ ........ ........ ........ ........  <span style="color:#f60">4</span>%  214K 21m18s
-     ...
+ 0K ........ ........ ........ ........ ........ ........  <span style="color:#f60">1</span>% <span style="color:#f60">99</span>.8K 34m17s
+3072K ........ ........ ........ ........ ........ ........  <span style="color:#f60">2</span>%  220K 24m34s
+6144K ........ ........ ........ ........ ........ ........  <span style="color:#f60">4</span>%  214K 21m18s
+ ...
      
 193536K ........ ........ ........ ........ ........ ........ <span style="color:#f60">94</span>%  180K 53s
 196608K ........ ........ ........ ........ ........ ........ <span style="color:#f60">95</span>%  410K 39s
@@ -453,7 +452,9 @@ Saving to: <span style="color:#c30">&#39;/var/lib/vz/template/cache/ubuntu-18.04
 <span style="color:#f60">2019</span>-04-08 <span style="color:#f60">13</span>:59:21 <span style="color:#555">(</span><span style="color:#f60">228</span> KB/s<span style="color:#555">)</span> - <span style="color:#c30">&#39;/var/lib/vz/template/cache/ubuntu-18.04-standard_18.04.1-1_amd64.tar.gz.tmp.31383&#39;</span> saved <span style="color:#555">[</span><span style="color:#f60">213430501</span>/213430501<span style="color:#555">]</span>
 
 download finished
-TASK OK</code></pre></div>
+TASK OK</code></pre></div></li>
+</ul>
+
 <h3 id="option-2-download-lxc-with-shell">Option 2: Download LXC with shell</h3>
 
 <p>####Fix Perl LC_ALL ERROR</p>
@@ -506,8 +507,8 @@ system          ubuntu-18.10-standard_18.10-2_amd64.tar.gz</code></pre></div>
 
 <ul>
 <li>Boot the lxc container of ubuntu 18.04.</li>
-<li>Change ubuntu 18.04 apt source to mirrors.utsc.edu.cn</li>
-</ul>
+
+<li><p>Change ubuntu 18.04 apt source to mirrors.utsc.edu.cn</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat &gt; /etc/apt/sources.list <span style="color:#c30">&lt;&lt;EOF
 </span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
 </span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
@@ -528,39 +529,36 @@ system          ubuntu-18.10-standard_18.10-2_amd64.tar.gz</code></pre></div>
 
 apt update  <span style="color:#555">&amp;&amp;</span> apt -y upgrade
 apt install -y vim net-tools
-apt remove -y vim-tiny</code></pre></div>
-<ul>
-<li>Follow docker <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">offical document</a> to install docker-ce.</li>
-</ul>
+apt remove -y vim-tiny</code></pre></div></li>
+
+<li><p>Follow docker <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">offical document</a> to install docker-ce.</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt-get install <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    apt-transport-https <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    ca-certificates <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    curl <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    gnupg-agent <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    software-properties-common  <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    -y
+</span><span style="color:#c30;font-weight:bold"></span>apt-transport-https <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>ca-certificates <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>curl <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>gnupg-agent <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>software-properties-common  <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>-y
     
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 apt-key fingerprint 0EBFCD88
 sudo add-apt-repository <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>   <span style="color:#c30">&#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-</span><span style="color:#c30">   </span><span style="color:#069;font-weight:bold">$(</span>lsb_release -cs<span style="color:#069;font-weight:bold">)</span><span style="color:#c30"> \
-</span><span style="color:#c30">   stable&#34;</span>
+</span><span style="color:#c30;font-weight:bold"></span><span style="color:#c30">&#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+</span><span style="color:#c30"></span><span style="color:#069;font-weight:bold">$(</span>lsb_release -cs<span style="color:#069;font-weight:bold">)</span><span style="color:#c30"> \
+</span><span style="color:#c30">stable&#34;</span>
 
 sed -i <span style="color:#c30">&#39;s/download.docker.com/mirrors.ustc.edu.cn\/docker-ce/g&#39;</span> /etc/apt/sources.list
 
 apt-get update
-apt-get install -y docker-ce docker-ce-cli containerd.io</code></pre></div>
-<ul>
-<li>check docker</li>
-</ul>
+apt-get install -y docker-ce docker-ce-cli containerd.io</code></pre></div></li>
+
+<li><p>check docker</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@template-docker-in-lxc:/etc/apt# docker -v
 Docker version <span style="color:#f60">18</span>.09.4, build d14af54266
-docker run hello-world</code></pre></div>
-<ul>
-<li>run hello-world</li>
-</ul>
+docker run hello-world</code></pre></div></li>
+
+<li><p>run hello-world</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@template-docker-in-lxc:/etc/apt# docker run hello-world
 Unable to find image <span style="color:#c30">&#39;hello-world:latest&#39;</span> locally
 latest: Pulling from library/hello-world
@@ -572,23 +570,25 @@ Hello from Docker!
 This message shows that your installation appears to be working correctly.
 
 To generate this message, Docker took the following steps:
- <span style="color:#f60">1</span>. The Docker client contacted the Docker daemon.
- <span style="color:#f60">2</span>. The Docker daemon pulled the <span style="color:#c30">&#34;hello-world&#34;</span> image from the Docker Hub.
-    <span style="color:#555">(</span>amd64<span style="color:#555">)</span>
- <span style="color:#f60">3</span>. The Docker daemon created a new container from that image which runs the
-    executable that produces the output you are currently reading.
- <span style="color:#f60">4</span>. The Docker daemon streamed that output to the Docker client, which sent it
-    to your terminal.
+<span style="color:#f60">1</span>. The Docker client contacted the Docker daemon.
+<span style="color:#f60">2</span>. The Docker daemon pulled the <span style="color:#c30">&#34;hello-world&#34;</span> image from the Docker Hub.
+<span style="color:#555">(</span>amd64<span style="color:#555">)</span>
+<span style="color:#f60">3</span>. The Docker daemon created a new container from that image which runs the
+executable that produces the output you are currently reading.
+<span style="color:#f60">4</span>. The Docker daemon streamed that output to the Docker client, which sent it
+to your terminal.
 
 To try something more ambitious, you can run an Ubuntu container with:
- $ docker run -it ubuntu bash
+$ docker run -it ubuntu bash
 
 Share images, automate workflows, and more with a free Docker ID:
- https://hub.docker.com/
+https://hub.docker.com/
 
 For more examples and ideas, visit:
- https://docs.docker.com/get-started/
- </code></pre></div>
+https://docs.docker.com/get-started/
+ </code></pre></div></li>
+</ul>
+
 <h3 id="install-docker-compose">Install docker-compose</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo curl -L <span style="color:#c30">&#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-</span><span style="color:#069;font-weight:bold">$(</span>uname -s<span style="color:#069;font-weight:bold">)</span><span style="color:#c30">-</span><span style="color:#069;font-weight:bold">$(</span>uname -m<span style="color:#069;font-weight:bold">)</span><span style="color:#c30">&#34;</span> -o /usr/local/bin/docker-compose
 

@@ -31,7 +31,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.56.3" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/" />
@@ -51,7 +51,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.31c4b7729c8d71cc152f8de4203d90bfd8a04f7eab69372de7234ebf55b7701b.css" integrity="sha256-McS3cpyNccwVL43kID2Qv9igT36raTct5yNOv1W3cBs=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,8 +62,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
 
-<meta property="og:updated_time" content="2019-08-09T16:16:39&#43;08:00"/>
-
+<meta property="og:updated_time" content="2019-08-09T16:16:39+08:00" />
 <meta itemprop="name" content="Steve Dong - A System Administrator&#39;s Blog">
 <meta itemprop="description" content="A System Administrator&#39;s Blog.">
 
@@ -368,7 +367,9 @@ if (!doNotTrack) {
   <div class="post-content">
     
     <div class="post-summary">
-       How to change default swap settings for Proxmox VE  Check Default swap policy from value 60 to 0  cat /proc/sys/vm/swappiness #default value is 60 , it means when the memory remain 60, the swap will be enable   Change swap policy  # Temp to change default swap enable when memory remain 0. sysctl vm.swappiness=0 # Permanent to change swapp cat &lt;&lt; EOF &gt;&gt; /etc/sysctl.conf vm.swappiness=0 #apply settings sysctl -p # check cat /proc/sys/vm/swappiness  Vacuum swap  swapoff -a swapon -a
+      How to change default swap settings for Proxmox VE  Check Default swap policy from value 60 to 0
+cat /proc/sys/vm/swappiness #default value is 60 , it means when the memory remain 60, the swap will be enable  Change swap policy
+# Temp to change default swap enable when memory remain 0. sysctl vm.swappiness=0 # Permanent to change swapp cat &lt;&lt; EOF &gt;&gt; /etc/sysctl.conf vm.swappiness=0 #apply settings sysctl -p # check cat /proc/sys/vm/swappiness Vacuum swap
     </div>
     <div class="read-more">
       <a href="/post/proxmoxve/how-to-change-default-swap-settings-for-proxmox-ve/" class="read-more-link">Read more</a>
@@ -437,7 +438,7 @@ if (!doNotTrack) {
     
     <div class="post-summary">
       How to Deploy Bookstack with Docker Compose Bookstack is a good opensource solution for enterprie document management with light footprinting. It support auth like ldap,active directory,google,azure,aws,slack etc. and it can export document as pdf file.
-Preparation  Install docker and docker-compose on debian 10 Information for bookstack installation.     Type Value     Hostname mybookstack   Domainame mydomain.local   AD Auth User stevedong   Domain Controller IP &lt;domain contoller IP&gt;   Time Zone Asia/Shanghai    How to fix export chinese pdf document with error  Install chinese fonts on docker server host  apt install fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy  customized dockerfile with option:  environments:# To let bookstack export pdf with chinese language supported.
+Preparation  Install docker and docker-compose on debian 10 Information for bookstack installation.     Type Value     Hostname mybookstack   Domainame mydomain.local   AD Auth User stevedong   Domain Controller IP &lt;domain contoller IP&gt;   Time Zone Asia/Shanghai    How to fix export chinese pdf document with error  Install chinese fonts on docker server host
     </div>
     <div class="read-more">
       <a href="/post/how-to-deploy-bookstack-with-docker-compose/" class="read-more-link">Read more</a>
@@ -473,7 +474,8 @@ Preparation  Install docker and docker-compose on debian 10 Information for book
     <div class="post-summary">
       How to configure debian 10 as a docker server After try to install docker in LXC with proxmox ve, there will be some issues to make docker stop working. At last, I gave up and brance pure linux as docker sever.
 Install debian 10 in promxox ve Configure deiban 10 vm with &lsquo;qemu-agent&rsquo; checked.
-After install deiban 10  Change source list  mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.
+After install deiban 10  Change source list
+mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.list apt update &amp;&amp; apt -y dist-upgrade apt install -y openssh-server git vim cloud-init apt-transport-https sed -i &#39;s/http/https/g&#39; /etc/apt/sources.
     </div>
     <div class="read-more">
       <a href="/post/how-to-configure-debian-10-as-a-docker-server/" class="read-more-link">Read more</a>
@@ -546,7 +548,8 @@ sed -i &#39;s/template:\ 1//g&#39; /etc/pve/qemu-server/{vm-id}.conf Change acce
       Install Proxmox VE 6.x After installed Proxmox VE 6.x, What we gone do ?
 Download Proxmox VE 6.x iSO file in mirrors.ustc.edu.cn Download iso images from here:
 http://mirrors.ustc.edu.cn/proxmox/iso/
-Fixe Perl error waring export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable subscription Warning  Disable subscription warning via script  sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  Manually disable subscription warning  cd /usr/share/javascript/proxmox-widget-toolkit cp proxmoxlib.
+Fixe Perl error waring export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable subscription Warning  Disable subscription warning via script
+sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service Manually disable subscription warning
     </div>
     <div class="read-more">
       <a href="/post/install-proxmox-ve-6.x/" class="read-more-link">Read more</a>
@@ -762,7 +765,7 @@ Install dependencies software #dependencies apt-get -y install debhelper autotoo
     <div class="post-summary">
       How to resize disk(no lvm) in proxmox ve Today I met a problem that I need to extend disk image for a ubuntu server which is a virtual machine hosted in proxmox ve.
 Resizing disk images First thing first, I need resize the disk images of the virtual machine.I can do it both in command line or via web management interface.
- Extend disk size of virtual machine via shell command  # Extend disk size of virtual machine with vid 136 with 100G qm resize 136 virtio0 +100G  Extend disk size of virtual machien via web interface  &quot;Datacenter&quot; | &quot;$Node&quot; | $VIRTUAL_MACHINE | &quot;HARDWARE&quot; | &quot;HARD DISK(SCSI0)&quot; | &quot;RESIZE DISK&quot; | &quot;size Increment(GiB) | &quot;100&quot; | &quot;Resize disk&quot;
+ Extend disk size of virtual machine via shell command
     </div>
     <div class="read-more">
       <a href="/post/pve-how-to-extend-ubuntu-no-lvm-disk-in-proxmox-ve/" class="read-more-link">Read more</a>
@@ -798,7 +801,8 @@ Resizing disk images First thing first, I need resize the disk images of the vir
     <div class="post-summary">
       How to install overture on Vyos 1.2 I need to build a dns forwarding server to anti dns cache pollution.overture is a good choice for me. it writen in go with good performance. Here we go!
 Download ovrture you can check overture version from here
- Login vyos .  sudo su cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&#34; sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64 cd overture-linux-amd64 sudo curl -fsSLO https://raw.
+ Login vyos .
+sudo su cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&#34; sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64 cd overture-linux-amd64 sudo curl -fsSLO https://raw.
     </div>
     <div class="read-more">
       <a href="/post/how-to-install-overture-on-vyos1.2/" class="read-more-link">Read more</a>

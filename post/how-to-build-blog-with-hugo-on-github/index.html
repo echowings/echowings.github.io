@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.56.3" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/how-to-build-blog-with-hugo-on-github/" />
@@ -51,7 +51,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.31c4b7729c8d71cc152f8de4203d90bfd8a04f7eab69372de7234ebf55b7701b.css" integrity="sha256-McS3cpyNccwVL43kID2Qv9igT36raTct5yNOv1W3cBs=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
 
 
 
@@ -61,9 +61,8 @@
 <meta property="og:description" content="Hugo on your MacOS Setting github create a repo named blogs for store hugo programes. Create another repo named echowings.github.io to host websit. generate ssh key and regist it on github settings. Install hugo brew install hugo Create a blog site. hugo new site blogs init git cd blogs git init #Add remote repo. git remote add origin git@github.com:echowings/blogs.git #Add a theme for your hugo. git submodule add -b master" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/how-to-build-blog-with-hugo-on-github/" />
-<meta property="article:published_time" content="2018-10-26T21:57:33&#43;08:00"/>
-<meta property="article:modified_time" content="2018-10-26T21:57:33&#43;08:00"/>
-
+<meta property="article:published_time" content="2018-10-26T21:57:33+08:00" />
+<meta property="article:modified_time" content="2018-10-26T21:57:33+08:00" />
 <meta itemprop="name" content="How to Build Blog With Hugo on Github">
 <meta itemprop="description" content="Hugo on your MacOS Setting github create a repo named blogs for store hugo programes. Create another repo named echowings.github.io to host websit. generate ssh key and regist it on github settings. Install hugo brew install hugo Create a blog site. hugo new site blogs init git cd blogs git init #Add remote repo. git remote add origin git@github.com:echowings/blogs.git #Add a theme for your hugo. git submodule add -b master">
 
@@ -416,18 +415,15 @@ if (!doNotTrack) {
 </ol>
 
 <ul>
-<li>Install hugo</li>
-</ul>
+<li><p>Install hugo</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  
-brew install hugo</code></pre></div>
-<ul>
-<li>Create a blog site.</li>
-</ul>
+brew install hugo</code></pre></div></li>
+
+<li><p>Create a blog site.</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  
-hugo new site blogs</code></pre></div>
-<ul>
-<li>init git</li>
-</ul>
+hugo new site blogs</code></pre></div></li>
+
+<li><p>init git</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> 
 <span style="color:#366">cd</span> blogs
 git init
@@ -436,21 +432,19 @@ git remote add origin git@github.com:echowings/blogs.git
 <span style="color:#09f;font-style:italic">#Add a theme for your hugo.</span>
 git submodule add -b master https://github.com/xianmin/hugo-theme-jane.git themes/jane
 cp -r themes/jane/exampleSite/content ./
-cp themes/jane/exampleSite/config.toml ./</code></pre></div>
-<ul>
-<li>Test hugo at local.</li>
-</ul>
+cp themes/jane/exampleSite/config.toml ./</code></pre></div></li>
+
+<li><p>Test hugo at local.</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">	
-hugo server</code></pre></div>
-<ul>
-<li>You can access <a href="http://localhost:1313">http://localhost:1313</a> to test your blog in local.</li>
+hugo server</code></pre></div></li>
+
+<li><p>You can access <a href="http://localhost:1313">http://localhost:1313</a> to test your blog in local.</p></li>
 </ul>
 
 <h4 id="change-configure">Change configure</h4>
 
 <ul>
-<li>Modifiy vi config.toml</li>
-</ul>
+<li><p>Modifiy vi config.toml</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#09f;font-style:italic">#Change URL</span>
 baseURL = <span style="color:#c30">&#34;https://blog.stevedong.com&#34;</span>
 
@@ -475,19 +469,21 @@ googleAnalytics= <span style="color:#c30">&#34;UA-xxxxxxxx-X&#34;</span>
 <span style="color:#09f;font-style:italic"># Chang author</span>
 name = <span style="color:#c30">&#34;Steve Dong&#34;</span>
 
- <span style="color:#09f;font-style:italic"># Commit the meanu &#34;External Link&#34;</span>
- <span style="color:#09f;font-style:italic">#[[menu.main]]</span>
- <span style="color:#09f;font-style:italic">#  name = &#34;MyGitHub&#34;</span>
- <span style="color:#09f;font-style:italic">#  weight = 50</span>
- <span style="color:#09f;font-style:italic">#  url = &#34;https://echowings.github.com&#34;</span>
+<span style="color:#09f;font-style:italic"># Commit the meanu &#34;External Link&#34;</span>
+<span style="color:#09f;font-style:italic">#[[menu.main]]</span>
+<span style="color:#09f;font-style:italic">#  name = &#34;MyGitHub&#34;</span>
+<span style="color:#09f;font-style:italic">#  weight = 50</span>
+<span style="color:#09f;font-style:italic">#  url = &#34;https://echowings.github.com&#34;</span>
  
- <span style="color:#09f;font-style:italic">#Change Site creation time</span>
+<span style="color:#09f;font-style:italic">#Change Site creation time</span>
  
- [params]
- 	since = <span style="color:#c30">&#34;2018&#34;</span>
+[params]
+	since = <span style="color:#c30">&#34;2018&#34;</span>
  	
 	logoTitle= <span style="color:#c30">&#34;Steve Dong&#34;</span>
-	keywords = [<span style="color:#c30">&#34;network&#34;</span>, <span style="color:#c30">&#34;devops&#39;, &#34;</span>System Administrator<span style="color:#a00;background-color:#faa">&#34;</span>]</code></pre></div>
+	keywords = [<span style="color:#c30">&#34;network&#34;</span>, <span style="color:#c30">&#34;devops&#39;, &#34;</span>System Administrator<span style="color:#a00;background-color:#faa">&#34;</span>]</code></pre></div></li>
+</ul>
+
 <h3 id="add-syntax-highlight">Add syntax highlight</h3>
 
 <p><code>vi config.toml</code></p>
@@ -499,21 +495,18 @@ pygmentsStyle = <span style="color:#c30">&#39;manni&#39;</span> <span style="col
 <h2 id="deploy-your-blog-to-github">Deploy your blog to github</h2>
 
 <ul>
-<li>Add repo of blog website.</li>
-</ul>
+<li><p>Add repo of blog website.</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   
 git submodule add --force -b <span style="color:#c30;font-weight:bold">\ </span>
 	master git@github.com:echowings/echowings.github.io.git public  
-	</code></pre></div>
-<ul>
+	</code></pre></div></li>
+
 <li><p>Run hugo to generate your blog website.</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">    
 hugo server
-    </code></pre></div>
-<ul>
-<li>publish your website
-<br /></li>
-</ul>
+    </code></pre></div></li>
+
+<li><p>publish your website</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    
 <span style="color:#366">cd</span> public
 git add.
@@ -527,24 +520,24 @@ git push origin master
 git add.
 git commit -m <span style="color:#c30">&#34;YOUR COMMIT MESSAGE&#34;</span>
 git push origin master
-    </code></pre></div>
+    </code></pre></div></li>
+</ul>
+
 <h3 id="add-a-comment">Add a comment</h3>
 
 <p>Since theme jane has support utterances, we just need to enable utterances apps in github and configure it in config.toml in hugo.</p>
 
 <ul>
 <li>Create a repo to storage comment. like “blogcomment”.</li>
-<li>enable utternaces apps.</li>
-</ul>
+
+<li><p>enable utternaces apps.</p>
 
 <ol>
 <li>click <a href="https://github.com/apps/utterances">utterances app</a></li>
 <li>Auth utterances to your github repo “blogcomment”.</li>
-</ol>
+</ol></li>
 
-<ul>
-<li>edit <code>blogs/config.toml</code> and append follow lines.</li>
-</ul>
+<li><p>edit <code>blogs/config.toml</code> and append follow lines.</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">	
 [params.utteranc]
   enable = <span style="color:#069;font-weight:bold">true</span>

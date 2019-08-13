@@ -18,7 +18,7 @@
       
       <guid>https://blog.stevedong.com/post/how-to-deploy-bookstack-with-docker-compose/</guid>
       <description>How to Deploy Bookstack with Docker Compose Bookstack is a good opensource solution for enterprie document management with light footprinting. It support auth like ldap,active directory,google,azure,aws,slack etc. and it can export document as pdf file.
-Preparation  Install docker and docker-compose on debian 10 Information for bookstack installation.     Type Value     Hostname mybookstack   Domainame mydomain.local   AD Auth User stevedong   Domain Controller IP &amp;lt;domain contoller IP&amp;gt;   Time Zone Asia/Shanghai    How to fix export chinese pdf document with error  Install chinese fonts on docker server host  apt install fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy  customized dockerfile with option:  environments:# To let bookstack export pdf with chinese language supported.</description>
+Preparation  Install docker and docker-compose on debian 10 Information for bookstack installation.     Type Value     Hostname mybookstack   Domainame mydomain.local   AD Auth User stevedong   Domain Controller IP &amp;lt;domain contoller IP&amp;gt;   Time Zone Asia/Shanghai    How to fix export chinese pdf document with error  Install chinese fonts on docker server host</description>
     </item>
     
     <item>
@@ -29,7 +29,8 @@ Preparation  Install docker and docker-compose on debian 10 Information for book
       <guid>https://blog.stevedong.com/post/how-to-configure-debian-10-as-a-docker-server/</guid>
       <description>How to configure debian 10 as a docker server After try to install docker in LXC with proxmox ve, there will be some issues to make docker stop working. At last, I gave up and brance pure linux as docker sever.
 Install debian 10 in promxox ve Configure deiban 10 vm with &amp;lsquo;qemu-agent&amp;rsquo; checked.
-After install deiban 10  Change source list  mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.</description>
+After install deiban 10  Change source list
+mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.list apt update &amp;amp;&amp;amp; apt -y dist-upgrade apt install -y openssh-server git vim cloud-init apt-transport-https sed -i &amp;#39;s/http/https/g&amp;#39; /etc/apt/sources.</description>
     </item>
     
     <item>

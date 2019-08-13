@@ -34,7 +34,7 @@ Install librenms with docker-compose mkdir -p librenms-docker-compose cd ./libre
 
 
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.56.3" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/librenms-deploy-librenms-with-docker-container/" />
@@ -53,7 +53,7 @@ Install librenms with docker-compose mkdir -p librenms-docker-compose cd ./libre
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.31c4b7729c8d71cc152f8de4203d90bfd8a04f7eab69372de7234ebf55b7701b.css" integrity="sha256-McS3cpyNccwVL43kID2Qv9igT36raTct5yNOv1W3cBs=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
 
 
 
@@ -65,9 +65,8 @@ At now, docker is easy for software deployment. After deploy librenms in ubuntu 
 Install librenms with docker-compose mkdir -p librenms-docker-compose cd ./librenms-docker-compose wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/.env wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/docker-compose.yml wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/librenms.env touch acme." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/librenms-deploy-librenms-with-docker-container/" />
-<meta property="article:published_time" content="2019-04-16T16:56:08&#43;08:00"/>
-<meta property="article:modified_time" content="2019-04-16T16:56:08&#43;08:00"/>
-
+<meta property="article:published_time" content="2019-04-16T16:56:08+08:00" />
+<meta property="article:modified_time" content="2019-04-16T16:56:08+08:00" />
 <meta itemprop="name" content="Librenms Deploy Librenms With Docker Container">
 <meta itemprop="description" content="How to deploy librenms monitoring system with docker container Librenms is a very light and easy handle moniting software. It is suitable for us to monitoring server,networdevice, printer etc via snmp.
 At now, docker is easy for software deployment. After deploy librenms in ubuntu vm, I have a try to deploy librenms with docker-compose.
@@ -420,11 +419,10 @@ chmod <span style="color:#f60">600</span> acme.json</code></pre></div>
 <p><code>vi docker-compose.yml</code></p>
 
 <ul>
-<li>change <code>services | traefik | command</code> section.</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  	   - <span style="color:#c30">&#34;--docker.domain=mydomain.net&#34;</span></code></pre></div>
-<ul>
-<li>Change <code>services |</code></li>
+<li><p>change <code>services | traefik | command</code> section.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">	   - <span style="color:#c30">&#34;--docker.domain=mydomain.net&#34;</span></code></pre></div></li>
+
+<li><p>Change <code>services |</code></p></li>
 </ul>
 
 <table>

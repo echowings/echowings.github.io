@@ -34,7 +34,7 @@ I found that each time when i change network settings. There will be a named int
 
 
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.56.3" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/proxmox-ve-how-to-chang-network-of-hosting-without-reboot-proxmox-ve/" />
@@ -53,7 +53,7 @@ I found that each time when i change network settings. There will be a named int
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.31c4b7729c8d71cc152f8de4203d90bfd8a04f7eab69372de7234ebf55b7701b.css" integrity="sha256-McS3cpyNccwVL43kID2Qv9igT36raTct5yNOv1W3cBs=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
 
 
 
@@ -65,9 +65,8 @@ Solution Proxmox VE is based on debian. After check interface of network with th
 I found that each time when i change network settings. There will be a named interfaces.new created and it content new network settings wait for apply when i reboot." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-how-to-chang-network-of-hosting-without-reboot-proxmox-ve/" />
-<meta property="article:published_time" content="2019-04-27T11:36:16&#43;08:00"/>
-<meta property="article:modified_time" content="2019-04-27T11:36:16&#43;08:00"/>
-
+<meta property="article:published_time" content="2019-04-27T11:36:16+08:00" />
+<meta property="article:modified_time" content="2019-04-27T11:36:16+08:00" />
 <meta itemprop="name" content="Proxmox Ve How to Chang Network of Hosting Without Reboot Proxmox Ve">
 <meta itemprop="description" content="How to change Network settings of proxmox-ve host without rebooting. Eache time when I want to change network settings like change netowrks and I must reboot to apply it. It is really trouble me.
 Solution Proxmox VE is based on debian. After check interface of network with the path /etc/network/
@@ -415,17 +414,16 @@ if (!doNotTrack) {
 <h3 id="manual-change">Manual change</h3>
 
 <ul>
-<li>Backup interfaces</li>
+<li><p>Backup interfaces</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cp /etc/network/interfaces /etc/network/interfaces.old</code></pre></div></li>
+
+<li><p>Copy interface.new to interface</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cp /etc/network/interfaces.new /etc/network/interfaces</code></pre></div></li>
+
+<li><p>Reboot networking service</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">systemctl restart networking</code></pre></div></li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cp /etc/network/interfaces /etc/network/interfaces.old</code></pre></div>
-<ul>
-<li>Copy interface.new to interface</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cp /etc/network/interfaces.new /etc/network/interfaces</code></pre></div>
-<ul>
-<li>Reboot networking service</li>
-</ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">systemctl restart networking</code></pre></div>
+
 <h3 id="scirpt-change">Scirpt change</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mv interfaces interfaces.backup <span style="color:#555">&amp;&amp;</span> mv interfaces.new interfaces <span style="color:#555">&amp;&amp;</span> systemctl restart networking.service</code></pre></div>
     </div>

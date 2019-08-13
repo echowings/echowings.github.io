@@ -31,7 +31,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.56.3" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/" />
@@ -51,7 +51,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.31c4b7729c8d71cc152f8de4203d90bfd8a04f7eab69372de7234ebf55b7701b.css" integrity="sha256-McS3cpyNccwVL43kID2Qv9igT36raTct5yNOv1W3cBs=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,8 +62,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
 
-<meta property="og:updated_time" content="2019-08-09T16:16:39&#43;08:00"/>
-
+<meta property="og:updated_time" content="2019-08-09T16:16:39+08:00" />
 <meta itemprop="name" content="Steve Dong - A System Administrator&#39;s Blog">
 <meta itemprop="description" content="A System Administrator&#39;s Blog.">
 
@@ -435,7 +434,8 @@ if (!doNotTrack) {
     
     <div class="post-summary">
       How to enable Proxmox VE nested virtualization To enable nested virtualization on Proxmox VE, we need to stop all the vm and enable nested virtualization to linux kernel. then change vm settings
-Stop all the vm on proxmox VE  stop all virtual machines with shell command.  root@xa-sys-pve01:~# pvesh create /nodes/localhost/stopall Stopping VM 116 (timeout = 180 seconds) Stopping VM 115 (timeout = 180 seconds) Stopping CT 112 (timeout = 60 seconds) Stopping CT 111 (timeout = 60 seconds) Stopping CT 108 (timeout = 60 seconds) Stopping CT 106 (timeout = 60 seconds) Stopping VM 101 (timeout = 180 seconds) UPID:xa-sys-pve01:0036EA66:01992199:5CB98D6C:stopall::root@pam:  stop all the virtual machine with admin web.
+Stop all the vm on proxmox VE  stop all virtual machines with shell command.
+root@xa-sys-pve01:~# pvesh create /nodes/localhost/stopall Stopping VM 116 (timeout = 180 seconds) Stopping VM 115 (timeout = 180 seconds) Stopping CT 112 (timeout = 60 seconds) Stopping CT 111 (timeout = 60 seconds) Stopping CT 108 (timeout = 60 seconds) Stopping CT 106 (timeout = 60 seconds) Stopping VM 101 (timeout = 180 seconds) UPID:xa-sys-pve01:0036EA66:01992199:5CB98D6C:stopall::root@pam: stop all the virtual machine with admin web.
     </div>
     <div class="read-more">
       <a href="/post/how-to-enable-proxmoxve-nested-virtualization/" class="read-more-link">Read more</a>
@@ -821,8 +821,12 @@ if [ &ldquo;ls -A /config&rdquo; = &ldquo;&rdquo; ]; then cp /srv/config.
   <div class="post-content">
     
     <div class="post-summary">
-      How to test network speed with iperf Install iperf sudo apt-get install iperf3 Testing network speed Testing network speed with UDP  Run command on server   iperf -s -u  Run command on client   iperf -c -u  Testing network speed with TCP
- Server side.   iperf -s  Client side.   iperf -c Command for -s server -c client + server IP -u udp -b bandwith(the max bandwidth -t time,how long to send packet.
+      How to test network speed with iperf Install iperf sudo apt-get install iperf3 Testing network speed Testing network speed with UDP  Run command on server
+iperf -s -u Run command on client
+iperf -c -u Testing network speed with TCP
+ Server side.
+iperf -s Client side.
+iperf -c   Command for -s server -c client + server IP -u udp -b bandwith(the max bandwidth -t time,how long to send packet.
     </div>
     <div class="read-more">
       <a href="/post/how-to-testing-network-bandwith-with-iperf/" class="read-more-link">Read more</a>

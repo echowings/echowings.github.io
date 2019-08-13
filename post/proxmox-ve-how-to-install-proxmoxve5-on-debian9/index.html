@@ -33,7 +33,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.56.3" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/proxmox-ve-how-to-install-proxmoxve5-on-debian9/" />
@@ -52,7 +52,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.31c4b7729c8d71cc152f8de4203d90bfd8a04f7eab69372de7234ebf55b7701b.css" integrity="sha256-McS3cpyNccwVL43kID2Qv9igT36raTct5yNOv1W3cBs=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
 
 
 
@@ -63,9 +63,8 @@
 # This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-how-to-install-proxmoxve5-on-debian9/" />
-<meta property="article:published_time" content="2018-12-01T00:02:28&#43;08:00"/>
-<meta property="article:modified_time" content="2018-12-26T01:52:23&#43;08:00"/>
-
+<meta property="article:published_time" content="2018-12-01T00:02:28+08:00" />
+<meta property="article:modified_time" content="2018-12-26T01:52:23+08:00" />
 <meta itemprop="name" content="How to install ProxmoxVE 5.x on Debian 9">
 <meta itemprop="description" content="How to Install Proxmox VE 5.x on Debian 9 Chang IP ADDRESS vi /etc/network/interfaces
 # This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *.">
@@ -481,13 +480,11 @@ update-grub</code></pre></div>
 <h2 id="remove-no-valid-subscription-message">Remove “No valid Subscription” Message</h2>
 
 <ul>
-<li>shell solution.</li>
-</ul>
+<li><p>shell solution.</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i.bak <span style="color:#c30">&#34;s/data.status !== &#39;Active&#39;/false/g&#34;</span> /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js <span style="color:#555">&amp;&amp;</span> systemctl restart pveproxy.service
-	</code></pre></div>
-<ul>
-<li>manual solution:</li>
-</ul>
+	</code></pre></div></li>
+
+<li><p>manual solution:</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> /usr/share/javascript/proxmox-widget-toolkit
 cp proxmoxlib.js proxmoxlib.js.bak
 nano proxmoxlib.js
@@ -498,7 +495,9 @@ nano proxmoxlib.js
 <span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span><span style="color:#366">false</span><span style="color:#555">)</span> <span style="color:#555">{</span>
 
 <span style="color:#09f;font-style:italic">#restart pveproxy.service</span>
-systemctl restart pveproxy.service</code></pre></div>
+systemctl restart pveproxy.service</code></pre></div></li>
+</ul>
+
 <h1 id="remove-sourcelist-of-pve-enterprise-subscription-and-ceph">Remove sourcelist of pve enterprise subscription and ceph</h1>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># Delete Enterprise subscription.</span>
 rm -rf /etc/apt/sources.list.d/pve-enterprise.list
@@ -508,13 +507,11 @@ rm -rf /etc/apt/sources.list.d/ceph.list</code></pre></div>
 <h2 id="remove-no-valid-subscription-message-1">Remove “No valid Subscription” Message</h2>
 
 <ul>
-<li>shell solution.</li>
-</ul>
+<li><p>shell solution.</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i.bak <span style="color:#c30">&#34;s/data.status !== &#39;Active&#39;/false/g&#34;</span> /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js <span style="color:#555">&amp;&amp;</span> systemctl restart pveproxy.service
-	</code></pre></div>
-<ul>
-<li>manual solution:</li>
-</ul>
+	</code></pre></div></li>
+
+<li><p>manual solution:</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> /usr/share/javascript/proxmox-widget-toolkit
 cp proxmoxlib.js proxmoxlib.js.bak
 nano proxmoxlib.js
@@ -525,60 +522,63 @@ nano proxmoxlib.js
 <span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span><span style="color:#366">false</span><span style="color:#555">)</span> <span style="color:#555">{</span>
 
 <span style="color:#09f;font-style:italic">#restart pveproxy.service</span>
-systemctl restart pveproxy.service</code></pre></div>
+systemctl restart pveproxy.service</code></pre></div></li>
+</ul>
+
 <h2 id="q-a">Q&amp;A</h2>
 
 <ul>
-<li>When you got error like this, please make sure hosts file is set without wrong. like this<code>10.32.0.60   xa-sys-pve02 xa-sys-pve02 pvelocalhost</code></li>
-</ul>
+<li><p>When you got error like this, please make sure hosts file is set without wrong. like this<code>10.32.0.60   xa-sys-pve02 xa-sys-pve02 pvelocalhost</code></p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Setting up pve-manager <span style="color:#555">(</span><span style="color:#f60">5</span>.2-1<span style="color:#555">)</span> ...
 Job <span style="color:#069;font-weight:bold">for</span> pvestatd.service failed because the control process exited with error code.
 See <span style="color:#c30">&#34;systemctl status pvestatd.service&#34;</span> and <span style="color:#c30">&#34;journalctl -xe&#34;</span> <span style="color:#069;font-weight:bold">for</span> details.
 pvestatd.service couldn<span style="color:#c30">&#39;t start.
 </span><span style="color:#c30">dpkg: error processing package pve-manager (--configure):
-</span><span style="color:#c30"> subprocess installed post-installation script returned error exit status 1
+</span><span style="color:#c30">subprocess installed post-installation script returned error exit status 1
 </span><span style="color:#c30">Processing triggers for man-db (2.7.6.1-2) ...
 </span><span style="color:#c30">dpkg: dependency problems prevent configuration of proxmox-ve:
-</span><span style="color:#c30"> proxmox-ve depends on pve-manager; however:
-</span><span style="color:#c30">  Package pve-manager is not configured yet.
+</span><span style="color:#c30">proxmox-ve depends on pve-manager; however:
+</span><span style="color:#c30">Package pve-manager is not configured yet.
 </span><span style="color:#c30">
 </span><span style="color:#c30">dpkg: error processing package proxmox-ve (--configure):
-</span><span style="color:#c30"> dependency problems - leaving unconfigured
+</span><span style="color:#c30">dependency problems - leaving unconfigured
 </span><span style="color:#c30">Errors were encountered while processing:
-</span><span style="color:#c30"> pve-manager
-</span><span style="color:#c30"> proxmox-ve
+</span><span style="color:#c30">pve-manager
+</span><span style="color:#c30">proxmox-ve
 </span><span style="color:#c30">E: Sub-process /usr/bin/dpkg returned an error code (1)
 </span><span style="color:#c30">Setting up pve-manager (5.2-1) ...
 </span><span style="color:#c30">Job for pvestatd.service failed because the control process exited with error code.
 </span><span style="color:#c30">See &#34;systemctl status pvestatd.service&#34; and &#34;journalctl -xe&#34; for details.
 </span><span style="color:#c30">pvestatd.service couldn&#39;</span>t start.
 dpkg: error processing package pve-manager <span style="color:#555">(</span>--configure<span style="color:#555">)</span>:
- subprocess installed post-installation script returned error <span style="color:#366">exit</span> status <span style="color:#f60">1</span>
+subprocess installed post-installation script returned error <span style="color:#366">exit</span> status <span style="color:#f60">1</span>
 dpkg: dependency problems prevent configuration of proxmox-ve:
- proxmox-ve depends on pve-manager; however:
-  Package pve-manager is not configured yet.
+proxmox-ve depends on pve-manager; however:
+Package pve-manager is not configured yet.
 
 dpkg: error processing package proxmox-ve <span style="color:#555">(</span>--configure<span style="color:#555">)</span>:
- dependency problems - leaving unconfigured
+dependency problems - leaving unconfigured
 Errors were encountered <span style="color:#069;font-weight:bold">while</span> processing:
- pve-manager
- proxmox-ve</code></pre></div>
+pve-manager
+proxmox-ve</code></pre></div></li>
+</ul>
+
 <h2 id="install-openvswitch-switch">Install openvswitch-switch</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt-get install openvsiwtch-switch</code></pre></div>
 <h2 id="proxmox-q-a">proxmox Q&amp;A</h2>
 
 <ul>
-<li>Error 1: <code>command '/sbin/sgdisk /dev/sde -U R' failed: exit code 3</code></li>
-</ul>
+<li><p>Error 1: <code>command '/sbin/sgdisk /dev/sde -U R' failed: exit code 3</code></p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/sbin/sgdisk /dev/sdf -U R -g
 ***************************************************************
 Found invalid GPT and valid MBR; converting MBR to GPT format
 in memory.
-***************************************************************</code></pre></div>
-<ul>
-<li>Error 2: `Driver &lsquo;pcspkr&rsquo; is already registered, aborting&hellip;</li>
+***************************************************************</code></pre></div></li>
+
+<li><p>Error 2: `Driver &lsquo;pcspkr&rsquo; is already registered, aborting&hellip;</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># echo &#34;blacklist pcspkr&#34; &gt; /etc/modprobe.d/blacklist-pcspkr.conf</span></code></pre></div></li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> <span style="color:#09f;font-style:italic"># echo &#34;blacklist pcspkr&#34; &gt; /etc/modprobe.d/blacklist-pcspkr.conf</span></code></pre></div>
+
 <h2 id="reference">Reference</h2>
 
 <ul>
