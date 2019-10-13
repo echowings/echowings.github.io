@@ -69,7 +69,7 @@
 
 <meta itemprop="datePublished" content="2019-10-13T14:52:31&#43;08:00" />
 <meta itemprop="dateModified" content="2019-10-13T14:52:31&#43;08:00" />
-<meta itemprop="wordCount" content="846">
+<meta itemprop="wordCount" content="855">
 
 
 
@@ -686,7 +686,7 @@ freeradius -fX</code></pre></div></li>
 <p>testing ldap auth</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  radtest &lt;domain_accout&gt; &lt;password&gt; localhost <span style="color:#f60">0</span> testing123</code></pre></div>
 <ul>
-<li><p>Change <code>/etc/freeradius/3.0/users</code></p>
+<li><p>Change <code>/etc/freeradius/3.0/users</code> to allow specific group <code>VPN_GROUP</code> of users to authenticate</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">DEFAULT Auth-Type <span style="color:#555">=</span> ntlm_auth, LDAP-Group <span style="color:#555">==</span> <span style="color:#c30">&#34;VPN_GROUP&#34;</span>
 ...
 DEFAULT Group !<span style="color:#555">=</span> <span style="color:#c30">&#34;VPN_GROUP&#34;</span>, Auth-Type :<span style="color:#555">=</span> Reject

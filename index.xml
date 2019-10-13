@@ -326,7 +326,7 @@ freeradius -fX&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;p&gt;testing ldap auth&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;  radtest &amp;lt;domain_accout&amp;gt; &amp;lt;password&amp;gt; localhost &lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt; testing123&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Change &lt;code&gt;/etc/freeradius/3.0/users&lt;/code&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Change &lt;code&gt;/etc/freeradius/3.0/users&lt;/code&gt; to allow specific group &lt;code&gt;VPN_GROUP&lt;/code&gt; of users to authenticate&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;vi /etc/freeradius/3.0/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;DEFAULT Auth-Type &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; ntlm_auth, LDAP-Group &lt;span style=&#34;color:#555&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;VPN_GROUP&amp;#34;&lt;/span&gt;
 ...
 DEFAULT Group !&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;VPN_GROUP&amp;#34;&lt;/span&gt;, Auth-Type :&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; Reject
