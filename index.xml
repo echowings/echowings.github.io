@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 09 Aug 2019 16:16:39 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 13 Oct 2019 14:52:31 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -27,6 +27,322 @@
 &lt;li&gt;Love cooking.&lt;/li&gt;
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>How to Install and Configure Freeradius With Active Directory Allow Allow Specific Group of Users to Authenticate in Debian 10</title>
+      <link>https://blog.stevedong.com/post/how-to-install-and-configure-freeradius-with-active-directory-allow-allow-specific-group-of-users-to-authenticate-in-debian-10/</link>
+      <pubDate>Sun, 13 Oct 2019 14:52:31 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-install-and-configure-freeradius-with-active-directory-allow-allow-specific-group-of-users-to-authenticate-in-debian-10/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-install-and-configure-freeradius-with-active-directory-allow-specific-group-of-users-to-authenticate-in-debian-10&#34;&gt;How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10&lt;/h1&gt;
+
+&lt;p&gt;serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication  and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access  to a group in AD. So I&amp;rsquo;m trying to build a new freeradius server in debian 10. After a week work.At last I figure it out.&lt;/p&gt;
+
+&lt;h2 id=&#34;install-software-and-configuration&#34;&gt;Install Software and configuration&lt;/h2&gt;
+
+&lt;p&gt;First thing first, We need install a debian 10 server on your virtualization platform. currently, I installed a debian server on proxmox ve platform.&lt;/p&gt;
+
+&lt;h3 id=&#34;basic-information&#34;&gt;Basic Information&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Domain Name&lt;/td&gt;
+&lt;td&gt;TESTING.LOCAL&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;NTDomain  Name&lt;/td&gt;
+&lt;td&gt;TESTING&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;RADIUS HOSTNAME&lt;/td&gt;
+&lt;td&gt;MYRADIUS&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;DOMAIN CONTROLLER&lt;/td&gt;
+&lt;td&gt;MYDC02.TESTING.LOCAL&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;DOMAIN CONTROLLER&lt;/td&gt;
+&lt;td&gt;MYDC03.TESTING.LOCAL&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;DOMAIN GROUP&lt;/td&gt;
+&lt;td&gt;VPN_GROUP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;change-debian-settings&#34;&gt;Change Debian settings&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Change hostname&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;hostnamectl set-hostname myradius&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Sync NTP time with domain controller
+Install chrony&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt purge ntp
+apt install -y  chrony&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;vi /etc/chrony/chrony.conf
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#comment out `pool xxx iburst&lt;/span&gt;
+server &amp;lt;ip_of_dc01&amp;gt; iburst
+server &amp;lt;ip_of_dc02&amp;gt; iburst&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;restart chrony service and force update times&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;systemctl restart chrony
+chronyc sources&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;install-samba-and-winbind-and-let-debian-host-joined-domain&#34;&gt;Install samba and winbind and let Debian Host joined domain&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Install samba,winbind,krb5-user&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt updatee &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y dist-ugprade
+apt install -y samba winbind krb5-user&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;config samba config file&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;vi /etc/samba/smb.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In &lt;code&gt;[global]&lt;/code&gt; section, change settings form&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;global&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;## Browsing/Identification ###&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Change this to the workgroup/NT-domain name your Samba server will part of&lt;/span&gt;
+   &lt;span style=&#34;color:#033&#34;&gt;workgroup&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; WORKGROUP&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;to&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;global&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;## Browsing/Identification ###&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Change this to the workgroup/NT-domain name your Samba server will part of&lt;/span&gt;
+   &lt;span style=&#34;color:#033&#34;&gt;workgroup&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; TESTING
+   password &lt;span style=&#34;color:#033&#34;&gt;server&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; MYDC02.TESTING.LOCAL
+   password &lt;span style=&#34;color:#033&#34;&gt;server&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; MYDC03.TESTING.LOCAL
+   &lt;span style=&#34;color:#033&#34;&gt;realm&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; TESTING.LOCAL
+   winbind use default &lt;span style=&#34;color:#033&#34;&gt;domain&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#366&#34;&gt;true&lt;/span&gt;
+   idmap &lt;span style=&#34;color:#033&#34;&gt;backend&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; rid:testing.local&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;70000&lt;/span&gt;-1000000
+   idmap &lt;span style=&#34;color:#033&#34;&gt;uid&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;70000&lt;/span&gt;-1000000
+   idmap &lt;span style=&#34;color:#033&#34;&gt;gid&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;70000&lt;/span&gt;-1000000
+   winbind use default &lt;span style=&#34;color:#033&#34;&gt;domain&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; yes
+   &lt;span style=&#34;color:#033&#34;&gt;security&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; ADS&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Modify &lt;code&gt;/etc/krb5.conf&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;libdefaults&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#033&#34;&gt;default_realm&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;TESTING.LOCAL
+...
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;realms&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+TESTING.LOCAL &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#033&#34;&gt;kdc&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; MYDC02.TESTING.LOCAL
+    &lt;span style=&#34;color:#033&#34;&gt;admin_server&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; MYDC02.TESTING.LOCAL
+    &lt;span style=&#34;color:#033&#34;&gt;default_domain&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; TESTING.LOCAL
+&lt;span style=&#34;color:#555&#34;&gt;}&lt;/span&gt;
+...
+&lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;domain_realm&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
+.testing.local &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; TESTING.LOCAL
+testing.local &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; TESTING.LOCAL&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Restart samba and winbind service&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;systemctl restart smbd winbind&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Join domain&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;net join -U mypoweruser&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Testing samba AD authentication:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Using winbind:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;wbinfo -a &amp;lt;user&amp;gt;%&amp;lt;password&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You will get the following message if everything is correct:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;plaintext password authentication succeeded
+challenge/response password authentication succeeded&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Using ntlm_auth:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ntlm_auth --request-nt-key --domain&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;TESTING --username&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&amp;lt;user&amp;gt; --password&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&amp;lt;password&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Then you will got success message:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;   NT_STATUS_OK: Success &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;0x0&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;install-freeradius&#34;&gt;Install freeradius&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Install freeradius&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt install -y freeradius&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Grant permission for &lt;code&gt;freerad&lt;/code&gt; user on winbind&amp;rsquo;s socket:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo usermod -a -G winbindd_priv freerad
+sudo chgrp winbindd_priv /var/lib/samba/winbindd_privileged/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Change MACHAP to use ntlm_auth:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;vi /etc/freeradius/3.0/mods-available/ntlm_auth&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;change&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#033&#34;&gt;program&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;/usr/bin/ntlm_auth --request-nt-key --domain=TESTING --username=%{mschap:User-Name} --password=%{User-Password}&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Change module mschap :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;vi /etc/freeradius/3.0/mods-available/mschap&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mschap &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
+...
+&lt;span style=&#34;color:#033&#34;&gt;ntlm_auth&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;/usr/bin/ntlm_auth --request-nt-key --domain=TESTING --username=%{%{Stripped-User-Name}:-%{%{User-Name}:-None}} --challenge=%{%{mschap:Challenge}:-00} --nt-response=%{%{mschap:NT-Response}:-00}&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Change eap config.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;vi /etc/freeradius/3.0/mods-available/eap&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Change  settings of &lt;code&gt;default_eap_type&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;eap &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#033&#34;&gt;default_eap_type&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; md5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;to&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;eap &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#033&#34;&gt;default_eap_type&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; mschapv2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then restart freeradius service&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;systemctl restart freeradius&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Change &lt;code&gt;/etc/freeradius/3.0/sites-enabled/default&lt;/code&gt; and &lt;code&gt;/etc/freeradius/3.0/sites-enabled/inner-tunnel&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;authenticate &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
+ntlm_auth&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Configure RADIUS client&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;client &lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt;.0.0.0/0 &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
+&lt;span style=&#34;color:#033&#34;&gt;secret&lt;/span&gt;  &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; myauthpassword
+&lt;span style=&#34;color:#033&#34;&gt;shortname&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;nas access&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#555&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;restart service of freeradius&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;systemctl restart freeradius&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Test FreeRADIUS and MSCHAP:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;radtest -t mschap &amp;lt;user&amp;gt; &amp;lt;password&amp;gt; localhost &lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt; testing123&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The results will be like:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;Sent Access-Request Id &lt;span style=&#34;color:#f60&#34;&gt;9&lt;/span&gt; from &lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt;.0.0.0:59244 to &lt;span style=&#34;color:#f60&#34;&gt;127&lt;/span&gt;.0.0.1:1812 length &lt;span style=&#34;color:#f60&#34;&gt;134&lt;/span&gt;
+        User-Name &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;user&amp;#34;&lt;/span&gt;
+        MS-CHAP-Password &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;password&amp;#34;&lt;/span&gt;
+        NAS-IP-Address &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;172&lt;/span&gt;.100.99.100
+        NAS-Port &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt;
+        Message-Authenticator &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; 0x00
+        Cleartext-Password &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;password&amp;#34;&lt;/span&gt;
+        MS-CHAP-Challenge &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; 0x163bc4c900360a08
+        MS-CHAP-Response &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; 0x0001000000000000000000000000000000000000000000000000382764ceb05312077d21d71bf53ce917ef2e72a4ff83ca96
+Received Access-Accept Id &lt;span style=&#34;color:#f60&#34;&gt;9&lt;/span&gt; from &lt;span style=&#34;color:#f60&#34;&gt;127&lt;/span&gt;.0.0.1:1812 to &lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt;.0.0.0:0 length &lt;span style=&#34;color:#f60&#34;&gt;84&lt;/span&gt;
+        MS-CHAP-MPPE-Keys &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; 0x000000000000000065c53b0540ab884edc6779a1f370c0cb
+        MS-MPPE-Encryption-Policy &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; Encryption-Allowed
+        MS-MPPE-Encryption-Types &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; RC4-40or128-bit-Allowed&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;configure-freeradius-ldap-auth-with-ad&#34;&gt;Configure freeradius-ldap Auth with AD&lt;/h3&gt;
+
+&lt;p&gt;To limited to auth a AD group, we need to config freeradius auth with ldap.
+- Install freeradius-ldap&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt install -y freeradius-ldap&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;edit-config&#34;&gt;Edit config&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;edit &lt;code&gt;/etc/freeradius/3.0/mods-available/ldap&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;vi /etc/freeradius/3.0/mods-available/ldap&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;ldap {
+ ...
+server = &#39;dc01.mydomain.local&#39;
+server = &#39;dc02.mydomain.local&#39;
+port = 389
+identity = &#39;aduser@mydomain.local&#39;
+password = &amp;lt;mypassword&amp;gt;
+base_dn = &#39;dc=mydomain,dc=local&#39;
+... 
+}
+...
+update {
+   control:Password-With-Header    += &#39;userPassword&#39;
+   control:NT-Password     := &#39;ntPassword&#39;
+   reply:Reply-Message     := &#39;radiusReplyMessage&#39;
+   reply:Tunnel-Type       := &#39;radiusTunnelType&#39;
+   reply:Tunnel-Medium-Type    := &#39;radiusTunnelMediumType&#39;
+   reply:Tunnel-Private-Group-ID   := &#39;radiusTunnelPrivategroupId&#39;
+
+    #  Where only a list is specified as the RADIUS attribute,
+    #  the value of the LDAP attribute is parsed as a valuepair
+    #  in the same format as the &#39;valuepair_attribute&#39; (above).
+    control:            += &#39;radiusControlAttribute&#39;
+    request:            += &#39;radiusRequestAttribute&#39;
+    reply:              += &#39;radiusReplyAttribute&#39;
+}
+...
+edir = no
+...
+}
+...
+user {
+...
+base_dn = &amp;quot;${..base_dn}&amp;quot;
+...
+filter = &amp;quot;(sAMAccountName=%{%{Stripped-User-Name}:-%{User-Name}})&amp;quot;    
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;create a link to mode-enable&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ln -s /etc/freeradius/3.0/mods-available/ldap /etc/freeradius/3.0/mods-enabled/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;edit &lt;code&gt;/etc/freeradius/3.0/sites-available/default&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;vi /etc/freeradius/3.0/sites-available/default&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;...
+authorize &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
+...
+ldap
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;((&lt;/span&gt;ok &lt;span style=&#34;color:#555&#34;&gt;||&lt;/span&gt; updated&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; User-Password&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
+update &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
+    control:Auth-Type :&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; ldap
+&lt;span style=&#34;color:#555&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#555&#34;&gt;}&lt;/span&gt;
+...
+authenticate &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
+...
+Auth-Type LDAP &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
+        ldap
+&lt;span style=&#34;color:#555&#34;&gt;}&lt;/span&gt;
+...
+&lt;span style=&#34;color:#555&#34;&gt;}&lt;/span&gt;
+...
+&lt;span style=&#34;color:#555&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Restart freeradius service&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;systemctl restart freeradius
+freeradius -fX&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;testing ldap auth&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;  radtest &amp;lt;domain_accout&amp;gt; &amp;lt;password&amp;gt; localhost &lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt; testing123&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Change &lt;code&gt;/etc/freeradius/3.0/users&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;vi /etc/freeradius/3.0/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;DEFAULT Auth-Type &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; ntlm_auth, LDAP-Group &lt;span style=&#34;color:#555&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;VPN_GROUP&amp;#34;&lt;/span&gt;
+...
+DEFAULT Group !&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;VPN_GROUP&amp;#34;&lt;/span&gt;, Auth-Type :&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; Reject
+    Reply-Message &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Your are not permit to access VPN Connectiong&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dangtrinh.com/2017/03/wpa2-enterprise-with-freeradius-and-ad.html&#34;&gt;WPA2 Enterprise with FreeRADIUS and AD integration on Ubuntu16.04&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/d9394952/article/details/93597621&#34;&gt;调试freeradius 3.0 与microsoft AD通过LDAP认证的笔记&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://serverfault.com/questions/622205/configure-freeradius-with-active-driectory-allow-specific-group-of-users-to-auth&#34;&gt;Configure FreeRADIUS with Active Driectory allow specific group of users to authenticate&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
       
     </item>
@@ -4792,26 +5108,6 @@ rm -rf /etc/apt/sources.list.d/ceph.list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;li&gt;&lt;a href=&#34;https://forum.proxmox.com/threads/proxmox-wont-install-a-volume-group-called-pve-already-exists.43724/&#34;&gt;Proxmox won’t install - “A volume group called pve already exists”.&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://johnscs.com/remove-proxmox51-subscription-notice/&#34;&gt;Remove Proxmox 5.1 or 5.2 Subscription Notice&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Linux in Action 01</title>
-      <link>https://blog.stevedong.com/post/linux-in-action-01/</link>
-      <pubDate>Fri, 16 Nov 2018 23:34:58 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/linux-in-action-01/</guid>
-      
-        <description>
-
-&lt;h1 id=&#34;linux-in-action-翻译-linux实战&#34;&gt;Linux In Action-[翻译]Linux实战&lt;/h1&gt;
-
-&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
-
-&lt;p&gt;作为IT运维人员或者程序员,不论做什么或做多久.如果你不学习新东西,你可能现在已经已经转行了.不仅仅是平台或者技术图表持续的变更.也不仅仅是业务需求需要新思维.或者一个坏蛋不停使用新路子来攻击你的服务器. 而是所用事情的综合. 你不能承担停止学习的代价.而诀窍就是找到一个方法学习高优先级的技能,而不能让经验成为你成长的阻碍.&lt;/p&gt;
-
-&lt;p&gt;我的意愿和初衷是想让你遍读本书的每一章,然后可以自信地接受挑战(一些以前你不能自信挑战的事情)并战胜之.如果你&lt;/p&gt;
 </description>
       
     </item>

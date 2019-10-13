@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>How to Install and Configure Freeradius With Active Directory Allow Allow Specific Group of Users to Authenticate in Debian 10 - Steve Dong - A System Administrator&#39;s Blog</title>
+  
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="Steve Dong" />
+  <meta name="description" content="How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&amp;rsquo;m trying to build a new" />
+
+  <meta name="keywords" content="proxmox ve, network, devops, sdn, system Administation" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.56.3" />
+
+
+<link rel="canonical" href="https://blog.stevedong.com/post/how-to-install-and-configure-freeradius-with-active-directory-allow-allow-specific-group-of-users-to-authenticate-in-debian-10/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+<meta property="og:title" content="How to Install and Configure Freeradius With Active Directory Allow Allow Specific Group of Users to Authenticate in Debian 10" />
+<meta property="og:description" content="How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&rsquo;m trying to build a new" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.stevedong.com/post/how-to-install-and-configure-freeradius-with-active-directory-allow-allow-specific-group-of-users-to-authenticate-in-debian-10/" />
+<meta property="article:published_time" content="2019-10-13T14:52:31+08:00" />
+<meta property="article:modified_time" content="2019-10-13T14:52:31+08:00" />
+<meta itemprop="name" content="How to Install and Configure Freeradius With Active Directory Allow Allow Specific Group of Users to Authenticate in Debian 10">
+<meta itemprop="description" content="How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&rsquo;m trying to build a new">
+
+
+<meta itemprop="datePublished" content="2019-10-13T14:52:31&#43;08:00" />
+<meta itemprop="dateModified" content="2019-10-13T14:52:31&#43;08:00" />
+<meta itemprop="wordCount" content="847">
+
+
+
+<meta itemprop="keywords" content="freeradius,debian 10,linux,ldap,," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How to Install and Configure Freeradius With Active Directory Allow Allow Specific Group of Users to Authenticate in Debian 10"/>
+<meta name="twitter:description" content="How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&rsquo;m trying to build a new"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-128167130-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Steve Dong</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.stevedong.com/">Home</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.stevedong.com/post/">Archives</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.stevedong.com/tags/">Tags</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.stevedong.com/categories/">Categories</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.stevedong.com/about/">About</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://echowings.github.com" rel="noopener" target="_blank">
+              MyGitHub
+              
+              <i class="iconfont">
+                <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M623.36 272.96 473.216 423.04C467.2 429.056 467.072 438.656 472.896 444.416c0 0-6.72-6.656 1.6 1.6C496.064 467.648 528.64 500.224 528.64 500.224 534.464 506.048 544 505.856 550.016 499.904l150.08-150.144 67.328 66.432c9.024 8.96 27.456 4.544 30.4-8.96 19.968-92.608 46.656-227.52 46.656-227.52 6.848-34.496-16.192-56.704-49.92-49.92 0 0-134.656 26.816-227.328 46.784C560.32 178.048 556.352 182.272 554.752 187.136c-3.2 6.208-3.008 14.208 3.776 20.992L623.36 272.96z"></path>
+  <path d="M841.152 457.152c-30.528 0-54.784 24.512-54.784 54.656l0 274.752L237.696 786.56 237.696 237.696l206.016 0c6.656 0 10.752 0 13.248 0C487.68 237.696 512 213.184 512 182.848 512 152.32 487.36 128 456.96 128L183.04 128C153.216 128 128 152.576 128 182.848c0 3.136 0.256 6.272 0.768 9.28C128.256 195.136 128 198.272 128 201.408l0 639.488c0 0.064 0 0.192 0 0.256 0 0.128 0 0.192 0 0.32 0 30.528 24.512 54.784 54.784 54.784l646.976 0c6.592 0 9.728 0 11.712 0 28.736 0 52.928-22.976 54.464-51.968C896 843.264 896 842.304 896 841.344l0-20.352L896 561.408 896 512.128C896 481.792 871.424 457.152 841.152 457.152z"></path>
+</svg>
+
+              </i>
+            </a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+
+  
+
+  
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      Steve Dong
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.stevedong.com/">Home</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.stevedong.com/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.stevedong.com/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.stevedong.com/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.stevedong.com/about/">About</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://echowings.github.com" rel="noopener" target="_blank">
+              MyGitHub
+              
+              <i class="iconfont">
+                <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M623.36 272.96 473.216 423.04C467.2 429.056 467.072 438.656 472.896 444.416c0 0-6.72-6.656 1.6 1.6C496.064 467.648 528.64 500.224 528.64 500.224 534.464 506.048 544 505.856 550.016 499.904l150.08-150.144 67.328 66.432c9.024 8.96 27.456 4.544 30.4-8.96 19.968-92.608 46.656-227.52 46.656-227.52 6.848-34.496-16.192-56.704-49.92-49.92 0 0-134.656 26.816-227.328 46.784C560.32 178.048 556.352 182.272 554.752 187.136c-3.2 6.208-3.008 14.208 3.776 20.992L623.36 272.96z"></path>
+  <path d="M841.152 457.152c-30.528 0-54.784 24.512-54.784 54.656l0 274.752L237.696 786.56 237.696 237.696l206.016 0c6.656 0 10.752 0 13.248 0C487.68 237.696 512 213.184 512 182.848 512 152.32 487.36 128 456.96 128L183.04 128C153.216 128 128 152.576 128 182.848c0 3.136 0.256 6.272 0.768 9.28C128.256 195.136 128 198.272 128 201.408l0 639.488c0 0.064 0 0.192 0 0.256 0 0.128 0 0.192 0 0.32 0 30.528 24.512 54.784 54.784 54.784l646.976 0c6.592 0 9.728 0 11.712 0 28.736 0 52.928-22.976 54.464-51.968C896 843.264 896 842.304 896 841.344l0-20.352L896 561.408 896 512.128C896 481.792 871.424 457.152 841.152 457.152z"></path>
+</svg>
+
+              </i>
+            </a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">How to Install and Configure Freeradius With Active Directory Allow Allow Specific Group of Users to Authenticate in Debian 10</h1>
+      
+      <div class="post-meta">
+        <time datetime="2019-10-13" class="post-time">
+          2019-10-13
+        </time>
+        <div class="post-category">
+            <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
+            
+          </div>
+        
+
+        
+        
+
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#how-to-install-and-configure-freeradius-with-active-directory-allow-specific-group-of-users-to-authenticate-in-debian-10">How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10</a>
+<ul>
+<li><a href="#install-software-and-configuration">Install Software and configuration</a>
+<ul>
+<li><a href="#basic-information">Basic Information</a></li>
+<li><a href="#change-debian-settings">Change Debian settings</a></li>
+<li><a href="#install-samba-and-winbind-and-let-debian-host-joined-domain">Install samba and winbind and let Debian Host joined domain</a></li>
+<li><a href="#install-freeradius">Install freeradius</a></li>
+<li><a href="#configure-freeradius-ldap-auth-with-ad">Configure freeradius-ldap Auth with AD</a>
+<ul>
+<li><a href="#edit-config">Edit config</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#reference">Reference</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<h1 id="how-to-install-and-configure-freeradius-with-active-directory-allow-specific-group-of-users-to-authenticate-in-debian-10">How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10</h1>
+
+<p>serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication  and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access  to a group in AD. So I&rsquo;m trying to build a new freeradius server in debian 10. After a week work.At last I figure it out.</p>
+
+<h2 id="install-software-and-configuration">Install Software and configuration</h2>
+
+<p>First thing first, We need install a debian 10 server on your virtualization platform. currently, I installed a debian server on proxmox ve platform.</p>
+
+<h3 id="basic-information">Basic Information</h3>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Domain Name</td>
+<td>TESTING.LOCAL</td>
+</tr>
+
+<tr>
+<td>NTDomain  Name</td>
+<td>TESTING</td>
+</tr>
+
+<tr>
+<td>RADIUS HOSTNAME</td>
+<td>MYRADIUS</td>
+</tr>
+
+<tr>
+<td>DOMAIN CONTROLLER</td>
+<td>MYDC02.TESTING.LOCAL</td>
+</tr>
+
+<tr>
+<td>DOMAIN CONTROLLER</td>
+<td>MYDC03.TESTING.LOCAL</td>
+</tr>
+
+<tr>
+<td>DOMAIN GROUP</td>
+<td>VPN_GROUP</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="change-debian-settings">Change Debian settings</h3>
+
+<ul>
+<li><p>Change hostname</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hostnamectl set-hostname myradius</code></pre></div></li>
+
+<li><p>Sync NTP time with domain controller
+Install chrony</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt purge ntp
+apt install -y  chrony</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/chrony/chrony.conf
+<span style="color:#09f;font-style:italic">#comment out `pool xxx iburst</span>
+server &lt;ip_of_dc01&gt; iburst
+server &lt;ip_of_dc02&gt; iburst</code></pre></div></li>
+</ul>
+
+<p>restart chrony service and force update times</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart chrony
+chronyc sources</code></pre></div>
+<h3 id="install-samba-and-winbind-and-let-debian-host-joined-domain">Install samba and winbind and let Debian Host joined domain</h3>
+
+<ul>
+<li><p>Install samba,winbind,krb5-user</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt updatee <span style="color:#555">&amp;&amp;</span> apt -y dist-ugprade
+apt install -y samba winbind krb5-user</code></pre></div></li>
+
+<li><p>config samba config file</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/samba/smb.conf</code></pre></div></li>
+</ul>
+
+<p>In <code>[global]</code> section, change settings form</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#555">[</span>global<span style="color:#555">]</span>
+<span style="color:#09f;font-style:italic">## Browsing/Identification ###</span>
+<span style="color:#09f;font-style:italic"># Change this to the workgroup/NT-domain name your Samba server will part of</span>
+   <span style="color:#033">workgroup</span> <span style="color:#555">=</span> WORKGROUP</code></pre></div>
+<p>to</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#555">[</span>global<span style="color:#555">]</span>
+<span style="color:#09f;font-style:italic">## Browsing/Identification ###</span>
+<span style="color:#09f;font-style:italic"># Change this to the workgroup/NT-domain name your Samba server will part of</span>
+   <span style="color:#033">workgroup</span> <span style="color:#555">=</span> TESTING
+   password <span style="color:#033">server</span> <span style="color:#555">=</span> MYDC02.TESTING.LOCAL
+   password <span style="color:#033">server</span> <span style="color:#555">=</span> MYDC03.TESTING.LOCAL
+   <span style="color:#033">realm</span> <span style="color:#555">=</span> TESTING.LOCAL
+   winbind use default <span style="color:#033">domain</span> <span style="color:#555">=</span> <span style="color:#366">true</span>
+   idmap <span style="color:#033">backend</span> <span style="color:#555">=</span> rid:testing.local<span style="color:#555">=</span><span style="color:#f60">70000</span>-1000000
+   idmap <span style="color:#033">uid</span> <span style="color:#555">=</span> <span style="color:#f60">70000</span>-1000000
+   idmap <span style="color:#033">gid</span> <span style="color:#555">=</span> <span style="color:#f60">70000</span>-1000000
+   winbind use default <span style="color:#033">domain</span> <span style="color:#555">=</span> yes
+   <span style="color:#033">security</span> <span style="color:#555">=</span> ADS</code></pre></div>
+<ul>
+<li><p>Modify <code>/etc/krb5.conf</code></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#555">[</span>libdefaults<span style="color:#555">]</span>
+<span style="color:#033">default_realm</span><span style="color:#555">=</span>TESTING.LOCAL
+...
+<span style="color:#555">[</span>realms<span style="color:#555">]</span>
+TESTING.LOCAL <span style="color:#555">=</span> <span style="color:#555">{</span>
+    <span style="color:#033">kdc</span> <span style="color:#555">=</span> MYDC02.TESTING.LOCAL
+    <span style="color:#033">admin_server</span> <span style="color:#555">=</span> MYDC02.TESTING.LOCAL
+    <span style="color:#033">default_domain</span> <span style="color:#555">=</span> TESTING.LOCAL
+<span style="color:#555">}</span>
+...
+<span style="color:#555">[</span>domain_realm<span style="color:#555">]</span>
+.testing.local <span style="color:#555">=</span> TESTING.LOCAL
+testing.local <span style="color:#555">=</span> TESTING.LOCAL</code></pre></div></li>
+
+<li><p>Restart samba and winbind service</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart smbd winbind</code></pre></div></li>
+
+<li><p>Join domain</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">net join -U mypoweruser</code></pre></div></li>
+
+<li><p>Testing samba AD authentication:</p>
+
+<ul>
+<li><p>Using winbind:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wbinfo -a &lt;user&gt;%&lt;password&gt;</code></pre></div></li>
+</ul></li>
+</ul>
+
+<p>You will get the following message if everything is correct:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">plaintext password authentication succeeded
+challenge/response password authentication succeeded</code></pre></div>
+<ul>
+<li><p>Using ntlm_auth:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ntlm_auth --request-nt-key --domain<span style="color:#555">=</span>TESTING --username<span style="color:#555">=</span>&lt;user&gt; --password<span style="color:#555">=</span>&lt;password&gt;</code></pre></div></li>
+</ul>
+
+<p>Then you will got success message:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   NT_STATUS_OK: Success <span style="color:#555">(</span>0x0<span style="color:#555">)</span></code></pre></div>
+<h3 id="install-freeradius">Install freeradius</h3>
+
+<ul>
+<li><p>Install freeradius</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt install -y freeradius</code></pre></div></li>
+
+<li><p>Grant permission for <code>freerad</code> user on winbind&rsquo;s socket:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo usermod -a -G winbindd_priv freerad
+sudo chgrp winbindd_priv /var/lib/samba/winbindd_privileged/</code></pre></div></li>
+
+<li><p>Change MACHAP to use ntlm_auth:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/mods-available/ntlm_auth</code></pre></div></li>
+</ul>
+
+<p>change</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#033">program</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;/usr/bin/ntlm_auth --request-nt-key --domain=TESTING --username=%{mschap:User-Name} --password=%{User-Password}&#34;</span></code></pre></div>
+<ul>
+<li><p>Change module mschap :</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/mods-available/mschap</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mschap <span style="color:#555">{</span>
+...
+<span style="color:#033">ntlm_auth</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;/usr/bin/ntlm_auth --request-nt-key --domain=TESTING --username=%{%{Stripped-User-Name}:-%{%{User-Name}:-None}} --challenge=%{%{mschap:Challenge}:-00} --nt-response=%{%{mschap:NT-Response}:-00}&#34;</span></code></pre></div></li>
+
+<li><p>Change eap config.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/mods-available/eap</code></pre></div></li>
+</ul>
+
+<p>Change  settings of <code>default_eap_type</code>.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">eap <span style="color:#555">{</span>
+    <span style="color:#033">default_eap_type</span> <span style="color:#555">=</span> md5</code></pre></div>
+<p>to</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">eap <span style="color:#555">{</span>
+    <span style="color:#033">default_eap_type</span> <span style="color:#555">=</span> mschapv2</code></pre></div>
+<p>Then restart freeradius service</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart freeradius</code></pre></div>
+<ul>
+<li><p>Change <code>/etc/freeradius/3.0/sites-enabled/default</code> and <code>/etc/freeradius/3.0/sites-enabled/inner-tunnel</code></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">authenticate <span style="color:#555">{</span>
+ntlm_auth</code></pre></div></li>
+
+<li><p>Configure RADIUS client</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">client <span style="color:#f60">0</span>.0.0.0/0 <span style="color:#555">{</span>
+<span style="color:#033">secret</span>  <span style="color:#555">=</span> myauthpassword
+<span style="color:#033">shortname</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;nas access&#34;</span>
+<span style="color:#555">}</span></code></pre></div>
+<ul>
+<li><p>restart service of freeradius</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart freeradius</code></pre></div></li>
+</ul>
+
+<p>Test FreeRADIUS and MSCHAP:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">radtest -t mschap &lt;user&gt; &lt;password&gt; localhost <span style="color:#f60">0</span> testing123</code></pre></div></li>
+</ul>
+
+<p>The results will be like:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Sent Access-Request Id <span style="color:#f60">9</span> from <span style="color:#f60">0</span>.0.0.0:59244 to <span style="color:#f60">127</span>.0.0.1:1812 length <span style="color:#f60">134</span>
+        User-Name <span style="color:#555">=</span> <span style="color:#c30">&#34;user&#34;</span>
+        MS-CHAP-Password <span style="color:#555">=</span> <span style="color:#c30">&#34;password&#34;</span>
+        NAS-IP-Address <span style="color:#555">=</span> <span style="color:#f60">172</span>.100.99.100
+        NAS-Port <span style="color:#555">=</span> <span style="color:#f60">0</span>
+        Message-Authenticator <span style="color:#555">=</span> 0x00
+        Cleartext-Password <span style="color:#555">=</span> <span style="color:#c30">&#34;password&#34;</span>
+        MS-CHAP-Challenge <span style="color:#555">=</span> 0x163bc4c900360a08
+        MS-CHAP-Response <span style="color:#555">=</span> 0x0001000000000000000000000000000000000000000000000000382764ceb05312077d21d71bf53ce917ef2e72a4ff83ca96
+Received Access-Accept Id <span style="color:#f60">9</span> from <span style="color:#f60">127</span>.0.0.1:1812 to <span style="color:#f60">0</span>.0.0.0:0 length <span style="color:#f60">84</span>
+        MS-CHAP-MPPE-Keys <span style="color:#555">=</span> 0x000000000000000065c53b0540ab884edc6779a1f370c0cb
+        MS-MPPE-Encryption-Policy <span style="color:#555">=</span> Encryption-Allowed
+        MS-MPPE-Encryption-Types <span style="color:#555">=</span> RC4-40or128-bit-Allowed</code></pre></div>
+<h3 id="configure-freeradius-ldap-auth-with-ad">Configure freeradius-ldap Auth with AD</h3>
+
+<p>To limited to auth a AD group, we need to config freeradius auth with ldap.
+- Install freeradius-ldap</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt install -y freeradius-ldap</code></pre></div>
+<h4 id="edit-config">Edit config</h4>
+
+<ul>
+<li><p>edit <code>/etc/freeradius/3.0/mods-available/ldap</code></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/mods-available/ldap</code></pre></div>
+<pre><code>ldap {
+ ...
+server = 'dc01.mydomain.local'
+server = 'dc02.mydomain.local'
+port = 389
+identity = 'aduser@mydomain.local'
+password = &lt;mypassword&gt;
+base_dn = 'dc=mydomain,dc=local'
+... 
+}
+...
+update {
+   control:Password-With-Header    += 'userPassword'
+   control:NT-Password     := 'ntPassword'
+   reply:Reply-Message     := 'radiusReplyMessage'
+   reply:Tunnel-Type       := 'radiusTunnelType'
+   reply:Tunnel-Medium-Type    := 'radiusTunnelMediumType'
+   reply:Tunnel-Private-Group-ID   := 'radiusTunnelPrivategroupId'
+
+    #  Where only a list is specified as the RADIUS attribute,
+    #  the value of the LDAP attribute is parsed as a valuepair
+    #  in the same format as the 'valuepair_attribute' (above).
+    control:            += 'radiusControlAttribute'
+    request:            += 'radiusRequestAttribute'
+    reply:              += 'radiusReplyAttribute'
+}
+...
+edir = no
+...
+}
+...
+user {
+...
+base_dn = &quot;${..base_dn}&quot;
+...
+filter = &quot;(sAMAccountName=%{%{Stripped-User-Name}:-%{User-Name}})&quot;    
+...
+</code></pre>
+
+<ul>
+<li><p>create a link to mode-enable</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ln -s /etc/freeradius/3.0/mods-available/ldap /etc/freeradius/3.0/mods-enabled/</code></pre></div></li>
+
+<li><p>edit <code>/etc/freeradius/3.0/sites-available/default</code></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/sites-available/default</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">...
+authorize <span style="color:#555">{</span>
+...
+ldap
+<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">((</span>ok <span style="color:#555">||</span> updated<span style="color:#555">)</span> <span style="color:#555">&amp;&amp;</span> User-Password<span style="color:#555">)</span> <span style="color:#555">{</span>
+update <span style="color:#555">{</span>
+    control:Auth-Type :<span style="color:#555">=</span> ldap
+<span style="color:#555">}</span>
+<span style="color:#555">}</span>
+...
+authenticate <span style="color:#555">{</span>
+...
+Auth-Type LDAP <span style="color:#555">{</span>
+        ldap
+<span style="color:#555">}</span>
+...
+<span style="color:#555">}</span>
+...
+<span style="color:#555">}</span></code></pre></div></li>
+</ul></li>
+
+<li><p>Restart freeradius service</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart freeradius
+freeradius -fX</code></pre></div></li>
+</ul>
+
+<p>testing ldap auth</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  radtest &lt;domain_accout&gt; &lt;password&gt; localhost <span style="color:#f60">0</span> testing123</code></pre></div>
+<ul>
+<li><p>Change <code>/etc/freeradius/3.0/users</code></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">DEFAULT Auth-Type <span style="color:#555">=</span> ntlm_auth, LDAP-Group <span style="color:#555">==</span> <span style="color:#c30">&#34;VPN_GROUP&#34;</span>
+...
+DEFAULT Group !<span style="color:#555">=</span> <span style="color:#c30">&#34;VPN_GROUP&#34;</span>, Auth-Type :<span style="color:#555">=</span> Reject
+    Reply-Message <span style="color:#555">=</span> <span style="color:#c30">&#34;Your are not permit to access VPN Connectiong&#34;</span></code></pre></div></li>
+</ul>
+
+<h2 id="reference">Reference</h2>
+
+<ol>
+<li><a href="https://www.dangtrinh.com/2017/03/wpa2-enterprise-with-freeradius-and-ad.html">WPA2 Enterprise with FreeRADIUS and AD integration on Ubuntu16.04</a></li>
+<li><a href="https://blog.csdn.net/d9394952/article/details/93597621">调试freeradius 3.0 与microsoft AD通过LDAP认证的笔记</a></li>
+<li><a href="https://serverfault.com/questions/622205/configure-freeradius-with-active-driectory-allow-specific-group-of-users-to-auth">Configure FreeRADIUS with Active Driectory allow specific group of users to authenticate</a></li>
+</ol>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Steve Dong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+      2019-10-13
+      
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    
+    
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://blog.stevedong.com/tags/freeradius/">freeradius</a>
+          <a href="https://blog.stevedong.com/tags/debian-10/">debian 10</a>
+          <a href="https://blog.stevedong.com/tags/linux/">linux</a>
+          <a href="https://blog.stevedong.com/tags/ldap/">ldap</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/proxmoxve/how-to-change-default-swap-settings-for-proxmox-ve/">
+            <span class="next-text nav-default">How to Change Default Swap Settings for Proxmox Ve</span>
+            <span class="prev-text nav-mobile">Next</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "echowings/blogcomment"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+  
+
+  
+
+  
+
+  
+
+    
+
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="icon-links">
+  
+  
+    <a href="mailto:dongjunbo@gmail.com" rel="me noopener" class="iconfont"
+      title="email" >
+      <svg class="icon" viewBox="0 0 1451 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M664.781909 681.472759 0 97.881301C0 3.997201 71.046997 0 71.046997 0L474.477909 0 961.649408 0 1361.641813 0C1361.641813 0 1432.688811 3.997201 1432.688811 97.881301L771.345323 681.472759C771.345323 681.472759 764.482731 685.154773 753.594283 688.65053L753.594283 688.664858C741.602731 693.493018 729.424896 695.068979 718.077952 694.839748 706.731093 695.068979 694.553173 693.493018 682.561621 688.664858L682.561621 688.65053C671.644501 685.140446 664.781909 681.472759 664.781909 681.472759L664.781909 681.472759ZM718.063616 811.603883C693.779541 811.016482 658.879232 802.205449 619.10784 767.734955 542.989056 701.759633 0 212.052267 0 212.052267L0 942.809523C0 942.809523 0 1024 83.726336 1024L682.532949 1024 753.579947 1024 1348.948139 1024C1432.688811 1024 1432.688811 942.809523 1432.688811 942.809523L1432.688811 212.052267C1432.688811 212.052267 893.138176 701.759633 817.019477 767.734955 777.248 802.205449 742.347691 811.03081 718.063616 811.603883L718.063616 811.603883Z"></path>
+</svg>
+
+    </a>
+  
+    <a href="https://www.facebook.com/stevedongV" rel="me noopener" class="iconfont"
+      title="facebook"  target="_blank"
+      >
+      <svg class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="33" height="33">
+  <path d="M965.7344 2.7648c14.848 0 28.2624 5.5296 40.2432 16.6912C1017.9584 30.5152 1024 43.52 1024 58.2656l0 910.2336c0 14.848-6.0416 27.7504-18.0224 38.8096C993.8944 1018.4704 980.48 1024 965.7344 1024L704.9216 1024 704.9216 629.9648l133.2224 0 19.456-155.4432-152.576 0L705.024 373.0432c0-50.688 25.9072-76.0832 77.7216-76.0832l80.4864 0L863.232 163.5328c-27.7504-5.4272-67.4816-8.192-119.296-8.192-59.1872 0-106.8032 18.0224-142.9504 54.0672C564.736 245.5552 546.7136 296.0384 546.7136 360.7552l0 113.7664L413.4912 474.5216l0 155.4432 133.2224 0L546.7136 1024 55.5008 1024c-14.848 0-27.7504-5.5296-38.8096-16.6912C5.5296 996.2496 0 983.3472 0 968.4992L0 58.2656C0 43.52 5.5296 30.5152 16.6912 19.456c11.0592-11.0592 24.064-16.6912 38.8096-16.6912L965.7344 2.7648z"></path>
+</svg>
+
+    </a>
+
+
+<a href="https://blog.stevedong.com/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+    class="iconfont" title="rss" target="_blank">
+    <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="30" height="30">
+  <path d="M819.157333 1024C819.157333 574.592 449.408 204.8 0 204.8V0c561.706667 0 1024 462.293333 1024 1024h-204.842667zM140.416 743.04a140.8 140.8 0 0 1 140.501333 140.586667A140.928 140.928 0 0 1 140.074667 1024C62.72 1024 0 961.109333 0 883.626667s62.933333-140.544 140.416-140.586667zM678.784 1024h-199.04c0-263.210667-216.533333-479.786667-479.744-479.786667V345.173333c372.352 0 678.784 306.517333 678.784 678.826667z"></path>
+</svg>
+
+  </a>
+   
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    
+      2018 -
+    2019
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        Steve Dong
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont">
+        
+        <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+      </i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js" integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
