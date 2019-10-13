@@ -69,7 +69,7 @@
 
 <meta itemprop="datePublished" content="2019-10-13T14:52:31&#43;08:00" />
 <meta itemprop="dateModified" content="2019-10-13T14:52:31&#43;08:00" />
-<meta itemprop="wordCount" content="847">
+<meta itemprop="wordCount" content="846">
 
 
 
@@ -615,46 +615,43 @@ Received Access-Accept Id <span style="color:#f60">9</span> from <span style="co
 
 <ul>
 <li><p>edit <code>/etc/freeradius/3.0/mods-available/ldap</code></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/mods-available/ldap</code></pre></div>
-<pre><code>ldap {
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/mods-available/ldap</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ldap <span style="color:#555">{</span>
  ...
-server = 'dc01.mydomain.local'
-server = 'dc02.mydomain.local'
-port = 389
-identity = 'aduser@mydomain.local'
-password = &lt;mypassword&gt;
-base_dn = 'dc=mydomain,dc=local'
+<span style="color:#033">server</span> <span style="color:#555">=</span> <span style="color:#c30">&#39;dc01.mydomain.local&#39;</span>
+<span style="color:#033">server</span> <span style="color:#555">=</span> <span style="color:#c30">&#39;dc02.mydomain.local&#39;</span>
+<span style="color:#033">port</span> <span style="color:#555">=</span> <span style="color:#f60">389</span>
+<span style="color:#033">identity</span> <span style="color:#555">=</span> <span style="color:#c30">&#39;aduser@mydomain.local&#39;</span>
+<span style="color:#033">password</span> <span style="color:#555">=</span> &lt;mypassword&gt;
+<span style="color:#033">base_dn</span> <span style="color:#555">=</span> <span style="color:#c30">&#39;dc=mydomain,dc=local&#39;</span>
 ... 
-}
+<span style="color:#555">}</span>
 ...
-update {
-   control:Password-With-Header    += 'userPassword'
-   control:NT-Password     := 'ntPassword'
-   reply:Reply-Message     := 'radiusReplyMessage'
-   reply:Tunnel-Type       := 'radiusTunnelType'
-   reply:Tunnel-Medium-Type    := 'radiusTunnelMediumType'
-   reply:Tunnel-Private-Group-ID   := 'radiusTunnelPrivategroupId'
+update <span style="color:#555">{</span>
+   control:Password-With-Header    +<span style="color:#555">=</span> <span style="color:#c30">&#39;userPassword&#39;</span>
+   control:NT-Password     :<span style="color:#555">=</span> <span style="color:#c30">&#39;ntPassword&#39;</span>
+   reply:Reply-Message     :<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusReplyMessage&#39;</span>
+   reply:Tunnel-Type       :<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusTunnelType&#39;</span>
+   reply:Tunnel-Medium-Type    :<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusTunnelMediumType&#39;</span>
+   reply:Tunnel-Private-Group-ID   :<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusTunnelPrivategroupId&#39;</span>
 
-    #  Where only a list is specified as the RADIUS attribute,
-    #  the value of the LDAP attribute is parsed as a valuepair
-    #  in the same format as the 'valuepair_attribute' (above).
-    control:            += 'radiusControlAttribute'
-    request:            += 'radiusRequestAttribute'
-    reply:              += 'radiusReplyAttribute'
-}
+    <span style="color:#09f;font-style:italic">#  Where only a list is specified as the RADIUS attribute,</span>
+    <span style="color:#09f;font-style:italic">#  the value of the LDAP attribute is parsed as a valuepair</span>
+    <span style="color:#09f;font-style:italic">#  in the same format as the &#39;valuepair_attribute&#39; (above).</span>
+    control:            +<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusControlAttribute&#39;</span>
+    request:            +<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusRequestAttribute&#39;</span>
+    reply:              +<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusReplyAttribute&#39;</span>
+<span style="color:#555">}</span>
 ...
-edir = no
+<span style="color:#033">edir</span> <span style="color:#555">=</span> no
 ...
-}
+<span style="color:#555">}</span>
 ...
-user {
+user <span style="color:#555">{</span>
 ...
-base_dn = &quot;${..base_dn}&quot;
+<span style="color:#033">base_dn</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;</span><span style="color:#a00">${</span>..base_dn<span style="color:#a00">}</span><span style="color:#c30">&#34;</span>
 ...
-filter = &quot;(sAMAccountName=%{%{Stripped-User-Name}:-%{User-Name}})&quot;    
-...
-</code></pre>
-
+<span style="color:#033">filter</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;(sAMAccountName=%{%{Stripped-User-Name}:-%{User-Name}})&#34;</span>    
+...</code></pre></div>
 <ul>
 <li><p>create a link to mode-enable</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ln -s /etc/freeradius/3.0/mods-available/ldap /etc/freeradius/3.0/mods-enabled/</code></pre></div></li>

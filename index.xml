@@ -255,46 +255,43 @@ Received Access-Accept Id &lt;span style=&#34;color:#f60&#34;&gt;9&lt;/span&gt; 
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;edit &lt;code&gt;/etc/freeradius/3.0/mods-available/ldap&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;vi /etc/freeradius/3.0/mods-available/ldap&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;pre&gt;&lt;code&gt;ldap {
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;vi /etc/freeradius/3.0/mods-available/ldap&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ldap &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
  ...
-server = &#39;dc01.mydomain.local&#39;
-server = &#39;dc02.mydomain.local&#39;
-port = 389
-identity = &#39;aduser@mydomain.local&#39;
-password = &amp;lt;mypassword&amp;gt;
-base_dn = &#39;dc=mydomain,dc=local&#39;
+&lt;span style=&#34;color:#033&#34;&gt;server&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;dc01.mydomain.local&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#033&#34;&gt;server&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;dc02.mydomain.local&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#033&#34;&gt;port&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;389&lt;/span&gt;
+&lt;span style=&#34;color:#033&#34;&gt;identity&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;aduser@mydomain.local&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#033&#34;&gt;password&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &amp;lt;mypassword&amp;gt;
+&lt;span style=&#34;color:#033&#34;&gt;base_dn&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;dc=mydomain,dc=local&amp;#39;&lt;/span&gt;
 ... 
-}
+&lt;span style=&#34;color:#555&#34;&gt;}&lt;/span&gt;
 ...
-update {
-   control:Password-With-Header    += &#39;userPassword&#39;
-   control:NT-Password     := &#39;ntPassword&#39;
-   reply:Reply-Message     := &#39;radiusReplyMessage&#39;
-   reply:Tunnel-Type       := &#39;radiusTunnelType&#39;
-   reply:Tunnel-Medium-Type    := &#39;radiusTunnelMediumType&#39;
-   reply:Tunnel-Private-Group-ID   := &#39;radiusTunnelPrivategroupId&#39;
+update &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
+   control:Password-With-Header    +&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;userPassword&amp;#39;&lt;/span&gt;
+   control:NT-Password     :&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;ntPassword&amp;#39;&lt;/span&gt;
+   reply:Reply-Message     :&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;radiusReplyMessage&amp;#39;&lt;/span&gt;
+   reply:Tunnel-Type       :&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;radiusTunnelType&amp;#39;&lt;/span&gt;
+   reply:Tunnel-Medium-Type    :&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;radiusTunnelMediumType&amp;#39;&lt;/span&gt;
+   reply:Tunnel-Private-Group-ID   :&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;radiusTunnelPrivategroupId&amp;#39;&lt;/span&gt;
 
-    #  Where only a list is specified as the RADIUS attribute,
-    #  the value of the LDAP attribute is parsed as a valuepair
-    #  in the same format as the &#39;valuepair_attribute&#39; (above).
-    control:            += &#39;radiusControlAttribute&#39;
-    request:            += &#39;radiusRequestAttribute&#39;
-    reply:              += &#39;radiusReplyAttribute&#39;
-}
+    &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#  Where only a list is specified as the RADIUS attribute,&lt;/span&gt;
+    &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#  the value of the LDAP attribute is parsed as a valuepair&lt;/span&gt;
+    &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#  in the same format as the &amp;#39;valuepair_attribute&amp;#39; (above).&lt;/span&gt;
+    control:            +&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;radiusControlAttribute&amp;#39;&lt;/span&gt;
+    request:            +&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;radiusRequestAttribute&amp;#39;&lt;/span&gt;
+    reply:              +&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;radiusReplyAttribute&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#555&#34;&gt;}&lt;/span&gt;
 ...
-edir = no
+&lt;span style=&#34;color:#033&#34;&gt;edir&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; no
 ...
-}
+&lt;span style=&#34;color:#555&#34;&gt;}&lt;/span&gt;
 ...
-user {
+user &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
 ...
-base_dn = &amp;quot;${..base_dn}&amp;quot;
+&lt;span style=&#34;color:#033&#34;&gt;base_dn&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a00&#34;&gt;${&lt;/span&gt;..base_dn&lt;span style=&#34;color:#a00&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt;
 ...
-filter = &amp;quot;(sAMAccountName=%{%{Stripped-User-Name}:-%{User-Name}})&amp;quot;    
-...
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;span style=&#34;color:#033&#34;&gt;filter&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;(sAMAccountName=%{%{Stripped-User-Name}:-%{User-Name}})&amp;#34;&lt;/span&gt;    
+...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;create a link to mode-enable&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ln -s /etc/freeradius/3.0/mods-available/ldap /etc/freeradius/3.0/mods-enabled/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
