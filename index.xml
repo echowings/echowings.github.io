@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 13 Oct 2019 14:52:31 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 22 Oct 2019 10:23:46 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -28,6 +28,36 @@
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
+      
+    </item>
+    
+    <item>
+      <title>Some_tips_for_management_promxmoxve</title>
+      <link>https://blog.stevedong.com/post/some_tips_for_management_promxmoxve/</link>
+      <pubDate>Tue, 22 Oct 2019 10:23:46 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/some_tips_for_management_promxmoxve/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;some-tips-for-management-proxmxo-ve&#34;&gt;Some tips for management proxmxo VE&lt;/h1&gt;
+
+&lt;h2 id=&#34;force-shutdown-a-vm&#34;&gt;Force shutdown a vm&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#List all vm in pve&lt;/span&gt;
+qm list 
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# qm unlock the specific vm&lt;/span&gt;
+qm unlock &amp;lt;vmid&amp;gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# qm stop the specific vm&lt;/span&gt;
+qm stop &amp;lt;vmid&amp;gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# qm shutdown the specific vm&lt;/span&gt;
+qm shutdown &amp;lt;vmid&amp;gt;
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Check vm status&lt;/span&gt;
+qm list | grep &amp;lt;vmid&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     
@@ -5020,92 +5050,6 @@ NeoBundle &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;nvie/vim-flake8&amp;#3
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ssh-copy-id -i ~/.ssh/id_rsa.pub user1@&lt;span style=&#34;color:#033&#34;&gt;$server&lt;/span&gt;-hosts&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;test-login&#34;&gt;Test login&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ssh user1@&lt;span style=&#34;color:#033&#34;&gt;$server&lt;/span&gt;-hosts&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Proxmoxve VE V5.x Installation</title>
-      <link>https://blog.stevedong.com/post/proxmox-ve-v5.x-installation/</link>
-      <pubDate>Mon, 19 Nov 2018 23:38:39 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/proxmox-ve-v5.x-installation/</guid>
-      
-        <description>
-
-&lt;h1 id=&#34;proxmox-ve-5-x-installation&#34;&gt;Proxmox VE 5.x Installation&lt;/h1&gt;
-
-&lt;h2 id=&#34;proxmox-won-t-install-a-volume-group-called-pve-already-exists&#34;&gt;Proxmox won’t install- “A volume group called pve already exists&lt;/h2&gt;
-
-&lt;p&gt;Solution:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Boot the proxmox installer USB&lt;/li&gt;
-&lt;li&gt;Select Debug Mode&lt;/li&gt;
-&lt;li&gt;Press “CTRL+D” to start the installer wizard.&lt;/li&gt;
-&lt;li&gt;Click on abort&lt;/li&gt;
-&lt;li&gt;Run “vgdisplay” to dislay the LVM PG’s.&lt;/li&gt;
-&lt;li&gt;Run “vgremode pve ” to remove pve PG.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;remove-no-valid-subscription-message&#34;&gt;Remove “No valid Subscription” Message&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;shell solution.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -i.bak &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34;&lt;/span&gt; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; systemctl restart pveproxy.service
-	&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;manual solution:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /usr/share/javascript/proxmox-widget-toolkit
-cp proxmoxlib.js proxmoxlib.js.bak
-nano proxmoxlib.js
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# change&lt;/span&gt; 
-&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;data.status !&lt;span style=&#34;color:#555&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;Active&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
-
-&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#366&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#restart pveproxy.service&lt;/span&gt;
-systemctl restart pveproxy.service&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;change-update-source&#34;&gt;Change update source&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#chang debian source list&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&amp;#34;&lt;/span&gt; &amp;gt; /etc/apt/sources.list
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#change pve 5.x update source list&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/apt/sources.list
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#change ceph source list to utsc mirrors&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/apt/sources.list
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# add key&lt;/span&gt;
-wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
-
-apt update &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y dist-upgrade
-update-grub&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1 id=&#34;remove-sourcelist-of-pve-enterprise-subscription-and-ceph&#34;&gt;Remove sourcelist of pve enterprise subscription and ceph&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Delete Enterprise subscription.&lt;/span&gt;
-rm -rf /etc/apt/sources.list.d/pve-enterprise.list
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Delete proxmox ve offical ceph source.&lt;/span&gt; 
-rm -rf /etc/apt/sources.list.d/ceph.list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://forum.proxmox.com/threads/proxmox-wont-install-a-volume-group-called-pve-already-exists.43724/&#34;&gt;Proxmox won’t install - “A volume group called pve already exists”.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://johnscs.com/remove-proxmox51-subscription-notice/&#34;&gt;Remove Proxmox 5.1 or 5.2 Subscription Notice&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
       
     </item>
     
