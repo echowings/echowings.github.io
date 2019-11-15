@@ -35,7 +35,7 @@ mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.
 
 
 
-<meta name="generator" content="Hugo 0.59.0" />
+<meta name="generator" content="Hugo 0.59.1" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/how-to-configure-debian-10-as-a-docker-server/" />
@@ -80,7 +80,7 @@ mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.
 
 <meta itemprop="datePublished" content="2019-07-26T16:58:29&#43;08:00" />
 <meta itemprop="dateModified" content="2019-07-26T16:58:29&#43;08:00" />
-<meta itemprop="wordCount" content="311">
+<meta itemprop="wordCount" content="346">
 
 
 
@@ -393,7 +393,11 @@ if (!doNotTrack) {
 <li><a href="#how-to-configure-debian-10-as-a-docker-server">How to configure debian 10 as a docker server</a>
 <ul>
 <li><a href="#install-debian-10-in-promxox-ve">Install debian 10 in promxox ve</a></li>
-<li><a href="#after-install-deiban-10">After install deiban 10</a></li>
+<li><a href="#after-install-deiban-10">After install deiban 10</a>
+<ul>
+<li><a href="#option-1">option 1:</a></li>
+<li><a href="#option-2">option 2:</a></li>
+</ul></li>
 <li><a href="#vim-setting">vim setting</a></li>
 <li><a href="#cloud-init">cloud-init</a></li>
 <li><a href="#install-docker-on-debian-10">Install docker on debian 10</a>
@@ -411,6 +415,7 @@ if (!doNotTrack) {
 <li><a href="#permit-root-can-loing-with-password">Permit root can loing with password</a></li>
 <li><a href="#change-machine-id">Change machine-id</a></li>
 </ul></li>
+<li><a href="#swell">Swell</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -441,7 +446,10 @@ apt install -y openssh-server git vim cloud-init apt-transport-https
 sed -i <span style="color:#c30">&#39;s/http/https/g&#39;</span> /etc/apt/sources.list
 apt update <span style="color:#555">&amp;&amp;</span> apt -y dist-upgrade</code></pre></div></li>
 
-<li><p>To fix perl error warning</p>
+<li><p>To fix perl error warning</p></li>
+</ul>
+
+<h3 id="option-1">option 1:</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">export</span> <span style="color:#033">LANGUAGE</span><span style="color:#555">=</span>en_US.UTF-8
 <span style="color:#366">export</span> <span style="color:#033">LANG</span><span style="color:#555">=</span>en_US.UTF-8
 <span style="color:#366">export</span> <span style="color:#033">LC_ALL</span><span style="color:#555">=</span>en_US.UTF-8
@@ -449,9 +457,12 @@ apt update <span style="color:#555">&amp;&amp;</span> apt -y dist-upgrade</code>
 cat &gt;&gt; /etc/environment <span style="color:#c30">&lt;&lt;EOF
 </span><span style="color:#c30">LC_ALL=en_US.UTF-8
 </span><span style="color:#c30">LANG=en_US.UTF-8
-</span><span style="color:#c30">EOF</span></code></pre></div></li>
-</ul>
-
+</span><span style="color:#c30">EOF</span></code></pre></div>
+<h3 id="option-2">option 2:</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo <span style="color:#366">echo</span> <span style="color:#c30">&#34;LC_ALL=en_US.UTF-8&#34;</span> &gt;&gt; /etc/environment
+sudo <span style="color:#366">echo</span> <span style="color:#c30">&#34;en_US.UTF-8 UTF-8&#34;</span> &gt;&gt; /etc/locale.gen
+sudo <span style="color:#366">echo</span> <span style="color:#c30">&#34;LANG=en_US.UTF-8&#34;</span> &gt; /etc/locale.conf
+sudo locale-gen en_US.UTF-8</code></pre></div>
 <h2 id="vim-setting">vim setting</h2>
 
 <ul>
@@ -511,6 +522,12 @@ sudo systemctl restart sshd</code></pre></div>
 truncate -s <span style="color:#f60">0</span>  /etc/machine-id
 ln -s /etc/machine-id /var/lib/dbus/machine-id</code></pre></div>
 <p>&mdash;THE END&mdash;</p>
+
+<h2 id="swell">Swell</h2>
+
+<ol>
+<li><a href="https://askubuntu.com/questions/599808/cannot-set-lc-ctype-to-default-locale-no-such-file-or-directory">Cannot set LC_CTYPE to default locale: No such file or directory</a></li>
+</ol>
 
     </div>
 

@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 22 Oct 2019 10:23:46 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 14 Nov 2019 13:40:56 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Deploy Cloud Images on Pve</title>
+      <link>https://blog.stevedong.com/post/how-to-deploy-cloud-images-on-pve/</link>
+      <pubDate>Thu, 14 Nov 2019 13:40:56 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/how-to-deploy-cloud-images-on-pve/</guid>
+      <description>How to Deploy Cloud Images on PVE To deploy cloud images on pve has a lot of benifit, for example, auto expand disk capicity, auto update and auto deploy virtual machine.
+How to deploy debian 10 colud image on pve I perfer to debian as my first choice between all of the linux distributes. since it has light footprinting and more stable.</description>
+    </item>
     
     <item>
       <title>Some_tips_for_management_promxmoxve</title>
@@ -467,7 +477,7 @@ if [ &amp;ldquo;ls -A /config&amp;rdquo; = &amp;ldquo;&amp;rdquo; ]; then cp /sr
       <pubDate>Tue, 18 Dec 2018 00:44:13 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/deploy-overture-with-docker-and-freebsd/</guid>
-      <description>Run overture on Docker and FreeBSD 12 ENV foo /overture WORKDIR ${foo} RUN apt-get update &amp;&amp; apt-get install -y ca-certificates RUN printf &#34;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.</description>
+      <description>Run overture on Docker and FreeBSD 12 ENV foo /overtureWORKDIR${foo}RUN apt-get update &amp;amp;&amp;amp; apt-get install -y ca-certificatesRUN printf &amp;#34;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse&amp;#34; &amp;gt; /etc/apt/sources.</description>
     </item>
     
     <item>
@@ -519,17 +529,6 @@ iperf -c   Command for -s server -c client + server IP -u udp -b bandwith(the ma
       
       <guid>https://blog.stevedong.com/post/ssh-login-without-password/</guid>
       <description> Ssh Login Without Password SSH login linux/unix without password General your key ssh-keygen-t rsa  copy your rsa.pub to server which you want to login without password. ssh-copy-id -i ~/.ssh/id_rsa.pub user1@$server-hosts Test login ssh user1@$server-hosts</description>
-    </item>
-    
-    <item>
-      <title>Proxmoxve VE V5.x Installation</title>
-      <link>https://blog.stevedong.com/post/proxmox-ve-v5.x-installation/</link>
-      <pubDate>Mon, 19 Nov 2018 23:38:39 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/proxmox-ve-v5.x-installation/</guid>
-      <description>Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
- Boot the proxmox installer USB Select Debug Mode Press “CTRL+D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.
-sed -i.bak &amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;amp;&amp;amp; systemctl restart pveproxy.service  manual solution:</description>
     </item>
     
   </channel>
