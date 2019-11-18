@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>How to Deploy Librenms With Dockercompose - Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>How to Deploy Librenms With Docker-compose - Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -61,7 +61,7 @@ Download config files mkdir librenms-docker-compose cd librenms-docker-compose #
 
 
 
-<meta property="og:title" content="How to Deploy Librenms With Dockercompose" />
+<meta property="og:title" content="How to Deploy Librenms With Docker-compose" />
 <meta property="og:description" content="How to deploy librenms with docker-compsoe Librenms is a very light and easy handle moniting software. It is suitable for us to monitoring server,network device, printers etc. via snmp.
 At now, docker is easy for software deployment. After deploy librenms in ubuntu vm, I have a try to deploy librenms with docker-compose.
 Download config files mkdir librenms-docker-compose cd librenms-docker-compose #Download .env file wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/.env # Download docker-compose file wget https://raw." />
@@ -69,7 +69,7 @@ Download config files mkdir librenms-docker-compose cd librenms-docker-compose #
 <meta property="og:url" content="https://blog.stevedong.com/post/how-to-deploy-librenms-with-docker-compose/" />
 <meta property="article:published_time" content="2019-06-05T21:47:54+08:00" />
 <meta property="article:modified_time" content="2019-06-05T21:47:54+08:00" />
-<meta itemprop="name" content="How to Deploy Librenms With Dockercompose">
+<meta itemprop="name" content="How to Deploy Librenms With Docker-compose">
 <meta itemprop="description" content="How to deploy librenms with docker-compsoe Librenms is a very light and easy handle moniting software. It is suitable for us to monitoring server,network device, printers etc. via snmp.
 At now, docker is easy for software deployment. After deploy librenms in ubuntu vm, I have a try to deploy librenms with docker-compose.
 Download config files mkdir librenms-docker-compose cd librenms-docker-compose #Download .env file wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/.env # Download docker-compose file wget https://raw.">
@@ -77,13 +77,13 @@ Download config files mkdir librenms-docker-compose cd librenms-docker-compose #
 
 <meta itemprop="datePublished" content="2019-06-05T21:47:54&#43;08:00" />
 <meta itemprop="dateModified" content="2019-06-05T21:47:54&#43;08:00" />
-<meta itemprop="wordCount" content="353">
+<meta itemprop="wordCount" content="327">
 
 
 
 <meta itemprop="keywords" content="librenms," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="How to Deploy Librenms With Dockercompose"/>
+<meta name="twitter:title" content="How to Deploy Librenms With Docker-compose"/>
 <meta name="twitter:description" content="How to deploy librenms with docker-compsoe Librenms is a very light and easy handle moniting software. It is suitable for us to monitoring server,network device, printers etc. via snmp.
 At now, docker is easy for software deployment. After deploy librenms in ubuntu vm, I have a try to deploy librenms with docker-compose.
 Download config files mkdir librenms-docker-compose cd librenms-docker-compose #Download .env file wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/.env # Download docker-compose file wget https://raw."/>
@@ -359,7 +359,7 @@ if (!doNotTrack) {
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">How to Deploy Librenms With Dockercompose</h1>
+      <h1 class="post-title">How to Deploy Librenms With Docker-compose</h1>
       
       <div class="post-meta">
         <time datetime="2019-06-05" class="post-time">
@@ -395,6 +395,14 @@ if (!doNotTrack) {
 <ul>
 <li><a href="#change-treafik-config">Change treafik config</a></li>
 <li><a href="#change-smtp-config">Change smtp config</a></li>
+<li><a href="#change-librenms-config">Change librenms config</a></li>
+<li><a href="#change-cron-config">Change cron config</a></li>
+<li><a href="#change-syslog-ng">Change syslog-ng:</a></li>
+</ul></li>
+<li><a href="#modify-librenms-env">Modify <code>librenms.env</code></a></li>
+<li><a href="#run-docker-compose-to-up-librenms-containers">Run docker-compose to up librenms containers</a>
+<ul>
+<li><a href="#enable-proxmox-app-moniting">enable proxmox app moniting</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -496,85 +504,52 @@ chmod <span style="color:#f60">600</span> acme.json</code></pre></div>
 
 <ul>
 <li><p>Change <code>services: | smtp: | environment: | - &quot;SERVER_HOSTNAME=&quot;</code> to <code>- &quot;SERVER_HOSTNAME=mylibrenms.private.local&quot;</code></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i <span style="color:#c30">&#39;s/-\ \&#34;SERVER_HOSTNAME=librenms.example.com\&#34;/-\ \&#34;SERVER_HOSTNAME=mylibrenms.private.local\&#34;/g&#39;</span> docker-compose.yml <span style="color:#c30">```</span>
-  
-
-<span style="color:#09f;font-style:italic">### Change librenms config</span>
-- Change <span style="color:#c30">`</span>services: | librenms: | domainname: <span style="color:#c30">`</span> to <span style="color:#c30">`</span>domainname: private.local<span style="color:#c30">`</span>.
- </code></pre></div>
-<p>bash</p></li>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">	sed -i <span style="color:#c30">&#39;s/-\ \&#34;SERVER_HOSTNAME=librenms.example.com\&#34;/-\ \&#34;SERVER_HOSTNAME=mylibrenms.private.local\&#34;/g&#39;</span> docker-compose.yml</code></pre></div></li>
 </ul>
 
-<p>sed -i &rsquo;s/domainname:\ example.com/domainname:\ private.local/g&rsquo; docker-compose.yml</p>
+<h3 id="change-librenms-config">Change librenms config</h3>
 
-<pre><code>  
-  - Change `services: | librenms: | hostname: ` to `hostname; mylibrenms`.
-  
+<ul>
+<li><p>Change <code>services: | librenms: | domainname:</code> to <code>domainname: private.local</code>.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i <span style="color:#c30">&#39;s/domainname:\ example.com/domainname:\ private.local/g&#39;</span> docker-compose.yml</code></pre></div></li>
 
-</code></pre>
+<li><p>Change <code>services: | librenms: | hostname:</code> to <code>hostname; mylibrenms</code>.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i <span style="color:#c30">&#39;s/hostname:\ librenms/hostname:\ mylibrenms/g&#39;</span> docker-compose.yml
+  </code></pre></div></li>
 
-<p>bash
-  sed -i &rsquo;s/hostname:\ librenms/hostname:\ mylibrenms/g&rsquo; docker-compose.yml</p>
+<li><p>Change <code>services: | librenms: | labels: | - &quot; traefik.frontend.rule=&quot;</code> to <code>- &quot;traefik.frontend.rule=Host:mylibrenms&quot;</code>.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i <span style="color:#c30">&#39;s/-\ \&#34;traefik.frontend.rule=Host:librenms.example.com\&#34;/-\ \&#34;traefik.frontend.rule=Host:mylibrenms.private.local\&#34;/g&#39;</span> docker-compose.yml</code></pre></div></li>
+</ul>
 
-<pre><code>  
-  - Change `services: | librenms: | labels: | - &quot; traefik.frontend.rule=&quot;` to ` - &quot;traefik.frontend.rule=Host:mylibrenms&quot;`.
-  
-</code></pre>
+<h3 id="change-cron-config">Change cron config</h3>
 
-<p>bash
-sed -i &rsquo;s/-\ \&ldquo;traefik.frontend.rule=Host:librenms.example.com\&ldquo;/-\ \&ldquo;traefik.frontend.rule=Host:mylibrenms.private.local\&ldquo;/g&rsquo; docker-compose.yml</p>
+<ul>
+<li><p>Change <code>services: | cron: | domainname:</code> to <code>domainname: private.local</code>.</p></li>
 
-<pre><code>  
+<li><p>Change <code>services: | cron: | hostname:</code> to <code>hostname: mylibrenms</code>.</p></li>
+</ul>
 
-### Change cron config
-  - Change `services: | cron: | domainname:` to `domainname: private.local`.
+<h3 id="change-syslog-ng">Change syslog-ng:</h3>
 
+<ol>
+<li>Change <code>services: | syslog-ng: | domainname:</code> to <code>domainname: private.local</code>.</li>
+<li>Change <code>services: | syslog-ng: | hostname:</code> to <code>hostname: mylibrenms</code>.</li>
+</ol>
 
+<h2 id="modify-librenms-env">Modify <code>librenms.env</code></h2>
 
-  
-  - Change `services: | cron: | hostname:` to `hostname: mylibrenms`.
+<ul>
+<li><p>Change <code>LIBRENMS_SNMP_COMMUNITY=</code> to <code>LIBRENMS_SNMP_COMMUNITY=public</code>.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i <span style="color:#c30">&#39;s/LIBRENMS_SNMP_COMMUNITY=librenmsdocker/LIBRENMS_SNMP_COMMUNITY=public/g&#39;</span> librenms.env</code></pre></div></li>
+</ul>
 
-### Change syslog-ng:
-
-  1. Change `services: | syslog-ng: | domainname: ` to `domainname: private.local`.
-  2. Change `services: | syslog-ng: | hostname:` to `hostname: mylibrenms`.
-
-## Modify `librenms.env`
-
-
-  - Change `LIBRENMS_SNMP_COMMUNITY=` to `LIBRENMS_SNMP_COMMUNITY=public`.
- 
-</code></pre>
-
-<p>bash
- sed -i &rsquo;s/LIBRENMS_SNMP_COMMUNITY=librenmsdocker/LIBRENMS_SNMP_COMMUNITY=public/g&rsquo; librenms.env</p>
-
-<pre><code> 
- 
-
-  
-## Run docker-compose to up librenms containers
-
-</code></pre>
-
-<p>shell
-docker-compose up -d</p>
-
-<pre><code>
-
-### enable proxmox app moniting
-
-</code></pre>
-
-<p>shell</p>
-
-<p>cat &lt;&lt; EOF &gt; librenms/config.php
-&lt;?php
-$config[&lsquo;enable_proxmox&rsquo;] = true;
-EOF</p>
-
-<p>```</p>
-
+<h2 id="run-docker-compose-to-up-librenms-containers">Run docker-compose to up librenms containers</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker-compose up -d</code></pre></div>
+<h3 id="enable-proxmox-app-moniting">enable proxmox app moniting</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat <span style="color:#c30">&lt;&lt; EOF &gt; librenms/config.php
+</span><span style="color:#c30">&lt;?php
+</span><span style="color:#c30">$config[&#39;enable_proxmox&#39;] = true;
+</span><span style="color:#c30">EOF</span></code></pre></div>
     </div>
 
     
