@@ -509,6 +509,7 @@ chmod <span style="color:#f60">600</span> acme.json</code></pre></div>
 
 <pre><code>  
   - Change `services: | librenms: | hostname: ` to `hostname; mylibrenms`.
+  
 
 </code></pre>
 
@@ -534,6 +535,7 @@ sed -i &rsquo;s/-\ \&ldquo;traefik.frontend.rule=Host:librenms.example.com\&ldqu
   - Change `services: | cron: | hostname:` to `hostname: mylibrenms`.
 
 ### Change syslog-ng:
+
   1. Change `services: | syslog-ng: | domainname: ` to `domainname: private.local`.
   2. Change `services: | syslog-ng: | hostname:` to `hostname: mylibrenms`.
 
@@ -541,7 +543,7 @@ sed -i &rsquo;s/-\ \&ldquo;traefik.frontend.rule=Host:librenms.example.com\&ldqu
 
 
   - Change `LIBRENMS_SNMP_COMMUNITY=` to `LIBRENMS_SNMP_COMMUNITY=public`.
-  
+ 
 </code></pre>
 
 <p>bash
