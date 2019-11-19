@@ -74,7 +74,7 @@ Download and modified docker-compose.yml for elasticflow # Download `docker-comp
 
 <meta itemprop="datePublished" content="2019-11-19T17:11:27&#43;08:00" />
 <meta itemprop="dateModified" content="2019-11-19T17:11:27&#43;08:00" />
-<meta itemprop="wordCount" content="120">
+<meta itemprop="wordCount" content="124">
 
 
 
@@ -408,7 +408,7 @@ wget https://raw.githubusercontent.com/robcowart/elastiflow/master/docker-compos
 <span style="color:#09f;font-style:italic"># version 3.5.2 is now existed. So we need change it to `3.5.1`</span>
 sed -i <span style="color:#c30">&#39;s/robcowart/elastiflow-logstash-oss:3.5.2/robcowart/elastiflow-logstash-oss:3.5.1/g&#39;</span> -i docker-comopse.yml
 
-<span style="color:#09f;font-style:italic">#Change volumes for</span> 
+<span style="color:#09f;font-style:italic">#Change volumes from `/var/lib/elastiflow_es to current folder`</span>
 sed -i <span style="color:#c30">&#39;s/\/var\/lib\/elastiflow_es/.\/elastiflow_es/g&#39;</span>  docker-compose.yml
 
 <span style="color:#09f;font-style:italic"># Create data folder and change folder permission.</span>
