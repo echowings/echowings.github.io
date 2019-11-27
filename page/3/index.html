@@ -63,7 +63,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
 
-<meta property="og:updated_time" content="2019-11-19T17:11:27+08:00" />
+<meta property="og:updated_time" content="2019-11-27T11:56:41+08:00" />
 <meta itemprop="name" content="Steve Dong - A System Administrator&#39;s Blog">
 <meta itemprop="description" content="A System Administrator&#39;s Blog.">
 
@@ -346,6 +346,41 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/how-to-fix-linux-perl-lc_all_error/">How to Fix Linux Perl LC_ALL_ERROR</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-04-16" class="post-time">
+        2019-04-16
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
+          <a href="https://blog.stevedong.com/categories/perl/"> perl </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+       How to fix perl LC_ALL ERROR export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF
+    </div>
+    <div class="read-more">
+      <a href="/post/how-to-fix-linux-perl-lc_all_error/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -834,41 +869,6 @@ if [ &ldquo;ls -A /config&rdquo; = &ldquo;&rdquo; ]; then cp /srv/config.
     </div>
     <div class="read-more">
       <a href="/post/debian-or-ubuntu-chinese-language-support/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/install-powerdns-and-mysql-on-freebsd12/">Install PowerDNS and Mysql on Freebsd12</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2018-12-18" class="post-time">
-        2018-12-18
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/freebsd/"> freebsd </a>
-          <a href="https://blog.stevedong.com/categories/powerdns/"> powerdns </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&#34;YES&#34; service mysql-server restart Database and User Configuration $ mysql mysql&gt; create database powerdns charset = utf8; mysql&gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&gt; FLUSH PRIVILEGES; #For security, we also give the main admin password $ mysqladmin -u root password &#34;PASSWORD_OF_ROOT&#34; Install powerdns pkg install powerdns Reference  How to manage MySQL databases and users from the command line PowerDNS, PowerAdmin with Mysql in Freebsd 10.
-    </div>
-    <div class="read-more">
-      <a href="/post/install-powerdns-and-mysql-on-freebsd12/" class="read-more-link">Read more</a>
     </div>
     
   </div>

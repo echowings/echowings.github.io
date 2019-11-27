@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 19 Nov 2019 17:11:27 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 Nov 2019 11:56:41 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Change Settings After Clone Debian 10 With Cloudinit Enable on Proxmox Ve</title>
+      <link>https://blog.stevedong.com/post/proxmoxve/how-to-change-settings-after-clone-debian-10-with-cloudinit-enable-on-proxmox-ve/</link>
+      <pubDate>Wed, 27 Nov 2019 11:56:41 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/proxmoxve/how-to-change-settings-after-clone-debian-10-with-cloudinit-enable-on-proxmox-ve/</guid>
+      <description>How to Change Settings After Clone Debian 10 With Cloudinit Enable on Proxmox VE Issue I found an issue about create a linux vm as a template with cloudinit enabled. Seem like after cloned the virtual machine, the cloud-init cd rom didn&amp;rsquo;t be created automatically. We need to delete it,then change setings again to apply the apt source.
+solution #!/usr/bin/env sh  mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.list apt update &amp;amp;&amp;amp; apt -y dist-upgrade apt install -y openssh-server git vim cloud-init apt-transport-https sed -i &amp;#39;s/http/https/g&amp;#39; /etc/apt/sources.</description>
+    </item>
     
     <item>
       <title>How to Install Elasticflow</title>
@@ -521,15 +531,6 @@ iperf -c   Command for -s server -c client + server IP -u udp -b bandwith(the ma
       
       <guid>https://blog.stevedong.com/post/how-to-remove-lc_ctype-error/</guid>
       <description>apt-get autoremove export LC_ALL=en_US.UTF-8 echo &amp;quot;en_US.UTF-8 UTF-8&amp;quot; &amp;gt;&amp;gt; /etc/locale.gen locale-gen  </description>
-    </item>
-    
-    <item>
-      <title>Python Development 01</title>
-      <link>https://blog.stevedong.com/post/python-development-01/</link>
-      <pubDate>Thu, 29 Nov 2018 00:28:31 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/python-development-01/</guid>
-      <description>Python Development python开发笔记-01-python开发入门 安装ptyhon开发工具和包 安装ubuntu 16.04 &amp;hellip;pass&amp;hellip; 安装系统相关依赖包 build-essen</description>
     </item>
     
   </channel>
