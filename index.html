@@ -63,7 +63,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
 
-<meta property="og:updated_time" content="2019-11-27T11:56:41+08:00" />
+<meta property="og:updated_time" content="2019-11-27T12:24:57+08:00" />
 <meta itemprop="name" content="Steve Dong - A System Administrator&#39;s Blog">
 <meta itemprop="description" content="A System Administrator&#39;s Blog.">
 
@@ -346,6 +346,40 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/devops/how-to-install-gitlab-with-docker-compose/">How to Install Gitlab With Docker-Compose</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-11-27" class="post-time">
+        2019-11-27
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/devops/"> devops </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to Install gitlab with docer-compose version:&#34;3.5&#34;services:gitlab:image:gitlab/gitlab-ce:latestcontainer_name:gitlabrestart:alwayshostname:&#39;xa-gitlab&#39;environment:GITLAB_OMNIBUS_CONFIG:| external_url &#39;http://xa-gitlab&#39;gitlab_rails[&#39;backup_keep_time&#39;]=604800gitlab_rails[&#39;time_zone&#39;]=&#39;Asia/Shanghai&#39;gitlab_rails[&#39;gitlab_shell_ssh_port&#39;]=1022#gitlab_rails[&#39;ldap_enabled&#39;] = true#gitlab_rails[&#39;ldap_servers&#39;] = YAML.load &lt;&lt;-EOS#main:# label: &#39;LDAP&#39;# host: &#39;192.168.1.1&#39;# port: 389# uid: &#39;uid&#39;# bind_dn: &#39;CN=admin,DC=lotbrick,DC=com&#39;# password: &#39;admin&#39;# user_filter: &#39;objectclass=person&#39;# base: &#39;ou=People,dc=lotbrick,dc=com&#39;# active_directory: false# method: &#39;plain&#39;# attributes:# username: [&#34;cn&#34;]# email: [&#39;email&#39;]# name: &#39;displayName&#39;# first_name: &#39;givenName&#39;# last_name: &#39;sn&#39;#EOSports:-&#39;80:80&#39;-&#39;443:443&#39;-&#39;1022:22&#39;volumes:-./gitlab/config:/etc/gitlab-./gitlab/logs:/var/log/gitlab-./gitlab/data:/var/opt/gitlab# - &#34;/etc/localtime:/etc/localtime:ro&#34; Reference Docker+GitLab+LDAP部署过程
+    </div>
+    <div class="read-more">
+      <a href="/post/devops/how-to-install-gitlab-with-docker-compose/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -838,42 +872,6 @@ With cloudinit images it is easy to do that.
     </div>
     <div class="read-more">
       <a href="/post/build-ubuntu18.04-with-cloudinit-support/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/how-to-deploy-librenms-with-docker-compose/">How to Deploy Librenms With Docker-compose</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-06-05" class="post-time">
-        2019-06-05
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/monitoring/"> monitoring </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to deploy librenms with docker-compsoe Librenms is a very light and easy handle moniting software. It is suitable for us to monitoring server,network device, printers etc. via snmp.
-At now, docker is easy for software deployment. After deploy librenms in ubuntu vm, I have a try to deploy librenms with docker-compose.
-Download config files mkdir librenms-docker-compose cd librenms-docker-compose #Download .env file wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/.env # Download docker-compose file wget https://raw.
-    </div>
-    <div class="read-more">
-      <a href="/post/how-to-deploy-librenms-with-docker-compose/" class="read-more-link">Read more</a>
     </div>
     
   </div>

@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 27 Nov 2019 11:56:41 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 Nov 2019 12:24:57 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Install Gitlab With Docker-Compose</title>
+      <link>https://blog.stevedong.com/post/devops/how-to-install-gitlab-with-docker-compose/</link>
+      <pubDate>Wed, 27 Nov 2019 12:24:57 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/devops/how-to-install-gitlab-with-docker-compose/</guid>
+      <description>How to Install gitlab with docer-compose version:&amp;#34;3.5&amp;#34;services:gitlab:image:gitlab/gitlab-ce:latestcontainer_name:gitlabrestart:alwayshostname:&amp;#39;xa-gitlab&amp;#39;environment:GITLAB_OMNIBUS_CONFIG:| external_url &amp;#39;http://xa-gitlab&amp;#39;gitlab_rails[&amp;#39;backup_keep_time&amp;#39;]=604800gitlab_rails[&amp;#39;time_zone&amp;#39;]=&amp;#39;Asia/Shanghai&amp;#39;gitlab_rails[&amp;#39;gitlab_shell_ssh_port&amp;#39;]=1022#gitlab_rails[&amp;#39;ldap_enabled&amp;#39;] = true#gitlab_rails[&amp;#39;ldap_servers&amp;#39;] = YAML.load &amp;lt;&amp;lt;-EOS#main:# label: &amp;#39;LDAP&amp;#39;# host: &amp;#39;192.168.1.1&amp;#39;# port: 389# uid: &amp;#39;uid&amp;#39;# bind_dn: &amp;#39;CN=admin,DC=lotbrick,DC=com&amp;#39;# password: &amp;#39;admin&amp;#39;# user_filter: &amp;#39;objectclass=person&amp;#39;# base: &amp;#39;ou=People,dc=lotbrick,dc=com&amp;#39;# active_directory: false# method: &amp;#39;plain&amp;#39;# attributes:# username: [&amp;#34;cn&amp;#34;]# email: [&amp;#39;email&amp;#39;]# name: &amp;#39;displayName&amp;#39;# first_name: &amp;#39;givenName&amp;#39;# last_name: &amp;#39;sn&amp;#39;#EOSports:-&amp;#39;80:80&amp;#39;-&amp;#39;443:443&amp;#39;-&amp;#39;1022:22&amp;#39;volumes:-./gitlab/config:/etc/gitlab-./gitlab/logs:/var/log/gitlab-./gitlab/data:/var/opt/gitlab# - &amp;#34;/etc/localtime:/etc/localtime:ro&amp;#34; Reference Docker+GitLab+LDAP部署过程</description>
+    </item>
     
     <item>
       <title>How to Change Settings After Clone Debian 10 With Cloudinit Enable on Proxmox Ve</title>
@@ -522,15 +531,6 @@ iperf -c -u Testing network speed with TCP
  Server side.
 iperf -s Client side.
 iperf -c   Command for -s server -c client + server IP -u udp -b bandwith(the max bandwidth -t time,how long to send packet.</description>
-    </item>
-    
-    <item>
-      <title>How to Remove LC_CTYPE Error</title>
-      <link>https://blog.stevedong.com/post/how-to-remove-lc_ctype-error/</link>
-      <pubDate>Thu, 29 Nov 2018 23:48:32 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/how-to-remove-lc_ctype-error/</guid>
-      <description>apt-get autoremove export LC_ALL=en_US.UTF-8 echo &amp;quot;en_US.UTF-8 UTF-8&amp;quot; &amp;gt;&amp;gt; /etc/locale.gen locale-gen  </description>
     </item>
     
   </channel>
