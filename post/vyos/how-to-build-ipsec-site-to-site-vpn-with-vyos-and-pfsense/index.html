@@ -74,7 +74,7 @@
 
 <meta itemprop="datePublished" content="2019-12-19T14:36:09&#43;08:00" />
 <meta itemprop="dateModified" content="2019-12-19T14:36:09&#43;08:00" />
-<meta itemprop="wordCount" content="547">
+<meta itemprop="wordCount" content="583">
 
 
 
@@ -394,11 +394,16 @@ if (!doNotTrack) {
 <li><a href="#general-information">General Information</a></li>
 <li><a href="#phase-1-proposal-authentication">Phase 1 Proposal (Authentication)</a></li>
 <li><a href="#phase-1-proposal-encryption-algorithm">Phase 1 Proposal(Encryption Algorithm)</a></li>
-<li><a href="#advanced-options">Advanced Options</a></li>
+<li><a href="#advanced-options">Advanced Options</a>
+<ul>
 <li><a href="#add-p2">Add P2</a></li>
+</ul></li>
 <li><a href="#general-information-1">General Information</a></li>
 <li><a href="#phase-2-proposal-sa-key-exchange">Phase 2 Proposal(SA/Key Exchange)</a></li>
-<li><a href="#advanced-configuration">Advanced Configuration</a></li>
+<li><a href="#advanced-configuration">Advanced Configuration</a>
+<ul>
+<li><a href="#change-firewall-to-allow-ipsec-vpn-connection">Change firewall to allow ipsec vpn connection</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -710,7 +715,7 @@ if (!doNotTrack) {
 </tbody>
 </table>
 
-<h2 id="add-p2">Add P2</h2>
+<h3 id="add-p2">Add P2</h3>
 
 <h2 id="general-information-1">General Information</h2>
 
@@ -797,6 +802,48 @@ if (!doNotTrack) {
 
 <p>|Key | Value |
 |Automatically ping host | 192.168.1.1 |</p>
+
+<h3 id="change-firewall-to-allow-ipsec-vpn-connection">Change firewall to allow ipsec vpn connection</h3>
+
+<table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Source</th>
+<th>Port</th>
+<th>Destination</th>
+<th>Port</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Ipv4 UDP</td>
+<td>1.1.1.1</td>
+<td>*</td>
+<td>WAN address</td>
+<td>500(ISAKMP)</td>
+</tr>
+
+<tr>
+<td>IPv4 UDP</td>
+<td>1.1.1.1</td>
+<td>*</td>
+<td>WAN address</td>
+<td>4500(IPsec NAT-T)</td>
+</tr>
+
+<tr>
+<td>Ipv4 ESP</td>
+<td>1.1.1.1</td>
+<td>*</td>
+<td>WAN address</td>
+<td>*</td>
+</tr>
+</tbody>
+</table>
+
+<p>&mdash;The End&mdash;</p>
 
     </div>
 
