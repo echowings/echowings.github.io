@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Dec 2019 22:39:01 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 19 Dec 2019 14:36:09 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Build Ipsec Site to Site Vpn With Vyos and Pfsense</title>
+      <link>https://blog.stevedong.com/post/vyos/how-to-build-ipsec-site-to-site-vpn-with-vyos-and-pfsense/</link>
+      <pubDate>Thu, 19 Dec 2019 14:36:09 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/vyos/how-to-build-ipsec-site-to-site-vpn-with-vyos-and-pfsense/</guid>
+      <description>How to build ipse site-to-site VPN with vyos and pfsense Vyos VS pfsense For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:
+ Hard to upgrade version, it manybe crashed Not support API. Heavy loading.   After try to replace pfsense to build all functions with vyos. It has a lot of pros:</description>
+    </item>
     
     <item>
       <title>How to Install Jenkins With Docker Compose</title>
@@ -17,7 +27,7 @@
       <pubDate>Tue, 10 Dec 2019 22:39:01 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/devops/how-to-install-jenkins-with-docker-compose/</guid>
-      <description>How to install Jenkins with docker compose Create Dockerfile With office jenkins docker images.change the jenkins mirrors and change alpine linux soure list to aliyun #DockerfilecatDockerfileFROMjenkins/jenkins:alpineUSERrootENVJENKINS_MIRRORhttps://mirrors.tuna.tsinghua.edu.cnENVJENKINS_UC_DOWNLOAD=&amp;#34;https://mirrors.tuna.tsinghua.edu.cn/jenkins/&amp;#34;RUNsed-i&amp;#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&amp;#39;/etc/apk/repositories\&amp;amp;&amp;amp;sed-i&amp;#39;s/http:\/\/updates.jenkins-ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g&amp;#39;/var/jenkins_home/updates/default.json\&amp;amp;&amp;amp;sed-i&amp;#39;s/http:\/\/www.google.com/https:\/\/www.baidu.com/g&amp;#39;/var/jenkins_home/updates/default.json\&amp;amp;&amp;amp;apkupdate\&amp;amp;&amp;amp;apkadddockernodejsnodejs-npmyarn Create docker-compose.yaml # docker-compose.yamlversion:&amp;#34;2.4&amp;#34;services:jenkins:build:./#image: jenkins/jenkins:alpinecontainer_name:jenkinsports:-&amp;#34;80:8080&amp;#34;-&amp;#34;50000:50000&amp;#34;environment:#- JAVA_OPTS=-Xmx1500m -Duser.timezone=GMT+8-JAVA_OPTS=-Duser.timezone=GMT+8-JENKINS_UC_DOWNLOAD=https://mirrors.tuna.tsinghua.edu.cn/jenkins/volumes:-./data/jenkins:/var/jenkins_home-/var/run/docker.sock:/var/run/docker.sock-/root/.ssh/:/root/.ssh-/etc/localtime:/etc/localtime:ro# cpus: 3.5# mem_limit: 1800muser:rootrestart:always Install Jenkins with Check initial Admin Password by run command as show below cat data/jenkins/secrets/initialAdminPassword Reference Jenkins for Docker 跳过插件安装及插件加速镜像设</description>
+      <description>How to install Jenkins with docker compose Create Dockerfile With office jenkins docker images.change the jenkins mirrors and change alpine linux soure list to aliyun #DockerfileFROMjenkins/jenkins:alpineUSERrootENVJENKINS_MIRRORhttps://mirrors.tuna.tsinghua.edu.cnENVJENKINS_UC_DOWNLOAD=&amp;#34;https://mirrors.tuna.tsinghua.edu.cn/jenkins/&amp;#34;RUNsed-i&amp;#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&amp;#39;/etc/apk/repositories\&amp;amp;&amp;amp;apkupdate\&amp;amp;&amp;amp;apkadddockernodejsnodejs-npmyarn Create docker-compose.yaml # docker-compose.yamlversion:&amp;#34;2.4&amp;#34;services:jenkins:build:./#image: jenkins/jenkins:alpinecontainer_name:jenkinsports:-&amp;#34;80:8080&amp;#34;-&amp;#34;50000:50000&amp;#34;environment:#- JAVA_OPTS=-Xmx1500m -Duser.timezone=GMT+8-JAVA_OPTS=-Duser.timezone=GMT+8-JENKINS_UC_DOWNLOAD=https://mirrors.tuna.tsinghua.edu.cn/jenkins/volumes:-./data/jenkins:/var/jenkins_home-/var/run/docker.sock:/var/run/docker.sock-/root/.ssh/:/root/.ssh-/etc/localtime:/etc/localtime:ro# cpus: 3.5# mem_limit: 1800muser:rootrestart:always Install Jenkins with Check initial Admin Password by run command as show below cat data/jenkins/secrets/initialAdminPassword Reference Jenkins for Docker 跳过插件安装及插件加速镜像设</description>
     </item>
     
     <item>
@@ -516,16 +526,6 @@ if [ &amp;ldquo;ls -A /config&amp;rdquo; = &amp;ldquo;&amp;rdquo; ]; then cp /sr
       
       <guid>https://blog.stevedong.com/post/deploy-overture-with-docker-and-freebsd/</guid>
       <description>Run overture on Docker and FreeBSD 12 ENV foo /overtureWORKDIR${foo}RUN apt-get update &amp;amp;&amp;amp; apt-get install -y ca-certificatesRUN printf &amp;#34;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse&amp;#34; &amp;gt; /etc/apt/sources.</description>
-    </item>
-    
-    <item>
-      <title>How to install ProxmoxVE 5.x on Debian 9</title>
-      <link>https://blog.stevedong.com/post/proxmox-ve-how-to-install-proxmoxve5-on-debian9/</link>
-      <pubDate>Sat, 01 Dec 2018 00:02:28 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/proxmox-ve-how-to-install-proxmoxve5-on-debian9/</guid>
-      <description>How to Install Proxmox VE 5.x on Debian 9 Chang IP ADDRESS vi /etc/network/interfaces
-# This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *.</description>
     </item>
     
   </channel>

@@ -63,7 +63,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
 
-<meta property="og:updated_time" content="2019-12-10T22:39:01+08:00" />
+<meta property="og:updated_time" content="2019-12-19T14:36:09+08:00" />
 <meta itemprop="name" content="Steve Dong - A System Administrator&#39;s Blog">
 <meta itemprop="description" content="A System Administrator&#39;s Blog.">
 
@@ -346,6 +346,43 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/how-to-setup-cloud-init-in-proxmoxve/">How to Setup Cloud Init in Proxmoxve</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-07-12" class="post-time">
+        2019-07-12
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/index/"> index </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to setup cloud-init in prxmox ve Cloud-init can help us to deploy or change settings of linux virutal machine via api or manually by ourself.
+There are two ways to setup cloud-init: command line or change settings in GUI.
+Option 1: Download cloud-init image and setup with shell Please reference my blog Build Ubuntu 18.04 server with cloudinit support
+Option 2: Manually Setup cloud-init We can do this with 2 steps.
+    </div>
+    <div class="read-more">
+      <a href="/post/how-to-setup-cloud-init-in-proxmoxve/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -837,44 +874,6 @@ I found that each time when i change network settings. There will be a named int
     </div>
     <div class="read-more">
       <a href="/post/proxmox-ve-how-to-chang-network-of-hosting-without-reboot-proxmox-ve/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/proxmox-ve-how-to-convert-vmware-esxi-virtual-machine-to-kvm-virtual-machine/">Proxmox VE - How to Convert Vmware Esxi VM to proxmox-VE VM</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-04-26" class="post-time">
-        2019-04-26
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to convert vmware esix VM to proxmox-VE VM V2V Convert vmware virtual machines to kvm virtual machine is easy.
-Convert windows VM  Remove VWware tools Uninstall vmware tools and reboot vm.
- Switch disk mode to IDE
- Download Mergeide, unzip it and run it,then reboot your vm. or you can save follow code as mergeide.reg.
-Windows Registry Editor Version 5.00 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\primary_ide_channel] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\secondary_ide_channel] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\*pnp0600] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\*azt0502] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\gendisk] &#34;ClassGUID&#34;=&#34;{4D36E967-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;disk&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#cc_0101] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_0e11&amp;dev_ae33] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1039&amp;dev_0601] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1039&amp;dev_5513] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1042&amp;dev_1000] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_105a&amp;dev_4d33] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0640] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0646] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0646&amp;REV_05] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0646&amp;REV_07] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0648] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0649] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1097&amp;dev_0038] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10ad&amp;dev_0001] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10ad&amp;dev_0150] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;dev_5215] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;dev_5219] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;dev_5229] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1106&amp;dev_0571] &#34;Service&#34;=&#34;pciide&#34; &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_1222] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_1230] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_2411] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_2421] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_7010] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_7111] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_7199] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; ;Add driver for Atapi (requires Atapi.
-    </div>
-    <div class="read-more">
-      <a href="/post/proxmox-ve-how-to-convert-vmware-esxi-virtual-machine-to-kvm-virtual-machine/" class="read-more-link">Read more</a>
     </div>
     
   </div>

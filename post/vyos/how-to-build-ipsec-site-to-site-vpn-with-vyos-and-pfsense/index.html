@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>How to Install Jenkins With Docker Compose - Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>How to Build Ipsec Site to Site Vpn With Vyos and Pfsense - Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="How to install Jenkins with docker compose Create Dockerfile With office jenkins docker images.change the jenkins mirrors and change alpine linux soure list to aliyun #DockerfileFROMjenkins/jenkins:alpineUSERrootENVJENKINS_MIRRORhttps://mirrors.tuna.tsinghua.edu.cnENVJENKINS_UC_DOWNLOAD=&amp;#34;https://mirrors.tuna.tsinghua.edu.cn/jenkins/&amp;#34;RUNsed-i&amp;#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&amp;#39;/etc/apk/repositories\&amp;amp;&amp;amp;apkupdate\&amp;amp;&amp;amp;apkadddockernodejsnodejs-npmyarn Create docker-compose.yaml # docker-compose.yamlversion:&amp;#34;2.4&amp;#34;services:jenkins:build:./#image: jenkins/jenkins:alpinecontainer_name:jenkinsports:-&amp;#34;80:8080&amp;#34;-&amp;#34;50000:50000&amp;#34;environment:#- JAVA_OPTS=-Xmx1500m -Duser.timezone=GMT&#43;8-JAVA_OPTS=-Duser.timezone=GMT&#43;8-JENKINS_UC_DOWNLOAD=https://mirrors.tuna.tsinghua.edu.cn/jenkins/volumes:-./data/jenkins:/var/jenkins_home-/var/run/docker.sock:/var/run/docker.sock-/root/.ssh/:/root/.ssh-/etc/localtime:/etc/localtime:ro# cpus: 3.5# mem_limit: 1800muser:rootrestart:always Install Jenkins with Check initial Admin Password by run command as show below cat data/jenkins/secrets/initialAdminPassword Reference Jenkins for Docker 跳过插件安装及插件加速镜像设" />
+  <meta name="description" content="How to build ipse site-to-site VPN with vyos and pfsense Vyos VS pfsense For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:
+ Hard to upgrade version, it manybe crashed Not support API. Heavy loading.   After try to replace pfsense to build all functions with vyos. It has a lot of pros:" />
 
   <meta name="keywords" content="proxmox ve, network, devops, sdn, system Administation" />
 
@@ -35,7 +36,7 @@
 <meta name="generator" content="Hugo 0.59.1" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/post/devops/how-to-install-jenkins-with-docker-compose/" />
+<link rel="canonical" href="https://blog.stevedong.com/post/vyos/how-to-build-ipsec-site-to-site-vpn-with-vyos-and-pfsense/" />
 
 
 
@@ -59,26 +60,29 @@
 
 
 
-<meta property="og:title" content="How to Install Jenkins With Docker Compose" />
-<meta property="og:description" content="How to install Jenkins with docker compose Create Dockerfile With office jenkins docker images.change the jenkins mirrors and change alpine linux soure list to aliyun #DockerfileFROMjenkins/jenkins:alpineUSERrootENVJENKINS_MIRRORhttps://mirrors.tuna.tsinghua.edu.cnENVJENKINS_UC_DOWNLOAD=&#34;https://mirrors.tuna.tsinghua.edu.cn/jenkins/&#34;RUNsed-i&#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&#39;/etc/apk/repositories\&amp;&amp;apkupdate\&amp;&amp;apkadddockernodejsnodejs-npmyarn Create docker-compose.yaml # docker-compose.yamlversion:&#34;2.4&#34;services:jenkins:build:./#image: jenkins/jenkins:alpinecontainer_name:jenkinsports:-&#34;80:8080&#34;-&#34;50000:50000&#34;environment:#- JAVA_OPTS=-Xmx1500m -Duser.timezone=GMT&#43;8-JAVA_OPTS=-Duser.timezone=GMT&#43;8-JENKINS_UC_DOWNLOAD=https://mirrors.tuna.tsinghua.edu.cn/jenkins/volumes:-./data/jenkins:/var/jenkins_home-/var/run/docker.sock:/var/run/docker.sock-/root/.ssh/:/root/.ssh-/etc/localtime:/etc/localtime:ro# cpus: 3.5# mem_limit: 1800muser:rootrestart:always Install Jenkins with Check initial Admin Password by run command as show below cat data/jenkins/secrets/initialAdminPassword Reference Jenkins for Docker 跳过插件安装及插件加速镜像设" />
+<meta property="og:title" content="How to Build Ipsec Site to Site Vpn With Vyos and Pfsense" />
+<meta property="og:description" content="How to build ipse site-to-site VPN with vyos and pfsense Vyos VS pfsense For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:
+ Hard to upgrade version, it manybe crashed Not support API. Heavy loading.   After try to replace pfsense to build all functions with vyos. It has a lot of pros:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/devops/how-to-install-jenkins-with-docker-compose/" />
-<meta property="article:published_time" content="2019-12-10T22:39:01+08:00" />
-<meta property="article:modified_time" content="2019-12-10T22:39:01+08:00" />
-<meta itemprop="name" content="How to Install Jenkins With Docker Compose">
-<meta itemprop="description" content="How to install Jenkins with docker compose Create Dockerfile With office jenkins docker images.change the jenkins mirrors and change alpine linux soure list to aliyun #DockerfileFROMjenkins/jenkins:alpineUSERrootENVJENKINS_MIRRORhttps://mirrors.tuna.tsinghua.edu.cnENVJENKINS_UC_DOWNLOAD=&#34;https://mirrors.tuna.tsinghua.edu.cn/jenkins/&#34;RUNsed-i&#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&#39;/etc/apk/repositories\&amp;&amp;apkupdate\&amp;&amp;apkadddockernodejsnodejs-npmyarn Create docker-compose.yaml # docker-compose.yamlversion:&#34;2.4&#34;services:jenkins:build:./#image: jenkins/jenkins:alpinecontainer_name:jenkinsports:-&#34;80:8080&#34;-&#34;50000:50000&#34;environment:#- JAVA_OPTS=-Xmx1500m -Duser.timezone=GMT&#43;8-JAVA_OPTS=-Duser.timezone=GMT&#43;8-JENKINS_UC_DOWNLOAD=https://mirrors.tuna.tsinghua.edu.cn/jenkins/volumes:-./data/jenkins:/var/jenkins_home-/var/run/docker.sock:/var/run/docker.sock-/root/.ssh/:/root/.ssh-/etc/localtime:/etc/localtime:ro# cpus: 3.5# mem_limit: 1800muser:rootrestart:always Install Jenkins with Check initial Admin Password by run command as show below cat data/jenkins/secrets/initialAdminPassword Reference Jenkins for Docker 跳过插件安装及插件加速镜像设">
+<meta property="og:url" content="https://blog.stevedong.com/post/vyos/how-to-build-ipsec-site-to-site-vpn-with-vyos-and-pfsense/" />
+<meta property="article:published_time" content="2019-12-19T14:36:09+08:00" />
+<meta property="article:modified_time" content="2019-12-19T14:36:09+08:00" />
+<meta itemprop="name" content="How to Build Ipsec Site to Site Vpn With Vyos and Pfsense">
+<meta itemprop="description" content="How to build ipse site-to-site VPN with vyos and pfsense Vyos VS pfsense For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:
+ Hard to upgrade version, it manybe crashed Not support API. Heavy loading.   After try to replace pfsense to build all functions with vyos. It has a lot of pros:">
 
 
-<meta itemprop="datePublished" content="2019-12-10T22:39:01&#43;08:00" />
-<meta itemprop="dateModified" content="2019-12-10T22:39:01&#43;08:00" />
-<meta itemprop="wordCount" content="71">
+<meta itemprop="datePublished" content="2019-12-19T14:36:09&#43;08:00" />
+<meta itemprop="dateModified" content="2019-12-19T14:36:09&#43;08:00" />
+<meta itemprop="wordCount" content="547">
 
 
 
-<meta itemprop="keywords" content="devops,jenkins,pipline," />
+<meta itemprop="keywords" content="vyos,pfsense,ipsec,site-to-site," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="How to Install Jenkins With Docker Compose"/>
-<meta name="twitter:description" content="How to install Jenkins with docker compose Create Dockerfile With office jenkins docker images.change the jenkins mirrors and change alpine linux soure list to aliyun #DockerfileFROMjenkins/jenkins:alpineUSERrootENVJENKINS_MIRRORhttps://mirrors.tuna.tsinghua.edu.cnENVJENKINS_UC_DOWNLOAD=&#34;https://mirrors.tuna.tsinghua.edu.cn/jenkins/&#34;RUNsed-i&#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&#39;/etc/apk/repositories\&amp;&amp;apkupdate\&amp;&amp;apkadddockernodejsnodejs-npmyarn Create docker-compose.yaml # docker-compose.yamlversion:&#34;2.4&#34;services:jenkins:build:./#image: jenkins/jenkins:alpinecontainer_name:jenkinsports:-&#34;80:8080&#34;-&#34;50000:50000&#34;environment:#- JAVA_OPTS=-Xmx1500m -Duser.timezone=GMT&#43;8-JAVA_OPTS=-Duser.timezone=GMT&#43;8-JENKINS_UC_DOWNLOAD=https://mirrors.tuna.tsinghua.edu.cn/jenkins/volumes:-./data/jenkins:/var/jenkins_home-/var/run/docker.sock:/var/run/docker.sock-/root/.ssh/:/root/.ssh-/etc/localtime:/etc/localtime:ro# cpus: 3.5# mem_limit: 1800muser:rootrestart:always Install Jenkins with Check initial Admin Password by run command as show below cat data/jenkins/secrets/initialAdminPassword Reference Jenkins for Docker 跳过插件安装及插件加速镜像设"/>
+<meta name="twitter:title" content="How to Build Ipsec Site to Site Vpn With Vyos and Pfsense"/>
+<meta name="twitter:description" content="How to build ipse site-to-site VPN with vyos and pfsense Vyos VS pfsense For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:
+ Hard to upgrade version, it manybe crashed Not support API. Heavy loading.   After try to replace pfsense to build all functions with vyos. It has a lot of pros:"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -351,14 +355,14 @@ if (!doNotTrack) {
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">How to Install Jenkins With Docker Compose</h1>
+      <h1 class="post-title">How to Build Ipsec Site to Site Vpn With Vyos and Pfsense</h1>
       
       <div class="post-meta">
-        <time datetime="2019-12-10" class="post-time">
-          2019-12-10
+        <time datetime="2019-12-19" class="post-time">
+          2019-12-19
         </time>
         <div class="post-category">
-            <a href="https://blog.stevedong.com/categories/devops/"> devops </a>
+            <a href="https://blog.stevedong.com/categories/networking/"> networking </a>
             
           </div>
         
@@ -378,12 +382,23 @@ if (!doNotTrack) {
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#how-to-install-jenkins-with-docker-compose">How to install Jenkins with docker compose</a>
+<li><a href="#how-to-build-ipse-site-to-site-vpn-with-vyos-and-pfsense">How to build ipse site-to-site VPN with vyos and pfsense</a>
 <ul>
-<li><a href="#create-dockerfile">Create Dockerfile</a></li>
-<li><a href="#create-docker-compose-yaml">Create docker-compose.yaml</a></li>
-<li><a href="#install-jenkins-with">Install Jenkins with</a></li>
-<li><a href="#reference">Reference</a></li>
+<li><a href="#vyos-vs-pfsense">Vyos VS pfsense</a></li>
+<li><a href="#prerequest">Prerequest</a></li>
+<li><a href="#configure-vyos">Configure vyos</a></li>
+<li><a href="#configure-pfsense">Configure pfsense</a>
+<ul>
+<li><a href="#add-p1">Add P1</a></li>
+</ul></li>
+<li><a href="#general-information">General Information</a></li>
+<li><a href="#phase-1-proposal-authentication">Phase 1 Proposal (Authentication)</a></li>
+<li><a href="#phase-1-proposal-encryption-algorithm">Phase 1 Proposal(Encryption Algorithm)</a></li>
+<li><a href="#advanced-options">Advanced Options</a></li>
+<li><a href="#add-p2">Add P2</a></li>
+<li><a href="#general-information-1">General Information</a></li>
+<li><a href="#phase-2-proposal-sa-key-exchange">Phase 2 Proposal(SA/Key Exchange)</a></li>
+<li><a href="#advanced-configuration">Advanced Configuration</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -394,52 +409,394 @@ if (!doNotTrack) {
     <div class="post-content">
       
 
-<h1 id="how-to-install-jenkins-with-docker-compose">How to install Jenkins with docker compose</h1>
+<h1 id="how-to-build-ipse-site-to-site-vpn-with-vyos-and-pfsense">How to build ipse site-to-site VPN with vyos and pfsense</h1>
 
-<h2 id="create-dockerfile">Create Dockerfile</h2>
+<h2 id="vyos-vs-pfsense">Vyos VS pfsense</h2>
 
-<p>With office jenkins docker images.change the jenkins mirrors and change alpine linux soure list to aliyun</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#09f;font-style:italic">#Dockerfile</span><span style="color:#bbb">
-</span><span style="color:#bbb"></span>FROM<span style="color:#bbb"> </span>jenkins/jenkins:alpine<span style="color:#bbb">
-</span><span style="color:#bbb"></span>USER<span style="color:#bbb"> </span>root<span style="color:#bbb">
-</span><span style="color:#bbb"></span>ENV<span style="color:#bbb"> </span>JENKINS_MIRROR<span style="color:#bbb"> </span>https://mirrors.tuna.tsinghua.edu.cn<span style="color:#bbb">
-</span><span style="color:#bbb"></span>ENV<span style="color:#bbb"> </span>JENKINS_UC_DOWNLOAD=<span style="color:#c30">&#34;https://mirrors.tuna.tsinghua.edu.cn/jenkins/&#34;</span><span style="color:#bbb">
-</span><span style="color:#bbb"></span>RUN<span style="color:#bbb"> </span>sed<span style="color:#bbb"> </span>-i<span style="color:#bbb"> </span><span style="color:#c30">&#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&#39;</span><span style="color:#bbb"> </span>/etc/apk/repositories<span style="color:#bbb"> </span>\<span style="color:#bbb">
-</span><span style="color:#bbb">	 </span><span style="color:#099">&amp;&amp;</span><span style="color:#bbb"> </span>apk<span style="color:#bbb"> </span>update<span style="color:#bbb"> </span>\<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#099">&amp;&amp;</span><span style="color:#bbb"> </span>apk<span style="color:#bbb"> </span>add<span style="color:#bbb"> </span>docker<span style="color:#bbb"> </span>nodejs<span style="color:#bbb"> </span>nodejs-npm<span style="color:#bbb"> </span>yarn</code></pre></div>
-<h2 id="create-docker-compose-yaml">Create docker-compose.yaml</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#09f;font-style:italic"># docker-compose.yaml</span><span style="color:#bbb">
-</span><span style="color:#bbb"></span>version:<span style="color:#bbb"> </span><span style="color:#c30">&#34;2.4&#34;</span><span style="color:#bbb">
-</span><span style="color:#bbb"></span>services:<span style="color:#bbb">
-</span><span style="color:#bbb">  </span>jenkins:<span style="color:#bbb">
-</span><span style="color:#bbb">    </span>build:<span style="color:#bbb"> </span>./<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#09f;font-style:italic">#image: jenkins/jenkins:alpine</span><span style="color:#bbb">
-</span><span style="color:#bbb">    </span>container_name:<span style="color:#bbb"> </span>jenkins<span style="color:#bbb">
-</span><span style="color:#bbb">    </span>ports:<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span><span style="color:#c30">&#34;80:8080&#34;</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span><span style="color:#c30">&#34;50000:50000&#34;</span><span style="color:#bbb">
-</span><span style="color:#bbb">    </span>environment:<span style="color:#bbb">
-</span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic">#- JAVA_OPTS=-Xmx1500m -Duser.timezone=GMT+8</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>JAVA_OPTS=-Duser.timezone=GMT<span style="color:#f60">+8</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>JENKINS_UC_DOWNLOAD=https://mirrors.tuna.tsinghua.edu.cn/jenkins/<span style="color:#bbb">
-</span><span style="color:#bbb">    </span>volumes:<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>./data/jenkins:/var/jenkins_home<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>/var/run/docker.sock:/var/run/docker.sock<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>/root/.ssh/:/root/.ssh<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>/etc/localtime:/etc/localtime:ro<span style="color:#bbb">
-</span><span style="color:#bbb"></span><span style="color:#09f;font-style:italic">#    cpus: 3.5</span><span style="color:#bbb">
-</span><span style="color:#bbb"></span><span style="color:#09f;font-style:italic">#    mem_limit: 1800m</span><span style="color:#bbb">
-</span><span style="color:#bbb">    </span>user:<span style="color:#bbb"> </span>root<span style="color:#bbb">
-</span><span style="color:#bbb">    </span>restart:<span style="color:#bbb"> </span>always</code></pre></div>
-<h2 id="install-jenkins-with">Install Jenkins with</h2>
+<p>For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:</p>
 
-<p>Check initial Admin Password by run command as show below</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat data/jenkins/secrets/initialAdminPassword</code></pre></div>
-<h2 id="reference">Reference</h2>
+<ol>
+<li>Hard to upgrade version, it manybe crashed</li>
+<li>Not support API.</li>
+<li>Heavy loading.
 
-<ul>
-<li><a href="https://6xyun.cn/article/92">Jenkins for Docker 跳过插件安装及插件加速镜像设置</a></li>
-</ul>
+<br /></li>
+</ol>
+
+<p>After try to replace pfsense to build  all functions with vyos. It has a lot of pros:</p>
+
+<ol>
+<li>Easy upgrade and rollback</li>
+<li>Support http and python api</li>
+<li>Support ansible deploy</li>
+<li>Command line operation,just like juniper and cisco.</li>
+</ol>
+
+<p>Today I will show you how to build ipsec site-to-site vpn with vyos and pfsense</p>
+
+<h2 id="prerequest">Prerequest</h2>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SITE A</th>
+<th>SITE B</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>WAN ADDRESS</td>
+<td><code>1.1.1.1</code></td>
+<td><code>2.2.2.2</code></td>
+</tr>
+
+<tr>
+<td>WAN Interface</td>
+<td><code>eth0</code></td>
+<td><code>eth0</code></td>
+</tr>
+
+<tr>
+<td>LAN ADDRESS</td>
+<td><code>192.168.1.1/24</code></td>
+<td><code>192.168.2.1/24</code></td>
+</tr>
+
+<tr>
+<td>LAN NETWORK</td>
+<td><code>192.168.1.0/24</code></td>
+<td><code>192.168.2.0/24</code></td>
+</tr>
+
+<tr>
+<td>LAN Interface</td>
+<td><code>eth1</code></td>
+<td><code>eth1</code></td>
+</tr>
+
+<tr>
+<td>OS</td>
+<td><code>Vyos</code></td>
+<td><code>pfsense</code></td>
+</tr>
+
+<tr>
+<td>Pre-Shared Key</td>
+<td><code>*#JCenaoewaoi0298J299*8&amp;^(%9))_&amp;&amp;</code></td>
+<td><code>*#JCenaoewaoi0298J299*8&amp;^(%9))_&amp;&amp;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="configure-vyos">Configure vyos</h2>
+
+<p>Configure <code>Site A</code></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">configure
+<span style="color:#366">set</span> vpn ipsec ipsec-interfaces interface eth0
+<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default dead-peer-detection action <span style="color:#c30">&#39;hold&#39;</span>
+<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default dead-peer-detection interval <span style="color:#c30">&#39;30&#39;</span>
+<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default dead-peer-detection timeout <span style="color:#c30">&#39;120&#39;</span>
+<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default ikev2-reauth <span style="color:#c30">&#39;no&#39;</span>
+<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default key-exchange <span style="color:#c30">&#39;ikev2&#39;</span>
+<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default lifetime <span style="color:#c30">&#39;10800&#39;</span>
+<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default mobike <span style="color:#c30">&#39;disable&#39;</span>
+<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default proposal <span style="color:#f60">1</span> dh-group <span style="color:#c30">&#39;14&#39;</span>
+<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default proposal <span style="color:#f60">1</span> encryption <span style="color:#c30">&#39;aes256gcm128&#39;</span>
+<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default proposal <span style="color:#f60">1</span> <span style="color:#366">hash</span> <span style="color:#c30">&#39;sha256&#39;</span>
+
+<span style="color:#366">set</span> vpn ipsec esp-group ESP-Default compression <span style="color:#c30">&#39;disable&#39;</span>
+<span style="color:#366">set</span> vpn ipsec esp-group ESP-Default lifetime <span style="color:#c30">&#39;3600&#39;</span>
+<span style="color:#366">set</span> vpn ipsec esp-group ESP-Default mode <span style="color:#c30">&#39;tunnel&#39;</span>
+<span style="color:#366">set</span> vpn ipsec esp-group ESP-Default pfs <span style="color:#c30">&#39;dh-group14&#39;</span>
+<span style="color:#366">set</span> vpn ipsec esp-group ESP-Default proposal <span style="color:#f60">1</span> encryption <span style="color:#c30">&#39;aes256gcm128&#39;</span>
+<span style="color:#366">set</span> vpn ipsec esp-group ESP-Default proposal <span style="color:#f60">1</span> <span style="color:#366">hash</span> <span style="color:#c30">&#39;sha256&#39;</span>
+
+<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 authentication id <span style="color:#c30">&#39;1.1.1.1&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 authentication mode <span style="color:#c30">&#39;pre-shared-secret&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 authentication pre-shared-secret <span style="color:#c30">&#39;*#JCenaoewaoi0298J299*8&amp;^(%9))_&amp;&amp;&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 authentication remote-id <span style="color:#c30">&#39;2.2.2.2&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 connection-type <span style="color:#c30">&#39;initiate&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 ike-group <span style="color:#c30">&#39;IKE-Default&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 ikev2-reauth <span style="color:#c30">&#39;inherit&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 local-address <span style="color:#c30">&#39;1.1.1.1&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 tunnel <span style="color:#f60">0</span> esp-group <span style="color:#c30">&#39;ESP-Default&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 tunnel <span style="color:#f60">0</span> <span style="color:#366">local</span> prefix <span style="color:#c30">&#39;192.168.1.0/24&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 tunnel <span style="color:#f60">0</span> remote prefix <span style="color:#c30">&#39;192.168.2.0/24&#39;</span></code></pre></div>
+<h2 id="configure-pfsense">Configure pfsense</h2>
+
+<p>Configure <code>Site B</code></p>
+
+<ol>
+<li>After login pfsense click <code>VPN</code> |  <code>IPsec</code>;</li>
+<li>Then click &lsquo;Add P1` button.</li>
+<li>configuraton as show below</li>
+</ol>
+
+<h3 id="add-p1">Add P1</h3>
+
+<h2 id="general-information">General Information</h2>
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>Disabled</code></td>
+<td>uncheck</td>
+</tr>
+
+<tr>
+<td><code>Key Exchange version</code></td>
+<td>IKEv2</td>
+</tr>
+
+<tr>
+<td>Internet Protocol</td>
+<td>IPv4</td>
+</tr>
+
+<tr>
+<td>Interfae</td>
+<td>WAN</td>
+</tr>
+
+<tr>
+<td>Remote Gateway</td>
+<td>1.1.1.1</td>
+</tr>
+
+<tr>
+<td>Description</td>
+<td>SITE-A-VPN</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="phase-1-proposal-authentication">Phase 1 Proposal (Authentication)</h2>
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Authentication Method</td>
+<td>Mutual PSK</td>
+</tr>
+
+<tr>
+<td>My identifier</td>
+<td>My IP address</td>
+</tr>
+
+<tr>
+<td>Peer identifier</td>
+<td>Peer IP address</td>
+</tr>
+
+<tr>
+<td>Pre-Shared Key</td>
+<td><code>*#JCenaoewaoi0298J299*8&amp;^(%9))_&amp;&amp;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="phase-1-proposal-encryption-algorithm">Phase 1 Proposal(Encryption Algorithm)</h2>
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Algorithm</th>
+<th>Key length</th>
+<th>Hash</th>
+<th>DH Group</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Encryption Algorithm</td>
+<td>AES256-GCM</td>
+<td>SHA256</td>
+<td>14(2048bit)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Lifetime(Seconds)</td>
+<td>28800</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="advanced-options">Advanced Options</h2>
+
+<table>
+<thead>
+<tr>
+<th>KEY</th>
+<th>VALUE</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Disable rekey</td>
+<td>uncheck</td>
+</tr>
+
+<tr>
+<td>Margintime(Seconds</td>
+<td>black</td>
+</tr>
+
+<tr>
+<td>Disable Reauth</td>
+<td>uncheck</td>
+</tr>
+
+<tr>
+<td>Responder Only</td>
+<td>Uncheck</td>
+</tr>
+
+<tr>
+<td>MOBIKE</td>
+<td>Disable</td>
+</tr>
+
+<tr>
+<td>Split connections</td>
+<td>uncheck</td>
+</tr>
+
+<tr>
+<td>Dead Peer Dection</td>
+<td>&lsquo;Check on&rsquo; Enable DPD</td>
+</tr>
+
+<tr>
+<td>Delay</td>
+<td>120</td>
+</tr>
+
+<tr>
+<td>Max failures</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="add-p2">Add P2</h2>
+
+<h2 id="general-information-1">General Information</h2>
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Disable</td>
+<td>unchecked</td>
+</tr>
+
+<tr>
+<td>Mode</td>
+<td>Tunnel IPv4</td>
+</tr>
+
+<tr>
+<td>Local network</td>
+<td>Network  192.168.2.0/24</td>
+</tr>
+
+<tr>
+<td>NAT/BINAT translation</td>
+<td>None</td>
+</tr>
+
+<tr>
+<td>Remote Network</td>
+<td>Network 192.168.1.0/24</td>
+</tr>
+
+<tr>
+<td>Description</td>
+<td>Site A</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="phase-2-proposal-sa-key-exchange">Phase 2 Proposal(SA/Key Exchange)</h2>
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Protocol</td>
+<td>ESP</td>
+</tr>
+
+<tr>
+<td>Encryption Algorithms</td>
+<td>AES256-GCM 128 bit</td>
+</tr>
+
+<tr>
+<td>Hash Algorithms</td>
+<td>SHA256</td>
+</tr>
+
+<tr>
+<td>PFS key group</td>
+<td>14(2048 bit)</td>
+</tr>
+
+<tr>
+<td>Lifttime</td>
+<td>3600</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="advanced-configuration">Advanced Configuration</h2>
+
+<p>|Key | Value |
+|Automatically ping host | 192.168.1.1 |</p>
 
     </div>
 
@@ -453,7 +810,7 @@ if (!doNotTrack) {
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2019-12-10
+      2019-12-19
       
     </span>
   </p>
@@ -479,31 +836,19 @@ if (!doNotTrack) {
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="https://blog.stevedong.com/tags/devops/">devops</a>
-          <a href="https://blog.stevedong.com/tags/jenkins/">jenkins</a>
-          <a href="https://blog.stevedong.com/tags/pipline/">pipline</a>
+          <a href="https://blog.stevedong.com/tags/vyos/">vyos</a>
+          <a href="https://blog.stevedong.com/tags/pfsense/">pfsense</a>
+          <a href="https://blog.stevedong.com/tags/ipsec/">ipsec</a>
+          <a href="https://blog.stevedong.com/tags/site-to-site/">site-to-site</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/vyos/how-to-build-ipsec-site-to-site-vpn-with-vyos-and-pfsense/">
-            
-            <i class="iconfont">
-              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-            </i>
-            <span class="prev-text nav-default">How to Build Ipsec Site to Site Vpn With Vyos and Pfsense</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
         
-          <a class="next" href="/post/devops/how-to-install-gitlab-with-docker-compose/">
-            <span class="next-text nav-default">How to Install Gitlab With Docker-Compose</span>
+          <a class="next" href="/post/devops/how-to-install-jenkins-with-docker-compose/">
+            <span class="next-text nav-default">How to Install Jenkins With Docker Compose</span>
             <span class="prev-text nav-mobile">Next</span>
             
             <i class="iconfont">
