@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>How to Build Ipsec Site to Site Vpn With Vyos and Pfsense - Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>How to Install Graylog With Docker Compose - Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,8 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="How to build ipse site-to-site VPN with vyos and pfsense Vyos VS pfsense For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:
- Hard to upgrade version, it manybe crashed Didn&amp;rsquo;t support API. Heavy loading and low performance.   After try to replace pfsense to build all functions with vyos. It has a lot of pros:" />
+  <meta name="description" content=" How to Install Graylog with Docker-compose    Hostname my-graylog      Docker-compose.yaml version:&amp;#39;2&amp;#39;services:# MongoDB: https://hub.docker.com/_/mongo/mongodb:image:mongo:3volumes:-./data/mongo_data:/data/db-/etc/localtime:/etc/localtime:ro# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.htmlelasticsearch:image:docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2volumes:-./data/es_data:/usr/share/elasticsearch/data-/etc/localtime:/etc/localtime:roenvironment:-http.host=0.0.0.0-transport.host=localhost-network.host=0.0.0.0-&amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34;ulimits:memlock:soft:-1hard:-1mem_limit:1g# Graylog: https://hub.docker.com/r/graylog/graylog/graylog:image:graylog/graylog:3.1volumes:-./data/graylog_journal:/usr/share/graylog/data/journal-/etc/localtime:/etc/localtime:roenvironment:# CHANGE ME (must be at least 16 characters)!-GRAYLOG_PASSWORD_SECRET=somepasswordpepper# Password: admin-GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918-GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/links:-mongodb:mongo-elasticsearchdepends_on:-mongodb-elasticsearchports:# Graylog web interface and REST API-9000:9000# Syslog TCP-1514:1514# Syslog UDP-1514:1514/udp# GELF TCP-12201:12201# GELF UDP-12201:12201/udp# Volumes for persisting data, see https://docs.docker.com/engine/admin/volumes/volumes/ Start graylog docker-compose up -d Fixed permission of folder chown -R 1100:1100 data/graylog_journal/ chown -R 1000:1000 data/es_data/ docker-compose down docker-compose up -d" />
 
   <meta name="keywords" content="proxmox ve, network, devops, sdn, system Administation" />
 
@@ -36,7 +35,7 @@
 <meta name="generator" content="Hugo 0.59.1" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/post/vyos/how-to-build-ipsec-site-to-site-vpn-with-vyos-and-pfsense/" />
+<link rel="canonical" href="https://blog.stevedong.com/post/graylog/how-to-install-graylog-with-docker-compose/" />
 
 
 
@@ -60,29 +59,26 @@
 
 
 
-<meta property="og:title" content="How to Build Ipsec Site to Site Vpn With Vyos and Pfsense" />
-<meta property="og:description" content="How to build ipse site-to-site VPN with vyos and pfsense Vyos VS pfsense For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:
- Hard to upgrade version, it manybe crashed Didn&rsquo;t support API. Heavy loading and low performance.   After try to replace pfsense to build all functions with vyos. It has a lot of pros:" />
+<meta property="og:title" content="How to Install Graylog With Docker Compose" />
+<meta property="og:description" content=" How to Install Graylog with Docker-compose    Hostname my-graylog      Docker-compose.yaml version:&#39;2&#39;services:# MongoDB: https://hub.docker.com/_/mongo/mongodb:image:mongo:3volumes:-./data/mongo_data:/data/db-/etc/localtime:/etc/localtime:ro# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.htmlelasticsearch:image:docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2volumes:-./data/es_data:/usr/share/elasticsearch/data-/etc/localtime:/etc/localtime:roenvironment:-http.host=0.0.0.0-transport.host=localhost-network.host=0.0.0.0-&#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&#34;ulimits:memlock:soft:-1hard:-1mem_limit:1g# Graylog: https://hub.docker.com/r/graylog/graylog/graylog:image:graylog/graylog:3.1volumes:-./data/graylog_journal:/usr/share/graylog/data/journal-/etc/localtime:/etc/localtime:roenvironment:# CHANGE ME (must be at least 16 characters)!-GRAYLOG_PASSWORD_SECRET=somepasswordpepper# Password: admin-GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918-GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/links:-mongodb:mongo-elasticsearchdepends_on:-mongodb-elasticsearchports:# Graylog web interface and REST API-9000:9000# Syslog TCP-1514:1514# Syslog UDP-1514:1514/udp# GELF TCP-12201:12201# GELF UDP-12201:12201/udp# Volumes for persisting data, see https://docs.docker.com/engine/admin/volumes/volumes/ Start graylog docker-compose up -d Fixed permission of folder chown -R 1100:1100 data/graylog_journal/ chown -R 1000:1000 data/es_data/ docker-compose down docker-compose up -d" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/vyos/how-to-build-ipsec-site-to-site-vpn-with-vyos-and-pfsense/" />
-<meta property="article:published_time" content="2019-12-19T14:36:09+08:00" />
-<meta property="article:modified_time" content="2019-12-19T14:36:09+08:00" />
-<meta itemprop="name" content="How to Build Ipsec Site to Site Vpn With Vyos and Pfsense">
-<meta itemprop="description" content="How to build ipse site-to-site VPN with vyos and pfsense Vyos VS pfsense For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:
- Hard to upgrade version, it manybe crashed Didn&rsquo;t support API. Heavy loading and low performance.   After try to replace pfsense to build all functions with vyos. It has a lot of pros:">
+<meta property="og:url" content="https://blog.stevedong.com/post/graylog/how-to-install-graylog-with-docker-compose/" />
+<meta property="article:published_time" content="2019-12-24T11:27:21+08:00" />
+<meta property="article:modified_time" content="2019-12-24T11:27:21+08:00" />
+<meta itemprop="name" content="How to Install Graylog With Docker Compose">
+<meta itemprop="description" content=" How to Install Graylog with Docker-compose    Hostname my-graylog      Docker-compose.yaml version:&#39;2&#39;services:# MongoDB: https://hub.docker.com/_/mongo/mongodb:image:mongo:3volumes:-./data/mongo_data:/data/db-/etc/localtime:/etc/localtime:ro# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.htmlelasticsearch:image:docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2volumes:-./data/es_data:/usr/share/elasticsearch/data-/etc/localtime:/etc/localtime:roenvironment:-http.host=0.0.0.0-transport.host=localhost-network.host=0.0.0.0-&#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&#34;ulimits:memlock:soft:-1hard:-1mem_limit:1g# Graylog: https://hub.docker.com/r/graylog/graylog/graylog:image:graylog/graylog:3.1volumes:-./data/graylog_journal:/usr/share/graylog/data/journal-/etc/localtime:/etc/localtime:roenvironment:# CHANGE ME (must be at least 16 characters)!-GRAYLOG_PASSWORD_SECRET=somepasswordpepper# Password: admin-GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918-GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/links:-mongodb:mongo-elasticsearchdepends_on:-mongodb-elasticsearchports:# Graylog web interface and REST API-9000:9000# Syslog TCP-1514:1514# Syslog UDP-1514:1514/udp# GELF TCP-12201:12201# GELF UDP-12201:12201/udp# Volumes for persisting data, see https://docs.docker.com/engine/admin/volumes/volumes/ Start graylog docker-compose up -d Fixed permission of folder chown -R 1100:1100 data/graylog_journal/ chown -R 1000:1000 data/es_data/ docker-compose down docker-compose up -d">
 
 
-<meta itemprop="datePublished" content="2019-12-19T14:36:09&#43;08:00" />
-<meta itemprop="dateModified" content="2019-12-19T14:36:09&#43;08:00" />
-<meta itemprop="wordCount" content="584">
+<meta itemprop="datePublished" content="2019-12-24T11:27:21&#43;08:00" />
+<meta itemprop="dateModified" content="2019-12-24T11:27:21&#43;08:00" />
+<meta itemprop="wordCount" content="69">
 
 
 
-<meta itemprop="keywords" content="vyos,pfsense,ipsec,site-to-site," />
+<meta itemprop="keywords" content="graylog,docker,docker-compose,linux," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="How to Build Ipsec Site to Site Vpn With Vyos and Pfsense"/>
-<meta name="twitter:description" content="How to build ipse site-to-site VPN with vyos and pfsense Vyos VS pfsense For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:
- Hard to upgrade version, it manybe crashed Didn&rsquo;t support API. Heavy loading and low performance.   After try to replace pfsense to build all functions with vyos. It has a lot of pros:"/>
+<meta name="twitter:title" content="How to Install Graylog With Docker Compose"/>
+<meta name="twitter:description" content=" How to Install Graylog with Docker-compose    Hostname my-graylog      Docker-compose.yaml version:&#39;2&#39;services:# MongoDB: https://hub.docker.com/_/mongo/mongodb:image:mongo:3volumes:-./data/mongo_data:/data/db-/etc/localtime:/etc/localtime:ro# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.htmlelasticsearch:image:docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2volumes:-./data/es_data:/usr/share/elasticsearch/data-/etc/localtime:/etc/localtime:roenvironment:-http.host=0.0.0.0-transport.host=localhost-network.host=0.0.0.0-&#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&#34;ulimits:memlock:soft:-1hard:-1mem_limit:1g# Graylog: https://hub.docker.com/r/graylog/graylog/graylog:image:graylog/graylog:3.1volumes:-./data/graylog_journal:/usr/share/graylog/data/journal-/etc/localtime:/etc/localtime:roenvironment:# CHANGE ME (must be at least 16 characters)!-GRAYLOG_PASSWORD_SECRET=somepasswordpepper# Password: admin-GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918-GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/links:-mongodb:mongo-elasticsearchdepends_on:-mongodb-elasticsearchports:# Graylog web interface and REST API-9000:9000# Syslog TCP-1514:1514# Syslog UDP-1514:1514/udp# GELF TCP-12201:12201# GELF UDP-12201:12201/udp# Volumes for persisting data, see https://docs.docker.com/engine/admin/volumes/volumes/ Start graylog docker-compose up -d Fixed permission of folder chown -R 1100:1100 data/graylog_journal/ chown -R 1000:1000 data/es_data/ docker-compose down docker-compose up -d"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -355,14 +351,14 @@ if (!doNotTrack) {
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">How to Build Ipsec Site to Site Vpn With Vyos and Pfsense</h1>
+      <h1 class="post-title">How to Install Graylog With Docker Compose</h1>
       
       <div class="post-meta">
-        <time datetime="2019-12-19" class="post-time">
-          2019-12-19
+        <time datetime="2019-12-24" class="post-time">
+          2019-12-24
         </time>
         <div class="post-category">
-            <a href="https://blog.stevedong.com/categories/networking/"> networking </a>
+            <a href="https://blog.stevedong.com/categories/graylog/"> graylog </a>
             
           </div>
         
@@ -382,28 +378,11 @@ if (!doNotTrack) {
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#how-to-build-ipse-site-to-site-vpn-with-vyos-and-pfsense">How to build ipse site-to-site VPN with vyos and pfsense</a>
+<li><a href="#how-to-install-graylog-with-docker-compose">How to Install Graylog with Docker-compose</a>
 <ul>
-<li><a href="#vyos-vs-pfsense">Vyos VS pfsense</a></li>
-<li><a href="#prerequest">Prerequest</a></li>
-<li><a href="#configure-vyos">Configure vyos</a></li>
-<li><a href="#configure-pfsense">Configure pfsense</a>
-<ul>
-<li><a href="#add-p1">Add P1</a></li>
-</ul></li>
-<li><a href="#general-information">General Information</a></li>
-<li><a href="#phase-1-proposal-authentication">Phase 1 Proposal (Authentication)</a></li>
-<li><a href="#phase-1-proposal-encryption-algorithm">Phase 1 Proposal(Encryption Algorithm)</a></li>
-<li><a href="#advanced-options">Advanced Options</a>
-<ul>
-<li><a href="#add-p2">Add P2</a></li>
-</ul></li>
-<li><a href="#general-information-1">General Information</a></li>
-<li><a href="#phase-2-proposal-sa-key-exchange">Phase 2 Proposal(SA/Key Exchange)</a></li>
-<li><a href="#advanced-configuration">Advanced Configuration</a>
-<ul>
-<li><a href="#change-firewall-to-allow-ipsec-vpn-connection">Change firewall to allow ipsec vpn connection</a></li>
-</ul></li>
+<li><a href="#docker-compose-yaml">Docker-compose.yaml</a></li>
+<li><a href="#start-graylog">Start graylog</a></li>
+<li><a href="#fixed-permission-of-folder">Fixed permission of folder</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -414,450 +393,83 @@ if (!doNotTrack) {
     <div class="post-content">
       
 
-<h1 id="how-to-build-ipse-site-to-site-vpn-with-vyos-and-pfsense">How to build ipse site-to-site VPN with vyos and pfsense</h1>
-
-<h2 id="vyos-vs-pfsense">Vyos VS pfsense</h2>
-
-<p>For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:</p>
-
-<ol>
-<li>Hard to upgrade version, it manybe crashed</li>
-<li>Didn&rsquo;t support API.</li>
-<li>Heavy loading and low performance.
-
-<br /></li>
-</ol>
-
-<p>After try to replace pfsense to build  all functions with vyos. It has a lot of pros:</p>
-
-<ol>
-<li>Easy upgrade and rollback</li>
-<li>Support http and python api</li>
-<li>Support ansible deploy</li>
-<li>Command line operation,just like juniper and cisco.</li>
-</ol>
-
-<p>Today I will show you how to build ipsec site-to-site vpn with vyos and pfsense</p>
-
-<h2 id="prerequest">Prerequest</h2>
+<h1 id="how-to-install-graylog-with-docker-compose">How to Install Graylog with Docker-compose</h1>
 
 <table>
 <thead>
 <tr>
-<th></th>
-<th>SITE A</th>
-<th>SITE B</th>
+<th>Hostname</th>
+<th>my-graylog</th>
 </tr>
 </thead>
 
 <tbody>
-<tr>
-<td>WAN ADDRESS</td>
-<td><code>1.1.1.1</code></td>
-<td><code>2.2.2.2</code></td>
-</tr>
-
-<tr>
-<td>WAN Interface</td>
-<td><code>eth0</code></td>
-<td><code>eth0</code></td>
-</tr>
-
-<tr>
-<td>LAN ADDRESS</td>
-<td><code>192.168.1.1/24</code></td>
-<td><code>192.168.2.1/24</code></td>
-</tr>
-
-<tr>
-<td>LAN NETWORK</td>
-<td><code>192.168.1.0/24</code></td>
-<td><code>192.168.2.0/24</code></td>
-</tr>
-
-<tr>
-<td>LAN Interface</td>
-<td><code>eth1</code></td>
-<td><code>eth1</code></td>
-</tr>
-
-<tr>
-<td>OS</td>
-<td><code>Vyos</code></td>
-<td><code>pfsense</code></td>
-</tr>
-
-<tr>
-<td>Pre-Shared Key</td>
-<td><code>*#JCenaoewaoi0298J299*8&amp;^(%9))_&amp;&amp;</code></td>
-<td><code>*#JCenaoewaoi0298J299*8&amp;^(%9))_&amp;&amp;</code></td>
-</tr>
 </tbody>
 </table>
 
-<h2 id="configure-vyos">Configure vyos</h2>
+<h2 id="docker-compose-yaml">Docker-compose.yaml</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">version:<span style="color:#bbb"> </span><span style="color:#c30">&#39;2&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>services:<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#09f;font-style:italic"># MongoDB: https://hub.docker.com/_/mongo/</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span>mongodb:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>image:<span style="color:#bbb"> </span>mongo:<span style="color:#f60">3</span><span style="color:#bbb">
+</span><span style="color:#bbb">    </span>volumes:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>./data/mongo_data:/data/db<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>/etc/localtime:/etc/localtime:ro<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#09f;font-style:italic"># Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span>elasticsearch:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>image:<span style="color:#bbb"> </span>docker.elastic.co/elasticsearch/elasticsearch-oss:<span style="color:#f60">6.8.2</span><span style="color:#bbb">
+</span><span style="color:#bbb">    </span>volumes:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>./data/es_data:/usr/share/elasticsearch/data<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>/etc/localtime:/etc/localtime:ro<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>environment:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>http.host=<span style="color:#f60">0.0.0.0</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>transport.host=localhost<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>network.host=<span style="color:#f60">0.0.0.0</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span><span style="color:#c30">&#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&#34;</span><span style="color:#bbb">
+</span><span style="color:#bbb">    </span>ulimits:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>memlock:<span style="color:#bbb">
+</span><span style="color:#bbb">        </span>soft:<span style="color:#bbb"> </span>-<span style="color:#f60">1</span><span style="color:#bbb">
+</span><span style="color:#bbb">        </span>hard:<span style="color:#bbb"> </span>-<span style="color:#f60">1</span><span style="color:#bbb">
+</span><span style="color:#bbb">    </span>mem_limit:<span style="color:#bbb"> </span>1g<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#09f;font-style:italic"># Graylog: https://hub.docker.com/r/graylog/graylog/</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span>graylog:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>image:<span style="color:#bbb"> </span>graylog/graylog:<span style="color:#f60">3.1</span><span style="color:#bbb">
+</span><span style="color:#bbb">    </span>volumes:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>./data/graylog_journal:/usr/share/graylog/data/journal<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>/etc/localtime:/etc/localtime:ro<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>environment:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># CHANGE ME (must be at least 16 characters)!</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>GRAYLOG_PASSWORD_SECRET=somepasswordpepper<span style="color:#bbb">
+</span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># Password: admin</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:<span style="color:#f60">9000</span>/<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>links:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>mongodb:mongo<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>elasticsearch<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>depends_on:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>mongodb<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>elasticsearch<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>ports:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># Graylog web interface and REST API</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span><span style="color:#f60">9000</span>:<span style="color:#f60">9000</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># Syslog TCP</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span><span style="color:#f60">1514</span>:<span style="color:#f60">1514</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># Syslog UDP</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span><span style="color:#f60">1514</span>:<span style="color:#f60">1514</span>/udp<span style="color:#bbb">
+</span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># GELF TCP</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span><span style="color:#f60">12201</span>:<span style="color:#f60">12201</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># GELF UDP</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span><span style="color:#f60">12201</span>:<span style="color:#f60">12201</span>/udp<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#09f;font-style:italic"># Volumes for persisting data, see https://docs.docker.com/engine/admin/volumes/volumes/</span></code></pre></div>
+<h2 id="start-graylog">Start graylog</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-compose up -d</code></pre></div>
+<h2 id="fixed-permission-of-folder">Fixed permission of folder</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chown -R <span style="color:#f60">1100</span>:1100 data/graylog_journal/
+chown -R <span style="color:#f60">1000</span>:1000 data/es_data/
 
-<p>Configure <code>Site A</code></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">configure
-<span style="color:#366">set</span> vpn ipsec ipsec-interfaces interface eth0
-<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default dead-peer-detection action <span style="color:#c30">&#39;hold&#39;</span>
-<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default dead-peer-detection interval <span style="color:#c30">&#39;30&#39;</span>
-<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default dead-peer-detection timeout <span style="color:#c30">&#39;120&#39;</span>
-<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default ikev2-reauth <span style="color:#c30">&#39;no&#39;</span>
-<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default key-exchange <span style="color:#c30">&#39;ikev2&#39;</span>
-<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default lifetime <span style="color:#c30">&#39;10800&#39;</span>
-<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default mobike <span style="color:#c30">&#39;disable&#39;</span>
-<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default proposal <span style="color:#f60">1</span> dh-group <span style="color:#c30">&#39;14&#39;</span>
-<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default proposal <span style="color:#f60">1</span> encryption <span style="color:#c30">&#39;aes256gcm128&#39;</span>
-<span style="color:#366">set</span> vpn ipsec ike-group IKE-Default proposal <span style="color:#f60">1</span> <span style="color:#366">hash</span> <span style="color:#c30">&#39;sha256&#39;</span>
-
-<span style="color:#366">set</span> vpn ipsec esp-group ESP-Default compression <span style="color:#c30">&#39;disable&#39;</span>
-<span style="color:#366">set</span> vpn ipsec esp-group ESP-Default lifetime <span style="color:#c30">&#39;3600&#39;</span>
-<span style="color:#366">set</span> vpn ipsec esp-group ESP-Default mode <span style="color:#c30">&#39;tunnel&#39;</span>
-<span style="color:#366">set</span> vpn ipsec esp-group ESP-Default pfs <span style="color:#c30">&#39;dh-group14&#39;</span>
-<span style="color:#366">set</span> vpn ipsec esp-group ESP-Default proposal <span style="color:#f60">1</span> encryption <span style="color:#c30">&#39;aes256gcm128&#39;</span>
-<span style="color:#366">set</span> vpn ipsec esp-group ESP-Default proposal <span style="color:#f60">1</span> <span style="color:#366">hash</span> <span style="color:#c30">&#39;sha256&#39;</span>
-
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 authentication id <span style="color:#c30">&#39;1.1.1.1&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 authentication mode <span style="color:#c30">&#39;pre-shared-secret&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 authentication pre-shared-secret <span style="color:#c30">&#39;*#JCenaoewaoi0298J299*8&amp;^(%9))_&amp;&amp;&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 authentication remote-id <span style="color:#c30">&#39;2.2.2.2&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 connection-type <span style="color:#c30">&#39;initiate&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 ike-group <span style="color:#c30">&#39;IKE-Default&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 ikev2-reauth <span style="color:#c30">&#39;inherit&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 local-address <span style="color:#c30">&#39;1.1.1.1&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 tunnel <span style="color:#f60">0</span> esp-group <span style="color:#c30">&#39;ESP-Default&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 tunnel <span style="color:#f60">0</span> <span style="color:#366">local</span> prefix <span style="color:#c30">&#39;192.168.1.0/24&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 tunnel <span style="color:#f60">0</span> remote prefix <span style="color:#c30">&#39;192.168.2.0/24&#39;</span></code></pre></div>
-<h2 id="configure-pfsense">Configure pfsense</h2>
-
-<p>Configure <code>Site B</code></p>
-
-<ol>
-<li>After login pfsense click <code>VPN</code> |  <code>IPsec</code>;</li>
-<li>Then click &lsquo;Add P1` button.</li>
-<li>configuraton as show below</li>
-</ol>
-
-<h3 id="add-p1">Add P1</h3>
-
-<h2 id="general-information">General Information</h2>
-
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>Disabled</code></td>
-<td>uncheck</td>
-</tr>
-
-<tr>
-<td><code>Key Exchange version</code></td>
-<td>IKEv2</td>
-</tr>
-
-<tr>
-<td>Internet Protocol</td>
-<td>IPv4</td>
-</tr>
-
-<tr>
-<td>Interfae</td>
-<td>WAN</td>
-</tr>
-
-<tr>
-<td>Remote Gateway</td>
-<td>1.1.1.1</td>
-</tr>
-
-<tr>
-<td>Description</td>
-<td>SITE-A-VPN</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="phase-1-proposal-authentication">Phase 1 Proposal (Authentication)</h2>
-
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Authentication Method</td>
-<td>Mutual PSK</td>
-</tr>
-
-<tr>
-<td>My identifier</td>
-<td>My IP address</td>
-</tr>
-
-<tr>
-<td>Peer identifier</td>
-<td>Peer IP address</td>
-</tr>
-
-<tr>
-<td>Pre-Shared Key</td>
-<td><code>*#JCenaoewaoi0298J299*8&amp;^(%9))_&amp;&amp;</code></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="phase-1-proposal-encryption-algorithm">Phase 1 Proposal(Encryption Algorithm)</h2>
-
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Algorithm</th>
-<th>Key length</th>
-<th>Hash</th>
-<th>DH Group</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Encryption Algorithm</td>
-<td>AES256-GCM</td>
-<td>128 bits</td>
-<td>SHA256</td>
-<td>14(2048bit)</td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Lifetime(Seconds)</td>
-<td>28800</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="advanced-options">Advanced Options</h2>
-
-<table>
-<thead>
-<tr>
-<th>KEY</th>
-<th>VALUE</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Disable rekey</td>
-<td>uncheck</td>
-</tr>
-
-<tr>
-<td>Margintime(Seconds</td>
-<td>black</td>
-</tr>
-
-<tr>
-<td>Disable Reauth</td>
-<td>uncheck</td>
-</tr>
-
-<tr>
-<td>Responder Only</td>
-<td>Uncheck</td>
-</tr>
-
-<tr>
-<td>MOBIKE</td>
-<td>Disable</td>
-</tr>
-
-<tr>
-<td>Split connections</td>
-<td>uncheck</td>
-</tr>
-
-<tr>
-<td>Dead Peer Dection</td>
-<td>&lsquo;Check on&rsquo; Enable DPD</td>
-</tr>
-
-<tr>
-<td>Delay</td>
-<td>120</td>
-</tr>
-
-<tr>
-<td>Max failures</td>
-<td>30</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="add-p2">Add P2</h3>
-
-<h2 id="general-information-1">General Information</h2>
-
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Disable</td>
-<td>unchecked</td>
-</tr>
-
-<tr>
-<td>Mode</td>
-<td>Tunnel IPv4</td>
-</tr>
-
-<tr>
-<td>Local network</td>
-<td>Network  192.168.2.0/24</td>
-</tr>
-
-<tr>
-<td>NAT/BINAT translation</td>
-<td>None</td>
-</tr>
-
-<tr>
-<td>Remote Network</td>
-<td>Network 192.168.1.0/24</td>
-</tr>
-
-<tr>
-<td>Description</td>
-<td>Site A</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="phase-2-proposal-sa-key-exchange">Phase 2 Proposal(SA/Key Exchange)</h2>
-
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Protocol</td>
-<td>ESP</td>
-</tr>
-
-<tr>
-<td>Encryption Algorithms</td>
-<td>AES256-GCM 128 bit</td>
-</tr>
-
-<tr>
-<td>Hash Algorithms</td>
-<td>SHA256</td>
-</tr>
-
-<tr>
-<td>PFS key group</td>
-<td>14(2048 bit)</td>
-</tr>
-
-<tr>
-<td>Lifttime</td>
-<td>3600</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="advanced-configuration">Advanced Configuration</h2>
-
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Automatically ping host</td>
-<td>192.168.1.1</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="change-firewall-to-allow-ipsec-vpn-connection">Change firewall to allow ipsec vpn connection</h3>
-
-<table>
-<thead>
-<tr>
-<th>Protocol</th>
-<th>Source</th>
-<th>Port</th>
-<th>Destination</th>
-<th>Port</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Ipv4 UDP</td>
-<td>1.1.1.1</td>
-<td>*</td>
-<td>WAN address</td>
-<td>500(ISAKMP)</td>
-</tr>
-
-<tr>
-<td>IPv4 UDP</td>
-<td>1.1.1.1</td>
-<td>*</td>
-<td>WAN address</td>
-<td>4500(IPsec NAT-T)</td>
-</tr>
-
-<tr>
-<td>Ipv4 ESP</td>
-<td>1.1.1.1</td>
-<td>*</td>
-<td>WAN address</td>
-<td>*</td>
-</tr>
-</tbody>
-</table>
-
-<p>&mdash;The End&mdash;</p>
-
+docker-compose down
+docker-compose up -d</code></pre></div>
     </div>
 
     
@@ -870,7 +482,7 @@ if (!doNotTrack) {
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2019-12-19
+      2019-12-24
       
     </span>
   </p>
@@ -896,32 +508,19 @@ if (!doNotTrack) {
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="https://blog.stevedong.com/tags/vyos/">vyos</a>
-          <a href="https://blog.stevedong.com/tags/pfsense/">pfsense</a>
-          <a href="https://blog.stevedong.com/tags/ipsec/">ipsec</a>
-          <a href="https://blog.stevedong.com/tags/site-to-site/">site-to-site</a>
+          <a href="https://blog.stevedong.com/tags/graylog/">graylog</a>
+          <a href="https://blog.stevedong.com/tags/docker/">docker</a>
+          <a href="https://blog.stevedong.com/tags/docker-compose/">docker-compose</a>
+          <a href="https://blog.stevedong.com/tags/linux/">linux</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/graylog/how-to-install-graylog-with-docker-compose/">
-            
-            <i class="iconfont">
-              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-            </i>
-            <span class="prev-text nav-default">How to Install Graylog With Docker Compose</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
         
-          <a class="next" href="/post/devops/how-to-install-jenkins-with-docker-compose/">
-            <span class="next-text nav-default">How to Install Jenkins With Docker Compose</span>
+          <a class="next" href="/post/vyos/how-to-build-ipsec-site-to-site-vpn-with-vyos-and-pfsense/">
+            <span class="next-text nav-default">How to Build Ipsec Site to Site Vpn With Vyos and Pfsense</span>
             <span class="prev-text nav-mobile">Next</span>
             
             <i class="iconfont">

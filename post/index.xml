@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Dec 2019 14:36:09 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 24 Dec 2019 11:27:21 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Install Graylog With Docker Compose</title>
+      <link>https://blog.stevedong.com/post/graylog/how-to-install-graylog-with-docker-compose/</link>
+      <pubDate>Tue, 24 Dec 2019 11:27:21 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/graylog/how-to-install-graylog-with-docker-compose/</guid>
+      <description> How to Install Graylog with Docker-compose    Hostname my-graylog      Docker-compose.yaml version:&amp;#39;2&amp;#39;services:# MongoDB: https://hub.docker.com/_/mongo/mongodb:image:mongo:3volumes:-./data/mongo_data:/data/db-/etc/localtime:/etc/localtime:ro# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.htmlelasticsearch:image:docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2volumes:-./data/es_data:/usr/share/elasticsearch/data-/etc/localtime:/etc/localtime:roenvironment:-http.host=0.0.0.0-transport.host=localhost-network.host=0.0.0.0-&amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34;ulimits:memlock:soft:-1hard:-1mem_limit:1g# Graylog: https://hub.docker.com/r/graylog/graylog/graylog:image:graylog/graylog:3.1volumes:-./data/graylog_journal:/usr/share/graylog/data/journal-/etc/localtime:/etc/localtime:roenvironment:# CHANGE ME (must be at least 16 characters)!-GRAYLOG_PASSWORD_SECRET=somepasswordpepper# Password: admin-GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918-GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/links:-mongodb:mongo-elasticsearchdepends_on:-mongodb-elasticsearchports:# Graylog web interface and REST API-9000:9000# Syslog TCP-1514:1514# Syslog UDP-1514:1514/udp# GELF TCP-12201:12201# GELF UDP-12201:12201/udp# Volumes for persisting data, see https://docs.docker.com/engine/admin/volumes/volumes/ Start graylog docker-compose up -d Fixed permission of folder chown -R 1100:1100 data/graylog_journal/ chown -R 1000:1000 data/es_data/ docker-compose down docker-compose up -d</description>
+    </item>
     
     <item>
       <title>How to Build Ipsec Site to Site Vpn With Vyos and Pfsense</title>
@@ -517,15 +526,6 @@ if [ &amp;ldquo;ls -A /config&amp;rdquo; = &amp;ldquo;&amp;rdquo; ]; then cp /sr
       
       <guid>https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/</guid>
       <description>Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&amp;#34;YES&amp;#34; service mysql-server restart Database and User Configuration $ mysql mysql&amp;gt; create database powerdns charset = utf8; mysql&amp;gt; CREATE USER &amp;#39;powerdns&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;XianAdmin&amp;#39;; ###mysql&amp;gt; GRANT ALL PRIVILEGES ON powerdns.* TO &amp;#39;%&amp;#39; WITH GRANT OPTION;### mysql&amp;gt; grant all privileges on powerdns.* to &amp;#39;powerdns&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;XianAdmin&amp;#39;; mysql&amp;gt; FLUSH PRIVILEGES; #For security, we also give the main admin password $ mysqladmin -u root password &amp;#34;PASSWORD_OF_ROOT&amp;#34; Install powerdns pkg install powerdns Reference  How to manage MySQL databases and users from the command line PowerDNS, PowerAdmin with Mysql in Freebsd 10.</description>
-    </item>
-    
-    <item>
-      <title>Deploy Overture With Docker and Freebsd</title>
-      <link>https://blog.stevedong.com/post/deploy-overture-with-docker-and-freebsd/</link>
-      <pubDate>Tue, 18 Dec 2018 00:44:13 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/deploy-overture-with-docker-and-freebsd/</guid>
-      <description>Run overture on Docker and FreeBSD 12 ENV foo /overtureWORKDIR${foo}RUN apt-get update &amp;amp;&amp;amp; apt-get install -y ca-certificatesRUN printf &amp;#34;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse&amp;#34; &amp;gt; /etc/apt/sources.</description>
     </item>
     
   </channel>

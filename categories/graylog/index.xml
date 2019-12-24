@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>docker-compose on Steve Dong - A System Administrator&#39;s Blog</title>
-    <link>https://blog.stevedong.com/tags/docker-compose/</link>
-    <description>Recent content in docker-compose on Steve Dong - A System Administrator&#39;s Blog</description>
+    <title>graylog on Steve Dong - A System Administrator&#39;s Blog</title>
+    <link>https://blog.stevedong.com/categories/graylog/</link>
+    <description>Recent content in graylog on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 24 Dec 2019 11:27:21 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.stevedong.com/tags/docker-compose/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.stevedong.com/categories/graylog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,25 +18,6 @@
       
       <guid>https://blog.stevedong.com/post/graylog/how-to-install-graylog-with-docker-compose/</guid>
       <description> How to Install Graylog with Docker-compose    Hostname my-graylog      Docker-compose.yaml version:&amp;#39;2&amp;#39;services:# MongoDB: https://hub.docker.com/_/mongo/mongodb:image:mongo:3volumes:-./data/mongo_data:/data/db-/etc/localtime:/etc/localtime:ro# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.htmlelasticsearch:image:docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2volumes:-./data/es_data:/usr/share/elasticsearch/data-/etc/localtime:/etc/localtime:roenvironment:-http.host=0.0.0.0-transport.host=localhost-network.host=0.0.0.0-&amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34;ulimits:memlock:soft:-1hard:-1mem_limit:1g# Graylog: https://hub.docker.com/r/graylog/graylog/graylog:image:graylog/graylog:3.1volumes:-./data/graylog_journal:/usr/share/graylog/data/journal-/etc/localtime:/etc/localtime:roenvironment:# CHANGE ME (must be at least 16 characters)!-GRAYLOG_PASSWORD_SECRET=somepasswordpepper# Password: admin-GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918-GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/links:-mongodb:mongo-elasticsearchdepends_on:-mongodb-elasticsearchports:# Graylog web interface and REST API-9000:9000# Syslog TCP-1514:1514# Syslog UDP-1514:1514/udp# GELF TCP-12201:12201# GELF UDP-12201:12201/udp# Volumes for persisting data, see https://docs.docker.com/engine/admin/volumes/volumes/ Start graylog docker-compose up -d Fixed permission of folder chown -R 1100:1100 data/graylog_journal/ chown -R 1000:1000 data/es_data/ docker-compose down docker-compose up -d</description>
-    </item>
-    
-    <item>
-      <title>How to Install Elasticflow</title>
-      <link>https://blog.stevedong.com/post/elasticflow/how-to-install-elasticflow/</link>
-      <pubDate>Tue, 19 Nov 2019 17:11:27 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/elasticflow/how-to-install-elasticflow/</guid>
-      <description>How to install Elasticflow Today, i found a good software that is Elasticflow. It is so perfect for us to monitor status of our networking. So I tried to install it will docker-compose way. You know what, after servial hours, fixed a lot bugs it works.
-Download and modified docker-compose.yml for elasticflow # Download `docker-compose.yml` for elasticflow wget https://raw.githubusercontent.com/robcowart/elastiflow/master/docker-compose.yml # version 3.5.2 is now existed. So we need change it to `3.</description>
-    </item>
-    
-    <item>
-      <title>How to Deploy Docker in Debian 10</title>
-      <link>https://blog.stevedong.com/post/how-to-deploy-docker-in-debian-10/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/how-to-deploy-docker-in-debian-10/</guid>
-      <description> How to deploy docker in debian 10 cat &amp;lt;&amp;lt; EOF &amp;gt; /etc/docker/aemon.json\n{\n &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://docker.mirrors.ustc.edu.cn/&amp;#34;]\n}\n\nEOF systemctl retart docker systemctl restart docker Install docker-compose sudo curl -L &amp;#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)&amp;#34; -o /usr/local/bin/docker-compose sudo chmod +x /usr/local/bin/docker-compose sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</description>
     </item>
     
   </channel>
