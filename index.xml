@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 24 Dec 2019 11:27:21 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 27 Dec 2019 11:20:00 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -27,6 +27,71 @@
 &lt;li&gt;Love cooking.&lt;/li&gt;
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>How to Enable Ntfs Read and Write in Macos Catalina 10</title>
+      <link>https://blog.stevedong.com/post/macos/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/</link>
+      <pubDate>Fri, 27 Dec 2019 11:20:00 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/macos/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;how-to-enable-ntfs-read-and-write-in-macos-catalina-10-15&#34;&gt;How to enable NTFS Read and Write in Macos Catalina 10.15&lt;/h1&gt;
+
+&lt;p&gt;For a long time. It was much trouble to enable ntfs write mode in macos. Today I  done it about enable ntfs wirte support with fuse and ntfs-3g.&lt;/p&gt;
+
+&lt;h2 id=&#34;install-fuse-for-macos&#34;&gt;Install FUSE for macos&lt;/h2&gt;
+
+&lt;p&gt;You can download latest FUSE for macOS from here: &lt;a href=&#34;https://github.com/osxfuse/osxfuse/releases&#34;&gt;FUSE for macOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Then you can install it by yourself.&lt;/p&gt;
+
+&lt;h2 id=&#34;install-ntfs-3g&#34;&gt;Install ntfs-3g&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;brew install ntfs-3g&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;replace-ntfs-3g&#34;&gt;Replace ntfs-3g&lt;/h2&gt;
+
+&lt;p&gt;Since from OS X 10.11 version disabled system integrity protection to replace &lt;code&gt;ntfs_mount&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;1-disable-system-integrity-protection&#34;&gt;1. Disable system integrity protection&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Shutdown your macos&lt;/li&gt;
+&lt;li&gt;Press &lt;code&gt;Command + R&lt;/code&gt;,the press power buttion to start macos and enter the recovery mode.&lt;/li&gt;
+&lt;li&gt;After enter &lt;code&gt;recovery mode&lt;/code&gt;, then we can open Terminal.&lt;/li&gt;
+&lt;li&gt;Run command in Terminal &lt;code&gt;csrutil disable&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Reboot macos.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-replace-mount-ntfs&#34;&gt;2. Replace &lt;code&gt;mount_ntfs&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Open &lt;code&gt;Terminal&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Enter commands as show below&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo mount -uw /
+sudo mv /sbin/mount_ntfs /sbin/mount_ntfs.original
+sudo ln -s /usr/local/sbin/mount_ntfs /sbin/mount_ntfs
+  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Then shutdown your. macos.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-enable-system-integrity-protection&#34;&gt;3. Enable system integrity protection&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Press &lt;code&gt;Command + R&lt;/code&gt;,the press power buttion to start macos and enter the recovery mode.&lt;/li&gt;
+&lt;li&gt;After enter &lt;code&gt;recovery mode&lt;/code&gt;, then we can open Terminal.
+Run command in Terminal &lt;code&gt;csrutil enble&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Reboot macos.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-follow-the-system-notification-to-enable-fuse-ntfs&#34;&gt;4. Follow the system notification to enable fuse ntfs&lt;/h3&gt;
+
+&lt;p&gt;After we boot macos normally, we need follow the system notification to enable permission for fuse ntfs.&lt;/p&gt;
 </description>
       
     </item>
@@ -5120,48 +5185,6 @@ ENTRYPOINT [ &amp;#34;/srv/overture-linux-amd64&amp;#34;, &amp;#34;-c&amp;#34;, 
 &lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;-v &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;/root/overture-docker-data:/config&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;--name xa-overture-01 &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;overture&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Debian or Ubuntu Chinese Language Support</title>
-      <link>https://blog.stevedong.com/post/debian-or-ubuntu-chinese-language-support/</link>
-      <pubDate>Mon, 24 Dec 2018 00:39:51 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/debian-or-ubuntu-chinese-language-support/</guid>
-      
-        <description>
-
-&lt;p&gt;Ubuntu Chinese Language Support&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;编辑/etc/environment如下:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;vi /etc/environment
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;添加如下:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;  &lt;span style=&#34;color:#033&#34;&gt;LC_ALL&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;en_US.UTF-8&amp;#34;&lt;/span&gt;
-  &lt;span style=&#34;color:#033&#34;&gt;LANG&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;zh_CN.UTF-8&amp;#34;&lt;/span&gt;
-  &lt;span style=&#34;color:#033&#34;&gt;UNZIP&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&amp;#39;&lt;/span&gt;-O CP936&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  ZIPINFO=&amp;#34;&lt;/span&gt;-O CP936&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;重新生成语言设置&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo locale-gen  en_US en_US.UTF-8 zh_CN zh_CN.UTF-8
-sudo dpkg-reconfigure locales&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;中文支持&#34;&gt;中文支持&lt;/h2&gt;
-
-&lt;h3 id=&#34;vim中文支持&#34;&gt;vim中文支持&lt;/h3&gt;
-
-&lt;p&gt;编辑~/.vimrc&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;   &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;fileencodings&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
-   &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;termencoding&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;utf-8
-   &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;encoding&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;utf-8&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;中文支持-1&#34;&gt;中文支持&lt;/h3&gt;
-</description>
       
     </item>
     

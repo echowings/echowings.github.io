@@ -6,10 +6,22 @@
     <description>Recent content in Posts on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 24 Dec 2019 11:27:21 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 27 Dec 2019 11:20:00 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Enable Ntfs Read and Write in Macos Catalina 10</title>
+      <link>https://blog.stevedong.com/post/macos/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/</link>
+      <pubDate>Fri, 27 Dec 2019 11:20:00 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/macos/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/</guid>
+      <description>How to enable NTFS Read and Write in Macos Catalina 10.15 For a long time. It was much trouble to enable ntfs write mode in macos. Today I done it about enable ntfs wirte support with fuse and ntfs-3g.
+Install FUSE for macos You can download latest FUSE for macOS from here: FUSE for macOS
+Then you can install it by yourself.
+Install ntfs-3g brew install ntfs-3g Replace ntfs-3g Since from OS X 10.</description>
+    </item>
     
     <item>
       <title>How to Install Graylog With Docker Compose</title>
@@ -517,15 +529,6 @@ if [ &amp;ldquo;ls -A /config&amp;rdquo; = &amp;ldquo;&amp;rdquo; ]; then cp /sr
       
       <guid>https://blog.stevedong.com/post/debian-or-ubuntu-chinese-language-support/</guid>
       <description>Ubuntu Chinese Language Support 编辑/etc/environment如下: vi /etc/environment 添加如下: LC_ALL=&amp;#34;en_US.UTF-8&amp;#34; LANG=&amp;#34;zh_CN.UTF-8&amp;#34; UNZIP=&amp;#39;-O CP936&amp;#34; ZIPINFO=&amp;#34;-O CP936&amp;#34; 重新生成语言设置 sudo locale-gen en_US en_US.UTF-8 zh_CN zh_CN.UTF-8 sudo dpkg-reconfigure locales 中文支持 vim中文支持 编辑~/</description>
-    </item>
-    
-    <item>
-      <title>Install PowerDNS and Mysql on Freebsd12</title>
-      <link>https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/</link>
-      <pubDate>Tue, 18 Dec 2018 00:51:47 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/</guid>
-      <description>Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&amp;#34;YES&amp;#34; service mysql-server restart Database and User Configuration $ mysql mysql&amp;gt; create database powerdns charset = utf8; mysql&amp;gt; CREATE USER &amp;#39;powerdns&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;XianAdmin&amp;#39;; ###mysql&amp;gt; GRANT ALL PRIVILEGES ON powerdns.* TO &amp;#39;%&amp;#39; WITH GRANT OPTION;### mysql&amp;gt; grant all privileges on powerdns.* to &amp;#39;powerdns&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;XianAdmin&amp;#39;; mysql&amp;gt; FLUSH PRIVILEGES; #For security, we also give the main admin password $ mysqladmin -u root password &amp;#34;PASSWORD_OF_ROOT&amp;#34; Install powerdns pkg install powerdns Reference  How to manage MySQL databases and users from the command line PowerDNS, PowerAdmin with Mysql in Freebsd 10.</description>
     </item>
     
   </channel>
