@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 27 Dec 2019 11:20:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jan 2020 16:49:32 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Convert Cert to Ssl</title>
+      <link>https://blog.stevedong.com/post/ssl/how-to-convert-cert-to-ssl/</link>
+      <pubDate>Tue, 21 Jan 2020 16:49:32 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/ssl/how-to-convert-cert-to-ssl/</guid>
+      <description>#How to convert godaddy certification files from .cert to .pem
+Recently days, I met an issue to renew ssl certification file for a website. The former developer setup certification file to .pem. It take a long time to make it work. Here we go.
+Convert .crt to .pem # convert .key file to key.pem openssl rsa -in mywebsite.com.key -text &amp;gt; key.pem # convert .cert to cert.pem cat mywebsite.com.crt &amp;gt; cert.</description>
+    </item>
     
     <item>
       <title>How to Enable Ntfs Read and Write in Macos Catalina 10.15</title>
@@ -520,15 +531,6 @@ Recently days, I just learn proxmox and find pci-e pass through function. I thin
       <description>How to Wirte docker file for overture Hence we need to custom overture docker image as we desire, I write this dockerfile.
 How to map VOLUME and copy file from docker images to directory of docker host. When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.
 if [ &amp;ldquo;ls -A /config&amp;rdquo; = &amp;ldquo;&amp;rdquo; ]; then cp /srv/config.</description>
-    </item>
-    
-    <item>
-      <title>Debian or Ubuntu Chinese Language Support</title>
-      <link>https://blog.stevedong.com/post/debian-or-ubuntu-chinese-language-support/</link>
-      <pubDate>Mon, 24 Dec 2018 00:39:51 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/debian-or-ubuntu-chinese-language-support/</guid>
-      <description>Ubuntu Chinese Language Support 编辑/etc/environment如下: vi /etc/environment 添加如下: LC_ALL=&amp;#34;en_US.UTF-8&amp;#34; LANG=&amp;#34;zh_CN.UTF-8&amp;#34; UNZIP=&amp;#39;-O CP936&amp;#34; ZIPINFO=&amp;#34;-O CP936&amp;#34; 重新生成语言设置 sudo locale-gen en_US en_US.UTF-8 zh_CN zh_CN.UTF-8 sudo dpkg-reconfigure locales 中文支持 vim中文支持 编辑~/</description>
     </item>
     
   </channel>

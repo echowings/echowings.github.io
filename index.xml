@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 27 Dec 2019 11:20:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jan 2020 16:49:32 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -28,6 +28,47 @@
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
+      
+    </item>
+    
+    <item>
+      <title>How to Convert Cert to Ssl</title>
+      <link>https://blog.stevedong.com/post/ssl/how-to-convert-cert-to-ssl/</link>
+      <pubDate>Tue, 21 Jan 2020 16:49:32 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/ssl/how-to-convert-cert-to-ssl/</guid>
+      
+        <description>
+
+&lt;p&gt;#How to convert godaddy certification files from &lt;code&gt;.cert&lt;/code&gt; to &lt;code&gt;.pem&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Recently days, I met an issue to renew ssl certification file for a website. The former developer setup certification file to &lt;code&gt;.pem&lt;/code&gt;. It take a long time to make it work. Here we go.&lt;/p&gt;
+
+&lt;h2 id=&#34;convert-crt-to-pem&#34;&gt;Convert &lt;code&gt;.crt&lt;/code&gt; to &lt;code&gt;.pem&lt;/code&gt;&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# convert .key file to key.pem&lt;/span&gt;
+openssl rsa -in mywebsite.com.key -text &amp;gt; key.pem
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# convert .cert to cert.pem&lt;/span&gt;
+cat mywebsite.com.crt &amp;gt; cert.pem
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# add cert chain to the cert.pem&lt;/span&gt;
+cat mywebsite.com.ca-bundle &amp;gt;&amp;gt; cert.pem
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# clone pem&lt;/span&gt;
+cp cert.pem staging.pem
+
+#
+openssl dhparam -dsaparam -out /etc/nginx/ssl/dhparam.pem &lt;span style=&#34;color:#f60&#34;&gt;4096&lt;/span&gt;
+tar -cxvf tar -jcvf mywebsite.com-v3.tar.bz2 *.pem&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;upload-mywebsite-com-v3-tar-bz2-to-server-and-renew-ssl-certification&#34;&gt;Upload &lt;code&gt;mywebsite.com-v3.tar.bz2&lt;/code&gt; to server and renew ssl certification&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;tar -jxvf mywebsite.com-v3.tar.bz2
+mv all the pem file to /home/mywebsitepath
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Testing nginx configuration&lt;/span&gt;
+docker &lt;span style=&#34;color:#366&#34;&gt;exec&lt;/span&gt; -it nginx nginx -t
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Restart nginx instance&lt;/span&gt;
+docker restart nginx&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     
@@ -5105,101 +5146,6 @@ hostpci0: &lt;span style=&#34;color:#f60&#34;&gt;00&lt;/span&gt;:00.0,pcie&lt;sp
 &lt;li&gt;&lt;a href=&#34;https://pve.proxmox.com/wiki/Pci_passthrough&#34;&gt;Pci passthrough&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-      
-    </item>
-    
-    <item>
-      <title>Dockerfile for Overture</title>
-      <link>https://blog.stevedong.com/post/dockerfile-for-overture/</link>
-      <pubDate>Mon, 24 Dec 2018 00:55:14 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/dockerfile-for-overture/</guid>
-      
-        <description>
-
-&lt;h1 id=&#34;how-to-wirte-docker-file-for-overture&#34;&gt;How to Wirte docker file for overture&lt;/h1&gt;
-
-&lt;p&gt;Hence we need to custom overture docker image as we desire, I write this dockerfile.&lt;/p&gt;
-
-&lt;p&gt;&lt;del&gt;How to map VOLUME and copy file from docker images to directory of docker host.&lt;/del&gt;
-&lt;del&gt;When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.&lt;/del&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;del&gt;if [ &amp;ldquo;&lt;code&gt;ls -A /config&lt;/code&gt;&amp;rdquo; = &amp;ldquo;&amp;rdquo; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.txt /config/;fi&lt;/del&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;overture-dockerfile&#34;&gt;Overture Dockerfile&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-dockfile&#34; data-lang=&#34;dockfile&#34;&gt;#FROM alpine:edge
-FROM alpine:latest
-MAINTAINER steve dong &amp;lt;dongjunbo@gmail.com?
-
-# Environment variables
-##########################
-
-ENV VERSION v1.4
-
-# Change this cron rule to what fits best for you.
-
-ENV CRONTAB_TIME &amp;#39;0 0 * * *&amp;#39;
-
-# Create Volume entry points
-############################
-
-VOLUME [&amp;#34;/config&amp;#34;]
-
-# Set the work directory
-#########################
-
-WORKDIR /srv
-
-# Fix permissions
-#################
-
-# Install required packages
-###########################
-RUN set -xe &amp;amp;&amp;amp; \
-	mkdir -p /config &amp;amp;&amp;amp; \
-	apk add --no-cache unzip curl &amp;amp;&amp;amp; \
-	curl -fsSLO --compressed &amp;#34;https://github.com/shawn1m/overture/releases/download/${VERSION}/overture-linux-amd64.zip&amp;#34; &amp;amp;&amp;amp; \
-	unzip -o &amp;#34;overture-linux-amd64.zip&amp;#34; -d /srv &amp;amp;&amp;amp; \
-	curl https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt | base64 -d | sort -u | sed &amp;#39;/^$\|@@/d&amp;#39;| sed &amp;#39;s#!.\+##; s#|##g; s#@##g; s#http:\/\/##; s#https:\/\/##;&amp;#39; | sed &amp;#39;/\*/d; /    apple\.com/d; /sina\.cn/d; /sina\.com\.cn/d; /baidu\.com/d; /qq\.com/d&amp;#39; | sed &amp;#39;/^[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+$/d&amp;#39; | grep &amp;#39;^[0-9a-zA-Z\.-]\+$&amp;#39; | grep &amp;#39;\.&amp;#39; | sed &amp;#39;s#^\.\+##&amp;#39; | sort -u &amp;gt; temp_gfwlist.txt &amp;amp;&amp;amp; \
-	curl https://raw.githubusercontent.com/hq450/fancyss/master/rules/gfwlist.conf | sed &amp;#39;s/ipset=\/\.//g; s/\/gfwlist//g; /^server/d&amp;#39; &amp;gt; temp_koolshare.txt  &amp;amp;&amp;amp; \
-	cat temp_gfwlist.txt temp_koolshare.txt | sort -u &amp;gt; gfw_all_domain.txt  &amp;amp;&amp;amp; \
-	curl -fsSLO --compressed  &amp;#34;https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt&amp;#34; &amp;amp;&amp;amp; \
-	sed -i &amp;#39;11s/disable/manual/&amp;#39; /srv/config.json &amp;amp;&amp;amp; \
-	sed -i &amp;#39;24s/disable/manual/&amp;#39; /srv/config.json &amp;amp;&amp;amp; \
-	sed -i &amp;#39;12s/&amp;#34;&amp;#34;/&amp;#34;222.90.74.60&amp;#34;/&amp;#39; /srv/config.json &amp;amp;&amp;amp; \
-	sed -i &amp;#39;25s/&amp;#34;&amp;#34;/&amp;#34;202.60.225.114&amp;#34;/&amp;#39; /srv/config.json &amp;amp;&amp;amp; \
-	sed -i &amp;#39;s/&amp;#34;.\/ip_network_primary_sample&amp;#34;/&amp;#34;\/config\/china_ip_list.txt&amp;#34;/g&amp;#39; /srv/config.json &amp;amp;&amp;amp; \
-	sed -i &amp;#39;s/&amp;#34;.\/domain_alternative_sample&amp;#34;/&amp;#34;\/config\/gfw_all_domain.txt&amp;#34;/g&amp;#39; /srv/config.json &amp;amp;&amp;amp; \
-	rm -rf temp_koolshare.txt temp_gfwlist.txt &amp;amp;&amp;amp; \
-	rm -rf &amp;#34;overture-linux-amd64.zip&amp;#34; &amp;amp;&amp;amp; \
-	chmod 0644 /config/ &amp;amp;&amp;amp; \
-	cp /srv/config.json /config/ &amp;amp;&amp;amp; \
-	cp /srv/*.txt /config/ &amp;amp;&amp;amp; \
-	apk del unzip curl
-	
-
-# Expose required ports
-#######################
-
-EXPOSE 53/udp
-
-
-#VOLUME [ &amp;#34;/config&amp;#34;]
-
-# Change Shell
-##############
-SHELL [&amp;#34;/bin/bash&amp;#34;, &amp;#34;-c&amp;#34;]
-CMD [&amp;#34;if [ \&amp;#34;`ls -A /config`\&amp;#34; = \&amp;#34;\&amp;#34; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.txt /config/; fi&amp;#34;]
-ENTRYPOINT [ &amp;#34;/srv/overture-linux-amd64&amp;#34;, &amp;#34;-c&amp;#34;, &amp;#34;/config/config.json&amp;#34; ]
-#CMD /srv/overture-linux-amd64 -c /config/config.json&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&#34;docker-run-command&#34;&gt;Docker run Command&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;docker run  &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;--restart&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;always &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;-d &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;-p &lt;span style=&#34;color:#f60&#34;&gt;53&lt;/span&gt;:53/udp &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;-v &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;/root/overture-docker-data:/config&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;--name xa-overture-01 &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;overture&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     
