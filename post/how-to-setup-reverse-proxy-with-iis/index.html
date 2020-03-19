@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/how-to-setup-reverse-proxy-with-iis/" />
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.0995afa14b62cd93e93cfc066b646c4c17a3eddca0e9d52a1d9dcf5d90aaacd3.css" integrity="sha256-CZWvoUtizZPpPPwGa2RsTBej7dyg6dUqHZ3PXZCqrNM=" media="screen" crossorigin="anonymous">
 
 
 
@@ -67,16 +67,13 @@
 <meta property="article:modified_time" content="2018-11-06T23:26:18+08:00" />
 <meta itemprop="name" content="How to Setup Reverse Proxy With Iis">
 <meta itemprop="description" content="How to Setup Reverse proxy with IIS I testing it on Server 2016 with IIS 10 Install IIS,URL _REWRITE, ARR Install IIS. Download and install URL Rewrite Module 2.1 Download and install ARR-Application-request-routing Setting Reverse Proxy Select Root level in IIS management Click ‘Application Request Routing Cache’,then in the">
-
-
 <meta itemprop="datePublished" content="2018-11-06T23:26:18&#43;08:00" />
 <meta itemprop="dateModified" content="2018-11-06T23:26:18&#43;08:00" />
 <meta itemprop="wordCount" content="164">
 
 
 
-<meta itemprop="keywords" content="windows,iis,reverse proxy," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="windows,iis,reverse proxy," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Setup Reverse Proxy With Iis"/>
 <meta name="twitter:description" content="How to Setup Reverse proxy with IIS I testing it on Server 2016 with IIS 10 Install IIS,URL _REWRITE, ARR Install IIS. Download and install URL Rewrite Module 2.1 Download and install ARR-Application-request-routing Setting Reverse Proxy Select Root level in IIS management Click ‘Application Request Routing Cache’,then in the"/>
 
@@ -377,48 +374,45 @@ if (!doNotTrack) {
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#how-to-setup-reverse-proxy-with-iis">How to Setup Reverse proxy with IIS</a>
-<ul>
-<li><a href="#install-iis-url-rewrite-arr">Install IIS,URL _REWRITE, ARR</a></li>
-<li><a href="#setting-reverse-proxy">Setting Reverse Proxy</a></li>
-<li><a href="#reference">Reference</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#install-iisurl--rewrite-arr">Install IIS,URL _REWRITE, ARR</a></li>
+    <li><a href="#setting-reverse-proxy">Setting Reverse Proxy</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<h1 id="how-to-setup-reverse-proxy-with-iis">How to Setup Reverse proxy with IIS</h1>
-
+      <h1 id="how-to-setup-reverse-proxy-with-iis">How to Setup Reverse proxy with IIS</h1>
 <p>I testing it on Server 2016 with IIS 10</p>
-
-<h2 id="install-iis-url-rewrite-arr">Install IIS,URL _REWRITE, ARR</h2>
-
+<h2 id="install-iisurl--rewrite-arr">Install IIS,URL _REWRITE, ARR</h2>
 <ul>
 <li>Install IIS.</li>
 <li>Download and install <a href="https://www.iis.net/downloads/microsoft/url-rewrite">URL Rewrite Module 2.1</a></li>
 <li>Download and install <a href="https://www.iis.net/downloads/microsoft/application-request-routing">ARR-Application-request-routing</a></li>
 </ul>
-
 <h2 id="setting-reverse-proxy">Setting Reverse Proxy</h2>
-
 <ul>
-<li>Select Root level in IIS management</li>
-<li>Click ‘Application Request Routing Cache’,then in the right side, click “proxy | Server proxy Settings | Check on “Enable proxy” | save config.</li>
-<li>Select website in IIS.</li>
-<li>Click URL Rewrite</li>
-
-<li><p>Add a black Rule</p>
-
+<li>
+<p>Select Root level in IIS management</p>
+</li>
+<li>
+<p>Click ‘Application Request Routing Cache’,then in the right side, click “proxy | Server proxy Settings | Check on “Enable proxy” | save config.</p>
+</li>
+<li>
+<p>Select website in IIS.</p>
+</li>
+<li>
+<p>Click URL Rewrite</p>
+</li>
+<li>
+<p>Add a black Rule</p>
 <pre><code>* Match URL:
-</code></pre></li>
+</code></pre>
+</li>
 </ul>
-
 <table>
 <thead>
 <tr>
@@ -427,7 +421,6 @@ if (!doNotTrack) {
 <th>Pattern</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Matches the pattern</td>
@@ -436,10 +429,8 @@ if (!doNotTrack) {
 </tr>
 </tbody>
 </table>
-
 <pre><code>    * Conditions:
 </code></pre>
-
 <table>
 <thead>
 <tr>
@@ -447,33 +438,27 @@ if (!doNotTrack) {
 <th>Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Logical grouping</td>
 <td>Match ALL</td>
 </tr>
-
 <tr>
 <td>input</td>
 <td><code>{HTTP_HOST}</code></td>
 </tr>
-
 <tr>
 <td>Type</td>
 <td>Matches the Pattern</td>
 </tr>
-
 <tr>
 <td>Patern</td>
 <td><code>^xa-sys-svr:8080$</code></td>
 </tr>
 </tbody>
 </table>
-
 <pre><code>    * Server Variables:
 </code></pre>
-
 <table>
 <thead>
 <tr>
@@ -481,22 +466,18 @@ if (!doNotTrack) {
 <th>Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Action Type</td>
 <td>Rewrite</td>
 </tr>
-
 <tr>
 <td>Rewrite URL</td>
 <td><code>http://www.cnblog.com/{R:1}</code></td>
 </tr>
 </tbody>
 </table>
-
 <h2 id="reference">Reference</h2>
-
 <ul>
 <li><a href="https://my.oschina.net/tanyixiu/blog/123832">用IIS配置反向代理</a></li>
 </ul>

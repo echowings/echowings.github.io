@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/proxmox-how-to-import-disk-to-ceph/" />
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.0995afa14b62cd93e93cfc066b646c4c17a3eddca0e9d52a1d9dcf5d90aaacd3.css" integrity="sha256-CZWvoUtizZPpPPwGa2RsTBej7dyg6dUqHZ3PXZCqrNM=" media="screen" crossorigin="anonymous">
 
 
 
@@ -67,16 +67,13 @@
 <meta property="article:modified_time" content="2019-05-07T12:06:58+08:00" />
 <meta itemprop="name" content="How to Import Disk to Ceph">
 <meta itemprop="description" content="Convert Disk to RAW #qcow2 qemu-img convert -f qcow2 xxx.qcow2 -O raw xxxx.raw #vmware qemu-img convert -f vmdk xxx-flat.vmdk -O raw xxx.raw Import RAW to ceph rbd list --pool ${ceph-pool-name} rbd import ./xxx.raw --pool ${ceph-pool-name} rbd rm ${old-file-rm} --pool ${ceph-pool-name] rbd mv xxx.raw ${old-file-rm) rbd list --poll ${ceph-pool-name} Reference 将qcow2格式的虚拟机文件导入到ceph">
-
-
 <meta itemprop="datePublished" content="2019-05-07T12:06:58&#43;08:00" />
 <meta itemprop="dateModified" content="2019-05-07T12:06:58&#43;08:00" />
 <meta itemprop="wordCount" content="72">
 
 
 
-<meta itemprop="keywords" content="pve,ceph," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="pve,ceph," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Import Disk to Ceph"/>
 <meta name="twitter:description" content="Convert Disk to RAW #qcow2 qemu-img convert -f qcow2 xxx.qcow2 -O raw xxxx.raw #vmware qemu-img convert -f vmdk xxx-flat.vmdk -O raw xxx.raw Import RAW to ceph rbd list --pool ${ceph-pool-name} rbd import ./xxx.raw --pool ${ceph-pool-name} rbd rm ${old-file-rm} --pool ${ceph-pool-name] rbd mv xxx.raw ${old-file-rm) rbd list --poll ${ceph-pool-name} Reference 将qcow2格式的虚拟机文件导入到ceph"/>
 
@@ -377,36 +374,32 @@ if (!doNotTrack) {
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#convert-disk-to-raw">Convert Disk to RAW</a></li>
-<li><a href="#import-raw-to-ceph">Import RAW to ceph</a></li>
-<li><a href="#reference">Reference</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#convert-disk-to-raw">Convert Disk to RAW</a></li>
+    <li><a href="#import-raw-to-ceph">Import RAW to ceph</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<h2 id="convert-disk-to-raw">Convert Disk to RAW</h2>
+      <h2 id="convert-disk-to-raw">Convert Disk to RAW</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic">#qcow2</span>
 qemu-img convert  -f qcow2  xxx.qcow2 -O raw xxxx.raw
 <span style="color:#09f;font-style:italic">#vmware</span>
-qemu-img convert -f vmdk xxx-flat.vmdk -O raw xxx.raw</code></pre></div>
-<h2 id="import-raw-to-ceph">Import RAW to ceph</h2>
+qemu-img convert -f vmdk xxx-flat.vmdk -O raw xxx.raw
+
+</code></pre></div><h2 id="import-raw-to-ceph">Import RAW to ceph</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rbd list --pool <span style="color:#a00">${</span><span style="color:#033">ceph</span>-pool-name<span style="color:#a00">}</span>
 rbd import ./xxx.raw --pool <span style="color:#a00">${</span><span style="color:#033">ceph</span>-pool-name<span style="color:#a00">}</span>
 rbd rm <span style="color:#a00">${</span><span style="color:#033">old</span>-file-rm<span style="color:#a00">}</span> --pool <span style="color:#a00">${</span><span style="color:#033">ceph</span>-pool-name]
 rbd mv xxx.raw <span style="color:#a00">${</span><span style="color:#033">old</span>-file-rm)
 
-rbd list --poll <span style="color:#a00">${</span><span style="color:#033">ceph</span>-pool-name<span style="color:#a00">}</span></code></pre></div>
-<h2 id="reference">Reference</h2>
+rbd list --poll <span style="color:#a00">${</span><span style="color:#033">ceph</span>-pool-name<span style="color:#a00">}</span>
 
+</code></pre></div><h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://blog.csdn.net/Packet886/article/details/80522425">将qcow2格式的虚拟机文件导入到ceph池里</a></li>
 </ul>

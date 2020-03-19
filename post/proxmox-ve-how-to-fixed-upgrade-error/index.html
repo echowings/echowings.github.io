@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="How solove Proxmox VE 5.4 upgrade issue Today I&amp;rsquo;m trying to upgrade proxmox ve 5.3. to proxmox ve 5.4 version. But I failed. After install and uninstall proxmox-manager, Force to reboot and the node has kernel panic error. Then force reboot the node. At grub menu select second line to select an old pve kernel to boot proxmox-ve.
+  <meta name="description" content="How solove Proxmox VE 5.4 upgrade issue Today I&#39;m trying to upgrade proxmox ve 5.3. to proxmox ve 5.4 version. But I failed. After install and uninstall proxmox-manager, Force to reboot and the node has kernel panic error. Then force reboot the node. At grub menu select second line to select an old pve kernel to boot proxmox-ve.
 ERROR 1:&amp;ldquo;No space left on device&amp;rdquo; error on latest upgrade If you met issue like this:" />
 
   <meta name="keywords" content="proxmox ve, network, devops, sdn, system Administation" />
@@ -33,7 +33,7 @@ ERROR 1:&amp;ldquo;No space left on device&amp;rdquo; error on latest upgrade If
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/proxmox-ve-how-to-fixed-upgrade-error/" />
@@ -54,34 +54,31 @@ ERROR 1:&amp;ldquo;No space left on device&amp;rdquo; error on latest upgrade If
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.0995afa14b62cd93e93cfc066b646c4c17a3eddca0e9d52a1d9dcf5d90aaacd3.css" integrity="sha256-CZWvoUtizZPpPPwGa2RsTBej7dyg6dUqHZ3PXZCqrNM=" media="screen" crossorigin="anonymous">
 
 
 
 
 
 <meta property="og:title" content="Proxmox Ve How to Fixed Upgrade Error" />
-<meta property="og:description" content="How solove Proxmox VE 5.4 upgrade issue Today I&rsquo;m trying to upgrade proxmox ve 5.3. to proxmox ve 5.4 version. But I failed. After install and uninstall proxmox-manager, Force to reboot and the node has kernel panic error. Then force reboot the node. At grub menu select second line to select an old pve kernel to boot proxmox-ve.
+<meta property="og:description" content="How solove Proxmox VE 5.4 upgrade issue Today I&#39;m trying to upgrade proxmox ve 5.3. to proxmox ve 5.4 version. But I failed. After install and uninstall proxmox-manager, Force to reboot and the node has kernel panic error. Then force reboot the node. At grub menu select second line to select an old pve kernel to boot proxmox-ve.
 ERROR 1:&ldquo;No space left on device&rdquo; error on latest upgrade If you met issue like this:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-how-to-fixed-upgrade-error/" />
 <meta property="article:published_time" content="2019-05-15T12:11:14+08:00" />
 <meta property="article:modified_time" content="2019-05-15T12:11:14+08:00" />
 <meta itemprop="name" content="Proxmox Ve How to Fixed Upgrade Error">
-<meta itemprop="description" content="How solove Proxmox VE 5.4 upgrade issue Today I&rsquo;m trying to upgrade proxmox ve 5.3. to proxmox ve 5.4 version. But I failed. After install and uninstall proxmox-manager, Force to reboot and the node has kernel panic error. Then force reboot the node. At grub menu select second line to select an old pve kernel to boot proxmox-ve.
+<meta itemprop="description" content="How solove Proxmox VE 5.4 upgrade issue Today I&#39;m trying to upgrade proxmox ve 5.3. to proxmox ve 5.4 version. But I failed. After install and uninstall proxmox-manager, Force to reboot and the node has kernel panic error. Then force reboot the node. At grub menu select second line to select an old pve kernel to boot proxmox-ve.
 ERROR 1:&ldquo;No space left on device&rdquo; error on latest upgrade If you met issue like this:">
-
-
 <meta itemprop="datePublished" content="2019-05-15T12:11:14&#43;08:00" />
 <meta itemprop="dateModified" content="2019-05-15T12:11:14&#43;08:00" />
 <meta itemprop="wordCount" content="1238">
 
 
 
-<meta itemprop="keywords" content="pve," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="pve," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Proxmox Ve How to Fixed Upgrade Error"/>
-<meta name="twitter:description" content="How solove Proxmox VE 5.4 upgrade issue Today I&rsquo;m trying to upgrade proxmox ve 5.3. to proxmox ve 5.4 version. But I failed. After install and uninstall proxmox-manager, Force to reboot and the node has kernel panic error. Then force reboot the node. At grub menu select second line to select an old pve kernel to boot proxmox-ve.
+<meta name="twitter:description" content="How solove Proxmox VE 5.4 upgrade issue Today I&#39;m trying to upgrade proxmox ve 5.3. to proxmox ve 5.4 version. But I failed. After install and uninstall proxmox-manager, Force to reboot and the node has kernel panic error. Then force reboot the node. At grub menu select second line to select an old pve kernel to boot proxmox-ve.
 ERROR 1:&ldquo;No space left on device&rdquo; error on latest upgrade If you met issue like this:"/>
 
 <!--[if lte IE 9]>
@@ -381,47 +378,44 @@ if (!doNotTrack) {
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#how-solove-proxmox-ve-5-4-upgrade-issue">How solove Proxmox VE 5.4 upgrade issue</a>
-<ul>
-<li><a href="#error-1-no-space-left-on-device-error-on-latest-upgrade">ERROR 1:&ldquo;No space left on device&rdquo; error on latest upgrade</a>
-<ul>
-<li><a href="#solution">Solution:</a></li>
-</ul></li>
-<li><a href="#error-2-the-configuration-should-be-retried-using-dpkg-configure-package-or-the-configure-menu-option-in-dselect">Error 2 :The configuration should be retried using<code>dpkg --configure &lt;package&gt;</code> or the configure menu option in dselect</a>
-<ul>
-<li><a href="#error-detail-dpkg-error-processing-package-pve-ha-manager-configure-dependency-problems-leaving-triggers-unprocessed-errors-were-encountered-while-processing">ERROR Detail: dpkg: error processing package pve-ha-manager (&ndash;configure): dependency problems - leaving triggers unprocessed Errors were encountered while processing:</a></li>
-<li><a href="#solution-1">Solution:</a></li>
-</ul></li>
-<li><a href="#remove-proxmox-ve">Remove proxmox-ve</a>
-<ul>
-<li><a href="#error-you-are-attempting-to-remove-the-meta-package-proxmox-ve">Error <code>You are attempting to remove the meta-package 'proxmox-ve'!</code></a></li>
-<li><a href="#solution-2">Solution</a></li>
-</ul></li>
-<li><a href="#error-with-update-bin-sh-1-usr-share-proxmox-ve-pve-apt-hook-not-found">Error with update: /bin/sh: 1: /usr/share/proxmox-ve/pve-apt-hook: not found</a>
-<ul>
-<li><a href="#error">Error:</a></li>
-<li><a href="#solution-3">Solution:</a></li>
-</ul></li>
-<li><a href="#swell">Swell</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#error-1no-space-left-on-device-error-on-latest-upgrade">ERROR 1:&ldquo;No space left on device&rdquo; error on latest upgrade</a>
+      <ul>
+        <li><a href="#solution">Solution:</a></li>
+      </ul>
+    </li>
+    <li><a href="#error-2-the-configuration-should-be-retried-usingdpkg---configure-package-or-the-configure-menu-option-in-dselect">Error 2 :The configuration should be retried usingdpkg --configure <package> or the configure menu option in dselect</a>
+      <ul>
+        <li><a href="#error-detail-dpkg-error-processing-package-pve-ha-manager---configure-dependency-problems---leaving-triggers-unprocessed-errors-were-encountered-while-processing">ERROR Detail: dpkg: error processing package pve-ha-manager (&ndash;configure): dependency problems - leaving triggers unprocessed Errors were encountered while processing:</a></li>
+        <li><a href="#solution-1">Solution:</a></li>
+      </ul>
+    </li>
+    <li><a href="#remove-proxmox-ve">Remove proxmox-ve</a>
+      <ul>
+        <li><a href="#error-you-are-attempting-to-remove-the-meta-package-proxmox-ve">Error You are attempting to remove the meta-package 'proxmox-ve'!</a></li>
+        <li><a href="#solution-2">Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#error-with-update-binsh-1-usrshareproxmox-vepve-apt-hook-not-found">Error with update: /bin/sh: 1: /usr/share/proxmox-ve/pve-apt-hook: not found</a>
+      <ul>
+        <li><a href="#error">Error:</a></li>
+        <li><a href="#solution-3">Solution:</a></li>
+      </ul>
+    </li>
+    <li><a href="#swell">Swell</a></li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<h1 id="how-solove-proxmox-ve-5-4-upgrade-issue">How solove Proxmox VE 5.4 upgrade issue</h1>
-
-<p>Today I&rsquo;m trying to upgrade proxmox ve 5.3. to proxmox ve 5.4 version. But I failed. After install and uninstall proxmox-manager, Force to reboot and the node has kernel panic error. Then force reboot the node. At grub menu select second line to select an old pve kernel to boot proxmox-ve.</p>
-
-<h2 id="error-1-no-space-left-on-device-error-on-latest-upgrade">ERROR 1:&ldquo;No space left on device&rdquo; error on latest upgrade</h2>
-
+      <h1 id="how-solove-proxmox-ve-54-upgrade-issue">How solove Proxmox VE 5.4 upgrade issue</h1>
+<p>Today I'm trying to upgrade proxmox ve 5.3. to proxmox ve 5.4 version. But I failed. After install and uninstall proxmox-manager, Force to reboot and the node has kernel panic error. Then force reboot the node. At grub menu select second line to select an old pve kernel to boot proxmox-ve.</p>
+<h2 id="error-1no-space-left-on-device-error-on-latest-upgrade">ERROR 1:&ldquo;No space left on device&rdquo; error on latest upgrade</h2>
 <p>If  you met issue like this:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#gzip: stdout: No space left on device</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+<span style="color:#09f;font-style:italic">#gzip: stdout: No space left on device</span>
 <span style="color:#09f;font-style:italic">#E: mkinitramfs failure find 141 cpio 141 gzip 1</span>
 <span style="color:#09f;font-style:italic">#update-initramfs: failed for /boot/initrd.img-4.15.18-10-pve with 1.</span>
 <span style="color:#09f;font-style:italic">#run-parts: /etc/kernel/postinst.d/initramfs-tools exited with return code 1</span>
@@ -455,30 +449,27 @@ if (!doNotTrack) {
 <span style="color:#09f;font-style:italic"># pve-kernel-4.15.18-10-pve</span>
 <span style="color:#09f;font-style:italic"># pve-kernel-4.15</span>
 <span style="color:#09f;font-style:italic"># initramfs-tools</span>
-<span style="color:#09f;font-style:italic">#E: Sub-process /usr/bin/dpkg returned an error code (1)</span></code></pre></div>
-<p>You can fixed it with command like this.</p>
+<span style="color:#09f;font-style:italic">#E: Sub-process /usr/bin/dpkg returned an error code (1)</span>
 
+</code></pre></div><p>You can fixed it with command like this.</p>
 <h3 id="solution">Solution:</h3>
-
 <p>List all of pve-kernel, Then remove pve-kernel except pve-kernel current your system running.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> <span style="color:#09f;font-style:italic"># Check status of mounted filesytem</span> 
- df -h
- <span style="color:#09f;font-style:italic"># Check lvm status</span>
- lvs -a
- <span style="color:#09f;font-style:italic"># List installed pve kernel</span>
- dpkg -l | grep pve-kernel
- 
- <span style="color:#09f;font-style:italic"># Check current running kernel</span> 
- uname -r
- 
- <span style="color:#09f;font-style:italic">#Delete kernel old than current running kern</span>
- apt purge pve-kernel-4.13.16-2-pve
- </code></pre></div>
-<h2 id="error-2-the-configuration-should-be-retried-using-dpkg-configure-package-or-the-configure-menu-option-in-dselect">Error 2 :The configuration should be retried using<code>dpkg --configure &lt;package&gt;</code> or the configure menu option in dselect</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># Check status of mounted filesytem</span> 
+df -h
+<span style="color:#09f;font-style:italic"># Check lvm status</span>
+lvs -a
+<span style="color:#09f;font-style:italic"># List installed pve kernel</span>
+dpkg -l | grep pve-kernel
 
+<span style="color:#09f;font-style:italic"># Check current running kernel</span> 
+uname -r
+
+<span style="color:#09f;font-style:italic">#Delete kernel old than current running kern</span>
+apt purge pve-kernel-4.13.16-2-pve
+
+</code></pre></div><h2 id="error-2-the-configuration-should-be-retried-usingdpkg---configure-package-or-the-configure-menu-option-in-dselect">Error 2 :The configuration should be retried using<code>dpkg --configure &lt;package&gt;</code> or the configure menu option in dselect</h2>
 <p>When I met error like this.</p>
-
-<h3 id="error-detail-dpkg-error-processing-package-pve-ha-manager-configure-dependency-problems-leaving-triggers-unprocessed-errors-were-encountered-while-processing">ERROR Detail: dpkg: error processing package pve-ha-manager (&ndash;configure): dependency problems - leaving triggers unprocessed Errors were encountered while processing:</h3>
+<h3 id="error-detail-dpkg-error-processing-package-pve-ha-manager---configure-dependency-problems---leaving-triggers-unprocessed-errors-were-encountered-while-processing">ERROR Detail: dpkg: error processing package pve-ha-manager (&ndash;configure): dependency problems - leaving triggers unprocessed Errors were encountered while processing:</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># $ apt update</span>
 <span style="color:#09f;font-style:italic">#$ apt upgrade</span>
 <span style="color:#09f;font-style:italic">#Reading package lists... Done</span>
@@ -586,23 +577,21 @@ if (!doNotTrack) {
 <span style="color:#09f;font-style:italic">#The following packages have been triggered, but the trigger processing</span>
 <span style="color:#09f;font-style:italic">#has not yet been done.  Trigger processing can be requested using</span>
 <span style="color:#09f;font-style:italic">#dselect or dpkg --configure --pending (or dpkg --triggers-only):</span>
-<span style="color:#09f;font-style:italic"># pve-ha-manager       Proxmox VE HA Manager</span></code></pre></div>
-<h3 id="solution-1">Solution:</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> dpkg --configure pve-manager
- dpkg --configure -a 
- 
- <span style="color:#09f;font-style:italic">#remove all of these software</span>
- apt remove pve-cluster pve-ha-manager pve-container pve-manager libpve-storage-perl qemu-server libpve-guest-common-perl pve-firewall proxmox-ve
- 
- 
+<span style="color:#09f;font-style:italic"># pve-ha-manager       Proxmox VE HA Manager</span>
 
- </code></pre></div>
-<p>Then reinstall proxmox-ve</p>
+</code></pre></div><h3 id="solution-1">Solution:</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">dpkg --configure pve-manager
+dpkg --configure -a 
 
+<span style="color:#09f;font-style:italic">#remove all of these software</span>
+apt remove pve-cluster pve-ha-manager pve-container pve-manager libpve-storage-perl qemu-server libpve-guest-common-perl pve-firewall proxmox-ve
+
+
+
+
+</code></pre></div><p>Then reinstall proxmox-ve</p>
 <h2 id="remove-proxmox-ve">Remove proxmox-ve</h2>
-
 <h3 id="error-you-are-attempting-to-remove-the-meta-package-proxmox-ve">Error <code>You are attempting to remove the meta-package 'proxmox-ve'!</code></h3>
-
 <p>This is  proxmox ve warning. We need follow the instruction to uninstall proxmox ve.</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># **This is now command, this is prompt dialog**</span>
 Do you want to <span style="color:#069;font-weight:bold">continue</span>? <span style="color:#555">[</span>Y/n<span style="color:#555">]</span> y
@@ -616,24 +605,23 @@ W: <span style="color:#555">(</span>pve-apt-hook<span style="color:#555">)</span
 W: <span style="color:#555">(</span>pve-apt-hook<span style="color:#555">)</span> If you are unsure why <span style="color:#c30">&#39;proxmox-ve&#39;</span> would be removed, please verify
 W: <span style="color:#555">(</span>pve-apt-hook<span style="color:#555">)</span>       - your APT repository settings
 W: <span style="color:#555">(</span>pve-apt-hook<span style="color:#555">)</span>       - that you are using <span style="color:#c30">&#39;apt-get dist-upgrade&#39;</span> or <span style="color:#c30">&#39;apt full-upgrade&#39;</span> to upgrade your system
-E: Sub-process /usr/share/proxmox-ve/pve-apt-hook returned an error code <span style="color:#555">(</span><span style="color:#f60">1</span><span style="color:#555">)</span>
-E: Failure running script /usr/share/proxmox-ve/pve-apt-hook</code></pre></div>
-<h3 id="solution-2">Solution</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> touch <span style="color:#c30">&#39;/please-remove-proxmox-ve&#39;</span>
- </code></pre></div>
-<h2 id="error-with-update-bin-sh-1-usr-share-proxmox-ve-pve-apt-hook-not-found">Error with update: /bin/sh: 1: /usr/share/proxmox-ve/pve-apt-hook: not found</h2>
+E: Sub-process /usr/share/proxmox-ve/pve-apt-hook returned an error code <span style="color:#555">(</span>1<span style="color:#555">)</span>
+E: Failure running script /usr/share/proxmox-ve/pve-apt-hook
+</code></pre></div><h3 id="solution-2">Solution</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">touch <span style="color:#c30">&#39;/please-remove-proxmox-ve&#39;</span>
 
+</code></pre></div><h2 id="error-with-update-binsh-1-usrshareproxmox-vepve-apt-hook-not-found">Error with update: /bin/sh: 1: /usr/share/proxmox-ve/pve-apt-hook: not found</h2>
 <h3 id="error">Error:</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/bin/sh: <span style="color:#f60">1</span>: /usr/share/proxmox-ve/pve-apt-hook: not found
-E: Sub-process /usr/share/proxmox-ve/pve-apt-hook returned an error code <span style="color:#555">(</span><span style="color:#f60">127</span><span style="color:#555">)</span>
-E: Failure running script /usr/share/proxmox-ve/pve-apt-hook</code></pre></div>
-<h3 id="solution-3">Solution:</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/bin/sh: 1: /usr/share/proxmox-ve/pve-apt-hook: not found
+E: Sub-process /usr/share/proxmox-ve/pve-apt-hook returned an error code <span style="color:#555">(</span>127<span style="color:#555">)</span>
+E: Failure running script /usr/share/proxmox-ve/pve-apt-hook
+</code></pre></div><h3 id="solution-3">Solution:</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir /usr/share/proxmox-ve
 touch /usr/share/proxmox-ve/pve-apt-hook
 chmod  u+x /usr/share/proxmox-ve/pve-apt-hook
-apt install proxmox-ve</code></pre></div>
-<h2 id="swell">Swell</h2>
+apt install proxmox-ve
 
+</code></pre></div><h2 id="swell">Swell</h2>
 <ul>
 <li><a href="https://forum.proxmox.com/threads/upgrade-error.51034/">Upgrade error</a></li>
 <li><a href="https://forum.proxmox.com/threads/installation-completely-broken.46796/">Installation completely broken</a></li>

@@ -25,7 +25,7 @@
 <meta name="author" content="Steve Dong" />
   <meta name="description" content="How to resize disk(no lvm) in proxmox ve Today I met a problem that I need to extend disk image for a ubuntu server which is a virtual machine hosted in proxmox ve.
 Resizing disk images First thing first, I need resize the disk images of the virtual machine.I can do it both in command line or via web management interface.
- Extend disk size of virtual machine via shell command" />
+ Extend disk size of virtual machine via shell command  # Extend disk size of virtual machine with vid 136 with 100G qm resize 136 virtio0 &#43;100G  Extend disk size of virtual machien via web interface  &amp;quot;Datacenter&amp;quot; | &amp;quot;$Node&amp;quot; | $VIRTUAL_MACHINE | &amp;quot;HARDWARE&amp;quot; | &amp;quot;HARD DISK(SCSI0)&amp;quot; | &amp;quot;RESIZE DISK&amp;quot; | &amp;quot;size Increment(GiB) | &amp;quot;100&amp;quot; | &amp;quot;Resize disk&amp;quot;" />
 
   <meta name="keywords" content="proxmox ve, network, devops, sdn, system Administation" />
 
@@ -34,7 +34,7 @@ Resizing disk images First thing first, I need resize the disk images of the vir
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/pve-how-to-extend-ubuntu-no-lvm-disk-in-proxmox-ve/" />
@@ -55,7 +55,7 @@ Resizing disk images First thing first, I need resize the disk images of the vir
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.0995afa14b62cd93e93cfc066b646c4c17a3eddca0e9d52a1d9dcf5d90aaacd3.css" integrity="sha256-CZWvoUtizZPpPPwGa2RsTBej7dyg6dUqHZ3PXZCqrNM=" media="screen" crossorigin="anonymous">
 
 
 
@@ -64,7 +64,7 @@ Resizing disk images First thing first, I need resize the disk images of the vir
 <meta property="og:title" content="How to Extend Ubuntu No Lvm Disk in Proxmox VE" />
 <meta property="og:description" content="How to resize disk(no lvm) in proxmox ve Today I met a problem that I need to extend disk image for a ubuntu server which is a virtual machine hosted in proxmox ve.
 Resizing disk images First thing first, I need resize the disk images of the virtual machine.I can do it both in command line or via web management interface.
- Extend disk size of virtual machine via shell command" />
+ Extend disk size of virtual machine via shell command  # Extend disk size of virtual machine with vid 136 with 100G qm resize 136 virtio0 &#43;100G  Extend disk size of virtual machien via web interface  &quot;Datacenter&quot; | &quot;$Node&quot; | $VIRTUAL_MACHINE | &quot;HARDWARE&quot; | &quot;HARD DISK(SCSI0)&quot; | &quot;RESIZE DISK&quot; | &quot;size Increment(GiB) | &quot;100&quot; | &quot;Resize disk&quot;" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/pve-how-to-extend-ubuntu-no-lvm-disk-in-proxmox-ve/" />
 <meta property="article:published_time" content="2019-05-28T15:20:53+08:00" />
@@ -72,21 +72,18 @@ Resizing disk images First thing first, I need resize the disk images of the vir
 <meta itemprop="name" content="How to Extend Ubuntu No Lvm Disk in Proxmox VE">
 <meta itemprop="description" content="How to resize disk(no lvm) in proxmox ve Today I met a problem that I need to extend disk image for a ubuntu server which is a virtual machine hosted in proxmox ve.
 Resizing disk images First thing first, I need resize the disk images of the virtual machine.I can do it both in command line or via web management interface.
- Extend disk size of virtual machine via shell command">
-
-
+ Extend disk size of virtual machine via shell command  # Extend disk size of virtual machine with vid 136 with 100G qm resize 136 virtio0 &#43;100G  Extend disk size of virtual machien via web interface  &quot;Datacenter&quot; | &quot;$Node&quot; | $VIRTUAL_MACHINE | &quot;HARDWARE&quot; | &quot;HARD DISK(SCSI0)&quot; | &quot;RESIZE DISK&quot; | &quot;size Increment(GiB) | &quot;100&quot; | &quot;Resize disk&quot;">
 <meta itemprop="datePublished" content="2019-05-28T15:20:53&#43;08:00" />
 <meta itemprop="dateModified" content="2019-05-28T15:20:53&#43;08:00" />
 <meta itemprop="wordCount" content="324">
 
 
 
-<meta itemprop="keywords" content="pve,storage," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="pve,storage," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Extend Ubuntu No Lvm Disk in Proxmox VE"/>
 <meta name="twitter:description" content="How to resize disk(no lvm) in proxmox ve Today I met a problem that I need to extend disk image for a ubuntu server which is a virtual machine hosted in proxmox ve.
 Resizing disk images First thing first, I need resize the disk images of the virtual machine.I can do it both in command line or via web management interface.
- Extend disk size of virtual machine via shell command"/>
+ Extend disk size of virtual machine via shell command  # Extend disk size of virtual machine with vid 136 with 100G qm resize 136 virtio0 &#43;100G  Extend disk size of virtual machien via web interface  &quot;Datacenter&quot; | &quot;$Node&quot; | $VIRTUAL_MACHINE | &quot;HARDWARE&quot; | &quot;HARD DISK(SCSI0)&quot; | &quot;RESIZE DISK&quot; | &quot;size Increment(GiB) | &quot;100&quot; | &quot;Resize disk&quot;"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -385,58 +382,49 @@ if (!doNotTrack) {
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#how-to-resize-disk-no-lvm-in-proxmox-ve">How to resize  disk(no lvm) in proxmox ve</a>
-<ul>
-<li><a href="#resizing-disk-images">Resizing disk images</a></li>
-<li><a href="#enlarge-the-partition-in-the-virtual-disk">Enlarge the partition in the virtual disk</a></li>
-<li><a href="#enlarge-partition-with-resize2f">Enlarge partition with <code>resize2f</code></a></li>
-<li><a href="#swell">Swell</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#resizing-disk-images">Resizing disk images</a></li>
+    <li><a href="#enlarge-the-partition-in-the-virtual-disk">Enlarge the partition in the virtual disk</a></li>
+    <li><a href="#enlarge-partition-with-resize2f">Enlarge partition with resize2f</a></li>
+    <li><a href="#swell">Swell</a></li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<h1 id="how-to-resize-disk-no-lvm-in-proxmox-ve">How to resize  disk(no lvm) in proxmox ve</h1>
-
+      <h1 id="how-to-resize--diskno-lvm-in-proxmox-ve">How to resize  disk(no lvm) in proxmox ve</h1>
 <p>Today I met a problem that I need to extend disk image for a ubuntu server which is a virtual machine hosted in proxmox ve.</p>
-
 <h2 id="resizing-disk-images">Resizing disk images</h2>
-
 <p>First thing first, I need resize the disk images of the virtual machine.I can do it both in command line or via web management interface.</p>
-
 <ul>
-<li><p>Extend disk size of virtual machine via shell command</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># Extend disk size of virtual machine with vid 136 with 100G</span>
-qm resize <span style="color:#f60">136</span> virtio0 +100G</code></pre></div>
-<ul>
-<li>Extend disk size of virtual machien via web interface</li>
-</ul></li>
+<li>Extend disk size of virtual machine via shell command</li>
 </ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># Extend disk size of virtual machine with vid 136 with 100G</span>
+qm resize <span style="color:#f60">136</span> virtio0 +100G
 
+</code></pre></div><ul>
+<li>Extend disk size of virtual machien via web interface</li>
+</ul>
 <p><code>&quot;Datacenter&quot; | &quot;$Node&quot; | $VIRTUAL_MACHINE | &quot;HARDWARE&quot; | &quot;HARD DISK(SCSI0)&quot; | &quot;RESIZE DISK&quot; | &quot;size Increment(GiB) | &quot;100&quot;  | &quot;Resize disk&quot;</code></p>
-
 <h2 id="enlarge-the-partition-in-the-virtual-disk">Enlarge the partition in the virtual disk</h2>
-
 <p>Login the virtual machine and run command as show below:</p>
-
 <ul>
-<li><p>Show disk partition</p>
+<li>Show disk partition</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># show disk device</span>
-ls -al /dev/sda*</code></pre></div></li>
-
-<li><p>Run parted with command <code>parted /dev/sda</code></p>
+ls -al /dev/sda*
+</code></pre></div><ul>
+<li>Run parted with command <code>parted /dev/sda</code></li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">root@xxx-xxxx-server:~# parted /dev/sda
-GNU Parted <span style="color:#f60">3</span>.2
+GNU Parted 3.2
 Using /dev/sda
-Welcome to GNU Parted! Type <span style="color:#c30">&#39;help&#39;</span> to view a list of commands.</code></pre></div></li>
-
-<li><p>print partitions. <code>print</code></p>
+Welcome to GNU Parted! Type <span style="color:#c30">&#39;help&#39;</span> to view a list of commands.
+</code></pre></div><ul>
+<li>print partitions. <code>print</code></li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#555">(</span>parted<span style="color:#555">)</span> print
 Model: QEMU QEMU HARDDISK <span style="color:#555">(</span>scsi<span style="color:#555">)</span>
 Disk /dev/sda: 389GB
@@ -445,20 +433,24 @@ Partition Table: gpt
 Disk Flags:
 
 Number  Start   End     Size    File system  Name  Flags
-<span style="color:#f60">1</span>      1049kB  2097kB  1049kB                     bios_grub
-<span style="color:#f60">2</span>      30720kB  30GB   30GB   ext4</code></pre></div></li>
-
-<li><p>Resize partition with command <code>resizepart</code>.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#555">(</span>parted<span style="color:#555">)</span> resizepart</code></pre></div></li>
-
-<li><p>select partition which I wanted to resize. <code>2</code></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Partition number? <span style="color:#f60">2</span></code></pre></div></li>
-
-<li><p>Enter <code>y</code> to continue.</p>
+ <span style="color:#f60">1</span>      1049kB  2097kB  1049kB                     bios_grub
+ <span style="color:#f60">2</span>      30720kB  30GB   30GB   ext4
+</code></pre></div><ul>
+<li>Resize partition with command <code>resizepart</code>.</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#555">(</span>parted<span style="color:#555">)</span> resizepart
+</code></pre></div><ul>
+<li>select partition which I wanted to resize. <code>2</code></li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Partition number? <span style="color:#f60">2</span>
+</code></pre></div><ul>
+<li>Enter <code>y</code> to continue.</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Warning: Partition /dev/sda2 is being used. Are you sure you want to <span style="color:#069;font-weight:bold">continue</span>?
-Yes/No? y</code></pre></div></li>
-
-<li><p>Enter size <code>200GB</code></p>
+Yes/No? y
+</code></pre></div><ul>
+<li>Enter size <code>200GB</code></li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">End?  <span style="color:#555">[</span>30GB<span style="color:#555">]</span>? 200GB
 <span style="color:#555">(</span>parted<span style="color:#555">)</span> print
 Model: QEMU QEMU HARDDISK <span style="color:#555">(</span>scsi<span style="color:#555">)</span>
@@ -468,20 +460,18 @@ Partition Table: gpt
 Disk Flags:
 
 Number  Start   End     Size    File system  Name  Flags
-<span style="color:#f60">1</span>      1049kB  2097kB  1049kB                     bios_grub
-<span style="color:#f60">2</span>      2097kB  200GB   200GB   ext4</code></pre></div>
-<ul>
-<li><p>Quit parted with <code>quit</code>.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#555">(</span>parted<span style="color:#555">)</span> :quit</code></pre></div></li>
-</ul></li>
+ <span style="color:#f60">1</span>      1049kB  2097kB  1049kB                     bios_grub
+ <span style="color:#f60">2</span>      2097kB  200GB   200GB   ext4
+</code></pre></div><ul>
+<li>Quit parted with <code>quit</code>.</li>
 </ul>
-
-<h2 id="enlarge-partition-with-resize2f">Enlarge partition with <code>resize2f</code></h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#555">(</span>parted<span style="color:#555">)</span> :quit
+</code></pre></div><h2 id="enlarge-partition-with-resize2f">Enlarge partition with <code>resize2f</code></h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">resize2f /dev/sda2 99G
 <span style="color:#09f;font-style:italic"># Show size of partition</span>
-df -h </code></pre></div>
-<h2 id="swell">Swell</h2>
+df -h 
 
+</code></pre></div><h2 id="swell">Swell</h2>
 <ul>
 <li><a href="https://pve.proxmox.com/wiki/Shrink_Qcow2_Disk_Files">Shrink Qcow2 Disk Files</a></li>
 <li><a href="https://pve.proxmox.com/wiki/Resize_disks">Resize disks</a></li>

@@ -17,7 +17,16 @@
       <pubDate>Tue, 24 Dec 2019 11:27:21 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/graylog/how-to-install-graylog-with-docker-compose/</guid>
-      <description> How to Install Graylog with Docker-compose    Hostname my-graylog      Docker-compose.yaml version:&amp;#39;2&amp;#39;services:# MongoDB: https://hub.docker.com/_/mongo/mongodb:image:mongo:3volumes:-./data/mongo_data:/data/db-/etc/localtime:/etc/localtime:ro# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.htmlelasticsearch:image:docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2volumes:-./data/es_data:/usr/share/elasticsearch/data-/etc/localtime:/etc/localtime:roenvironment:-http.host=0.0.0.0-transport.host=localhost-network.host=0.0.0.0-&amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34;ulimits:memlock:soft:-1hard:-1mem_limit:1g# Graylog: https://hub.docker.com/r/graylog/graylog/graylog:image:graylog/graylog:3.1volumes:-./data/graylog_journal:/usr/share/graylog/data/journal-/etc/localtime:/etc/localtime:roenvironment:# CHANGE ME (must be at least 16 characters)!-GRAYLOG_PASSWORD_SECRET=somepasswordpepper# Password: admin-GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918-GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/links:-mongodb:mongo-elasticsearchdepends_on:-mongodb-elasticsearchports:# Graylog web interface and REST API-9000:9000# Syslog TCP-1514:1514# Syslog UDP-1514:1514/udp# GELF TCP-12201:12201# GELF UDP-12201:12201/udp# Volumes for persisting data, see https://docs.docker.com/engine/admin/volumes/volumes/ Start graylog docker-compose up -d Fixed permission of folder chown -R 1100:1100 data/graylog_journal/ chown -R 1000:1000 data/es_data/ docker-compose down docker-compose up -d</description>
+      <description>How to Install Graylog with Docker-compose    Hostname my-graylog    Docker-compose.yaml version:&amp;#39;2&amp;#39;services:# MongoDB: https://hub.docker.com/_/mongo/mongodb:image:mongo:3volumes:-./data/mongo_data:/data/db-/etc/localtime:/etc/localtime:ro# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.htmlelasticsearch:image:docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2volumes:-./data/es_data:/usr/share/elasticsearch/data-/etc/localtime:/etc/localtime:roenvironment:-http.host=0.0.0.0-transport.host=localhost-network.host=0.0.0.0-&amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34;ulimits:memlock:soft:-1hard:-1mem_limit:1g# Graylog: https://hub.docker.com/r/graylog/graylog/graylog:image:graylog/graylog:3.1volumes:-./data/graylog_journal:/usr/share/graylog/data/journal-/etc/localtime:/etc/localtime:roenvironment:# CHANGE ME (must be at least 16 characters)!-GRAYLOG_PASSWORD_SECRET=somepasswordpepper# Password: admin-GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918-GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/links:-mongodb:mongo-elasticsearchdepends_on:-mongodb-elasticsearchports:# Graylog web interface and REST API-9000:9000# Syslog TCP-1514:1514# Syslog UDP-1514:1514/udp# GELF TCP-12201:12201# GELF UDP-12201:12201/udp# Volumes for persisting data, see https://docs.docker.com/engine/admin/volumes/volumes/Start graylog docker-compose up -d Fixed permission of folder chown -R 1100:1100 data/graylog_journal/ chown -R 1000:1000 data/es_data/ docker-compose down docker-compose up -d </description>
+    </item>
+    
+    <item>
+      <title>How to Install Jenkins With Docker Compose</title>
+      <link>https://blog.stevedong.com/post/devops/how-to-install-jenkins-with-docker-compose/</link>
+      <pubDate>Tue, 10 Dec 2019 22:39:01 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/devops/how-to-install-jenkins-with-docker-compose/</guid>
+      <description>How to install Jenkins with docker compose Create Dockerfile With office jenkins docker images.change the jenkins mirrors and change alpine linux soure list to aliyun #DockerfileFROMjenkins/jenkins:alpineUSERrootENVJENKINS_MIRRORhttps://mirrors.tuna.tsinghua.edu.cnENVJENKINS_UC_DOWNLOAD=&amp;#34;https://mirrors.tuna.tsinghua.edu.cn/jenkins/&amp;#34;RUNsed-i&amp;#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&amp;#39;/etc/apk/repositories\&amp;amp;&amp;amp;apkupdate\&amp;amp;&amp;amp;apkadddockernodejsnodejs-npmyarnCreate docker-compose.yaml # docker-compose.yamlversion:&amp;#34;2.4&amp;#34;services:jenkins:build:./#image: jenkins/jenkins:alpinecontainer_name:jenkinsports:-&amp;#34;80:8080&amp;#34;-&amp;#34;50000:50000&amp;#34;environment:#- JAVA_OPTS=-Xmx1500m -Duser.timezone=GMT+8-JAVA_OPTS=-Duser.timezone=GMT+8-JENKINS_UC_DOWNLOAD=https://mirrors.tuna.tsinghua.edu.cn/jenkins/volumes:-./data/jenkins:/var/jenkins_home-/var/run/docker.sock:/var/run/docker.sock-/root/.ssh/:/root/.ssh-/etc/localtime:/etc/localtime:ro# cpus: 3.5# mem_limit: 1800muser:rootrestart:alwaysInstall Jenkins with Check initial Admin Password by run command as show below cat data/jenkins/secrets/initialAdminPassword Reference Jenkins for Docker 跳过插件安装及插件加速镜像设置</description>
     </item>
     
     <item>
@@ -26,7 +35,7 @@
       <pubDate>Wed, 27 Nov 2019 12:24:57 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/devops/how-to-install-gitlab-with-docker-compose/</guid>
-      <description>How to Install gitlab with docer-compose version:&amp;#34;3.5&amp;#34;services:gitlab:image:gitlab/gitlab-ce:latestcontainer_name:gitlabrestart:alwayshostname:&amp;#39;xa-gitlab&amp;#39;environment:GITLAB_OMNIBUS_CONFIG:| external_url &amp;#39;http://xa-gitlab&amp;#39;gitlab_rails[&amp;#39;backup_keep_time&amp;#39;]=604800gitlab_rails[&amp;#39;time_zone&amp;#39;]=&amp;#39;Asia/Shanghai&amp;#39;gitlab_rails[&amp;#39;gitlab_shell_ssh_port&amp;#39;]=1022#gitlab_rails[&amp;#39;ldap_enabled&amp;#39;] = true#gitlab_rails[&amp;#39;ldap_servers&amp;#39;] = YAML.load &amp;lt;&amp;lt;-EOS#main:# label: &amp;#39;LDAP&amp;#39;# host: &amp;#39;192.168.1.1&amp;#39;# port: 389# uid: &amp;#39;uid&amp;#39;# bind_dn: &amp;#39;CN=admin,DC=lotbrick,DC=com&amp;#39;# password: &amp;#39;admin&amp;#39;# user_filter: &amp;#39;objectclass=person&amp;#39;# base: &amp;#39;ou=People,dc=xxxxx,dc=com&amp;#39;# active_directory: false# method: &amp;#39;plain&amp;#39;# attributes:# username: [&amp;#34;cn&amp;#34;]# email: [&amp;#39;email&amp;#39;]# name: &amp;#39;displayName&amp;#39;# first_name: &amp;#39;givenName&amp;#39;# last_name: &amp;#39;sn&amp;#39;#EOSports:-&amp;#39;80:80&amp;#39;-&amp;#39;443:443&amp;#39;-&amp;#39;1022:22&amp;#39;volumes:-./gitlab/config:/etc/gitlab-./gitlab/logs:/var/log/gitlab-./gitlab/data:/var/opt/gitlab# - &amp;#34;/etc/localtime:/etc/localtime:ro&amp;#34; Reference Docker+GitLab+LDAP部署过程</description>
+      <description>How to Install gitlab with docer-compose version:&amp;#34;3.5&amp;#34;services:gitlab:image:gitlab/gitlab-ce:latestcontainer_name:gitlabrestart:alwayshostname:&amp;#39;xa-gitlab&amp;#39;environment:GITLAB_OMNIBUS_CONFIG:| external_url &amp;#39;http://xa-gitlab&amp;#39;gitlab_rails[&amp;#39;backup_keep_time&amp;#39;]=604800gitlab_rails[&amp;#39;time_zone&amp;#39;]=&amp;#39;Asia/Shanghai&amp;#39;gitlab_rails[&amp;#39;gitlab_shell_ssh_port&amp;#39;]=1022#gitlab_rails[&amp;#39;ldap_enabled&amp;#39;] = true#gitlab_rails[&amp;#39;ldap_servers&amp;#39;] = YAML.load &amp;lt;&amp;lt;-EOS#main:# label: &amp;#39;LDAP&amp;#39;# host: &amp;#39;192.168.1.1&amp;#39;# port: 389# uid: &amp;#39;uid&amp;#39;# bind_dn: &amp;#39;CN=admin,DC=lotbrick,DC=com&amp;#39;# password: &amp;#39;admin&amp;#39;# user_filter: &amp;#39;objectclass=person&amp;#39;# base: &amp;#39;ou=People,dc=xxxxx,dc=com&amp;#39;# active_directory: false# method: &amp;#39;plain&amp;#39;# attributes:# username: [&amp;#34;cn&amp;#34;]# email: [&amp;#39;email&amp;#39;]# name: &amp;#39;displayName&amp;#39;# first_name: &amp;#39;givenName&amp;#39;# last_name: &amp;#39;sn&amp;#39;#EOSports:-&amp;#39;80:80&amp;#39;-&amp;#39;443:443&amp;#39;-&amp;#39;1022:22&amp;#39;volumes:-./gitlab/config:/etc/gitlab-./gitlab/logs:/var/log/gitlab-./gitlab/data:/var/opt/gitlab# - &amp;#34;/etc/localtime:/etc/localtime:ro&amp;#34;Reference Docker+GitLab+LDAP部署过程 https://github.com/JyBigBoss/docker-compose/blob/master/gitlab/docker-compose.yaml</description>
     </item>
     
     <item>
@@ -35,8 +44,8 @@
       <pubDate>Wed, 27 Nov 2019 11:56:41 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/proxmoxve/how-to-change-settings-after-clone-debian-10-with-cloudinit-enable-on-proxmox-ve/</guid>
-      <description>How to Change Settings After Clone Debian 10 With Cloudinit Enable on Proxmox VE Issue I found an issue about create a linux vm as a template with cloudinit enabled. Seem like after cloned the virtual machine, the cloud-init cd rom didn&amp;rsquo;t be created automatically. We need to delete it,then change setings again to apply the apt source.
-solution #!/usr/bin/env sh  mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.list apt update &amp;amp;&amp;amp; apt -y dist-upgrade apt install -y openssh-server git vim cloud-init apt-transport-https sed -i &amp;#39;s/http/https/g&amp;#39; /etc/apt/sources.</description>
+      <description>How to Change Settings After Clone Debian 10 With Cloudinit Enable on Proxmox VE Issue I found an issue about create a linux vm as a template with cloudinit enabled. Seem like after cloned the virtual machine, the cloud-init cd rom didn&#39;t be created automatically. We need to delete it,then change setings again to apply the apt source.
+solution #!/usr/bin/env sh mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.list apt update &amp;amp;&amp;amp; apt -y dist-upgrade apt install -y openssh-server git vim cloud-init apt-transport-https sed -i &amp;#39;s/http/https/g&amp;#39; /etc/apt/sources.</description>
     </item>
     
     <item>
@@ -56,7 +65,7 @@ Download and modified docker-compose.yml for elasticflow # Download `docker-comp
       
       <guid>https://blog.stevedong.com/post/how-to-deploy-bookstack-with-docker-compose/</guid>
       <description>How to Deploy Bookstack with Docker Compose Bookstack is a good opensource solution for enterprie document management with light footprinting. It support auth like ldap,active directory,google,azure,aws,slack etc. and it can export document as pdf file.
-Preparation  Install docker and docker-compose on debian 10 Information for bookstack installation.     Type Value     Hostname mybookstack   Domainame mydomain.local   AD Auth User stevedong   Domain Controller IP &amp;lt;domain contoller IP&amp;gt;   Time Zone Asia/Shanghai    How to fix export chinese pdf document with error  Install chinese fonts on docker server host</description>
+Preparation  Install docker and docker-compose on debian 10 Information for bookstack installation.     Type Value     Hostname mybookstack   Domainame mydomain.local   AD Auth User stevedong   Domain Controller IP &amp;lt;domain contoller IP&amp;gt;   Time Zone Asia/Shanghai    How to fix export chinese pdf document with error  Install chinese fonts on docker server host  apt install fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy customized dockerfile with option:  environments:# To let bookstack export pdf with chinese language supported.</description>
     </item>
     
     <item>
@@ -67,8 +76,7 @@ Preparation  Install docker and docker-compose on debian 10 Information for book
       <guid>https://blog.stevedong.com/post/how-to-configure-debian-10-as-a-docker-server/</guid>
       <description>How to configure debian 10 as a docker server After try to install docker in LXC with proxmox ve, there will be some issues to make docker stop working. At last, I gave up and brance pure linux as docker sever.
 Install debian 10 in promxox ve Configure deiban 10 vm with &amp;lsquo;qemu-agent&amp;rsquo; checked.
-After install deiban 10  Change source list
-mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.list apt update &amp;amp;&amp;amp; apt -y dist-upgrade apt install -y openssh-server git vim cloud-init apt-transport-https sed -i &amp;#39;s/http/https/g&amp;#39; /etc/apt/sources.</description>
+After install deiban 10  Change source list  mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.list apt update &amp;amp;&amp;amp; apt -y dist-upgrade apt install -y openssh-server git vim cloud-init apt-transport-https sed -i &amp;#39;s/http/https/g&amp;#39; /etc/apt/sources.</description>
     </item>
     
     <item>
@@ -88,8 +96,8 @@ Install librenms with docker-compose mkdir -p librenms-docker-compose cd ./libre
       <pubDate>Thu, 11 Apr 2019 00:17:37 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/how-to-build-a-kms-server/</guid>
-      <description> How to build a kms server Option 1: docker mode docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername  Option 2: docker compose docker-compose.yml
-version:&amp;#39;3&amp;#39;services:frontend:image:luodaoyi/kms-servercontainer_name:mykmsports:-1688:1688restart:always docker-compose start the container
+      <description>How to build a kms server Option 1: docker mode docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername Option 2: docker compose docker-compose.yml
+version:&amp;#39;3&amp;#39;services:frontend:image:luodaoyi/kms-servercontainer_name:mykmsports:-1688:1688restart:alwaysdocker-compose start the container
 docker-compose up -d Active Script echo &amp;#34;To active office&amp;#34; cd &amp;#34;%programfiles%\Microsoft Office\Office16&amp;#34; cscript ospp.vbs /sethst:xx.xx.xx.xx cscript ospp.vbs /act echo &amp;#34;to active windows&amp;#34; slmgr /skms xxx.xxx.xxx.xxx slmgr /ato Reference  blog  </description>
     </item>
     
@@ -110,7 +118,7 @@ docker-compose up -d Active Script echo &amp;#34;To active office&amp;#34; cd &a
       <guid>https://blog.stevedong.com/post/dockerfile-for-overture/</guid>
       <description>How to Wirte docker file for overture Hence we need to custom overture docker image as we desire, I write this dockerfile.
 How to map VOLUME and copy file from docker images to directory of docker host. When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.
-if [ &amp;ldquo;ls -A /config&amp;rdquo; = &amp;ldquo;&amp;rdquo; ]; then cp /srv/config.</description>
+if [ &amp;ldquo;ls -A /config&amp;rdquo; = &amp;quot;&amp;rdquo; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.</description>
     </item>
     
     <item>
@@ -128,7 +136,7 @@ if [ &amp;ldquo;ls -A /config&amp;rdquo; = &amp;ldquo;&amp;rdquo; ]; then cp /sr
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://blog.stevedong.com/post/how-to-deploy-docker-in-debian-10/</guid>
-      <description> How to deploy docker in debian 10 cat &amp;lt;&amp;lt; EOF &amp;gt; /etc/docker/aemon.json\n{\n &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://docker.mirrors.ustc.edu.cn/&amp;#34;]\n}\n\nEOF systemctl retart docker systemctl restart docker Install docker-compose sudo curl -L &amp;#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)&amp;#34; -o /usr/local/bin/docker-compose sudo chmod +x /usr/local/bin/docker-compose sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</description>
+      <description>How to deploy docker in debian 10 cat &amp;lt;&amp;lt; EOF &amp;gt; /etc/docker/aemon.json\n{\n &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://docker.mirrors.ustc.edu.cn/&amp;#34;]\n}\n\nEOF systemctl retart docker systemctl restart docker Install docker-compose sudo curl -L &amp;#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)&amp;#34; -o /usr/local/bin/docker-compose sudo chmod +x /usr/local/bin/docker-compose sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose </description>
     </item>
     
   </channel>

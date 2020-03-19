@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/how-to-setup-vyos-as-a-firewall/" />
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.0995afa14b62cd93e93cfc066b646c4c17a3eddca0e9d52a1d9dcf5d90aaacd3.css" integrity="sha256-CZWvoUtizZPpPPwGa2RsTBej7dyg6dUqHZ3PXZCqrNM=" media="screen" crossorigin="anonymous">
 
 
 
@@ -67,16 +67,13 @@
 <meta property="article:modified_time" content="2019-08-08T13:58:35+08:00" />
 <meta itemprop="name" content="How to Setup Vyos as a Firewall">
 <meta itemprop="description" content="How to Setup Vyos as a Firewall Setup interface    Interface IP Address Description     eth0 pppoe WAN   eth1 192.168.68.1 / 24 DMZ   eth2 10.0.0.1 / 24 LAN    set interface ethernet eth0 pppoe 0 user-id &#39;&lt;pppoe accout&gt;&#39; set interface ethernet eth0 pppoe 0 password &#39;&lt;pppoe password&gt;&#39; set interface ethernet eth0 pppoe 0 name-server &#39;none&#39; set interface ethernet eth0 description &#39;WAN&#39; set interface ethernet eth1 address 192.">
-
-
 <meta itemprop="datePublished" content="2019-08-08T13:58:35&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-08T13:58:35&#43;08:00" />
 <meta itemprop="wordCount" content="683">
 
 
 
-<meta itemprop="keywords" content="vyos,firewall,network," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="vyos,firewall,network," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Setup Vyos as a Firewall"/>
 <meta name="twitter:description" content="How to Setup Vyos as a Firewall Setup interface    Interface IP Address Description     eth0 pppoe WAN   eth1 192.168.68.1 / 24 DMZ   eth2 10.0.0.1 / 24 LAN    set interface ethernet eth0 pppoe 0 user-id &#39;&lt;pppoe accout&gt;&#39; set interface ethernet eth0 pppoe 0 password &#39;&lt;pppoe password&gt;&#39; set interface ethernet eth0 pppoe 0 name-server &#39;none&#39; set interface ethernet eth0 description &#39;WAN&#39; set interface ethernet eth1 address 192."/>
 
@@ -377,37 +374,32 @@ if (!doNotTrack) {
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#how-to-setup-vyos-as-a-firewall">How to Setup Vyos as a Firewall</a>
-<ul>
-<li><a href="#setup-interface">Setup interface</a></li>
-<li><a href="#dhcp-server">DHCP Server</a></li>
-<li><a href="#dns-forwarding">DNS forwarding</a></li>
-<li><a href="#set-loging-banner">Set loging banner</a></li>
-<li><a href="#nat">NAT</a>
-<ul>
-<li><a href="#snat">SNAT</a></li>
-<li><a href="#dnat">DNAT</a></li>
-</ul></li>
-<li><a href="#default-routing">Default routing</a></li>
-<li><a href="#setting-of-firewall">Setting of firewall</a>
-<ul>
-<li><a href="#zone-base-firewall">Zone base firewall</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#setup-interface">Setup interface</a></li>
+    <li><a href="#dhcp-server">DHCP Server</a></li>
+    <li><a href="#dns-forwarding">DNS forwarding</a></li>
+    <li><a href="#set-loging-banner">Set loging banner</a></li>
+    <li><a href="#nat">NAT</a>
+      <ul>
+        <li><a href="#snat">SNAT</a></li>
+        <li><a href="#dnat">DNAT</a></li>
+      </ul>
+    </li>
+    <li><a href="#default-routing">Default routing</a></li>
+    <li><a href="#setting-of-firewall">Setting of firewall</a>
+      <ul>
+        <li><a href="#zone-base-firewall">Zone base firewall</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<h1 id="how-to-setup-vyos-as-a-firewall">How to Setup Vyos as a Firewall</h1>
-
+      <h1 id="how-to-setup-vyos-as-a-firewall">How to Setup Vyos as a Firewall</h1>
 <h2 id="setup-interface">Setup interface</h2>
-
 <table>
 <thead>
 <tr>
@@ -416,20 +408,17 @@ if (!doNotTrack) {
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>eth0</td>
 <td>pppoe</td>
 <td>WAN</td>
 </tr>
-
 <tr>
 <td>eth1</td>
 <td>192.168.68.1 / 24</td>
 <td>DMZ</td>
 </tr>
-
 <tr>
 <td>eth2</td>
 <td>10.0.0.1 / 24</td>
@@ -442,45 +431,46 @@ if (!doNotTrack) {
 <span style="color:#366">set</span> interface ethernet eth0 pppoe <span style="color:#f60">0</span> name-server <span style="color:#c30">&#39;none&#39;</span>
 <span style="color:#366">set</span> interface ethernet eth0 description <span style="color:#c30">&#39;WAN&#39;</span>
 
-<span style="color:#366">set</span> interface ethernet eth1 address <span style="color:#f60">192</span>.168.68.1/24
+<span style="color:#366">set</span> interface ethernet eth1 address 192.168.68.1/24
 <span style="color:#366">set</span> interface ethernet eth1 description DMZ
 
-<span style="color:#366">set</span> interface ethernet eth2 address <span style="color:#f60">10</span>.0.0.1/24
-<span style="color:#366">set</span> interface ethernet eth2 description <span style="color:#c30">&#39;LAN&#39;</span></code></pre></div>
-<h2 id="dhcp-server">DHCP Server</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> shared-network-name lan.local subnet <span style="color:#f60">192</span>.168.68.0/24 default-router <span style="color:#f60">192</span>.168.68.1
-<span style="color:#366">set</span> shared-network-name lan.local subnet <span style="color:#f60">192</span>.168.68.0/24 dns-server <span style="color:#f60">192</span>.168.68.1
-<span style="color:#366">set</span> shared-network-name lan.local subnet <span style="color:#f60">192</span>.168.68.0/24 domain-name lan.local
-<span style="color:#366">set</span> shared-network-name lan.local subnet <span style="color:#f60">192</span>.168.68.0/24 range <span style="color:#f60">0</span> start <span style="color:#f60">192</span>.168.50
-<span style="color:#366">set</span> shared-network-name lan.local subnet <span style="color:#f60">192</span>.168.68.0/24 range <span style="color:#f60">0</span> stop <span style="color:#f60">192</span>.168.68.254<span style="color:#a00;background-color:#faa">&#39;</span></code></pre></div>
-<h2 id="dns-forwarding">DNS forwarding</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> cache-size <span style="color:#c30">&#39;0&#39;</span>
-<span style="color:#366">set</span> listen-address <span style="color:#f60">192</span>.168.68.1
-<span style="color:#366">set</span> name-server &lt;public dns server ip ,like <span style="color:#f60">8</span>.8.8.8&gt;</code></pre></div>
-<h2 id="set-loging-banner">Set loging banner</h2>
+<span style="color:#366">set</span> interface ethernet eth2 address 10.0.0.1/24
+<span style="color:#366">set</span> interface ethernet eth2 description <span style="color:#c30">&#39;LAN&#39;</span>
+</code></pre></div><h2 id="dhcp-server">DHCP Server</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> shared-network-name lan.local subnet 192.168.68.0/24 default-router 192.168.68.1
+<span style="color:#366">set</span> shared-network-name lan.local subnet 192.168.68.0/24 dns-server 192.168.68.1
+<span style="color:#366">set</span> shared-network-name lan.local subnet 192.168.68.0/24 domain-name lan.local
+<span style="color:#366">set</span> shared-network-name lan.local subnet 192.168.68.0/24 range <span style="color:#f60">0</span> start 192.168.50
+<span style="color:#366">set</span> shared-network-name lan.local subnet 192.168.68.0/24 range <span style="color:#f60">0</span> stop 192.168.68.254<span style="color:#a00;background-color:#faa">&#39;</span>
 
+</code></pre></div><h2 id="dns-forwarding">DNS forwarding</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> cache-size <span style="color:#c30">&#39;0&#39;</span>
+<span style="color:#366">set</span> listen-address 192.168.68.1
+<span style="color:#366">set</span> name-server &lt;public dns server ip ,like 8.8.8.8&gt;
+
+</code></pre></div><h2 id="set-loging-banner">Set loging banner</h2>
 <p>You are able to set post-login or pre-login messages with the following lines:</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> system login banner pre-login <span style="color:#c30">&#34;UNAUTHORIZED USE OF THIS SYSTEM IS PROHIBITED\n&#34;</span>
-<span style="color:#366">set</span> system login banner post-login <span style="color:#c30">&#34;Welcome to VyOS&#34;</span></code></pre></div>
-<h2 id="nat">NAT</h2>
-
+<span style="color:#366">set</span> system login banner post-login <span style="color:#c30">&#34;Welcome to VyOS&#34;</span>
+</code></pre></div><h2 id="nat">NAT</h2>
 <h3 id="snat">SNAT</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> <span style="color:#366">source</span> rule <span style="color:#f60">10</span> outbound-interface pppoe0
-<span style="color:#366">set</span> <span style="color:#366">source</span> rule <span style="color:#f60">10</span> <span style="color:#366">source</span> address <span style="color:#f60">192</span>.168.68.0/24
-<span style="color:#366">set</span> <span style="color:#366">source</span> rule <span style="color:#f60">10</span> translation address masquerade</code></pre></div>
-<h3 id="dnat">DNAT</h3>
+<span style="color:#366">set</span> <span style="color:#366">source</span> rule <span style="color:#f60">10</span> <span style="color:#366">source</span> address 192.168.68.0/24
+<span style="color:#366">set</span> <span style="color:#366">source</span> rule <span style="color:#f60">10</span> translation address masquerade
+
+</code></pre></div><h3 id="dnat">DNAT</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> nat destination rule <span style="color:#f60">10</span> destination address <span style="color:#c30">&#39;10.0.0.5&#39;</span>
 <span style="color:#366">set</span> nat destination rule <span style="color:#f60">10</span> destination port <span style="color:#c30">&#39;3389&#39;</span>
 <span style="color:#366">set</span> nat destination rule <span style="color:#f60">10</span> inbound-interface <span style="color:#c30">&#39;eth2&#39;</span>
 <span style="color:#366">set</span> nat destination rule <span style="color:#f60">10</span> protocol <span style="color:#c30">&#39;tcp_udp&#39;</span>
 <span style="color:#366">set</span> nat destination rule <span style="color:#f60">10</span> translation address <span style="color:#c30">&#39;192.168.68.50&#39;</span>
-<span style="color:#366">set</span> nat destination rule <span style="color:#f60">10</span> translation port <span style="color:#c30">&#39;3389&#39;</span></code></pre></div>
-<h2 id="default-routing">Default routing</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> static interface-route <span style="color:#f60">0</span>.0.0.0/0 next-hop-interface pppoe0</code></pre></div>
-<h2 id="setting-of-firewall">Setting of firewall</h2>
-
+<span style="color:#366">set</span> nat destination rule <span style="color:#f60">10</span> translation port <span style="color:#c30">&#39;3389&#39;</span>
+</code></pre></div><h2 id="default-routing">Default routing</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> static interface-route 0.0.0.0/0 next-hop-interface pppoe0
+</code></pre></div><h2 id="setting-of-firewall">Setting of firewall</h2>
 <h3 id="zone-base-firewall">Zone base firewall</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># Chang firewall to statue firewall</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+<span style="color:#09f;font-style:italic"># Chang firewall to statue firewall</span>
 <span style="color:#366">set</span> firewall state-policy established action <span style="color:#c30">&#39;accept&#39;</span>
 <span style="color:#366">set</span> firewall state-policy related action <span style="color:#c30">&#39;accept&#39;</span>
 <span style="color:#366">set</span> firewall state-policy invalid action <span style="color:#c30">&#39;drop&#39;</span>
@@ -576,7 +566,10 @@ if (!doNotTrack) {
 
 
 commit
-save</code></pre></div>
+save
+
+
+</code></pre></div>
     </div>
 
     

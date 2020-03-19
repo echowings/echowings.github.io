@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/how-to-build-blog-with-hugo-on-github/" />
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.0995afa14b62cd93e93cfc066b646c4c17a3eddca0e9d52a1d9dcf5d90aaacd3.css" integrity="sha256-CZWvoUtizZPpPPwGa2RsTBej7dyg6dUqHZ3PXZCqrNM=" media="screen" crossorigin="anonymous">
 
 
 
@@ -67,16 +67,13 @@
 <meta property="article:modified_time" content="2018-10-26T21:57:33+08:00" />
 <meta itemprop="name" content="How to Build Blog With Hugo on Github">
 <meta itemprop="description" content="Hugo on your MacOS Setting github create a repo named blogs for store hugo programes. Create another repo named echowings.github.io to host websit. generate ssh key and regist it on github settings. Install hugo brew install hugo Create a blog site. hugo new site blogs init git cd blogs git init #Add remote repo. git remote add origin git@github.com:echowings/blogs.git #Add a theme for your hugo. git submodule add -b master">
-
-
 <meta itemprop="datePublished" content="2018-10-26T21:57:33&#43;08:00" />
 <meta itemprop="dateModified" content="2018-10-26T21:57:33&#43;08:00" />
-<meta itemprop="wordCount" content="468">
+<meta itemprop="wordCount" content="473">
 
 
 
-<meta itemprop="keywords" content="hugo," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="hugo," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Build Blog With Hugo on Github"/>
 <meta name="twitter:description" content="Hugo on your MacOS Setting github create a repo named blogs for store hugo programes. Create another repo named echowings.github.io to host websit. generate ssh key and regist it on github settings. Install hugo brew install hugo Create a blog site. hugo new site blogs init git cd blogs git init #Add remote repo. git remote add origin git@github.com:echowings/blogs.git #Add a theme for your hugo. git submodule add -b master"/>
 
@@ -377,56 +374,52 @@ if (!doNotTrack) {
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#hugo-on-your-macos">Hugo on your MacOS</a>
-<ul>
-<li><a href="#change-configure">Change configure</a></li>
-</ul></li>
-<li><a href="#add-syntax-highlight">Add syntax highlight</a></li>
-</ul></li>
-<li><a href="#deploy-your-blog-to-github">Deploy your blog to github</a>
-<ul>
-<li><a href="#add-a-comment">Add a comment</a></li>
-<li><a href="#download-git-and-rebuild-blog-environment">Download git and rebuild blog environment</a></li>
-</ul></li>
-<li><a href="#reference">Reference</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#hugo-on-your-macos">Hugo on your MacOS</a></li>
+        <li><a href="#add-syntax-highlight">Add syntax highlight</a></li>
+      </ul>
+    </li>
+    <li><a href="#deploy-your-blog-to-github">Deploy your blog to github</a>
+      <ul>
+        <li><a href="#add-a-comment">Add a comment</a></li>
+      </ul>
+    </li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<h3 id="hugo-on-your-macos">Hugo on your MacOS</h3>
-
+      <h3 id="hugo-on-your-macos">Hugo on your MacOS</h3>
 <ul>
 <li>Setting github</li>
 </ul>
-
 <ol>
 <li>create a repo named blogs for store hugo programes.</li>
 <li>Create another repo named echowings.github.io to host websit.</li>
 <li>generate ssh key and regist it on github settings.</li>
 </ol>
-
 <ul>
-<li><p>Install hugo</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  
-brew install hugo</code></pre></div></li>
-
-<li><p>Create a blog site.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  
-hugo new site blogs</code></pre></div></li>
-
-<li><p>init git</p>
+<li>Install hugo</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> 
+brew install hugo
+
+
+</code></pre></div><ul>
+<li>Create a blog site.</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+hugo new site blogs
+
+</code></pre></div><ul>
+<li>init git</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 <span style="color:#366">cd</span> blogs
 git init
 <span style="color:#09f;font-style:italic">#Add remote repo.</span> 
@@ -434,19 +427,21 @@ git remote add origin git@github.com:echowings/blogs.git
 <span style="color:#09f;font-style:italic">#Add a theme for your hugo.</span>
 git submodule add -b master https://github.com/xianmin/hugo-theme-jane.git themes/jane
 cp -r themes/jane/exampleSite/content ./
-cp themes/jane/exampleSite/config.toml ./</code></pre></div></li>
+cp themes/jane/exampleSite/config.toml ./
 
-<li><p>Test hugo at local.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">	
-hugo server</code></pre></div></li>
-
-<li><p>You can access <a href="http://localhost:1313">http://localhost:1313</a> to test your blog in local.</p></li>
+</code></pre></div><ul>
+<li>Test hugo at local.</li>
 </ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   
+hugo server
 
+</code></pre></div><ul>
+<li>You can access <a href="http://localhost:1313">http://localhost:1313</a> to test your blog in local.</li>
+</ul>
 <h4 id="change-configure">Change configure</h4>
-
 <ul>
-<li><p>Modifiy vi config.toml</p>
+<li>Modifiy vi config.toml</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#09f;font-style:italic">#Change URL</span>
 baseURL = <span style="color:#c30">&#34;https://blog.stevedong.com&#34;</span>
 
@@ -471,90 +466,96 @@ googleAnalytics= <span style="color:#c30">&#34;UA-xxxxxxxx-X&#34;</span>
 <span style="color:#09f;font-style:italic"># Chang author</span>
 name = <span style="color:#c30">&#34;Steve Dong&#34;</span>
 
-<span style="color:#09f;font-style:italic"># Commit the meanu &#34;External Link&#34;</span>
-<span style="color:#09f;font-style:italic">#[[menu.main]]</span>
-<span style="color:#09f;font-style:italic">#  name = &#34;MyGitHub&#34;</span>
-<span style="color:#09f;font-style:italic">#  weight = 50</span>
-<span style="color:#09f;font-style:italic">#  url = &#34;https://echowings.github.com&#34;</span>
+ <span style="color:#09f;font-style:italic"># Commit the meanu &#34;External Link&#34;</span>
+ <span style="color:#09f;font-style:italic">#[[menu.main]]</span>
+ <span style="color:#09f;font-style:italic">#  name = &#34;MyGitHub&#34;</span>
+ <span style="color:#09f;font-style:italic">#  weight = 50</span>
+ <span style="color:#09f;font-style:italic">#  url = &#34;https://echowings.github.com&#34;</span>
  
-<span style="color:#09f;font-style:italic">#Change Site creation time</span>
+ <span style="color:#09f;font-style:italic">#Change Site creation time</span>
  
-[params]
-	since = <span style="color:#c30">&#34;2018&#34;</span>
+ [params]
+ 	since = <span style="color:#c30">&#34;2018&#34;</span>
  	
 	logoTitle= <span style="color:#c30">&#34;Steve Dong&#34;</span>
-	keywords = [<span style="color:#c30">&#34;network&#34;</span>, <span style="color:#c30">&#34;devops&#39;, &#34;</span>System Administrator<span style="color:#a00;background-color:#faa">&#34;</span>]</code></pre></div></li>
-</ul>
-
-<h3 id="add-syntax-highlight">Add syntax highlight</h3>
-
+	keywords = [<span style="color:#c30">&#34;network&#34;</span>, <span style="color:#c30">&#34;devops&#39;, &#34;</span>System Administrator<span style="color:#a00;background-color:#faa">&#34;</span>]
+</code></pre></div><h3 id="add-syntax-highlight">Add syntax highlight</h3>
 <p><code>vi config.toml</code></p>
-
 <p>add</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">pygmentsCodefences = <span style="color:#069;font-weight:bold">true</span> <span style="color:#09f;font-style:italic">#高亮markdown的代码块</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">
+pygmentsCodefences = <span style="color:#069;font-weight:bold">true</span> <span style="color:#09f;font-style:italic">#高亮markdown的代码块</span>
 pygmentsCodefencesGuessSyntax = <span style="color:#069;font-weight:bold">true</span> <span style="color:#09f;font-style:italic">#高亮markdown中没有标注语言的代码块</span>
-pygmentsStyle = <span style="color:#c30">&#39;manni&#39;</span> <span style="color:#09f;font-style:italic">#高亮主题</span></code></pre></div>
-<h2 id="deploy-your-blog-to-github">Deploy your blog to github</h2>
+pygmentsStyle = <span style="color:#c30">&#39;manni&#39;</span> <span style="color:#09f;font-style:italic">#高亮主题</span>
 
+</code></pre></div><h2 id="deploy-your-blog-to-github">Deploy your blog to github</h2>
 <ul>
-<li><p>Add repo of blog website.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   
+<li>Add repo of blog website.</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> 
 git submodule add --force -b <span style="color:#c30;font-weight:bold">\ </span>
-	master git@github.com:echowings/echowings.github.io.git public  
-	</code></pre></div></li>
-
-<li><p>Run hugo to generate your blog website.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">    
+  master git@github.com:echowings/echowings.github.io.git public  
+  
+</code></pre></div><ul>
+<li>
+<p>Run hugo to generate your blog website.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">   
 hugo server
-    </code></pre></div></li>
-
-<li><p>publish your website</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    
+   
+</code></pre></div><p>``</p>
+</li>
+<li>
+<p>publish your website</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   
 <span style="color:#366">cd</span> public
 git add.
 git commit -m <span style="color:#c30">&#34;YOUR COMMIT MESSAGE&#34;</span>
 git push origin master
-    </code></pre></div></li>
-
-<li><p>Backup your hugo blog to github</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    
+   
+</code></pre></div></li>
+<li>
+<p>Backup your hugo blog to github</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   
 <span style="color:#366">cd</span> ..
 git add.
 git commit -m <span style="color:#c30">&#34;YOUR COMMIT MESSAGE&#34;</span>
 git push origin master
-    </code></pre></div></li>
+   
+</code></pre></div><p>``</p>
+</li>
 </ul>
-
 <h3 id="add-a-comment">Add a comment</h3>
-
 <p>Since theme jane has support utterances, we just need to enable utterances apps in github and configure it in config.toml in hugo.</p>
-
 <ul>
-<li>Create a repo to storage comment. like “blogcomment”.</li>
-
-<li><p>enable utternaces apps.</p>
-
+<li>
+<p>Create a repo to storage comment. like “blogcomment”.</p>
+</li>
+<li>
+<p>enable utternaces apps.</p>
 <ol>
 <li>click <a href="https://github.com/apps/utterances">utterances app</a></li>
 <li>Auth utterances to your github repo “blogcomment”.</li>
-</ol></li>
-
-<li><p>edit <code>blogs/config.toml</code> and append follow lines.</p>
+</ol>
+</li>
+<li>
+<p>edit <code>blogs/config.toml</code> and append follow lines.</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">	
-[params.utteranc]
-  enable = <span style="color:#069;font-weight:bold">true</span>
-  repo=<span style="color:#c30">&#34;echowings/blogcomment&#34;</span>
-  issueTerm=<span style="color:#c30">&#34;pathname&#34;</span>
-      </code></pre></div></li>
+</code></pre></div></li>
 </ul>
+<p>[params.utteranc]
+enable = true
+repo=&quot;echowings/blogcomment&rdquo;
+issueTerm=&quot;pathname&rdquo;</p>
+<pre><code>
+### Download git and rebuild blog environment
 
-<h3 id="download-git-and-rebuild-blog-environment">Download git and rebuild blog environment</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">git pulll git@github.com:echowings/blogs.git
 
-<span style="color:#09f;font-style:italic">#if public already exsited  run `rm public`</span>
-git submodule add --force -b master git@github.com:echowings/echowings.github.io.git public</code></pre></div>
-<h2 id="reference">Reference</h2>
+``` zsh
+git pulll git@github.com:echowings/blogs.git
 
+#if public already exsited  run `rm public`
+git submodule add --force -b master git@github.com:echowings/echowings.github.io.git public
+
+</code></pre><h2 id="reference">Reference</h2>
 <ol>
 <li><a href="https://utteranc.es/">utterances</a></li>
 <li><a href="https://github.com/xianmin/hugo-theme-jane/blob/master/exampleSite/config.toml">hugo-theme-jane/dev-config.toml</a></li>

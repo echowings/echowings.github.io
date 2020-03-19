@@ -31,7 +31,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/" />
@@ -52,7 +52,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.0995afa14b62cd93e93cfc066b646c4c17a3eddca0e9d52a1d9dcf5d90aaacd3.css" integrity="sha256-CZWvoUtizZPpPPwGa2RsTBej7dyg6dUqHZ3PXZCqrNM=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,12 +62,9 @@
 <meta property="og:description" content="A System Administrator&#39;s Blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-
 <meta property="og:updated_time" content="2020-01-21T16:49:32+08:00" />
 <meta itemprop="name" content="Steve Dong - A System Administrator&#39;s Blog">
-<meta itemprop="description" content="A System Administrator&#39;s Blog.">
-
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="description" content="A System Administrator&#39;s Blog."><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Steve Dong - A System Administrator&#39;s Blog"/>
 <meta name="twitter:description" content="A System Administrator&#39;s Blog."/>
 
@@ -371,7 +368,7 @@ if (!doNotTrack) {
   <div class="post-content">
     
     <div class="post-summary">
-       cisco ssh error When you met error like this:
+      cisco ssh error When you met error like this:
 ssh cisco@10.32.3.1 Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1 Solution:
 $ ssh -l &lt;USERNAME&gt; -oHostKeyAlgorithms=+ssh-dss -oKexAlgorithms=+diffie-hellman-group1-sha1 &lt;HOST&gt; or
 ssh -l &lt;username&gt; -o HostKeyAlgorithms=+ssh-dss -o KexAlgorithms=+diffie-hellman-group1-sha1 -c 3des-cbc &lt;hostname&gt; Reference  SSH failed on 3750 switch SSH Not Working After Update To 10.13.2 (HighSierra)  
@@ -408,8 +405,8 @@ ssh -l &lt;username&gt; -o HostKeyAlgorithms=+ssh-dss -o KexAlgorithms=+diffie-h
   <div class="post-content">
     
     <div class="post-summary">
-      How to update time via ntpserver Today, My MBP is out of power. I cannot surfing internet. and the brower tell me my time was wrong. Then I checked my time in my MBB, I&rsquo;m back in time jan 1, 2018. Wow, I got extra whole year time!
-Majove update time sudo sntp -sS time.asia.apple.com When you&rsquo;re getting this error
+      How to update time via ntpserver Today, My MBP is out of power. I cannot surfing internet. and the brower tell me my time was wrong. Then I checked my time in my MBB, I'm back in time jan 1, 2018. Wow, I got extra whole year time!
+Majove update time sudo sntp -sS time.asia.apple.com When you're getting this error
 kod_init_kod_db(): Cannot open KoD db file /var/db/ntp-kod: No such file or directory You can solved the problems with:
     </div>
     <div class="read-more">
@@ -444,7 +441,7 @@ kod_init_kod_db(): Cannot open KoD db file /var/db/ntp-kod: No such file or dire
   <div class="post-content">
     
     <div class="post-summary">
-       learning Flask 01 Installation and configure of anaconda Installaltion homebrew ruby -e &#34;$(curl - fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&#34; Installation of pyenv # Installing pyenv brew install pyenv Install anaconda 2 and anaconda 3  Download anaconda from here  
+      learning Flask 01 Installation and configure of anaconda Installaltion homebrew ruby -e &#34;$(curl - fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&#34; Installation of pyenv # Installing pyenv brew install pyenv Install anaconda 2 and anaconda 3  Download anaconda from here  
     </div>
     <div class="read-more">
       <a href="/post/learning-flask-01/" class="read-more-link">Read more</a>
@@ -515,7 +512,7 @@ Recently days, I just learn proxmox and find pci-e pass through function. I thin
     <div class="post-summary">
       How to Wirte docker file for overture Hence we need to custom overture docker image as we desire, I write this dockerfile.
 How to map VOLUME and copy file from docker images to directory of docker host. When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.
-if [ &ldquo;ls -A /config&rdquo; = &ldquo;&rdquo; ]; then cp /srv/config.
+if [ &ldquo;ls -A /config&rdquo; = &quot;&rdquo; ]; then cp /srv/config.json /config/ &amp;&amp; cp /srv/*.
     </div>
     <div class="read-more">
       <a href="/post/dockerfile-for-overture/" class="read-more-link">Read more</a>
@@ -549,7 +546,7 @@ if [ &ldquo;ls -A /config&rdquo; = &ldquo;&rdquo; ]; then cp /srv/config.
   <div class="post-content">
     
     <div class="post-summary">
-      Ubuntu Chinese Language Support 编辑/etc/environment如下: vi /etc/environment 添加如下: LC_ALL=&#34;en_US.UTF-8&#34; LANG=&#34;zh_CN.UTF-8&#34; UNZIP=&#39;-O CP936&#34; ZIPINFO=&#34;-O CP936&#34; 重新生成语言设置 sudo locale-gen en_US en_US.UTF-8 zh_CN zh_CN.UTF-8 sudo dpkg-reconfigure locales 中文支持 vim中文支持 编辑~/
+      Ubuntu Chinese Language Support 编辑/etc/environment如下: vi /etc/environment 添加如下: LC_ALL=&#34;en_US.UTF-8&#34; LANG=&#34;zh_CN.UTF-8&#34; UNZIP=&#39;-O CP936&#34; ZIPINFO=&#34;-O CP936&#34; 重新生成语言设置 sudo locale-gen en_US en_US.UTF-8 zh_CN zh_CN.UTF-8 sudo dpkg-reconfigure locales ## 中文支持 ### vim中文支持 编辑
     </div>
     <div class="read-more">
       <a href="/post/debian-or-ubuntu-chinese-language-support/" class="read-more-link">Read more</a>
@@ -654,7 +651,7 @@ if [ &ldquo;ls -A /config&rdquo; = &ldquo;&rdquo; ]; then cp /srv/config.
     
     <div class="post-summary">
       How to Install Proxmox VE 5.x on Debian 9 Chang IP ADDRESS vi /etc/network/interfaces
-# This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *.
+# This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *.*.*.* gateway *.
     </div>
     <div class="read-more">
       <a href="/post/proxmox-ve-how-to-install-proxmoxve5-on-debian9/" class="read-more-link">Read more</a>
@@ -688,12 +685,10 @@ if [ &ldquo;ls -A /config&rdquo; = &ldquo;&rdquo; ]; then cp /srv/config.
   <div class="post-content">
     
     <div class="post-summary">
-      How to test network speed with iperf Install iperf sudo apt-get install iperf3 Testing network speed Testing network speed with UDP  Run command on server
-iperf -s -u Run command on client
-iperf -c -u Testing network speed with TCP
- Server side.
-iperf -s Client side.
-iperf -c   Command for -s server -c client + server IP -u udp -b bandwith(the max bandwidth -t time,how long to send packet.
+      How to test network speed with iperf Install iperf sudo apt-get install iperf3 Testing network speed Testing network speed with UDP   Run command on server
+iperf -s -u   Run command on client
+iperf -c -u   Testing network speed with TCP
+ Server side.  iperf -s  Client side.  iperf -c   Command for -s server -c client + server IP -u udp -b bandwith(the max bandwidth -t time,how long to send packet.
     </div>
     <div class="read-more">
       <a href="/post/how-to-testing-network-bandwith-with-iperf/" class="read-more-link">Read more</a>
@@ -727,7 +722,7 @@ iperf -c   Command for -s server -c client + server IP -u udp -b bandwith(the ma
   <div class="post-content">
     
     <div class="post-summary">
-      apt-get autoremove export LC_ALL=en_US.UTF-8 echo &quot;en_US.UTF-8 UTF-8&quot; &gt;&gt; /etc/locale.gen locale-gen  
+      apt-get autoremove export LC_ALL=en_US.UTF-8 echo &quot;en_US.UTF-8 UTF-8&quot; &gt;&gt; /etc/locale.gen locale-gen 
     </div>
     <div class="read-more">
       <a href="/post/how-to-remove-lc_ctype-error/" class="read-more-link">Read more</a>
@@ -795,7 +790,7 @@ iperf -c   Command for -s server -c client + server IP -u udp -b bandwith(the ma
   <div class="post-content">
     
     <div class="post-summary">
-       Ssh Login Without Password SSH login linux/unix without password General your key ssh-keygen-t rsa  copy your rsa.pub to server which you want to login without password. ssh-copy-id -i ~/.ssh/id_rsa.pub user1@$server-hosts Test login ssh user1@$server-hosts
+      Ssh Login Without Password SSH login linux/unix without password General your key ssh-keygen-t rsa copy your rsa.pub to server which you want to login without password. ssh-copy-id -i ~/.ssh/id_rsa.pub user1@$server-hosts Test login ssh user1@$server-hosts 
     </div>
     <div class="read-more">
       <a href="/post/ssh-login-without-password/" class="read-more-link">Read more</a>
@@ -830,8 +825,7 @@ iperf -c   Command for -s server -c client + server IP -u udp -b bandwith(the ma
     
     <div class="post-summary">
       Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
- Boot the proxmox installer USB Select Debug Mode Press “CTRL+D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.
-sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  manual solution:
+ Boot the proxmox installer USB Select Debug Mode Press “CTRL+D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  manual solution:  cd /usr/share/javascript/proxmox-widget-toolkit cp proxmoxlib.
     </div>
     <div class="read-more">
       <a href="/post/proxmox-ve-v5.x-installation/" class="read-more-link">Read more</a>

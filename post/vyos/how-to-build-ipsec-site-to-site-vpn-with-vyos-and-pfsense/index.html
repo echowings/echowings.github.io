@@ -24,7 +24,7 @@
 
 <meta name="author" content="Steve Dong" />
   <meta name="description" content="How to build ipse site-to-site VPN with vyos and pfsense Vyos VS pfsense For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:
- Hard to upgrade version, it manybe crashed Didn&amp;rsquo;t support API. Heavy loading and low performance.   After try to replace pfsense to build all functions with vyos. It has a lot of pros:" />
+ Hard to upgrade version, it manybe crashed Didn&#39;t support API. Heavy loading and low performance.  After try to replace pfsense to build all functions with vyos. It has a lot of pros:" />
 
   <meta name="keywords" content="proxmox ve, network, devops, sdn, system Administation" />
 
@@ -33,7 +33,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/vyos/how-to-build-ipsec-site-to-site-vpn-with-vyos-and-pfsense/" />
@@ -54,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.0995afa14b62cd93e93cfc066b646c4c17a3eddca0e9d52a1d9dcf5d90aaacd3.css" integrity="sha256-CZWvoUtizZPpPPwGa2RsTBej7dyg6dUqHZ3PXZCqrNM=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,27 +62,24 @@
 
 <meta property="og:title" content="How to Build Ipsec Site to Site Vpn With Vyos and Pfsense" />
 <meta property="og:description" content="How to build ipse site-to-site VPN with vyos and pfsense Vyos VS pfsense For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:
- Hard to upgrade version, it manybe crashed Didn&rsquo;t support API. Heavy loading and low performance.   After try to replace pfsense to build all functions with vyos. It has a lot of pros:" />
+ Hard to upgrade version, it manybe crashed Didn&#39;t support API. Heavy loading and low performance.  After try to replace pfsense to build all functions with vyos. It has a lot of pros:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/vyos/how-to-build-ipsec-site-to-site-vpn-with-vyos-and-pfsense/" />
 <meta property="article:published_time" content="2019-12-19T14:36:09+08:00" />
 <meta property="article:modified_time" content="2019-12-19T14:36:09+08:00" />
 <meta itemprop="name" content="How to Build Ipsec Site to Site Vpn With Vyos and Pfsense">
 <meta itemprop="description" content="How to build ipse site-to-site VPN with vyos and pfsense Vyos VS pfsense For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:
- Hard to upgrade version, it manybe crashed Didn&rsquo;t support API. Heavy loading and low performance.   After try to replace pfsense to build all functions with vyos. It has a lot of pros:">
-
-
+ Hard to upgrade version, it manybe crashed Didn&#39;t support API. Heavy loading and low performance.  After try to replace pfsense to build all functions with vyos. It has a lot of pros:">
 <meta itemprop="datePublished" content="2019-12-19T14:36:09&#43;08:00" />
 <meta itemprop="dateModified" content="2019-12-19T14:36:09&#43;08:00" />
 <meta itemprop="wordCount" content="584">
 
 
 
-<meta itemprop="keywords" content="vyos,pfsense,ipsec,site-to-site," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="vyos,pfsense,ipsec,site-to-site," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Build Ipsec Site to Site Vpn With Vyos and Pfsense"/>
 <meta name="twitter:description" content="How to build ipse site-to-site VPN with vyos and pfsense Vyos VS pfsense For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:
- Hard to upgrade version, it manybe crashed Didn&rsquo;t support API. Heavy loading and low performance.   After try to replace pfsense to build all functions with vyos. It has a lot of pros:"/>
+ Hard to upgrade version, it manybe crashed Didn&#39;t support API. Heavy loading and low performance.  After try to replace pfsense to build all functions with vyos. It has a lot of pros:"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -381,66 +378,54 @@ if (!doNotTrack) {
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#how-to-build-ipse-site-to-site-vpn-with-vyos-and-pfsense">How to build ipse site-to-site VPN with vyos and pfsense</a>
-<ul>
-<li><a href="#vyos-vs-pfsense">Vyos VS pfsense</a></li>
-<li><a href="#prerequest">Prerequest</a></li>
-<li><a href="#configure-vyos">Configure vyos</a></li>
-<li><a href="#configure-pfsense">Configure pfsense</a>
-<ul>
-<li><a href="#add-p1">Add P1</a></li>
-</ul></li>
-<li><a href="#general-information">General Information</a></li>
-<li><a href="#phase-1-proposal-authentication">Phase 1 Proposal (Authentication)</a></li>
-<li><a href="#phase-1-proposal-encryption-algorithm">Phase 1 Proposal(Encryption Algorithm)</a></li>
-<li><a href="#advanced-options">Advanced Options</a>
-<ul>
-<li><a href="#add-p2">Add P2</a></li>
-</ul></li>
-<li><a href="#general-information-1">General Information</a></li>
-<li><a href="#phase-2-proposal-sa-key-exchange">Phase 2 Proposal(SA/Key Exchange)</a></li>
-<li><a href="#advanced-configuration">Advanced Configuration</a>
-<ul>
-<li><a href="#change-firewall-to-allow-ipsec-vpn-connection">Change firewall to allow ipsec vpn connection</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#vyos-vs-pfsense">Vyos VS pfsense</a></li>
+    <li><a href="#prerequest">Prerequest</a></li>
+    <li><a href="#configure-vyos">Configure vyos</a></li>
+    <li><a href="#configure-pfsense">Configure pfsense</a>
+      <ul>
+        <li><a href="#add-p1">Add P1</a></li>
+      </ul>
+    </li>
+    <li><a href="#general-information">General Information</a></li>
+    <li><a href="#phase-1-proposal-authentication">Phase 1 Proposal (Authentication)</a></li>
+    <li><a href="#phase-1-proposalencryption-algorithm">Phase 1 Proposal(Encryption Algorithm)</a></li>
+    <li><a href="#advanced-options">Advanced Options</a>
+      <ul>
+        <li><a href="#add-p2">Add P2</a></li>
+      </ul>
+    </li>
+    <li><a href="#general-information-1">General Information</a></li>
+    <li><a href="#phase-2-proposalsakey-exchange">Phase 2 Proposal(SA/Key Exchange)</a></li>
+    <li><a href="#advanced-configuration">Advanced Configuration</a>
+      <ul>
+        <li><a href="#change-firewall-to-allow-ipsec-vpn-connection">Change firewall to allow ipsec vpn connection</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<h1 id="how-to-build-ipse-site-to-site-vpn-with-vyos-and-pfsense">How to build ipse site-to-site VPN with vyos and pfsense</h1>
-
+      <h1 id="how-to-build-ipse-site-to-site-vpn-with-vyos-and-pfsense">How to build ipse site-to-site VPN with vyos and pfsense</h1>
 <h2 id="vyos-vs-pfsense">Vyos VS pfsense</h2>
-
 <p>For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:</p>
-
 <ol>
 <li>Hard to upgrade version, it manybe crashed</li>
-<li>Didn&rsquo;t support API.</li>
-<li>Heavy loading and low performance.
-
-<br /></li>
+<li>Didn't support API.</li>
+<li>Heavy loading and low performance.</li>
 </ol>
-
 <p>After try to replace pfsense to build  all functions with vyos. It has a lot of pros:</p>
-
 <ol>
 <li>Easy upgrade and rollback</li>
 <li>Support http and python api</li>
 <li>Support ansible deploy</li>
 <li>Command line operation,just like juniper and cisco.</li>
 </ol>
-
 <p>Today I will show you how to build ipsec site-to-site vpn with vyos and pfsense</p>
-
 <h2 id="prerequest">Prerequest</h2>
-
 <table>
 <thead>
 <tr>
@@ -449,44 +434,37 @@ if (!doNotTrack) {
 <th>SITE B</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>WAN ADDRESS</td>
 <td><code>1.1.1.1</code></td>
 <td><code>2.2.2.2</code></td>
 </tr>
-
 <tr>
 <td>WAN Interface</td>
 <td><code>eth0</code></td>
 <td><code>eth0</code></td>
 </tr>
-
 <tr>
 <td>LAN ADDRESS</td>
 <td><code>192.168.1.1/24</code></td>
 <td><code>192.168.2.1/24</code></td>
 </tr>
-
 <tr>
 <td>LAN NETWORK</td>
 <td><code>192.168.1.0/24</code></td>
 <td><code>192.168.2.0/24</code></td>
 </tr>
-
 <tr>
 <td>LAN Interface</td>
 <td><code>eth1</code></td>
 <td><code>eth1</code></td>
 </tr>
-
 <tr>
 <td>OS</td>
 <td><code>Vyos</code></td>
 <td><code>pfsense</code></td>
 </tr>
-
 <tr>
 <td>Pre-Shared Key</td>
 <td><code>*#JCenaoewaoi0298J299*8&amp;^(%9))_&amp;&amp;</code></td>
@@ -494,9 +472,7 @@ if (!doNotTrack) {
 </tr>
 </tbody>
 </table>
-
 <h2 id="configure-vyos">Configure vyos</h2>
-
 <p>Configure <code>Site A</code></p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">configure
 <span style="color:#366">set</span> vpn ipsec ipsec-interfaces interface eth0
@@ -518,31 +494,26 @@ if (!doNotTrack) {
 <span style="color:#366">set</span> vpn ipsec esp-group ESP-Default proposal <span style="color:#f60">1</span> encryption <span style="color:#c30">&#39;aes256gcm128&#39;</span>
 <span style="color:#366">set</span> vpn ipsec esp-group ESP-Default proposal <span style="color:#f60">1</span> <span style="color:#366">hash</span> <span style="color:#c30">&#39;sha256&#39;</span>
 
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 authentication id <span style="color:#c30">&#39;1.1.1.1&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 authentication mode <span style="color:#c30">&#39;pre-shared-secret&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 authentication pre-shared-secret <span style="color:#c30">&#39;*#JCenaoewaoi0298J299*8&amp;^(%9))_&amp;&amp;&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 authentication remote-id <span style="color:#c30">&#39;2.2.2.2&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 connection-type <span style="color:#c30">&#39;initiate&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 ike-group <span style="color:#c30">&#39;IKE-Default&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 ikev2-reauth <span style="color:#c30">&#39;inherit&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 local-address <span style="color:#c30">&#39;1.1.1.1&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 tunnel <span style="color:#f60">0</span> esp-group <span style="color:#c30">&#39;ESP-Default&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 tunnel <span style="color:#f60">0</span> <span style="color:#366">local</span> prefix <span style="color:#c30">&#39;192.168.1.0/24&#39;</span>
-<span style="color:#366">set</span> vpn ipsec site-to-site peer <span style="color:#f60">2</span>.2.2.2 tunnel <span style="color:#f60">0</span> remote prefix <span style="color:#c30">&#39;192.168.2.0/24&#39;</span></code></pre></div>
-<h2 id="configure-pfsense">Configure pfsense</h2>
-
+<span style="color:#366">set</span> vpn ipsec site-to-site peer 2.2.2.2 authentication id <span style="color:#c30">&#39;1.1.1.1&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer 2.2.2.2 authentication mode <span style="color:#c30">&#39;pre-shared-secret&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer 2.2.2.2 authentication pre-shared-secret <span style="color:#c30">&#39;*#JCenaoewaoi0298J299*8&amp;^(%9))_&amp;&amp;&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer 2.2.2.2 authentication remote-id <span style="color:#c30">&#39;2.2.2.2&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer 2.2.2.2 connection-type <span style="color:#c30">&#39;initiate&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer 2.2.2.2 ike-group <span style="color:#c30">&#39;IKE-Default&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer 2.2.2.2 ikev2-reauth <span style="color:#c30">&#39;inherit&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer 2.2.2.2 local-address <span style="color:#c30">&#39;1.1.1.1&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer 2.2.2.2 tunnel <span style="color:#f60">0</span> esp-group <span style="color:#c30">&#39;ESP-Default&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer 2.2.2.2 tunnel <span style="color:#f60">0</span> <span style="color:#366">local</span> prefix <span style="color:#c30">&#39;192.168.1.0/24&#39;</span>
+<span style="color:#366">set</span> vpn ipsec site-to-site peer 2.2.2.2 tunnel <span style="color:#f60">0</span> remote prefix <span style="color:#c30">&#39;192.168.2.0/24&#39;</span>
+</code></pre></div><h2 id="configure-pfsense">Configure pfsense</h2>
 <p>Configure <code>Site B</code></p>
-
 <ol>
 <li>After login pfsense click <code>VPN</code> |  <code>IPsec</code>;</li>
 <li>Then click &lsquo;Add P1` button.</li>
 <li>configuraton as show below</li>
 </ol>
-
 <h3 id="add-p1">Add P1</h3>
-
 <h2 id="general-information">General Information</h2>
-
 <table>
 <thead>
 <tr>
@@ -550,42 +521,34 @@ if (!doNotTrack) {
 <th>Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>Disabled</code></td>
 <td>uncheck</td>
 </tr>
-
 <tr>
 <td><code>Key Exchange version</code></td>
 <td>IKEv2</td>
 </tr>
-
 <tr>
 <td>Internet Protocol</td>
 <td>IPv4</td>
 </tr>
-
 <tr>
 <td>Interfae</td>
 <td>WAN</td>
 </tr>
-
 <tr>
 <td>Remote Gateway</td>
 <td>1.1.1.1</td>
 </tr>
-
 <tr>
 <td>Description</td>
 <td>SITE-A-VPN</td>
 </tr>
 </tbody>
 </table>
-
 <h2 id="phase-1-proposal-authentication">Phase 1 Proposal (Authentication)</h2>
-
 <table>
 <thead>
 <tr>
@@ -593,32 +556,26 @@ if (!doNotTrack) {
 <th>Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Authentication Method</td>
 <td>Mutual PSK</td>
 </tr>
-
 <tr>
 <td>My identifier</td>
 <td>My IP address</td>
 </tr>
-
 <tr>
 <td>Peer identifier</td>
 <td>Peer IP address</td>
 </tr>
-
 <tr>
 <td>Pre-Shared Key</td>
 <td><code>*#JCenaoewaoi0298J299*8&amp;^(%9))_&amp;&amp;</code></td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="phase-1-proposal-encryption-algorithm">Phase 1 Proposal(Encryption Algorithm)</h2>
-
+<h2 id="phase-1-proposalencryption-algorithm">Phase 1 Proposal(Encryption Algorithm)</h2>
 <table>
 <thead>
 <tr>
@@ -629,7 +586,6 @@ if (!doNotTrack) {
 <th>DH Group</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Encryption Algorithm</td>
@@ -640,7 +596,6 @@ if (!doNotTrack) {
 </tr>
 </tbody>
 </table>
-
 <table>
 <thead>
 <tr>
@@ -648,7 +603,6 @@ if (!doNotTrack) {
 <th>Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Lifetime(Seconds)</td>
@@ -656,9 +610,7 @@ if (!doNotTrack) {
 </tr>
 </tbody>
 </table>
-
 <h2 id="advanced-options">Advanced Options</h2>
-
 <table>
 <thead>
 <tr>
@@ -666,59 +618,47 @@ if (!doNotTrack) {
 <th>VALUE</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Disable rekey</td>
 <td>uncheck</td>
 </tr>
-
 <tr>
 <td>Margintime(Seconds</td>
 <td>black</td>
 </tr>
-
 <tr>
 <td>Disable Reauth</td>
 <td>uncheck</td>
 </tr>
-
 <tr>
 <td>Responder Only</td>
 <td>Uncheck</td>
 </tr>
-
 <tr>
 <td>MOBIKE</td>
 <td>Disable</td>
 </tr>
-
 <tr>
 <td>Split connections</td>
 <td>uncheck</td>
 </tr>
-
 <tr>
 <td>Dead Peer Dection</td>
 <td>&lsquo;Check on&rsquo; Enable DPD</td>
 </tr>
-
 <tr>
 <td>Delay</td>
 <td>120</td>
 </tr>
-
 <tr>
 <td>Max failures</td>
 <td>30</td>
 </tr>
 </tbody>
 </table>
-
 <h3 id="add-p2">Add P2</h3>
-
 <h2 id="general-information-1">General Information</h2>
-
 <table>
 <thead>
 <tr>
@@ -726,42 +666,34 @@ if (!doNotTrack) {
 <th>Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Disable</td>
 <td>unchecked</td>
 </tr>
-
 <tr>
 <td>Mode</td>
 <td>Tunnel IPv4</td>
 </tr>
-
 <tr>
 <td>Local network</td>
 <td>Network  192.168.2.0/24</td>
 </tr>
-
 <tr>
 <td>NAT/BINAT translation</td>
 <td>None</td>
 </tr>
-
 <tr>
 <td>Remote Network</td>
 <td>Network 192.168.1.0/24</td>
 </tr>
-
 <tr>
 <td>Description</td>
 <td>Site A</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="phase-2-proposal-sa-key-exchange">Phase 2 Proposal(SA/Key Exchange)</h2>
-
+<h2 id="phase-2-proposalsakey-exchange">Phase 2 Proposal(SA/Key Exchange)</h2>
 <table>
 <thead>
 <tr>
@@ -769,37 +701,30 @@ if (!doNotTrack) {
 <th>Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Protocol</td>
 <td>ESP</td>
 </tr>
-
 <tr>
 <td>Encryption Algorithms</td>
 <td>AES256-GCM 128 bit</td>
 </tr>
-
 <tr>
 <td>Hash Algorithms</td>
 <td>SHA256</td>
 </tr>
-
 <tr>
 <td>PFS key group</td>
 <td>14(2048 bit)</td>
 </tr>
-
 <tr>
 <td>Lifttime</td>
 <td>3600</td>
 </tr>
 </tbody>
 </table>
-
 <h2 id="advanced-configuration">Advanced Configuration</h2>
-
 <table>
 <thead>
 <tr>
@@ -807,7 +732,6 @@ if (!doNotTrack) {
 <th>Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Automatically ping host</td>
@@ -815,9 +739,7 @@ if (!doNotTrack) {
 </tr>
 </tbody>
 </table>
-
 <h3 id="change-firewall-to-allow-ipsec-vpn-connection">Change firewall to allow ipsec vpn connection</h3>
-
 <table>
 <thead>
 <tr>
@@ -828,7 +750,6 @@ if (!doNotTrack) {
 <th>Port</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Ipv4 UDP</td>
@@ -837,7 +758,6 @@ if (!doNotTrack) {
 <td>WAN address</td>
 <td>500(ISAKMP)</td>
 </tr>
-
 <tr>
 <td>IPv4 UDP</td>
 <td>1.1.1.1</td>
@@ -845,7 +765,6 @@ if (!doNotTrack) {
 <td>WAN address</td>
 <td>4500(IPsec NAT-T)</td>
 </tr>
-
 <tr>
 <td>Ipv4 ESP</td>
 <td>1.1.1.1</td>
@@ -855,7 +774,6 @@ if (!doNotTrack) {
 </tr>
 </tbody>
 </table>
-
 <p>&mdash;The End&mdash;</p>
 
     </div>

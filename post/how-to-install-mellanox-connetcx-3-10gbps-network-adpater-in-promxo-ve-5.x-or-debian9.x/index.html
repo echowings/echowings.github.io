@@ -33,7 +33,7 @@ Install dependencies software #dependencies apt-get -y install debhelper autotoo
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/how-to-install-mellanox-connetcx-3-10gbps-network-adpater-in-promxo-ve-5.x-or-debian9.x/" />
@@ -54,7 +54,7 @@ Install dependencies software #dependencies apt-get -y install debhelper autotoo
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.0995afa14b62cd93e93cfc066b646c4c17a3eddca0e9d52a1d9dcf5d90aaacd3.css" integrity="sha256-CZWvoUtizZPpPPwGa2RsTBej7dyg6dUqHZ3PXZCqrNM=" media="screen" crossorigin="anonymous">
 
 
 
@@ -70,16 +70,13 @@ Install dependencies software #dependencies apt-get -y install debhelper autotoo
 <meta itemprop="name" content="How to Install driver of Mellanox ConnetcX 3 10Gbps Network Adpater in Promxox-VE 5.x or Debian 9">
 <meta itemprop="description" content="How to install dirver of mellanox ConnectX 3 10Gbps netowrk adapter in proxmox-ve 5.x or diban 9 To 
 Install dependencies software #dependencies apt-get -y install debhelper autotools-dev dkms zlib1g-dev python wget quilt python-libxml2 swig dpatch graphviz chrpath pve-headers Download driver for mellanox connectx 3 for debian 9.6 wget http://content.mellanox.com/ofed/MLNX_EN-4.6-1.0.1.1/mlnx-en-4.6-1.0.1.1-debian9.6-x86_64.tgz Install drivers tar -zxvf mlnx-en-4.6-1.0.1.1-debian9.6-x86_64.tgz cd mlnx-en-4.6-1.0.1.1-debian9.6-x86_64 chmod &#43;x install ./install --skip-distro-check Swell  Mellanox EN Driver for Linux  How-to Guide Install Mellanox Driver Proxmox VE 5.">
-
-
 <meta itemprop="datePublished" content="2019-06-05T11:52:23&#43;08:00" />
 <meta itemprop="dateModified" content="2019-06-05T11:52:23&#43;08:00" />
 <meta itemprop="wordCount" content="76">
 
 
 
-<meta itemprop="keywords" content="pve,storage,networking,mellanox," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="pve,storage,networking,mellanox," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Install driver of Mellanox ConnetcX 3 10Gbps Network Adpater in Promxox-VE 5.x or Debian 9"/>
 <meta name="twitter:description" content="How to install dirver of mellanox ConnectX 3 10Gbps netowrk adapter in proxmox-ve 5.x or diban 9 To 
 Install dependencies software #dependencies apt-get -y install debhelper autotools-dev dkms zlib1g-dev python wget quilt python-libxml2 swig dpatch graphviz chrpath pve-headers Download driver for mellanox connectx 3 for debian 9.6 wget http://content.mellanox.com/ofed/MLNX_EN-4.6-1.0.1.1/mlnx-en-4.6-1.0.1.1-debian9.6-x86_64.tgz Install drivers tar -zxvf mlnx-en-4.6-1.0.1.1-debian9.6-x86_64.tgz cd mlnx-en-4.6-1.0.1.1-debian9.6-x86_64 chmod &#43;x install ./install --skip-distro-check Swell  Mellanox EN Driver for Linux  How-to Guide Install Mellanox Driver Proxmox VE 5."/>
@@ -382,40 +379,34 @@ if (!doNotTrack) {
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#how-to-install-dirver-of-mellanox-connectx-3-10gbps-netowrk-adapter-in-proxmox-ve-5-x-or-diban-9">How to install dirver of mellanox ConnectX 3 10Gbps netowrk adapter in proxmox-ve 5.x or diban 9</a>
-<ul>
-<li><a href="#install-dependencies-software">Install dependencies software</a></li>
-<li><a href="#download-driver-for-mellanox-connectx-3-for-debian-9-6">Download driver for mellanox connectx 3 for debian 9.6</a></li>
-<li><a href="#install-drivers">Install drivers</a></li>
-<li><a href="#swell">Swell</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#install-dependencies-software">Install dependencies software</a></li>
+    <li><a href="#download-driver-for-mellanox-connectx-3-for-debian-96">Download driver for mellanox connectx 3 for debian 9.6</a></li>
+    <li><a href="#install-drivers">Install drivers</a></li>
+    <li><a href="#swell">Swell</a></li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<h1 id="how-to-install-dirver-of-mellanox-connectx-3-10gbps-netowrk-adapter-in-proxmox-ve-5-x-or-diban-9">How to install dirver of mellanox ConnectX 3 10Gbps netowrk adapter in proxmox-ve 5.x or diban 9</h1>
-
+      <h1 id="how-to-install-dirver-of-mellanox-connectx-3-10gbps-netowrk-adapter-in-proxmox-ve-5x-or-diban-9">How to install dirver of mellanox ConnectX 3 10Gbps netowrk adapter in proxmox-ve 5.x or diban 9</h1>
 <p>To </p>
-
 <h2 id="install-dependencies-software">Install dependencies software</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic">#dependencies</span>
 apt-get -y install debhelper autotools-dev dkms zlib1g-dev python
-wget quilt python-libxml2 swig dpatch graphviz chrpath pve-headers</code></pre></div>
-<h2 id="download-driver-for-mellanox-connectx-3-for-debian-9-6">Download driver for mellanox connectx 3 for debian 9.6</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget http://content.mellanox.com/ofed/MLNX_EN-4.6-1.0.1.1/mlnx-en-4.6-1.0.1.1-debian9.6-x86_64.tgz</code></pre></div>
-<h2 id="install-drivers">Install drivers</h2>
+wget quilt python-libxml2 swig dpatch graphviz chrpath pve-headers
+</code></pre></div><h2 id="download-driver-for-mellanox-connectx-3-for-debian-96">Download driver for mellanox connectx 3 for debian 9.6</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget http://content.mellanox.com/ofed/MLNX_EN-4.6-1.0.1.1/mlnx-en-4.6-1.0.1.1-debian9.6-x86_64.tgz
+</code></pre></div><h2 id="install-drivers">Install drivers</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">tar -zxvf mlnx-en-4.6-1.0.1.1-debian9.6-x86_64.tgz
 <span style="color:#366">cd</span> mlnx-en-4.6-1.0.1.1-debian9.6-x86_64
 chmod +x install
-./install --skip-distro-check</code></pre></div>
-<h2 id="swell">Swell</h2>
+./install --skip-distro-check
 
+
+</code></pre></div><h2 id="swell">Swell</h2>
 <ul>
 <li><a href="http://www.mellanox.com/page/products_dyn?product_family=27">Mellanox EN Driver for Linux
 </a></li>

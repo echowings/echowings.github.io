@@ -18,7 +18,7 @@
       
       <guid>https://blog.stevedong.com/post/ssl/how-to-convert-cert-to-ssl/</guid>
       <description>How to convert godaddy certification files from .cert to .pem Recently days, I met an issue to renew ssl certification file for a website. The former developer setup certification file to .pem. It take a long time to make it work. Here we go.
-Convert .crt to .pem # convert .key file to key.pem openssl rsa -in mywebsite.com.key -text &amp;gt; key.pem # convert .cert to cert.pem cat mywebsite.com.crt &amp;gt; cert.</description>
+Convert .crt to .pem # convert .key file to key.pem openssl rsa -in mywebsite.com.key -text &amp;gt; key.pem # convert .cert to cert.pem cat mywebsite.com.crt &amp;gt; cert.pem # add cert chain to the cert.</description>
     </item>
     
     <item>
@@ -39,7 +39,7 @@ Install ntfs-3g brew install ntfs-3g Replace ntfs-3g Since from OS X 10.</descri
       <pubDate>Tue, 24 Dec 2019 11:27:21 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/graylog/how-to-install-graylog-with-docker-compose/</guid>
-      <description> How to Install Graylog with Docker-compose    Hostname my-graylog      Docker-compose.yaml version:&amp;#39;2&amp;#39;services:# MongoDB: https://hub.docker.com/_/mongo/mongodb:image:mongo:3volumes:-./data/mongo_data:/data/db-/etc/localtime:/etc/localtime:ro# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.htmlelasticsearch:image:docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2volumes:-./data/es_data:/usr/share/elasticsearch/data-/etc/localtime:/etc/localtime:roenvironment:-http.host=0.0.0.0-transport.host=localhost-network.host=0.0.0.0-&amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34;ulimits:memlock:soft:-1hard:-1mem_limit:1g# Graylog: https://hub.docker.com/r/graylog/graylog/graylog:image:graylog/graylog:3.1volumes:-./data/graylog_journal:/usr/share/graylog/data/journal-/etc/localtime:/etc/localtime:roenvironment:# CHANGE ME (must be at least 16 characters)!-GRAYLOG_PASSWORD_SECRET=somepasswordpepper# Password: admin-GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918-GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/links:-mongodb:mongo-elasticsearchdepends_on:-mongodb-elasticsearchports:# Graylog web interface and REST API-9000:9000# Syslog TCP-1514:1514# Syslog UDP-1514:1514/udp# GELF TCP-12201:12201# GELF UDP-12201:12201/udp# Volumes for persisting data, see https://docs.docker.com/engine/admin/volumes/volumes/ Start graylog docker-compose up -d Fixed permission of folder chown -R 1100:1100 data/graylog_journal/ chown -R 1000:1000 data/es_data/ docker-compose down docker-compose up -d</description>
+      <description>How to Install Graylog with Docker-compose    Hostname my-graylog    Docker-compose.yaml version:&amp;#39;2&amp;#39;services:# MongoDB: https://hub.docker.com/_/mongo/mongodb:image:mongo:3volumes:-./data/mongo_data:/data/db-/etc/localtime:/etc/localtime:ro# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.htmlelasticsearch:image:docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2volumes:-./data/es_data:/usr/share/elasticsearch/data-/etc/localtime:/etc/localtime:roenvironment:-http.host=0.0.0.0-transport.host=localhost-network.host=0.0.0.0-&amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34;ulimits:memlock:soft:-1hard:-1mem_limit:1g# Graylog: https://hub.docker.com/r/graylog/graylog/graylog:image:graylog/graylog:3.1volumes:-./data/graylog_journal:/usr/share/graylog/data/journal-/etc/localtime:/etc/localtime:roenvironment:# CHANGE ME (must be at least 16 characters)!-GRAYLOG_PASSWORD_SECRET=somepasswordpepper# Password: admin-GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918-GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/links:-mongodb:mongo-elasticsearchdepends_on:-mongodb-elasticsearchports:# Graylog web interface and REST API-9000:9000# Syslog TCP-1514:1514# Syslog UDP-1514:1514/udp# GELF TCP-12201:12201# GELF UDP-12201:12201/udp# Volumes for persisting data, see https://docs.docker.com/engine/admin/volumes/volumes/Start graylog docker-compose up -d Fixed permission of folder chown -R 1100:1100 data/graylog_journal/ chown -R 1000:1000 data/es_data/ docker-compose down docker-compose up -d </description>
     </item>
     
     <item>
@@ -49,7 +49,7 @@ Install ntfs-3g brew install ntfs-3g Replace ntfs-3g Since from OS X 10.</descri
       
       <guid>https://blog.stevedong.com/post/vyos/how-to-build-ipsec-site-to-site-vpn-with-vyos-and-pfsense/</guid>
       <description>How to build ipse site-to-site VPN with vyos and pfsense Vyos VS pfsense For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:
- Hard to upgrade version, it manybe crashed Didn&amp;rsquo;t support API. Heavy loading and low performance.   After try to replace pfsense to build all functions with vyos. It has a lot of pros:</description>
+ Hard to upgrade version, it manybe crashed Didn&#39;t support API. Heavy loading and low performance.  After try to replace pfsense to build all functions with vyos. It has a lot of pros:</description>
     </item>
     
     <item>
@@ -58,7 +58,7 @@ Install ntfs-3g brew install ntfs-3g Replace ntfs-3g Since from OS X 10.</descri
       <pubDate>Tue, 10 Dec 2019 22:39:01 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/devops/how-to-install-jenkins-with-docker-compose/</guid>
-      <description>How to install Jenkins with docker compose Create Dockerfile With office jenkins docker images.change the jenkins mirrors and change alpine linux soure list to aliyun #DockerfileFROMjenkins/jenkins:alpineUSERrootENVJENKINS_MIRRORhttps://mirrors.tuna.tsinghua.edu.cnENVJENKINS_UC_DOWNLOAD=&amp;#34;https://mirrors.tuna.tsinghua.edu.cn/jenkins/&amp;#34;RUNsed-i&amp;#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&amp;#39;/etc/apk/repositories\&amp;amp;&amp;amp;apkupdate\&amp;amp;&amp;amp;apkadddockernodejsnodejs-npmyarn Create docker-compose.yaml # docker-compose.yamlversion:&amp;#34;2.4&amp;#34;services:jenkins:build:./#image: jenkins/jenkins:alpinecontainer_name:jenkinsports:-&amp;#34;80:8080&amp;#34;-&amp;#34;50000:50000&amp;#34;environment:#- JAVA_OPTS=-Xmx1500m -Duser.timezone=GMT+8-JAVA_OPTS=-Duser.timezone=GMT+8-JENKINS_UC_DOWNLOAD=https://mirrors.tuna.tsinghua.edu.cn/jenkins/volumes:-./data/jenkins:/var/jenkins_home-/var/run/docker.sock:/var/run/docker.sock-/root/.ssh/:/root/.ssh-/etc/localtime:/etc/localtime:ro# cpus: 3.5# mem_limit: 1800muser:rootrestart:always Install Jenkins with Check initial Admin Password by run command as show below cat data/jenkins/secrets/initialAdminPassword Reference Jenkins for Docker 跳过插件安装及插件加速镜像设</description>
+      <description>How to install Jenkins with docker compose Create Dockerfile With office jenkins docker images.change the jenkins mirrors and change alpine linux soure list to aliyun #DockerfileFROMjenkins/jenkins:alpineUSERrootENVJENKINS_MIRRORhttps://mirrors.tuna.tsinghua.edu.cnENVJENKINS_UC_DOWNLOAD=&amp;#34;https://mirrors.tuna.tsinghua.edu.cn/jenkins/&amp;#34;RUNsed-i&amp;#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&amp;#39;/etc/apk/repositories\&amp;amp;&amp;amp;apkupdate\&amp;amp;&amp;amp;apkadddockernodejsnodejs-npmyarnCreate docker-compose.yaml # docker-compose.yamlversion:&amp;#34;2.4&amp;#34;services:jenkins:build:./#image: jenkins/jenkins:alpinecontainer_name:jenkinsports:-&amp;#34;80:8080&amp;#34;-&amp;#34;50000:50000&amp;#34;environment:#- JAVA_OPTS=-Xmx1500m -Duser.timezone=GMT+8-JAVA_OPTS=-Duser.timezone=GMT+8-JENKINS_UC_DOWNLOAD=https://mirrors.tuna.tsinghua.edu.cn/jenkins/volumes:-./data/jenkins:/var/jenkins_home-/var/run/docker.sock:/var/run/docker.sock-/root/.ssh/:/root/.ssh-/etc/localtime:/etc/localtime:ro# cpus: 3.5# mem_limit: 1800muser:rootrestart:alwaysInstall Jenkins with Check initial Admin Password by run command as show below cat data/jenkins/secrets/initialAdminPassword Reference Jenkins for Docker 跳过插件安装及插件加速镜像设置</description>
     </item>
     
     <item>
@@ -67,7 +67,7 @@ Install ntfs-3g brew install ntfs-3g Replace ntfs-3g Since from OS X 10.</descri
       <pubDate>Wed, 27 Nov 2019 12:24:57 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/devops/how-to-install-gitlab-with-docker-compose/</guid>
-      <description>How to Install gitlab with docer-compose version:&amp;#34;3.5&amp;#34;services:gitlab:image:gitlab/gitlab-ce:latestcontainer_name:gitlabrestart:alwayshostname:&amp;#39;xa-gitlab&amp;#39;environment:GITLAB_OMNIBUS_CONFIG:| external_url &amp;#39;http://xa-gitlab&amp;#39;gitlab_rails[&amp;#39;backup_keep_time&amp;#39;]=604800gitlab_rails[&amp;#39;time_zone&amp;#39;]=&amp;#39;Asia/Shanghai&amp;#39;gitlab_rails[&amp;#39;gitlab_shell_ssh_port&amp;#39;]=1022#gitlab_rails[&amp;#39;ldap_enabled&amp;#39;] = true#gitlab_rails[&amp;#39;ldap_servers&amp;#39;] = YAML.load &amp;lt;&amp;lt;-EOS#main:# label: &amp;#39;LDAP&amp;#39;# host: &amp;#39;192.168.1.1&amp;#39;# port: 389# uid: &amp;#39;uid&amp;#39;# bind_dn: &amp;#39;CN=admin,DC=lotbrick,DC=com&amp;#39;# password: &amp;#39;admin&amp;#39;# user_filter: &amp;#39;objectclass=person&amp;#39;# base: &amp;#39;ou=People,dc=xxxxx,dc=com&amp;#39;# active_directory: false# method: &amp;#39;plain&amp;#39;# attributes:# username: [&amp;#34;cn&amp;#34;]# email: [&amp;#39;email&amp;#39;]# name: &amp;#39;displayName&amp;#39;# first_name: &amp;#39;givenName&amp;#39;# last_name: &amp;#39;sn&amp;#39;#EOSports:-&amp;#39;80:80&amp;#39;-&amp;#39;443:443&amp;#39;-&amp;#39;1022:22&amp;#39;volumes:-./gitlab/config:/etc/gitlab-./gitlab/logs:/var/log/gitlab-./gitlab/data:/var/opt/gitlab# - &amp;#34;/etc/localtime:/etc/localtime:ro&amp;#34; Reference Docker+GitLab+LDAP部署过程</description>
+      <description>How to Install gitlab with docer-compose version:&amp;#34;3.5&amp;#34;services:gitlab:image:gitlab/gitlab-ce:latestcontainer_name:gitlabrestart:alwayshostname:&amp;#39;xa-gitlab&amp;#39;environment:GITLAB_OMNIBUS_CONFIG:| external_url &amp;#39;http://xa-gitlab&amp;#39;gitlab_rails[&amp;#39;backup_keep_time&amp;#39;]=604800gitlab_rails[&amp;#39;time_zone&amp;#39;]=&amp;#39;Asia/Shanghai&amp;#39;gitlab_rails[&amp;#39;gitlab_shell_ssh_port&amp;#39;]=1022#gitlab_rails[&amp;#39;ldap_enabled&amp;#39;] = true#gitlab_rails[&amp;#39;ldap_servers&amp;#39;] = YAML.load &amp;lt;&amp;lt;-EOS#main:# label: &amp;#39;LDAP&amp;#39;# host: &amp;#39;192.168.1.1&amp;#39;# port: 389# uid: &amp;#39;uid&amp;#39;# bind_dn: &amp;#39;CN=admin,DC=lotbrick,DC=com&amp;#39;# password: &amp;#39;admin&amp;#39;# user_filter: &amp;#39;objectclass=person&amp;#39;# base: &amp;#39;ou=People,dc=xxxxx,dc=com&amp;#39;# active_directory: false# method: &amp;#39;plain&amp;#39;# attributes:# username: [&amp;#34;cn&amp;#34;]# email: [&amp;#39;email&amp;#39;]# name: &amp;#39;displayName&amp;#39;# first_name: &amp;#39;givenName&amp;#39;# last_name: &amp;#39;sn&amp;#39;#EOSports:-&amp;#39;80:80&amp;#39;-&amp;#39;443:443&amp;#39;-&amp;#39;1022:22&amp;#39;volumes:-./gitlab/config:/etc/gitlab-./gitlab/logs:/var/log/gitlab-./gitlab/data:/var/opt/gitlab# - &amp;#34;/etc/localtime:/etc/localtime:ro&amp;#34;Reference Docker+GitLab+LDAP部署过程 https://github.com/JyBigBoss/docker-compose/blob/master/gitlab/docker-compose.yaml</description>
     </item>
     
     <item>
@@ -76,8 +76,8 @@ Install ntfs-3g brew install ntfs-3g Replace ntfs-3g Since from OS X 10.</descri
       <pubDate>Wed, 27 Nov 2019 11:56:41 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/proxmoxve/how-to-change-settings-after-clone-debian-10-with-cloudinit-enable-on-proxmox-ve/</guid>
-      <description>How to Change Settings After Clone Debian 10 With Cloudinit Enable on Proxmox VE Issue I found an issue about create a linux vm as a template with cloudinit enabled. Seem like after cloned the virtual machine, the cloud-init cd rom didn&amp;rsquo;t be created automatically. We need to delete it,then change setings again to apply the apt source.
-solution #!/usr/bin/env sh  mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.list apt update &amp;amp;&amp;amp; apt -y dist-upgrade apt install -y openssh-server git vim cloud-init apt-transport-https sed -i &amp;#39;s/http/https/g&amp;#39; /etc/apt/sources.</description>
+      <description>How to Change Settings After Clone Debian 10 With Cloudinit Enable on Proxmox VE Issue I found an issue about create a linux vm as a template with cloudinit enabled. Seem like after cloned the virtual machine, the cloud-init cd rom didn&#39;t be created automatically. We need to delete it,then change setings again to apply the apt source.
+solution #!/usr/bin/env sh mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.list apt update &amp;amp;&amp;amp; apt -y dist-upgrade apt install -y openssh-server git vim cloud-init apt-transport-https sed -i &amp;#39;s/http/https/g&amp;#39; /etc/apt/sources.</description>
     </item>
     
     <item>
@@ -106,7 +106,7 @@ How to deploy debian 10 colud image on pve I perfer to debian as my first choice
       <pubDate>Tue, 22 Oct 2019 10:23:46 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/some_tips_for_management_promxmoxve/</guid>
-      <description> Some tips for management proxmxo VE Force shutdown a vm #List all vm in pve qm list # qm unlock the specific vm qm unlock &amp;lt;vmid&amp;gt; # qm stop the specific vm qm stop &amp;lt;vmid&amp;gt; # qm shutdown the specific vm qm shutdown &amp;lt;vmid&amp;gt; # Check vm status qm list | grep &amp;lt;vmid&amp;gt;</description>
+      <description>Some tips for management proxmxo VE Force shutdown a vm #List all vm in pve qm list # qm unlock the specific vm qm unlock &amp;lt;vmid&amp;gt; # qm stop the specific vm qm stop &amp;lt;vmid&amp;gt; # qm shutdown the specific vm qm shutdown &amp;lt;vmid&amp;gt; # Check vm status qm list | grep &amp;lt;vmid&amp;gt; </description>
     </item>
     
     <item>
@@ -115,7 +115,7 @@ How to deploy debian 10 colud image on pve I perfer to debian as my first choice
       <pubDate>Sun, 13 Oct 2019 14:52:31 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/how-to-install-and-configure-freeradius-with-active-directory-allow-allow-specific-group-of-users-to-authenticate-in-debian-10/</guid>
-      <description>How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&amp;rsquo;m trying to build a new</description>
+      <description>How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&#39;m trying to build a new</description>
     </item>
     
     <item>
@@ -124,9 +124,7 @@ How to deploy debian 10 colud image on pve I perfer to debian as my first choice
       <pubDate>Fri, 09 Aug 2019 16:16:39 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/proxmoxve/how-to-change-default-swap-settings-for-proxmox-ve/</guid>
-      <description>How to change default swap settings for Proxmox VE  Check Default swap policy from value 60 to 0
-cat /proc/sys/vm/swappiness #default value is 60 , it means when the memory remain 60, the swap will be enable  Change swap policy
-# Temp to change default swap enable when memory remain 0. sysctl vm.swappiness=0 # Permanent to change swapp cat &amp;lt;&amp;lt; EOF &amp;gt;&amp;gt; /etc/sysctl.conf vm.swappiness=0 #apply settings sysctl -p # check cat /proc/sys/vm/swappiness Vacuum swap</description>
+      <description>How to change default swap settings for Proxmox VE  Check Default swap policy from value 60 to 0  cat /proc/sys/vm/swappiness #default value is 60 , it means when the memory remain 60, the swap will be enable  Change swap policy  # Temp to change default swap enable when memory remain 0. sysctl vm.swappiness=0 # Permanent to change swapp cat &amp;lt;&amp;lt; EOF &amp;gt;&amp;gt; /etc/sysctl.conf vm.swappiness=0 #apply settings sysctl -p # check cat /proc/sys/vm/swappiness  Vacuum swap  swapoff -a swapon -a </description>
     </item>
     
     <item>
@@ -145,7 +143,7 @@ cat /proc/sys/vm/swappiness #default value is 60 , it means when the memory rema
       
       <guid>https://blog.stevedong.com/post/how-to-deploy-bookstack-with-docker-compose/</guid>
       <description>How to Deploy Bookstack with Docker Compose Bookstack is a good opensource solution for enterprie document management with light footprinting. It support auth like ldap,active directory,google,azure,aws,slack etc. and it can export document as pdf file.
-Preparation  Install docker and docker-compose on debian 10 Information for bookstack installation.     Type Value     Hostname mybookstack   Domainame mydomain.local   AD Auth User stevedong   Domain Controller IP &amp;lt;domain contoller IP&amp;gt;   Time Zone Asia/Shanghai    How to fix export chinese pdf document with error  Install chinese fonts on docker server host</description>
+Preparation  Install docker and docker-compose on debian 10 Information for bookstack installation.     Type Value     Hostname mybookstack   Domainame mydomain.local   AD Auth User stevedong   Domain Controller IP &amp;lt;domain contoller IP&amp;gt;   Time Zone Asia/Shanghai    How to fix export chinese pdf document with error  Install chinese fonts on docker server host  apt install fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy customized dockerfile with option:  environments:# To let bookstack export pdf with chinese language supported.</description>
     </item>
     
     <item>
@@ -156,8 +154,7 @@ Preparation  Install docker and docker-compose on debian 10 Information for book
       <guid>https://blog.stevedong.com/post/how-to-configure-debian-10-as-a-docker-server/</guid>
       <description>How to configure debian 10 as a docker server After try to install docker in LXC with proxmox ve, there will be some issues to make docker stop working. At last, I gave up and brance pure linux as docker sever.
 Install debian 10 in promxox ve Configure deiban 10 vm with &amp;lsquo;qemu-agent&amp;rsquo; checked.
-After install deiban 10  Change source list
-mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.list apt update &amp;amp;&amp;amp; apt -y dist-upgrade apt install -y openssh-server git vim cloud-init apt-transport-https sed -i &amp;#39;s/http/https/g&amp;#39; /etc/apt/sources.</description>
+After install deiban 10  Change source list  mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.list apt update &amp;amp;&amp;amp; apt -y dist-upgrade apt install -y openssh-server git vim cloud-init apt-transport-https sed -i &amp;#39;s/http/https/g&amp;#39; /etc/apt/sources.</description>
     </item>
     
     <item>
@@ -166,7 +163,7 @@ mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.
       <pubDate>Thu, 18 Jul 2019 12:23:01 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/how-to-modify-template-in-proxmox-ve/</guid>
-      <description> How to Modify Template im Proxox VE Sometime I wonder how to convert template back to vm and modify it and convert it back to vm? Here is the solution
+      <description>How to Modify Template im Proxox VE Sometime I wonder how to convert template back to vm and modify it and convert it back to vm? Here is the solution
 Convert Template to VM Delete template: 1 in vm config.
 sed -i &amp;#39;s/template:\ 1//g&amp;#39; /etc/pve/qemu-server/{vm-id}.conf Change access permission of VM disk cd /var/lib/vz/images/1{VM-ID}/ chattr -i * chmod 755 * Then covert it back to template </description>
     </item>
@@ -180,8 +177,7 @@ sed -i &amp;#39;s/template:\ 1//g&amp;#39; /etc/pve/qemu-server/{vm-id}.conf Cha
       <description>Install Proxmox VE 6.x After installed Proxmox VE 6.x, What we gone do ?
 Download Proxmox VE 6.x iSO file in mirrors.ustc.edu.cn Download iso images from here:
 http://mirrors.ustc.edu.cn/proxmox/iso/
-Fixe Perl error waring export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable subscription Warning  Disable subscription warning via script
-sed -i.bak &amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;amp;&amp;amp; systemctl restart pveproxy.service Manually disable subscription warning</description>
+Fixe Perl error waring export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable subscription Warning  Disable subscription warning via script  sed -i.bak &amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;amp;&amp;amp; systemctl restart pveproxy.service  Manually disable subscription warning  cd /usr/share/javascript/proxmox-widget-toolkit cp proxmoxlib.</description>
     </item>
     
     <item>
@@ -191,8 +187,8 @@ sed -i.bak &amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34; 
       
       <guid>https://blog.stevedong.com/post/change-rhel6.8-yum-repo-to-centos6/</guid>
       <description>How to upgrade RHEL6 with yum repo of centos Today I will show you how to setup rhel6 at proxmox VE.
-After installed REHL6.8,We didn&amp;rsquo;t have RHEL subscription,but how to get update and install software via yum ? The right answer is to change yum repo.
-Fix perl error export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable RHEL subsription subscription-manager config --rhsm.</description>
+After installed REHL6.8,We didn&#39;t have RHEL subscription,but how to get update and install software via yum ? The right answer is to change yum repo.
+Fix perl error export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable RHEL subsription subscription-manager config --rhsm.manage_repos=0 Chang yum repo to Centos 6  delete rhel yum software  rpm -qa | grep yum rpm -qa | grep yum | xargs rpm -e --nodeps  Download centos yum software  mkdir -p /tmp/yum cd /tmp/yum wget http://mirrors.</description>
     </item>
     
     <item>
@@ -225,7 +221,7 @@ With cloudinit images it is easy to do that.</description>
       <guid>https://blog.stevedong.com/post/how-to-deploy-librenms-with-docker-compose/</guid>
       <description>How to deploy librenms with docker-compsoe Librenms is a very light and easy handle moniting software. It is suitable for us to monitoring server,network device, printers etc. via snmp.
 At now, docker is easy for software deployment. After deploy librenms in ubuntu vm, I have a try to deploy librenms with docker-compose.
-Download config files mkdir librenms-docker-compose cd librenms-docker-compose #Download .env file wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/.env # Download docker-compose file wget https://raw.</description>
+Download config files mkdir librenms-docker-compose cd librenms-docker-compose #Download .env file wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/.env # Download docker-compose file wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/docker-compose.yml # Download librenms.</description>
     </item>
     
     <item>
@@ -246,7 +242,7 @@ Install dependencies software #dependencies apt-get -y install debhelper autotoo
       <guid>https://blog.stevedong.com/post/pve-how-to-extend-ubuntu-no-lvm-disk-in-proxmox-ve/</guid>
       <description>How to resize disk(no lvm) in proxmox ve Today I met a problem that I need to extend disk image for a ubuntu server which is a virtual machine hosted in proxmox ve.
 Resizing disk images First thing first, I need resize the disk images of the virtual machine.I can do it both in command line or via web management interface.
- Extend disk size of virtual machine via shell command</description>
+ Extend disk size of virtual machine via shell command  # Extend disk size of virtual machine with vid 136 with 100G qm resize 136 virtio0 +100G  Extend disk size of virtual machien via web interface  &amp;quot;Datacenter&amp;quot; | &amp;quot;$Node&amp;quot; | $VIRTUAL_MACHINE | &amp;quot;HARDWARE&amp;quot; | &amp;quot;HARD DISK(SCSI0)&amp;quot; | &amp;quot;RESIZE DISK&amp;quot; | &amp;quot;size Increment(GiB) | &amp;quot;100&amp;quot; | &amp;quot;Resize disk&amp;quot;</description>
     </item>
     
     <item>
@@ -257,8 +253,7 @@ Resizing disk images First thing first, I need resize the disk images of the vir
       <guid>https://blog.stevedong.com/post/how-to-install-overture-on-vyos1.2/</guid>
       <description>How to install overture on Vyos 1.2 I need to build a dns forwarding server to anti dns cache pollution.overture is a good choice for me. it writen in go with good performance. Here we go!
 Download ovrture you can check overture version from here
- Login vyos .
-sudo su cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &amp;#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&amp;#34; sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64 cd overture-linux-amd64 sudo curl -fsSLO https://raw.</description>
+ Login vyos .  sudo su cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &amp;#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&amp;#34; sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64 cd overture-linux-amd64 sudo curl -fsSLO https://raw.</description>
     </item>
     
     <item>
@@ -267,7 +262,7 @@ sudo su cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &
       <pubDate>Wed, 15 May 2019 12:11:14 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/proxmox-ve-how-to-fixed-upgrade-error/</guid>
-      <description>How solove Proxmox VE 5.4 upgrade issue Today I&amp;rsquo;m trying to upgrade proxmox ve 5.3. to proxmox ve 5.4 version. But I failed. After install and uninstall proxmox-manager, Force to reboot and the node has kernel panic error. Then force reboot the node. At grub menu select second line to select an old pve kernel to boot proxmox-ve.
+      <description>How solove Proxmox VE 5.4 upgrade issue Today I&#39;m trying to upgrade proxmox ve 5.3. to proxmox ve 5.4 version. But I failed. After install and uninstall proxmox-manager, Force to reboot and the node has kernel panic error. Then force reboot the node. At grub menu select second line to select an old pve kernel to boot proxmox-ve.
 ERROR 1:&amp;ldquo;No space left on device&amp;rdquo; error on latest upgrade If you met issue like this:</description>
     </item>
     
@@ -286,8 +281,8 @@ ERROR 1:&amp;ldquo;No space left on device&amp;rdquo; error on latest upgrade If
       <pubDate>Wed, 01 May 2019 19:14:51 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/install-kubernetes-on-centos7/</guid>
-      <description> Install Kubernetes on Centos 7 Disable and stop firewall # Disable firewall service systemctl disable firewalld # Stop firewall service systemctl stop firewalld Install etcd and kubernetes Install etcd and kubernetes and it will also install docker.
-yum install -y etcd kubernetes Start service in order systemctl start etcd systemctl start docker systemctl start kube-apiserver systemctl start kube-controller-manager systemctl start kube-scheduler systemctl start kubelet systemctl start start kube-proxy</description>
+      <description>Install Kubernetes on Centos 7 Disable and stop firewall # Disable firewall service systemctl disable firewalld # Stop firewall service systemctl stop firewalld Install etcd and kubernetes Install etcd and kubernetes and it will also install docker.
+yum install -y etcd kubernetes Start service in order systemctl start etcd systemctl start docker systemctl start kube-apiserver systemctl start kube-controller-manager systemctl start kube-scheduler systemctl start kubelet systemctl start start kube-proxy </description>
     </item>
     
     <item>
@@ -305,9 +300,7 @@ yum install -y etcd kubernetes Start service in order systemctl start etcd syste
       <pubDate>Mon, 29 Apr 2019 21:43:15 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/nginx-how-to-compile-nginx-with-source-code/</guid>
-      <description>How to compile nginx with source code Download source code  Access nginx.org to download latest stable version of nginx.
-wget https://nginx.org/download/nginx-1.16.0.tar.gz tar -zxvf nginx-1.16.0.tar.gz  Compile source code cd nginx-1.16.0 apt update &amp;amp;&amp;amp; apt install -y gcc build-essential ./configure --prefix=/home/echowings/nginx make make install  Trouble shooting  PCRE missing error.
-./configure: error: the HTTP rewrite module requires the PCRE library. You can either disable the module by using —without–http_rewrite_module option, or install the PCRE library into the system, or build the PCRE library statically from the source with nginx by using —with–pcre=&amp;amp;lt;path&amp;amp;gt; option.</description>
+      <description>How to compile nginx with source code Download source code  Access nginx.org to download latest stable version of nginx.  wget https://nginx.org/download/nginx-1.16.0.tar.gz tar -zxvf nginx-1.16.0.tar.gz Compile source code cd nginx-1.16.0 apt update &amp;amp;&amp;amp; apt install -y gcc build-essential ./configure --prefix=/home/echowings/nginx make make install Trouble shooting  PCRE missing error.  ./configure: error: the HTTP rewrite module requires the PCRE library. You can either disable the module by using —without–http_rewrite_module option, or install the PCRE library into the system, or build the PCRE library statically from the source with nginx by using —with–pcre=&amp;amp;lt;path&amp;amp;gt; option.</description>
     </item>
     
     <item>
@@ -327,9 +320,7 @@ It will end nightmare that someone or montoring system tell you that your servic
       
       <guid>https://blog.stevedong.com/post/proxmox-ve-how-to-install-snmp-service-on-promxox-ve/</guid>
       <description>How to install snmp service on proxmox ve How to setup snmp service to let us to use librenms to moniting our proxmox ve healthy status is very important for us.
-Install snmpd on proxmox ve apt update apt install -y snmpd Configure snmpd.conf  backup original configuration file.
-mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.backup Create a new config file.
-cat &amp;gt; /etc/snmp/snmpd.conf &amp;lt;&amp;lt; EOF # this create a SNMPv1/SNMPv2c community named &amp;#34;&amp;#34; # and restricts access to LAN adresses 192.</description>
+Install snmpd on proxmox ve apt update apt install -y snmpd Configure snmpd.conf  backup original configuration file.  mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.backup  Create a new config file.  cat &amp;gt; /etc/snmp/snmpd.conf &amp;lt;&amp;lt; EOF # this create a SNMPv1/SNMPv2c community named &amp;#34;&amp;#34; # and restricts access to LAN adresses 192.</description>
     </item>
     
     <item>
@@ -359,10 +350,10 @@ I found that each time when i change network settings. There will be a named int
       
       <guid>https://blog.stevedong.com/post/proxmox-ve-how-to-convert-vmware-esxi-virtual-machine-to-kvm-virtual-machine/</guid>
       <description>How to convert vmware esix VM to proxmox-VE VM V2V Convert vmware virtual machines to kvm virtual machine is easy.
-Convert windows VM  Remove VWware tools Uninstall vmware tools and reboot vm.
- Switch disk mode to IDE
- Download Mergeide, unzip it and run it,then reboot your vm. or you can save follow code as mergeide.reg.
-Windows Registry Editor Version 5.00 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\primary_ide_channel] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;atapi&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\secondary_ide_channel] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;atapi&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\*pnp0600] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;atapi&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\*azt0502] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;atapi&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\gendisk] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E967-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;disk&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#cc_0101] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_0e11&amp;amp;dev_ae33] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1039&amp;amp;dev_0601] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1039&amp;amp;dev_5513] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1042&amp;amp;dev_1000] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_105a&amp;amp;dev_4d33] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;amp;dev_0640] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;amp;dev_0646] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;amp;dev_0646&amp;amp;REV_05] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;amp;dev_0646&amp;amp;REV_07] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;amp;dev_0648] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;amp;dev_0649] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1097&amp;amp;dev_0038] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10ad&amp;amp;dev_0001] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10ad&amp;amp;dev_0150] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;amp;dev_5215] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;amp;dev_5219] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;amp;dev_5229] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1106&amp;amp;dev_0571] &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_1222] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_1230] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_2411] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_2421] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_7010] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_7111] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_7199] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; ;Add driver for Atapi (requires Atapi.</description>
+Convert windows VM   Remove VWware tools Uninstall vmware tools and reboot vm.
+  Switch disk mode to IDE
+  Download Mergeide, unzip it and run it,then reboot your vm. or you can save follow code as mergeide.reg.
+  Windows Registry Editor Version 5.00 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\primary_ide_channel] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;atapi&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\secondary_ide_channel] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;atapi&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\*pnp0600] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;atapi&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\*azt0502] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;atapi&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\gendisk] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E967-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;disk&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#cc_0101] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_0e11&amp;amp;dev_ae33] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1039&amp;amp;dev_0601] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1039&amp;amp;dev_5513] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1042&amp;amp;dev_1000] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_105a&amp;amp;dev_4d33] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;amp;dev_0640] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;amp;dev_0646] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;amp;dev_0646&amp;amp;REV_05] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;amp;dev_0646&amp;amp;REV_07] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;amp;dev_0648] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;amp;dev_0649] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1097&amp;amp;dev_0038] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10ad&amp;amp;dev_0001] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10ad&amp;amp;dev_0150] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;amp;dev_5215] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;amp;dev_5219] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;amp;dev_5229] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1106&amp;amp;dev_0571] &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_1222] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_1230] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_2411] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_2421] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_7010] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_7111] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_7199] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; ;Add driver for Atapi (requires Atapi.</description>
     </item>
     
     <item>
@@ -393,7 +384,7 @@ Install librenms with docker-compose mkdir -p librenms-docker-compose cd ./libre
       <pubDate>Tue, 16 Apr 2019 14:36:34 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/how-to-fix-linux-perl-lc_all_error/</guid>
-      <description> How to fix perl LC_ALL ERROR export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF</description>
+      <description>How to fix perl LC_ALL ERROR export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF </description>
     </item>
     
     <item>
@@ -413,8 +404,8 @@ Here are the steps.
       <pubDate>Thu, 11 Apr 2019 00:17:37 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/how-to-build-a-kms-server/</guid>
-      <description> How to build a kms server Option 1: docker mode docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername  Option 2: docker compose docker-compose.yml
-version:&amp;#39;3&amp;#39;services:frontend:image:luodaoyi/kms-servercontainer_name:mykmsports:-1688:1688restart:always docker-compose start the container
+      <description>How to build a kms server Option 1: docker mode docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername Option 2: docker compose docker-compose.yml
+version:&amp;#39;3&amp;#39;services:frontend:image:luodaoyi/kms-servercontainer_name:mykmsports:-1688:1688restart:alwaysdocker-compose start the container
 docker-compose up -d Active Script echo &amp;#34;To active office&amp;#34; cd &amp;#34;%programfiles%\Microsoft Office\Office16&amp;#34; cscript ospp.vbs /sethst:xx.xx.xx.xx cscript ospp.vbs /act echo &amp;#34;to active windows&amp;#34; slmgr /skms xxx.xxx.xxx.xxx slmgr /ato Reference  blog  </description>
     </item>
     
@@ -424,11 +415,7 @@ docker-compose up -d Active Script echo &amp;#34;To active office&amp;#34; cd &a
       <pubDate>Wed, 10 Apr 2019 12:18:04 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/how-to-setup-oh-my-zsh/</guid>
-      <description> How to setup Oh-My-Zsh Install support application apt install git curl wget zsh Install zsh  via curl
-sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;#34; via wget
-sh -c &amp;#34;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&amp;#34;  Change zsh settings  change theme
-#change theme froy robbyrussell to agnoster sed -i &amp;#39;s/ZSH_THEME=\&amp;#34;robbyrussell\&amp;#34;/ZSH_THEME=\&amp;#34;agnoster\&amp;#34;/g&amp;#39; ~/.zshrc change plugin support
-sed -i &amp;#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\trbenv\n\truby\n\tpython\n)/g&amp;#39; ~/.zshrc  Switch default bash to zsh chsh -s /bin/zsh  </description>
+      <description>How to setup Oh-My-Zsh Install support application apt install git curl wget zsh Install zsh  via curl  sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;#34;  via wget  sh -c &amp;#34;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&amp;#34; Change zsh settings  change theme  #change theme froy robbyrussell to agnoster sed -i &amp;#39;s/ZSH_THEME=\&amp;#34;robbyrussell\&amp;#34;/ZSH_THEME=\&amp;#34;agnoster\&amp;#34;/g&amp;#39; ~/.zshrc  change plugin support  sed -i &amp;#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\trbenv\n\truby\n\tpython\n)/g&amp;#39; ~/.zshrc Switch default bash to zsh chsh -s /bin/zsh </description>
     </item>
     
     <item>
@@ -455,7 +442,7 @@ sed -i &amp;#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\
       <pubDate>Thu, 21 Feb 2019 11:02:41 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/docker-compose-to-build-prometheus/</guid>
-      <description> Build Prometheus with docker-compose docker-compose up -d</description>
+      <description>Build Prometheus with docker-compose docker-compose up -d </description>
     </item>
     
     <item>
@@ -465,8 +452,7 @@ sed -i &amp;#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\
       
       <guid>https://blog.stevedong.com/post/how-to-enable-proxmoxve-nested-virtualization/</guid>
       <description>How to enable Proxmox VE nested virtualization To enable nested virtualization on Proxmox VE, we need to stop all the vm and enable nested virtualization to linux kernel. then change vm settings
-Stop all the vm on proxmox VE  stop all virtual machines with shell command.
-root@xa-sys-pve01:~# pvesh create /nodes/localhost/stopall Stopping VM 116 (timeout = 180 seconds) Stopping VM 115 (timeout = 180 seconds) Stopping CT 112 (timeout = 60 seconds) Stopping CT 111 (timeout = 60 seconds) Stopping CT 108 (timeout = 60 seconds) Stopping CT 106 (timeout = 60 seconds) Stopping VM 101 (timeout = 180 seconds) UPID:xa-sys-pve01:0036EA66:01992199:5CB98D6C:stopall::root@pam: stop all the virtual machine with admin web.</description>
+Stop all the vm on proxmox VE  stop all virtual machines with shell command.  root@xa-sys-pve01:~# pvesh create /nodes/localhost/stopall Stopping VM 116 (timeout = 180 seconds) Stopping VM 115 (timeout = 180 seconds) Stopping CT 112 (timeout = 60 seconds) Stopping CT 111 (timeout = 60 seconds) Stopping CT 108 (timeout = 60 seconds) Stopping CT 106 (timeout = 60 seconds) Stopping VM 101 (timeout = 180 seconds) UPID:xa-sys-pve01:0036EA66:01992199:5CB98D6C:stopall::root@pam:  stop all the virtual machine with admin web.</description>
     </item>
     
     <item>
@@ -485,7 +471,7 @@ root@xa-sys-pve01:~# pvesh create /nodes/localhost/stopall Stopping VM 116 (time
       <pubDate>Sat, 29 Dec 2018 12:19:12 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/cisco-ssh-error/</guid>
-      <description> cisco ssh error When you met error like this:
+      <description>cisco ssh error When you met error like this:
 ssh cisco@10.32.3.1 Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1 Solution:
 $ ssh -l &amp;lt;USERNAME&amp;gt; -oHostKeyAlgorithms=+ssh-dss -oKexAlgorithms=+diffie-hellman-group1-sha1 &amp;lt;HOST&amp;gt; or
 ssh -l &amp;lt;username&amp;gt; -o HostKeyAlgorithms=+ssh-dss -o KexAlgorithms=+diffie-hellman-group1-sha1 -c 3des-cbc &amp;lt;hostname&amp;gt; Reference  SSH failed on 3750 switch SSH Not Working After Update To 10.13.2 (HighSierra)  </description>
@@ -497,8 +483,8 @@ ssh -l &amp;lt;username&amp;gt; -o HostKeyAlgorithms=+ssh-dss -o KexAlgorithms=+
       <pubDate>Wed, 26 Dec 2018 09:26:04 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/macos-update-time-via-ntpserver/</guid>
-      <description>How to update time via ntpserver Today, My MBP is out of power. I cannot surfing internet. and the brower tell me my time was wrong. Then I checked my time in my MBB, I&amp;rsquo;m back in time jan 1, 2018. Wow, I got extra whole year time!
-Majove update time sudo sntp -sS time.asia.apple.com When you&amp;rsquo;re getting this error
+      <description>How to update time via ntpserver Today, My MBP is out of power. I cannot surfing internet. and the brower tell me my time was wrong. Then I checked my time in my MBB, I&#39;m back in time jan 1, 2018. Wow, I got extra whole year time!
+Majove update time sudo sntp -sS time.asia.apple.com When you&#39;re getting this error
 kod_init_kod_db(): Cannot open KoD db file /var/db/ntp-kod: No such file or directory You can solved the problems with:</description>
     </item>
     
@@ -508,7 +494,7 @@ kod_init_kod_db(): Cannot open KoD db file /var/db/ntp-kod: No such file or dire
       <pubDate>Tue, 25 Dec 2018 06:11:03 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/learning-flask-01/</guid>
-      <description> learning Flask 01 Installation and configure of anaconda Installaltion homebrew ruby -e &amp;#34;$(curl - fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;#34; Installation of pyenv # Installing pyenv brew install pyenv Install anaconda 2 and anaconda 3  Download anaconda from here  </description>
+      <description>learning Flask 01 Installation and configure of anaconda Installaltion homebrew ruby -e &amp;#34;$(curl - fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;#34; Installation of pyenv # Installing pyenv brew install pyenv Install anaconda 2 and anaconda 3  Download anaconda from here  </description>
     </item>
     
     <item>
@@ -529,7 +515,7 @@ Recently days, I just learn proxmox and find pci-e pass through function. I thin
       <guid>https://blog.stevedong.com/post/dockerfile-for-overture/</guid>
       <description>How to Wirte docker file for overture Hence we need to custom overture docker image as we desire, I write this dockerfile.
 How to map VOLUME and copy file from docker images to directory of docker host. When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.
-if [ &amp;ldquo;ls -A /config&amp;rdquo; = &amp;ldquo;&amp;rdquo; ]; then cp /srv/config.</description>
+if [ &amp;ldquo;ls -A /config&amp;rdquo; = &amp;quot;&amp;rdquo; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.</description>
     </item>
     
   </channel>

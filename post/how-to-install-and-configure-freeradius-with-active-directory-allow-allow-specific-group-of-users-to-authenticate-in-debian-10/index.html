@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&amp;rsquo;m trying to build a new" />
+  <meta name="description" content="How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&#39;m trying to build a new" />
 
   <meta name="keywords" content="proxmox ve, network, devops, sdn, system Administation" />
 
@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/how-to-install-and-configure-freeradius-with-active-directory-allow-allow-specific-group-of-users-to-authenticate-in-debian-10/" />
@@ -53,32 +53,29 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.0995afa14b62cd93e93cfc066b646c4c17a3eddca0e9d52a1d9dcf5d90aaacd3.css" integrity="sha256-CZWvoUtizZPpPPwGa2RsTBej7dyg6dUqHZ3PXZCqrNM=" media="screen" crossorigin="anonymous">
 
 
 
 
 
 <meta property="og:title" content="How to Install and Configure Freeradius With Active Directory Allow Allow Specific Group of Users to Authenticate in Debian 10" />
-<meta property="og:description" content="How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&rsquo;m trying to build a new" />
+<meta property="og:description" content="How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&#39;m trying to build a new" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/how-to-install-and-configure-freeradius-with-active-directory-allow-allow-specific-group-of-users-to-authenticate-in-debian-10/" />
 <meta property="article:published_time" content="2019-10-13T14:52:31+08:00" />
 <meta property="article:modified_time" content="2019-10-13T14:52:31+08:00" />
 <meta itemprop="name" content="How to Install and Configure Freeradius With Active Directory Allow Allow Specific Group of Users to Authenticate in Debian 10">
-<meta itemprop="description" content="How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&rsquo;m trying to build a new">
-
-
+<meta itemprop="description" content="How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&#39;m trying to build a new">
 <meta itemprop="datePublished" content="2019-10-13T14:52:31&#43;08:00" />
 <meta itemprop="dateModified" content="2019-10-13T14:52:31&#43;08:00" />
-<meta itemprop="wordCount" content="855">
+<meta itemprop="wordCount" content="979">
 
 
 
-<meta itemprop="keywords" content="freeradius,debian,linux,ldap," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="freeradius,debian,linux,ldap," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Install and Configure Freeradius With Active Directory Allow Allow Specific Group of Users to Authenticate in Debian 10"/>
-<meta name="twitter:description" content="How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&rsquo;m trying to build a new"/>
+<meta name="twitter:description" content="How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&#39;m trying to build a new"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -377,41 +374,30 @@ if (!doNotTrack) {
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#how-to-install-and-configure-freeradius-with-active-directory-allow-specific-group-of-users-to-authenticate-in-debian-10">How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10</a>
-<ul>
-<li><a href="#install-software-and-configuration">Install Software and configuration</a>
-<ul>
-<li><a href="#basic-information">Basic Information</a></li>
-<li><a href="#change-debian-settings">Change Debian settings</a></li>
-<li><a href="#install-samba-and-winbind-and-let-debian-host-joined-domain">Install samba and winbind and let Debian Host joined domain</a></li>
-<li><a href="#install-freeradius">Install freeradius</a></li>
-<li><a href="#configure-freeradius-ldap-auth-with-ad">Configure freeradius-ldap Auth with AD</a>
-<ul>
-<li><a href="#edit-config">Edit config</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#reference">Reference</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#install-software-and-configuration">Install Software and configuration</a>
+      <ul>
+        <li><a href="#basic-information">Basic Information</a></li>
+        <li><a href="#change-debian-settings">Change Debian settings</a></li>
+        <li><a href="#install-samba-and-winbind-and-let-debian-host-joined-domain">Install samba and winbind and let Debian Host joined domain</a></li>
+        <li><a href="#install-freeradius">Install freeradius</a></li>
+        <li><a href="#configure-freeradius-ldap-auth-with-ad">Configure freeradius-ldap Auth with AD</a></li>
+      </ul>
+    </li>
+    <li><a href="#install-mysqldaloradius-to-make-management-freeradius-with-web-access">Install mysql,daloradius to make management freeradius with web access</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<h1 id="how-to-install-and-configure-freeradius-with-active-directory-allow-specific-group-of-users-to-authenticate-in-debian-10">How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10</h1>
-
-<p>serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication  and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access  to a group in AD. So I&rsquo;m trying to build a new freeradius server in debian 10. After a week work.At last I figure it out.</p>
-
+      <h1 id="how-to-install-and-configure-freeradius-with-active-directory-allow-specific-group-of-users-to-authenticate-in-debian-10">How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10</h1>
+<p>serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication  and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access  to a group in AD. So I'm trying to build a new freeradius server in debian 10. After a week work.At last I figure it out.</p>
 <h2 id="install-software-and-configuration">Install Software and configuration</h2>
-
 <p>First thing first, We need install a debian 10 server on your virtualization platform. currently, I installed a debian server on proxmox ve platform.</p>
-
 <h3 id="basic-information">Basic Information</h3>
-
 <table>
 <thead>
 <tr>
@@ -419,230 +405,270 @@ if (!doNotTrack) {
 <th>Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Domain Name</td>
 <td>TESTING.LOCAL</td>
 </tr>
-
 <tr>
 <td>NTDomain  Name</td>
 <td>TESTING</td>
 </tr>
-
 <tr>
 <td>RADIUS HOSTNAME</td>
 <td>MYRADIUS</td>
 </tr>
-
 <tr>
 <td>DOMAIN CONTROLLER</td>
 <td>MYDC02.TESTING.LOCAL</td>
 </tr>
-
 <tr>
 <td>DOMAIN CONTROLLER</td>
 <td>MYDC03.TESTING.LOCAL</td>
 </tr>
-
 <tr>
 <td>DOMAIN GROUP</td>
 <td>VPN_GROUP</td>
 </tr>
 </tbody>
 </table>
-
 <h3 id="change-debian-settings">Change Debian settings</h3>
-
 <ul>
-<li><p>Change hostname</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hostnamectl set-hostname myradius</code></pre></div></li>
-
-<li><p>Sync NTP time with domain controller
-Install chrony</p>
+<li>Change hostname</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hostnamectl set-hostname myradius
+</code></pre></div><ul>
+<li>Sync NTP time with domain controller
+Install chrony</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt purge ntp
-apt install -y  chrony</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/chrony/chrony.conf
+apt install -y  chrony
+</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/chrony/chrony.conf
 <span style="color:#09f;font-style:italic">#comment out `pool xxx iburst</span>
 server &lt;ip_of_dc01&gt; iburst
-server &lt;ip_of_dc02&gt; iburst</code></pre></div></li>
-</ul>
-
-<p>restart chrony service and force update times</p>
+server &lt;ip_of_dc02&gt; iburst
+</code></pre></div><p>restart chrony service and force update times</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart chrony
-chronyc sources</code></pre></div>
-<h3 id="install-samba-and-winbind-and-let-debian-host-joined-domain">Install samba and winbind and let Debian Host joined domain</h3>
-
+chronyc sources
+</code></pre></div><h3 id="install-samba-and-winbind-and-let-debian-host-joined-domain">Install samba and winbind and let Debian Host joined domain</h3>
 <ul>
-<li><p>Install samba,winbind,krb5-user</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt updatee <span style="color:#555">&amp;&amp;</span> apt -y dist-ugprade
-apt install -y samba winbind krb5-user</code></pre></div></li>
-
-<li><p>config samba config file</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/samba/smb.conf</code></pre></div></li>
+<li>
+<p>Install samba,winbind,krb5-user</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"></code></pre></div></li>
 </ul>
+<p>apt updatee &amp;&amp; apt -y dist-ugprade
+apt install -y samba winbind krb5-user
+apt -y install winbind libpam-winbind libnss-winbind krb5-config samba-dsdb-modules samba-vfs-modules</p>
+<pre><code>- config samba config file
 
-<p>In <code>[global]</code> section, change settings form</p>
+  ```bash
+vi /etc/samba/smb.conf
+</code></pre><p>In <code>[global]</code> section, change settings form</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#555">[</span>global<span style="color:#555">]</span>
 <span style="color:#09f;font-style:italic">## Browsing/Identification ###</span>
 <span style="color:#09f;font-style:italic"># Change this to the workgroup/NT-domain name your Samba server will part of</span>
-   <span style="color:#033">workgroup</span> <span style="color:#555">=</span> WORKGROUP</code></pre></div>
-<p>to</p>
+  <span style="color:#033">workgroup</span> <span style="color:#555">=</span> WORKGROUP
+</code></pre></div><p>to</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#555">[</span>global<span style="color:#555">]</span>
 <span style="color:#09f;font-style:italic">## Browsing/Identification ###</span>
 <span style="color:#09f;font-style:italic"># Change this to the workgroup/NT-domain name your Samba server will part of</span>
-   <span style="color:#033">workgroup</span> <span style="color:#555">=</span> TESTING
-   password <span style="color:#033">server</span> <span style="color:#555">=</span> MYDC02.TESTING.LOCAL
-   password <span style="color:#033">server</span> <span style="color:#555">=</span> MYDC03.TESTING.LOCAL
-   <span style="color:#033">realm</span> <span style="color:#555">=</span> TESTING.LOCAL
-   winbind use default <span style="color:#033">domain</span> <span style="color:#555">=</span> <span style="color:#366">true</span>
-   idmap <span style="color:#033">backend</span> <span style="color:#555">=</span> rid:testing.local<span style="color:#555">=</span><span style="color:#f60">70000</span>-1000000
-   idmap <span style="color:#033">uid</span> <span style="color:#555">=</span> <span style="color:#f60">70000</span>-1000000
-   idmap <span style="color:#033">gid</span> <span style="color:#555">=</span> <span style="color:#f60">70000</span>-1000000
-   winbind use default <span style="color:#033">domain</span> <span style="color:#555">=</span> yes
-   <span style="color:#033">security</span> <span style="color:#555">=</span> ADS</code></pre></div>
-<ul>
-<li><p>Modify <code>/etc/krb5.conf</code></p>
+
+  <span style="color:#033">workgroup</span> <span style="color:#555">=</span> TESTING
+  <span style="color:#033">realm</span> <span style="color:#555">=</span> TESTING.LOCAL
+  <span style="color:#033">security</span> <span style="color:#555">=</span> ads
+  idmap config * : <span style="color:#033">backend</span> <span style="color:#555">=</span>tdb
+  idmap config * : <span style="color:#033">range</span> <span style="color:#555">=</span> 3000-7999
+  idmap config testing : <span style="color:#033">backend</span> <span style="color:#555">=</span> rid
+  idmap config testing : <span style="color:#033">range</span> <span style="color:#555">=</span> 10000-999999
+  winbind use default <span style="color:#033">domain</span> <span style="color:#555">=</span> <span style="color:#366">true</span>
+  winbind offline <span style="color:#033">logon</span> <span style="color:#555">=</span> <span style="color:#366">false</span>
+</code></pre></div><ul>
+<li>Modify <code>/etc/nsswitch.conf</code></li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/nsswitch.conf
+</code></pre></div><p>Change</p>
+<pre><code>passwd:         files systemd 
+group:          files systemd 
+</code></pre><p>to</p>
+<pre><code>passwd:         files systemd winbind
+group:          files systemd winbind
+</code></pre><ul>
+<li>Modify <code>/etc/krb5.conf</code></li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#555">[</span>libdefaults<span style="color:#555">]</span>
-<span style="color:#033">default_realm</span><span style="color:#555">=</span>TESTING.LOCAL
+   <span style="color:#033">default_realm</span><span style="color:#555">=</span>TESTING.LOCAL
 ...
 <span style="color:#555">[</span>realms<span style="color:#555">]</span>
-TESTING.LOCAL <span style="color:#555">=</span> <span style="color:#555">{</span>
-    <span style="color:#033">kdc</span> <span style="color:#555">=</span> MYDC02.TESTING.LOCAL
-    <span style="color:#033">admin_server</span> <span style="color:#555">=</span> MYDC02.TESTING.LOCAL
-    <span style="color:#033">default_domain</span> <span style="color:#555">=</span> TESTING.LOCAL
-<span style="color:#555">}</span>
+   TESTING.LOCAL <span style="color:#555">=</span> <span style="color:#555">{</span>
+       <span style="color:#033">kdc</span> <span style="color:#555">=</span> MYDC02.TESTING.LOCAL
+       <span style="color:#033">kdc</span> <span style="color:#555">=</span> MYDC03.TESTING.LOCAL
+       <span style="color:#033">admin_server</span> <span style="color:#555">=</span> TESTING.LOCAL
+       <span style="color:#033">default_domain</span> <span style="color:#555">=</span> TESTING.LOCAL
+   <span style="color:#555">}</span>
 ...
 <span style="color:#555">[</span>domain_realm<span style="color:#555">]</span>
-.testing.local <span style="color:#555">=</span> TESTING.LOCAL
-testing.local <span style="color:#555">=</span> TESTING.LOCAL</code></pre></div></li>
-
-<li><p>Restart samba and winbind service</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart smbd winbind</code></pre></div></li>
-
-<li><p>Join domain</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">net join -U mypoweruser</code></pre></div></li>
-
-<li><p>Testing samba AD authentication:</p>
-
-<ul>
-<li><p>Using winbind:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wbinfo -a &lt;user&gt;%&lt;password&gt;</code></pre></div></li>
-</ul></li>
+   .testing.local <span style="color:#555">=</span> TESTING.LOCAL
+   testing.local <span style="color:#555">=</span> TESTING.LOCAL
+</code></pre></div><ul>
+<li>
+<p>Restart OS</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"></code></pre></div></li>
 </ul>
+<p>reboot</p>
+<pre><code>- Restart samba and winbind service
 
-<p>You will get the following message if everything is correct:</p>
+ ```bash
+systemctl restart smbd winbind
+</code></pre><ul>
+<li>Join domain</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#net join -U mypoweruser</span>
+net ads join -U Administrator
+</code></pre></div><pre><code>Enter Administrator's password:
+Using short domain name -- TESTING
+Joined 'SMB' to dns domain ''
+No DNS domain configured for smb. Unable to perform DNS Update.
+DNS update failed: NT_STATUS_INVALID_PARAMETER
+</code></pre><ul>
+<li>Restart winbind</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart winbind
+</code></pre></div><ul>
+<li>
+<p>Testing samba AD authentication:</p>
+<ul>
+<li>Using winbind:</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart winbind
+wbinfo -a &lt;user&gt;%&lt;password&gt;
+</code></pre></div><p>You will get the following message if everything is correct:</p>
+</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">plaintext password authentication succeeded
-challenge/response password authentication succeeded</code></pre></div>
-<ul>
-<li><p>Using ntlm_auth:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ntlm_auth --request-nt-key --domain<span style="color:#555">=</span>TESTING --username<span style="color:#555">=</span>&lt;user&gt; --password<span style="color:#555">=</span>&lt;password&gt;</code></pre></div></li>
+challenge/response password authentication succeeded
+</code></pre></div><ul>
+<li>Using ntlm_auth:</li>
 </ul>
-
-<p>Then you will got success message:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">   NT_STATUS_OK: Success <span style="color:#555">(</span>0x0<span style="color:#555">)</span></code></pre></div>
-<h3 id="install-freeradius">Install freeradius</h3>
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ntlm_auth --request-nt-key --domain<span style="color:#555">=</span>TESTING --username<span style="color:#555">=</span>&lt;user&gt; --password<span style="color:#555">=</span>&lt;password&gt;
+</code></pre></div><p>Then you will got success message:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">NT_STATUS_OK: Success <span style="color:#555">(</span>0x0<span style="color:#555">)</span>
+</code></pre></div><h3 id="install-freeradius">Install freeradius</h3>
 <ul>
-<li><p>Install freeradius</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt install -y freeradius</code></pre></div></li>
-
-<li><p>Grant permission for <code>freerad</code> user on winbind&rsquo;s socket:</p>
+<li>Install freeradius</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt install -y freeradius
+</code></pre></div><ul>
+<li>Grant permission for <code>freerad</code> user on winbind's socket:</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo usermod -a -G winbindd_priv freerad
-sudo chgrp winbindd_priv /var/lib/samba/winbindd_privileged/</code></pre></div></li>
-
-<li><p>Change MACHAP to use ntlm_auth:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/mods-available/ntlm_auth</code></pre></div></li>
+sudo chgrp winbindd_priv /var/lib/samba/winbindd_privileged/
+</code></pre></div><ul>
+<li>
+<p>Change MACHAP to use ntlm_auth:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"></code></pre></div></li>
 </ul>
-
-<p>change</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#033">program</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;/usr/bin/ntlm_auth --request-nt-key --domain=TESTING --username=%{mschap:User-Name} --password=%{User-Password}&#34;</span></code></pre></div>
-<ul>
-<li><p>Change module mschap :</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/mods-available/mschap</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mschap <span style="color:#555">{</span>
+<p>vi /etc/freeradius/3.0/mods-available/ntlm_auth</p>
+<pre><code>   change 
+```bash
+program = &quot;/usr/bin/ntlm_auth --request-nt-key --domain=TESTING --username=%{mschap:User-Name} --password=%{User-Password}&quot;
+</code></pre><ul>
+<li>
+<p>Change module mschap :</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"></code></pre></div></li>
+</ul>
+<p>vi /etc/freeradius/3.0/mods-available/mschap</p>
+<pre><code>
+ ```bash
+mschap {
 ...
-<span style="color:#033">ntlm_auth</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;/usr/bin/ntlm_auth --request-nt-key --domain=TESTING --username=%{%{Stripped-User-Name}:-%{%{User-Name}:-None}} --challenge=%{%{mschap:Challenge}:-00} --nt-response=%{%{mschap:NT-Response}:-00}&#34;</span></code></pre></div></li>
-
-<li><p>Change eap config.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/mods-available/eap</code></pre></div></li>
+    ntlm_auth = &quot;/usr/bin/ntlm_auth --request-nt-key --domain=TESTING --username=%{%{Stripped-User-Name}:-%{%{User-Name}:-None}} --challenge=%{%{mschap:Challenge}:-00} --nt-response=%{%{mschap:NT-Response}:-00}&quot;
+</code></pre><ul>
+<li>
+<p>Change eap config.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"></code></pre></div></li>
 </ul>
-
-<p>Change  settings of <code>default_eap_type</code>.</p>
+<p>vi /etc/freeradius/3.0/mods-available/eap</p>
+<pre><code>Change  settings of `default_eap_type`.
+```bash
+eap {
+    default_eap_type = md5
+</code></pre><p>to</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">eap <span style="color:#555">{</span>
-    <span style="color:#033">default_eap_type</span> <span style="color:#555">=</span> md5</code></pre></div>
-<p>to</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">eap <span style="color:#555">{</span>
-    <span style="color:#033">default_eap_type</span> <span style="color:#555">=</span> mschapv2</code></pre></div>
-<p>Then restart freeradius service</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart freeradius</code></pre></div>
-<ul>
-<li><p>Change <code>/etc/freeradius/3.0/sites-enabled/default</code> and <code>/etc/freeradius/3.0/sites-enabled/inner-tunnel</code></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">authenticate <span style="color:#555">{</span>
-ntlm_auth</code></pre></div></li>
-
-<li><p>Configure RADIUS client</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">client <span style="color:#f60">0</span>.0.0.0/0 <span style="color:#555">{</span>
-<span style="color:#033">secret</span>  <span style="color:#555">=</span> myauthpassword
-<span style="color:#033">shortname</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;nas access&#34;</span>
-<span style="color:#555">}</span></code></pre></div>
-<ul>
-<li><p>restart service of freeradius</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart freeradius</code></pre></div></li>
+    <span style="color:#033">default_eap_type</span> <span style="color:#555">=</span> mschapv2
+</code></pre></div><p>Then restart freeradius service</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart freeradius
+</code></pre></div><ul>
+<li>Change <code>/etc/freeradius/3.0/sites-enabled/default</code> and <code>/etc/freeradius/3.0/sites-enabled/inner-tunnel</code>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"></code></pre></div></li>
 </ul>
-
-<p>Test FreeRADIUS and MSCHAP:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">radtest -t mschap &lt;user&gt; &lt;password&gt; localhost <span style="color:#f60">0</span> testing123</code></pre></div></li>
+<p>authenticate {
+ntlm_auth</p>
+<pre><code> 
+- Configure RADIUS client
+    ```bash
+ client 0.0.0.0/0 {
+    secret  = myauthpassword
+    shortname = &quot;nas access&quot;
+ }
+</code></pre><ul>
+<li>
+<p>restart service of freeradius</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart freeradius
+</code></pre></div><p>Test FreeRADIUS and MSCHAP:</p>
+</li>
 </ul>
-
-<p>The results will be like:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Sent Access-Request Id <span style="color:#f60">9</span> from <span style="color:#f60">0</span>.0.0.0:59244 to <span style="color:#f60">127</span>.0.0.1:1812 length <span style="color:#f60">134</span>
-        User-Name <span style="color:#555">=</span> <span style="color:#c30">&#34;user&#34;</span>
-        MS-CHAP-Password <span style="color:#555">=</span> <span style="color:#c30">&#34;password&#34;</span>
-        NAS-IP-Address <span style="color:#555">=</span> <span style="color:#f60">172</span>.100.99.100
-        NAS-Port <span style="color:#555">=</span> <span style="color:#f60">0</span>
-        Message-Authenticator <span style="color:#555">=</span> 0x00
-        Cleartext-Password <span style="color:#555">=</span> <span style="color:#c30">&#34;password&#34;</span>
-        MS-CHAP-Challenge <span style="color:#555">=</span> 0x163bc4c900360a08
-        MS-CHAP-Response <span style="color:#555">=</span> 0x0001000000000000000000000000000000000000000000000000382764ceb05312077d21d71bf53ce917ef2e72a4ff83ca96
-Received Access-Accept Id <span style="color:#f60">9</span> from <span style="color:#f60">127</span>.0.0.1:1812 to <span style="color:#f60">0</span>.0.0.0:0 length <span style="color:#f60">84</span>
-        MS-CHAP-MPPE-Keys <span style="color:#555">=</span> 0x000000000000000065c53b0540ab884edc6779a1f370c0cb
-        MS-MPPE-Encryption-Policy <span style="color:#555">=</span> Encryption-Allowed
-        MS-MPPE-Encryption-Types <span style="color:#555">=</span> RC4-40or128-bit-Allowed</code></pre></div>
-<h3 id="configure-freeradius-ldap-auth-with-ad">Configure freeradius-ldap Auth with AD</h3>
-
-<p>To limited to auth a AD group, we need to config freeradius auth with ldap.
-- Install freeradius-ldap</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt install -y freeradius-ldap</code></pre></div>
-<h4 id="edit-config">Edit config</h4>
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">radtest -t mschap &lt;user&gt; &lt;password&gt; localhost <span style="color:#f60">0</span> testing123
+</code></pre></div><p>The results will be like:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Sent Access-Request Id <span style="color:#f60">9</span> from 0.0.0.0:59244 to 127.0.0.1:1812 length <span style="color:#f60">134</span>
+       User-Name <span style="color:#555">=</span> <span style="color:#c30">&#34;user&#34;</span>
+       MS-CHAP-Password <span style="color:#555">=</span> <span style="color:#c30">&#34;password&#34;</span>
+       NAS-IP-Address <span style="color:#555">=</span> 172.100.99.100
+       NAS-Port <span style="color:#555">=</span> <span style="color:#f60">0</span>
+       Message-Authenticator <span style="color:#555">=</span> 0x00
+       Cleartext-Password <span style="color:#555">=</span> <span style="color:#c30">&#34;password&#34;</span>
+       MS-CHAP-Challenge <span style="color:#555">=</span> 0x163bc4c900360a08
+       MS-CHAP-Response <span style="color:#555">=</span> 0x0001000000000000000000000000000000000000000000000000382764ceb05312077d21d71bf53ce917ef2e72a4ff83ca96
+Received Access-Accept Id <span style="color:#f60">9</span> from 127.0.0.1:1812 to 0.0.0.0:0 length <span style="color:#f60">84</span>
+       MS-CHAP-MPPE-Keys <span style="color:#555">=</span> 0x000000000000000065c53b0540ab884edc6779a1f370c0cb
+       MS-MPPE-Encryption-Policy <span style="color:#555">=</span> Encryption-Allowed
+       MS-MPPE-Encryption-Types <span style="color:#555">=</span> RC4-40or128-bit-Allowed
+</code></pre></div><h3 id="configure-freeradius-ldap-auth-with-ad">Configure freeradius-ldap Auth with AD</h3>
+<p>To limited to auth a AD group, we need to config freeradius auth with ldap.</p>
 <ul>
-<li><p>edit <code>/etc/freeradius/3.0/mods-available/ldap</code></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/mods-available/ldap</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ldap <span style="color:#555">{</span>
- ...
-<span style="color:#033">server</span> <span style="color:#555">=</span> <span style="color:#c30">&#39;dc01.mydomain.local&#39;</span>
-<span style="color:#033">server</span> <span style="color:#555">=</span> <span style="color:#c30">&#39;dc02.mydomain.local&#39;</span>
-<span style="color:#033">port</span> <span style="color:#555">=</span> <span style="color:#f60">389</span>
-<span style="color:#033">identity</span> <span style="color:#555">=</span> <span style="color:#c30">&#39;aduser@mydomain.local&#39;</span>
-<span style="color:#033">password</span> <span style="color:#555">=</span> &lt;mypassword&gt;
-<span style="color:#033">base_dn</span> <span style="color:#555">=</span> <span style="color:#c30">&#39;dc=mydomain,dc=local&#39;</span>
-... 
+<li>Install freeradius-ldap</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt install -y freeradius-ldap
+</code></pre></div><h4 id="edit-config">Edit config</h4>
+<ul>
+<li>edit <code>/etc/freeradius/3.0/mods-available/ldap</code></li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/mods-available/ldap
+</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ldap <span style="color:#555">{</span>
+     ...
+    <span style="color:#033">server</span> <span style="color:#555">=</span> <span style="color:#c30">&#39;dc01.mydomain.local&#39;</span>
+    <span style="color:#033">server</span> <span style="color:#555">=</span> <span style="color:#c30">&#39;dc02.mydomain.local&#39;</span>
+    <span style="color:#033">port</span> <span style="color:#555">=</span> <span style="color:#f60">389</span>
+    <span style="color:#033">identity</span> <span style="color:#555">=</span> <span style="color:#c30">&#39;aduser@mydomain.local&#39;</span>
+    <span style="color:#033">password</span> <span style="color:#555">=</span> &lt;mypassword&gt;
+    <span style="color:#033">base_dn</span> <span style="color:#555">=</span> <span style="color:#c30">&#39;dc=mydomain,dc=local&#39;</span>
+    ... 
 <span style="color:#555">}</span>
 ...
-update <span style="color:#555">{</span>
-   control:Password-With-Header    +<span style="color:#555">=</span> <span style="color:#c30">&#39;userPassword&#39;</span>
-   control:NT-Password     :<span style="color:#555">=</span> <span style="color:#c30">&#39;ntPassword&#39;</span>
-   reply:Reply-Message     :<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusReplyMessage&#39;</span>
-   reply:Tunnel-Type       :<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusTunnelType&#39;</span>
-   reply:Tunnel-Medium-Type    :<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusTunnelMediumType&#39;</span>
-   reply:Tunnel-Private-Group-ID   :<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusTunnelPrivategroupId&#39;</span>
+    update <span style="color:#555">{</span>
+       control:Password-With-Header    +<span style="color:#555">=</span> <span style="color:#c30">&#39;userPassword&#39;</span>
+       control:NT-Password     :<span style="color:#555">=</span> <span style="color:#c30">&#39;ntPassword&#39;</span>
+       reply:Reply-Message     :<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusReplyMessage&#39;</span>
+       reply:Tunnel-Type       :<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusTunnelType&#39;</span>
+       reply:Tunnel-Medium-Type    :<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusTunnelMediumType&#39;</span>
+       reply:Tunnel-Private-Group-ID   :<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusTunnelPrivategroupId&#39;</span>
 
-    <span style="color:#09f;font-style:italic">#  Where only a list is specified as the RADIUS attribute,</span>
-    <span style="color:#09f;font-style:italic">#  the value of the LDAP attribute is parsed as a valuepair</span>
-    <span style="color:#09f;font-style:italic">#  in the same format as the &#39;valuepair_attribute&#39; (above).</span>
-    control:            +<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusControlAttribute&#39;</span>
-    request:            +<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusRequestAttribute&#39;</span>
-    reply:              +<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusReplyAttribute&#39;</span>
-<span style="color:#555">}</span>
+        <span style="color:#09f;font-style:italic">#  Where only a list is specified as the RADIUS attribute,</span>
+        <span style="color:#09f;font-style:italic">#  the value of the LDAP attribute is parsed as a valuepair</span>
+        <span style="color:#09f;font-style:italic">#  in the same format as the &#39;valuepair_attribute&#39; (above).</span>
+        control:            +<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusControlAttribute&#39;</span>
+        request:            +<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusRequestAttribute&#39;</span>
+        reply:              +<span style="color:#555">=</span> <span style="color:#c30">&#39;radiusReplyAttribute&#39;</span>
+    <span style="color:#555">}</span>
 ...
 <span style="color:#033">edir</span> <span style="color:#555">=</span> no
 ...
@@ -650,57 +676,71 @@ update <span style="color:#555">{</span>
 ...
 user <span style="color:#555">{</span>
 ...
-<span style="color:#033">base_dn</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;</span><span style="color:#a00">${</span>..base_dn<span style="color:#a00">}</span><span style="color:#c30">&#34;</span>
+    <span style="color:#033">base_dn</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;</span><span style="color:#a00">${</span>..base_dn<span style="color:#a00">}</span><span style="color:#c30">&#34;</span>
 ...
-<span style="color:#033">filter</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;(sAMAccountName=%{%{Stripped-User-Name}:-%{User-Name}})&#34;</span>    
-...</code></pre></div>
-<ul>
-<li><p>create a link to mode-enable</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ln -s /etc/freeradius/3.0/mods-available/ldap /etc/freeradius/3.0/mods-enabled/</code></pre></div></li>
-
-<li><p>edit <code>/etc/freeradius/3.0/sites-available/default</code></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/sites-available/default</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">...
+    <span style="color:#033">filter</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;(sAMAccountName=%{%{Stripped-User-Name}:-%{User-Name}})&#34;</span>    
+...
+</code></pre></div><ul>
+<li>create a link to mode-enable</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ln -s /etc/freeradius/3.0/mods-available/ldap /etc/freeradius/3.0/mods-enabled/
+</code></pre></div><ul>
+<li>edit <code>/etc/freeradius/3.0/sites-available/default</code></li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/sites-available/default
+</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">...
 authorize <span style="color:#555">{</span>
 ...
-ldap
-<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">((</span>ok <span style="color:#555">||</span> updated<span style="color:#555">)</span> <span style="color:#555">&amp;&amp;</span> User-Password<span style="color:#555">)</span> <span style="color:#555">{</span>
-update <span style="color:#555">{</span>
-    control:Auth-Type :<span style="color:#555">=</span> ldap
-<span style="color:#555">}</span>
-<span style="color:#555">}</span>
+    ldap
+    <span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span><span style="color:#555">(</span>ok <span style="color:#555">||</span> updated<span style="color:#555">)</span> <span style="color:#555">&amp;&amp;</span> User-Password<span style="color:#555">)</span> <span style="color:#555">{</span>
+        update <span style="color:#555">{</span>
+            control:Auth-Type :<span style="color:#555">=</span> ldap
+        <span style="color:#555">}</span>
+    <span style="color:#555">}</span>
 ...
 authenticate <span style="color:#555">{</span>
 ...
-Auth-Type LDAP <span style="color:#555">{</span>
-        ldap
-<span style="color:#555">}</span>
+        Auth-Type LDAP <span style="color:#555">{</span>
+                ldap
+        <span style="color:#555">}</span>
 ...
 <span style="color:#555">}</span>
 ...
-<span style="color:#555">}</span></code></pre></div></li>
-</ul></li>
-
-<li><p>Restart freeradius service</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart freeradius
-freeradius -fX</code></pre></div></li>
+<span style="color:#555">}</span>
+</code></pre></div><ul>
+<li>
+<p>Restart freeradius service</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"></code></pre></div></li>
 </ul>
+<p>systemctl restart freeradius
+freeradius -fX</p>
+<pre><code>testing ldap auth
 
-<p>testing ldap auth</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  radtest &lt;domain_accout&gt; &lt;password&gt; localhost <span style="color:#f60">0</span> testing123</code></pre></div>
+  ```bash
+  radtest &lt;domain_accout&gt; &lt;password&gt; localhost 0 testing123
+</code></pre><ul>
+<li>
+<p>Change <code>/etc/freeradius/3.0/users</code> to allow specific group <code>VPN_GROUP</code> of users to authenticate</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"></code></pre></div></li>
+</ul>
+<p>vi /etc/freeradius/3.0/users</p>
+<pre><code>
+  ```bash
+DEFAULT Auth-Type = ntlm_auth, LDAP-Group == &quot;VPN_GROUP&quot;
+...
+DEFAULT Group != &quot;VPN_GROUP&quot;, Auth-Type := Reject
+        Reply-Message = &quot;Your are not permit to access VPN Connectiong&quot;
+</code></pre><h2 id="install-mysqldaloradius-to-make-management-freeradius-with-web-access">Install mysql,daloradius to make management freeradius with web access</h2>
 <ul>
-<li><p>Change <code>/etc/freeradius/3.0/users</code> to allow specific group <code>VPN_GROUP</code> of users to authenticate</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">DEFAULT Auth-Type <span style="color:#555">=</span> ntlm_auth, LDAP-Group <span style="color:#555">==</span> <span style="color:#c30">&#34;VPN_GROUP&#34;</span>
-...
-DEFAULT Group !<span style="color:#555">=</span> <span style="color:#c30">&#34;VPN_GROUP&#34;</span>, Auth-Type :<span style="color:#555">=</span> Reject
-    Reply-Message <span style="color:#555">=</span> <span style="color:#c30">&#34;Your are not permit to access VPN Connectiong&#34;</span></code></pre></div></li>
+<li>Install mariadb database</li>
 </ul>
-
-<h2 id="reference">Reference</h2>
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt install -y mariadb-server
+</code></pre></div><h2 id="reference">Reference</h2>
 <ol>
 <li><a href="https://www.dangtrinh.com/2017/03/wpa2-enterprise-with-freeradius-and-ad.html">WPA2 Enterprise with FreeRADIUS and AD integration on Ubuntu16.04</a></li>
 <li><a href="https://blog.csdn.net/d9394952/article/details/93597621">调试freeradius 3.0 与microsoft AD通过LDAP认证的笔记</a></li>
 <li><a href="https://serverfault.com/questions/622205/configure-freeradius-with-active-driectory-allow-specific-group-of-users-to-auth">Configure FreeRADIUS with Active Driectory allow specific group of users to authenticate</a></li>
+<li><a href="https://www.server-world.info/en/note?os=Debian_10&amp;p=samba&amp;f=3">Join in Windows Active Directory Domain with Samba Winbind.</a></li>
 </ol>
 
     </div>

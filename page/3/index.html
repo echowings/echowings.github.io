@@ -31,7 +31,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/" />
@@ -52,7 +52,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.0995afa14b62cd93e93cfc066b646c4c17a3eddca0e9d52a1d9dcf5d90aaacd3.css" integrity="sha256-CZWvoUtizZPpPPwGa2RsTBej7dyg6dUqHZ3PXZCqrNM=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,12 +62,9 @@
 <meta property="og:description" content="A System Administrator&#39;s Blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-
 <meta property="og:updated_time" content="2020-01-21T16:49:32+08:00" />
 <meta itemprop="name" content="Steve Dong - A System Administrator&#39;s Blog">
-<meta itemprop="description" content="A System Administrator&#39;s Blog.">
-
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="description" content="A System Administrator&#39;s Blog."><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Steve Dong - A System Administrator&#39;s Blog"/>
 <meta name="twitter:description" content="A System Administrator&#39;s Blog."/>
 
@@ -372,9 +369,7 @@ if (!doNotTrack) {
     
     <div class="post-summary">
       How to install snmp service on proxmox ve How to setup snmp service to let us to use librenms to moniting our proxmox ve healthy status is very important for us.
-Install snmpd on proxmox ve apt update apt install -y snmpd Configure snmpd.conf  backup original configuration file.
-mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.backup Create a new config file.
-cat &gt; /etc/snmp/snmpd.conf &lt;&lt; EOF # this create a SNMPv1/SNMPv2c community named &#34;&#34; # and restricts access to LAN adresses 192.
+Install snmpd on proxmox ve apt update apt install -y snmpd Configure snmpd.conf  backup original configuration file.  mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.backup  Create a new config file.  cat &gt; /etc/snmp/snmpd.conf &lt;&lt; EOF # this create a SNMPv1/SNMPv2c community named &#34;&#34; # and restricts access to LAN adresses 192.
     </div>
     <div class="read-more">
       <a href="/post/proxmox-ve-how-to-install-snmp-service-on-promxox-ve/" class="read-more-link">Read more</a>
@@ -479,10 +474,10 @@ I found that each time when i change network settings. There will be a named int
     
     <div class="post-summary">
       How to convert vmware esix VM to proxmox-VE VM V2V Convert vmware virtual machines to kvm virtual machine is easy.
-Convert windows VM  Remove VWware tools Uninstall vmware tools and reboot vm.
- Switch disk mode to IDE
- Download Mergeide, unzip it and run it,then reboot your vm. or you can save follow code as mergeide.reg.
-Windows Registry Editor Version 5.00 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\primary_ide_channel] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\secondary_ide_channel] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\*pnp0600] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\*azt0502] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\gendisk] &#34;ClassGUID&#34;=&#34;{4D36E967-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;disk&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#cc_0101] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_0e11&amp;dev_ae33] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1039&amp;dev_0601] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1039&amp;dev_5513] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1042&amp;dev_1000] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_105a&amp;dev_4d33] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0640] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0646] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0646&amp;REV_05] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0646&amp;REV_07] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0648] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0649] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1097&amp;dev_0038] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10ad&amp;dev_0001] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10ad&amp;dev_0150] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;dev_5215] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;dev_5219] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;dev_5229] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1106&amp;dev_0571] &#34;Service&#34;=&#34;pciide&#34; &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_1222] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_1230] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_2411] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_2421] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_7010] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_7111] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_7199] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; ;Add driver for Atapi (requires Atapi.
+Convert windows VM   Remove VWware tools Uninstall vmware tools and reboot vm.
+  Switch disk mode to IDE
+  Download Mergeide, unzip it and run it,then reboot your vm. or you can save follow code as mergeide.reg.
+  Windows Registry Editor Version 5.00 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\primary_ide_channel] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\secondary_ide_channel] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\*pnp0600] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\*azt0502] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\gendisk] &#34;ClassGUID&#34;=&#34;{4D36E967-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;disk&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#cc_0101] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_0e11&amp;dev_ae33] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1039&amp;dev_0601] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1039&amp;dev_5513] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1042&amp;dev_1000] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_105a&amp;dev_4d33] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0640] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0646] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0646&amp;REV_05] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0646&amp;REV_07] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0648] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0649] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1097&amp;dev_0038] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10ad&amp;dev_0001] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10ad&amp;dev_0150] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;dev_5215] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;dev_5219] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;dev_5229] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1106&amp;dev_0571] &#34;Service&#34;=&#34;pciide&#34; &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_1222] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_1230] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_2411] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_2421] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_7010] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_7111] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_7199] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; ;Add driver for Atapi (requires Atapi.
     </div>
     <div class="read-more">
       <a href="/post/proxmox-ve-how-to-convert-vmware-esxi-virtual-machine-to-kvm-virtual-machine/" class="read-more-link">Read more</a>
@@ -589,7 +584,7 @@ Install librenms with docker-compose mkdir -p librenms-docker-compose cd ./libre
   <div class="post-content">
     
     <div class="post-summary">
-       How to fix perl LC_ALL ERROR export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF
+      How to fix perl LC_ALL ERROR export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF 
     </div>
     <div class="read-more">
       <a href="/post/how-to-fix-linux-perl-lc_all_error/" class="read-more-link">Read more</a>
@@ -659,8 +654,8 @@ Here are the steps.
   <div class="post-content">
     
     <div class="post-summary">
-       How to build a kms server Option 1: docker mode docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername  Option 2: docker compose docker-compose.yml
-version:&#39;3&#39;services:frontend:image:luodaoyi/kms-servercontainer_name:mykmsports:-1688:1688restart:always docker-compose start the container
+      How to build a kms server Option 1: docker mode docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername Option 2: docker compose docker-compose.yml
+version:&#39;3&#39;services:frontend:image:luodaoyi/kms-servercontainer_name:mykmsports:-1688:1688restart:alwaysdocker-compose start the container
 docker-compose up -d Active Script echo &#34;To active office&#34; cd &#34;%programfiles%\Microsoft Office\Office16&#34; cscript ospp.vbs /sethst:xx.xx.xx.xx cscript ospp.vbs /act echo &#34;to active windows&#34; slmgr /skms xxx.xxx.xxx.xxx slmgr /ato Reference  blog  
     </div>
     <div class="read-more">
@@ -695,11 +690,7 @@ docker-compose up -d Active Script echo &#34;To active office&#34; cd &#34;%prog
   <div class="post-content">
     
     <div class="post-summary">
-       How to setup Oh-My-Zsh Install support application apt install git curl wget zsh Install zsh  via curl
-sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34; via wget
-sh -c &#34;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&#34;  Change zsh settings  change theme
-#change theme froy robbyrussell to agnoster sed -i &#39;s/ZSH_THEME=\&#34;robbyrussell\&#34;/ZSH_THEME=\&#34;agnoster\&#34;/g&#39; ~/.zshrc change plugin support
-sed -i &#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\trbenv\n\truby\n\tpython\n)/g&#39; ~/.zshrc  Switch default bash to zsh chsh -s /bin/zsh  
+      How to setup Oh-My-Zsh Install support application apt install git curl wget zsh Install zsh  via curl  sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34;  via wget  sh -c &#34;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&#34; Change zsh settings  change theme  #change theme froy robbyrussell to agnoster sed -i &#39;s/ZSH_THEME=\&#34;robbyrussell\&#34;/ZSH_THEME=\&#34;agnoster\&#34;/g&#39; ~/.zshrc  change plugin support  sed -i &#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\trbenv\n\truby\n\tpython\n)/g&#39; ~/.zshrc Switch default bash to zsh chsh -s /bin/zsh 
     </div>
     <div class="read-more">
       <a href="/post/how-to-setup-oh-my-zsh/" class="read-more-link">Read more</a>
@@ -799,7 +790,7 @@ sed -i &#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\trbe
   <div class="post-content">
     
     <div class="post-summary">
-       Build Prometheus with docker-compose docker-compose up -d
+      Build Prometheus with docker-compose docker-compose up -d 
     </div>
     <div class="read-more">
       <a href="/post/docker-compose-to-build-prometheus/" class="read-more-link">Read more</a>
@@ -834,8 +825,7 @@ sed -i &#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\trbe
     
     <div class="post-summary">
       How to enable Proxmox VE nested virtualization To enable nested virtualization on Proxmox VE, we need to stop all the vm and enable nested virtualization to linux kernel. then change vm settings
-Stop all the vm on proxmox VE  stop all virtual machines with shell command.
-root@xa-sys-pve01:~# pvesh create /nodes/localhost/stopall Stopping VM 116 (timeout = 180 seconds) Stopping VM 115 (timeout = 180 seconds) Stopping CT 112 (timeout = 60 seconds) Stopping CT 111 (timeout = 60 seconds) Stopping CT 108 (timeout = 60 seconds) Stopping CT 106 (timeout = 60 seconds) Stopping VM 101 (timeout = 180 seconds) UPID:xa-sys-pve01:0036EA66:01992199:5CB98D6C:stopall::root@pam: stop all the virtual machine with admin web.
+Stop all the vm on proxmox VE  stop all virtual machines with shell command.  root@xa-sys-pve01:~# pvesh create /nodes/localhost/stopall Stopping VM 116 (timeout = 180 seconds) Stopping VM 115 (timeout = 180 seconds) Stopping CT 112 (timeout = 60 seconds) Stopping CT 111 (timeout = 60 seconds) Stopping CT 108 (timeout = 60 seconds) Stopping CT 106 (timeout = 60 seconds) Stopping VM 101 (timeout = 180 seconds) UPID:xa-sys-pve01:0036EA66:01992199:5CB98D6C:stopall::root@pam:  stop all the virtual machine with admin web.
     </div>
     <div class="read-more">
       <a href="/post/how-to-enable-proxmoxve-nested-virtualization/" class="read-more-link">Read more</a>

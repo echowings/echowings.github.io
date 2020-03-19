@@ -34,7 +34,7 @@ Here are the steps.
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/proxmox-ve-how-to-upgrade-pve/" />
@@ -55,7 +55,7 @@ Here are the steps.
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.0995afa14b62cd93e93cfc066b646c4c17a3eddca0e9d52a1d9dcf5d90aaacd3.css" integrity="sha256-CZWvoUtizZPpPPwGa2RsTBej7dyg6dUqHZ3PXZCqrNM=" media="screen" crossorigin="anonymous">
 
 
 
@@ -73,16 +73,13 @@ Here are the steps.
 <meta itemprop="description" content="How to ugrade Proxmove VE If your proxmox ve server in china ,Change utsc mirrors will speed up your proxmoxve upgrade speed.
 Here are the steps.
 1. Change debian,pve,ceph upgrade source, and upgrade your PVE #chang debian source list echo &#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free deb-src https://mirrors.">
-
-
 <meta itemprop="datePublished" content="2019-04-16T12:12:58&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-16T12:12:58&#43;08:00" />
 <meta itemprop="wordCount" content="197">
 
 
 
-<meta itemprop="keywords" content="PVE," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="PVE," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Proxmov Ve How to Upgrade Pve"/>
 <meta name="twitter:description" content="How to ugrade Proxmove VE If your proxmox ve server in china ,Change utsc mirrors will speed up your proxmoxve upgrade speed.
 Here are the steps.
@@ -385,28 +382,20 @@ if (!doNotTrack) {
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#how-to-ugrade-proxmove-ve">How to ugrade Proxmove VE</a>
-<ul>
-<li><a href="#1-change-debian-pve-ceph-upgrade-source-and-upgrade-your-pve">1. Change debian,pve,ceph upgrade source, and upgrade your PVE</a></li>
-<li><a href="#2-change-settings-after-upgrade">2. Change settings after upgrade</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#1-change-debianpveceph-upgrade-source-and-upgrade-your-pve">1. Change debian,pve,ceph upgrade source, and upgrade your PVE</a></li>
+    <li><a href="#2-change-settings-after-upgrade">2. Change settings after upgrade</a></li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<h1 id="how-to-ugrade-proxmove-ve">How to ugrade Proxmove VE</h1>
-
+      <h1 id="how-to-ugrade-proxmove-ve">How to ugrade Proxmove VE</h1>
 <p>If your proxmox ve server in china ,Change utsc mirrors will speed up your proxmoxve upgrade speed.</p>
-
 <p>Here are the steps.</p>
-
-<h2 id="1-change-debian-pve-ceph-upgrade-source-and-upgrade-your-pve">1. Change debian,pve,ceph upgrade source, and upgrade your PVE</h2>
+<h2 id="1-change-debianpveceph-upgrade-source-and-upgrade-your-pve">1. Change debian,pve,ceph upgrade source, and upgrade your PVE</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic">#chang debian source list</span>
 <span style="color:#366">echo</span> <span style="color:#c30">&#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
 </span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
@@ -433,18 +422,24 @@ sed -i.bak <span style="color:#c30">&#39;s|deb https://enterprise.proxmox.com/de
 wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
 
 apt updat <span style="color:#555">&amp;&amp;</span> apt -y dis-ugprade
-update-grub</code></pre></div>
-<h2 id="2-change-settings-after-upgrade">2. Change settings after upgrade</h2>
+update-grub
 
+</code></pre></div><h2 id="2-change-settings-after-upgrade">2. Change settings after upgrade</h2>
 <p>This step to change pve upgrade to no subscription and ceph soucre .</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic">#change pve 5.x update source list</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+<span style="color:#09f;font-style:italic">#change pve 5.x update source list</span>
 <span style="color:#366">echo</span> <span style="color:#c30">&#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&#34;</span> &gt; /etc/apt/sources.list.d/pve-enterprise.list
 
 <span style="color:#09f;font-style:italic">#change ceph source list</span>
 <span style="color:#366">echo</span> <span style="color:#c30">&#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&#34;</span> &gt; /etc/apt/sources.list.d/ceph.list
 
 <span style="color:#09f;font-style:italic"># add key</span>
-wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg</code></pre></div>
+wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
+
+
+
+
+</code></pre></div>
     </div>
 
     

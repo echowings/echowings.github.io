@@ -18,8 +18,8 @@
       
       <guid>https://blog.stevedong.com/post/change-rhel6.8-yum-repo-to-centos6/</guid>
       <description>How to upgrade RHEL6 with yum repo of centos Today I will show you how to setup rhel6 at proxmox VE.
-After installed REHL6.8,We didn&amp;rsquo;t have RHEL subscription,but how to get update and install software via yum ? The right answer is to change yum repo.
-Fix perl error export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable RHEL subsription subscription-manager config --rhsm.</description>
+After installed REHL6.8,We didn&#39;t have RHEL subscription,but how to get update and install software via yum ? The right answer is to change yum repo.
+Fix perl error export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable RHEL subsription subscription-manager config --rhsm.manage_repos=0 Chang yum repo to Centos 6  delete rhel yum software  rpm -qa | grep yum rpm -qa | grep yum | xargs rpm -e --nodeps  Download centos yum software  mkdir -p /tmp/yum cd /tmp/yum wget http://mirrors.</description>
     </item>
     
   </channel>

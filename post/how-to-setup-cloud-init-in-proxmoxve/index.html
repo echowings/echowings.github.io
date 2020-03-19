@@ -35,7 +35,7 @@ Option 2: Manually Setup cloud-init We can do this with 2 steps." />
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/how-to-setup-cloud-init-in-proxmoxve/" />
@@ -56,7 +56,7 @@ Option 2: Manually Setup cloud-init We can do this with 2 steps." />
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.0995afa14b62cd93e93cfc066b646c4c17a3eddca0e9d52a1d9dcf5d90aaacd3.css" integrity="sha256-CZWvoUtizZPpPPwGa2RsTBej7dyg6dUqHZ3PXZCqrNM=" media="screen" crossorigin="anonymous">
 
 
 
@@ -76,16 +76,13 @@ Option 2: Manually Setup cloud-init We can do this with 2 steps." />
 There are two ways to setup cloud-init: command line or change settings in GUI.
 Option 1: Download cloud-init image and setup with shell Please reference my blog Build Ubuntu 18.04 server with cloudinit support
 Option 2: Manually Setup cloud-init We can do this with 2 steps.">
-
-
 <meta itemprop="datePublished" content="2019-07-12T14:04:03&#43;08:00" />
 <meta itemprop="dateModified" content="2019-07-12T14:04:03&#43;08:00" />
-<meta itemprop="wordCount" content="314">
+<meta itemprop="wordCount" content="312">
 
 
 
-<meta itemprop="keywords" content="pve,cloud-init,linux," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="pve,cloud-init,linux," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Setup Cloud Init in Proxmoxve"/>
 <meta name="twitter:description" content="How to setup cloud-init in prxmox ve Cloud-init can help us to deploy or change settings of linux virutal machine via api or manually by ourself.
 There are two ways to setup cloud-init: command line or change settings in GUI.
@@ -389,68 +386,50 @@ if (!doNotTrack) {
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#how-to-setup-cloud-init-in-prxmox-ve">How to setup cloud-init in prxmox ve</a>
-<ul>
-<li><a href="#option-1-download-cloud-init-image-and-setup-with-shell">Option 1: Download cloud-init image and setup with shell</a></li>
-<li><a href="#option-2-manually-setup-cloud-init">Option 2: Manually Setup cloud-init</a>
-<ul>
-<li><a href="#install-a-linux">Install a linux</a></li>
-<li><a href="#install-and-setup-cloud-init">Install and setup cloud-init</a>
-<ul>
-<li><a href="#debian-ubuntu">debian/ubuntu</a></li>
-<li><a href="#rhel-centos">RHEL/Centos</a></li>
-</ul></li>
-<li><a href="#create-a-cloud-init-boot-disk">Create a cloud-init boot disk</a></li>
-</ul></li>
-<li><a href="#change-some-settings">Change some settings</a>
-<ul>
-<li><a href="#enable-password-authentication">Enable password authentication</a></li>
-<li><a href="#permit-root-can-loing-with-password">Permit root can loing with password</a></li>
-<li><a href="#change-machine-id">Change machine-id</a></li>
-<li><a href="#change-hostname-with-ubuntu-18-04">change hostname with ubuntu 18.04</a></li>
-<li><a href="#permit-modified-sourelist">Permit modified sourelist</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#option-1-download-cloud-init-image-and-setup-with-shell">Option 1: Download cloud-init image and setup with shell</a></li>
+    <li><a href="#option-2-manually-setup-cloud-init">Option 2: Manually Setup cloud-init</a>
+      <ul>
+        <li><a href="#install-a-linux">Install a linux</a></li>
+        <li><a href="#install-and-setup-cloud-init">Install and setup cloud-init</a></li>
+        <li><a href="#create-a-cloud-init-boot-disk">Create a cloud-init boot disk</a></li>
+      </ul>
+    </li>
+    <li><a href="#change-some-settings">Change some settings</a>
+      <ul>
+        <li><a href="#enable-password-authentication">Enable password authentication</a></li>
+        <li><a href="#permit-root-can-loing-with-password">Permit root can loing with password</a></li>
+        <li><a href="#change-machine-id">Change machine-id</a></li>
+        <li><a href="#change-hostname-with-ubuntu-1804">change hostname with ubuntu 18.04</a></li>
+        <li><a href="#permit-modified-sourelist">Permit modified sourelist</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading"></a></li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<h1 id="how-to-setup-cloud-init-in-prxmox-ve">How to setup cloud-init in prxmox ve</h1>
-
+      <h1 id="how-to-setup-cloud-init-in-prxmox-ve">How to setup cloud-init in prxmox ve</h1>
 <p>Cloud-init can help us to deploy or change settings of linux virutal machine via  api or manually by ourself.</p>
-
 <p>There are two ways to setup cloud-init: command line or change settings in GUI.</p>
-
 <h2 id="option-1-download-cloud-init-image-and-setup-with-shell">Option 1: Download cloud-init image and setup with shell</h2>
-
 <p>Please reference my blog <a href="/post/build-ubuntu18.04-with-cloudinit-support">Build Ubuntu 18.04 server with cloudinit support</a></p>
-
 <h2 id="option-2-manually-setup-cloud-init">Option 2: Manually Setup cloud-init</h2>
-
 <p>We can do this with 2 steps. 1st step is to install linux(centos,debian,ubunt etc).</p>
-
 <h3 id="install-a-linux">Install a linux</h3>
-
 <p>I think this step is easy.</p>
-
 <h3 id="install-and-setup-cloud-init">Install and setup cloud-init</h3>
-
 <p>After installed an linux.</p>
-
-<h4 id="debian-ubuntu">debian/ubuntu</h4>
+<h4 id="debianubuntu">debian/ubuntu</h4>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">apt update <span style="color:#555">&amp;&amp;</span> apt -y dist-upgrade
-apt install -y cloud-init</code></pre></div>
-<h4 id="rhel-centos">RHEL/Centos</h4>
+apt install -y cloud-init
+</code></pre></div><h4 id="rhelcentos">RHEL/Centos</h4>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">yum upate 
-yum install -y cloud-init</code></pre></div>
-<h3 id="create-a-cloud-init-boot-disk">Create a cloud-init boot disk</h3>
-
+yum install -y cloud-init
+</code></pre></div><h3 id="create-a-cloud-init-boot-disk">Create a cloud-init boot disk</h3>
 <ol>
 <li>shutdown the vm <code>shutdown -h now</code></li>
 <li>select the vm in PVE web GUI.</li>
@@ -458,28 +437,26 @@ yum install -y cloud-init</code></pre></div>
 <li>click <code>Add</code> button and select <code>Cloudinit drive</code>.</li>
 <li>Select Storage on the storage.</li>
 <li>Then Click <code>Create</code> to create cloudinit drive.</li>
-<li>Right click the VM and click <code>start</code> to boot the VM.
-
-<br /></li>
+<li>Right click the VM and click <code>start</code> to boot the VM.</li>
 </ol>
-
 <h2 id="change-some-settings">Change some settings</h2>
-
-<p>After setup cloud-init, Seem like it automatically reset your sourelist to default settings and we couldn&rsquo;t login via ssh with password.</p>
-
+<p>After setup cloud-init, Seem like it automatically reset your sourelist to default settings and we couldn't login via ssh with password.</p>
 <h3 id="enable-password-authentication">Enable password authentication</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo sed -i <span style="color:#c30">&#39;s/PasswordAuthentication\ no/PasswordAuthentication\ yes/g&#39;</span> /etc/ssh/sshd_config
 sudo systemctl daemon-reload
-sudo systemctl restart sshd</code></pre></div>
-<h3 id="permit-root-can-loing-with-password">Permit root can loing with password</h3>
+sudo systemctl restart sshd
+
+</code></pre></div><h3 id="permit-root-can-loing-with-password">Permit root can loing with password</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo sed -i <span style="color:#c30">&#39;s/#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/g&#39;</span> /etc/ssh/sshd_config
 sudo systemctl daemon-reload
-sudo systemctl restart sshd</code></pre></div>
-<h3 id="change-machine-id">Change machine-id</h3>
+sudo systemctl restart sshd
+
+
+</code></pre></div><h3 id="change-machine-id">Change machine-id</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm /var/lib/dbus/machine-id
 truncate -s <span style="color:#f60">0</span>  /etc/machine-id
-ln -s /etc/machine-id /var/lib/dbus/machine-id</code></pre></div>
-<h3 id="change-hostname-with-ubuntu-18-04">change hostname with ubuntu 18.04</h3>
+ln -s /etc/machine-id /var/lib/dbus/machine-id
+</code></pre></div><h3 id="change-hostname-with-ubuntu-1804">change hostname with ubuntu 18.04</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i <span style="color:#c30">&#39;s/preserve_hostname:\ false/preserve_hostname:\ true/g&#39;</span> /etc/cloud/cloud.cfg
 
 <span style="color:#09f;font-style:italic">#check settings</span>
@@ -491,15 +468,19 @@ cat /etc/cloud/cloud.cfg |grep preserve_hostname
 hostnamectl set-hostname myserver-forloadbalance2-node-175
 
 <span style="color:#09f;font-style:italic"># reboot host</span>
-reboot now</code></pre></div>
-<h3 id="permit-modified-sourelist">Permit modified sourelist</h3>
+reboot now
+
+
+</code></pre></div><h3 id="permit-modified-sourelist">Permit modified sourelist</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo cat <span style="color:#c30">&lt;&lt; EOF &gt;&gt; /etc/cloud/cloud.cfg
 </span><span style="color:#c30">apt_preserve_sources_list: true
-</span><span style="color:#c30">EOF</span></code></pre></div>
-<p>Then you can change sourelist without worried about the sourcelist will be overwriten by cloud-init</p>
+</span><span style="color:#c30">EOF</span>
 
-<p>##
-  - <a href="https://jaylacroix.com/fixing-ubuntu-18-04-virtual-machines-that-fight-over-the-same-ip-address/">Machines that fight over the same IP address</a></p>
+</code></pre></div><p>Then you can change sourelist without worried about the sourcelist will be overwriten by cloud-init</p>
+<h2 id="heading"></h2>
+<ul>
+<li><a href="https://jaylacroix.com/fixing-ubuntu-18-04-virtual-machines-that-fight-over-the-same-ip-address/">Machines that fight over the same IP address</a></li>
+</ul>
 
     </div>
 

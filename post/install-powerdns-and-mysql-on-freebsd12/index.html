@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/" />
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.0995afa14b62cd93e93cfc066b646c4c17a3eddca0e9d52a1d9dcf5d90aaacd3.css" integrity="sha256-CZWvoUtizZPpPPwGa2RsTBej7dyg6dUqHZ3PXZCqrNM=" media="screen" crossorigin="anonymous">
 
 
 
@@ -67,16 +67,13 @@
 <meta property="article:modified_time" content="2018-03-01T16:01:23+08:00" />
 <meta itemprop="name" content="Install PowerDNS and Mysql on Freebsd12">
 <meta itemprop="description" content="Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&#34;YES&#34; service mysql-server restart Database and User Configuration $ mysql mysql&gt; create database powerdns charset = utf8; mysql&gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&gt; FLUSH PRIVILEGES; #For security, we also give the main admin password $ mysqladmin -u root password &#34;PASSWORD_OF_ROOT&#34; Install powerdns pkg install powerdns Reference  How to manage MySQL databases and users from the command line PowerDNS, PowerAdmin with Mysql in Freebsd 10.">
-
-
 <meta itemprop="datePublished" content="2018-12-18T00:51:47&#43;08:00" />
 <meta itemprop="dateModified" content="2018-03-01T16:01:23&#43;08:00" />
 <meta itemprop="wordCount" content="101">
 
 
 
-<meta itemprop="keywords" content="powerdns,freebsd,mysql," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="powerdns,freebsd,mysql," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Install PowerDNS and Mysql on Freebsd12"/>
 <meta name="twitter:description" content="Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&#34;YES&#34; service mysql-server restart Database and User Configuration $ mysql mysql&gt; create database powerdns charset = utf8; mysql&gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&gt; FLUSH PRIVILEGES; #For security, we also give the main admin password $ mysqladmin -u root password &#34;PASSWORD_OF_ROOT&#34; Install powerdns pkg install powerdns Reference  How to manage MySQL databases and users from the command line PowerDNS, PowerAdmin with Mysql in Freebsd 10."/>
 
@@ -378,32 +375,26 @@ if (!doNotTrack) {
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#install-powerdns-and-mysql-on-freebsd-12">Install PowerDNS and Mysql on FreeBSD 12</a>
-<ul>
-<li><a href="#database-installation">Database Installation</a></li>
-<li><a href="#database-and-user-configuration">Database and User Configuration</a></li>
-<li><a href="#install-powerdns">Install powerdns</a></li>
-<li><a href="#reference">Reference</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#database-installation">Database Installation</a></li>
+    <li><a href="#database-and-user-configuration">Database and User Configuration</a></li>
+    <li><a href="#install-powerdns">Install powerdns</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<h1 id="install-powerdns-and-mysql-on-freebsd-12">Install PowerDNS and Mysql on FreeBSD 12</h1>
-
+      <h1 id="install-powerdns-and-mysql-on-freebsd-12">Install PowerDNS and Mysql on FreeBSD 12</h1>
 <h2 id="database-installation">Database Installation</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pkg install mysql56-server
 
 sysrc <span style="color:#033">mysql_server</span><span style="color:#555">=</span><span style="color:#c30">&#34;YES&#34;</span>
 
-service mysql-server restart</code></pre></div>
-<h2 id="database-and-user-configuration">Database and User Configuration</h2>
+service mysql-server restart
+</code></pre></div><h2 id="database-and-user-configuration">Database and User Configuration</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mysql
 
 mysql&gt; create database powerdns <span style="color:#033">charset</span> <span style="color:#555">=</span> utf8;
@@ -419,11 +410,10 @@ mysql&gt; FLUSH PRIVILEGES;
 
 <span style="color:#09f;font-style:italic">#For security, we also give the main admin password</span>
 
-$ mysqladmin -u root password <span style="color:#c30">&#34;PASSWORD_OF_ROOT&#34;</span></code></pre></div>
-<h2 id="install-powerdns">Install powerdns</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pkg install powerdns</code></pre></div>
-<h2 id="reference">Reference</h2>
-
+$ mysqladmin -u root password <span style="color:#c30">&#34;PASSWORD_OF_ROOT&#34;</span>
+</code></pre></div><h2 id="install-powerdns">Install powerdns</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pkg install powerdns
+</code></pre></div><h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://www.a2hosting.com/kb/developer-corner/mysql/managing-mysql-databases-and-users-from-the-command-line">How to manage MySQL databases and users from the command line</a></li>
 <li><a href="http://blog.v-live.pl/category/sieci/dns/">PowerDNS, PowerAdmin with Mysql in Freebsd 10.1</a></li>

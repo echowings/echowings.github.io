@@ -17,7 +17,7 @@
       <pubDate>Tue, 24 Dec 2019 11:27:21 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/graylog/how-to-install-graylog-with-docker-compose/</guid>
-      <description> How to Install Graylog with Docker-compose    Hostname my-graylog      Docker-compose.yaml version:&amp;#39;2&amp;#39;services:# MongoDB: https://hub.docker.com/_/mongo/mongodb:image:mongo:3volumes:-./data/mongo_data:/data/db-/etc/localtime:/etc/localtime:ro# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.htmlelasticsearch:image:docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2volumes:-./data/es_data:/usr/share/elasticsearch/data-/etc/localtime:/etc/localtime:roenvironment:-http.host=0.0.0.0-transport.host=localhost-network.host=0.0.0.0-&amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34;ulimits:memlock:soft:-1hard:-1mem_limit:1g# Graylog: https://hub.docker.com/r/graylog/graylog/graylog:image:graylog/graylog:3.1volumes:-./data/graylog_journal:/usr/share/graylog/data/journal-/etc/localtime:/etc/localtime:roenvironment:# CHANGE ME (must be at least 16 characters)!-GRAYLOG_PASSWORD_SECRET=somepasswordpepper# Password: admin-GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918-GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/links:-mongodb:mongo-elasticsearchdepends_on:-mongodb-elasticsearchports:# Graylog web interface and REST API-9000:9000# Syslog TCP-1514:1514# Syslog UDP-1514:1514/udp# GELF TCP-12201:12201# GELF UDP-12201:12201/udp# Volumes for persisting data, see https://docs.docker.com/engine/admin/volumes/volumes/ Start graylog docker-compose up -d Fixed permission of folder chown -R 1100:1100 data/graylog_journal/ chown -R 1000:1000 data/es_data/ docker-compose down docker-compose up -d</description>
+      <description>How to Install Graylog with Docker-compose    Hostname my-graylog    Docker-compose.yaml version:&amp;#39;2&amp;#39;services:# MongoDB: https://hub.docker.com/_/mongo/mongodb:image:mongo:3volumes:-./data/mongo_data:/data/db-/etc/localtime:/etc/localtime:ro# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.htmlelasticsearch:image:docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2volumes:-./data/es_data:/usr/share/elasticsearch/data-/etc/localtime:/etc/localtime:roenvironment:-http.host=0.0.0.0-transport.host=localhost-network.host=0.0.0.0-&amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34;ulimits:memlock:soft:-1hard:-1mem_limit:1g# Graylog: https://hub.docker.com/r/graylog/graylog/graylog:image:graylog/graylog:3.1volumes:-./data/graylog_journal:/usr/share/graylog/data/journal-/etc/localtime:/etc/localtime:roenvironment:# CHANGE ME (must be at least 16 characters)!-GRAYLOG_PASSWORD_SECRET=somepasswordpepper# Password: admin-GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918-GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/links:-mongodb:mongo-elasticsearchdepends_on:-mongodb-elasticsearchports:# Graylog web interface and REST API-9000:9000# Syslog TCP-1514:1514# Syslog UDP-1514:1514/udp# GELF TCP-12201:12201# GELF UDP-12201:12201/udp# Volumes for persisting data, see https://docs.docker.com/engine/admin/volumes/volumes/Start graylog docker-compose up -d Fixed permission of folder chown -R 1100:1100 data/graylog_journal/ chown -R 1000:1000 data/es_data/ docker-compose down docker-compose up -d </description>
     </item>
     
     <item>
@@ -36,7 +36,7 @@ How to deploy debian 10 colud image on pve I perfer to debian as my first choice
       <pubDate>Sun, 13 Oct 2019 14:52:31 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/how-to-install-and-configure-freeradius-with-active-directory-allow-allow-specific-group-of-users-to-authenticate-in-debian-10/</guid>
-      <description>How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&amp;rsquo;m trying to build a new</description>
+      <description>How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&#39;m trying to build a new</description>
     </item>
     
     <item>
@@ -45,9 +45,7 @@ How to deploy debian 10 colud image on pve I perfer to debian as my first choice
       <pubDate>Fri, 09 Aug 2019 16:16:39 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/proxmoxve/how-to-change-default-swap-settings-for-proxmox-ve/</guid>
-      <description>How to change default swap settings for Proxmox VE  Check Default swap policy from value 60 to 0
-cat /proc/sys/vm/swappiness #default value is 60 , it means when the memory remain 60, the swap will be enable  Change swap policy
-# Temp to change default swap enable when memory remain 0. sysctl vm.swappiness=0 # Permanent to change swapp cat &amp;lt;&amp;lt; EOF &amp;gt;&amp;gt; /etc/sysctl.conf vm.swappiness=0 #apply settings sysctl -p # check cat /proc/sys/vm/swappiness Vacuum swap</description>
+      <description>How to change default swap settings for Proxmox VE  Check Default swap policy from value 60 to 0  cat /proc/sys/vm/swappiness #default value is 60 , it means when the memory remain 60, the swap will be enable  Change swap policy  # Temp to change default swap enable when memory remain 0. sysctl vm.swappiness=0 # Permanent to change swapp cat &amp;lt;&amp;lt; EOF &amp;gt;&amp;gt; /etc/sysctl.conf vm.swappiness=0 #apply settings sysctl -p # check cat /proc/sys/vm/swappiness  Vacuum swap  swapoff -a swapon -a </description>
     </item>
     
     <item>
@@ -58,8 +56,7 @@ cat /proc/sys/vm/swappiness #default value is 60 , it means when the memory rema
       <guid>https://blog.stevedong.com/post/how-to-configure-debian-10-as-a-docker-server/</guid>
       <description>How to configure debian 10 as a docker server After try to install docker in LXC with proxmox ve, there will be some issues to make docker stop working. At last, I gave up and brance pure linux as docker sever.
 Install debian 10 in promxox ve Configure deiban 10 vm with &amp;lsquo;qemu-agent&amp;rsquo; checked.
-After install deiban 10  Change source list
-mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.list apt update &amp;amp;&amp;amp; apt -y dist-upgrade apt install -y openssh-server git vim cloud-init apt-transport-https sed -i &amp;#39;s/http/https/g&amp;#39; /etc/apt/sources.</description>
+After install deiban 10  Change source list  mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.list apt update &amp;amp;&amp;amp; apt -y dist-upgrade apt install -y openssh-server git vim cloud-init apt-transport-https sed -i &amp;#39;s/http/https/g&amp;#39; /etc/apt/sources.</description>
     </item>
     
     <item>
@@ -69,8 +66,8 @@ mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.
       
       <guid>https://blog.stevedong.com/post/change-rhel6.8-yum-repo-to-centos6/</guid>
       <description>How to upgrade RHEL6 with yum repo of centos Today I will show you how to setup rhel6 at proxmox VE.
-After installed REHL6.8,We didn&amp;rsquo;t have RHEL subscription,but how to get update and install software via yum ? The right answer is to change yum repo.
-Fix perl error export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable RHEL subsription subscription-manager config --rhsm.</description>
+After installed REHL6.8,We didn&#39;t have RHEL subscription,but how to get update and install software via yum ? The right answer is to change yum repo.
+Fix perl error export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable RHEL subsription subscription-manager config --rhsm.manage_repos=0 Chang yum repo to Centos 6  delete rhel yum software  rpm -qa | grep yum rpm -qa | grep yum | xargs rpm -e --nodeps  Download centos yum software  mkdir -p /tmp/yum cd /tmp/yum wget http://mirrors.</description>
     </item>
     
     <item>
@@ -120,7 +117,7 @@ With cloudinit images it is easy to do that.</description>
       <pubDate>Mon, 24 Dec 2018 00:39:51 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/debian-or-ubuntu-chinese-language-support/</guid>
-      <description>Ubuntu Chinese Language Support 编辑/etc/environment如下: vi /etc/environment 添加如下: LC_ALL=&amp;#34;en_US.UTF-8&amp;#34; LANG=&amp;#34;zh_CN.UTF-8&amp;#34; UNZIP=&amp;#39;-O CP936&amp;#34; ZIPINFO=&amp;#34;-O CP936&amp;#34; 重新生成语言设置 sudo locale-gen en_US en_US.UTF-8 zh_CN zh_CN.UTF-8 sudo dpkg-reconfigure locales 中文支持 vim中文支持 编辑~/</description>
+      <description>Ubuntu Chinese Language Support 编辑/etc/environment如下: vi /etc/environment 添加如下: LC_ALL=&amp;#34;en_US.UTF-8&amp;#34; LANG=&amp;#34;zh_CN.UTF-8&amp;#34; UNZIP=&amp;#39;-O CP936&amp;#34; ZIPINFO=&amp;#34;-O CP936&amp;#34; 重新生成语言设置 sudo locale-gen en_US en_US.UTF-8 zh_CN zh_CN.UTF-8 sudo dpkg-reconfigure locales ## 中文支持 ### vim中文支持 编辑</description>
     </item>
     
     <item>
@@ -129,12 +126,10 @@ With cloudinit images it is easy to do that.</description>
       <pubDate>Thu, 29 Nov 2018 23:52:57 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/how-to-testing-network-bandwith-with-iperf/</guid>
-      <description>How to test network speed with iperf Install iperf sudo apt-get install iperf3 Testing network speed Testing network speed with UDP  Run command on server
-iperf -s -u Run command on client
-iperf -c -u Testing network speed with TCP
- Server side.
-iperf -s Client side.
-iperf -c   Command for -s server -c client + server IP -u udp -b bandwith(the max bandwidth -t time,how long to send packet.</description>
+      <description>How to test network speed with iperf Install iperf sudo apt-get install iperf3 Testing network speed Testing network speed with UDP   Run command on server
+iperf -s -u   Run command on client
+iperf -c -u   Testing network speed with TCP
+ Server side.  iperf -s  Client side.  iperf -c   Command for -s server -c client + server IP -u udp -b bandwith(the max bandwidth -t time,how long to send packet.</description>
     </item>
     
     <item>
@@ -153,7 +148,7 @@ iperf -c   Command for -s server -c client + server IP -u udp -b bandwith(the ma
       
       <guid>https://blog.stevedong.com/post/how-to-install-dotnetcore2.1.x-and-asp.net21.x-on-rhel6.x-centos6.x/</guid>
       <description>How to install netcore/aspnetcore 2.1.4 on RHEL 6.8 Recently days, we met a scenario that is our client production environment must be RHEL 6.8. But our product is base asp.net core 2.1.x version. Rehat and Microsoft has never say the are support RHEL 6.X version.
-After a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core.</description>
+After a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core. And you know what?</description>
     </item>
     
     <item>
@@ -162,7 +157,7 @@ After a few days research, I found that .net core website is support RHEL 6.X,bu
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://blog.stevedong.com/post/how-to-deploy-docker-in-debian-10/</guid>
-      <description> How to deploy docker in debian 10 cat &amp;lt;&amp;lt; EOF &amp;gt; /etc/docker/aemon.json\n{\n &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://docker.mirrors.ustc.edu.cn/&amp;#34;]\n}\n\nEOF systemctl retart docker systemctl restart docker Install docker-compose sudo curl -L &amp;#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)&amp;#34; -o /usr/local/bin/docker-compose sudo chmod +x /usr/local/bin/docker-compose sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</description>
+      <description>How to deploy docker in debian 10 cat &amp;lt;&amp;lt; EOF &amp;gt; /etc/docker/aemon.json\n{\n &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://docker.mirrors.ustc.edu.cn/&amp;#34;]\n}\n\nEOF systemctl retart docker systemctl restart docker Install docker-compose sudo curl -L &amp;#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)&amp;#34; -o /usr/local/bin/docker-compose sudo chmod +x /usr/local/bin/docker-compose sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose </description>
     </item>
     
   </channel>

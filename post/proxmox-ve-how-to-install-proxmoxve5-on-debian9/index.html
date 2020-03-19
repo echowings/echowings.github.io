@@ -24,7 +24,7 @@
 
 <meta name="author" content="Steve Dong" />
   <meta name="description" content="How to Install Proxmox VE 5.x on Debian 9 Chang IP ADDRESS vi /etc/network/interfaces
-# This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *." />
+# This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *.*.*.* gateway *." />
 
   <meta name="keywords" content="proxmox ve, network, devops, sdn, system Administation" />
 
@@ -33,7 +33,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/proxmox-ve-how-to-install-proxmoxve5-on-debian9/" />
@@ -54,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.0995afa14b62cd93e93cfc066b646c4c17a3eddca0e9d52a1d9dcf5d90aaacd3.css" integrity="sha256-CZWvoUtizZPpPPwGa2RsTBej7dyg6dUqHZ3PXZCqrNM=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,27 +62,24 @@
 
 <meta property="og:title" content="How to install ProxmoxVE 5.x on Debian 9" />
 <meta property="og:description" content="How to Install Proxmox VE 5.x on Debian 9 Chang IP ADDRESS vi /etc/network/interfaces
-# This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *." />
+# This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *.*.*.* gateway *." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-how-to-install-proxmoxve5-on-debian9/" />
 <meta property="article:published_time" content="2018-12-01T00:02:28+08:00" />
 <meta property="article:modified_time" content="2018-12-26T01:52:23+08:00" />
 <meta itemprop="name" content="How to install ProxmoxVE 5.x on Debian 9">
 <meta itemprop="description" content="How to Install Proxmox VE 5.x on Debian 9 Chang IP ADDRESS vi /etc/network/interfaces
-# This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *.">
-
-
+# This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *.*.*.* gateway *.">
 <meta itemprop="datePublished" content="2018-12-01T00:02:28&#43;08:00" />
 <meta itemprop="dateModified" content="2018-12-26T01:52:23&#43;08:00" />
-<meta itemprop="wordCount" content="610">
+<meta itemprop="wordCount" content="611">
 
 
 
-<meta itemprop="keywords" content="PVE,debian," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="PVE,debian," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to install ProxmoxVE 5.x on Debian 9"/>
 <meta name="twitter:description" content="How to Install Proxmox VE 5.x on Debian 9 Chang IP ADDRESS vi /etc/network/interfaces
-# This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *."/>
+# This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *.*.*.* gateway *."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -381,38 +378,31 @@ if (!doNotTrack) {
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#how-to-install-proxmox-ve-5-x-on-debian-9">How to Install Proxmox VE 5.x on Debian 9</a>
-<ul>
-<li><a href="#chang-ip-address">Chang IP ADDRESS</a></li>
-<li><a href="#change-dns">Change DNS</a></li>
-<li><a href="#change-your-ip-and-hostname">Change your ip and hostname</a></li>
-<li><a href="#perl-all-lc-error">Perl ALL_LC ERROR</a></li>
-<li><a href="#add-utsc-mirrors-source">Add Utsc mirrors source</a></li>
-<li><a href="#install-proxmox-ve">Install proxmox VE</a></li>
-<li><a href="#remove-no-valid-subscription-message">Remove “No valid Subscription” Message</a></li>
-</ul></li>
-<li><a href="#remove-sourcelist-of-pve-enterprise-subscription-and-ceph">Remove sourcelist of pve enterprise subscription and ceph</a>
-<ul>
-<li><a href="#remove-no-valid-subscription-message-1">Remove “No valid Subscription” Message</a></li>
-<li><a href="#q-a">Q&amp;A</a></li>
-<li><a href="#install-openvswitch-switch">Install openvswitch-switch</a></li>
-<li><a href="#proxmox-q-a">proxmox Q&amp;A</a></li>
-<li><a href="#reference">Reference</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#chang-ip-address">Chang IP ADDRESS</a></li>
+    <li><a href="#change-dns">Change DNS</a></li>
+    <li><a href="#change-your-ip-and-hostname">Change your ip and hostname</a></li>
+    <li><a href="#perl-all-lc-error">Perl ALL_LC ERROR</a></li>
+    <li><a href="#add-utsc-mirrors-source">Add Utsc mirrors source</a></li>
+    <li><a href="#install-proxmox-ve">Install proxmox VE</a></li>
+    <li><a href="#remove-no-valid-subscription-message">Remove “No valid Subscription” Message</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#remove-no-valid-subscription-message-1">Remove “No valid Subscription” Message</a></li>
+    <li><a href="#qa">Q&A</a></li>
+    <li><a href="#install-openvswitch-switch">Install openvswitch-switch</a></li>
+    <li><a href="#proxmox-qa">proxmox Q&A</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<h1 id="how-to-install-proxmox-ve-5-x-on-debian-9">How to Install Proxmox VE 5.x on Debian 9</h1>
-
+      <h1 id="how-to-install-proxmox-ve-5x-on-debian-9">How to Install Proxmox VE 5.x on Debian 9</h1>
 <h2 id="chang-ip-address">Chang IP ADDRESS</h2>
-
 <p><code>vi /etc/network/interfaces</code></p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># This file describes the network interfaces available on your system</span>
 <span style="color:#09f;font-style:italic"># and how to activate them. For more information, see interfaces(5).</span>
@@ -427,22 +417,23 @@ auto eno1
 iface eno1 inet static
 address *.*.*.*
 netmask *.*.*.*
-gateway *.*.*.* </code></pre></div>
-<h2 id="change-dns">Change DNS</h2>
+gateway *.*.*.* 
 
+</code></pre></div><h2 id="change-dns">Change DNS</h2>
 <p><code>vi /etc/resolv.conf</code></p>
-
 <h2 id="change-your-ip-and-hostname">Change your ip and hostname</h2>
-
 <p><code>vi /etc/hosts</code></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f60">127</span>.0.0.1       localhost.localdomain localhost
-<span style="color:#f60">10</span>.32.0.60   xa-sys-pve02 pvelocalhost
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">127.0.0.1       localhost.localdomain localhost
+10.32.0.60   xa-sys-pve02 pvelocalhost
 
 <span style="color:#09f;font-style:italic"># The following lines are desirable for IPv6 capable hosts</span>
 ::1     localhost ip6-localhost ip6-loopback
 ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters</code></pre></div>
-<h2 id="perl-all-lc-error">Perl ALL_LC ERROR</h2>
+ff02::2 ip6-allrouters
+
+
+
+</code></pre></div><h2 id="perl-all-lc-error">Perl ALL_LC ERROR</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">export</span> <span style="color:#033">LANGUAGE</span><span style="color:#555">=</span>en_US.UTF-8
 <span style="color:#366">export</span> <span style="color:#033">LANG</span><span style="color:#555">=</span>en_US.UTF-8
 <span style="color:#366">export</span> <span style="color:#033">LC_ALL</span><span style="color:#555">=</span>en_US.UTF-8
@@ -450,11 +441,13 @@ ff02::2 ip6-allrouters</code></pre></div>
 cat &gt;&gt; /etc/environment <span style="color:#c30">&lt;&lt;EOF
 </span><span style="color:#c30">LC_ALL=en_US.UTF-8
 </span><span style="color:#c30">LANG=en_US.UTF-8
-</span><span style="color:#c30">EOF</span></code></pre></div>
-<h2 id="add-utsc-mirrors-source">Add Utsc mirrors source</h2>
+</span><span style="color:#c30">EOF</span>
 
+
+</code></pre></div><h2 id="add-utsc-mirrors-source">Add Utsc mirrors source</h2>
 <p>before to chang source need to install</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt install apt-transport-https</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#chang debian source list</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt install apt-transport-https
+</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#chang debian source list</span>
 <span style="color:#366">echo</span> <span style="color:#c30">&#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
 </span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
 </span><span style="color:#c30">
@@ -474,115 +467,115 @@ cat &gt;&gt; /etc/environment <span style="color:#c30">&lt;&lt;EOF
 <span style="color:#366">echo</span> <span style="color:#c30">&#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&#34;</span> &gt;&gt; /etc/apt/sources.list
 
 <span style="color:#09f;font-style:italic"># add key</span>
-wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg</code></pre></div>
-<h2 id="install-proxmox-ve">Install proxmox VE</h2>
+wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
+
+</code></pre></div><h2 id="install-proxmox-ve">Install proxmox VE</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt update <span style="color:#555">&amp;&amp;</span> apt -y dist-ugprade
 apt install proxmox-ve postfix open-iscsi
-update-grub</code></pre></div>
-<h2 id="remove-no-valid-subscription-message">Remove “No valid Subscription” Message</h2>
+update-grub
 
+</code></pre></div><h2 id="remove-no-valid-subscription-message">Remove “No valid Subscription” Message</h2>
 <ul>
-<li><p>shell solution.</p>
+<li>shell solution.</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i.bak <span style="color:#c30">&#34;s/data.status !== &#39;Active&#39;/false/g&#34;</span> /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js <span style="color:#555">&amp;&amp;</span> systemctl restart pveproxy.service
-	</code></pre></div></li>
-
-<li><p>manual solution:</p>
+	
+</code></pre></div><ul>
+<li>manual solution:</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> /usr/share/javascript/proxmox-widget-toolkit
 cp proxmoxlib.js proxmoxlib.js.bak
 nano proxmoxlib.js
 
 <span style="color:#09f;font-style:italic"># change</span> 
-<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span>data.status !<span style="color:#555">==</span> <span style="color:#c30">&#39;Active&#39;</span><span style="color:#555">)</span> <span style="color:#555">{</span>
+<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span>data.status !<span style="color:#555">=</span><span style="color:#555">=</span> <span style="color:#c30">&#39;Active&#39;</span><span style="color:#555">)</span> <span style="color:#555">{</span>
 
 <span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span><span style="color:#366">false</span><span style="color:#555">)</span> <span style="color:#555">{</span>
 
 <span style="color:#09f;font-style:italic">#restart pveproxy.service</span>
-systemctl restart pveproxy.service</code></pre></div></li>
-</ul>
-
-<h1 id="remove-sourcelist-of-pve-enterprise-subscription-and-ceph">Remove sourcelist of pve enterprise subscription and ceph</h1>
+systemctl restart pveproxy.service
+</code></pre></div><h1 id="remove-sourcelist-of-pve-enterprise-subscription-and-ceph">Remove sourcelist of pve enterprise subscription and ceph</h1>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># Delete Enterprise subscription.</span>
 rm -rf /etc/apt/sources.list.d/pve-enterprise.list
 
 <span style="color:#09f;font-style:italic"># Delete proxmox ve offical ceph source.</span> 
-rm -rf /etc/apt/sources.list.d/ceph.list</code></pre></div>
-<h2 id="remove-no-valid-subscription-message-1">Remove “No valid Subscription” Message</h2>
+rm -rf /etc/apt/sources.list.d/ceph.list
 
+
+</code></pre></div><h2 id="remove-no-valid-subscription-message-1">Remove “No valid Subscription” Message</h2>
 <ul>
-<li><p>shell solution.</p>
+<li>shell solution.</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i.bak <span style="color:#c30">&#34;s/data.status !== &#39;Active&#39;/false/g&#34;</span> /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js <span style="color:#555">&amp;&amp;</span> systemctl restart pveproxy.service
-	</code></pre></div></li>
-
-<li><p>manual solution:</p>
+	
+</code></pre></div><ul>
+<li>manual solution:</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> /usr/share/javascript/proxmox-widget-toolkit
 cp proxmoxlib.js proxmoxlib.js.bak
 nano proxmoxlib.js
 
 <span style="color:#09f;font-style:italic"># change</span> 
-<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span>data.status !<span style="color:#555">==</span> <span style="color:#c30">&#39;Active&#39;</span><span style="color:#555">)</span> <span style="color:#555">{</span>
+<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span>data.status !<span style="color:#555">=</span><span style="color:#555">=</span> <span style="color:#c30">&#39;Active&#39;</span><span style="color:#555">)</span> <span style="color:#555">{</span>
 
 <span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span><span style="color:#366">false</span><span style="color:#555">)</span> <span style="color:#555">{</span>
 
 <span style="color:#09f;font-style:italic">#restart pveproxy.service</span>
-systemctl restart pveproxy.service</code></pre></div></li>
-</ul>
-
-<h2 id="q-a">Q&amp;A</h2>
-
+systemctl restart pveproxy.service
+</code></pre></div><h2 id="qa">Q&amp;A</h2>
 <ul>
-<li><p>When you got error like this, please make sure hosts file is set without wrong. like this<code>10.32.0.60   xa-sys-pve02 xa-sys-pve02 pvelocalhost</code></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Setting up pve-manager <span style="color:#555">(</span><span style="color:#f60">5</span>.2-1<span style="color:#555">)</span> ...
+<li>When you got error like this, please make sure hosts file is set without wrong. like this<code>10.32.0.60   xa-sys-pve02 xa-sys-pve02 pvelocalhost</code></li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+Setting up pve-manager <span style="color:#555">(</span>5.2-1<span style="color:#555">)</span> ...
 Job <span style="color:#069;font-weight:bold">for</span> pvestatd.service failed because the control process exited with error code.
 See <span style="color:#c30">&#34;systemctl status pvestatd.service&#34;</span> and <span style="color:#c30">&#34;journalctl -xe&#34;</span> <span style="color:#069;font-weight:bold">for</span> details.
 pvestatd.service couldn<span style="color:#c30">&#39;t start.
 </span><span style="color:#c30">dpkg: error processing package pve-manager (--configure):
-</span><span style="color:#c30">subprocess installed post-installation script returned error exit status 1
+</span><span style="color:#c30"> subprocess installed post-installation script returned error exit status 1
 </span><span style="color:#c30">Processing triggers for man-db (2.7.6.1-2) ...
 </span><span style="color:#c30">dpkg: dependency problems prevent configuration of proxmox-ve:
-</span><span style="color:#c30">proxmox-ve depends on pve-manager; however:
-</span><span style="color:#c30">Package pve-manager is not configured yet.
+</span><span style="color:#c30"> proxmox-ve depends on pve-manager; however:
+</span><span style="color:#c30">  Package pve-manager is not configured yet.
 </span><span style="color:#c30">
 </span><span style="color:#c30">dpkg: error processing package proxmox-ve (--configure):
-</span><span style="color:#c30">dependency problems - leaving unconfigured
+</span><span style="color:#c30"> dependency problems - leaving unconfigured
 </span><span style="color:#c30">Errors were encountered while processing:
-</span><span style="color:#c30">pve-manager
-</span><span style="color:#c30">proxmox-ve
+</span><span style="color:#c30"> pve-manager
+</span><span style="color:#c30"> proxmox-ve
 </span><span style="color:#c30">E: Sub-process /usr/bin/dpkg returned an error code (1)
 </span><span style="color:#c30">Setting up pve-manager (5.2-1) ...
 </span><span style="color:#c30">Job for pvestatd.service failed because the control process exited with error code.
 </span><span style="color:#c30">See &#34;systemctl status pvestatd.service&#34; and &#34;journalctl -xe&#34; for details.
 </span><span style="color:#c30">pvestatd.service couldn&#39;</span>t start.
 dpkg: error processing package pve-manager <span style="color:#555">(</span>--configure<span style="color:#555">)</span>:
-subprocess installed post-installation script returned error <span style="color:#366">exit</span> status <span style="color:#f60">1</span>
+ subprocess installed post-installation script returned error <span style="color:#366">exit</span> status <span style="color:#f60">1</span>
 dpkg: dependency problems prevent configuration of proxmox-ve:
-proxmox-ve depends on pve-manager; however:
-Package pve-manager is not configured yet.
+ proxmox-ve depends on pve-manager; however:
+  Package pve-manager is not configured yet.
 
 dpkg: error processing package proxmox-ve <span style="color:#555">(</span>--configure<span style="color:#555">)</span>:
-dependency problems - leaving unconfigured
+ dependency problems - leaving unconfigured
 Errors were encountered <span style="color:#069;font-weight:bold">while</span> processing:
-pve-manager
-proxmox-ve</code></pre></div></li>
-</ul>
-
-<h2 id="install-openvswitch-switch">Install openvswitch-switch</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt-get install openvsiwtch-switch</code></pre></div>
-<h2 id="proxmox-q-a">proxmox Q&amp;A</h2>
-
+ pve-manager
+ proxmox-ve
+</code></pre></div><h2 id="install-openvswitch-switch">Install openvswitch-switch</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt-get install openvsiwtch-switch
+</code></pre></div><h2 id="proxmox-qa">proxmox Q&amp;A</h2>
 <ul>
-<li><p>Error 1: <code>command '/sbin/sgdisk /dev/sde -U R' failed: exit code 3</code></p>
+<li>Error 1: <code>command '/sbin/sgdisk /dev/sde -U R' failed: exit code 3</code></li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/sbin/sgdisk /dev/sdf -U R -g
 ***************************************************************
 Found invalid GPT and valid MBR; converting MBR to GPT format
 in memory.
-***************************************************************</code></pre></div></li>
+***************************************************************
 
-<li><p>Error 2: `Driver &lsquo;pcspkr&rsquo; is already registered, aborting&hellip;</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># echo &#34;blacklist pcspkr&#34; &gt; /etc/modprobe.d/blacklist-pcspkr.conf</span></code></pre></div></li>
+</code></pre></div><ul>
+<li>Error 2: `Driver &lsquo;pcspkr&rsquo; is already registered, aborting&hellip;</li>
 </ul>
-
-<h2 id="reference">Reference</h2>
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> <span style="color:#09f;font-style:italic"># echo &#34;blacklist pcspkr&#34; &gt; /etc/modprobe.d/blacklist-pcspkr.conf</span>
+</code></pre></div><h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://forum.proxmox.com/threads/problem-with-installing-proxmox-ve-on-debian.44316/">Problem with installing Proxmox-VE on Debian</a></li>
 <li><a href="https://forum.proxmox.com/threads/error-driver-pcspkr-is-already-registered-aborting.37967/">Error: Driver &lsquo;pcspkr&rsquo; is already registered, aborting&hellip;</a></li>
