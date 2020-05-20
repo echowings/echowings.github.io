@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.69.2" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/deploy-overture-with-docker-and-freebsd/" />
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.0995afa14b62cd93e93cfc066b646c4c17a3eddca0e9d52a1d9dcf5d90aaacd3.css" integrity="sha256-CZWvoUtizZPpPPwGa2RsTBej7dyg6dUqHZ3PXZCqrNM=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css" integrity="sha256-&#43;j2UHR0ODdyYWAQif&#43;q//qVciYg&#43;sK804FMqeukTUVE=" media="screen" crossorigin="anonymous">
 
 
 
@@ -388,7 +388,7 @@ if (!doNotTrack) {
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#069;font-weight:bold">ENV</span> foo /overture<span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span><span style="color:#069;font-weight:bold">WORKDIR</span><span style="color:#c30"> ${foo}</span><span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span><span style="color:#069;font-weight:bold">RUN</span> apt-get update <span style="color:#555">&amp;&amp;</span> apt-get install -y ca-certificates<span style="color:#a00;background-color:#faa">
-</span><span style="color:#a00;background-color:#faa"></span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span><span style="color:#069;font-weight:bold">RUN</span>  <span style="color:#366">printf</span>  <span style="color:#c30">&#34;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse&#34;</span>  &gt; /etc/apt/sources.list<span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span><span style="color:#069;font-weight:bold">RUN</span> apt-get update<span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span><span style="color:#069;font-weight:bold">RUN</span> apt-get upgrade -y<span style="color:#a00;background-color:#faa">
@@ -401,12 +401,12 @@ if (!doNotTrack) {
 </span><span style="color:#a00;background-color:#faa"></span><span style="color:#069;font-weight:bold">RUN</span> cat /tmp/temp_gfwlist.txt /tmp/temp_koolshare.txt | sort -u &gt; gfw_all_domain.txt<span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span><span style="color:#069;font-weight:bold">RUN</span> wget https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt<span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span><span style="color:#069;font-weight:bold">RUN</span> <span style="color:#366">printf</span> <span style="color:#c30">&#39;{ \n   &#34;BindAddress&#34;: &#34;:53&#34;,\n   &#34;PrimaryDNS&#34;: [\n    {\n      &#34;Name&#34;: &#34;DNSPod&#34;,\n      &#34;Address&#34;: &#34;114.114.114.114:53&#34;,\n      &#34;Protocol&#34;: &#34;udp&#34;,\n      &#34;SOCKS5Address&#34;: &#34;&#34;,\n       &#34;Timeout&#34;: 6,\n       &#34;EDNSClientSubnet&#34;: {\n         &#34;Policy&#34;: &#34;auto&#34;,\n         &#34;ExternalIP&#34;: &#34;222.90.74.60&#34;,\n         &#34;NoCookie&#34;: true\n       }\n     }\n   ],\n   &#34;AlternativeDNS&#34;: [\n     {\n       &#34;Name&#34;: &#34;OpenDNS&#34;,\n       &#34;Address&#34;: &#34;208.67.222.222:443&#34;,\n       &#34;Protocol&#34;: &#34;tcp&#34;,\n       &#34;SOCKS5Address&#34;: &#34;&#34;,\n       &#34;Timeout&#34;: 6,\n       &#34;EDNSClientSubnet&#34;: {\n         &#34;Policy&#34;: &#34;manual&#34;,\n         &#34;ExternalIP&#34;: &#34;202.60.225.114&#34;,\n         &#34;NoCookie&#34;: true\n       }\n     }\n   ],\n   &#34;OnlyPrimaryDNS&#34;: false,\n   &#34;IPv6UseAlternativeDNS&#34;: false,\n   &#34;IPNetworkFile&#34;: {\n     &#34;Primary&#34;: &#34;./china_ip_list.txt&#34;,\n     &#34;Alternative&#34;: &#34;./ip_network_alternative_sample&#34;\n   },\n   &#34;DomainFile&#34;: {\n     &#34;Primary&#34;: &#34;./domain_primary_sample&#34;,\n     &#34;Alternative&#34;: &#34;./gfw_all_domain.txt&#34;\n   },\n   &#34;HostsFile&#34;: &#34;./hosts_sample&#34;,\n   &#34;MinimumTTL&#34;: 0,\n   &#34;CacheSize&#34; : 0,\n  &#34;RejectQtype&#34;: [255]\n }&#39;</span> &gt; config.json<span style="color:#a00;background-color:#faa">
-</span><span style="color:#a00;background-color:#faa"></span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span><span style="color:#069;font-weight:bold">CMD</span> [<span style="color:#c30">&#34;./overture-linux-amd64&#34;</span>]<span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span><span style="color:#09f;font-style:italic">#ENTRYPOINT [&#34;./overture-linux-amd64&#34;]</span><span style="color:#a00;background-color:#faa">
 </span></code></pre></div><h2 id="freebsd-rcd-file">FreeBSD rc.d file</h2>
 <p><code>cat /usr/local/etc/rc.d/overture</code></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rc.d" data-lang="rc.d"><span style="color:#a00;background-color:#faa">#</span><span style="color:#555">!</span><span style="color:#555">/</span>bin<span style="color:#555">/</span>sh
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rc.d" data-lang="rc.d"><span style="color:#a00;background-color:#faa">#</span><span style="color:#555">!/</span>bin<span style="color:#555">/</span>sh
 <span style="color:#a00;background-color:#faa">#</span> $FreeBSD<span style="color:#555">:</span> head<span style="color:#555">/</span>net<span style="color:#555">/</span>overture<span style="color:#555">/</span>files<span style="color:#555">/</span>overture<span style="color:#555">.</span><span style="color:#309">in</span> <span style="color:#f60">335066</span> <span style="color:#f60">2018</span><span style="color:#555">-</span><span style="color:#f60">12</span><span style="color:#555">-</span><span style="color:#f60">18</span> <span style="color:#f60">11</span><span style="color:#555">:</span><span style="color:#f60">33</span><span style="color:#555">:</span><span style="color:#f60">26</span>z SteveDong $
 
 <span style="color:#a00;background-color:#faa">#</span> PROVIDE<span style="color:#555">:</span> overture
@@ -414,9 +414,9 @@ if (!doNotTrack) {
 <span style="color:#a00;background-color:#faa">#</span> KEYWORD<span style="color:#555">:</span> shutdown
 
 <span style="color:#a00;background-color:#faa">#</span> Add the following lines to <span style="color:#555">/</span>etc<span style="color:#555">/</span>rc<span style="color:#555">.</span><span style="color:#309">conf</span> to enable overture
-<span style="color:#a00;background-color:#faa">#</span> overture_enable <span style="color:#555">(</span><span style="color:#078;font-weight:bold">bool</span><span style="color:#555">)</span><span style="color:#555">:</span> set to <span style="color:#c30">&#34;NO&#34;</span> by <span style="color:#069;font-weight:bold">default</span>
+<span style="color:#a00;background-color:#faa">#</span> overture_enable <span style="color:#555">(</span><span style="color:#078;font-weight:bold">bool</span><span style="color:#555">):</span> set to <span style="color:#c30">&#34;NO&#34;</span> by <span style="color:#069;font-weight:bold">default</span>
 <span style="color:#a00;background-color:#faa">#</span> Set to <span style="color:#c30">&#34;YES&#34;</span> to enable overture<span style="color:#555">.</span>
-<span style="color:#a00;background-color:#faa">#</span> overture_config<span style="color:#555">(</span>path<span style="color:#555">)</span><span style="color:#555">:</span> overture config file<span style="color:#555">.</span>
+<span style="color:#a00;background-color:#faa">#</span> overture_config<span style="color:#555">(</span>path<span style="color:#555">):</span> overture config file<span style="color:#555">.</span>
 <span style="color:#a00;background-color:#faa">#</span> Default to <span style="color:#c30">&#34;/usr/local/etc/overture/config.json&#34;</span>
 
 <span style="color:#555">.</span> <span style="color:#555">/</span>etc<span style="color:#555">/</span>rc<span style="color:#555">.</span><span style="color:#309">subr</span>
@@ -427,12 +427,12 @@ rcvar<span style="color:#555">=</span>overture_enable
 
 load_rc_config $name
 
-<span style="color:#555">:</span> $<span style="color:#555">{</span>overture_enable<span style="color:#555">:</span><span style="color:#555">=</span><span style="color:#c30">&#34;NO&#34;</span><span style="color:#555">}</span>
-<span style="color:#555">:</span> $<span style="color:#555">{</span>overture_user<span style="color:#555">:</span><span style="color:#555">=</span><span style="color:#c30">&#34;root&#34;</span><span style="color:#555">}</span>
-<span style="color:#555">:</span> $<span style="color:#555">{</span>overture_group<span style="color:#555">:</span><span style="color:#555">=</span><span style="color:#c30">&#34;nobody&#34;</span><span style="color:#555">}</span>
+<span style="color:#555">:</span> $<span style="color:#555">{</span>overture_enable<span style="color:#555">:=</span><span style="color:#c30">&#34;NO&#34;</span><span style="color:#555">}</span>
+<span style="color:#555">:</span> $<span style="color:#555">{</span>overture_user<span style="color:#555">:=</span><span style="color:#c30">&#34;root&#34;</span><span style="color:#555">}</span>
+<span style="color:#555">:</span> $<span style="color:#555">{</span>overture_group<span style="color:#555">:=</span><span style="color:#c30">&#34;nobody&#34;</span><span style="color:#555">}</span>
 
 <span style="color:#a00;background-color:#faa">#</span><span style="color:#555">:</span> $<span style="color:#555">{</span>error_log_file<span style="color:#555">=</span><span style="color:#c30">&#34;/var/log/overture_error&#34;</span><span style="color:#555">}</span>
-<span style="color:#a00;background-color:#faa">#</span><span style="color:#555">:</span> $<span style="color:#555">{</span>overture_args<span style="color:#555">:</span><span style="color:#555">=</span><span style="color:#c30">&#34;-p ${cpu_core} -c ${overture_config} -l ${logfile}&#34;</span><span style="color:#555">}</span>
+<span style="color:#a00;background-color:#faa">#</span><span style="color:#555">:</span> $<span style="color:#555">{</span>overture_args<span style="color:#555">:=</span><span style="color:#c30">&#34;-p ${cpu_core} -c ${overture_config} -l ${logfile}&#34;</span><span style="color:#555">}</span>
 <span style="color:#555">:</span> $<span style="color:#555">{</span>overture_config<span style="color:#555">=</span><span style="color:#c30">&#34;/usr/local/etc/overture/config.json&#34;</span><span style="color:#555">}</span>
 
 
@@ -446,7 +446,7 @@ requried_files<span style="color:#555">=</span><span style="color:#c30">&#34;${o
 
 <span style="color:#a00;background-color:#faa">#</span> find how many cores on your computer
 
-cpu_core<span style="color:#555">=</span>$<span style="color:#555">(</span>cat <span style="color:#555">/</span>var<span style="color:#555">/</span>run<span style="color:#555">/</span>dmesg<span style="color:#555">.</span><span style="color:#309">boot</span> <span style="color:#555">|</span> grep CPU <span style="color:#555">|</span> grep FreeBSD <span style="color:#555">|</span> awk <span style="color:#555">{</span><span style="color:#a00;background-color:#faa">&#39;</span>print $5<span style="color:#a00;background-color:#faa">&#39;</span><span style="color:#555">}</span><span style="color:#555">)</span>
+cpu_core<span style="color:#555">=</span>$<span style="color:#555">(</span>cat <span style="color:#555">/</span>var<span style="color:#555">/</span>run<span style="color:#555">/</span>dmesg<span style="color:#555">.</span><span style="color:#309">boot</span> <span style="color:#555">|</span> grep CPU <span style="color:#555">|</span> grep FreeBSD <span style="color:#555">|</span> awk <span style="color:#555">{</span><span style="color:#a00;background-color:#faa">&#39;</span>print $5<span style="color:#a00;background-color:#faa">&#39;</span><span style="color:#555">})</span>
 
 overture_args<span style="color:#555">=</span><span style="color:#c30">&#34;-p ${cpu_core} -c ${overture_config} -l ${logfile} 2&gt;&amp;1 &gt; $error_log_file&#34;</span>
 
@@ -454,16 +454,16 @@ command_args<span style="color:#555">=</span><span style="color:#c30">&#34;-p ${
 
 start_precmd<span style="color:#555">=</span>overture_startprecmd
 
-<span style="color:#c0f">overture_startprecmd</span><span style="color:#555">(</span><span style="color:#555">)</span>
+<span style="color:#c0f">overture_startprecmd</span><span style="color:#555">()</span>
 <span style="color:#555">{</span>
-	<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">[</span> <span style="color:#555">!</span> <span style="color:#555">-</span>e $<span style="color:#555">{</span>pidfile<span style="color:#555">}</span> <span style="color:#555">]</span><span style="color:#555">;</span> then
-		install <span style="color:#555">-</span>o $<span style="color:#555">{</span>overture_user<span style="color:#555">}</span> <span style="color:#555">-</span>g $<span style="color:#555">{</span>overture_group<span style="color:#555">}</span> <span style="color:#555">/</span>dev<span style="color:#555">/</span><span style="color:#069;font-weight:bold">null</span> $<span style="color:#555">{</span>pidfile<span style="color:#555">}</span><span style="color:#555">;</span>
+	<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">[</span> <span style="color:#555">!</span> <span style="color:#555">-</span>e $<span style="color:#555">{</span>pidfile<span style="color:#555">}</span> <span style="color:#555">];</span> then
+		install <span style="color:#555">-</span>o $<span style="color:#555">{</span>overture_user<span style="color:#555">}</span> <span style="color:#555">-</span>g $<span style="color:#555">{</span>overture_group<span style="color:#555">}</span> <span style="color:#555">/</span>dev<span style="color:#555">/</span><span style="color:#069;font-weight:bold">null</span> $<span style="color:#555">{</span>pidfile<span style="color:#555">};</span>
 	fi
-	<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">[</span> <span style="color:#555">!</span> <span style="color:#555">-</span>e $<span style="color:#555">{</span>logfile<span style="color:#555">}</span> <span style="color:#555">]</span><span style="color:#555">;</span> then
-		install <span style="color:#555">-</span>o $<span style="color:#555">{</span>overture_user<span style="color:#555">}</span> <span style="color:#555">-</span>g $<span style="color:#555">{</span>overture_group<span style="color:#555">}</span> <span style="color:#555">/</span>dev<span style="color:#555">/</span><span style="color:#069;font-weight:bold">null</span> $<span style="color:#555">{</span>logfile<span style="color:#555">}</span><span style="color:#555">;</span>
+	<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">[</span> <span style="color:#555">!</span> <span style="color:#555">-</span>e $<span style="color:#555">{</span>logfile<span style="color:#555">}</span> <span style="color:#555">];</span> then
+		install <span style="color:#555">-</span>o $<span style="color:#555">{</span>overture_user<span style="color:#555">}</span> <span style="color:#555">-</span>g $<span style="color:#555">{</span>overture_group<span style="color:#555">}</span> <span style="color:#555">/</span>dev<span style="color:#555">/</span><span style="color:#069;font-weight:bold">null</span> $<span style="color:#555">{</span>logfile<span style="color:#555">};</span>
 	fi
-	<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">[</span> <span style="color:#555">!</span> <span style="color:#555">-</span>e $<span style="color:#555">{</span>error_log_file<span style="color:#555">}</span> <span style="color:#555">]</span><span style="color:#555">;</span> then
-		install <span style="color:#555">-</span>o $<span style="color:#555">{</span>overture_user<span style="color:#555">}</span> <span style="color:#555">-</span>g $<span style="color:#555">{</span>overture_group<span style="color:#555">}</span> <span style="color:#555">/</span>dev<span style="color:#555">/</span><span style="color:#069;font-weight:bold">null</span> $<span style="color:#555">{</span>error_log_file<span style="color:#555">}</span><span style="color:#555">;</span>
+	<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">[</span> <span style="color:#555">!</span> <span style="color:#555">-</span>e $<span style="color:#555">{</span>error_log_file<span style="color:#555">}</span> <span style="color:#555">];</span> then
+		install <span style="color:#555">-</span>o $<span style="color:#555">{</span>overture_user<span style="color:#555">}</span> <span style="color:#555">-</span>g $<span style="color:#555">{</span>overture_group<span style="color:#555">}</span> <span style="color:#555">/</span>dev<span style="color:#555">/</span><span style="color:#069;font-weight:bold">null</span> $<span style="color:#555">{</span>error_log_file<span style="color:#555">};</span>
 	fi
 <span style="color:#555">}</span>
 

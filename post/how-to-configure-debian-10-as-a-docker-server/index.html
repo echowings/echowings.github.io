@@ -34,7 +34,7 @@ After install deiban 10  Change source list  mv /etc/apt/sources.list /etc/apt/s
 
 
 
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.69.2" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/how-to-configure-debian-10-as-a-docker-server/" />
@@ -55,7 +55,7 @@ After install deiban 10  Change source list  mv /etc/apt/sources.list /etc/apt/s
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.0995afa14b62cd93e93cfc066b646c4c17a3eddca0e9d52a1d9dcf5d90aaacd3.css" integrity="sha256-CZWvoUtizZPpPPwGa2RsTBej7dyg6dUqHZ3PXZCqrNM=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css" integrity="sha256-&#43;j2UHR0ODdyYWAQif&#43;q//qVciYg&#43;sK804FMqeukTUVE=" media="screen" crossorigin="anonymous">
 
 
 
@@ -395,11 +395,11 @@ if (!doNotTrack) {
     <li><a href="#install-docker-on-debian-10">Install docker on debian 10</a>
       <ul>
         <li><a href="#step-1-install-dependency-packages">Step 1: Install Dependency packages</a></li>
-        <li><a href="#step-2-add-dockers-offical-gpg-key">Step 2: Add docker's offical GPG key:</a></li>
+        <li><a href="#step-2-add-dockers-offical-gpg-key">Step 2: Add docker&rsquo;s offical GPG key:</a></li>
         <li><a href="#step-3-add-the-docker-repository-to-debian-10">Step 3: Add the docker repository to Debian 10</a></li>
-        <li><a href="#step-4-change-docker-repository-to-mirrorsustceducn">Step 4: Change docker repository to mirrors.ustc.edu.cn</a></li>
+        <li><a href="#step-4-change-docker-repository-to-mirrorsustceducn">Step 4: Change docker repository to <code>mirrors.ustc.edu.cn</code></a></li>
         <li><a href="#step-5-install-docker-and-docker-compose-on-debian-10">Step 5: Install docker and docker-compose on debian 10</a></li>
-        <li><a href="#step-6-chang-docker-hub-mirrors-to-mirrorsustceducn">Step 6: Chang docker hub mirrors to mirrors.ustc.edu.cn</a></li>
+        <li><a href="#step-6-chang-docker-hub-mirrors-to-mirrorsustceducn">Step 6: Chang docker hub mirrors to <code>mirrors.ustc.edu.cn</code></a></li>
       </ul>
     </li>
     <li><a href="#change-some-settings">Change Some settings</a>
@@ -468,15 +468,15 @@ sudo locale-gen en_US.UTF-8
 </span><span style="color:#c30;font-weight:bold"></span>   gnupg2 <span style="color:#c30;font-weight:bold">\
 </span><span style="color:#c30;font-weight:bold"></span>   software-properties-common
 
-</code></pre></div><h3 id="step-2-add-dockers-offical-gpg-key">Step 2: Add docker's offical GPG key:</h3>
+</code></pre></div><h3 id="step-2-add-dockers-offical-gpg-key">Step 2: Add docker&rsquo;s offical GPG key:</h3>
 <p>Import Docker GPG key used for signing Docker packages:</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 apt-key fingerprint 0EBFCD88
 </code></pre></div><h3 id="step-3-add-the-docker-repository-to-debian-10">Step 3: Add the docker repository to Debian 10</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo add-apt-repository <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>   <span style="color:#c30">&#34;</span><span style="color:#c30">deb [arch=amd64] https://download.docker.com/linux/debian \
+</span><span style="color:#c30;font-weight:bold"></span>   <span style="color:#c30">&#34;deb [arch=amd64] https://download.docker.com/linux/debian \
 </span><span style="color:#c30">   </span><span style="color:#069;font-weight:bold">$(</span>lsb_release -cs<span style="color:#069;font-weight:bold">)</span><span style="color:#c30"> \
-</span><span style="color:#c30">   stable</span><span style="color:#c30">&#34;</span>
+</span><span style="color:#c30">   stable&#34;</span>
 </code></pre></div><h3 id="step-4-change-docker-repository-to-mirrorsustceducn">Step 4: Change docker repository to <code>mirrors.ustc.edu.cn</code></h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i <span style="color:#c30">&#39;s/download.docker.com/mirrors.ustc.edu.cn\/docker-ce/g&#39;</span> /etc/apt/sources.list
 </code></pre></div><h3 id="step-5-install-docker-and-docker-compose-on-debian-10">Step 5: Install docker and docker-compose on debian 10</h3>

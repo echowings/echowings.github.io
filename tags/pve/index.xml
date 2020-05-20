@@ -17,7 +17,7 @@
       <pubDate>Wed, 27 Nov 2019 11:56:41 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/proxmoxve/how-to-change-settings-after-clone-debian-10-with-cloudinit-enable-on-proxmox-ve/</guid>
-      <description>How to Change Settings After Clone Debian 10 With Cloudinit Enable on Proxmox VE Issue I found an issue about create a linux vm as a template with cloudinit enabled. Seem like after cloned the virtual machine, the cloud-init cd rom didn&#39;t be created automatically. We need to delete it,then change setings again to apply the apt source.
+      <description>How to Change Settings After Clone Debian 10 With Cloudinit Enable on Proxmox VE Issue I found an issue about create a linux vm as a template with cloudinit enabled. Seem like after cloned the virtual machine, the cloud-init cd rom didn&amp;rsquo;t be created automatically. We need to delete it,then change setings again to apply the apt source.
 solution #!/usr/bin/env sh mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.list apt update &amp;amp;&amp;amp; apt -y dist-upgrade apt install -y openssh-server git vim cloud-init apt-transport-https sed -i &amp;#39;s/http/https/g&amp;#39; /etc/apt/sources.</description>
     </item>
     
@@ -90,7 +90,7 @@ Fixe Perl error waring export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 expor
       
       <guid>https://blog.stevedong.com/post/change-rhel6.8-yum-repo-to-centos6/</guid>
       <description>How to upgrade RHEL6 with yum repo of centos Today I will show you how to setup rhel6 at proxmox VE.
-After installed REHL6.8,We didn&#39;t have RHEL subscription,but how to get update and install software via yum ? The right answer is to change yum repo.
+After installed REHL6.8,We didn&amp;rsquo;t have RHEL subscription,but how to get update and install software via yum ? The right answer is to change yum repo.
 Fix perl error export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable RHEL subsription subscription-manager config --rhsm.manage_repos=0 Chang yum repo to Centos 6  delete rhel yum software  rpm -qa | grep yum rpm -qa | grep yum | xargs rpm -e --nodeps  Download centos yum software  mkdir -p /tmp/yum cd /tmp/yum wget http://mirrors.</description>
     </item>
     
@@ -143,7 +143,7 @@ Resizing disk images First thing first, I need resize the disk images of the vir
       <pubDate>Wed, 15 May 2019 12:11:14 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/proxmox-ve-how-to-fixed-upgrade-error/</guid>
-      <description>How solove Proxmox VE 5.4 upgrade issue Today I&#39;m trying to upgrade proxmox ve 5.3. to proxmox ve 5.4 version. But I failed. After install and uninstall proxmox-manager, Force to reboot and the node has kernel panic error. Then force reboot the node. At grub menu select second line to select an old pve kernel to boot proxmox-ve.
+      <description>How solove Proxmox VE 5.4 upgrade issue Today I&amp;rsquo;m trying to upgrade proxmox ve 5.3. to proxmox ve 5.4 version. But I failed. After install and uninstall proxmox-manager, Force to reboot and the node has kernel panic error. Then force reboot the node. At grub menu select second line to select an old pve kernel to boot proxmox-ve.
 ERROR 1:&amp;ldquo;No space left on device&amp;rdquo; error on latest upgrade If you met issue like this:</description>
     </item>
     
