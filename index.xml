@@ -38,21 +38,18 @@
         <description>&lt;h1 id=&#34;how-to-deploy-jisti-server-with-docker-compose&#34;&gt;How to deploy Jisti Server with docker-compose&lt;/h1&gt;
 &lt;h2 id=&#34;install-jisti-server&#34;&gt;Install jisti Server&lt;/h2&gt;
 &lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;git clone latest version&lt;/p&gt;
+&lt;li&gt;git clone latest version&lt;/li&gt;
+&lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git clone https://github.com/jitsi/docker-jitsi-meet &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; docker-jitsi-meet
 	
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+cp env.example .env
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Generate security password&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;cp env.example .env&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;	
- 2. Generate security password
-
-   ```bash
- ./gen-passwords.sh
- #mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody,jicofo,jvb}
- mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;modify-env&#34;&gt;Modify &lt;code&gt;.env&lt;/code&gt;&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;./gen-passwords.sh
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody,jicofo,jvb}&lt;/span&gt;
+mkdir -p ~/.jitsi-meet-cfg/&lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri&lt;span style=&#34;color:#555&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;modify-env&#34;&gt;Modify &lt;code&gt;.env&lt;/code&gt;&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;copy &lt;code&gt;env.example&lt;/code&gt; to &lt;code&gt;.env&lt;/code&gt;.&lt;/li&gt;
 &lt;/ol&gt;
