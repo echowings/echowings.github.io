@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 21 Jan 2020 16:49:32 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2020 22:49:44 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Deploy Jitsi Server With Docker Compose</title>
+      <link>https://blog.stevedong.com/post/jitsi/how-to-deploy-jitsi-server-with-docker-compose/</link>
+      <pubDate>Thu, 21 May 2020 22:49:44 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/jitsi/how-to-deploy-jitsi-server-with-docker-compose/</guid>
+      <description>How to deploy Jisti Server with docker-compose Install jisti Server git clone latest version git clone https://github.com/jitsi/docker-jitsi-meet &amp;amp;&amp;amp; cd docker-jitsi-meet cp env.example .env ``` 2. Generate security password ./gen-passwords.sh mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody,jicofo,jvb} mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri} Modify .env copy env.example to .env. cp env.example .env Modify key and value as followed. CONFIG=~/.jitsi-meet-cfg # Exposed HTTP port HTTP_PORT=80 # Exposed HTTPS port HTTPS_PORT=443 # System time zone TZ=Asia/Shanghai # Public URL for</description>
+    </item>
     
     <item>
       <title>How to Convert Cert to Ssl</title>
@@ -505,17 +514,6 @@ kod_init_kod_db(): Cannot open KoD db file /var/db/ntp-kod: No such file or dire
       <guid>https://blog.stevedong.com/post/proxmox-ve-network-adapter-pass-through/</guid>
       <description>Proxmox Network Adapter Pass Through Long time ago, I konw virtualization is go very good solution to server. But how about router build in virtualization? After tried to do it, I was failed. because virtual switch made networking very slow. So i just use dedicate server as a router.
 Recently days, I just learn proxmox and find pci-e pass through function. I think maybe it is way to make routing virtualization.</description>
-    </item>
-    
-    <item>
-      <title>Dockerfile for Overture</title>
-      <link>https://blog.stevedong.com/post/dockerfile-for-overture/</link>
-      <pubDate>Mon, 24 Dec 2018 00:55:14 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/dockerfile-for-overture/</guid>
-      <description>How to Wirte docker file for overture Hence we need to custom overture docker image as we desire, I write this dockerfile.
-How to map VOLUME and copy file from docker images to directory of docker host. When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.
-if [ &amp;ldquo;ls -A /config&amp;rdquo; = &amp;quot;&amp;rdquo; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.</description>
     </item>
     
   </channel>
