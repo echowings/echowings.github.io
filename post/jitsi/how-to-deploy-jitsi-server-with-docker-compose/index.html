@@ -69,7 +69,7 @@
 <meta itemprop="description" content="How to deploy Jisti Server with docker-compose Install jisti Server git clone latest version git clone https://github.com/jitsi/docker-jitsi-meet &amp;&amp; cd docker-jitsi-meet cp env.example .env ``` 2. Generate security password ./gen-passwords.sh mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody,jicofo,jvb} mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri} Modify .env copy env.example to .env. cp env.example .env Modify key and value as followed. CONFIG=~/.jitsi-meet-cfg # Exposed HTTP port HTTP_PORT=80 # Exposed HTTPS port HTTPS_PORT=443 # System time zone TZ=Asia/Shanghai # Public URL for">
 <meta itemprop="datePublished" content="2020-05-21T22:49:44&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-21T22:49:44&#43;08:00" />
-<meta itemprop="wordCount" content="225">
+<meta itemprop="wordCount" content="227">
 
 
 
@@ -459,14 +459,14 @@ prosodyctl --config /config/prosody.cfg.lua register user1 meet.jitsi
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-compose up -d
 
 </code></pre></div><h2 id="backup">Backup</h2>
-<pre><code>#for configure folder
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#for configure folder</span>
 ~/.jitsi-meet-cfg
-# for letencryption folder
+<span style="color:#09f;font-style:italic"># for letencryption folder</span>
 ~/.jitsi-meet-cfg/web/letsencrypt
-# for configure
+<span style="color:#09f;font-style:italic"># for configure</span>
 ./.env
 
-</code></pre><h2 id="firewall-setup">Firewall Setup</h2>
+</code></pre></div><h2 id="firewall-setup">Firewall Setup</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt install ufw
 ufw status
 ufw default deny
@@ -479,7 +479,7 @@ ufw <span style="color:#366">enable</span>
 ufw status
 </code></pre></div><h2 id="reference">Reference</h2>
 <ul>
-<li><a href="https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker"></a></li>
+<li><a href="https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker">Quick start</a></li>
 <li><a href="https://kafeiou.pw/2020/04/04/2354/">用docker安裝視訊會議 jitsi-meet</a></li>
 </ul>
 
