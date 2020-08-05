@@ -31,7 +31,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.69.2" />
+<meta name="generator" content="Hugo 0.73.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/" />
@@ -62,7 +62,7 @@
 <meta property="og:description" content="A System Administrator&#39;s Blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2018-10-20T21:38:52+08:00" />
+<meta property="og:updated_time" content="2020-08-05T10:57:22+08:00" />
 <meta itemprop="name" content="Steve Dong - A System Administrator&#39;s Blog">
 <meta itemprop="description" content="A System Administrator&#39;s Blog."><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Steve Dong - A System Administrator&#39;s Blog"/>
@@ -343,6 +343,40 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/nginx-how-to-compile-nginx-with-source-code/">How to Compile Nginx With Source Code</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-04-29" class="post-time">
+        2019-04-29
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/nginx/"> nginx </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to compile nginx with source code Download source code  Access nginx.org to download latest stable version of nginx.  wget https://nginx.org/download/nginx-1.16.0.tar.gz tar -zxvf nginx-1.16.0.tar.gz Compile source code cd nginx-1.16.0 apt update &amp;&amp; apt install -y gcc build-essential ./configure --prefix=/home/echowings/nginx make make install Trouble shooting  PCRE missing error.  ./configure: error: the HTTP rewrite module requires the PCRE library. You can either disable the module by using —without–http_rewrite_module option, or install the PCRE library into the system, or build the PCRE library statically from the source with nginx by using —with–pcre=&amp;lt;path&amp;gt; option.
+    </div>
+    <div class="read-more">
+      <a href="/post/nginx-how-to-compile-nginx-with-source-code/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -829,41 +863,6 @@ docker-compose up -d Active Script echo &#34;To active office&#34; cd &#34;%prog
     </div>
     <div class="read-more">
       <a href="/post/docker-compose-to-build-prometheus/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/how-to-enable-proxmoxve-nested-virtualization/">How to Enable Proxmoxve Nested Virtualization</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-02-14" class="post-time">
-        2019-02-14
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to enable Proxmox VE nested virtualization To enable nested virtualization on Proxmox VE, we need to stop all the vm and enable nested virtualization to linux kernel. then change vm settings
-Stop all the vm on proxmox VE  stop all virtual machines with shell command.  root@xa-sys-pve01:~# pvesh create /nodes/localhost/stopall Stopping VM 116 (timeout = 180 seconds) Stopping VM 115 (timeout = 180 seconds) Stopping CT 112 (timeout = 60 seconds) Stopping CT 111 (timeout = 60 seconds) Stopping CT 108 (timeout = 60 seconds) Stopping CT 106 (timeout = 60 seconds) Stopping VM 101 (timeout = 180 seconds) UPID:xa-sys-pve01:0036EA66:01992199:5CB98D6C:stopall::root@pam:  stop all the virtual machine with admin web.
-    </div>
-    <div class="read-more">
-      <a href="/post/how-to-enable-proxmoxve-nested-virtualization/" class="read-more-link">Read more</a>
     </div>
     
   </div>

@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 20 Oct 2018 21:38:52 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 05 Aug 2020 10:57:22 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -25,6 +25,86 @@
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
+      
+    </item>
+    
+    <item>
+      <title>How to Build L2tp Over Ipsec VPN With Vyos</title>
+      <link>https://blog.stevedong.com/post/vyos/how-to-build-l2tp-over-ipsec-vpn-with-vyos/</link>
+      <pubDate>Wed, 05 Aug 2020 10:57:22 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/vyos/how-to-build-l2tp-over-ipsec-vpn-with-vyos/</guid>
+      
+        <description>&lt;h1 id=&#34;how-to-build-l2tp-over-ipsec-vpn-with-vyos&#34;&gt;How to build L2tp over ipsec vpn with vyos&lt;/h1&gt;
+&lt;p&gt;Today, I will show you how to build a l2tp over ipsec vpn with adsl wan address.&lt;/p&gt;
+&lt;h2 id=&#34;generate-a-preshare-key&#34;&gt;Generate a preshare key&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ generate wireguard preshared-key
+uND0O6RYI1O833NL2+qwSrW4htMll1hJAUM2nPQaa8k&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;with-authentication-local&#34;&gt;With authentication local&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;configuration VPN&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;WAN interface&lt;/td&gt;
+&lt;td&gt;pppoe0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;l2tp vpn network&lt;/td&gt;
+&lt;td&gt;172.16.100.0/24&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PRESHARE KEY&lt;/td&gt;
+&lt;td&gt;uND0O6RYI1O833NL2+qwSrW4htMll1hJAUM2nPQaa8k=&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNS server 01&lt;/td&gt;
+&lt;td&gt;192.168.0.1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNS Server 02&lt;/td&gt;
+&lt;td&gt;1921.68.0.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;configure
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn ipsec auto-update &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;30&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn ipsec ipsec-interfaces interface &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;pppoe0&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn ipsec nat-networks allowed-network 0.0.0.0/0
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn ipsec nat-traversal &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;enable&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access authentication mode &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;local&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access authentication require &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;mschap-v2&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access client-ip-pool start &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.100.1&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access client-ip-pool stop &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.100.254&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access dns-servers dns-01 &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;192.168.0.1&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access dns-servers dns-01 &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;192.168.0.2&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access ipsec-settings authentication mode &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;pre-shared-secret&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access ipsec-settings authentication pre-shared-secret &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;uND0O6RYI1O833NL2+qwSrW4htMll1hJAUM2nPQaa8k=&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access ipsec-settings ike-lifetime &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;3600&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access ipsec-settings lifetime &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;3600&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access outside-address &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;0.0.0.0&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;auth--users--to-access-vpn&#34;&gt;Auth  users  to access vpn&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Generate password&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;dd &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;if&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;/dev/urandom &lt;span style=&#34;color:#033&#34;&gt;bs&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;count&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;15&lt;/span&gt; | base64
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;create user named &lt;code&gt;zhagans&lt;/code&gt; with password &lt;code&gt;J+Yi8o5ICLjKtezv0+i9&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;configure
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-acces	authentication local-users zhangshan password J+Yi8o5ICLjKtezv0+i9
+commit
+save
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     
@@ -4765,28 +4845,6 @@ sudo chmod &lt;span style=&#34;color:#f60&#34;&gt;666&lt;/span&gt; /var/db/ntp-k
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://apple.stackexchange.com/questions/117864/how-can-i-tell-if-my-mac-is-keeping-the-clock-updated-properly?noredirect=1&amp;amp;lq=1&#34;&gt;How can I tell if my Mac is keeping the clock updated properly?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Learning Flask 01</title>
-      <link>https://blog.stevedong.com/post/learning-flask-01/</link>
-      <pubDate>Tue, 25 Dec 2018 06:11:03 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/learning-flask-01/</guid>
-      
-        <description>&lt;h1 id=&#34;learning-flask-01&#34;&gt;learning Flask 01&lt;/h1&gt;
-&lt;h2 id=&#34;installation-and-configure-of-anaconda&#34;&gt;Installation and configure of anaconda&lt;/h2&gt;
-&lt;h3 id=&#34;installaltion-homebrew&#34;&gt;Installaltion homebrew&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ruby -e &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt;$&lt;span style=&#34;color:#c30&#34;&gt; (curl - fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;installation-of-pyenv&#34;&gt;Installation of pyenv&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Installing pyenv&lt;/span&gt;
-brew install pyenv
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;install-anaconda-2-and-anaconda-3&#34;&gt;Install anaconda 2 and anaconda 3&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Download anaconda from &lt;a href=&#34;https://www.anaconda.com/download/&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
       

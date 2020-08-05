@@ -31,7 +31,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.69.2" />
+<meta name="generator" content="Hugo 0.73.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/" />
@@ -62,7 +62,7 @@
 <meta property="og:description" content="A System Administrator&#39;s Blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2018-10-20T21:38:52+08:00" />
+<meta property="og:updated_time" content="2020-08-05T10:57:22+08:00" />
 <meta itemprop="name" content="Steve Dong - A System Administrator&#39;s Blog">
 <meta itemprop="description" content="A System Administrator&#39;s Blog."><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Steve Dong - A System Administrator&#39;s Blog"/>
@@ -343,6 +343,41 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/how-to-enable-proxmoxve-nested-virtualization/">How to Enable Proxmoxve Nested Virtualization</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-02-14" class="post-time">
+        2019-02-14
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to enable Proxmox VE nested virtualization To enable nested virtualization on Proxmox VE, we need to stop all the vm and enable nested virtualization to linux kernel. then change vm settings
+Stop all the vm on proxmox VE  stop all virtual machines with shell command.  root@xa-sys-pve01:~# pvesh create /nodes/localhost/stopall Stopping VM 116 (timeout = 180 seconds) Stopping VM 115 (timeout = 180 seconds) Stopping CT 112 (timeout = 60 seconds) Stopping CT 111 (timeout = 60 seconds) Stopping CT 108 (timeout = 60 seconds) Stopping CT 106 (timeout = 60 seconds) Stopping VM 101 (timeout = 180 seconds) UPID:xa-sys-pve01:0036EA66:01992199:5CB98D6C:stopall::root@pam:  stop all the virtual machine with admin web.
+    </div>
+    <div class="read-more">
+      <a href="/post/how-to-enable-proxmoxve-nested-virtualization/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -829,41 +864,6 @@ iperf -c -u   Testing network speed with TCP
     </div>
     <div class="read-more">
       <a href="/post/ssh-login-without-password/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/proxmox-ve-v5.x-installation/">Proxmoxve VE V5.x Installation</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2018-11-19" class="post-time">
-        2018-11-19
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
- Boot the proxmox installer USB Select Debug Mode Press “CTRL+D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  manual solution:  cd /usr/share/javascript/proxmox-widget-toolkit cp proxmoxlib.
-    </div>
-    <div class="read-more">
-      <a href="/post/proxmox-ve-v5.x-installation/" class="read-more-link">Read more</a>
     </div>
     
   </div>
