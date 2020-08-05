@@ -6,7 +6,7 @@
     <description>Recent content on Steve Dong - A System Administrator&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 05 Aug 2020 10:57:22 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 05 Aug 2020 16:26:46 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -29,6 +29,33 @@
     </item>
     
     <item>
+      <title>How to Config Ddns for Vyos With Dns.he.net</title>
+      <link>https://blog.stevedong.com/post/vyos/how-to-config-ddns-for-vyos-with-dns.he.net/</link>
+      <pubDate>Wed, 05 Aug 2020 16:26:46 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/vyos/how-to-config-ddns-for-vyos-with-dns.he.net/</guid>
+      
+        <description>&lt;h1 id=&#34;how-to-config-ddns-for-vyos-with-dnshenet&#34;&gt;How to config DDNS for vyos with dns.he.net&lt;/h1&gt;
+&lt;h2 id=&#34;register-a-recored&#34;&gt;Register A Recored&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Register a domian &lt;code&gt;host.mydomain.com&lt;/code&gt; on your &lt;a href=&#34;https://dns.he.net&#34;&gt;https://dns.he.net&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Generate a key &lt;code&gt;64LGiLiuoiuoiuoi&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;run-command-to-setup-the-ddns-service&#34;&gt;Run command to setup the ddns service&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;configure
+
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; service dns dynamic interface pppoe0 service dyndns host-name &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;host.mydomain.com&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; service dns dynamic interface pppoe0 service dyndns login &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;host.mydomain.com&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; service dns dynamic interface pppoe0 service dyndns password &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;64LGiLiuoiuoiuoi&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; service dns dynamic interface pppoe0 service dyndns server &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;dyn.dns.he.net&amp;#39;&lt;/span&gt;
+commit
+save
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      
+    </item>
+    
+    <item>
       <title>How to Build L2tp Over Ipsec VPN With Vyos</title>
       <link>https://blog.stevedong.com/post/vyos/how-to-build-l2tp-over-ipsec-vpn-with-vyos/</link>
       <pubDate>Wed, 05 Aug 2020 10:57:22 +0800</pubDate>
@@ -37,10 +64,14 @@
       
         <description>&lt;h1 id=&#34;how-to-build-l2tp-over-ipsec-vpn-with-vyos&#34;&gt;How to build L2tp over ipsec vpn with vyos&lt;/h1&gt;
 &lt;p&gt;Today, I will show you how to build a l2tp over ipsec vpn with adsl wan address.&lt;/p&gt;
-&lt;h2 id=&#34;generate-a-preshare-key&#34;&gt;Generate a preshare key&lt;/h2&gt;
+&lt;h3 id=&#34;setup-vpn-on-vyos&#34;&gt;Setup vpn on vyos&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;generate-a-preshare-key&#34;&gt;Generate a preshare key&lt;/h3&gt;
+&lt;hr&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ generate wireguard preshared-key
 uND0O6RYI1O833NL2+qwSrW4htMll1hJAUM2nPQaa8k&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;with-authentication-local&#34;&gt;With authentication local&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;with-authentication-local&#34;&gt;With authentication local&lt;/h3&gt;
+&lt;hr&gt;
 &lt;ol&gt;
 &lt;li&gt;configuration VPN&lt;/li&gt;
 &lt;/ol&gt;
@@ -84,14 +115,15 @@ uND0O6RYI1O833NL2+qwSrW4htMll1hJAUM2nPQaa8k&lt;span style=&#34;color:#555&#34;&g
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access authentication require &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;mschap-v2&amp;#39;&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access client-ip-pool start &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.100.1&amp;#39;&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access client-ip-pool stop &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.100.254&amp;#39;&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access dns-servers dns-01 &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;192.168.0.1&amp;#39;&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access dns-servers dns-01 &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;192.168.0.2&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access dns-servers server-1 &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;192.168.0.1&amp;#39;&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access ipsec-settings authentication mode &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;pre-shared-secret&amp;#39;&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access ipsec-settings authentication pre-shared-secret &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;uND0O6RYI1O833NL2+qwSrW4htMll1hJAUM2nPQaa8k=&amp;#39;&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access ipsec-settings ike-lifetime &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;3600&amp;#39;&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access ipsec-settings lifetime &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;3600&amp;#39;&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-access outside-address &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;0.0.0.0&amp;#39;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;auth--users--to-access-vpn&#34;&gt;Auth  users  to access vpn&lt;/h2&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;auth--users--to-access-vpn&#34;&gt;Auth  users  to access vpn&lt;/h3&gt;
+&lt;hr&gt;
 &lt;ol&gt;
 &lt;li&gt;Generate password&lt;/li&gt;
 &lt;/ol&gt;
@@ -103,6 +135,84 @@ uND0O6RYI1O833NL2+qwSrW4htMll1hJAUM2nPQaa8k&lt;span style=&#34;color:#555&#34;&g
 &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; vpn l2tp remote-acces	authentication local-users username zhangshan password J+Yi8o5ICLjKtezv0+i9
 commit
 save
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;start-the-service&#34;&gt;Start the service&lt;/h3&gt;
+&lt;hr&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo systemctl &lt;span style=&#34;color:#366&#34;&gt;enable&lt;/span&gt; xl2tpd
+sudo systemctl restart xl2tpd
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;vpn-setup-script-for-windows-10&#34;&gt;vpn setup script for windows 10&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;
+@&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt; off&amp;amp;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;PUSHD&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;%~DP0&lt;/span&gt; &amp;amp;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;TITLE&lt;/span&gt; ikev2 VPN InstallUninstall programme
+mode con cols=160 lines=50
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;TempFile_Name&lt;/span&gt;=&lt;span style=&#34;color:#033&#34;&gt;%SystemRoot%&lt;/span&gt;\System32\BatTestUACin_SysRt&lt;span style=&#34;color:#033&#34;&gt;%Random%&lt;/span&gt;.batemp
+( &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;BAT Test UAC in Temp&amp;#34;&lt;/span&gt; &amp;gt;&lt;span style=&#34;color:#033&#34;&gt;%TempFile_Name%&lt;/span&gt; ) &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;&amp;gt;nul &lt;span style=&#34;color:#f60&#34;&gt;2&lt;/span&gt;&amp;gt;nul
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;exist&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;%TempFile_Name%&lt;/span&gt; (
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;del&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;%TempFile_Name%&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;&amp;gt;nul &lt;span style=&#34;color:#f60&#34;&gt;2&lt;/span&gt;&amp;gt;nul&amp;amp;&amp;amp;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;goto&lt;/span&gt; :&lt;span style=&#34;color:#99f&#34;&gt;install&lt;/span&gt;
+) &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;else&lt;/span&gt; (
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;Please run the script as administrator,Press any key to quit... &amp;amp;&amp;amp;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;goto&lt;/span&gt; :&lt;span style=&#34;color:#99f&#34;&gt;end&lt;/span&gt;
+
+)
+
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;VPN List:
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;; Welcome! This programme will help your install MY-VPN, or uninstall it. 
+
+:&lt;span style=&#34;color:#99f&#34;&gt;install&lt;/span&gt;
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;cls&lt;/span&gt;
+
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;1:MY-VPN(L2tp/ipsec)
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;Please select Install or Uninstall VPN(ikev2)(Enter &amp;#39;i&amp;#39; for install, &amp;#39;u&amp;#39; for uninstall, &amp;#39;q&amp;#39; for quit):
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;i:Install MY-VPN(L2TP/IPSEC VPN)
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;u:Uninstall MY-VPN(L2TP/IPSEC VPN)
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;q:Quit
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;set/p&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;choose1&lt;/span&gt;=Please enter your selection and press enter key to confirm:
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;%choose1%&lt;/span&gt;|findstr /i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;[iuq]&amp;#34;&lt;/span&gt;&amp;gt;nul&amp;amp;&amp;amp;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;goto&lt;/span&gt; :&lt;span style=&#34;color:#99f&#34;&gt;%choose1%&lt;/span&gt;
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;goto&lt;/span&gt; :&lt;span style=&#34;color:#99f&#34;&gt;install&lt;/span&gt;
+
+:&lt;span style=&#34;color:#99f&#34;&gt;i&lt;/span&gt;
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;cls&lt;/span&gt;
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;Install 1:MY-VPN(L2TP/IPSEC VPN)
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;===========================
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;***Step 1:Delete VPN with the same name ***
+(powershell -Command &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&amp;amp; {Remove-VpnConnection -Name &amp;#34;&lt;/span&gt;MY-VPN&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; -Force -PassThru;}&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;&amp;gt;nul &lt;span style=&#34;color:#f60&#34;&gt;2&lt;/span&gt;&amp;gt;nul
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;Successfully!
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;***Step 2: Install new VPN***
+(powershell -Command &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&amp;amp; {Enable-PSRemoting -Force;}&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;&amp;gt;nul &lt;span style=&#34;color:#f60&#34;&gt;2&lt;/span&gt;&amp;gt;nul
+(powershell -Command &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&amp;amp; {Add-VpnConnection -Name &amp;#34;&lt;/span&gt;MY-VPN&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; -ServerAddress &amp;#34;&lt;/span&gt;myvpn.mydomain.com&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; -TunnelType &amp;#34;&lt;/span&gt;L2tp&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; -EncryptionLevel &amp;#34;&lt;/span&gt;Required&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; -AuthenticationMethod MSChapv2  -L2tpPsk &amp;#34;&lt;/span&gt;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; -Force -RememberCredential -DnsSuffix &amp;#34;&lt;/span&gt;MYDOMAIN.NET&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; -PassThru;}&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;&amp;gt;nul &lt;span style=&#34;color:#f60&#34;&gt;2&lt;/span&gt;&amp;gt;nul
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;Done!
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;
+
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;***Step 3:Clean key in regedit***
+(powershell -Command &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&amp;amp; {Remove-ItemProperty HKLM:\System\CurrentControlSet\Services\Rasman\Parameters -name &amp;#34;&lt;/span&gt;NegotiateDH2048_AES256&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;; Remove-ItemProperty HKLM:\System\CurrentControlSet\Services\PolicyAgent -name &amp;#34;&lt;/span&gt;AssumeUDPEncapsulationContextOnSendRule &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;;}&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;&amp;gt;nul &lt;span style=&#34;color:#f60&#34;&gt;2&lt;/span&gt;&amp;gt;nul
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;Done!
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;***Step 4:Add key in Regedit***
+(powershell -Command &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&amp;amp; {New-ItemProperty HKLM:\System\CurrentControlSet\Services\Rasman\Parameters -name &amp;#34;&lt;/span&gt;NegotiateDH2048_AES256&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; -value 1 -propertyType dword; New-ItemProperty HKLM:\System\CurrentControlSet\Services\PolicyAgent -name &amp;#34;&lt;/span&gt;AssumeUDPEncapsulationContextOnSendRule &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; -value 2 -propertyType dword;}&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;&amp;gt;nul &lt;span style=&#34;color:#f60&#34;&gt;2&lt;/span&gt;&amp;gt;nul
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;Done!
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;***Step 5:Set regedit***
+powershell -Command &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&amp;amp; {Set-ItemProperty HKLM:\System\CurrentControlSet\Services\Rasman\Parameters -name &amp;#34;&lt;/span&gt;NegotiateDH2048_AES256&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; -value 1; Set-ItemProperty HKLM:\System\CurrentControlSet\Services\PolicyAgent -name &amp;#34;&lt;/span&gt;AssumeUDPEncapsulationContextOnSendRule &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; -value 2;}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;Done!
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;***Step 6:Reboot your Windows***
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;Press any key to reboot your windows, or press X to quit the script and manually reboot your windows.
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;pause&lt;/span&gt;&amp;gt;nul
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;goto&lt;/span&gt; :&lt;span style=&#34;color:#99f&#34;&gt;end&lt;/span&gt;
+
+:&lt;span style=&#34;color:#99f&#34;&gt;u&lt;/span&gt;
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;cls&lt;/span&gt;
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;Uninstall MY-VPN(L2TP/IPSEC VPN)
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;===========================
+(powershell -Command &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&amp;amp; {Remove-VpnConnection -Name &amp;#34;&lt;/span&gt;MY-VPN&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; -Force -PassThru;}&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;&amp;gt;nul &lt;span style=&#34;color:#f60&#34;&gt;2&lt;/span&gt;&amp;gt;nul
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;echo&lt;/span&gt;;Done, Press any key to quit...
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;goto&lt;/span&gt; :&lt;span style=&#34;color:#99f&#34;&gt;end&lt;/span&gt;
+
+
+
+:&lt;span style=&#34;color:#99f&#34;&gt;end&lt;/span&gt;
+&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;pause&lt;/span&gt;&amp;gt;nul
+
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
@@ -4814,37 +4924,6 @@ Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method foun
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://community.cisco.com/t5/vpn-and-anyconnect/ssh-failed-on-3750-switch/td-p/3043810&#34;&gt;SSH failed on 3750 switch&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://discussions.apple.com/thread/8196671&#34;&gt;SSH Not Working After Update To 10.13.2 (HighSierra)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Macos Update Time via Ntpserver</title>
-      <link>https://blog.stevedong.com/post/macos-update-time-via-ntpserver/</link>
-      <pubDate>Wed, 26 Dec 2018 09:26:04 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/macos-update-time-via-ntpserver/</guid>
-      
-        <description>&lt;h1 id=&#34;how-to-update-time-via-ntpserver&#34;&gt;How to update time via ntpserver&lt;/h1&gt;
-&lt;p&gt;Today, My MBP is out of power. I cannot surfing internet. and the brower tell me my time was wrong. Then I checked my time in my MBB, I&amp;rsquo;m back in time jan 1, 2018. Wow, I got extra whole year time!&lt;/p&gt;
-&lt;h1 id=&#34;majove-update-time&#34;&gt;Majove update time&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo sntp -sS time.asia.apple.com
-
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;When you&amp;rsquo;re getting this error&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;
-kod_init_kod_db&lt;span style=&#34;color:#555&#34;&gt;()&lt;/span&gt;: Cannot open KoD db file /var/db/ntp-kod: No such file or directory
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can solved the problems with:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo touch /var/db/ntp-kod
-sudo chmod &lt;span style=&#34;color:#f60&#34;&gt;666&lt;/span&gt; /var/db/ntp-kod
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;disable-no-subscription-warning&#34;&gt;Disable No subscription warning&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -i.bak &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34;&lt;/span&gt; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; systemctl restart pveproxy.service
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://apple.stackexchange.com/questions/117864/how-can-i-tell-if-my-mac-is-keeping-the-clock-updated-properly?noredirect=1&amp;amp;lq=1&#34;&gt;How can I tell if my Mac is keeping the clock updated properly?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
       

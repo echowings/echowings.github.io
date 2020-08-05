@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>How to Build L2tp Over Ipsec VPN With Vyos - Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>How to Config Ddns for Vyos With Dns.he.net - Steve Dong - A System Administrator&#39;s Blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,8 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="How to build L2tp over ipsec vpn with vyos Today, I will show you how to build a l2tp over ipsec vpn with adsl wan address.
-Setup vpn on vyos  Generate a preshare key  $ generate wireguard preshared-key uND0O6RYI1O833NL2&#43;qwSrW4htMll1hJAUM2nPQaa8k= With authentication local   configuration VPN     Key Value     WAN interface pppoe0   l2tp vpn network 172.16.100.0/24   PRESHARE KEY uND0O6RYI1O833NL2&#43;qwSrW4htMll1hJAUM2nPQaa8k=   DNS server 01 192." />
+  <meta name="description" content="How to config DDNS for vyos with dns.he.net Register A Recored  Register a domian host.mydomain.com on your https://dns.he.net Generate a key 64LGiLiuoiuoiuoi  Run command to setup the ddns service configure set service dns dynamic interface pppoe0 service dyndns host-name &amp;#39;host.mydomain.com&amp;#39; set service dns dynamic interface pppoe0 service dyndns login &amp;#39;host.mydomain.com&amp;#39; set service dns dynamic interface pppoe0 service dyndns password &amp;#39;64LGiLiuoiuoiuoi&amp;#39; set service dns dynamic interface pppoe0 service dyndns server &amp;#39;dyn." />
 
   <meta name="keywords" content="proxmox ve, network, devops, sdn, system Administation" />
 
@@ -36,7 +35,7 @@ Setup vpn on vyos  Generate a preshare key  $ generate wireguard preshared-key u
 <meta name="generator" content="Hugo 0.73.0" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/post/vyos/how-to-build-l2tp-over-ipsec-vpn-with-vyos/" />
+<link rel="canonical" href="https://blog.stevedong.com/post/vyos/how-to-config-ddns-for-vyos-with-dns.he.net/" />
 
 
 
@@ -60,26 +59,23 @@ Setup vpn on vyos  Generate a preshare key  $ generate wireguard preshared-key u
 
 
 
-<meta property="og:title" content="How to Build L2tp Over Ipsec VPN With Vyos" />
-<meta property="og:description" content="How to build L2tp over ipsec vpn with vyos Today, I will show you how to build a l2tp over ipsec vpn with adsl wan address.
-Setup vpn on vyos  Generate a preshare key  $ generate wireguard preshared-key uND0O6RYI1O833NL2&#43;qwSrW4htMll1hJAUM2nPQaa8k= With authentication local   configuration VPN     Key Value     WAN interface pppoe0   l2tp vpn network 172.16.100.0/24   PRESHARE KEY uND0O6RYI1O833NL2&#43;qwSrW4htMll1hJAUM2nPQaa8k=   DNS server 01 192." />
+<meta property="og:title" content="How to Config Ddns for Vyos With Dns.he.net" />
+<meta property="og:description" content="How to config DDNS for vyos with dns.he.net Register A Recored  Register a domian host.mydomain.com on your https://dns.he.net Generate a key 64LGiLiuoiuoiuoi  Run command to setup the ddns service configure set service dns dynamic interface pppoe0 service dyndns host-name &#39;host.mydomain.com&#39; set service dns dynamic interface pppoe0 service dyndns login &#39;host.mydomain.com&#39; set service dns dynamic interface pppoe0 service dyndns password &#39;64LGiLiuoiuoiuoi&#39; set service dns dynamic interface pppoe0 service dyndns server &#39;dyn." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/vyos/how-to-build-l2tp-over-ipsec-vpn-with-vyos/" />
-<meta property="article:published_time" content="2020-08-05T10:57:22+08:00" />
-<meta property="article:modified_time" content="2020-08-05T10:57:22+08:00" />
-<meta itemprop="name" content="How to Build L2tp Over Ipsec VPN With Vyos">
-<meta itemprop="description" content="How to build L2tp over ipsec vpn with vyos Today, I will show you how to build a l2tp over ipsec vpn with adsl wan address.
-Setup vpn on vyos  Generate a preshare key  $ generate wireguard preshared-key uND0O6RYI1O833NL2&#43;qwSrW4htMll1hJAUM2nPQaa8k= With authentication local   configuration VPN     Key Value     WAN interface pppoe0   l2tp vpn network 172.16.100.0/24   PRESHARE KEY uND0O6RYI1O833NL2&#43;qwSrW4htMll1hJAUM2nPQaa8k=   DNS server 01 192.">
-<meta itemprop="datePublished" content="2020-08-05T10:57:22&#43;08:00" />
-<meta itemprop="dateModified" content="2020-08-05T10:57:22&#43;08:00" />
-<meta itemprop="wordCount" content="501">
+<meta property="og:url" content="https://blog.stevedong.com/post/vyos/how-to-config-ddns-for-vyos-with-dns.he.net/" />
+<meta property="article:published_time" content="2020-08-05T16:26:46+08:00" />
+<meta property="article:modified_time" content="2020-08-05T16:26:46+08:00" />
+<meta itemprop="name" content="How to Config Ddns for Vyos With Dns.he.net">
+<meta itemprop="description" content="How to config DDNS for vyos with dns.he.net Register A Recored  Register a domian host.mydomain.com on your https://dns.he.net Generate a key 64LGiLiuoiuoiuoi  Run command to setup the ddns service configure set service dns dynamic interface pppoe0 service dyndns host-name &#39;host.mydomain.com&#39; set service dns dynamic interface pppoe0 service dyndns login &#39;host.mydomain.com&#39; set service dns dynamic interface pppoe0 service dyndns password &#39;64LGiLiuoiuoiuoi&#39; set service dns dynamic interface pppoe0 service dyndns server &#39;dyn.">
+<meta itemprop="datePublished" content="2020-08-05T16:26:46&#43;08:00" />
+<meta itemprop="dateModified" content="2020-08-05T16:26:46&#43;08:00" />
+<meta itemprop="wordCount" content="72">
 
 
 
-<meta itemprop="keywords" content="vyos ,vpn,pppoe,adsl," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="How to Build L2tp Over Ipsec VPN With Vyos"/>
-<meta name="twitter:description" content="How to build L2tp over ipsec vpn with vyos Today, I will show you how to build a l2tp over ipsec vpn with adsl wan address.
-Setup vpn on vyos  Generate a preshare key  $ generate wireguard preshared-key uND0O6RYI1O833NL2&#43;qwSrW4htMll1hJAUM2nPQaa8k= With authentication local   configuration VPN     Key Value     WAN interface pppoe0   l2tp vpn network 172.16.100.0/24   PRESHARE KEY uND0O6RYI1O833NL2&#43;qwSrW4htMll1hJAUM2nPQaa8k=   DNS server 01 192."/>
+<meta itemprop="keywords" content="vyos,ddns,he.net," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How to Config Ddns for Vyos With Dns.he.net"/>
+<meta name="twitter:description" content="How to config DDNS for vyos with dns.he.net Register A Recored  Register a domian host.mydomain.com on your https://dns.he.net Generate a key 64LGiLiuoiuoiuoi  Run command to setup the ddns service configure set service dns dynamic interface pppoe0 service dyndns host-name &#39;host.mydomain.com&#39; set service dns dynamic interface pppoe0 service dyndns login &#39;host.mydomain.com&#39; set service dns dynamic interface pppoe0 service dyndns password &#39;64LGiLiuoiuoiuoi&#39; set service dns dynamic interface pppoe0 service dyndns server &#39;dyn."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -352,7 +348,7 @@ if (!doNotTrack) {
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">How to Build L2tp Over Ipsec VPN With Vyos</h1>
+      <h1 class="post-title">How to Config Ddns for Vyos With Dns.he.net</h1>
       
       <div class="post-meta">
         <time datetime="2020-08-05" class="post-time">
@@ -379,16 +375,8 @@ if (!doNotTrack) {
   <div class="post-toc-content">
     <nav id="TableOfContents">
   <ul>
-    <li>
-      <ul>
-        <li><a href="#setup-vpn-on-vyos">Setup vpn on vyos</a></li>
-        <li><a href="#generate-a-preshare-key">Generate a preshare key</a></li>
-        <li><a href="#with-authentication-local">With authentication local</a></li>
-        <li><a href="#auth--users--to-access-vpn">Auth  users  to access vpn</a></li>
-        <li><a href="#start-the-service">Start the service</a></li>
-      </ul>
-    </li>
-    <li><a href="#vpn-setup-script-for-windows-10">vpn setup script for windows 10</a></li>
+    <li><a href="#register-a-recored">Register A Recored</a></li>
+    <li><a href="#run-command-to-setup-the-ddns-service">Run command to setup the ddns service</a></li>
   </ul>
 </nav>
   </div>
@@ -396,157 +384,21 @@ if (!doNotTrack) {
 
     
     <div class="post-content">
-      <h1 id="how-to-build-l2tp-over-ipsec-vpn-with-vyos">How to build L2tp over ipsec vpn with vyos</h1>
-<p>Today, I will show you how to build a l2tp over ipsec vpn with adsl wan address.</p>
-<h3 id="setup-vpn-on-vyos">Setup vpn on vyos</h3>
-<hr>
-<h3 id="generate-a-preshare-key">Generate a preshare key</h3>
-<hr>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ generate wireguard preshared-key
-uND0O6RYI1O833NL2+qwSrW4htMll1hJAUM2nPQaa8k<span style="color:#555">=</span>
-</code></pre></div><h3 id="with-authentication-local">With authentication local</h3>
-<hr>
+      <h1 id="how-to-config-ddns-for-vyos-with-dnshenet">How to config DDNS for vyos with dns.he.net</h1>
+<h2 id="register-a-recored">Register A Recored</h2>
 <ol>
-<li>configuration VPN</li>
+<li>Register a domian <code>host.mydomain.com</code> on your <a href="https://dns.he.net">https://dns.he.net</a></li>
+<li>Generate a key <code>64LGiLiuoiuoiuoi</code></li>
 </ol>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>WAN interface</td>
-<td>pppoe0</td>
-</tr>
-<tr>
-<td>l2tp vpn network</td>
-<td>172.16.100.0/24</td>
-</tr>
-<tr>
-<td>PRESHARE KEY</td>
-<td>uND0O6RYI1O833NL2+qwSrW4htMll1hJAUM2nPQaa8k=</td>
-</tr>
-<tr>
-<td>DNS server 01</td>
-<td>192.168.0.1</td>
-</tr>
-<tr>
-<td>DNS Server 02</td>
-<td>1921.68.0.2</td>
-</tr>
-</tbody>
-</table>
+<h2 id="run-command-to-setup-the-ddns-service">Run command to setup the ddns service</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">configure
-<span style="color:#366">set</span> vpn ipsec auto-update <span style="color:#c30">&#39;30&#39;</span>
-<span style="color:#366">set</span> vpn ipsec ipsec-interfaces interface <span style="color:#c30">&#39;pppoe0&#39;</span>
-<span style="color:#366">set</span> vpn ipsec nat-networks allowed-network 0.0.0.0/0
-<span style="color:#366">set</span> vpn ipsec nat-traversal <span style="color:#c30">&#39;enable&#39;</span>
 
-<span style="color:#366">set</span> vpn l2tp remote-access authentication mode <span style="color:#c30">&#39;local&#39;</span>
-<span style="color:#366">set</span> vpn l2tp remote-access authentication require <span style="color:#c30">&#39;mschap-v2&#39;</span>
-<span style="color:#366">set</span> vpn l2tp remote-access client-ip-pool start <span style="color:#c30">&#39;172.16.100.1&#39;</span>
-<span style="color:#366">set</span> vpn l2tp remote-access client-ip-pool stop <span style="color:#c30">&#39;172.16.100.254&#39;</span>
-<span style="color:#366">set</span> vpn l2tp remote-access dns-servers server-1 <span style="color:#c30">&#39;192.168.0.1&#39;</span>
-<span style="color:#366">set</span> vpn l2tp remote-access ipsec-settings authentication mode <span style="color:#c30">&#39;pre-shared-secret&#39;</span>
-<span style="color:#366">set</span> vpn l2tp remote-access ipsec-settings authentication pre-shared-secret <span style="color:#c30">&#39;uND0O6RYI1O833NL2+qwSrW4htMll1hJAUM2nPQaa8k=&#39;</span>
-<span style="color:#366">set</span> vpn l2tp remote-access ipsec-settings ike-lifetime <span style="color:#c30">&#39;3600&#39;</span>
-<span style="color:#366">set</span> vpn l2tp remote-access ipsec-settings lifetime <span style="color:#c30">&#39;3600&#39;</span>
-<span style="color:#366">set</span> vpn l2tp remote-access outside-address <span style="color:#c30">&#39;0.0.0.0&#39;</span>
-
-</code></pre></div><h3 id="auth--users--to-access-vpn">Auth  users  to access vpn</h3>
-<hr>
-<ol>
-<li>Generate password</li>
-</ol>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">dd <span style="color:#069;font-weight:bold">if</span><span style="color:#555">=</span>/dev/urandom <span style="color:#033">bs</span><span style="color:#555">=</span><span style="color:#f60">1</span> <span style="color:#033">count</span><span style="color:#555">=</span><span style="color:#f60">15</span> | base64
-</code></pre></div><ol start="2">
-<li>create user named <code>zhangsan</code> with password <code>J+Yi8o5ICLjKtezv0+i9</code></li>
-</ol>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">configure
-<span style="color:#366">set</span> vpn l2tp remote-acces	authentication local-users username zhangshan password J+Yi8o5ICLjKtezv0+i9
+<span style="color:#366">set</span> service dns dynamic interface pppoe0 service dyndns host-name <span style="color:#c30">&#39;host.mydomain.com&#39;</span>
+<span style="color:#366">set</span> service dns dynamic interface pppoe0 service dyndns login <span style="color:#c30">&#39;host.mydomain.com&#39;</span>
+<span style="color:#366">set</span> service dns dynamic interface pppoe0 service dyndns password <span style="color:#c30">&#39;64LGiLiuoiuoiuoi&#39;</span>
+<span style="color:#366">set</span> service dns dynamic interface pppoe0 service dyndns server <span style="color:#c30">&#39;dyn.dns.he.net&#39;</span>
 commit
 save
-
-</code></pre></div><h3 id="start-the-service">Start the service</h3>
-<hr>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo systemctl <span style="color:#366">enable</span> xl2tpd
-sudo systemctl restart xl2tpd
-
-</code></pre></div><h2 id="vpn-setup-script-for-windows-10">vpn setup script for windows 10</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bat" data-lang="bat">
-@<span style="color:#069;font-weight:bold">echo</span> off&amp;<span style="color:#069;font-weight:bold">PUSHD</span> <span style="color:#033">%~DP0</span> &amp;<span style="color:#069;font-weight:bold">TITLE</span> ikev2 VPN InstallUninstall programme
-mode con cols=160 lines=50
-<span style="color:#069;font-weight:bold">set</span> <span style="color:#033">TempFile_Name</span>=<span style="color:#033">%SystemRoot%</span>\System32\BatTestUACin_SysRt<span style="color:#033">%Random%</span>.batemp
-( <span style="color:#069;font-weight:bold">echo</span> <span style="color:#c30">&#34;BAT Test UAC in Temp&#34;</span> &gt;<span style="color:#033">%TempFile_Name%</span> ) <span style="color:#f60">1</span>&gt;nul <span style="color:#f60">2</span>&gt;nul
-<span style="color:#069;font-weight:bold">if</span> <span style="color:#069;font-weight:bold">exist</span> <span style="color:#033">%TempFile_Name%</span> (
-<span style="color:#069;font-weight:bold">del</span> <span style="color:#033">%TempFile_Name%</span> <span style="color:#f60">1</span>&gt;nul <span style="color:#f60">2</span>&gt;nul&amp;&amp;<span style="color:#069;font-weight:bold">goto</span> :<span style="color:#99f">install</span>
-) <span style="color:#069;font-weight:bold">else</span> (
-<span style="color:#069;font-weight:bold">echo</span>;Please run the script as administrator,Press any key to quit... &amp;&amp;<span style="color:#069;font-weight:bold">goto</span> :<span style="color:#99f">end</span>
-
-)
-
-<span style="color:#069;font-weight:bold">echo</span>;VPN List:
-<span style="color:#069;font-weight:bold">echo</span>; Welcome! This programme will help your install MY-VPN, or uninstall it. 
-
-:<span style="color:#99f">install</span>
-<span style="color:#069;font-weight:bold">cls</span>
-
-<span style="color:#069;font-weight:bold">echo</span>;1:MY-VPN(L2tp/ipsec)
-<span style="color:#069;font-weight:bold">echo</span>;Please select Install or Uninstall VPN(ikev2)(Enter &#39;i&#39; for install, &#39;u&#39; for uninstall, &#39;q&#39; for quit):
-<span style="color:#069;font-weight:bold">echo</span>;i:Install MY-VPN(L2TP/IPSEC VPN)
-<span style="color:#069;font-weight:bold">echo</span>;u:Uninstall MY-VPN(L2TP/IPSEC VPN)
-<span style="color:#069;font-weight:bold">echo</span>;q:Quit
-<span style="color:#069;font-weight:bold">set/p</span> <span style="color:#033">choose1</span>=Please enter your selection and press enter key to confirm:
-<span style="color:#069;font-weight:bold">echo</span> <span style="color:#033">%choose1%</span>|findstr /i <span style="color:#c30">&#34;[iuq]&#34;</span>&gt;nul&amp;&amp;<span style="color:#069;font-weight:bold">goto</span> :<span style="color:#99f">%choose1%</span>
-<span style="color:#069;font-weight:bold">goto</span> :<span style="color:#99f">install</span>
-
-:<span style="color:#99f">i</span>
-<span style="color:#069;font-weight:bold">cls</span>
-<span style="color:#069;font-weight:bold">echo</span>;Install 1:MY-VPN(L2TP/IPSEC VPN)
-<span style="color:#069;font-weight:bold">echo</span>;===========================
-<span style="color:#069;font-weight:bold">echo</span>;***Step 1:Delete VPN with the same name ***
-(powershell -Command <span style="color:#c30">&#34;&amp; {Remove-VpnConnection -Name &#34;</span>MY-VPN<span style="color:#c30">&#34; -Force -PassThru;}&#34;</span>) <span style="color:#f60">1</span>&gt;nul <span style="color:#f60">2</span>&gt;nul
-<span style="color:#069;font-weight:bold">echo</span>;Successfully!
-<span style="color:#069;font-weight:bold">echo</span>;
-<span style="color:#069;font-weight:bold">echo</span>;***Step 2: Install new VPN***
-(powershell -Command <span style="color:#c30">&#34;&amp; {Enable-PSRemoting -Force;}&#34;</span>) <span style="color:#f60">1</span>&gt;nul <span style="color:#f60">2</span>&gt;nul
-(powershell -Command <span style="color:#c30">&#34;&amp; {Add-VpnConnection -Name &#34;</span>MY-VPN<span style="color:#c30">&#34; -ServerAddress &#34;</span>myvpn.mydomain.com<span style="color:#c30">&#34; -TunnelType &#34;</span>L2tp<span style="color:#c30">&#34; -EncryptionLevel &#34;</span>Required<span style="color:#c30">&#34; -AuthenticationMethod MSChapv2  -L2tpPsk &#34;</span>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<span style="color:#c30">&#34; -Force -RememberCredential -DnsSuffix &#34;</span>MYDOMAIN.NET<span style="color:#c30">&#34; -PassThru;}&#34;</span>) <span style="color:#f60">1</span>&gt;nul <span style="color:#f60">2</span>&gt;nul
-<span style="color:#069;font-weight:bold">echo</span>;Done!
-<span style="color:#069;font-weight:bold">echo</span>;
-
-<span style="color:#069;font-weight:bold">echo</span>;***Step 3:Clean key in regedit***
-(powershell -Command <span style="color:#c30">&#34;&amp; {Remove-ItemProperty HKLM:\System\CurrentControlSet\Services\Rasman\Parameters -name &#34;</span>NegotiateDH2048_AES256<span style="color:#c30">&#34;; Remove-ItemProperty HKLM:\System\CurrentControlSet\Services\PolicyAgent -name &#34;</span>AssumeUDPEncapsulationContextOnSendRule <span style="color:#c30">&#34;;}&#34;</span>) <span style="color:#f60">1</span>&gt;nul <span style="color:#f60">2</span>&gt;nul
-<span style="color:#069;font-weight:bold">echo</span>;Done!
-<span style="color:#069;font-weight:bold">echo</span>;
-<span style="color:#069;font-weight:bold">echo</span>;***Step 4:Add key in Regedit***
-(powershell -Command <span style="color:#c30">&#34;&amp; {New-ItemProperty HKLM:\System\CurrentControlSet\Services\Rasman\Parameters -name &#34;</span>NegotiateDH2048_AES256<span style="color:#c30">&#34; -value 1 -propertyType dword; New-ItemProperty HKLM:\System\CurrentControlSet\Services\PolicyAgent -name &#34;</span>AssumeUDPEncapsulationContextOnSendRule <span style="color:#c30">&#34; -value 2 -propertyType dword;}&#34;</span>) <span style="color:#f60">1</span>&gt;nul <span style="color:#f60">2</span>&gt;nul
-<span style="color:#069;font-weight:bold">echo</span>;Done!
-<span style="color:#069;font-weight:bold">echo</span>;
-<span style="color:#069;font-weight:bold">echo</span>;***Step 5:Set regedit***
-powershell -Command <span style="color:#c30">&#34;&amp; {Set-ItemProperty HKLM:\System\CurrentControlSet\Services\Rasman\Parameters -name &#34;</span>NegotiateDH2048_AES256<span style="color:#c30">&#34; -value 1; Set-ItemProperty HKLM:\System\CurrentControlSet\Services\PolicyAgent -name &#34;</span>AssumeUDPEncapsulationContextOnSendRule <span style="color:#c30">&#34; -value 2;}&#34;</span>
-<span style="color:#069;font-weight:bold">echo</span>;Done!
-<span style="color:#069;font-weight:bold">echo</span>;
-<span style="color:#069;font-weight:bold">echo</span>;***Step 6:Reboot your Windows***
-<span style="color:#069;font-weight:bold">echo</span>;Press any key to reboot your windows, or press X to quit the script and manually reboot your windows.
-<span style="color:#069;font-weight:bold">pause</span>&gt;nul
-<span style="color:#069;font-weight:bold">goto</span> :<span style="color:#99f">end</span>
-
-:<span style="color:#99f">u</span>
-<span style="color:#069;font-weight:bold">cls</span>
-<span style="color:#069;font-weight:bold">echo</span>;Uninstall MY-VPN(L2TP/IPSEC VPN)
-<span style="color:#069;font-weight:bold">echo</span>;===========================
-(powershell -Command <span style="color:#c30">&#34;&amp; {Remove-VpnConnection -Name &#34;</span>MY-VPN<span style="color:#c30">&#34; -Force -PassThru;}&#34;</span>) <span style="color:#f60">1</span>&gt;nul <span style="color:#f60">2</span>&gt;nul
-<span style="color:#069;font-weight:bold">echo</span>;Done, Press any key to quit...
-<span style="color:#069;font-weight:bold">goto</span> :<span style="color:#99f">end</span>
-
-
-
-:<span style="color:#99f">end</span>
-<span style="color:#069;font-weight:bold">pause</span>&gt;nul
-
 
 </code></pre></div>
     </div>
@@ -587,32 +439,18 @@ powershell -Command <span style="color:#c30">&#34;&amp; {Set-ItemProperty HKLM:\
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="https://blog.stevedong.com/tags/vyos/">vyos </a>
-          <a href="https://blog.stevedong.com/tags/vpn/">vpn</a>
-          <a href="https://blog.stevedong.com/tags/pppoe/">pppoe</a>
-          <a href="https://blog.stevedong.com/tags/adsl/">adsl</a>
+          <a href="https://blog.stevedong.com/tags/vyos/">vyos</a>
+          <a href="https://blog.stevedong.com/tags/ddns/">ddns</a>
+          <a href="https://blog.stevedong.com/tags/he.net/">he.net</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/vyos/how-to-config-ddns-for-vyos-with-dns.he.net/">
-            
-            <i class="iconfont">
-              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-            </i>
-            <span class="prev-text nav-default">How to Config Ddns for Vyos With Dns.he.net</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
         
-          <a class="next" href="/post/jitsi/how-to-deploy-jitsi-server-with-docker-compose/">
-            <span class="next-text nav-default">How to Deploy Jitsi Server With Docker Compose</span>
+          <a class="next" href="/post/vyos/how-to-build-l2tp-over-ipsec-vpn-with-vyos/">
+            <span class="next-text nav-default">How to Build L2tp Over Ipsec VPN With Vyos</span>
             <span class="prev-text nav-mobile">Next</span>
             
             <i class="iconfont">
