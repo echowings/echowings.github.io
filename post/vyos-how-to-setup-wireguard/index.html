@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Vyos How to Setup Wireguard - Steve Dong - A System Administrator&#39;s Blog</title>
+  <title>Vyos How to Setup Wireguard - My Blog - For Fun</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -75,11 +75,11 @@ Site-to-Sit mode Toplogy |--------------------------------| |-------------------
 Site-to-Sit mode Toplogy |--------------------------------| |---------------------------------| | Server | | Client | | |-----cloud ----| wan:${wan-address} | | wireguard tunnel interface:wg01| | Wireguard tunnel interface:wg01 | |--------------------------------| |---------------------------------| Server configuration # Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one.">
 <meta itemprop="datePublished" content="2019-04-17T12:31:08&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-17T12:31:08&#43;08:00" />
-<meta itemprop="wordCount" content="383">
+<meta itemprop="wordCount" content="413">
 
 
 
-<meta itemprop="keywords" content="vyos,wirguard,networking," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="vyos,wireguard,networking," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Vyos How to Setup Wireguard"/>
 <meta name="twitter:description" content="How to conifugre wireguard in vyos WireGuard is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
  Wireguard  Today I will try to deploy wireguard with two vyos .
@@ -434,11 +434,18 @@ configure
 <span style="color:#09f;font-style:italic">#Add CLIENT1</span>
 <span style="color:#09f;font-style:italic">#Set wireguard allow client ip ranges to access.</span>
 <span style="color:#366">set</span> interfaces wireguard wg01 peer CLIENT1 allowed-ips <span style="color:#c30">&#39;172.16.100.2/32&#39;</span> 
+
 <span style="color:#09f;font-style:italic">#Set how offten to send keep alives in seconds</span>
 <span style="color:#366">set</span> interfaces wireguard wg01 peer CLIENT1 persistent-keepalive <span style="color:#c30">&#39;15&#39;</span>
+
+<span style="color:#09f;font-style:italic">#Set presharekey</span>
+<span style="color:#366">set</span> interfaces wireguard wg01 peer CLIENT1 preshared-key gLdIlCM/AsobjfDgFK/cdgsAcjILTzLY4df5BskRcqY<span style="color:#555">=</span>
 <span style="color:#09f;font-style:italic">#Set client public key</span>
 <span style="color:#366">set</span> interfaces wireguard wg01 peer CLIENT1 pubkey <span style="color:#c30">&#39;${client-pubkey}&#39;</span>
 
+
+<span style="color:#09f;font-style:italic">#set static routing.</span>
+<span style="color:#366">set</span> protocols static interface-route <span style="color:#c30">&#39;172.16.100.0/24&#39;</span> next-hop-interface wg01
 
 
 <span style="color:#09f;font-style:italic">#make configuration applied</span>
@@ -473,10 +480,13 @@ show wireguard pubkey
 <span style="color:#366">set</span> interfaces wireguard wg01 peer SERVER endpoint <span style="color:#c30">&#39;${server-wan-address}:50100&#39;</span>
 
 <span style="color:#09f;font-style:italic">#Set how offten to send keep alives in seconds</span>
-<span style="color:#366">set</span> interfaces wireguard wg01 per SERVEr persistent-keepalive <span style="color:#f60">15</span>
+<span style="color:#366">set</span> interfaces wireguard wg01 peer SERVEr persistent-keepalive <span style="color:#f60">15</span>
 
 <span style="color:#09f;font-style:italic">#Set public key for server</span>
 <span style="color:#366">set</span> interfaces wireguard wg01 peer SERVER pubkey <span style="color:#c30">&#39;${server-pubkey}&#39;</span>
+
+<span style="color:#09f;font-style:italic">#Set presharekey</span>
+<span style="color:#366">set</span> interfaces wireguard wg01 peer SERVER preshared-key gLdIlCM/AsobjfDgFK/cdgsAcjILTzLY4df5BskRcqY<span style="color:#555">=</span>
 
 
 
@@ -557,7 +567,7 @@ qrencode -t ansiutf8 &lt; client_wireguard_ios.conf
     <footer class="post-footer">
       <div class="post-tags">
           <a href="https://blog.stevedong.com/tags/vyos/">vyos</a>
-          <a href="https://blog.stevedong.com/tags/wirguard/">wirguard</a>
+          <a href="https://blog.stevedong.com/tags/wireguard/">wireguard</a>
           <a href="https://blog.stevedong.com/tags/networking/">networking</a>
           
         </div>
