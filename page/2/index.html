@@ -62,7 +62,7 @@
 <meta property="og:description" content="A devops blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2020-08-05T16:26:46+08:00" />
+<meta property="og:updated_time" content="2020-09-03T16:36:31+08:00" />
 <meta itemprop="name" content="My Blog - For Fun">
 <meta itemprop="description" content="A devops blog."><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Blog - For Fun"/>
@@ -343,6 +343,40 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/proxmoxve/how-to-change-default-swap-settings-for-proxmox-ve/">How to Change Default Swap Settings for Proxmox Ve</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-08-09" class="post-time">
+        2019-08-09
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to change default swap settings for Proxmox VE  Check Default swap policy from value 60 to 0  cat /proc/sys/vm/swappiness #default value is 60 , it means when the memory remain 60, the swap will be enable  Change swap policy  # Temp to change default swap enable when memory remain 0. sysctl vm.swappiness=0 # Permanent to change swapp cat &lt;&lt; EOF &gt;&gt; /etc/sysctl.conf vm.swappiness=0 #apply settings sysctl -p # check cat /proc/sys/vm/swappiness  Vacuum swap  swapoff -a swapon -a 
+    </div>
+    <div class="read-more">
+      <a href="/post/proxmoxve/how-to-change-default-swap-settings-for-proxmox-ve/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -837,41 +871,6 @@ ERROR 1:&ldquo;No space left on device&rdquo; error on latest upgrade If you met
     </div>
     <div class="read-more">
       <a href="/post/proxmox-how-to-import-disk-to-ceph/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/install-kubernetes-on-centos7/">Install Kubernetes on CentOS7</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-05-01" class="post-time">
-        2019-05-01
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/devops/"> devops </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Install Kubernetes on Centos 7 Disable and stop firewall # Disable firewall service systemctl disable firewalld # Stop firewall service systemctl stop firewalld Install etcd and kubernetes Install etcd and kubernetes and it will also install docker.
-yum install -y etcd kubernetes Start service in order systemctl start etcd systemctl start docker systemctl start kube-apiserver systemctl start kube-controller-manager systemctl start kube-scheduler systemctl start kubelet systemctl start start kube-proxy 
-    </div>
-    <div class="read-more">
-      <a href="/post/install-kubernetes-on-centos7/" class="read-more-link">Read more</a>
     </div>
     
   </div>

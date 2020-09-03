@@ -6,10 +6,20 @@
     <description>Recent content in Posts on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 05 Aug 2020 16:26:46 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 03 Sep 2020 16:36:31 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to make Destination Base Routing With Vyos</title>
+      <link>https://blog.stevedong.com/post/vyos/how-to-make-destination-policy-base-routing-with-vyos/</link>
+      <pubDate>Thu, 03 Sep 2020 16:36:31 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/vyos/how-to-make-destination-policy-base-routing-with-vyos/</guid>
+      <description>How to make Destination Base Routing with Vyos I have 2 network interfaces. one for user access inboard network,another for user to access network aboard. How to make it work with vyos?
+Make a network group #Define a netwrok-group set firewall group network-group china-ip-ranges #Define lan network group set firewall group network-group lan-net-group network &amp;#39;192.168.11.0/24&amp;#39; set policy set policy route network-shunt rule 20 destination group network-group &amp;#39;china-ip-ranges&amp;#39; set policy route network-shunt rule 20 set table &amp;#39;20&amp;#39; set policy route network-shunt rule 20 source group network-group &amp;#39;lan-net-group&amp;#39; set policy route network-shunt rule 30 set table &amp;#39;30&amp;#39; set policy route network-shunt rule 30 source group network-group &amp;#39;lan-net-group&amp;#39; Download and set the network-group with ipset  Download and make a list for network-group loading when booting.</description>
+    </item>
     
     <item>
       <title>How to Config Ddns for Vyos With Dns.he.net</title>
@@ -503,17 +513,6 @@ Stop all the vm on proxmox VE  stop all virtual machines with shell command.  ro
 ssh cisco@10.32.3.1 Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1 Solution:
 $ ssh -l &amp;lt;USERNAME&amp;gt; -oHostKeyAlgorithms=+ssh-dss -oKexAlgorithms=+diffie-hellman-group1-sha1 &amp;lt;HOST&amp;gt; or
 ssh -l &amp;lt;username&amp;gt; -o HostKeyAlgorithms=+ssh-dss -o KexAlgorithms=+diffie-hellman-group1-sha1 -c 3des-cbc &amp;lt;hostname&amp;gt; Reference  SSH failed on 3750 switch SSH Not Working After Update To 10.13.2 (HighSierra)  </description>
-    </item>
-    
-    <item>
-      <title>Macos Update Time via Ntpserver</title>
-      <link>https://blog.stevedong.com/post/macos-update-time-via-ntpserver/</link>
-      <pubDate>Wed, 26 Dec 2018 09:26:04 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/macos-update-time-via-ntpserver/</guid>
-      <description>How to update time via ntpserver Today, My MBP is out of power. I cannot surfing internet. and the brower tell me my time was wrong. Then I checked my time in my MBB, I&amp;rsquo;m back in time jan 1, 2018. Wow, I got extra whole year time!
-Majove update time sudo sntp -sS time.asia.apple.com When you&amp;rsquo;re getting this error
-kod_init_kod_db(): Cannot open KoD db file /var/db/ntp-kod: No such file or directory You can solved the problems with:</description>
     </item>
     
   </channel>

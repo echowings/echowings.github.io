@@ -6,7 +6,7 @@
     <description>Recent content on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 05 Aug 2020 16:26:46 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 03 Sep 2020 16:36:31 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -25,6 +25,62 @@
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
+      
+    </item>
+    
+    <item>
+      <title>How to make Destination Base Routing With Vyos</title>
+      <link>https://blog.stevedong.com/post/vyos/how-to-make-destination-policy-base-routing-with-vyos/</link>
+      <pubDate>Thu, 03 Sep 2020 16:36:31 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/vyos/how-to-make-destination-policy-base-routing-with-vyos/</guid>
+      
+        <description>&lt;h1 id=&#34;how-to-make-destination-base-routing-with-vyos&#34;&gt;How to make Destination Base Routing with Vyos&lt;/h1&gt;
+&lt;p&gt;I have 2 network interfaces. one for user access inboard network,another for user to access network aboard. How to make it work with vyos?&lt;/p&gt;
+&lt;h2 id=&#34;make-a-network-group&#34;&gt;Make a network group&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Define a netwrok-group&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall group network-group china-ip-ranges
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Define lan network group&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; firewall group network-group lan-net-group network &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;192.168.11.0/24&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;set-policy&#34;&gt;set policy&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; policy route network-shunt rule &lt;span style=&#34;color:#f60&#34;&gt;20&lt;/span&gt; destination group network-group &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;china-ip-ranges&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; policy route network-shunt rule &lt;span style=&#34;color:#f60&#34;&gt;20&lt;/span&gt; &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; table &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;20&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; policy route network-shunt rule &lt;span style=&#34;color:#f60&#34;&gt;20&lt;/span&gt; &lt;span style=&#34;color:#366&#34;&gt;source&lt;/span&gt; group network-group &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;lan-net-group&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; policy route network-shunt rule &lt;span style=&#34;color:#f60&#34;&gt;30&lt;/span&gt; &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; table &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;30&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; policy route network-shunt rule &lt;span style=&#34;color:#f60&#34;&gt;30&lt;/span&gt; &lt;span style=&#34;color:#366&#34;&gt;source&lt;/span&gt; group network-group &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;lan-net-group&amp;#39;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;download-and-set-the-network-group-with-ipset&#34;&gt;Download and set the network-group with ipset&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Download and make a list for network-group loading when booting.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#create the update shell script&lt;/span&gt;
+cat  &amp;gt; /config/scripts/generate_china_ip_address.sh &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;#!/bin/sh
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;wget -c http://ftp.apnic.net/stats/apnic/delegated-apnic-latest -O - | cat | awk -F &amp;#39;|&amp;#39; &amp;#39;/CN/&amp;amp;&amp;amp;/ipv4/ {print $4 &amp;#34;/&amp;#34; 32-log($5)/log(2)}&amp;#39; | cat &amp;gt; /config/chinaiprange.txt
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# make the script an run&lt;/span&gt;
+chmod +x /config/scripts/generate_china_ip_address.sh 
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Run the script&lt;/span&gt;
+/config/scripts/generate_china_ip_address.sh 
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Create boot loading script&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;cat &amp;gt;&amp;gt; /config/scripts/vyos-postconfig-bootup.script &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt; EOF
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;for l in `cat /config/chinaiprange.txt`; do sudo ipset add china-ip-ranges $l;done
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;set-protocol&#34;&gt;Set protocol&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; protocols static interface-route 0.0.0.0/0 next-hop-interface pppoe0
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; protocols static interface-route 172.16.131.0/24 next-hop-interface wg01
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; protocols static table &lt;span style=&#34;color:#f60&#34;&gt;20&lt;/span&gt; interface-route 0.0.0.0/0 next-hop-interface pppoe0
+&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; protocols static table &lt;span style=&#34;color:#f60&#34;&gt;30&lt;/span&gt; route 0.0.0.0/0 next-hop 172.16.131.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;apply-pbr-policy-on-lan-interface&#34;&gt;Apply PBR Policy on lan interface&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces bridge br0 policy route network-shunt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     
@@ -4912,30 +4968,6 @@ resize2fs /dev/ubuntu-vg/ubuntu-lv
 vgdisplay
 lvdisplay
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Cisco Ssh Error</title>
-      <link>https://blog.stevedong.com/post/cisco-ssh-error/</link>
-      <pubDate>Sat, 29 Dec 2018 12:19:12 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/cisco-ssh-error/</guid>
-      
-        <description>&lt;h1 id=&#34;cisco-ssh-error&#34;&gt;cisco ssh error&lt;/h1&gt;
-&lt;p&gt;When you met error like this:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ssh  cisco@10.32.3.1
-Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Solution:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ ssh -l &amp;lt;USERNAME&amp;gt; -oHostKeyAlgorithms&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;+ssh-dss -oKexAlgorithms&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;+diffie-hellman-group1-sha1 &amp;lt;HOST&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;or&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ssh -l &amp;lt;username&amp;gt; -o &lt;span style=&#34;color:#033&#34;&gt;HostKeyAlgorithms&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;+ssh-dss -o &lt;span style=&#34;color:#033&#34;&gt;KexAlgorithms&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;+diffie-hellman-group1-sha1 -c 3des-cbc &amp;lt;hostname&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://community.cisco.com/t5/vpn-and-anyconnect/ssh-failed-on-3750-switch/td-p/3043810&#34;&gt;SSH failed on 3750 switch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://discussions.apple.com/thread/8196671&#34;&gt;SSH Not Working After Update To 10.13.2 (HighSierra)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
       
     </item>
     
