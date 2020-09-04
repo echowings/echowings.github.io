@@ -6,10 +6,20 @@
     <description>Recent content in Posts on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 03 Sep 2020 16:36:31 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2020 09:11:30 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Extend All Available Disk to Local Data</title>
+      <link>https://blog.stevedong.com/post/proxmoxve/how-to-extend-all-available-disk-to-local-data/</link>
+      <pubDate>Fri, 04 Sep 2020 09:11:30 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/proxmoxve/how-to-extend-all-available-disk-to-local-data/</guid>
+      <description>How to extend all available disk to local-data After install Proxmove VE, the local-data only have about 50GB disk availabe. But how to let all availabld disk space to the local-data? Here we go:
+# Remove local-data lvremove /dev/pve/data # Extend all available disk to /dev/pve/root lvresize -l +100%FREE /dev/pve/root #recreate pve-root resize2fs /dev/mapper/pve-root Reference  Proxmox – Remove LVM local-data  </description>
+    </item>
     
     <item>
       <title>How to make Destination Base Routing With Vyos</title>
@@ -501,18 +511,6 @@ Stop all the vm on proxmox VE  stop all virtual machines with shell command.  ro
       <guid>https://blog.stevedong.com/post/how-to-extend-lvm-allocted-pe-with-freee-pe/</guid>
       <description>LVM EXTEND How to extend lvm size use free PE
 # show volume group information vgdisplay --- Volume group --- VG Name ubuntu-vg System ID Format lvm2 Metadata Areas 1 Metadata Sequence No 2 VG Access read/write VG Status resizable MAX LV 0 Cur LV 1 Open LV 1 Max PV 0 Cur PV 1 Act PV 1 VG Size &amp;lt;99.00 GiB PE Size 4.00 MiB Total PE 25343 Alloc PE / Size 1024 / 4.</description>
-    </item>
-    
-    <item>
-      <title>Cisco Ssh Error</title>
-      <link>https://blog.stevedong.com/post/cisco-ssh-error/</link>
-      <pubDate>Sat, 29 Dec 2018 12:19:12 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/cisco-ssh-error/</guid>
-      <description>cisco ssh error When you met error like this:
-ssh cisco@10.32.3.1 Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1 Solution:
-$ ssh -l &amp;lt;USERNAME&amp;gt; -oHostKeyAlgorithms=+ssh-dss -oKexAlgorithms=+diffie-hellman-group1-sha1 &amp;lt;HOST&amp;gt; or
-ssh -l &amp;lt;username&amp;gt; -o HostKeyAlgorithms=+ssh-dss -o KexAlgorithms=+diffie-hellman-group1-sha1 -c 3des-cbc &amp;lt;hostname&amp;gt; Reference  SSH failed on 3750 switch SSH Not Working After Update To 10.13.2 (HighSierra)  </description>
     </item>
     
   </channel>

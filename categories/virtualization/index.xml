@@ -6,10 +6,20 @@
     <description>Recent content in virtualization on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 22 Oct 2019 10:23:46 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2020 09:11:30 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/categories/virtualization/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Extend All Available Disk to Local Data</title>
+      <link>https://blog.stevedong.com/post/proxmoxve/how-to-extend-all-available-disk-to-local-data/</link>
+      <pubDate>Fri, 04 Sep 2020 09:11:30 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/proxmoxve/how-to-extend-all-available-disk-to-local-data/</guid>
+      <description>How to extend all available disk to local-data After install Proxmove VE, the local-data only have about 50GB disk availabe. But how to let all availabld disk space to the local-data? Here we go:
+# Remove local-data lvremove /dev/pve/data # Extend all available disk to /dev/pve/root lvresize -l +100%FREE /dev/pve/root #recreate pve-root resize2fs /dev/mapper/pve-root Reference  Proxmox – Remove LVM local-data  </description>
+    </item>
     
     <item>
       <title>Some_tips_for_management_promxmoxve</title>

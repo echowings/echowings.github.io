@@ -62,7 +62,7 @@
 <meta property="og:description" content="A devops blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2020-09-03T16:36:31+08:00" />
+<meta property="og:updated_time" content="2020-09-04T09:11:30+08:00" />
 <meta itemprop="name" content="My Blog - For Fun">
 <meta itemprop="description" content="A devops blog."><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Blog - For Fun"/>
@@ -343,6 +343,41 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/proxmoxve/how-to-extend-all-available-disk-to-local-data/">How to Extend All Available Disk to Local Data</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2020-09-04" class="post-time">
+        2020-09-04
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to extend all available disk to local-data After install Proxmove VE, the local-data only have about 50GB disk availabe. But how to let all availabld disk space to the local-data? Here we go:
+# Remove local-data lvremove /dev/pve/data # Extend all available disk to /dev/pve/root lvresize -l +100%FREE /dev/pve/root #recreate pve-root resize2fs /dev/mapper/pve-root Reference  Proxmox – Remove LVM local-data  
+    </div>
+    <div class="read-more">
+      <a href="/post/proxmoxve/how-to-extend-all-available-disk-to-local-data/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -824,40 +859,6 @@ How to deploy debian 10 colud image on pve I perfer to debian as my first choice
     </div>
     <div class="read-more">
       <a href="/post/some_tips_for_management_promxmoxve/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/how-to-install-and-configure-freeradius-with-active-directory-allow-allow-specific-group-of-users-to-authenticate-in-debian-10/">How to Install and Configure Freeradius With Active Directory Allow Allow Specific Group of Users to Authenticate in Debian 10</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-10-13" class="post-time">
-        2019-10-13
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&rsquo;m trying to build a new
-    </div>
-    <div class="read-more">
-      <a href="/post/how-to-install-and-configure-freeradius-with-active-directory-allow-allow-specific-group-of-users-to-authenticate-in-debian-10/" class="read-more-link">Read more</a>
     </div>
     
   </div>
