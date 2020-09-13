@@ -6,7 +6,7 @@
     <description>Recent content on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 04 Sep 2020 09:11:30 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2020 22:48:34 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -25,6 +25,22 @@
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
+      
+    </item>
+    
+    <item>
+      <title>How to Reset Vyos to Default Settings</title>
+      <link>https://blog.stevedong.com/post/vyos/how-to-reset-vyos-to-default-settings/</link>
+      <pubDate>Fri, 04 Sep 2020 22:48:34 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/vyos/how-to-reset-vyos-to-default-settings/</guid>
+      
+        <description>&lt;h1 id=&#34;how-to-reset-vyos-to-default-settings&#34;&gt;How to reset VyOS to default settings&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;configure
+load /opt/vyatta/etc/config.boot.default
+commit
+save
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     
@@ -2730,11 +2746,12 @@ Here we go!&lt;/p&gt;
 &lt;li&gt;Login vyos .&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo su 
-&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /tmp/
-sudo mkdir overture-linux-amd64
-sudo curl -fsSLO --compressed &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&amp;#34;&lt;/span&gt; 
-sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64
-&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; overture-linux-amd64
+&lt;span style=&#34;color:#033&#34;&gt;overture_version&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;v1.6.1
+sudo mkdir -p  /tmp/overture-linux-amd64
+&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /tmp
+sudo curl -fsSLO --compressed &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;https://github.com/shawn1m/overture/releases/download/&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$overture_version&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;/overture-linux-amd64.zip&amp;#34;&lt;/span&gt;
+sudo unzip /tmp/overture-linux-amd64.zip -d /tmp/overture-linux-amd64
+&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /tmp/overture-linux-amd64
 
 sudo curl -fsSLO https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt
 
@@ -2759,7 +2776,7 @@ curl -fsSLO --compressed https://raw.githubusercontent.com/felixonmars/dnsmasq-c
 
 
 #
-cat accelerated-domains.china.conf  cdn-testlist.txt google.china.conf apple.china.conf | sort -u &amp;gt; china_domain.txt
+cat accelerated-domains.china.conf  cdn-testlist.txt google.china.conf apple.china.conf | sort -u &amp;gt;&amp;gt; china_domain.txt
 
 
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Strip useless characters in the configure file.&lt;/span&gt;
@@ -2771,19 +2788,19 @@ sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/\/114.114.114.114//g&am
 
 sudo mv config.json config.json.origin
 
-sudo bash -c &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;cat &amp;gt; config.json&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF
+sudo bash -c &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;cat &amp;gt; /etc/overture/config.json&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;{
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;BindAddress&amp;#34;: &amp;#34;127.0.0.53:53&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;BindAddress&amp;#34;: &amp;#34;127.0.1.1:53&amp;#34;,
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;PrimaryDNS&amp;#34;: [
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    {
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      &amp;#34;Name&amp;#34;: &amp;#34;DNSPod&amp;#34;,
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      &amp;#34;Address&amp;#34;: &amp;#34;119.29.29.29:53&amp;#34;,
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      &amp;#34;Protocol&amp;#34;: &amp;#34;udp&amp;#34;,
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      &amp;#34;SOCKS5Address&amp;#34;: &amp;#34;&amp;#34;,
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      &amp;#34;Timeout&amp;#34;: 6,
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      &amp;#34;Timeout&amp;#34;: 15,
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      &amp;#34;EDNSClientSubnet&amp;#34;: {
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;        &amp;#34;Policy&amp;#34;: &amp;#34;enable&amp;#34;,
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;        &amp;#34;ExternalIP&amp;#34;: &amp;#34;xxx.xxx.xxx.xxx&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;        &amp;#34;Policy&amp;#34;: &amp;#34;disable&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;        &amp;#34;ExternalIP&amp;#34;: &amp;#34;&amp;#34;,
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;        &amp;#34;NoCookie&amp;#34;: true
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      }
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    }
@@ -2794,27 +2811,28 @@ sudo bash -c &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;cat &amp;gt; config
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      &amp;#34;Address&amp;#34;: &amp;#34;208.67.222.222:53&amp;#34;,
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      &amp;#34;Protocol&amp;#34;: &amp;#34;udp&amp;#34;,
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      &amp;#34;SOCKS5Address&amp;#34;: &amp;#34;&amp;#34;,
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      &amp;#34;Timeout&amp;#34;: 6,
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      &amp;#34;Timeout&amp;#34;: 60,
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      &amp;#34;EDNSClientSubnet&amp;#34;: {
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;        &amp;#34;Policy&amp;#34;: &amp;#34;enable&amp;#34;,
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;        &amp;#34;ExternalIP&amp;#34;: &amp;#34;xxx.xxx.xxx.xxx&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;        &amp;#34;Policy&amp;#34;: &amp;#34;disable&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;        &amp;#34;ExternalIP&amp;#34;: &amp;#34;&amp;#34;,
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;        &amp;#34;NoCookie&amp;#34;: true
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      }
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    }
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  ],
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;OnlyPrimaryDNS&amp;#34;: false,
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;IPv6UseAlternativeDNS&amp;#34;: false,
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;WhenPrimaryDnsAnswerNoneUse&amp;#34;: &amp;#34;PrimaryDNS&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;WhenPrimaryDnsAnswerNoneUse&amp;#34;: &amp;#34;AlternativeDNS&amp;#34;,
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;IPNetworkFile&amp;#34;: {
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;     &amp;#34;Primary&amp;#34;: &amp;#34;/etc/overture/china_ip_list.txt&amp;#34;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;     },
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      &amp;#34;Primary&amp;#34;: &amp;#34;/etc/overture/china_ip_list.txt&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;   },
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;DomainFile&amp;#34;: {
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  	  &amp;#34;Primary&amp;#34;: &amp;#34;/etc/overture/china_domain.txt&amp;#34;,
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;     &amp;#34;Alternative&amp;#34;: &amp;#34;/etc/overture/gfw_all_domain.txt&amp;#34; 
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    },
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;HostsFile&amp;#34;: &amp;#34;/etc/overture/hosts_sample&amp;#34;, 
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;MinimumTTL&amp;#34;: 86400,
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;CacheSize&amp;#34;: 604800,
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    &amp;#34;Primary&amp;#34;: &amp;#34;/etc/overture/china_domain.txt&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    &amp;#34;Alternative&amp;#34;: &amp;#34;/etc/overture/gfw_all_domain.txt&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    &amp;#34;PrimaryMatcher&amp;#34;:  &amp;#34;suffix-tree&amp;#34;,
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    &amp;#34;AlternativeMatcher&amp;#34;: &amp;#34;final&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  },
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;MinimumTTL&amp;#34;: 60,
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;CacheSize&amp;#34; : 2000,
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  &amp;#34;RejectQType&amp;#34;: [255]
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;}
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
@@ -2850,7 +2868,12 @@ sudo systemctl &lt;span style=&#34;color:#366&#34;&gt;enable&lt;/span&gt; overtu
 sudo systemctl restart overture
 
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://zhmin.github.io/2020/01/05/openwrt-v2ray/&#34;&gt;overture-on-openwrt&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
       
     </item>
     
@@ -4807,78 +4830,6 @@ vi /etc/password
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker-compose up -d
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>How to Enable Proxmoxve Nested Virtualization</title>
-      <link>https://blog.stevedong.com/post/how-to-enable-proxmoxve-nested-virtualization/</link>
-      <pubDate>Thu, 14 Feb 2019 11:44:28 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/how-to-enable-proxmoxve-nested-virtualization/</guid>
-      
-        <description>&lt;h1 id=&#34;how-to-enable-proxmox-ve-nested-virtualization&#34;&gt;How to enable Proxmox VE nested virtualization&lt;/h1&gt;
-&lt;p&gt;To enable nested virtualization on Proxmox VE, we need to stop all the vm and enable nested virtualization to linux kernel. then change vm settings&lt;/p&gt;
-&lt;h2 id=&#34;stop-all-the-vm-on-proxmox-ve&#34;&gt;Stop all the vm on proxmox VE&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;stop all virtual machines with shell command.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;root@xa-sys-pve01:~# pvesh create /nodes/localhost/stopall
-Stopping VM &lt;span style=&#34;color:#f60&#34;&gt;116&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;timeout&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;180&lt;/span&gt; seconds&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
-Stopping VM &lt;span style=&#34;color:#f60&#34;&gt;115&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;timeout&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;180&lt;/span&gt; seconds&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
-Stopping CT &lt;span style=&#34;color:#f60&#34;&gt;112&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;timeout&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;60&lt;/span&gt; seconds&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
-Stopping CT &lt;span style=&#34;color:#f60&#34;&gt;111&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;timeout&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;60&lt;/span&gt; seconds&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
-Stopping CT &lt;span style=&#34;color:#f60&#34;&gt;108&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;timeout&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;60&lt;/span&gt; seconds&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
-Stopping CT &lt;span style=&#34;color:#f60&#34;&gt;106&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;timeout&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;60&lt;/span&gt; seconds&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
-Stopping VM &lt;span style=&#34;color:#f60&#34;&gt;101&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;timeout&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;180&lt;/span&gt; seconds&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
-UPID:xa-sys-pve01:0036EA66:01992199:5CB98D6C:stopall::root@pam:
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;stop all the virtual machine with admin web.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;bulk stop
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;enable-nested-module-in-linux-kernel&#34;&gt;Enable nested module in linux kernel&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;Check nested support status&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;cat /sys/module/kvm_intel/parameters/nested
-N
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;enable nested support on.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#for intel cpu&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;options kvm-intel nested=Y&amp;#34;&lt;/span&gt; &amp;gt; /etc/modprobe.d/kvm-intel.conf
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#for amd cpu&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;options kvm-amd nested=1&amp;#34;&lt;/span&gt; &amp;gt; /etc/modprobe.d/kvm-amd.conf
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;Reload the kernel module.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;modprobe -r kvm_intel
-modprobe kvm_intel
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
-&lt;li&gt;Check again.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;cat /sys/module/kvm_intel/parameters/nested                    
-Y
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;change-vm-cpu-type&#34;&gt;Change VM cpu type&lt;/h2&gt;
-&lt;pre&gt;&lt;code class=&#34;language-Change&#34; data-lang=&#34;Change&#34;&gt;
-```bash
-vi /etc/pve/qemu-server/xxx.conf
-```
-Add a args to the config file
-
-``` vim
-#intel cpu
-args: -cpu host,+vmx
-
-#amd cpu
-args: -cpu host,+svm
-```
-
-
-## Reference
-* [Nested Virtualization](https://pve.proxmox.com/wiki/Nested_Virtualization)
-&lt;/code&gt;&lt;/pre&gt;</description>
       
     </item>
     

@@ -6,10 +6,19 @@
     <description>Recent content in Posts on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 04 Sep 2020 09:11:30 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2020 22:48:34 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Reset Vyos to Default Settings</title>
+      <link>https://blog.stevedong.com/post/vyos/how-to-reset-vyos-to-default-settings/</link>
+      <pubDate>Fri, 04 Sep 2020 22:48:34 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/vyos/how-to-reset-vyos-to-default-settings/</guid>
+      <description>How to reset VyOS to default settings configure load /opt/vyatta/etc/config.boot.default commit save </description>
+    </item>
     
     <item>
       <title>How to Extend All Available Disk to Local Data</title>
@@ -301,7 +310,7 @@ Resizing disk images First thing first, I need resize the disk images of the vir
       <guid>https://blog.stevedong.com/post/how-to-install-overture-on-vyos1.2/</guid>
       <description>How to install overture on Vyos 1.2 I need to build a dns forwarding server to anti dns cache pollution.overture is a good choice for me. it writen in go with good performance. Here we go!
 Download ovrture you can check overture version from here
- Login vyos .  sudo su cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &amp;#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&amp;#34; sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64 cd overture-linux-amd64 sudo curl -fsSLO https://raw.</description>
+ Login vyos .  sudo su overture_version=v1.6.1 sudo mkdir -p /tmp/overture-linux-amd64 cd /tmp sudo curl -fsSLO --compressed &amp;#34;https://github.com/shawn1m/overture/releases/download/$overture_version/overture-linux-amd64.zip&amp;#34; sudo unzip /tmp/overture-linux-amd64.zip -d /tmp/overture-linux-amd64 cd /tmp/overture-linux-amd64 sudo curl -fsSLO https://raw.</description>
     </item>
     
     <item>
@@ -501,16 +510,6 @@ docker-compose up -d Active Script echo &amp;#34;To active office&amp;#34; cd &a
       <guid>https://blog.stevedong.com/post/how-to-enable-proxmoxve-nested-virtualization/</guid>
       <description>How to enable Proxmox VE nested virtualization To enable nested virtualization on Proxmox VE, we need to stop all the vm and enable nested virtualization to linux kernel. then change vm settings
 Stop all the vm on proxmox VE  stop all virtual machines with shell command.  root@xa-sys-pve01:~# pvesh create /nodes/localhost/stopall Stopping VM 116 (timeout = 180 seconds) Stopping VM 115 (timeout = 180 seconds) Stopping CT 112 (timeout = 60 seconds) Stopping CT 111 (timeout = 60 seconds) Stopping CT 108 (timeout = 60 seconds) Stopping CT 106 (timeout = 60 seconds) Stopping VM 101 (timeout = 180 seconds) UPID:xa-sys-pve01:0036EA66:01992199:5CB98D6C:stopall::root@pam:  stop all the virtual machine with admin web.</description>
-    </item>
-    
-    <item>
-      <title>How to Extend Lvm Allocted PE With Freee PE</title>
-      <link>https://blog.stevedong.com/post/how-to-extend-lvm-allocted-pe-with-freee-pe/</link>
-      <pubDate>Tue, 08 Jan 2019 11:47:31 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/how-to-extend-lvm-allocted-pe-with-freee-pe/</guid>
-      <description>LVM EXTEND How to extend lvm size use free PE
-# show volume group information vgdisplay --- Volume group --- VG Name ubuntu-vg System ID Format lvm2 Metadata Areas 1 Metadata Sequence No 2 VG Access read/write VG Status resizable MAX LV 0 Cur LV 1 Open LV 1 Max PV 0 Cur PV 1 Act PV 1 VG Size &amp;lt;99.00 GiB PE Size 4.00 MiB Total PE 25343 Alloc PE / Size 1024 / 4.</description>
     </item>
     
   </channel>

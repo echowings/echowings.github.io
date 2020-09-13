@@ -25,7 +25,7 @@
 <meta name="author" content="Steve Dong" />
   <meta name="description" content="How to install overture on Vyos 1.2 I need to build a dns forwarding server to anti dns cache pollution.overture is a good choice for me. it writen in go with good performance. Here we go!
 Download ovrture you can check overture version from here
- Login vyos .  sudo su cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &amp;#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&amp;#34; sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64 cd overture-linux-amd64 sudo curl -fsSLO https://raw." />
+ Login vyos .  sudo su overture_version=v1.6.1 sudo mkdir -p /tmp/overture-linux-amd64 cd /tmp sudo curl -fsSLO --compressed &amp;#34;https://github.com/shawn1m/overture/releases/download/$overture_version/overture-linux-amd64.zip&amp;#34; sudo unzip /tmp/overture-linux-amd64.zip -d /tmp/overture-linux-amd64 cd /tmp/overture-linux-amd64 sudo curl -fsSLO https://raw." />
 
   <meta name="keywords" content="proxmox ve, network, devops, sdn, system Administation" />
 
@@ -64,7 +64,7 @@ Download ovrture you can check overture version from here
 <meta property="og:title" content="How to Install Overture on VYOS 1.2.1 release" />
 <meta property="og:description" content="How to install overture on Vyos 1.2 I need to build a dns forwarding server to anti dns cache pollution.overture is a good choice for me. it writen in go with good performance. Here we go!
 Download ovrture you can check overture version from here
- Login vyos .  sudo su cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&#34; sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64 cd overture-linux-amd64 sudo curl -fsSLO https://raw." />
+ Login vyos .  sudo su overture_version=v1.6.1 sudo mkdir -p /tmp/overture-linux-amd64 cd /tmp sudo curl -fsSLO --compressed &#34;https://github.com/shawn1m/overture/releases/download/$overture_version/overture-linux-amd64.zip&#34; sudo unzip /tmp/overture-linux-amd64.zip -d /tmp/overture-linux-amd64 cd /tmp/overture-linux-amd64 sudo curl -fsSLO https://raw." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/how-to-install-overture-on-vyos1.2/" />
 <meta property="article:published_time" content="2019-05-18T01:35:52+08:00" />
@@ -72,10 +72,10 @@ Download ovrture you can check overture version from here
 <meta itemprop="name" content="How to Install Overture on VYOS 1.2.1 release">
 <meta itemprop="description" content="How to install overture on Vyos 1.2 I need to build a dns forwarding server to anti dns cache pollution.overture is a good choice for me. it writen in go with good performance. Here we go!
 Download ovrture you can check overture version from here
- Login vyos .  sudo su cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&#34; sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64 cd overture-linux-amd64 sudo curl -fsSLO https://raw.">
+ Login vyos .  sudo su overture_version=v1.6.1 sudo mkdir -p /tmp/overture-linux-amd64 cd /tmp sudo curl -fsSLO --compressed &#34;https://github.com/shawn1m/overture/releases/download/$overture_version/overture-linux-amd64.zip&#34; sudo unzip /tmp/overture-linux-amd64.zip -d /tmp/overture-linux-amd64 cd /tmp/overture-linux-amd64 sudo curl -fsSLO https://raw.">
 <meta itemprop="datePublished" content="2019-05-18T01:35:52&#43;08:00" />
 <meta itemprop="dateModified" content="2019-05-18T01:35:52&#43;08:00" />
-<meta itemprop="wordCount" content="352">
+<meta itemprop="wordCount" content="359">
 
 
 
@@ -83,7 +83,7 @@ Download ovrture you can check overture version from here
 <meta name="twitter:title" content="How to Install Overture on VYOS 1.2.1 release"/>
 <meta name="twitter:description" content="How to install overture on Vyos 1.2 I need to build a dns forwarding server to anti dns cache pollution.overture is a good choice for me. it writen in go with good performance. Here we go!
 Download ovrture you can check overture version from here
- Login vyos .  sudo su cd /tmp/ sudo mkdir overture-linux-amd64 sudo curl -fsSLO --compressed &#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&#34; sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64 cd overture-linux-amd64 sudo curl -fsSLO https://raw."/>
+ Login vyos .  sudo su overture_version=v1.6.1 sudo mkdir -p /tmp/overture-linux-amd64 cd /tmp sudo curl -fsSLO --compressed &#34;https://github.com/shawn1m/overture/releases/download/$overture_version/overture-linux-amd64.zip&#34; sudo unzip /tmp/overture-linux-amd64.zip -d /tmp/overture-linux-amd64 cd /tmp/overture-linux-amd64 sudo curl -fsSLO https://raw."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -381,7 +381,11 @@ if (!doNotTrack) {
 <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav>
   </div>
 </div>
 
@@ -396,11 +400,12 @@ Here we go!</p>
 <li>Login vyos .</li>
 </ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo su 
-<span style="color:#366">cd</span> /tmp/
-sudo mkdir overture-linux-amd64
-sudo curl -fsSLO --compressed <span style="color:#c30">&#34;https://github.com/shawn1m/overture/releases/download/v1.5/overture-linux-amd64.zip&#34;</span> 
-sudo unzip overture-linux-amd64.zip -d ./overture-linux-amd64
-<span style="color:#366">cd</span> overture-linux-amd64
+<span style="color:#033">overture_version</span><span style="color:#555">=</span>v1.6.1
+sudo mkdir -p  /tmp/overture-linux-amd64
+<span style="color:#366">cd</span> /tmp
+sudo curl -fsSLO --compressed <span style="color:#c30">&#34;https://github.com/shawn1m/overture/releases/download/</span><span style="color:#033">$overture_version</span><span style="color:#c30">/overture-linux-amd64.zip&#34;</span>
+sudo unzip /tmp/overture-linux-amd64.zip -d /tmp/overture-linux-amd64
+<span style="color:#366">cd</span> /tmp/overture-linux-amd64
 
 sudo curl -fsSLO https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt
 
@@ -425,7 +430,7 @@ curl -fsSLO --compressed https://raw.githubusercontent.com/felixonmars/dnsmasq-c
 
 
 #
-cat accelerated-domains.china.conf  cdn-testlist.txt google.china.conf apple.china.conf | sort -u &gt; china_domain.txt
+cat accelerated-domains.china.conf  cdn-testlist.txt google.china.conf apple.china.conf | sort -u &gt;&gt; china_domain.txt
 
 
 <span style="color:#09f;font-style:italic"># Strip useless characters in the configure file.</span>
@@ -437,19 +442,19 @@ sed -i <span style="color:#c30">&#39;s/\/114.114.114.114//g&#39;</span> china_do
 
 sudo mv config.json config.json.origin
 
-sudo bash -c <span style="color:#c30">&#39;cat &gt; config.json&#39;</span> <span style="color:#c30">&lt;&lt;EOF
+sudo bash -c <span style="color:#c30">&#39;cat &gt; /etc/overture/config.json&#39;</span> <span style="color:#c30">&lt;&lt;EOF
 </span><span style="color:#c30">{
-</span><span style="color:#c30">  &#34;BindAddress&#34;: &#34;127.0.0.53:53&#34;,
+</span><span style="color:#c30">  &#34;BindAddress&#34;: &#34;127.0.1.1:53&#34;,
 </span><span style="color:#c30">  &#34;PrimaryDNS&#34;: [
 </span><span style="color:#c30">    {
 </span><span style="color:#c30">      &#34;Name&#34;: &#34;DNSPod&#34;,
 </span><span style="color:#c30">      &#34;Address&#34;: &#34;119.29.29.29:53&#34;,
 </span><span style="color:#c30">      &#34;Protocol&#34;: &#34;udp&#34;,
 </span><span style="color:#c30">      &#34;SOCKS5Address&#34;: &#34;&#34;,
-</span><span style="color:#c30">      &#34;Timeout&#34;: 6,
+</span><span style="color:#c30">      &#34;Timeout&#34;: 15,
 </span><span style="color:#c30">      &#34;EDNSClientSubnet&#34;: {
-</span><span style="color:#c30">        &#34;Policy&#34;: &#34;enable&#34;,
-</span><span style="color:#c30">        &#34;ExternalIP&#34;: &#34;xxx.xxx.xxx.xxx&#34;,
+</span><span style="color:#c30">        &#34;Policy&#34;: &#34;disable&#34;,
+</span><span style="color:#c30">        &#34;ExternalIP&#34;: &#34;&#34;,
 </span><span style="color:#c30">        &#34;NoCookie&#34;: true
 </span><span style="color:#c30">      }
 </span><span style="color:#c30">    }
@@ -460,27 +465,28 @@ sudo bash -c <span style="color:#c30">&#39;cat &gt; config.json&#39;</span> <spa
 </span><span style="color:#c30">      &#34;Address&#34;: &#34;208.67.222.222:53&#34;,
 </span><span style="color:#c30">      &#34;Protocol&#34;: &#34;udp&#34;,
 </span><span style="color:#c30">      &#34;SOCKS5Address&#34;: &#34;&#34;,
-</span><span style="color:#c30">      &#34;Timeout&#34;: 6,
+</span><span style="color:#c30">      &#34;Timeout&#34;: 60,
 </span><span style="color:#c30">      &#34;EDNSClientSubnet&#34;: {
-</span><span style="color:#c30">        &#34;Policy&#34;: &#34;enable&#34;,
-</span><span style="color:#c30">        &#34;ExternalIP&#34;: &#34;xxx.xxx.xxx.xxx&#34;,
+</span><span style="color:#c30">        &#34;Policy&#34;: &#34;disable&#34;,
+</span><span style="color:#c30">        &#34;ExternalIP&#34;: &#34;&#34;,
 </span><span style="color:#c30">        &#34;NoCookie&#34;: true
 </span><span style="color:#c30">      }
 </span><span style="color:#c30">    }
 </span><span style="color:#c30">  ],
 </span><span style="color:#c30">  &#34;OnlyPrimaryDNS&#34;: false,
 </span><span style="color:#c30">  &#34;IPv6UseAlternativeDNS&#34;: false,
-</span><span style="color:#c30">  &#34;WhenPrimaryDnsAnswerNoneUse&#34;: &#34;PrimaryDNS&#34;,
+</span><span style="color:#c30">  &#34;WhenPrimaryDnsAnswerNoneUse&#34;: &#34;AlternativeDNS&#34;,
 </span><span style="color:#c30">  &#34;IPNetworkFile&#34;: {
-</span><span style="color:#c30">     &#34;Primary&#34;: &#34;/etc/overture/china_ip_list.txt&#34;
-</span><span style="color:#c30">     },
+</span><span style="color:#c30">      &#34;Primary&#34;: &#34;/etc/overture/china_ip_list.txt&#34;
+</span><span style="color:#c30">   },
 </span><span style="color:#c30">  &#34;DomainFile&#34;: {
-</span><span style="color:#c30">  	  &#34;Primary&#34;: &#34;/etc/overture/china_domain.txt&#34;,
-</span><span style="color:#c30">     &#34;Alternative&#34;: &#34;/etc/overture/gfw_all_domain.txt&#34; 
-</span><span style="color:#c30">    },
-</span><span style="color:#c30">  &#34;HostsFile&#34;: &#34;/etc/overture/hosts_sample&#34;, 
-</span><span style="color:#c30">  &#34;MinimumTTL&#34;: 86400,
-</span><span style="color:#c30">  &#34;CacheSize&#34;: 604800,
+</span><span style="color:#c30">    &#34;Primary&#34;: &#34;/etc/overture/china_domain.txt&#34;,
+</span><span style="color:#c30">    &#34;Alternative&#34;: &#34;/etc/overture/gfw_all_domain.txt&#34;,
+</span><span style="color:#c30">    &#34;PrimaryMatcher&#34;:  &#34;suffix-tree&#34;,
+</span><span style="color:#c30">    &#34;AlternativeMatcher&#34;: &#34;final&#34;
+</span><span style="color:#c30">  },
+</span><span style="color:#c30">  &#34;MinimumTTL&#34;: 60,
+</span><span style="color:#c30">  &#34;CacheSize&#34; : 2000,
 </span><span style="color:#c30">  &#34;RejectQType&#34;: [255]
 </span><span style="color:#c30">}
 </span><span style="color:#c30">EOF</span>
@@ -516,7 +522,12 @@ sudo systemctl <span style="color:#366">enable</span> overture
 sudo systemctl restart overture
 
 
-</code></pre></div>
+</code></pre></div><h2 id="reference">Reference</h2>
+<hr>
+<ul>
+<li><a href="https://zhmin.github.io/2020/01/05/openwrt-v2ray/">overture-on-openwrt</a></li>
+</ul>
+
     </div>
 
     
