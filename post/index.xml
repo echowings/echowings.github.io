@@ -6,10 +6,19 @@
     <description>Recent content in Posts on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 04 Sep 2020 22:48:34 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2020 17:29:39 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Create Centos7 Template for Pve</title>
+      <link>https://blog.stevedong.com/post/proxmoxve/how-to-create-centos7-template-for-pve/</link>
+      <pubDate>Sat, 12 Sep 2020 17:29:39 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/proxmoxve/how-to-create-centos7-template-for-pve/</guid>
+      <description>HOw to create CentOS 7 template for PVE  VMID=9002 VM_NAME=CentOS-7-x86_64-GenericCloud VM_DOWNLOAD_URL=http://mirrors.ustc.edu.cn/centos-cloud/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz TEMPLATE_VM_NAME=$(echo $VM_NAME | sed &amp;#39;s/_/-/g&amp;#39;) STORAGE_PATH=local DEFAULT_PVE_PATH=/var/lib/bz/images #Change directory to `local` cd /var/lib/vz/images #Download centos 7 cloud images on proxmox ve wget $VM_DOWNLOAD_URL #unzip the file #xz -z (to zip file) #xz -k( to keep original file and valur `-0` to `-9` to set zip rate, default zip rate is -6 #xz -d (to unzip file) # xz -k (to keep zipped file not deleted) xz -d -k $VM_NAME.</description>
+    </item>
     
     <item>
       <title>How to Reset Vyos to Default Settings</title>
@@ -500,16 +509,6 @@ docker-compose up -d Active Script echo &amp;#34;To active office&amp;#34; cd &a
       
       <guid>https://blog.stevedong.com/post/docker-compose-to-build-prometheus/</guid>
       <description>Build Prometheus with docker-compose docker-compose up -d </description>
-    </item>
-    
-    <item>
-      <title>How to Enable Proxmoxve Nested Virtualization</title>
-      <link>https://blog.stevedong.com/post/how-to-enable-proxmoxve-nested-virtualization/</link>
-      <pubDate>Thu, 14 Feb 2019 11:44:28 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/how-to-enable-proxmoxve-nested-virtualization/</guid>
-      <description>How to enable Proxmox VE nested virtualization To enable nested virtualization on Proxmox VE, we need to stop all the vm and enable nested virtualization to linux kernel. then change vm settings
-Stop all the vm on proxmox VE  stop all virtual machines with shell command.  root@xa-sys-pve01:~# pvesh create /nodes/localhost/stopall Stopping VM 116 (timeout = 180 seconds) Stopping VM 115 (timeout = 180 seconds) Stopping CT 112 (timeout = 60 seconds) Stopping CT 111 (timeout = 60 seconds) Stopping CT 108 (timeout = 60 seconds) Stopping CT 106 (timeout = 60 seconds) Stopping VM 101 (timeout = 180 seconds) UPID:xa-sys-pve01:0036EA66:01992199:5CB98D6C:stopall::root@pam:  stop all the virtual machine with admin web.</description>
     </item>
     
   </channel>

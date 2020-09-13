@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My Blog - For Fun</title>
+  <title>How to Create Centos7 Template for Pve - My Blog - For Fun</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="A devops blog." />
+  <meta name="description" content="HOw to create CentOS 7 template for PVE  VMID=9002 VM_NAME=CentOS-7-x86_64-GenericCloud VM_DOWNLOAD_URL=http://mirrors.ustc.edu.cn/centos-cloud/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz TEMPLATE_VM_NAME=$(echo $VM_NAME | sed &amp;#39;s/_/-/g&amp;#39;) STORAGE_PATH=local DEFAULT_PVE_PATH=/var/lib/bz/images #Change directory to `local` cd /var/lib/vz/images #Download centos 7 cloud images on proxmox ve wget $VM_DOWNLOAD_URL #unzip the file #xz -z (to zip file) #xz -k( to keep original file and valur `-0` to `-9` to set zip rate, default zip rate is -6 #xz -d (to unzip file) # xz -k (to keep zipped file not deleted) xz -d -k $VM_NAME." />
+
   <meta name="keywords" content="proxmox ve, network, devops, sdn, system Administation" />
 
 
@@ -34,8 +35,8 @@
 <meta name="generator" content="Hugo 0.73.0" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/" />
-<link href="/index.xml" rel="alternate" type="application/rss+xml" title="My Blog - For Fun" />
+<link rel="canonical" href="https://blog.stevedong.com/post/proxmoxve/how-to-create-centos7-template-for-pve/" />
+
 
 
 
@@ -58,15 +59,23 @@
 
 
 
-<meta property="og:title" content="My Blog - For Fun" />
-<meta property="og:description" content="A devops blog." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2020-09-12T17:29:39+08:00" />
-<meta itemprop="name" content="My Blog - For Fun">
-<meta itemprop="description" content="A devops blog."><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="My Blog - For Fun"/>
-<meta name="twitter:description" content="A devops blog."/>
+<meta property="og:title" content="How to Create Centos7 Template for Pve" />
+<meta property="og:description" content="HOw to create CentOS 7 template for PVE  VMID=9002 VM_NAME=CentOS-7-x86_64-GenericCloud VM_DOWNLOAD_URL=http://mirrors.ustc.edu.cn/centos-cloud/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz TEMPLATE_VM_NAME=$(echo $VM_NAME | sed &#39;s/_/-/g&#39;) STORAGE_PATH=local DEFAULT_PVE_PATH=/var/lib/bz/images #Change directory to `local` cd /var/lib/vz/images #Download centos 7 cloud images on proxmox ve wget $VM_DOWNLOAD_URL #unzip the file #xz -z (to zip file) #xz -k( to keep original file and valur `-0` to `-9` to set zip rate, default zip rate is -6 #xz -d (to unzip file) # xz -k (to keep zipped file not deleted) xz -d -k $VM_NAME." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.stevedong.com/post/proxmoxve/how-to-create-centos7-template-for-pve/" />
+<meta property="article:published_time" content="2020-09-12T17:29:39+08:00" />
+<meta property="article:modified_time" content="2020-09-12T17:29:39+08:00" />
+<meta itemprop="name" content="How to Create Centos7 Template for Pve">
+<meta itemprop="description" content="HOw to create CentOS 7 template for PVE  VMID=9002 VM_NAME=CentOS-7-x86_64-GenericCloud VM_DOWNLOAD_URL=http://mirrors.ustc.edu.cn/centos-cloud/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz TEMPLATE_VM_NAME=$(echo $VM_NAME | sed &#39;s/_/-/g&#39;) STORAGE_PATH=local DEFAULT_PVE_PATH=/var/lib/bz/images #Change directory to `local` cd /var/lib/vz/images #Download centos 7 cloud images on proxmox ve wget $VM_DOWNLOAD_URL #unzip the file #xz -z (to zip file) #xz -k( to keep original file and valur `-0` to `-9` to set zip rate, default zip rate is -6 #xz -d (to unzip file) # xz -k (to keep zipped file not deleted) xz -d -k $VM_NAME.">
+<meta itemprop="datePublished" content="2020-09-12T17:29:39&#43;08:00" />
+<meta itemprop="dateModified" content="2020-09-12T17:29:39&#43;08:00" />
+<meta itemprop="wordCount" content="169">
+
+
+
+<meta itemprop="keywords" content="centos,pve,linux," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How to Create Centos7 Template for Pve"/>
+<meta name="twitter:description" content="HOw to create CentOS 7 template for PVE  VMID=9002 VM_NAME=CentOS-7-x86_64-GenericCloud VM_DOWNLOAD_URL=http://mirrors.ustc.edu.cn/centos-cloud/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz TEMPLATE_VM_NAME=$(echo $VM_NAME | sed &#39;s/_/-/g&#39;) STORAGE_PATH=local DEFAULT_PVE_PATH=/var/lib/bz/images #Change directory to `local` cd /var/lib/vz/images #Download centos 7 cloud images on proxmox ve wget $VM_DOWNLOAD_URL #unzip the file #xz -z (to zip file) #xz -k( to keep original file and valur `-0` to `-9` to set zip rate, default zip rate is -6 #xz -d (to unzip file) # xz -k (to keep zipped file not deleted) xz -d -k $VM_NAME."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -244,7 +253,7 @@ if (!doNotTrack) {
   <ul id="menu" class="menu">
     
     
-        <li class="menu-item active">
+        <li class="menu-item">
         
           
           
@@ -336,137 +345,194 @@ if (!doNotTrack) {
     <main id="main" class="main bg-llight">
       <div class="content-wrapper">
         <div id="content" class="content container">
-          
-<section id="posts" class="posts">
-  
-  
+          <article class="post bg-white">
     
-  
-  
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
+    <header class="post-header">
+      <h1 class="post-title">How to Create Centos7 Template for Pve</h1>
       
-      <a class="post-link" href="/post/untitled/"></a>
-    </h1>
+      <div class="post-meta">
+        <time datetime="2020-09-12" class="post-time">
+          2020-09-12
+        </time>
+        <div class="post-category">
+            <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
+            
+          </div>
+        
+
+        
+        
+
+        
+        
+      </div>
+    </header>
+
     
-    <div class="post-meta">
-      <time datetime="0001-01-01" class="post-time">
-        0001-01-01
-      </time>
-      
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
     
-    <div class="post-summary">
-      #英特尔软件和数据中心版固态硬盘的安全漏洞 Intel SSD DC S4500. Credit: Intel 自从2018年被发现熔断(Meltdown)和幽灵(Spectre)漏洞以来，英特尔一
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <h1 id="how-to-create-centos-7-template-for-pve">HOw to create CentOS 7 template for PVE</h1>
+<hr>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+<span style="color:#033">VMID</span><span style="color:#555">=</span><span style="color:#f60">9002</span>
+<span style="color:#033">VM_NAME</span><span style="color:#555">=</span>CentOS-7-x86_64-GenericCloud
+<span style="color:#033">VM_DOWNLOAD_URL</span><span style="color:#555">=</span>http://mirrors.ustc.edu.cn/centos-cloud/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz
+<span style="color:#033">TEMPLATE_VM_NAME</span><span style="color:#555">=</span><span style="color:#069;font-weight:bold">$(</span><span style="color:#366">echo</span> <span style="color:#033">$VM_NAME</span> | sed <span style="color:#c30">&#39;s/_/-/g&#39;</span><span style="color:#069;font-weight:bold">)</span>
+<span style="color:#033">STORAGE_PATH</span><span style="color:#555">=</span><span style="color:#366">local</span>
+<span style="color:#033">DEFAULT_PVE_PATH</span><span style="color:#555">=</span>/var/lib/bz/images
+<span style="color:#09f;font-style:italic">#Change directory to `local`</span>
+<span style="color:#366">cd</span> /var/lib/vz/images
+
+<span style="color:#09f;font-style:italic">#Download centos 7 cloud images on proxmox ve</span>
+wget <span style="color:#033">$VM_DOWNLOAD_URL</span>
+
+<span style="color:#09f;font-style:italic">#unzip the file</span>
+<span style="color:#09f;font-style:italic">#xz -z (to zip file)</span>
+<span style="color:#09f;font-style:italic">#xz -k( to keep original file and valur `-0` to `-9` to set zip rate, default zip rate is -6</span>
+<span style="color:#09f;font-style:italic">#xz -d (to unzip file)</span>
+<span style="color:#09f;font-style:italic"># xz -k (to keep zipped file not deleted)</span>
+xz -d -k <span style="color:#033">$VM_NAME</span>.qcow2.xz
+
+qm create <span style="color:#033">$VMID</span> --memory <span style="color:#f60">4096</span> --net0 virtio,bridge<span style="color:#555">=</span>vmbr0 --name <span style="color:#033">$TEMPLATE_VM_NAME</span>
+
+qm importdisk <span style="color:#033">$VM_ID</span> <span style="color:#033">$VM_NAME</span>.qcow2 <span style="color:#033">$STORAGE_PATH</span>
+
+qm <span style="color:#366">set</span> <span style="color:#033">$VM_ID</span> --scsihw virtio-scsi-pci --scsi0 <span style="color:#033">$STORAGE_PATH</span>:<span style="color:#033">$VM_ID</span>/vm-<span style="color:#033">$VM_ID</span>-disk-0.raw
+
+qm <span style="color:#366">set</span> <span style="color:#033">$VM_ID</span> --scsihw virtio-scsi-pci --scsi0 <span style="color:#033">$STORAGE_PATH</span>:<span style="color:#033">$VM_ID</span>/vm-<span style="color:#033">$VM_ID</span>-disk-0.raw
+
+qm <span style="color:#366">set</span> <span style="color:#033">$VM_ID</span> --boot c --bootdisk scsi0
+qm <span style="color:#366">set</span> <span style="color:#033">$VM_ID</span> --serial0 socket --vga serial0
+qm <span style="color:#366">set</span> <span style="color:#033">$VM_ID</span> --agent <span style="color:#f60">1</span>
+
+qemu-img convert -f raw <span style="color:#033">$DEFAULT_PVE_PATH</span>/<span style="color:#033">$VM_ID</span>/vm-<span style="color:#033">$VM_ID</span>-disk-0.raw -O qcow2 <span style="color:#033">$DEFAULT_PVE_PATH</span>/<span style="color:#033">$VM_ID</span>/vm-<span style="color:#033">$VM_ID</span>-disk-0.qcow2
+
+
+sed -i <span style="color:#c30">&#39;s/.raw/.qcow2/g&#39;</span> /etc/pve/qemu-server/<span style="color:#033">$VM_ID</span>.conf
+qm start <span style="color:#033">$VM_ID</span>
+qm terminal <span style="color:#033">$VM_ID</span>
+
+
+
+<span style="color:#09f;font-style:italic">#Change yum source form offical to mirrors.ustc.edu.cn</span>
+sudo sed -e <span style="color:#c30">&#39;s|^mirrorlist=|#mirrorlist=|g&#39;</span> <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>         -e <span style="color:#c30">&#39;s|^#baseurl=http://mirror.centos.org/centos|baseurl=https://mirrors.ustc.edu.cn/centos|g&#39;</span> <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>         -i.bak <span style="color:#c30;font-weight:bold">\
+</span><span style="color:#c30;font-weight:bold"></span>         /etc/yum.repos.d/CentOS-Base.repo
+         
+yum makecache
+yum update
+yum upgrade
+
+
+
+
+
+
+</code></pre></div>
     </div>
-    <div class="read-more">
-      <a href="/post/untitled/" class="read-more-link">Read more</a>
-    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Steve Dong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+      2020-09-12
+      
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    
     
   </div>
-</article>
+</div>
 
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/how-to-deploy-docker-in-debian-10/">How to Deploy Docker in Debian 10</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="0001-01-01" class="post-time">
-        0001-01-01
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://blog.stevedong.com/tags/centos/">centos</a>
+          <a href="https://blog.stevedong.com/tags/pve/">pve</a>
+          <a href="https://blog.stevedong.com/tags/linux/">linux</a>
           
         </div>
+
       
-      
-      
-    </div>
-  </header>
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/vyos/how-to-reset-vyos-to-default-settings/">
+            <span class="next-text nav-default">How to Reset Vyos to Default Settings</span>
+            <span class="prev-text nav-mobile">Next</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
   
-  <div class="post-content">
+  
+
+  
+  
+
+  
+
+  
+  
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "echowings/blogcomment"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+  
+
+  
+
+  
+
+  
+
     
-    <div class="post-summary">
-      How to deploy docker in debian 10 cat &lt;&lt; EOF &gt; /etc/docker/aemon.json\n{\n &#34;registry-mirrors&#34;: [&#34;https://docker.mirrors.ustc.edu.cn/&#34;]\n}\n\nEOF systemctl retart docker systemctl restart docker Install docker-compose sudo curl -L &#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)&#34; -o /usr/local/bin/docker-compose sudo chmod +x /usr/local/bin/docker-compose sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose 
-    </div>
-    <div class="read-more">
-      <a href="/post/how-to-deploy-docker-in-debian-10/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
 
   
-</section>
-
-
-
-
-
-
-  
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-  <nav class="pagination">
-    <ul>
-      
-      <li >
-        <a href="/">1</a>
-      </li>
-      
-      <li >
-        <a href="/page/2/">2</a>
-      </li>
-      
-      <li >
-        <a href="/page/3/">3</a>
-      </li>
-      
-      <li >
-        <a href="/page/4/">4</a>
-      </li>
-      
-      <li >
-        <a href="/page/5/">5</a>
-      </li>
-      
-      <li  class="active" >
-        <a href="/page/6/">6</a>
-      </li>
-      
-    </ul>
-  </nav>
-
-  
-  
-
-
-
-
 
         </div>
       </div>
@@ -571,6 +637,13 @@ if (!doNotTrack) {
 
 
 
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 
 

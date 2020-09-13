@@ -6,7 +6,7 @@
     <description>Recent content on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 04 Sep 2020 22:48:34 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2020 17:29:39 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -25,6 +25,75 @@
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
+      
+    </item>
+    
+    <item>
+      <title>How to Create Centos7 Template for Pve</title>
+      <link>https://blog.stevedong.com/post/proxmoxve/how-to-create-centos7-template-for-pve/</link>
+      <pubDate>Sat, 12 Sep 2020 17:29:39 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/proxmoxve/how-to-create-centos7-template-for-pve/</guid>
+      
+        <description>&lt;h1 id=&#34;how-to-create-centos-7-template-for-pve&#34;&gt;HOw to create CentOS 7 template for PVE&lt;/h1&gt;
+&lt;hr&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;
+&lt;span style=&#34;color:#033&#34;&gt;VMID&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;9002&lt;/span&gt;
+&lt;span style=&#34;color:#033&#34;&gt;VM_NAME&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;CentOS-7-x86_64-GenericCloud
+&lt;span style=&#34;color:#033&#34;&gt;VM_DOWNLOAD_URL&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;http://mirrors.ustc.edu.cn/centos-cloud/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz
+&lt;span style=&#34;color:#033&#34;&gt;TEMPLATE_VM_NAME&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;$(&lt;/span&gt;&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;$VM_NAME&lt;/span&gt; | sed &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/_/-/g&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#033&#34;&gt;STORAGE_PATH&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#366&#34;&gt;local&lt;/span&gt;
+&lt;span style=&#34;color:#033&#34;&gt;DEFAULT_PVE_PATH&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;/var/lib/bz/images
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Change directory to `local`&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /var/lib/vz/images
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Download centos 7 cloud images on proxmox ve&lt;/span&gt;
+wget &lt;span style=&#34;color:#033&#34;&gt;$VM_DOWNLOAD_URL&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#unzip the file&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#xz -z (to zip file)&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#xz -k( to keep original file and valur `-0` to `-9` to set zip rate, default zip rate is -6&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#xz -d (to unzip file)&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# xz -k (to keep zipped file not deleted)&lt;/span&gt;
+xz -d -k &lt;span style=&#34;color:#033&#34;&gt;$VM_NAME&lt;/span&gt;.qcow2.xz
+
+qm create &lt;span style=&#34;color:#033&#34;&gt;$VMID&lt;/span&gt; --memory &lt;span style=&#34;color:#f60&#34;&gt;4096&lt;/span&gt; --net0 virtio,bridge&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;vmbr0 --name &lt;span style=&#34;color:#033&#34;&gt;$TEMPLATE_VM_NAME&lt;/span&gt;
+
+qm importdisk &lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;$VM_NAME&lt;/span&gt;.qcow2 &lt;span style=&#34;color:#033&#34;&gt;$STORAGE_PATH&lt;/span&gt;
+
+qm &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt; --scsihw virtio-scsi-pci --scsi0 &lt;span style=&#34;color:#033&#34;&gt;$STORAGE_PATH&lt;/span&gt;:&lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;/vm-&lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;-disk-0.raw
+
+qm &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt; --scsihw virtio-scsi-pci --scsi0 &lt;span style=&#34;color:#033&#34;&gt;$STORAGE_PATH&lt;/span&gt;:&lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;/vm-&lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;-disk-0.raw
+
+qm &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt; --boot c --bootdisk scsi0
+qm &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt; --serial0 socket --vga serial0
+qm &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt; --agent &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;
+
+qemu-img convert -f raw &lt;span style=&#34;color:#033&#34;&gt;$DEFAULT_PVE_PATH&lt;/span&gt;/&lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;/vm-&lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;-disk-0.raw -O qcow2 &lt;span style=&#34;color:#033&#34;&gt;$DEFAULT_PVE_PATH&lt;/span&gt;/&lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;/vm-&lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;-disk-0.qcow2
+
+
+sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/.raw/.qcow2/g&amp;#39;&lt;/span&gt; /etc/pve/qemu-server/&lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;.conf
+qm start &lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;
+qm terminal &lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;
+
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Change yum source form offical to mirrors.ustc.edu.cn&lt;/span&gt;
+sudo sed -e &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s|^mirrorlist=|#mirrorlist=|g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;         -e &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s|^#baseurl=http://mirror.centos.org/centos|baseurl=https://mirrors.ustc.edu.cn/centos|g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;         -i.bak &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;         /etc/yum.repos.d/CentOS-Base.repo
+         
+yum makecache
+yum update
+yum upgrade
+
+
+
+
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     
@@ -4816,20 +4885,6 @@ vi /etc/password
 &lt;li&gt;&lt;a href=&#34;https://jin-yang.github.io/post/linux-container-lxc-introduce.html&#34;&gt;LXC 简介&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-      
-    </item>
-    
-    <item>
-      <title>Docker Compose to Build Prometheus</title>
-      <link>https://blog.stevedong.com/post/docker-compose-to-build-prometheus/</link>
-      <pubDate>Thu, 21 Feb 2019 11:02:41 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/docker-compose-to-build-prometheus/</guid>
-      
-        <description>&lt;h1 id=&#34;build-prometheus-with-docker-compose&#34;&gt;Build Prometheus with docker-compose&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker-compose up -d
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     
