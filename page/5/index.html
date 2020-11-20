@@ -62,7 +62,7 @@
 <meta property="og:description" content="A devops blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2020-09-20T14:56:48+08:00" />
+<meta property="og:updated_time" content="2020-11-20T17:47:43+08:00" />
 <meta itemprop="name" content="My Blog - For Fun">
 <meta itemprop="description" content="A devops blog.">
 <meta name="twitter:card" content="summary"/>
@@ -344,6 +344,41 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/install-powerdns-and-mysql-on-freebsd12/">Install PowerDNS and Mysql on Freebsd12</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2018-12-18" class="post-time">
+        2018-12-18
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/freebsd/"> freebsd </a>
+          <a href="https://blog.stevedong.com/categories/powerdns/"> powerdns </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&#34;YES&#34; service mysql-server restart Database and User Configuration $ mysql mysql&gt; create database powerdns charset = utf8; mysql&gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&gt; FLUSH PRIVILEGES; #For security, we also give the main admin password $ mysqladmin -u root password &#34;PASSWORD_OF_ROOT&#34; Install powerdns pkg install powerdns Reference  How to manage MySQL databases and users from the command line PowerDNS, PowerAdmin with Mysql in Freebsd 10.
+    </div>
+    <div class="read-more">
+      <a href="/post/install-powerdns-and-mysql-on-freebsd12/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -826,37 +861,6 @@ After a few days research, I found that .net core website is support RHEL 6.X,bu
     </div>
     <div class="read-more">
       <a href="/post/first-blog/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/gcvpn-settings/"></a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="0001-01-01" class="post-time">
-        0001-01-01
-      </time>
-      
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      GCVPN Settings    Location Remote Gateway Key Exchange version Description Phase1 Authentication method Negotiation mode My identifier Peer identifier Pre-shared key Encryption algorithm Hash algorithm DH key group Lifetime     Shanghai 114.31.87.50              
-    </div>
-    <div class="read-more">
-      <a href="/post/gcvpn-settings/" class="read-more-link">Read more</a>
     </div>
     
   </div>
