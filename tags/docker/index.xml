@@ -6,11 +6,7 @@
     <description>Recent content in docker on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 21 May 2020 22:49:44 +0800</lastBuildDate>
-    
-	<atom:link href="https://blog.stevedong.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 21 May 2020 22:49:44 +0800</lastBuildDate><atom:link href="https://blog.stevedong.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to Deploy Jitsi Server With Docker Compose</title>
       <link>https://blog.stevedong.com/post/jitsi/how-to-deploy-jitsi-server-with-docker-compose/</link>
@@ -35,7 +31,7 @@
       <pubDate>Tue, 10 Dec 2019 22:39:01 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/devops/how-to-install-jenkins-with-docker-compose/</guid>
-      <description>How to install Jenkins with docker compose Create Dockerfile With office jenkins docker images.change the jenkins mirrors and change alpine linux soure list to aliyun #DockerfileFROMjenkins/jenkins:alpineUSERrootENVJENKINS_MIRRORhttps://mirrors.tuna.tsinghua.edu.cnENVJENKINS_UC_DOWNLOAD=&amp;#34;https://mirrors.tuna.tsinghua.edu.cn/jenkins/&amp;#34;RUNsed-i&amp;#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&amp;#39;/etc/apk/repositories\&amp;amp;&amp;amp;apkupdate\&amp;amp;&amp;amp;apkadddockernodejsnodejs-npmyarnCreate docker-compose.yaml # docker-compose.yamlversion:&amp;#34;2.4&amp;#34;services:jenkins:build:./#image: jenkins/jenkins:alpinecontainer_name:jenkinsports:- &amp;#34;80:8080&amp;#34;- &amp;#34;50000:50000&amp;#34;environment:#- JAVA_OPTS=-Xmx1500m -Duser.timezone=GMT+8- JAVA_OPTS=-Duser.timezone=GMT+8- JENKINS_UC_DOWNLOAD=https://mirrors.tuna.tsinghua.edu.cn/jenkins/volumes:- ./data/jenkins:/var/jenkins_home- /var/run/docker.sock:/var/run/docker.sock- /root/.ssh/:/root/.ssh- /etc/localtime:/etc/localtime:ro# cpus: 3.5# mem_limit: 1800muser:rootrestart:alwaysInstall Jenkins with Check initial Admin Password by run command as show below cat data/jenkins/secrets/initialAdminPassword Reference Jenkins for Docker 跳过插件安装及插</description>
+      <description>How to install Jenkins with docker compose Create Dockerfile With office jenkins docker images.change the jenkins mirrors and change alpine linux soure list to aliyun #DockerfileFROM jenkins/jenkins:alpineUSER rootENV JENKINS_MIRROR https://mirrors.tuna.tsinghua.edu.cnENV JENKINS_UC_DOWNLOAD=&amp;#34;https://mirrors.tuna.tsinghua.edu.cn/jenkins/&amp;#34;RUN sed -i &amp;#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&amp;#39; /etc/apk/repositories \&amp;amp;&amp;amp;apk update \&amp;amp;&amp;amp;apk add docker nodejs nodejs-npm yarnCreate docker-compose.yaml # docker-compose.yamlversion:&amp;#34;2.4&amp;#34;services:jenkins:build:./#image: jenkins/jenkins:alpinecontainer_name:jenkinsports:- &amp;#34;80:8080&amp;#34;- &amp;#34;50000:50000&amp;#34;environment:#- JAVA_OPTS=-Xmx1500m -Duser.timezone=GMT+8- JAVA_OPTS=-Duser.timezone=GMT+8- JENKINS_UC_DOWNLOAD=https://mirrors.tuna.tsinghua.edu.cn/jenkins/volumes:- ./data/jenkins:/var/jenkins_home- /var/run/docker.sock:/var/run/docker.sock- /root/.ssh/:/root/.ssh- /etc/localtime:/etc/localtime:ro# cpus: 3.5# mem_limit: 1800muser:rootrestart:alwaysInstall Jenkins with Check initial Admin Password by run command</description>
     </item>
     
     <item>
@@ -44,7 +40,7 @@
       <pubDate>Wed, 27 Nov 2019 12:24:57 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/devops/how-to-install-gitlab-with-docker-compose/</guid>
-      <description>How to Install gitlab with docer-compose version:&amp;#34;3.5&amp;#34;services:gitlab:image:gitlab/gitlab-ce:latestcontainer_name:gitlabrestart:alwayshostname:&amp;#39;xa-gitlab&amp;#39;environment:GITLAB_OMNIBUS_CONFIG:| external_url &amp;#39;http://xa-gitlab&amp;#39;gitlab_rails[&amp;#39;backup_keep_time&amp;#39;]=604800gitlab_rails[&amp;#39;time_zone&amp;#39;]=&amp;#39;Asia/Shanghai&amp;#39;gitlab_rails[&amp;#39;gitlab_shell_ssh_port&amp;#39;]=1022#gitlab_rails[&amp;#39;ldap_enabled&amp;#39;] = true#gitlab_rails[&amp;#39;ldap_servers&amp;#39;] = YAML.load &amp;lt;&amp;lt;-EOS#main:# label: &amp;#39;LDAP&amp;#39;# host: &amp;#39;192.168.1.1&amp;#39;# port: 389# uid: &amp;#39;uid&amp;#39;# bind_dn: &amp;#39;CN=admin,DC=lotbrick,DC=com&amp;#39;# password: &amp;#39;admin&amp;#39;# user_filter: &amp;#39;objectclass=person&amp;#39;# base: &amp;#39;ou=People,dc=xxxxx,dc=com&amp;#39;# active_directory: false# method: &amp;#39;plain&amp;#39;# attributes:# username: [&amp;#34;cn&amp;#34;]# email: [&amp;#39;email&amp;#39;]# name: &amp;#39;displayName&amp;#39;# first_name: &amp;#39;givenName&amp;#39;# last_name: &amp;#39;sn&amp;#39;#EOSports:- &amp;#39;80:80&amp;#39;- &amp;#39;443:443&amp;#39;- &amp;#39;1022:22&amp;#39;volumes:- ./gitlab/config:/etc/gitlab- ./gitlab/logs:/var/log/gitlab- ./gitlab/data:/var/opt/gitlab# - &amp;#34;/etc/localtime:/etc/localtime:ro&amp;#34;Reference Docker+GitLab+LDA</description>
+      <description>How to Install gitlab with docer-compose version:&amp;#34;3.5&amp;#34;services:gitlab:image:gitlab/gitlab-ce:latestcontainer_name:gitlabrestart:alwayshostname:&amp;#39;xa-gitlab&amp;#39;environment:GITLAB_OMNIBUS_CONFIG:|external_url &amp;#39;http://xa-gitlab&amp;#39; gitlab_rails[&amp;#39;backup_keep_time&amp;#39;] = 604800 gitlab_rails[&amp;#39;time_zone&amp;#39;] = &amp;#39;Asia/Shanghai&amp;#39; gitlab_rails[&amp;#39;gitlab_shell_ssh_port&amp;#39;] = 1022 #gitlab_rails[&amp;#39;ldap_enabled&amp;#39;] = true #gitlab_rails[&amp;#39;ldap_servers&amp;#39;] = YAML.load &amp;lt;&amp;lt;-EOS #main: # label: &amp;#39;LDAP&amp;#39; # host: &amp;#39;192.168.1.1&amp;#39; # port: 389 # uid: &amp;#39;uid&amp;#39; # bind_dn: &amp;#39;CN=admin,DC=lotbrick,DC=com&amp;#39; # password: &amp;#39;admin&amp;#39; # user_filter: &amp;#39;objectclass=person&amp;#39; # base: &amp;#39;ou=People,dc=xxxxx,dc=com&amp;#39; # active_directory: false # method: &amp;#39;plain&amp;#39; # attributes: # username: [&amp;#34;cn&amp;#34;] # email: [&amp;#39;email&amp;#39;] # name: &amp;#39;displayName&amp;#39; # first_name: &amp;#39;givenName&amp;#39; #</description>
     </item>
     
     <item>
@@ -127,7 +123,7 @@ docker-compose up -d Active Script echo &amp;#34;To active office&amp;#34; cd &a
       <guid>https://blog.stevedong.com/post/dockerfile-for-overture/</guid>
       <description>How to Wirte docker file for overture Hence we need to custom overture docker image as we desire, I write this dockerfile.
 How to map VOLUME and copy file from docker images to directory of docker host. When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.
-if [ &amp;ldquo;ls -A /config&amp;rdquo; = &amp;quot;&amp;rdquo; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.</description>
+if [ &amp;ldquo;ls -A /config&amp;rdquo; = &amp;quot;&amp;quot; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.</description>
     </item>
     
     <item>

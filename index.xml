@@ -6,7 +6,7 @@
     <description>Recent content on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 12 Sep 2020 17:29:39 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2020 17:47:43 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -29,6 +29,101 @@
     </item>
     
     <item>
+      <title>How to Install Squirrel on Macos</title>
+      <link>https://blog.stevedong.com/post/macos/how-to-install-squirrel-on-macos/</link>
+      <pubDate>Fri, 20 Nov 2020 17:47:43 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/macos/how-to-install-squirrel-on-macos/</guid>
+      
+        <description>&lt;h1 id=&#34;how-to-install-squirrel-as-your-chinese-input-method-for-your-macos&#34;&gt;How to install squirrel as your chinese input method for your macos&lt;/h1&gt;
+&lt;h2 id=&#34;1-install-squirrel&#34;&gt;1. Install squirrel&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;brew cask install squirrel
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2-logout-and-login-or--reboot-your-mac&#34;&gt;2. Logout and login or  Reboot your mac&lt;/h2&gt;
+&lt;p&gt;Reboot your mac&lt;/p&gt;
+&lt;h2 id=&#34;3-copy-squirrel-configuration-for-you&#34;&gt;3. Copy squirrel configuration for you&lt;/h2&gt;
+&lt;p&gt;configuration file: &lt;a href=&#34;https://github.com/wongdean/rime-settings#&#34;&gt;https://github.com/wongdean/rime-settings#&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mkdir rime &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; rime
+git clone https://github.com/wongdean/rime-settings.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;4-configure-squrriel&#34;&gt;4. configure squrriel&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Press &lt;code&gt;control&lt;/code&gt; + &lt;code&gt;space&lt;/code&gt; key to enable &lt;code&gt;squirrel&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Then click &lt;code&gt;settings...&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Copy all contents in &lt;code&gt;rime-settings&lt;/code&gt; expect &lt;code&gt;fonts&lt;/code&gt; folder to configure folder.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>How to Create Debian10 With Cloudinit for Pve</title>
+      <link>https://blog.stevedong.com/post/proxmoxve/how-to-create-debian10-with-cloudinit-for-pve/</link>
+      <pubDate>Sun, 20 Sep 2020 14:56:48 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/proxmoxve/how-to-create-debian10-with-cloudinit-for-pve/</guid>
+      
+        <description>&lt;h1 id=&#34;how-to-create-debian10--template-with-cloudinit-for-pve&#34;&gt;How to Create Debian10  template With Cloudinit for PVE&lt;/h1&gt;
+&lt;hr&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;
+&lt;span style=&#34;color:#033&#34;&gt;VMID&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;9002&lt;/span&gt;
+&lt;span style=&#34;color:#033&#34;&gt;VM_NAME&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;CentOS-7-x86_64-GenericCloud
+&lt;span style=&#34;color:#033&#34;&gt;VM_DOWNLOAD_URL&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;http://mirrors.ustc.edu.cn/centos-cloud/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz
+&lt;span style=&#34;color:#033&#34;&gt;TEMPLATE_VM_NAME&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;$(&lt;/span&gt;&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;$VM_NAME&lt;/span&gt; | sed &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/_/-/g&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#033&#34;&gt;STORAGE_PATH&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#366&#34;&gt;local&lt;/span&gt;
+&lt;span style=&#34;color:#033&#34;&gt;DEFAULT_PVE_PATH&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;/var/lib/vz/images
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Change directory to `local`&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /var/lib/vz/images
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Download centos 7 cloud images on proxmox ve&lt;/span&gt;
+wget &lt;span style=&#34;color:#033&#34;&gt;$VM_DOWNLOAD_URL&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#unzip the file&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#xz -z (to zip file)&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#xz -k( to keep original file and valur `-0` to `-9` to set zip rate, default zip rate is -6&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#xz -d (to unzip file)&lt;/span&gt;
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# xz -k (to keep zipped file not deleted)&lt;/span&gt;
+xz -d -k &lt;span style=&#34;color:#033&#34;&gt;$VM_NAME&lt;/span&gt;.qcow2.xz
+
+qm create &lt;span style=&#34;color:#033&#34;&gt;$VMID&lt;/span&gt; --memory &lt;span style=&#34;color:#f60&#34;&gt;4096&lt;/span&gt; --net0 virtio,bridge&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;vmbr0 --name &lt;span style=&#34;color:#033&#34;&gt;$TEMPLATE_VM_NAME&lt;/span&gt;
+
+qm importdisk &lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;$VM_NAME&lt;/span&gt;.qcow2 &lt;span style=&#34;color:#033&#34;&gt;$STORAGE_PATH&lt;/span&gt;
+
+qm &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt; --scsihw virtio-scsi-pci --scsi0 &lt;span style=&#34;color:#033&#34;&gt;$STORAGE_PATH&lt;/span&gt;:&lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;/vm-&lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;-disk-0.raw
+
+qm &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt; --scsihw virtio-scsi-pci --scsi0 &lt;span style=&#34;color:#033&#34;&gt;$STORAGE_PATH&lt;/span&gt;:&lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;/vm-&lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;-disk-0.raw
+
+qm &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt; --boot c --bootdisk scsi0
+qm &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt; --serial0 socket --vga serial0
+qm &lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt; --agent &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;
+
+qemu-img convert -f raw &lt;span style=&#34;color:#033&#34;&gt;$DEFAULT_PVE_PATH&lt;/span&gt;/&lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;/vm-&lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;-disk-0.raw -O qcow2 &lt;span style=&#34;color:#033&#34;&gt;$DEFAULT_PVE_PATH&lt;/span&gt;/&lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;/vm-&lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;-disk-0.qcow2
+
+
+sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/.raw/.qcow2/g&amp;#39;&lt;/span&gt; /etc/pve/qemu-server/&lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;.conf
+qm start &lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;
+qm terminal &lt;span style=&#34;color:#033&#34;&gt;$VM_ID&lt;/span&gt;
+
+
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Change yum source form offical to mirrors.ustc.edu.cn&lt;/span&gt;
+sudo sed -e &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s|^mirrorlist=|#mirrorlist=|g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;         -e &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s|^#baseurl=http://mirror.centos.org/centos|baseurl=https://mirrors.ustc.edu.cn/centos|g&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;         -i.bak &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;         /etc/yum.repos.d/CentOS-Base.repo
+         
+yum makecache
+yum update
+yum upgrade
+
+
+
+
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      
+    </item>
+    
+    <item>
       <title>How to Create Centos7 Template for Pve</title>
       <link>https://blog.stevedong.com/post/proxmoxve/how-to-create-centos7-template-for-pve/</link>
       <pubDate>Sat, 12 Sep 2020 17:29:39 +0800</pubDate>
@@ -43,7 +138,7 @@
 &lt;span style=&#34;color:#033&#34;&gt;VM_DOWNLOAD_URL&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;http://mirrors.ustc.edu.cn/centos-cloud/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz
 &lt;span style=&#34;color:#033&#34;&gt;TEMPLATE_VM_NAME&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;$(&lt;/span&gt;&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;$VM_NAME&lt;/span&gt; | sed &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/_/-/g&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;)&lt;/span&gt;
 &lt;span style=&#34;color:#033&#34;&gt;STORAGE_PATH&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#366&#34;&gt;local&lt;/span&gt;
-&lt;span style=&#34;color:#033&#34;&gt;DEFAULT_PVE_PATH&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;/var/lib/bz/images
+&lt;span style=&#34;color:#033&#34;&gt;DEFAULT_PVE_PATH&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;/var/lib/vz/images
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Change directory to `local`&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /var/lib/vz/images
 
@@ -427,9 +522,9 @@ mkdir -p ~/.jitsi-meet-cfg/&lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Public URL for the web service&lt;/span&gt;
 &lt;span style=&#34;color:#033&#34;&gt;PUBLIC_URL&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;https://meet.mydomain.com
 
-#
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#&lt;/span&gt;
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Let&amp;#39;s Encrypt configuration&lt;/span&gt;
-#
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#&lt;/span&gt;
 
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Enable Let&amp;#39;s Encrypt certificate generation&lt;/span&gt;
 &lt;span style=&#34;color:#033&#34;&gt;ENABLE_LETSENCRYPT&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;
@@ -511,7 +606,7 @@ cat mywebsite.com.ca-bundle &amp;gt;&amp;gt; cert.pem
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# clone pem&lt;/span&gt;
 cp cert.pem staging.pem
 
-#
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#&lt;/span&gt;
 openssl dhparam -dsaparam -out /etc/nginx/ssl/dhparam.pem &lt;span style=&#34;color:#f60&#34;&gt;4096&lt;/span&gt;
 tar -cxvf tar -jcvf mywebsite.com-v3.tar.bz2 *.pem
 
@@ -606,49 +701,49 @@ Run command in Terminal &lt;code&gt;csrutil enble&lt;/code&gt;.&lt;/li&gt;
 &lt;/thead&gt;
 &lt;/table&gt;
 &lt;h2 id=&#34;docker-composeyaml&#34;&gt;Docker-compose.yaml&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;version&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;2&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;services&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;version&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;2&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;services&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# MongoDB: https://hub.docker.com/_/mongo/&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;mongodb&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;mongo:&lt;span style=&#34;color:#f60&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;mongodb&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;mongo:3&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- ./data/mongo_data:/data/db&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- /etc/localtime:/etc/localtime:ro&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;elasticsearch&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;docker.elastic.co/elasticsearch/elasticsearch-oss:&lt;span style=&#34;color:#f60&#34;&gt;6.8.2&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;elasticsearch&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- ./data/es_data:/usr/share/elasticsearch/data&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- /etc/localtime:/etc/localtime:ro&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- http.host=&lt;span style=&#34;color:#f60&#34;&gt;0.0.0.0&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- http.host=0.0.0.0&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- transport.host=localhost&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- network.host=&lt;span style=&#34;color:#f60&#34;&gt;0.0.0.0&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- network.host=0.0.0.0&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;ulimits&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;memlock&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;soft&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;-&lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;hard&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;-&lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;mem_limit&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;1g&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;ulimits&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;memlock&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;soft&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;-&lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;hard&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;-&lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;mem_limit&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;1g&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Graylog: https://hub.docker.com/r/graylog/graylog/&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;graylog&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;graylog/graylog:&lt;span style=&#34;color:#f60&#34;&gt;3.1&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;graylog&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;graylog/graylog:3.1&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- ./data/graylog_journal:/usr/share/graylog/data/journal&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- /etc/localtime:/etc/localtime:ro&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# CHANGE ME (must be at least 16 characters)!&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- GRAYLOG_PASSWORD_SECRET=somepasswordpepper&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Password: admin&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:&lt;span style=&#34;color:#f60&#34;&gt;9000&lt;/span&gt;/&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;links&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;links&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- mongodb:mongo&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- elasticsearch&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;depends_on&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;depends_on&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- mongodb&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- elasticsearch&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Graylog web interface and REST API&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#f60&#34;&gt;9000&lt;/span&gt;:&lt;span style=&#34;color:#f60&#34;&gt;9000&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Syslog TCP&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
@@ -1062,39 +1157,39 @@ docker-compose up -d
 &lt;h2 id=&#34;create-dockerfile&#34;&gt;Create Dockerfile&lt;/h2&gt;
 &lt;p&gt;With office jenkins docker images.change the jenkins mirrors and change alpine linux soure list to aliyun&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Dockerfile&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;FROM&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;jenkins/jenkins:alpine&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;USER&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;root&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;ENV&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;JENKINS_MIRROR&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;https://mirrors.tuna.tsinghua.edu.cn&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;ENV&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;JENKINS_UC_DOWNLOAD=&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;https://mirrors.tuna.tsinghua.edu.cn/jenkins/&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;RUN&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;sed&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;-i&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;/etc/apk/repositories&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;\&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;	 &lt;/span&gt;&lt;span style=&#34;color:#099&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;apk&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;update&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;\&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#099&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;apk&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;add&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;docker&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;nodejs&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;nodejs-npm&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;yarn&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;FROM jenkins/jenkins:alpine&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;USER root&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;ENV JENKINS_MIRROR https://mirrors.tuna.tsinghua.edu.cn&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;ENV JENKINS_UC_DOWNLOAD=&amp;#34;https://mirrors.tuna.tsinghua.edu.cn/jenkins/&amp;#34;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;RUN sed -i &amp;#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&amp;#39; /etc/apk/repositories \&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;	 &lt;/span&gt;&lt;span style=&#34;color:#099&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;apk update \&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#099&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;apk add docker nodejs nodejs-npm yarn&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;create-docker-composeyaml&#34;&gt;Create docker-compose.yaml&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# docker-compose.yaml&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;version&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;2.4&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;services&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;jenkins&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;build&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;./&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;version&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;2.4&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;services&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;jenkins&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;build&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;./&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#image: jenkins/jenkins:alpine&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;container_name&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;jenkins&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;container_name&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;jenkins&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;80:8080&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;50000:50000&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#- JAVA_OPTS=-Xmx1500m -Duser.timezone=GMT+8&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- JAVA_OPTS=-Duser.timezone=GMT&lt;span style=&#34;color:#f60&#34;&gt;+8&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- JAVA_OPTS=-Duser.timezone=GMT+8&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- JENKINS_UC_DOWNLOAD=https://mirrors.tuna.tsinghua.edu.cn/jenkins/&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- ./data/jenkins:/var/jenkins_home&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- /var/run/docker.sock:/var/run/docker.sock&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- /root/.ssh/:/root/.ssh&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- /etc/localtime:/etc/localtime:ro&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#    cpus: 3.5&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#    mem_limit: 1800m&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;user&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;root&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;user&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;root&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;install-jenkins-with&#34;&gt;Install Jenkins with&lt;/h2&gt;
 &lt;p&gt;Check initial Admin Password by run command as show below&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;cat data/jenkins/secrets/initialAdminPassword
@@ -1114,44 +1209,44 @@ docker-compose up -d
       <guid>https://blog.stevedong.com/post/devops/how-to-install-gitlab-with-docker-compose/</guid>
       
         <description>&lt;h1 id=&#34;how-to-install-gitlab-with-docer-compose&#34;&gt;How to Install gitlab with docer-compose&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;version&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;3.5&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;services&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;gitlab&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;gitlab/gitlab-ce:latest&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;container_name&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;gitlab&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;hostname&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;xa-gitlab&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;       &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;GITLAB_OMNIBUS_CONFIG&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;|
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         external_url &amp;#39;http://xa-gitlab&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;gitlab_rails[&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;backup_keep_time&amp;#39;&lt;/span&gt;]&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;604800&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;gitlab_rails[&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;time_zone&amp;#39;&lt;/span&gt;]&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;Asia/Shanghai&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;gitlab_rails[&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;gitlab_shell_ssh_port&amp;#39;&lt;/span&gt;]&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;1022&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#gitlab_rails[&amp;#39;ldap_enabled&amp;#39;] = true&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#gitlab_rails[&amp;#39;ldap_servers&amp;#39;] = YAML.load &amp;lt;&amp;lt;-EOS&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#main:&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#  label: &amp;#39;LDAP&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#  host: &amp;#39;192.168.1.1&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#  port: 389&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#  uid: &amp;#39;uid&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#  bind_dn: &amp;#39;CN=admin,DC=lotbrick,DC=com&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#  password: &amp;#39;admin&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#  user_filter: &amp;#39;objectclass=person&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#  base: &amp;#39;ou=People,dc=xxxxx,dc=com&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#  active_directory: false&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#  method: &amp;#39;plain&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#  attributes:&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#    username: [&amp;#34;cn&amp;#34;]&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#    email: [&amp;#39;email&amp;#39;]&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#    name: &amp;#39;displayName&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#    first_name: &amp;#39;givenName&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#    last_name:  &amp;#39;sn&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#EOS&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;version&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;3.5&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;services&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;gitlab&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;gitlab/gitlab-ce:latest&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;container_name&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;gitlab&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;hostname&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;xa-gitlab&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;       &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;GITLAB_OMNIBUS_CONFIG&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;|&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         external_url &amp;#39;http://xa-gitlab&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         gitlab_rails[&amp;#39;backup_keep_time&amp;#39;] = 604800
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         gitlab_rails[&amp;#39;time_zone&amp;#39;] = &amp;#39;Asia/Shanghai&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         gitlab_rails[&amp;#39;gitlab_shell_ssh_port&amp;#39;] = 1022
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #gitlab_rails[&amp;#39;ldap_enabled&amp;#39;] = true
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #gitlab_rails[&amp;#39;ldap_servers&amp;#39;] = YAML.load &amp;lt;&amp;lt;-EOS
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #main:
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #  label: &amp;#39;LDAP&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #  host: &amp;#39;192.168.1.1&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #  port: 389
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #  uid: &amp;#39;uid&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #  bind_dn: &amp;#39;CN=admin,DC=lotbrick,DC=com&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #  password: &amp;#39;admin&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #  user_filter: &amp;#39;objectclass=person&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #  base: &amp;#39;ou=People,dc=xxxxx,dc=com&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #  active_directory: false
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #  method: &amp;#39;plain&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #  attributes:
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #    username: [&amp;#34;cn&amp;#34;]
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #    email: [&amp;#39;email&amp;#39;]
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #    name: &amp;#39;displayName&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #    first_name: &amp;#39;givenName&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #    last_name:  &amp;#39;sn&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;         #EOS&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;         
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;       &lt;/span&gt;- &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;80:80&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;       &lt;/span&gt;- &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;443:443&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;       &lt;/span&gt;- &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;1022:22&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;       &lt;/span&gt;- ./gitlab/config:/etc/gitlab&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;       &lt;/span&gt;- ./gitlab/logs:/var/log/gitlab&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;       &lt;/span&gt;- ./gitlab/data:/var/opt/gitlab&lt;span style=&#34;color:#bbb&#34;&gt;
@@ -1670,7 +1765,7 @@ vm.swappiness&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style
 sysctl -p
 
 
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# check&lt;/span&gt; 
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# check &lt;/span&gt;
  cat /proc/sys/vm/swappiness
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;Vacuum swap&lt;/li&gt;
@@ -1915,12 +2010,12 @@ save
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;customized dockerfile with option:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;environments&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;environments&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;   &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# To let bookstack export pdf with chinese language supported.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;   &lt;/span&gt;- WKHTMLTOPDF=/usr/bin/wkhtmltopdf&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;   &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# To let bookstack export pdf with chinese language supported.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;   &lt;/span&gt;- LANG=C.UTF&lt;span style=&#34;color:#f60&#34;&gt;-8&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;   &lt;/span&gt;- LANG=C.UTF-8&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;   &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# To let bookstack export pdf with chinese language supported.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;   &lt;/span&gt;- /usr/share/fonts/truetype:/usr/share/fonts/truetype&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;enable-active-directory-auth&#34;&gt;Enable Active Directory Auth&lt;/h3&gt;
@@ -1939,69 +2034,69 @@ save
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;
 &lt;p&gt;save follow content to &lt;code&gt;Docker-compose.yml&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;bookstack&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;linuxserver/bookstack&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;container_name&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;bookstack&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;bookstack&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;linuxserver/bookstack&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;container_name&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;bookstack&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- TZ=Asia/Shanghai&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- PUID=&lt;span style=&#34;color:#f60&#34;&gt;1000&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- PGID=&lt;span style=&#34;color:#f60&#34;&gt;1000&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- PUID=1000&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- PGID=1000&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- DB_HOST=bookstack_db&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- DB_USER=bookstack&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- DB_PASS=&amp;lt;changepassword&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;&amp;gt;
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;      - DB_DATABASE=bookstackapp&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- DB_PASS=&amp;lt;changepassword&amp;gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- DB_DATABASE=bookstackapp&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- APP_ENV=production&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- APP_DEBUG=&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- APP_DEBUG=false&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#- APP_LANG=zh_CN&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- APP_URL=http://mybookstack.mydomain.local&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# General auth&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Change to local auth with replace `ldap` with `standard`&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- AUTH_METHOD=ldap&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# LDAP Settings&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_SERVER=ldap://&amp;lt;Domain_controller_IP&amp;gt;:&lt;span style=&#34;color:#f60&#34;&gt;389&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_SERVER=ldap://&amp;lt;Domain_controller_IP&amp;gt;:389&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_BASE_DN=dc=mydomain,dc=local&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#- LDAP_DN=cn=stevedong,dc=mydomain,dc=local&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_DN=stevedong@mydomain.local&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_PASS=&amp;lt;password&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;of&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;AD&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;USER&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;&amp;gt;
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;      #use double $$ since we are using docker&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_USER_FILTER=(&lt;span style=&#34;color:#099&#34;&gt;&amp;amp;(sAMAccountName=$${user}))&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_VERSION=&lt;span style=&#34;color:#f60&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_PASS=&amp;lt;password of AD USER&amp;gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#use double $$ since we are using docker&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_USER_FILTER=(&amp;amp;(sAMAccountName=$${user}))&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_VERSION=3&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_EMAIL_ATTRIBUT=mail&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#- LDAP_EMAIL_ATTRIBUT=false&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_DISPLAY_NAME_ATTRIBUTE=cn&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#AD Group Sync&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_USER_TO_GROUPS=&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_GROUP_ATTRIBUTE=&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;memberof&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_REMOVE_FROM_GROUPS=&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_AUTO_CONFIRM_EMAIL=&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_TLS_INSECURE=&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_USER_TO_GROUPS=true&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_GROUP_ATTRIBUTE=&amp;#34;memberof&amp;#34;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_REMOVE_FROM_GROUPS=false&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_AUTO_CONFIRM_EMAIL=true&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LDAP_TLS_INSECURE=true&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# To let bookstack export pdf with chinese language supported.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- WKHTMLTOPDF=/usr/bin/wkhtmltopdf&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# To let bookstack export pdf with chinese language supported.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LANG=C.UTF&lt;span style=&#34;color:#f60&#34;&gt;-8&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- LANG=C.UTF-8&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- ./bookstack_config:/config&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#mapped docker server fonts to docker&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- /usr/share/fonts/truetype:/usr/share/fonts/truetype&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#f60&#34;&gt;80&lt;/span&gt;:&lt;span style=&#34;color:#f60&#34;&gt;80&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;unless-stopped&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;depends_on&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;unless-stopped&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;depends_on&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- bookstack_db&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;bookstack_db&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;linuxserver/mariadb&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;container_name&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;bookstack_db&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- PUID=&lt;span style=&#34;color:#f60&#34;&gt;1000&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- PGID=&lt;span style=&#34;color:#f60&#34;&gt;1000&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- MYSQL_ROOT_PASSWORD=&amp;lt;mysql&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;password&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;&amp;gt;
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;      - TZ=Asia/Shanghai&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;bookstack_db&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;linuxserver/mariadb&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;container_name&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;bookstack_db&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- PUID=1000&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- PGID=1000&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- MYSQL_ROOT_PASSWORD=&amp;lt;mysql password&amp;gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- TZ=Asia/Shanghai&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- MYSQL_DATABASE=bookstackapp&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- MYSQL_USER=bookstack&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- MYSQL_PASSWORD=&amp;lt;mysql&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;password&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;&amp;gt;
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-style:italic&#34;&gt;    volumes:&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- MYSQL_PASSWORD=&amp;lt;mysql password&amp;gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- ./db_config:/config&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;unless-stopped&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;unless-stopped&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;run-docker-compose&#34;&gt;Run Docker-compose&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;change value to fit your environment&lt;/li&gt;
@@ -2460,7 +2555,7 @@ vi /etc/pve/qemu-server/9000.conf
 &lt;li&gt;Change &amp;ldquo;User&amp;rdquo; to any username you wanted.&lt;/li&gt;
 &lt;li&gt;Change &amp;ldquo;Password&amp;rdquo; for the user.&lt;/li&gt;
 &lt;li&gt;SSH public key: you can upload your ssh publickey to the vm.&lt;/li&gt;
-&lt;li&gt;&amp;ldquo;Options&amp;quot;|&amp;quot;Qemu-Agent&amp;rdquo; | check on &amp;ldquo;Qemua Agent&amp;rdquo; and &amp;ldquo;Run guest-trim after clone disk&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Options&amp;rdquo;|&amp;ldquo;Qemu-Agent&amp;rdquo; | check on &amp;ldquo;Qemua Agent&amp;rdquo; and &amp;ldquo;Run guest-trim after clone disk&amp;rdquo;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;settings-after-booting&#34;&gt;Settings after booting.&lt;/h2&gt;
 &lt;p&gt;After booting and the cloudinit will running to setting the vm as you wanted.
@@ -2844,7 +2939,7 @@ curl -fsSLO --compressed https://raw.githubusercontent.com/felixonmars/dnsmasq-c
 curl -fsSLO --compressed https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/cdn-testlist.txt
 
 
-#
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#&lt;/span&gt;
 cat accelerated-domains.china.conf  cdn-testlist.txt google.china.conf apple.china.conf | sort -u &amp;gt;&amp;gt; china_domain.txt
 
 
@@ -2997,14 +3092,14 @@ sudo systemctl restart overture
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can fixed it with command like this.&lt;/p&gt;
 &lt;h3 id=&#34;solution&#34;&gt;Solution:&lt;/h3&gt;
 &lt;p&gt;List all of pve-kernel, Then remove pve-kernel except pve-kernel current your system running.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Check status of mounted filesytem&lt;/span&gt; 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Check status of mounted filesytem &lt;/span&gt;
 df -h
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Check lvm status&lt;/span&gt;
 lvs -a
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# List installed pve kernel&lt;/span&gt;
 dpkg -l | grep pve-kernel
 
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Check current running kernel&lt;/span&gt; 
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Check current running kernel &lt;/span&gt;
 uname -r
 
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Delete kernel old than current running kern&lt;/span&gt;
@@ -3100,7 +3195,7 @@ apt purge pve-kernel-4.13.16-2-pve
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# pve-container&lt;/span&gt;
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# pve-ha-manager&lt;/span&gt;
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#E: Sub-process /usr/bin/dpkg returned an error code (1)&lt;/span&gt;
-#
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#&lt;/span&gt;
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#$ dpkg -C&lt;/span&gt;
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#The following packages have been unpacked but not yet configured.&lt;/span&gt;
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#They must be configured using dpkg --configure or the configure&lt;/span&gt;
@@ -3420,9 +3515,9 @@ apt install zlib1g zlib1g-dev
       
       <guid>https://blog.stevedong.com/post/proxmox-ve-build-hyper-converged-infrastructure-with-ceph-on-pve/</guid>
       
-        <description>&lt;h1 id=&#34;build-hyper-converged-infrastructure-with-ceph-on-pve&#34;&gt;Build Hyper-Converged Infrastructure with ceph on PVE&amp;rdquo;&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;build-hyper-converged-infrastructure-with-ceph-on-pve&#34;&gt;Build Hyper-Converged Infrastructure with ceph on PVE&amp;quot;&lt;/h1&gt;
 &lt;p&gt;Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is  enterprise-ready. Today I will build a HCI with ceph on proxmox VE 5.x.&lt;/p&gt;
-&lt;p&gt;It will end nightmare that someone or montoring system tell you that your service was down, you need be a fire fighter to fixed as soon as possible under tremendous pressure form your boss. With proxmox ve , We can say &amp;lsquo;no more!&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;It will end nightmare that someone or montoring system tell you that your service was down, you need be a fire fighter to fixed as soon as possible under tremendous pressure form your boss. With proxmox ve , We can say &amp;lsquo;no more!&amp;quot;&lt;/p&gt;
 &lt;p&gt;If one server was down. and HA will handle this issue. HA will  take all of virtual machines that hosted on the server which was down, and boot them other nodes automatically.&lt;/p&gt;
 &lt;h2 id=&#34;perequest&#34;&gt;Perequest&lt;/h2&gt;
 &lt;h3 id=&#34;hardware&#34;&gt;Hardware&lt;/h3&gt;
@@ -3518,7 +3613,7 @@ pveceph init --network 192.168.0.0/24
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Create mon moniting service&lt;/span&gt;
 pveceph createmon
 
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Create OSD service&lt;/span&gt; 
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Create OSD service &lt;/span&gt;
 pveceph createdosd /dev/sdb
 
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Check ost status&lt;/span&gt;
@@ -4490,14 +4585,14 @@ docker update --restart&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;alwa
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;option-2-docker-compose&#34;&gt;Option 2: docker compose&lt;/h2&gt;
 &lt;p&gt;docker-compose.yml&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;version&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;3&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;services&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;frontend&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;luodaoyi/kms-server&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;container_name&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;mykms&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;version&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;3&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;services&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;frontend&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;luodaoyi/kms-server&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;container_name&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;mykms&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;            &lt;/span&gt;- &lt;span style=&#34;color:#f60&#34;&gt;1688&lt;/span&gt;:&lt;span style=&#34;color:#f60&#34;&gt;1688&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#309;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; 
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;docker-compose start the container&lt;/p&gt;
@@ -4552,339 +4647,6 @@ sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/ZSH_THEME=\&amp;#34;rob
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;switch-default-bash-to-zsh&#34;&gt;Switch default bash to zsh&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;chsh -s /bin/zsh
 &lt;/code&gt;&lt;/pre&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>How to Setup Vim</title>
-      <link>https://blog.stevedong.com/post/how-to-setup-vim/</link>
-      <pubDate>Tue, 09 Apr 2019 10:02:33 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/how-to-setup-vim/</guid>
-      
-        <description>&lt;h1 id=&#34;how-to-setup-vim&#34;&gt;How to setup vim&lt;/h1&gt;
-&lt;h2 id=&#34;install-vundle&#34;&gt;Install vundle&lt;/h2&gt;
-&lt;p&gt;vundle is a plugin manage tools for vim&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;edit-vim-configure-file&#34;&gt;Edit vim configure file&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat &amp;gt; ~/.vimrc &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;set nocompatible              &amp;#34; be iMproved, required
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;filetype off                  &amp;#34; required
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;syntax on
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; set the runtime path to include Vundle and initialize
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;set rtp+=~/.vim/bundle/Vundle.vim
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;call vundle#begin()
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; alternatively, pass a path where Vundle should install plugins
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;call vundle#begin(&amp;#39;~/some/path/here&amp;#39;)
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; let Vundle manage Vundle, required
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Plugin &amp;#39;VundleVim/Vundle.vim&amp;#39;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; The following are examples of different formats supported.
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; Keep Plugin commands between vundle#begin/end.
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; plugin on GitHub repo
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Plugin &amp;#39;tpope/vim-fugitive&amp;#39;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; plugin from http://vim-scripts.org/vim/scripts.html
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; Plugin &amp;#39;L9&amp;#39;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; Git plugin not hosted on GitHub
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Plugin &amp;#39;git://git.wincent.com/command-t.git&amp;#39;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; git repos on your local machine (i.e. when working on your own plugin)
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; Plugin &amp;#39;file:///home/gmarik/path/to/plugin&amp;#39;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; The sparkup vim script is in a subdirectory of this repo called vim.
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; Pass the path to set the runtimepath properly.
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Plugin &amp;#39;rstacruz/sparkup&amp;#39;, {&amp;#39;rtp&amp;#39;: &amp;#39;vim/&amp;#39;}
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; Install L9 and avoid a Naming conflict if you&amp;#39;ve already installed a
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; different version somewhere else.
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Plugin &amp;#39;ascenator/L9&amp;#39;, {&amp;#39;name&amp;#39;: &amp;#39;newL9&amp;#39;}
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Plugin &amp;#39;morhetz/gruvbox&amp;#39;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Plugin &amp;#39;vim-airline/vim-airline&amp;#39;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Plugin &amp;#39;vim-airline/vim-airline-themes&amp;#39;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; All of your Plugins must be added before the following line
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;call vundle#end()            &amp;#34; required
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;filetype plugin indent on    &amp;#34; required
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; To ignore plugin indent changes, instead use:
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;filetype plugin on
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; Brief help
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; :PluginList       - lists configured plugins
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; :PluginSearch foo - searches for foo; append `!` to refresh local cache
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; see :h vundle for more details or wiki for FAQ
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; Put your non-Plugin stuff after this line
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;install-plugin&#34;&gt;Install Plugin&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;vim
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Enter &lt;code&gt;:PluginInstall&lt;/code&gt; then wait for the installation process finished.
-then run the commands:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;cat &amp;gt;&amp;gt; ~/.vimrc &amp;lt;&amp;lt;EOF&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&lt;/span&gt;colorscheme gruvbox&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&lt;/span&gt;set background=&lt;span style=&#34;color:#366&#34;&gt;dark&lt;/span&gt;    &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;&amp;#34; Setting dark mode&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;let&lt;/span&gt; g:gruvbox_contrast_dark=&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;hard&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;let&lt;/span&gt; g:airline_theme=&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;simple&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&lt;/span&gt;EOF&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;let-vim-support-nginx-syntax-highlight&#34;&gt;Let vim support nginx syntax highlight&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mkdir -p ~/.vim/syntax/
-wget -O ~/.vim/syntax/nginx.vim http://www.vim.org/scripts/download_script.php?src_id&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;14376&lt;/span&gt;
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# /usr/local/etc/nginx/vhosts/* change it as you wish&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;au BufRead,BufNewFile /usr/local/etc/nginx/vhosts/* set ft=nginx&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; ~/.vim/filetype.vim
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;let-vim-remember-last-opened-position&#34;&gt;Let vim remember last opened position&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat &amp;gt;&amp;gt; ~/.vimrc &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt; EOF
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; Uncomment the following to have Vim jump to the last position when                                                       
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34; reopening a file
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;if has(&amp;#34;autocmd&amp;#34;)
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  au BufReadPost * if line(&amp;#34;&amp;#39;\&amp;#34;&amp;#34;) &amp;gt; 0 &amp;amp;&amp;amp; line(&amp;#34;&amp;#39;\&amp;#34;&amp;#34;) &amp;lt;= line(&amp;#34;$&amp;#34;)
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    \| exe &amp;#34;normal! g&amp;#39;\&amp;#34;&amp;#34; | endif
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;endif
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;change-tab-to-4-space&#34;&gt;Change tab to 4 space&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat &amp;gt;&amp;gt; ~/.vimrc &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;set tabstop=4
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;set shiftwidth=4
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;set softtabstop=4
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;set expandtab
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://aleonchen.com/2017/02/06/vim/&#34;&gt;让Vim支持Nginx语法高亮 -Ubuntu&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/774560/in-vim-how-do-i-get-a-file-to-open-at-the-same-line-number-i-closed-it-at-last&#34;&gt;In vim, how do I get a file to open at the same line number I closed it at last time?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/2054627/how-do-i-change-tab-size-in-vim&#34;&gt;How do I change tab size in Vim?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>How to Enable Docker in Lxc</title>
-      <link>https://blog.stevedong.com/post/how-to-enable-docker-in-lxc/</link>
-      <pubDate>Sat, 23 Mar 2019 12:08:34 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/how-to-enable-docker-in-lxc/</guid>
-      
-        <description>&lt;h1 id=&#34;how-to-install-docker-ce-in-lxc-container-in-pve&#34;&gt;How to install docker-ce in lxc container in pve&lt;/h1&gt;
-&lt;p&gt;At now, Proxmox is base debian and it can be install  docker directly. To install docker in host without proxmox support. It will be lost HA function.&lt;/p&gt;
-&lt;p&gt;Deploy a vm then install docker-ce in the vm, it works. but take a lot resource than directly install docker in proxmox.&lt;/p&gt;
-&lt;p&gt;Is there a way to take less performance ,at the same time we cant easly mange it with proxmox ?The answer is run docker in lxc.&lt;/p&gt;
-&lt;h2 id=&#34;download-lxc-images&#34;&gt;Download lxc images&lt;/h2&gt;
-&lt;p&gt;First thing first, Download Ubuntu 18.04.1 LXC images:&lt;/p&gt;
-&lt;h3 id=&#34;option-1-download-lxc-images-from-gui&#34;&gt;Option 1: Download LXC images from GUI&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Login your PVE;&lt;/li&gt;
-&lt;li&gt;Follow  the path to click the gui to redirect to the right  lxc download page. &lt;code&gt;&amp;quot;Datacenter&amp;quot; | &amp;quot;$PVE_HOST&amp;quot; | &amp;quot;Local(PVE Storage)&amp;quot; | &amp;quot;Content&amp;quot; | &amp;quot;Templates&amp;quot;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;select &amp;ldquo;ubuntu-18.04-standard&amp;rdquo;, then click download. wating for it finishd download the lxc image.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;Virtual Environment 5.3-9
-Search
-Storage &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;local&amp;#39;&lt;/span&gt; on node &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;xa-sys-pve02&amp;#39;&lt;/span&gt;
-Search:
-Server View
-Logs
-&lt;span style=&#34;color:#555&#34;&gt;()&lt;/span&gt;
-starting template download from: http://download.proxmox.com/images/system/ubuntu-18.04-standard_18.04.1-1_amd64.tar.gz
-target file: /var/lib/vz/template/cache/ubuntu-18.04-standard_18.04.1-1_amd64.tar.gz
---2019-04-08 13:44:03--  http://download.proxmox.com/images/system/ubuntu-18.04-standard_18.04.1-1_amd64.tar.gz
-Resolving download.proxmox.com &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;download.proxmox.com&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;... 94.136.30.185, 2a01:7e0:0:424::249
-Connecting to download.proxmox.com &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;download.proxmox.com&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;|94.136.30.185|:80... connected.
-HTTP request sent, awaiting response... &lt;span style=&#34;color:#f60&#34;&gt;200&lt;/span&gt; OK
-Length: &lt;span style=&#34;color:#f60&#34;&gt;213430501&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;204M&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;application/octet-stream&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
-Saving to: &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;/var/lib/vz/template/cache/ubuntu-18.04-standard_18.04.1-1_amd64.tar.gz.tmp.31383&amp;#39;&lt;/span&gt;
-
-     0K ........ ........ ........ ........ ........ ........  1% 99.8K 34m17s
-  3072K ........ ........ ........ ........ ........ ........  2%  220K 24m34s
-  6144K ........ ........ ........ ........ ........ ........  4%  214K 21m18s
-     ...
-     
-193536K ........ ........ ........ ........ ........ ........ 94%  180K 53s
-196608K ........ ........ ........ ........ ........ ........ 95%  410K 39s
-199680K ........ ........ ........ ........ ........ ........ 97%  206K 25s
-202752K ........ ........ ........ ........ ........ ........ 98%  311K 11s
-205824K ........ ........ ........ ........ ........         100%  &lt;span style=&#34;color:#033&#34;&gt;338K&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;15m15s
-
-2019-04-08 13:59:21 &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;228&lt;/span&gt; KB/s&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt; - &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;/var/lib/vz/template/cache/ubuntu-18.04-standard_18.04.1-1_amd64.tar.gz.tmp.31383&amp;#39;&lt;/span&gt; saved &lt;span style=&#34;color:#555&#34;&gt;[&lt;/span&gt;213430501/213430501&lt;span style=&#34;color:#555&#34;&gt;]&lt;/span&gt;
-
-download finished
-TASK OK
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;option-2-download-lxc-with-shell&#34;&gt;Option 2: Download LXC with shell&lt;/h3&gt;
-&lt;p&gt;####Fix Perl LC_ALL ERROR&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;LANGUAGE&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;en_US.UTF-8
-&lt;span style=&#34;color:#366&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;LANG&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;en_US.UTF-8
-&lt;span style=&#34;color:#366&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;LC_ALL&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;en_US.UTF-8
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#locale-gen en_US.UTF-8&lt;/span&gt;
-cat &amp;gt;&amp;gt; /etc/environment &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;LC_ALL=en_US.UTF-8
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;LANG=en_US.UTF-8
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;####list linux container&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;pveam  available --section system
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;system          alpine-3.7-default_20180913_amd64.tar.xz
-system          alpine-3.8-default_20180913_amd64.tar.xz
-system          alpine-3.9-default_20190224_amd64.tar.xz
-system          archlinux-base_20190124-1_amd64.tar.gz
-system          centos-6-default_20161207_amd64.tar.xz
-system          centos-7-default_20171212_amd64.tar.xz
-system          debian-8.0-standard_8.11-1_amd64.tar.gz
-system          debian-9.0-standard_9.7-1_amd64.tar.gz
-system          fedora-28-default_20180907_amd64.tar.xz
-system          fedora-29-default_20181126_amd64.tar.xz
-system          gentoo-current-default_20180906_amd64.tar.xz
-system          opensuse-15.0-default_20180907_amd64.tar.xz
-system          opensuse-42.3-default_20171214_amd64.tar.xz
-system          ubuntu-14.04-standard_14.04.5-1_amd64.tar.gz
-system          ubuntu-16.04-standard_16.04.5-1_amd64.tar.gz
-system          ubuntu-18.04-standard_18.04.1-1_amd64.tar.gz
-system          ubuntu-18.10-standard_18.10-2_amd64.tar.gz
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;####Download images&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;pveam download &lt;span style=&#34;color:#366&#34;&gt;local&lt;/span&gt; debian-9.0-standard_9.7-1_amd64.tar.gz
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;list-local-images&#34;&gt;List local images&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;pveam list &lt;span style=&#34;color:#366&#34;&gt;local&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;delete-local-image&#34;&gt;Delete local image&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;pveam remove local:vztmpl/debian-8.0-standard_8.0-1_amd64.tar.gz
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;option-3-create-a-lxc-from-image&#34;&gt;Option 3: create a lxc from image&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&amp;ldquo;Datacenter&amp;rdquo; | select &amp;ldquo;$PVENODE&amp;rdquo; then right click it. | &amp;ldquo;Create CT&amp;rdquo;.&lt;/li&gt;
-&lt;li&gt;Setup the LXC.
-&lt;ul&gt;
-&lt;li&gt;General: &amp;ldquo;Unprivileged container&amp;rdquo; checked.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;When create the LXC container,selecited the contiainer and doubule click &amp;ldquo;Options&amp;rdquo; | &amp;ldquo;Features&amp;rdquo;.then make keyctl/Nesting/Fuse option check on.&lt;/li&gt;
-&lt;li&gt;&amp;ldquo;Options&amp;rdquo; | &amp;ldquo;protecton&amp;rdquo; check on.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;option4-install-docker-in-lxc&#34;&gt;Option4: Install docker in LXC&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Boot the lxc container of ubuntu 18.04.&lt;/li&gt;
-&lt;li&gt;Change ubuntu 18.04 apt source to mirrors.utsc.edu.cn&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;cat &amp;gt; /etc/apt/sources.list &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;## Not recommended
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;# deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
-
-apt update  &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y upgrade
-apt install -y vim net-tools
-apt remove -y vim-tiny
-
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;Follow docker &lt;a href=&#34;https://docs.docker.com/install/linux/docker-ce/ubuntu/&#34;&gt;offical document&lt;/a&gt; to install docker-ce.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt-get install &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    apt-transport-https &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    ca-certificates &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    curl &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    gnupg-agent &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    software-properties-common  &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;    -y
-    
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-apt-key fingerprint 0EBFCD88
-sudo add-apt-repository &lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#c30;font-weight:bold&#34;&gt;&lt;/span&gt;   &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;   &lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;$(&lt;/span&gt;lsb_release -cs&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt; \
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;   stable&amp;#34;&lt;/span&gt;
-
-sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/download.docker.com/mirrors.ustc.edu.cn\/docker-ce/g&amp;#39;&lt;/span&gt; /etc/apt/sources.list
-
-apt-get update
-apt-get install -y docker-ce docker-ce-cli containerd.io
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;check docker&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;root@template-docker-in-lxc:/etc/apt# docker -v
-Docker version 18.09.4, build d14af54266
-docker run hello-world
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;run hello-world&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;root@template-docker-in-lxc:/etc/apt# docker run hello-world
-Unable to find image &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;hello-world:latest&amp;#39;&lt;/span&gt; locally
-latest: Pulling from library/hello-world
-1b930d010525: Pull &lt;span style=&#34;color:#366&#34;&gt;complete&lt;/span&gt;
-Digest: sha256:2557e3c07ed1e38f26e389462d03ed943586f744621577a99efb77324b0fe535
-Status: Downloaded newer image &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;for&lt;/span&gt; hello-world:latest
-
-Hello from Docker!
-This message shows that your installation appears to be working correctly.
-
-To generate this message, Docker took the following steps:
- 1. The Docker client contacted the Docker daemon.
- 2. The Docker daemon pulled the &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;hello-world&amp;#34;&lt;/span&gt; image from the Docker Hub.
-    &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;amd64&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
- 3. The Docker daemon created a new container from that image which runs the
-    executable that produces the output you are currently reading.
- 4. The Docker daemon streamed that output to the Docker client, which sent it
-    to your terminal.
-
-To try something more ambitious, you can run an Ubuntu container with:
- $ docker run -it ubuntu bash
-
-Share images, automate workflows, and more with a free Docker ID:
- https://hub.docker.com/
-
-For more examples and ideas, visit:
- https://docs.docker.com/get-started/
- 
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;install-docker-compose&#34;&gt;Install docker-compose&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;
-sudo curl -L &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;$(&lt;/span&gt;uname -s&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;$(&lt;/span&gt;uname -m&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt; -o /usr/local/bin/docker-compose
-
-sudo chmod +x /usr/local/bin/docker-compose
-
-sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;fixed-root-shell-path--cause-login-failed&#34;&gt;Fixed root shell path  cause login failed&lt;/h3&gt;
-&lt;p&gt;When I setup zsh and set wrong zsh.then I cannot login and ssh
-The error like this. I can not boot to single user mode.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;Welcome to Ubuntu 18.04.2 LTS &lt;span style=&#34;color:#555&#34;&gt;(&lt;/span&gt;GNU/Linux 4.15.18-12-pve x86_64&lt;span style=&#34;color:#555&#34;&gt;)&lt;/span&gt;
-
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/advantage
-
- * Ubuntu&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;&amp;#39;&lt;/span&gt;s Kubernetes 1.14 distributions can bypass Docker and use containerd
-   directly, see https://bit.ly/ubuntu-containerd or try it now with
-
-     snap install microk8s --classic
-
- * Canonical Livepatch is available &lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;for&lt;/span&gt; installation.
-   - Reduce system reboots and improve kernel security. Activate at:
-     https://ubuntu.com/livepatch
-Cannot execute zsh: No such file or directory
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt; I wounder that is a a command like docker command &lt;code&gt;docker exec -it $dockername /bin/sh&lt;/code&gt;
-Bingo! Here we go:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;lxc-attach -n &lt;span style=&#34;color:#033&#34;&gt;$lxc_pid&lt;/span&gt; /bin/sh
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#for example:&lt;/span&gt;
-lxc-attach -n &lt;span style=&#34;color:#f60&#34;&gt;103&lt;/span&gt; /bin/sh
-vi /etc/password
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#then change root shell path to /bin/sh&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After reboot and I can login again.&lt;/p&gt;
-&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/compose/install/&#34;&gt;Install Docker Compose&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://jin-yang.github.io/post/linux-container-lxc-introduce.html&#34;&gt;LXC 简介&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
       
     </item>
     

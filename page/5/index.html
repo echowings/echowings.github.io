@@ -31,7 +31,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.73.0" />
+<meta name="generator" content="Hugo 0.77.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/" />
@@ -52,7 +52,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css" integrity="sha256-&#43;j2UHR0ODdyYWAQif&#43;q//qVciYg&#43;sK804FMqeukTUVE=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,9 +62,10 @@
 <meta property="og:description" content="A devops blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2020-09-12T17:29:39+08:00" />
+<meta property="og:updated_time" content="2020-11-20T17:47:43+08:00" />
 <meta itemprop="name" content="My Blog - For Fun">
-<meta itemprop="description" content="A devops blog."><meta name="twitter:card" content="summary"/>
+<meta itemprop="description" content="A devops blog.">
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Blog - For Fun"/>
 <meta name="twitter:description" content="A devops blog."/>
 
@@ -343,6 +344,76 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/install-powerdns-and-mysql-on-freebsd12/">Install PowerDNS and Mysql on Freebsd12</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2018-12-18" class="post-time">
+        2018-12-18
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/freebsd/"> freebsd </a>
+          <a href="https://blog.stevedong.com/categories/powerdns/"> powerdns </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&#34;YES&#34; service mysql-server restart Database and User Configuration $ mysql mysql&gt; create database powerdns charset = utf8; mysql&gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&gt; FLUSH PRIVILEGES; #For security, we also give the main admin password $ mysqladmin -u root password &#34;PASSWORD_OF_ROOT&#34; Install powerdns pkg install powerdns Reference  How to manage MySQL databases and users from the command line PowerDNS, PowerAdmin with Mysql in Freebsd 10.
+    </div>
+    <div class="read-more">
+      <a href="/post/install-powerdns-and-mysql-on-freebsd12/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/deploy-overture-with-docker-and-freebsd/">Deploy Overture With Docker and Freebsd</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2018-12-18" class="post-time">
+        2018-12-18
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/docker/"> docker </a>
+          <a href="https://blog.stevedong.com/categories/networking/"> networking </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      Run overture on Docker and FreeBSD 12 ENV foo /overtureWORKDIR${foo}RUN apt-get update &amp;&amp; apt-get install -y ca-certificatesRUN printf &#34;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse&#34; &gt; /etc/apt/sources.
+    </div>
+    <div class="read-more">
+      <a href="/post/deploy-overture-with-docker-and-freebsd/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -790,68 +861,6 @@ After a few days research, I found that .net core website is support RHEL 6.X,bu
     </div>
     <div class="read-more">
       <a href="/post/first-blog/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/gcvpn-settings/"></a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="0001-01-01" class="post-time">
-        0001-01-01
-      </time>
-      
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      GCVPN Settings    Location Remote Gateway Key Exchange version Description Phase1 Authentication method Negotiation mode My identifier Peer identifier Pre-shared key Encryption algorithm Hash algorithm DH key group Lifetime     Shanghai 114.31.87.50              
-    </div>
-    <div class="read-more">
-      <a href="/post/gcvpn-settings/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/new/"></a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="0001-01-01" class="post-time">
-        0001-01-01
-      </time>
-      
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      No. Name IP Address ISP Info Location comments Status     01 GCXA 111.20.173.250 China Mobile Guangdong Xi&rsquo;an Shaanxi , China china mobile network Disuse   02 GCXA2 23.88.109.101 ipsec vpn on anlai vpn Enzu Dallas Texas , United States Disuse   03 GCXA3 117.28.243.175 CN2 network China Telecom Quanzhou Fujian , China Using   04 GCXA4 202.60.225.114 Telstra network Superhub Hong Kong , China Using   05 GCXA5 1.
-    </div>
-    <div class="read-more">
-      <a href="/post/new/" class="read-more-link">Read more</a>
     </div>
     
   </div>

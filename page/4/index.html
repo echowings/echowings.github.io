@@ -31,7 +31,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.73.0" />
+<meta name="generator" content="Hugo 0.77.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/" />
@@ -52,7 +52,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css" integrity="sha256-&#43;j2UHR0ODdyYWAQif&#43;q//qVciYg&#43;sK804FMqeukTUVE=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,9 +62,10 @@
 <meta property="og:description" content="A devops blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2020-09-12T17:29:39+08:00" />
+<meta property="og:updated_time" content="2020-11-20T17:47:43+08:00" />
 <meta itemprop="name" content="My Blog - For Fun">
-<meta itemprop="description" content="A devops blog."><meta name="twitter:card" content="summary"/>
+<meta itemprop="description" content="A devops blog.">
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Blog - For Fun"/>
 <meta name="twitter:description" content="A devops blog."/>
 
@@ -343,6 +344,77 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/how-to-fix-linux-perl-lc_all_error/">How to Fix Linux Perl LC_ALL_ERROR</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-04-16" class="post-time">
+        2019-04-16
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
+          <a href="https://blog.stevedong.com/categories/perl/"> perl </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to fix perl LC_ALL ERROR export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF 
+    </div>
+    <div class="read-more">
+      <a href="/post/how-to-fix-linux-perl-lc_all_error/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/proxmox-ve-how-to-upgrade-pve/">Proxmov Ve How to Upgrade Pve</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-04-16" class="post-time">
+        2019-04-16
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to ugrade Proxmove VE If your proxmox ve server in china ,Change utsc mirrors will speed up your proxmoxve upgrade speed.
+Here are the steps.
+1. Change debian,pve,ceph upgrade source, and upgrade your PVE #chang debian source list echo &#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free deb-src https://mirrors.
+    </div>
+    <div class="read-more">
+      <a href="/post/proxmox-ve-how-to-upgrade-pve/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -752,7 +824,7 @@ Recently days, I just learn proxmox and find pci-e pass through function. I thin
     <div class="post-summary">
       How to Wirte docker file for overture Hence we need to custom overture docker image as we desire, I write this dockerfile.
 How to map VOLUME and copy file from docker images to directory of docker host. When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.
-if [ &ldquo;ls -A /config&rdquo; = &quot;&rdquo; ]; then cp /srv/config.json /config/ &amp;&amp; cp /srv/*.
+if [ &ldquo;ls -A /config&rdquo; = &quot;&quot; ]; then cp /srv/config.json /config/ &amp;&amp; cp /srv/*.
     </div>
     <div class="read-more">
       <a href="/post/dockerfile-for-overture/" class="read-more-link">Read more</a>
@@ -790,76 +862,6 @@ if [ &ldquo;ls -A /config&rdquo; = &quot;&rdquo; ]; then cp /srv/config.json /co
     </div>
     <div class="read-more">
       <a href="/post/debian-or-ubuntu-chinese-language-support/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/install-powerdns-and-mysql-on-freebsd12/">Install PowerDNS and Mysql on Freebsd12</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2018-12-18" class="post-time">
-        2018-12-18
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/freebsd/"> freebsd </a>
-          <a href="https://blog.stevedong.com/categories/powerdns/"> powerdns </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&#34;YES&#34; service mysql-server restart Database and User Configuration $ mysql mysql&gt; create database powerdns charset = utf8; mysql&gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&gt; FLUSH PRIVILEGES; #For security, we also give the main admin password $ mysqladmin -u root password &#34;PASSWORD_OF_ROOT&#34; Install powerdns pkg install powerdns Reference  How to manage MySQL databases and users from the command line PowerDNS, PowerAdmin with Mysql in Freebsd 10.
-    </div>
-    <div class="read-more">
-      <a href="/post/install-powerdns-and-mysql-on-freebsd12/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/deploy-overture-with-docker-and-freebsd/">Deploy Overture With Docker and Freebsd</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2018-12-18" class="post-time">
-        2018-12-18
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/docker/"> docker </a>
-          <a href="https://blog.stevedong.com/categories/networking/"> networking </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Run overture on Docker and FreeBSD 12 ENV foo /overtureWORKDIR${foo}RUN apt-get update &amp;&amp; apt-get install -y ca-certificatesRUN printf &#34;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse&#34; &gt; /etc/apt/sources.
-    </div>
-    <div class="read-more">
-      <a href="/post/deploy-overture-with-docker-and-freebsd/" class="read-more-link">Read more</a>
     </div>
     
   </div>

@@ -31,7 +31,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.73.0" />
+<meta name="generator" content="Hugo 0.77.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/" />
@@ -52,7 +52,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css" integrity="sha256-&#43;j2UHR0ODdyYWAQif&#43;q//qVciYg&#43;sK804FMqeukTUVE=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,9 +62,10 @@
 <meta property="og:description" content="A devops blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2020-09-12T17:29:39+08:00" />
+<meta property="og:updated_time" content="2020-11-20T17:47:43+08:00" />
 <meta itemprop="name" content="My Blog - For Fun">
-<meta itemprop="description" content="A devops blog."><meta name="twitter:card" content="summary"/>
+<meta itemprop="description" content="A devops blog.">
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Blog - For Fun"/>
 <meta name="twitter:description" content="A devops blog."/>
 
@@ -348,6 +349,78 @@ if (!doNotTrack) {
   <header class="post-header">
     <h1 class="post-title">
       
+      <a class="post-link" href="/post/how-to-install-mellanox-connetcx-3-10gbps-network-adpater-in-promxo-ve-5.x-or-debian9.x/">How to Install driver of Mellanox ConnetcX 3 10Gbps Network Adpater in Promxox-VE 5.x or Debian 9</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-06-05" class="post-time">
+        2019-06-05
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+          <a href="https://blog.stevedong.com/categories/networking/"> networking </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to install dirver of mellanox ConnectX 3 10Gbps netowrk adapter in proxmox-ve 5.x or diban 9 To 
+Install dependencies software #dependencies apt-get -y install debhelper autotools-dev dkms zlib1g-dev python wget quilt python-libxml2 swig dpatch graphviz chrpath pve-headers Download driver for mellanox connectx 3 for debian 9.6 wget http://content.mellanox.com/ofed/MLNX_EN-4.6-1.0.1.1/mlnx-en-4.6-1.0.1.1-debian9.6-x86_64.tgz Install drivers tar -zxvf mlnx-en-4.6-1.0.1.1-debian9.6-x86_64.tgz cd mlnx-en-4.6-1.0.1.1-debian9.6-x86_64 chmod +x install ./install --skip-distro-check Swell  Mellanox EN Driver for Linux  How-to Guide Install Mellanox Driver Proxmox VE 5.
+    </div>
+    <div class="read-more">
+      <a href="/post/how-to-install-mellanox-connetcx-3-10gbps-network-adpater-in-promxo-ve-5.x-or-debian9.x/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/pve-how-to-extend-ubuntu-no-lvm-disk-in-proxmox-ve/">How to Extend Ubuntu No Lvm Disk in Proxmox VE</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-05-28" class="post-time">
+        2019-05-28
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to resize disk(no lvm) in proxmox ve Today I met a problem that I need to extend disk image for a ubuntu server which is a virtual machine hosted in proxmox ve.
+Resizing disk images First thing first, I need resize the disk images of the virtual machine.I can do it both in command line or via web management interface.
+ Extend disk size of virtual machine via shell command  # Extend disk size of virtual machine with vid 136 with 100G qm resize 136 virtio0 +100G  Extend disk size of virtual machien via web interface  &quot;Datacenter&quot; | &quot;$Node&quot; | $VIRTUAL_MACHINE | &quot;HARDWARE&quot; | &quot;HARD DISK(SCSI0)&quot; | &quot;RESIZE DISK&quot; | &quot;size Increment(GiB) | &quot;100&quot; | &quot;Resize disk&quot;
+    </div>
+    <div class="read-more">
+      <a href="/post/pve-how-to-extend-ubuntu-no-lvm-disk-in-proxmox-ve/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
       <a class="post-link" href="/post/how-to-install-overture-on-vyos1.2/">How to Install Overture on VYOS 1.2.1 release</a>
     </h1>
     
@@ -576,7 +649,7 @@ yum install -y etcd kubernetes Start service in order systemctl start etcd syste
   <div class="post-content">
     
     <div class="post-summary">
-      Build Hyper-Converged Infrastructure with ceph on PVE&rdquo; Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is enterprise-ready. Today I will build a HCI with ceph on proxmox VE 5.x.
+      Build Hyper-Converged Infrastructure with ceph on PVE&quot; Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is enterprise-ready. Today I will build a HCI with ceph on proxmox VE 5.x.
 It will end nightmare that someone or montoring system tell you that your service was down, you need be a fire fighter to fixed as soon as possible under tremendous pressure form your boss. With proxmox ve , We can say &lsquo;no more!
     </div>
     <div class="read-more">
@@ -796,77 +869,6 @@ Install librenms with docker-compose mkdir -p librenms-docker-compose cd ./libre
     </div>
     <div class="read-more">
       <a href="/post/librenms-deploy-librenms-with-docker-container/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/how-to-fix-linux-perl-lc_all_error/">How to Fix Linux Perl LC_ALL_ERROR</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-04-16" class="post-time">
-        2019-04-16
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
-          <a href="https://blog.stevedong.com/categories/perl/"> perl </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to fix perl LC_ALL ERROR export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF 
-    </div>
-    <div class="read-more">
-      <a href="/post/how-to-fix-linux-perl-lc_all_error/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/proxmox-ve-how-to-upgrade-pve/">Proxmov Ve How to Upgrade Pve</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-04-16" class="post-time">
-        2019-04-16
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to ugrade Proxmove VE If your proxmox ve server in china ,Change utsc mirrors will speed up your proxmoxve upgrade speed.
-Here are the steps.
-1. Change debian,pve,ceph upgrade source, and upgrade your PVE #chang debian source list echo &#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free deb-src https://mirrors.
-    </div>
-    <div class="read-more">
-      <a href="/post/proxmox-ve-how-to-upgrade-pve/" class="read-more-link">Read more</a>
     </div>
     
   </div>

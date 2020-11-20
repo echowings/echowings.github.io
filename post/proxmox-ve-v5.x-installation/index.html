@@ -33,7 +33,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.73.0" />
+<meta name="generator" content="Hugo 0.77.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/proxmox-ve-v5.x-installation/" />
@@ -54,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css" integrity="sha256-&#43;j2UHR0ODdyYWAQif&#43;q//qVciYg&#43;sK804FMqeukTUVE=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
 
 
 
@@ -70,13 +70,14 @@
 <meta itemprop="name" content="Proxmoxve VE V5.x Installation">
 <meta itemprop="description" content="Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
  Boot the proxmox installer USB Select Debug Mode Press “CTRL&#43;D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  manual solution:  cd /usr/share/javascript/proxmox-widget-toolkit cp proxmoxlib.">
-<meta itemprop="datePublished" content="2018-11-19T23:38:39&#43;08:00" />
-<meta itemprop="dateModified" content="2018-11-19T23:38:39&#43;08:00" />
+<meta itemprop="datePublished" content="2018-11-19T23:38:39+08:00" />
+<meta itemprop="dateModified" content="2018-11-19T23:38:39+08:00" />
 <meta itemprop="wordCount" content="232">
 
 
 
-<meta itemprop="keywords" content="PVE," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="PVE," />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Proxmoxve VE V5.x Installation"/>
 <meta name="twitter:description" content="Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
  Boot the proxmox installer USB Select Debug Mode Press “CTRL&#43;D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  manual solution:  cd /usr/share/javascript/proxmox-widget-toolkit cp proxmoxlib."/>
@@ -417,7 +418,7 @@ if (!doNotTrack) {
 cp proxmoxlib.js proxmoxlib.js.bak
 nano proxmoxlib.js
 
-<span style="color:#09f;font-style:italic"># change</span> 
+<span style="color:#09f;font-style:italic"># change </span>
 <span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span>data.status !<span style="color:#555">==</span> <span style="color:#c30">&#39;Active&#39;</span><span style="color:#555">)</span> <span style="color:#555">{</span>
 
 <span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span><span style="color:#366">false</span><span style="color:#555">)</span> <span style="color:#555">{</span>
@@ -453,7 +454,7 @@ update-grub
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># Delete Enterprise subscription.</span>
 rm -rf /etc/apt/sources.list.d/pve-enterprise.list
 
-<span style="color:#09f;font-style:italic"># Delete proxmox ve offical ceph source.</span> 
+<span style="color:#09f;font-style:italic"># Delete proxmox ve offical ceph source. </span>
 rm -rf /etc/apt/sources.list.d/ceph.list
 
 

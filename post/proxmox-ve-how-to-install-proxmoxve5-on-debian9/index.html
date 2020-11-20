@@ -33,7 +33,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.73.0" />
+<meta name="generator" content="Hugo 0.77.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/proxmox-ve-how-to-install-proxmoxve5-on-debian9/" />
@@ -54,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css" integrity="sha256-&#43;j2UHR0ODdyYWAQif&#43;q//qVciYg&#43;sK804FMqeukTUVE=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
 
 
 
@@ -70,13 +70,14 @@
 <meta itemprop="name" content="How to install ProxmoxVE 5.x on Debian 9">
 <meta itemprop="description" content="How to Install Proxmox VE 5.x on Debian 9 Chang IP ADDRESS vi /etc/network/interfaces
 # This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *.*.*.* gateway *.">
-<meta itemprop="datePublished" content="2018-12-01T00:02:28&#43;08:00" />
-<meta itemprop="dateModified" content="2018-12-26T01:52:23&#43;08:00" />
+<meta itemprop="datePublished" content="2018-12-01T00:02:28+08:00" />
+<meta itemprop="dateModified" content="2018-12-26T01:52:23+08:00" />
 <meta itemprop="wordCount" content="611">
 
 
 
-<meta itemprop="keywords" content="PVE,debian," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="PVE,debian," />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to install ProxmoxVE 5.x on Debian 9"/>
 <meta name="twitter:description" content="How to Install Proxmox VE 5.x on Debian 9 Chang IP ADDRESS vi /etc/network/interfaces
 # This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.*.*.* netmask *.*.*.* gateway *."/>
@@ -487,7 +488,7 @@ update-grub
 cp proxmoxlib.js proxmoxlib.js.bak
 nano proxmoxlib.js
 
-<span style="color:#09f;font-style:italic"># change</span> 
+<span style="color:#09f;font-style:italic"># change </span>
 <span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span>data.status !<span style="color:#555">==</span> <span style="color:#c30">&#39;Active&#39;</span><span style="color:#555">)</span> <span style="color:#555">{</span>
 
 <span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span><span style="color:#366">false</span><span style="color:#555">)</span> <span style="color:#555">{</span>
@@ -498,7 +499,7 @@ systemctl restart pveproxy.service
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># Delete Enterprise subscription.</span>
 rm -rf /etc/apt/sources.list.d/pve-enterprise.list
 
-<span style="color:#09f;font-style:italic"># Delete proxmox ve offical ceph source.</span> 
+<span style="color:#09f;font-style:italic"># Delete proxmox ve offical ceph source. </span>
 rm -rf /etc/apt/sources.list.d/ceph.list
 
 
@@ -515,7 +516,7 @@ rm -rf /etc/apt/sources.list.d/ceph.list
 cp proxmoxlib.js proxmoxlib.js.bak
 nano proxmoxlib.js
 
-<span style="color:#09f;font-style:italic"># change</span> 
+<span style="color:#09f;font-style:italic"># change </span>
 <span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span>data.status !<span style="color:#555">==</span> <span style="color:#c30">&#39;Active&#39;</span><span style="color:#555">)</span> <span style="color:#555">{</span>
 
 <span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span><span style="color:#366">false</span><span style="color:#555">)</span> <span style="color:#555">{</span>

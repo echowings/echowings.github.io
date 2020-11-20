@@ -33,7 +33,7 @@ Preparation  Install docker and docker-compose on debian 10 Information for book
 
 
 
-<meta name="generator" content="Hugo 0.73.0" />
+<meta name="generator" content="Hugo 0.77.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/how-to-deploy-bookstack-with-docker-compose/" />
@@ -54,7 +54,7 @@ Preparation  Install docker and docker-compose on debian 10 Information for book
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css" integrity="sha256-&#43;j2UHR0ODdyYWAQif&#43;q//qVciYg&#43;sK804FMqeukTUVE=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
 
 
 
@@ -70,13 +70,14 @@ Preparation  Install docker and docker-compose on debian 10 Information for book
 <meta itemprop="name" content="How to Deploy Bookstack With Docker Compose">
 <meta itemprop="description" content="How to Deploy Bookstack with Docker Compose Bookstack is a good opensource solution for enterprie document management with light footprinting. It support auth like ldap,active directory,google,azure,aws,slack etc. and it can export document as pdf file.
 Preparation  Install docker and docker-compose on debian 10 Information for bookstack installation.     Type Value     Hostname mybookstack   Domainame mydomain.local   AD Auth User stevedong   Domain Controller IP &lt;domain contoller IP&gt;   Time Zone Asia/Shanghai    How to fix export chinese pdf document with error  Install chinese fonts on docker server host  apt install fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy customized dockerfile with option:  environments:# To let bookstack export pdf with chinese language supported.">
-<meta itemprop="datePublished" content="2019-07-30T16:22:52&#43;08:00" />
-<meta itemprop="dateModified" content="2019-07-30T16:22:52&#43;08:00" />
-<meta itemprop="wordCount" content="370">
+<meta itemprop="datePublished" content="2019-07-30T16:22:52+08:00" />
+<meta itemprop="dateModified" content="2019-07-30T16:22:52+08:00" />
+<meta itemprop="wordCount" content="371">
 
 
 
-<meta itemprop="keywords" content="bookstack,document,docker," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="bookstack,document,docker," />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Deploy Bookstack With Docker Compose"/>
 <meta name="twitter:description" content="How to Deploy Bookstack with Docker Compose Bookstack is a good opensource solution for enterprie document management with light footprinting. It support auth like ldap,active directory,google,azure,aws,slack etc. and it can export document as pdf file.
 Preparation  Install docker and docker-compose on debian 10 Information for bookstack installation.     Type Value     Hostname mybookstack   Domainame mydomain.local   AD Auth User stevedong   Domain Controller IP &lt;domain contoller IP&gt;   Time Zone Asia/Shanghai    How to fix export chinese pdf document with error  Install chinese fonts on docker server host  apt install fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy customized dockerfile with option:  environments:# To let bookstack export pdf with chinese language supported."/>
@@ -444,12 +445,12 @@ if (!doNotTrack) {
 </code></pre></div><ol start="2">
 <li>customized dockerfile with option:</li>
 </ol>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#069;font-weight:bold">environments</span>:<span style="color:#bbb">
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#309;font-weight:bold">environments</span>:<span style="color:#bbb">
 </span><span style="color:#bbb">   </span><span style="color:#09f;font-style:italic"># To let bookstack export pdf with chinese language supported.</span><span style="color:#bbb">
 </span><span style="color:#bbb">   </span>- WKHTMLTOPDF=/usr/bin/wkhtmltopdf<span style="color:#bbb">
 </span><span style="color:#bbb">   </span><span style="color:#09f;font-style:italic"># To let bookstack export pdf with chinese language supported.</span><span style="color:#bbb">
-</span><span style="color:#bbb">   </span>- LANG=C.UTF<span style="color:#f60">-8</span><span style="color:#bbb">
-</span><span style="color:#bbb"></span><span style="color:#069;font-weight:bold">volumes</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">   </span>- LANG=C.UTF-8<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#309;font-weight:bold">volumes</span>:<span style="color:#bbb">
 </span><span style="color:#bbb">   </span><span style="color:#09f;font-style:italic"># To let bookstack export pdf with chinese language supported.</span><span style="color:#bbb">
 </span><span style="color:#bbb">   </span>- /usr/share/fonts/truetype:/usr/share/fonts/truetype<span style="color:#bbb">
 </span></code></pre></div><h3 id="enable-active-directory-auth">Enable Active Directory Auth</h3>
@@ -468,69 +469,69 @@ if (!doNotTrack) {
 
 </code></pre></div><h2 id="heading"></h2>
 <p>save follow content to <code>Docker-compose.yml</code></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#069;font-weight:bold">bookstack</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">image</span>:<span style="color:#bbb"> </span>linuxserver/bookstack<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">container_name</span>:<span style="color:#bbb"> </span>bookstack<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">environment</span>:<span style="color:#bbb">
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#309;font-weight:bold">bookstack</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">image</span>:<span style="color:#bbb"> </span>linuxserver/bookstack<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">container_name</span>:<span style="color:#bbb"> </span>bookstack<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">environment</span>:<span style="color:#bbb">
 </span><span style="color:#bbb">      </span>- TZ=Asia/Shanghai<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- PUID=<span style="color:#f60">1000</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- PGID=<span style="color:#f60">1000</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- PUID=1000<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- PGID=1000<span style="color:#bbb">
 </span><span style="color:#bbb">      </span>- DB_HOST=bookstack_db<span style="color:#bbb">
 </span><span style="color:#bbb">      </span>- DB_USER=bookstack<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- DB_PASS=&lt;changepassword<span style="color:#c30;font-style:italic">&gt;
-</span><span style="color:#c30;font-style:italic">      - DB_DATABASE=bookstackapp</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- DB_PASS=&lt;changepassword&gt;<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- DB_DATABASE=bookstackapp<span style="color:#bbb">
 </span><span style="color:#bbb">      </span>- APP_ENV=production<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- APP_DEBUG=<span style="color:#069;font-weight:bold">false</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- APP_DEBUG=false<span style="color:#bbb">
 </span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic">#- APP_LANG=zh_CN</span><span style="color:#bbb">
 </span><span style="color:#bbb">      </span>- APP_URL=http://mybookstack.mydomain.local<span style="color:#bbb">
 </span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># General auth</span><span style="color:#bbb">
 </span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># Change to local auth with replace `ldap` with `standard`</span><span style="color:#bbb">
 </span><span style="color:#bbb">      </span>- AUTH_METHOD=ldap<span style="color:#bbb">
 </span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># LDAP Settings</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- LDAP_SERVER=ldap://&lt;Domain_controller_IP&gt;:<span style="color:#f60">389</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- LDAP_SERVER=ldap://&lt;Domain_controller_IP&gt;:389<span style="color:#bbb">
 </span><span style="color:#bbb">      </span>- LDAP_BASE_DN=dc=mydomain,dc=local<span style="color:#bbb">
 </span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic">#- LDAP_DN=cn=stevedong,dc=mydomain,dc=local</span><span style="color:#bbb">
 </span><span style="color:#bbb">      </span>- LDAP_DN=stevedong@mydomain.local<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- LDAP_PASS=&lt;password<span style="color:#bbb"> </span>of<span style="color:#bbb"> </span>AD<span style="color:#bbb"> </span>USER<span style="color:#c30;font-style:italic">&gt;
-</span><span style="color:#c30;font-style:italic">      #use double $$ since we are using docker</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- LDAP_USER_FILTER=(<span style="color:#099">&amp;(sAMAccountName=$${user}))</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- LDAP_VERSION=<span style="color:#f60">3</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- LDAP_PASS=&lt;password of AD USER&gt;<span style="color:#bbb">
+</span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic">#use double $$ since we are using docker</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- LDAP_USER_FILTER=(&amp;(sAMAccountName=$${user}))<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- LDAP_VERSION=3<span style="color:#bbb">
 </span><span style="color:#bbb">      </span>- LDAP_EMAIL_ATTRIBUT=mail<span style="color:#bbb">
 </span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic">#- LDAP_EMAIL_ATTRIBUT=false</span><span style="color:#bbb">
 </span><span style="color:#bbb">      </span>- LDAP_DISPLAY_NAME_ATTRIBUTE=cn<span style="color:#bbb">
 </span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic">#AD Group Sync</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- LDAP_USER_TO_GROUPS=<span style="color:#069;font-weight:bold">true</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- LDAP_GROUP_ATTRIBUTE=<span style="color:#c30">&#34;memberof&#34;</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- LDAP_REMOVE_FROM_GROUPS=<span style="color:#069;font-weight:bold">false</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- LDAP_AUTO_CONFIRM_EMAIL=<span style="color:#069;font-weight:bold">true</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- LDAP_TLS_INSECURE=<span style="color:#069;font-weight:bold">true</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- LDAP_USER_TO_GROUPS=true<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- LDAP_GROUP_ATTRIBUTE=&#34;memberof&#34;<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- LDAP_REMOVE_FROM_GROUPS=false<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- LDAP_AUTO_CONFIRM_EMAIL=true<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- LDAP_TLS_INSECURE=true<span style="color:#bbb">
 </span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># To let bookstack export pdf with chinese language supported.</span><span style="color:#bbb">
 </span><span style="color:#bbb">      </span>- WKHTMLTOPDF=/usr/bin/wkhtmltopdf<span style="color:#bbb">
 </span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># To let bookstack export pdf with chinese language supported.</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- LANG=C.UTF<span style="color:#f60">-8</span><span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">volumes</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- LANG=C.UTF-8<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">volumes</span>:<span style="color:#bbb">
 </span><span style="color:#bbb">      </span>- ./bookstack_config:/config<span style="color:#bbb">
 </span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic">#mapped docker server fonts to docker</span><span style="color:#bbb">
 </span><span style="color:#bbb">      </span>- /usr/share/fonts/truetype:/usr/share/fonts/truetype<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">ports</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">ports</span>:<span style="color:#bbb">
 </span><span style="color:#bbb">      </span>- <span style="color:#f60">80</span>:<span style="color:#f60">80</span><span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">restart</span>:<span style="color:#bbb"> </span>unless-stopped<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">depends_on</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">restart</span>:<span style="color:#bbb"> </span>unless-stopped<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">depends_on</span>:<span style="color:#bbb">
 </span><span style="color:#bbb">      </span>- bookstack_db<span style="color:#bbb">
-</span><span style="color:#bbb">  </span><span style="color:#069;font-weight:bold">bookstack_db</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">image</span>:<span style="color:#bbb"> </span>linuxserver/mariadb<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">container_name</span>:<span style="color:#bbb"> </span>bookstack_db<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">environment</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- PUID=<span style="color:#f60">1000</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- PGID=<span style="color:#f60">1000</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- MYSQL_ROOT_PASSWORD=&lt;mysql<span style="color:#bbb"> </span>password<span style="color:#c30;font-style:italic">&gt;
-</span><span style="color:#c30;font-style:italic">      - TZ=Asia/Shanghai</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#309;font-weight:bold">bookstack_db</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">image</span>:<span style="color:#bbb"> </span>linuxserver/mariadb<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">container_name</span>:<span style="color:#bbb"> </span>bookstack_db<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">environment</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- PUID=1000<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- PGID=1000<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- MYSQL_ROOT_PASSWORD=&lt;mysql password&gt;<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- TZ=Asia/Shanghai<span style="color:#bbb">
 </span><span style="color:#bbb">      </span>- MYSQL_DATABASE=bookstackapp<span style="color:#bbb">
 </span><span style="color:#bbb">      </span>- MYSQL_USER=bookstack<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- MYSQL_PASSWORD=&lt;mysql<span style="color:#bbb"> </span>password<span style="color:#c30;font-style:italic">&gt;
-</span><span style="color:#c30;font-style:italic">    volumes:</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- MYSQL_PASSWORD=&lt;mysql password&gt;<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">volumes</span>:<span style="color:#bbb">
 </span><span style="color:#bbb">      </span>- ./db_config:/config<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">restart</span>:<span style="color:#bbb"> </span>unless-stopped<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">restart</span>:<span style="color:#bbb"> </span>unless-stopped<span style="color:#bbb">
 </span></code></pre></div><h3 id="run-docker-compose">Run Docker-compose</h3>
 <ul>
 <li>change value to fit your environment</li>

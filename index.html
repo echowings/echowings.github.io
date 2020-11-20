@@ -31,7 +31,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.73.0" />
+<meta name="generator" content="Hugo 0.77.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/" />
@@ -52,7 +52,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css" integrity="sha256-&#43;j2UHR0ODdyYWAQif&#43;q//qVciYg&#43;sK804FMqeukTUVE=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,9 +62,10 @@
 <meta property="og:description" content="A devops blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2020-09-12T17:29:39+08:00" />
+<meta property="og:updated_time" content="2020-11-20T17:47:43+08:00" />
 <meta itemprop="name" content="My Blog - For Fun">
-<meta itemprop="description" content="A devops blog."><meta name="twitter:card" content="summary"/>
+<meta itemprop="description" content="A devops blog.">
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="My Blog - For Fun"/>
 <meta name="twitter:description" content="A devops blog."/>
 
@@ -348,6 +349,76 @@ if (!doNotTrack) {
   <header class="post-header">
     <h1 class="post-title">
       
+      <a class="post-link" href="/post/macos/how-to-install-squirrel-on-macos/">How to Install Squirrel on Macos</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2020-11-20" class="post-time">
+        2020-11-20
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/macos/"> macos </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to install squirrel as your chinese input method for your macos 1. Install squirrel brew cask install squirrel 2. Logout and login or Reboot your mac Reboot your mac
+3. Copy squirrel configuration for you configuration file: https://github.com/wongdean/rime-settings#
+mkdir rime &amp;&amp; cd rime git clone https://github.com/wongdean/rime-settings.git 4. configure squrriel  Press control + space key to enable squirrel. Then click settings... Copy all contents in rime-settings expect fonts folder to configure folder.
+    </div>
+    <div class="read-more">
+      <a href="/post/macos/how-to-install-squirrel-on-macos/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/proxmoxve/how-to-create-debian10-with-cloudinit-for-pve/">How to Create Debian10 With Cloudinit for Pve</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2020-09-20" class="post-time">
+        2020-09-20
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to Create Debian10 template With Cloudinit for PVE  VMID=9002 VM_NAME=CentOS-7-x86_64-GenericCloud VM_DOWNLOAD_URL=http://mirrors.ustc.edu.cn/centos-cloud/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz TEMPLATE_VM_NAME=$(echo $VM_NAME | sed &#39;s/_/-/g&#39;) STORAGE_PATH=local DEFAULT_PVE_PATH=/var/lib/vz/images #Change directory to `local` cd /var/lib/vz/images #Download centos 7 cloud images on proxmox ve wget $VM_DOWNLOAD_URL #unzip the file #xz -z (to zip file) #xz -k( to keep original file and valur `-0` to `-9` to set zip rate, default zip rate is -6 #xz -d (to unzip file) # xz -k (to keep zipped file not deleted) xz -d -k $VM_NAME.
+    </div>
+    <div class="read-more">
+      <a href="/post/proxmoxve/how-to-create-debian10-with-cloudinit-for-pve/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
       <a class="post-link" href="/post/proxmoxve/how-to-create-centos7-template-for-pve/">How to Create Centos7 Template for Pve</a>
     </h1>
     
@@ -368,7 +439,7 @@ if (!doNotTrack) {
   <div class="post-content">
     
     <div class="post-summary">
-      HOw to create CentOS 7 template for PVE  VMID=9002 VM_NAME=CentOS-7-x86_64-GenericCloud VM_DOWNLOAD_URL=http://mirrors.ustc.edu.cn/centos-cloud/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz TEMPLATE_VM_NAME=$(echo $VM_NAME | sed &#39;s/_/-/g&#39;) STORAGE_PATH=local DEFAULT_PVE_PATH=/var/lib/bz/images #Change directory to `local` cd /var/lib/vz/images #Download centos 7 cloud images on proxmox ve wget $VM_DOWNLOAD_URL #unzip the file #xz -z (to zip file) #xz -k( to keep original file and valur `-0` to `-9` to set zip rate, default zip rate is -6 #xz -d (to unzip file) # xz -k (to keep zipped file not deleted) xz -d -k $VM_NAME.
+      HOw to create CentOS 7 template for PVE  VMID=9002 VM_NAME=CentOS-7-x86_64-GenericCloud VM_DOWNLOAD_URL=http://mirrors.ustc.edu.cn/centos-cloud/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz TEMPLATE_VM_NAME=$(echo $VM_NAME | sed &#39;s/_/-/g&#39;) STORAGE_PATH=local DEFAULT_PVE_PATH=/var/lib/vz/images #Change directory to `local` cd /var/lib/vz/images #Download centos 7 cloud images on proxmox ve wget $VM_DOWNLOAD_URL #unzip the file #xz -z (to zip file) #xz -k( to keep original file and valur `-0` to `-9` to set zip rate, default zip rate is -6 #xz -d (to unzip file) # xz -k (to keep zipped file not deleted) xz -d -k $VM_NAME.
     </div>
     <div class="read-more">
       <a href="/post/proxmoxve/how-to-create-centos7-template-for-pve/" class="read-more-link">Read more</a>
@@ -750,7 +821,7 @@ Install ntfs-3g brew install ntfs-3g Replace ntfs-3g Since from OS X 10.
   <div class="post-content">
     
     <div class="post-summary">
-      How to install Jenkins with docker compose Create Dockerfile With office jenkins docker images.change the jenkins mirrors and change alpine linux soure list to aliyun #DockerfileFROMjenkins/jenkins:alpineUSERrootENVJENKINS_MIRRORhttps://mirrors.tuna.tsinghua.edu.cnENVJENKINS_UC_DOWNLOAD=&#34;https://mirrors.tuna.tsinghua.edu.cn/jenkins/&#34;RUNsed-i&#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&#39;/etc/apk/repositories\&amp;&amp;apkupdate\&amp;&amp;apkadddockernodejsnodejs-npmyarnCreate docker-compose.yaml # docker-compose.yamlversion:&#34;2.4&#34;services:jenkins:build:./#image: jenkins/jenkins:alpinecontainer_name:jenkinsports:- &#34;80:8080&#34;- &#34;50000:50000&#34;environment:#- JAVA_OPTS=-Xmx1500m -Duser.timezone=GMT+8- JAVA_OPTS=-Duser.timezone=GMT+8- JENKINS_UC_DOWNLOAD=https://mirrors.tuna.tsinghua.edu.cn/jenkins/volumes:- ./data/jenkins:/var/jenkins_home- /var/run/docker.sock:/var/run/docker.sock- /root/.ssh/:/root/.ssh- /etc/localtime:/etc/localtime:ro# cpus: 3.5# mem_limit: 1800muser:rootrestart:alwaysInstall Jenkins with Check initial Admin Password by run command as show below cat data/jenkins/secrets/initialAdminPassword Reference Jenkins for Docker 跳过插件安装及插
+      How to install Jenkins with docker compose Create Dockerfile With office jenkins docker images.change the jenkins mirrors and change alpine linux soure list to aliyun #DockerfileFROM jenkins/jenkins:alpineUSER rootENV JENKINS_MIRROR https://mirrors.tuna.tsinghua.edu.cnENV JENKINS_UC_DOWNLOAD=&#34;https://mirrors.tuna.tsinghua.edu.cn/jenkins/&#34;RUN sed -i &#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&#39; /etc/apk/repositories \&amp;&amp;apk update \&amp;&amp;apk add docker nodejs nodejs-npm yarnCreate docker-compose.yaml # docker-compose.yamlversion:&#34;2.4&#34;services:jenkins:build:./#image: jenkins/jenkins:alpinecontainer_name:jenkinsports:- &#34;80:8080&#34;- &#34;50000:50000&#34;environment:#- JAVA_OPTS=-Xmx1500m -Duser.timezone=GMT+8- JAVA_OPTS=-Duser.timezone=GMT+8- JENKINS_UC_DOWNLOAD=https://mirrors.tuna.tsinghua.edu.cn/jenkins/volumes:- ./data/jenkins:/var/jenkins_home- /var/run/docker.sock:/var/run/docker.sock- /root/.ssh/:/root/.ssh- /etc/localtime:/etc/localtime:ro# cpus: 3.5# mem_limit: 1800muser:rootrestart:alwaysInstall Jenkins with Check initial Admin Password by run command
     </div>
     <div class="read-more">
       <a href="/post/devops/how-to-install-jenkins-with-docker-compose/" class="read-more-link">Read more</a>
@@ -784,80 +855,10 @@ Install ntfs-3g brew install ntfs-3g Replace ntfs-3g Since from OS X 10.
   <div class="post-content">
     
     <div class="post-summary">
-      How to Install gitlab with docer-compose version:&#34;3.5&#34;services:gitlab:image:gitlab/gitlab-ce:latestcontainer_name:gitlabrestart:alwayshostname:&#39;xa-gitlab&#39;environment:GITLAB_OMNIBUS_CONFIG:| external_url &#39;http://xa-gitlab&#39;gitlab_rails[&#39;backup_keep_time&#39;]=604800gitlab_rails[&#39;time_zone&#39;]=&#39;Asia/Shanghai&#39;gitlab_rails[&#39;gitlab_shell_ssh_port&#39;]=1022#gitlab_rails[&#39;ldap_enabled&#39;] = true#gitlab_rails[&#39;ldap_servers&#39;] = YAML.load &lt;&lt;-EOS#main:# label: &#39;LDAP&#39;# host: &#39;192.168.1.1&#39;# port: 389# uid: &#39;uid&#39;# bind_dn: &#39;CN=admin,DC=lotbrick,DC=com&#39;# password: &#39;admin&#39;# user_filter: &#39;objectclass=person&#39;# base: &#39;ou=People,dc=xxxxx,dc=com&#39;# active_directory: false# method: &#39;plain&#39;# attributes:# username: [&#34;cn&#34;]# email: [&#39;email&#39;]# name: &#39;displayName&#39;# first_name: &#39;givenName&#39;# last_name: &#39;sn&#39;#EOSports:- &#39;80:80&#39;- &#39;443:443&#39;- &#39;1022:22&#39;volumes:- ./gitlab/config:/etc/gitlab- ./gitlab/logs:/var/log/gitlab- ./gitlab/data:/var/opt/gitlab# - &#34;/etc/localtime:/etc/localtime:ro&#34;Reference Docker+GitLab+LDA
+      How to Install gitlab with docer-compose version:&#34;3.5&#34;services:gitlab:image:gitlab/gitlab-ce:latestcontainer_name:gitlabrestart:alwayshostname:&#39;xa-gitlab&#39;environment:GITLAB_OMNIBUS_CONFIG:|external_url &#39;http://xa-gitlab&#39; gitlab_rails[&#39;backup_keep_time&#39;] = 604800 gitlab_rails[&#39;time_zone&#39;] = &#39;Asia/Shanghai&#39; gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 1022 #gitlab_rails[&#39;ldap_enabled&#39;] = true #gitlab_rails[&#39;ldap_servers&#39;] = YAML.load &lt;&lt;-EOS #main: # label: &#39;LDAP&#39; # host: &#39;192.168.1.1&#39; # port: 389 # uid: &#39;uid&#39; # bind_dn: &#39;CN=admin,DC=lotbrick,DC=com&#39; # password: &#39;admin&#39; # user_filter: &#39;objectclass=person&#39; # base: &#39;ou=People,dc=xxxxx,dc=com&#39; # active_directory: false # method: &#39;plain&#39; # attributes: # username: [&#34;cn&#34;] # email: [&#39;email&#39;] # name: &#39;displayName&#39; # first_name: &#39;givenName&#39; #
     </div>
     <div class="read-more">
       <a href="/post/devops/how-to-install-gitlab-with-docker-compose/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/proxmoxve/how-to-change-settings-after-clone-debian-10-with-cloudinit-enable-on-proxmox-ve/">How to Change Settings After Clone Debian 10 With Cloudinit Enable on Proxmox Ve</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-11-27" class="post-time">
-        2019-11-27
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to Change Settings After Clone Debian 10 With Cloudinit Enable on Proxmox VE Issue I found an issue about create a linux vm as a template with cloudinit enabled. Seem like after cloned the virtual machine, the cloud-init cd rom didn&rsquo;t be created automatically. We need to delete it,then change setings again to apply the apt source.
-solution #!/usr/bin/env sh mv /etc/apt/sources.list /etc/apt/sources.list.backup wget https://mirrors.ustc.edu.cn/repogen/conf/debian-http-4-buster -O /etc/apt/sources.list apt update &amp;&amp; apt -y dist-upgrade apt install -y openssh-server git vim cloud-init apt-transport-https sed -i &#39;s/http/https/g&#39; /etc/apt/sources.
-    </div>
-    <div class="read-more">
-      <a href="/post/proxmoxve/how-to-change-settings-after-clone-debian-10-with-cloudinit-enable-on-proxmox-ve/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/elasticflow/how-to-install-elasticflow/">How to Install Elasticflow</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-11-19" class="post-time">
-        2019-11-19
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/networking/"> networking </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to install Elasticflow Today, i found a good software that is Elasticflow. It is so perfect for us to monitor status of our networking. So I tried to install it will docker-compose way. You know what, after servial hours, fixed a lot bugs it works.
-Download and modified docker-compose.yml for elasticflow # Download `docker-compose.yml` for elasticflow wget https://raw.githubusercontent.com/robcowart/elastiflow/master/docker-compose.yml # version 3.5.2 is now existed. So we need change it to `3.
-    </div>
-    <div class="read-more">
-      <a href="/post/elasticflow/how-to-install-elasticflow/" class="read-more-link">Read more</a>
     </div>
     
   </div>

@@ -34,7 +34,7 @@ docker-compose up -d Active Script echo &amp;#34;To active office&amp;#34; cd &a
 
 
 
-<meta name="generator" content="Hugo 0.73.0" />
+<meta name="generator" content="Hugo 0.77.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/how-to-build-a-kms-server/" />
@@ -55,7 +55,7 @@ docker-compose up -d Active Script echo &amp;#34;To active office&amp;#34; cd &a
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css" integrity="sha256-&#43;j2UHR0ODdyYWAQif&#43;q//qVciYg&#43;sK804FMqeukTUVE=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
 
 
 
@@ -73,13 +73,14 @@ docker-compose up -d Active Script echo &#34;To active office&#34; cd &#34;%prog
 <meta itemprop="description" content="How to build a kms server Option 1: docker mode docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername Option 2: docker compose docker-compose.yml
 version:&#39;3&#39;services:frontend:image:luodaoyi/kms-servercontainer_name:mykmsports:- 1688:1688restart:alwaysdocker-compose start the container
 docker-compose up -d Active Script echo &#34;To active office&#34; cd &#34;%programfiles%\Microsoft Office\Office16&#34; cscript ospp.vbs /sethst:xx.xx.xx.xx cscript ospp.vbs /act echo &#34;to active windows&#34; slmgr /skms xxx.xxx.xxx.xxx slmgr /ato Reference  blog  ">
-<meta itemprop="datePublished" content="2019-04-11T00:17:37&#43;08:00" />
-<meta itemprop="dateModified" content="2019-04-11T00:17:37&#43;08:00" />
+<meta itemprop="datePublished" content="2019-04-11T00:17:37+08:00" />
+<meta itemprop="dateModified" content="2019-04-11T00:17:37+08:00" />
 <meta itemprop="wordCount" content="64">
 
 
 
-<meta itemprop="keywords" content="docker,kms," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="docker,kms," />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Build a Kms Server"/>
 <meta name="twitter:description" content="How to build a kms server Option 1: docker mode docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername Option 2: docker compose docker-compose.yml
 version:&#39;3&#39;services:frontend:image:luodaoyi/kms-servercontainer_name:mykmsports:- 1688:1688restart:alwaysdocker-compose start the container
@@ -404,14 +405,14 @@ docker update --restart<span style="color:#555">=</span>always <span style="colo
 
 </code></pre></div><h2 id="option-2-docker-compose">Option 2: docker compose</h2>
 <p>docker-compose.yml</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">version</span>:<span style="color:#bbb"> </span><span style="color:#c30">&#39;3&#39;</span><span style="color:#bbb">
-</span><span style="color:#bbb"></span><span style="color:#069;font-weight:bold">services</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">frontend</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">        </span><span style="color:#069;font-weight:bold">image</span>:<span style="color:#bbb"> </span>luodaoyi/kms-server<span style="color:#bbb">
-</span><span style="color:#bbb">        </span><span style="color:#069;font-weight:bold">container_name</span>:<span style="color:#bbb"> </span>mykms<span style="color:#bbb">
-</span><span style="color:#bbb">        </span><span style="color:#069;font-weight:bold">ports</span>:<span style="color:#bbb">
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#bbb"> </span><span style="color:#309;font-weight:bold">version</span>:<span style="color:#bbb"> </span><span style="color:#c30">&#39;3&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#309;font-weight:bold">services</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">frontend</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">        </span><span style="color:#309;font-weight:bold">image</span>:<span style="color:#bbb"> </span>luodaoyi/kms-server<span style="color:#bbb">
+</span><span style="color:#bbb">        </span><span style="color:#309;font-weight:bold">container_name</span>:<span style="color:#bbb"> </span>mykms<span style="color:#bbb">
+</span><span style="color:#bbb">        </span><span style="color:#309;font-weight:bold">ports</span>:<span style="color:#bbb">
 </span><span style="color:#bbb">            </span>- <span style="color:#f60">1688</span>:<span style="color:#f60">1688</span><span style="color:#bbb">
-</span><span style="color:#bbb">        </span><span style="color:#069;font-weight:bold">restart</span>:<span style="color:#bbb"> </span>always<span style="color:#bbb">
+</span><span style="color:#bbb">        </span><span style="color:#309;font-weight:bold">restart</span>:<span style="color:#bbb"> </span>always<span style="color:#bbb">
 </span><span style="color:#bbb">
 </span><span style="color:#bbb"> 
 </span></code></pre></div><p>docker-compose start the container</p>
