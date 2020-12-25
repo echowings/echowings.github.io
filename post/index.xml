@@ -6,7 +6,16 @@
     <description>Recent content in Posts on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 20 Nov 2020 17:47:43 +0800</lastBuildDate><atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Dec 2020 02:57:46 +0800</lastBuildDate><atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Install Dcompass on Vyos</title>
+      <link>https://blog.stevedong.com/post/vyos/how-to-install-dcompass-on-vyos/</link>
+      <pubDate>Tue, 22 Dec 2020 02:57:46 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/vyos/how-to-install-dcompass-on-vyos/</guid>
+      <description>sudo su dcompass_version=build-20201221_0957 sudo mkdir -p /tmp/dcompass cd /tmp sudo curl -fsSLO &amp;#34;https://github.com/LEXUGE/dcompass/releases/download/$dcompass_version/dcompass-x86_64-unknown-linux-musl-full&amp;#34; sudo mv /tmp/dcompass-x86_64-unknown-linux-musl-full /tmp/dcompass/ cd /tmp/dcompass sudo mkdir -p /etc/dcompass sudo bash -c &amp;#39;cat &amp;gt; /etc/dcompass/config.yaml&amp;#39; &amp;lt;&amp;lt;EOF verbosity: &amp;#39;info&amp;#39; cache_size: 4096 #address: 0.0.0.0:2053 address: 127.0.1.2:53 table: - tag: start if: qtype: - AAAA then: - disable - end else: - skip - dispatch - tag: dispatch if: any then: - query: domestic - check_secure - tag: check_secure if: geoip: on: resp codes: - CN else: - query: secure - end upstreams: - method: udp: addr: 114.</description>
+    </item>
+    
     <item>
       <title>How to Install Squirrel on Macos</title>
       <link>https://blog.stevedong.com/post/macos/how-to-install-squirrel-on-macos/</link>
@@ -498,15 +507,6 @@ docker-compose up -d Active Script echo &amp;#34;To active office&amp;#34; cd &a
       
       <guid>https://blog.stevedong.com/post/how-to-setup-oh-my-zsh/</guid>
       <description>How to setup Oh-My-Zsh Install support application apt install git curl wget zsh Install zsh  via curl  sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;#34;  via wget  sh -c &amp;#34;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&amp;#34; Change zsh settings  change theme  #change theme froy robbyrussell to agnoster sed -i &amp;#39;s/ZSH_THEME=\&amp;#34;robbyrussell\&amp;#34;/ZSH_THEME=\&amp;#34;agnoster\&amp;#34;/g&amp;#39; ~/.zshrc  change plugin support  sed -i &amp;#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\trbenv\n\truby\n\tpython\n)/g&amp;#39; ~/.zshrc Switch default bash to zsh chsh -s /bin/zsh </description>
-    </item>
-    
-    <item>
-      <title>How to Setup Vim</title>
-      <link>https://blog.stevedong.com/post/how-to-setup-vim/</link>
-      <pubDate>Tue, 09 Apr 2019 10:02:33 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/how-to-setup-vim/</guid>
-      <description>How to setup vim Install vundle vundle is a plugin manage tools for vim git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim Edit vim configure file cat &amp;gt; ~/.vimrc &amp;lt;&amp;lt;EOF set nocompatible &amp;#34; be iMproved, required filetype off &amp;#34; required syntax on &amp;#34; set the runtime path to include Vundle and initialize set rtp+=~/.vim/bundle/Vundle.vim call vundle#begin() &amp;#34; alternatively, pass a path where Vundle should install plugins &amp;#34;call vundle#begin(&amp;#39;~/some/path/here&amp;#39;) &amp;#34; let Vundle manage Vundle, required</description>
     </item>
     
   </channel>

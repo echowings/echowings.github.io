@@ -7,7 +7,7 @@
   
 
 <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
 
 <meta name="MobileOptimized" content="width"/>
 <meta name="HandheldFriendly" content="true"/>
@@ -62,7 +62,7 @@
 <meta property="og:description" content="A devops blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2020-11-20T17:47:43+08:00" />
+<meta property="og:updated_time" content="2020-12-22T02:57:46+08:00" />
 <meta itemprop="name" content="My Blog - For Fun">
 <meta itemprop="description" content="A devops blog.">
 <meta name="twitter:card" content="summary"/>
@@ -344,6 +344,40 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/vyos/how-to-install-dcompass-on-vyos/">How to Install Dcompass on Vyos</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2020-12-22" class="post-time">
+        2020-12-22
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      sudo su dcompass_version=build-20201221_0957 sudo mkdir -p /tmp/dcompass cd /tmp sudo curl -fsSLO &#34;https://github.com/LEXUGE/dcompass/releases/download/$dcompass_version/dcompass-x86_64-unknown-linux-musl-full&#34; sudo mv /tmp/dcompass-x86_64-unknown-linux-musl-full /tmp/dcompass/ cd /tmp/dcompass sudo mkdir -p /etc/dcompass sudo bash -c &#39;cat &gt; /etc/dcompass/config.yaml&#39; &lt;&lt;EOF verbosity: &#39;info&#39; cache_size: 4096 #address: 0.0.0.0:2053 address: 127.0.1.2:53 table: - tag: start if: qtype: - AAAA then: - disable - end else: - skip - dispatch - tag: dispatch if: any then: - query: domestic - check_secure - tag: check_secure if: geoip: on: resp codes: - CN else: - query: secure - end upstreams: - method: udp: addr: 114.
+    </div>
+    <div class="read-more">
+      <a href="/post/vyos/how-to-install-dcompass-on-vyos/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -825,40 +859,6 @@ Install ntfs-3g brew install ntfs-3g Replace ntfs-3g Since from OS X 10.
     </div>
     <div class="read-more">
       <a href="/post/devops/how-to-install-jenkins-with-docker-compose/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/devops/how-to-install-gitlab-with-docker-compose/">How to Install Gitlab With Docker-Compose</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-11-27" class="post-time">
-        2019-11-27
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/devops/"> devops </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to Install gitlab with docer-compose version:&#34;3.5&#34;services:gitlab:image:gitlab/gitlab-ce:latestcontainer_name:gitlabrestart:alwayshostname:&#39;xa-gitlab&#39;environment:GITLAB_OMNIBUS_CONFIG:|external_url &#39;http://xa-gitlab&#39; gitlab_rails[&#39;backup_keep_time&#39;] = 604800 gitlab_rails[&#39;time_zone&#39;] = &#39;Asia/Shanghai&#39; gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 1022 #gitlab_rails[&#39;ldap_enabled&#39;] = true #gitlab_rails[&#39;ldap_servers&#39;] = YAML.load &lt;&lt;-EOS #main: # label: &#39;LDAP&#39; # host: &#39;192.168.1.1&#39; # port: 389 # uid: &#39;uid&#39; # bind_dn: &#39;CN=admin,DC=lotbrick,DC=com&#39; # password: &#39;admin&#39; # user_filter: &#39;objectclass=person&#39; # base: &#39;ou=People,dc=xxxxx,dc=com&#39; # active_directory: false # method: &#39;plain&#39; # attributes: # username: [&#34;cn&#34;] # email: [&#39;email&#39;] # name: &#39;displayName&#39; # first_name: &#39;givenName&#39; #
-    </div>
-    <div class="read-more">
-      <a href="/post/devops/how-to-install-gitlab-with-docker-compose/" class="read-more-link">Read more</a>
     </div>
     
   </div>

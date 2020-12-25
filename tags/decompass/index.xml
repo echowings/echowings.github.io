@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>decompass on My Blog - For Fun</title>
+    <link>https://blog.stevedong.com/tags/decompass/</link>
+    <description>Recent content in decompass on My Blog - For Fun</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 22 Dec 2020 02:57:46 +0800</lastBuildDate><atom:link href="https://blog.stevedong.com/tags/decompass/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Install Dcompass on Vyos</title>
+      <link>https://blog.stevedong.com/post/vyos/how-to-install-dcompass-on-vyos/</link>
+      <pubDate>Tue, 22 Dec 2020 02:57:46 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/vyos/how-to-install-dcompass-on-vyos/</guid>
+      <description>sudo su dcompass_version=build-20201221_0957 sudo mkdir -p /tmp/dcompass cd /tmp sudo curl -fsSLO &amp;#34;https://github.com/LEXUGE/dcompass/releases/download/$dcompass_version/dcompass-x86_64-unknown-linux-musl-full&amp;#34; sudo mv /tmp/dcompass-x86_64-unknown-linux-musl-full /tmp/dcompass/ cd /tmp/dcompass sudo mkdir -p /etc/dcompass sudo bash -c &amp;#39;cat &amp;gt; /etc/dcompass/config.yaml&amp;#39; &amp;lt;&amp;lt;EOF verbosity: &amp;#39;info&amp;#39; cache_size: 4096 #address: 0.0.0.0:2053 address: 127.0.1.2:53 table: - tag: start if: qtype: - AAAA then: - disable - end else: - skip - dispatch - tag: dispatch if: any then: - query: domestic - check_secure - tag: check_secure if: geoip: on: resp codes: - CN else: - query: secure - end upstreams: - method: udp: addr: 114.</description>
+    </item>
+    
+  </channel>
+</rss>

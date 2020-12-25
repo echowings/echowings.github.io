@@ -6,7 +6,7 @@
     <description>Recent content on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 20 Nov 2020 17:47:43 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 22 Dec 2020 02:57:46 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -25,6 +25,119 @@
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
+      
+    </item>
+    
+    <item>
+      <title>How to Install Dcompass on Vyos</title>
+      <link>https://blog.stevedong.com/post/vyos/how-to-install-dcompass-on-vyos/</link>
+      <pubDate>Tue, 22 Dec 2020 02:57:46 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/vyos/how-to-install-dcompass-on-vyos/</guid>
+      
+        <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo su
+&lt;span style=&#34;color:#033&#34;&gt;dcompass_version&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;build-20201221_0957
+sudo mkdir -p /tmp/dcompass
+&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /tmp
+sudo curl -fsSLO &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;https://github.com/LEXUGE/dcompass/releases/download/&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$dcompass_version&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;/dcompass-x86_64-unknown-linux-musl-full&amp;#34;&lt;/span&gt;
+sudo mv   /tmp/dcompass-x86_64-unknown-linux-musl-full /tmp/dcompass/
+&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /tmp/dcompass
+sudo mkdir -p /etc/dcompass
+sudo bash -c &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;cat &amp;gt; /etc/dcompass/config.yaml&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;verbosity: &amp;#39;info&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;cache_size: 4096
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;#address: 0.0.0.0:2053
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;address: 127.0.1.2:53
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;table:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;- tag: start
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  if:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    qtype:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      - AAAA
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  then:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    - disable
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    - end
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  else:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    - skip
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    - dispatch
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;- tag: dispatch
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  if: any
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  then:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  - query: domestic
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  - check_secure
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;- tag: check_secure
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  if:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    geoip:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      on: resp
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      codes:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;        - CN
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  else:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  - query: secure
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  - end
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;upstreams:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;- method:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    udp:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      addr: 114.114.114.114:53
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  tag: 114DNS
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;- method:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    udp:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      addr: 223.6.6.6:53
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  tag: Ali
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;- method:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    hybrid:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    - 114DNS
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    - Ali
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  tag: domestic
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;- method:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    https:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      no_sni: true
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      name: cloudflare-dns.com
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      addr: 1.1.1.1:443
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  tag: cloudflare
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;- method:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    https:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      no_sni: true
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      name: dns.quad9.net
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;      addr: 9.9.9.9:443
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  tag: quad9
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;- method:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    hybrid:
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    - cloudflare
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;    - quad9
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  tag: secure
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
+
+sudo cp -af /tmp/dcompass/dcompass-x86_64-unknown-linux-musl-full /usr/local/bin/dcompass
+sudo chown root:root /usr/local/bin/dcompass
+sudo chmod +x /usr/local/bin/dcompass
+
+sudo bash -c &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;cat &amp;gt; /lib/systemd/system/dcompass.service&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt; EOF
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;[Unit]
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Description=dcompass service
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;[Service]
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;ExecStart=/usr/local/bin/dcompass -c /etc/dcompass/config.yaml 
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Restart=on-failure
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;RestartSec=42s
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;[Install]
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;WantedBy=multi-user.target
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
+
+sudo systemctl daemon-reload
+sudo rm -rf /tmp/dcompass
+sudo systemctl &lt;span style=&#34;color:#366&#34;&gt;enable&lt;/span&gt; dcompass
+sudo systemctl restart dcompass
+
+
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     
@@ -1578,6 +1691,9 @@ sudo chgrp winbindd_priv /var/lib/samba/winbindd_privileged/
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;vi /etc/freeradius/3.0/mods-available/ntlm_auth
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;change&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#033&#34;&gt;program&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;/usr/bin/ntlm_auth --request-nt-key --domain=TESTING --username=%{mschap:User-Name} --password=%{User-Password}&amp;#34;&lt;/span&gt;
+  
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#if you want to limted to a specific domain group please modified as this:&lt;/span&gt;
+&lt;span style=&#34;color:#033&#34;&gt;program&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;/usr/bin/ntlm_auth --request-nt-key --domain=&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$DOMAINNAME&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  --require-membership-of=&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$DOMAINNAME&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;\$DOMAIN_GROUP&amp;#39;  --username=%{mschap:User-Name} --password=%{User-Password}&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Change module mschap :&lt;/p&gt;
@@ -1721,6 +1837,13 @@ freeradius -fX
 ...
 DEFAULT Group !&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;VPN_GROUP&amp;#34;&lt;/span&gt;, Auth-Type :&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; Reject
         Reply-Message &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;Your are not permit to access VPN Connectiong&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Change MACHAP to use ntlm_auth:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;vi /etc/freeradius/3.0/mods-available/ntlm_auth
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;change&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#if you want to limted to a specific domain group please modified as this:&lt;/span&gt;
+&lt;span style=&#34;color:#033&#34;&gt;program&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;/usr/bin/ntlm_auth --request-nt-key --domain=&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$DOMAINNAME&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;  --require-membership-of=&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$DOMAINNAME&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;\$DOMAIN_GROUP&amp;#39;  --username=%{mschap:User-Name} --password=%{User-Password}&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;install-mysqldaloradius-to-make-management-freeradius-with-web-access&#34;&gt;Install mysql,daloradius to make management freeradius with web access&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Install mariadb database&lt;/li&gt;
@@ -4612,41 +4735,6 @@ slmgr /ato
 &lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/flyhorstar/article/details/87269141&#34;&gt;blog&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-      
-    </item>
-    
-    <item>
-      <title>How to Setup Oh My Zsh</title>
-      <link>https://blog.stevedong.com/post/how-to-setup-oh-my-zsh/</link>
-      <pubDate>Wed, 10 Apr 2019 12:18:04 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/how-to-setup-oh-my-zsh/</guid>
-      
-        <description>&lt;h1 id=&#34;how-to-setup-oh-my-zsh&#34;&gt;How to setup Oh-My-Zsh&lt;/h1&gt;
-&lt;h2 id=&#34;install-support-application&#34;&gt;Install support application&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;apt install git curl wget zsh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;install-zsh&#34;&gt;Install zsh&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;via curl&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sh -c &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;$(&lt;/span&gt;curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;via wget&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sh -c &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;$(&lt;/span&gt;wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;change-zsh-settings&#34;&gt;Change zsh settings&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;change theme&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#change theme froy robbyrussell to agnoster&lt;/span&gt;
-sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/ZSH_THEME=\&amp;#34;robbyrussell\&amp;#34;/ZSH_THEME=\&amp;#34;agnoster\&amp;#34;/g&amp;#39;&lt;/span&gt; ~/.zshrc
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;change plugin support&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sed -i &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\trbenv\n\truby\n\tpython\n)/g&amp;#39;&lt;/span&gt; ~/.zshrc
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;switch-default-bash-to-zsh&#34;&gt;Switch default bash to zsh&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;chsh -s /bin/zsh
-&lt;/code&gt;&lt;/pre&gt;</description>
       
     </item>
     

@@ -7,7 +7,7 @@
   
 
 <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
 
 <meta name="MobileOptimized" content="width"/>
 <meta name="HandheldFriendly" content="true"/>
@@ -69,7 +69,7 @@
 <meta itemprop="description" content="How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&rsquo;m trying to build a new">
 <meta itemprop="datePublished" content="2019-10-13T14:52:31+08:00" />
 <meta itemprop="dateModified" content="2019-10-13T14:52:31+08:00" />
-<meta itemprop="wordCount" content="969">
+<meta itemprop="wordCount" content="1019">
 
 
 
@@ -565,6 +565,9 @@ sudo chgrp winbindd_priv /var/lib/samba/winbindd_privileged/
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/mods-available/ntlm_auth
 </code></pre></div><p>change</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#033">program</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;/usr/bin/ntlm_auth --request-nt-key --domain=TESTING --username=%{mschap:User-Name} --password=%{User-Password}&#34;</span>
+  
+<span style="color:#09f;font-style:italic">#if you want to limted to a specific domain group please modified as this:</span>
+<span style="color:#033">program</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;/usr/bin/ntlm_auth --request-nt-key --domain=</span><span style="color:#033">$DOMAINNAME</span><span style="color:#c30">  --require-membership-of=&#39;</span><span style="color:#033">$DOMAINNAME</span><span style="color:#c30">\$DOMAIN_GROUP&#39;  --username=%{mschap:User-Name} --password=%{User-Password}&#34;</span>
 </code></pre></div></li>
 <li>
 <p>Change module mschap :</p>
@@ -708,6 +711,13 @@ freeradius -fX
 ...
 DEFAULT Group !<span style="color:#555">=</span> <span style="color:#c30">&#34;VPN_GROUP&#34;</span>, Auth-Type :<span style="color:#555">=</span> Reject
         Reply-Message <span style="color:#555">=</span> <span style="color:#c30">&#34;Your are not permit to access VPN Connectiong&#34;</span>
+</code></pre></div><ul>
+<li>Change MACHAP to use ntlm_auth:</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/mods-available/ntlm_auth
+</code></pre></div><p>change</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#if you want to limted to a specific domain group please modified as this:</span>
+<span style="color:#033">program</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;/usr/bin/ntlm_auth --request-nt-key --domain=</span><span style="color:#033">$DOMAINNAME</span><span style="color:#c30">  --require-membership-of=&#39;</span><span style="color:#033">$DOMAINNAME</span><span style="color:#c30">\$DOMAIN_GROUP&#39;  --username=%{mschap:User-Name} --password=%{User-Password}&#34;</span>
 </code></pre></div><h2 id="install-mysqldaloradius-to-make-management-freeradius-with-web-access">Install mysql,daloradius to make management freeradius with web access</h2>
 <ul>
 <li>Install mariadb database</li>
