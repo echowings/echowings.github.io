@@ -13,7 +13,7 @@
       <pubDate>Tue, 22 Dec 2020 02:57:46 +0800</pubDate>
       
       <guid>https://blog.stevedong.com/post/vyos/how-to-install-dcompass-on-vyos/</guid>
-      <description>sudo su dcompass_version=build-20201221_0957 sudo mkdir -p /tmp/dcompass cd /tmp sudo curl -fsSLO &amp;#34;https://github.com/LEXUGE/dcompass/releases/download/$dcompass_version/dcompass-x86_64-unknown-linux-musl-full&amp;#34; sudo mv /tmp/dcompass-x86_64-unknown-linux-musl-full /tmp/dcompass/ cd /tmp/dcompass sudo mkdir -p /etc/dcompass sudo bash -c &amp;#39;cat &amp;gt; /etc/dcompass/config.yaml&amp;#39; &amp;lt;&amp;lt;EOF verbosity: &amp;#39;info&amp;#39; cache_size: 4096 #address: 0.0.0.0:2053 address: 127.0.1.2:53 table: - tag: start if: qtype: - AAAA then: - disable - end else: - skip - dispatch - tag: dispatch if: any then: - query: domestic - check_secure - tag: check_secure if: geoip: on: resp codes: - CN else: - query: secure - end upstreams: - method: udp: addr: 114.</description>
+      <description>Dcompass github address  Dcompass Address Dcompass Release bianry  #Switch to root mode sudo su #Define dcompass version dcompass_version=build-20201228_1008 #Create dcompass temp folder sudo mkdir -p /tmp/dcompass # Swich to folder just we created. cd /tmp/dcompass #Download dcompass binary  sudo curl -fsSLO &amp;#34;https://github.com/LEXUGE/dcompass/releases/download/$dcompass_version/dcompass-x86_64-unknown-linux-musl-full&amp;#34; #Create dcompass configure folder sudo mkdir -p /etc/dcompass #Create dcompass configure yaml file sudo bash -c &amp;#39;cat &amp;gt; /etc/dcompass/config.yaml&amp;#39; &amp;lt;&amp;lt;EOF verbosity: &amp;#39;info&amp;#39; cache_size: 4096 #address: 0.</description>
     </item>
     
   </channel>

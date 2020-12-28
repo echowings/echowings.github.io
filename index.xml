@@ -35,14 +35,30 @@
       
       <guid>https://blog.stevedong.com/post/vyos/how-to-install-dcompass-on-vyos/</guid>
       
-        <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo su
-&lt;span style=&#34;color:#033&#34;&gt;dcompass_version&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;build-20201221_0957
+        <description>&lt;h2 id=&#34;dcompass-github-address&#34;&gt;Dcompass github address&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/LEXUGE/dcompass&#34;&gt;Dcompass Address&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/LEXUGE/dcompass/releases&#34;&gt;Dcompass Release bianry&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Switch to root mode&lt;/span&gt;
+sudo su
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Define dcompass version&lt;/span&gt;
+&lt;span style=&#34;color:#033&#34;&gt;dcompass_version&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;build-20201228_1008
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Create dcompass temp folder&lt;/span&gt;
 sudo mkdir -p /tmp/dcompass
-&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /tmp
-sudo curl -fsSLO &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;https://github.com/LEXUGE/dcompass/releases/download/&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$dcompass_version&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;/dcompass-x86_64-unknown-linux-musl-full&amp;#34;&lt;/span&gt;
-sudo mv   /tmp/dcompass-x86_64-unknown-linux-musl-full /tmp/dcompass/
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Swich to folder  just we created.&lt;/span&gt;
 &lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /tmp/dcompass
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Download dcompass binary &lt;/span&gt;
+sudo curl -fsSLO &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;https://github.com/LEXUGE/dcompass/releases/download/&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$dcompass_version&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;/dcompass-x86_64-unknown-linux-musl-full&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Create dcompass configure folder&lt;/span&gt;
 sudo mkdir -p /etc/dcompass
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Create dcompass configure yaml file&lt;/span&gt;
 sudo bash -c &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;cat &amp;gt; /etc/dcompass/config.yaml&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;verbosity: &amp;#39;info&amp;#39;
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;cache_size: 4096
@@ -129,10 +145,19 @@ sudo bash -c &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;cat &amp;gt; /lib/s
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;WantedBy=multi-user.target
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
 
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Reload systemclt daemon&lt;/span&gt;
 sudo systemctl daemon-reload
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Delete temp directory.&lt;/span&gt;
 sudo rm -rf /tmp/dcompass
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Enable service of dcompass auto startup when system reboot&lt;/span&gt;
 sudo systemctl &lt;span style=&#34;color:#366&#34;&gt;enable&lt;/span&gt; dcompass
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Restart service of dcompass&lt;/span&gt;
 sudo systemctl restart dcompass
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Check dcompass status of dcompass.&lt;/span&gt;
+sudo systemctl status dcompass
 
 
 
