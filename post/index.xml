@@ -6,7 +6,17 @@
     <description>Recent content in Posts on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 22 Dec 2020 02:57:46 +0800</lastBuildDate><atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 29 Dec 2020 11:50:20 +0800</lastBuildDate><atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Uninstall Windows Update Which Install Failed</title>
+      <link>https://blog.stevedong.com/post/windows/how-to-uninstall-windows-update-which-install-failed/</link>
+      <pubDate>Tue, 29 Dec 2020 11:50:20 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/windows/how-to-uninstall-windows-update-which-install-failed/</guid>
+      <description>How to uninstlal windows update which install failed  Uninstall failed windows update   Reboot your pc or laptop and select troubleshoot   Select to open the command prompt and stay away from any other auto repair options.   Loading the software rigistry.
+  #Load the softeware registry hive as follows. reg load hklm/temp c:\windows\system32\config\software #Delete the sessionPending registry key, if it exists by running: reg delete &amp;#34;HKLM\temp\Microsoft\Windows\CurrentVersion\Component Based Servicing\SessionPending&amp;#34; /v Exclusive # Unload the software registry hive: reg unload HKLM\temp Remove failed updates with DISM command  List failed updated.</description>
+    </item>
+    
     <item>
       <title>How to Install Dcompass on Vyos</title>
       <link>https://blog.stevedong.com/post/vyos/how-to-install-dcompass-on-vyos/</link>
@@ -498,15 +508,6 @@ Here are the steps.
       <description>How to build a kms server Option 1: docker mode docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername Option 2: docker compose docker-compose.yml
 version:&amp;#39;3&amp;#39;services:frontend:image:luodaoyi/kms-servercontainer_name:mykmsports:- 1688:1688restart:alwaysdocker-compose start the container
 docker-compose up -d Active Script echo &amp;#34;To active office&amp;#34; cd &amp;#34;%programfiles%\Microsoft Office\Office16&amp;#34; cscript ospp.vbs /sethst:xx.xx.xx.xx cscript ospp.vbs /act echo &amp;#34;to active windows&amp;#34; slmgr /skms xxx.xxx.xxx.xxx slmgr /ato Reference  blog  </description>
-    </item>
-    
-    <item>
-      <title>How to Setup Oh My Zsh</title>
-      <link>https://blog.stevedong.com/post/how-to-setup-oh-my-zsh/</link>
-      <pubDate>Wed, 10 Apr 2019 12:18:04 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/how-to-setup-oh-my-zsh/</guid>
-      <description>How to setup Oh-My-Zsh Install support application apt install git curl wget zsh Install zsh  via curl  sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;#34;  via wget  sh -c &amp;#34;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&amp;#34; Change zsh settings  change theme  #change theme froy robbyrussell to agnoster sed -i &amp;#39;s/ZSH_THEME=\&amp;#34;robbyrussell\&amp;#34;/ZSH_THEME=\&amp;#34;agnoster\&amp;#34;/g&amp;#39; ~/.zshrc  change plugin support  sed -i &amp;#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\trbenv\n\truby\n\tpython\n)/g&amp;#39; ~/.zshrc Switch default bash to zsh chsh -s /bin/zsh </description>
     </item>
     
   </channel>

@@ -62,7 +62,7 @@
 <meta property="og:description" content="A devops blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2020-12-22T02:57:46+08:00" />
+<meta property="og:updated_time" content="2020-12-29T11:50:20+08:00" />
 <meta itemprop="name" content="My Blog - For Fun">
 <meta itemprop="description" content="A devops blog.">
 <meta name="twitter:card" content="summary"/>
@@ -344,6 +344,40 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/devops/how-to-install-jenkins-with-docker-compose/">How to Install Jenkins With Docker Compose</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-12-10" class="post-time">
+        2019-12-10
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/devops/"> devops </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to install Jenkins with docker compose Create Dockerfile With office jenkins docker images.change the jenkins mirrors and change alpine linux soure list to aliyun #DockerfileFROM jenkins/jenkins:alpineUSER rootENV JENKINS_MIRROR https://mirrors.tuna.tsinghua.edu.cnENV JENKINS_UC_DOWNLOAD=&#34;https://mirrors.tuna.tsinghua.edu.cn/jenkins/&#34;RUN sed -i &#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&#39; /etc/apk/repositories \&amp;&amp;apk update \&amp;&amp;apk add docker nodejs nodejs-npm yarnCreate docker-compose.yaml # docker-compose.yamlversion:&#34;2.4&#34;services:jenkins:build:./#image: jenkins/jenkins:alpinecontainer_name:jenkinsports:- &#34;80:8080&#34;- &#34;50000:50000&#34;environment:#- JAVA_OPTS=-Xmx1500m -Duser.timezone=GMT+8- JAVA_OPTS=-Duser.timezone=GMT+8- JENKINS_UC_DOWNLOAD=https://mirrors.tuna.tsinghua.edu.cn/jenkins/volumes:- ./data/jenkins:/var/jenkins_home- /var/run/docker.sock:/var/run/docker.sock- /root/.ssh/:/root/.ssh- /etc/localtime:/etc/localtime:ro# cpus: 3.5# mem_limit: 1800muser:rootrestart:alwaysInstall Jenkins with Check initial Admin Password by run command
+    </div>
+    <div class="read-more">
+      <a href="/post/devops/how-to-install-jenkins-with-docker-compose/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -831,41 +865,6 @@ Option 2: Manually Setup cloud-init We can do this with 2 steps.
     </div>
     <div class="read-more">
       <a href="/post/how-to-setup-cloud-init-in-proxmoxve/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/build-ubuntu18.04-with-cloudinit-support/">Build Ubuntu 18.04 server with cloudinit support</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-06-12" class="post-time">
-        2019-06-12
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Build Ubuntu 18.04 with cloudinit support on proxmox VE To create a ubuntu images from iso file is not flexible for us to clone and deploy a new virtual machine. we can now setting networking, hostname or other configuration before boot the server with configuration. If we want to expand the capicity of the disk, we need a lot of command to reach the goal.
-With cloudinit images it is easy to do that.
-    </div>
-    <div class="read-more">
-      <a href="/post/build-ubuntu18.04-with-cloudinit-support/" class="read-more-link">Read more</a>
     </div>
     
   </div>
