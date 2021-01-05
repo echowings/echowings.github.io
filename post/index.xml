@@ -6,7 +6,17 @@
     <description>Recent content in Posts on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 29 Dec 2020 11:50:20 +0800</lastBuildDate><atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Jan 2021 18:33:47 +0800</lastBuildDate><atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Extend Free Disk Space for Macos</title>
+      <link>https://blog.stevedong.com/post/macos/how-to-extend-free-disk-space-for-macos/</link>
+      <pubDate>Mon, 04 Jan 2021 18:33:47 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/macos/how-to-extend-free-disk-space-for-macos/</guid>
+      <description>Extend disk with diskutils Delete partition &amp;ldquo;Free Space&amp;rdquo; to extend disk to current macos partition.
+Fixed Error “The new size must be different than the existing size” #repair (internal, disk0 - in your case) diskutil repairdisk disk0 #resize (synthesized, disk1 - in your case with HS) diskutil apfs resizeContainer disk1 0 Reference   Cannot resize APFS partition - “The new size must be different than the existing size”  </description>
+    </item>
+    
     <item>
       <title>How to Uninstall Windows Update Which Install Failed</title>
       <link>https://blog.stevedong.com/post/windows/how-to-uninstall-windows-update-which-install-failed/</link>
@@ -497,17 +507,6 @@ Install librenms with docker-compose mkdir -p librenms-docker-compose cd ./libre
       <description>How to ugrade Proxmove VE If your proxmox ve server in china ,Change utsc mirrors will speed up your proxmoxve upgrade speed.
 Here are the steps.
 1. Change debian,pve,ceph upgrade source, and upgrade your PVE #chang debian source list echo &amp;#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free deb-src https://mirrors.</description>
-    </item>
-    
-    <item>
-      <title>How to Build a Kms Server</title>
-      <link>https://blog.stevedong.com/post/how-to-build-a-kms-server/</link>
-      <pubDate>Thu, 11 Apr 2019 00:17:37 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/how-to-build-a-kms-server/</guid>
-      <description>How to build a kms server Option 1: docker mode docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername Option 2: docker compose docker-compose.yml
-version:&amp;#39;3&amp;#39;services:frontend:image:luodaoyi/kms-servercontainer_name:mykmsports:- 1688:1688restart:alwaysdocker-compose start the container
-docker-compose up -d Active Script echo &amp;#34;To active office&amp;#34; cd &amp;#34;%programfiles%\Microsoft Office\Office16&amp;#34; cscript ospp.vbs /sethst:xx.xx.xx.xx cscript ospp.vbs /act echo &amp;#34;to active windows&amp;#34; slmgr /skms xxx.xxx.xxx.xxx slmgr /ato Reference  blog  </description>
     </item>
     
   </channel>

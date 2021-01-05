@@ -6,7 +6,7 @@
     <description>Recent content on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 29 Dec 2020 11:50:20 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 04 Jan 2021 18:33:47 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -24,6 +24,30 @@
 &lt;li&gt;Love cooking.&lt;/li&gt;
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>How to Extend Free Disk Space for Macos</title>
+      <link>https://blog.stevedong.com/post/macos/how-to-extend-free-disk-space-for-macos/</link>
+      <pubDate>Mon, 04 Jan 2021 18:33:47 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/macos/how-to-extend-free-disk-space-for-macos/</guid>
+      
+        <description>&lt;h2 id=&#34;extend-disk-with-diskutils&#34;&gt;Extend disk with diskutils&lt;/h2&gt;
+&lt;p&gt;Delete partition &amp;ldquo;Free Space&amp;rdquo; to extend disk to current macos partition.&lt;/p&gt;
+&lt;h2 id=&#34;fixed-error-the-new-size-must-be-different-than-the-existing-size&#34;&gt;Fixed Error “The new size must be different than the existing size”&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#repair (internal, disk0 - in your case)&lt;/span&gt;
+diskutil repairdisk disk0
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#resize (synthesized, disk1 - in your case with HS)&lt;/span&gt;
+diskutil apfs resizeContainer disk1 &lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://apple.stackexchange.com/questions/375136/cannot-resize-apfs-partition-the-new-size-must-be-different-than-the-existing&#34;&gt;Cannot resize APFS partition - “The new size must be different than the existing size”&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
       
     </item>
@@ -4706,64 +4730,6 @@ cat &amp;gt;&amp;gt; /etc/environment &lt;span style=&#34;color:#c30&#34;&gt;&am
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;LC_ALL=en_US.UTF-8
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;LANG=en_US.UTF-8
 &lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Proxmov Ve How to Upgrade Pve</title>
-      <link>https://blog.stevedong.com/post/proxmox-ve-how-to-upgrade-pve/</link>
-      <pubDate>Tue, 16 Apr 2019 12:12:58 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/proxmox-ve-how-to-upgrade-pve/</guid>
-      
-        <description>&lt;h1 id=&#34;how-to-ugrade-proxmove-ve&#34;&gt;How to ugrade Proxmove VE&lt;/h1&gt;
-&lt;p&gt;If your proxmox ve server in china ,Change utsc mirrors will speed up your proxmoxve upgrade speed.&lt;/p&gt;
-&lt;p&gt;Here are the steps.&lt;/p&gt;
-&lt;h2 id=&#34;1-change-debianpveceph-upgrade-source-and-upgrade-your-pve&#34;&gt;1. Change debian,pve,ceph upgrade source, and upgrade your PVE&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#chang debian source list&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&amp;#34;&lt;/span&gt; &amp;gt; /etc/apt/sources.list
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#change pve 5.x update source list to no subscription&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&amp;#34;&lt;/span&gt; &amp;gt; /etc/apt/sources.list.d/pve-no-sub.list
- 
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Disable pve 5.x enterprise subscription&lt;/span&gt;
-sed -i.bak &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;s|deb https://enterprise.proxmox.com/debian stretch pve-enterprise|\# deb https://enterprise.proxmox.com/debian stretch pve-enterprise|&amp;#39;&lt;/span&gt; /etc/apt/sources.list.d/pve-enterprise.list
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#change ceph source list&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/apt/sources.list.d/ceph.list
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# add key&lt;/span&gt;
-wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
-
-apt updat &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y dis-ugprade
-update-grub
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2-change-settings-after-upgrade&#34;&gt;2. Change settings after upgrade&lt;/h2&gt;
-&lt;p&gt;This step to change pve upgrade to no subscription and ceph soucre .&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#change pve 5.x update source list&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&amp;#34;&lt;/span&gt; &amp;gt; /etc/apt/sources.list.d/pve-enterprise.list
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#change ceph source list&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&amp;#34;&lt;/span&gt; &amp;gt; /etc/apt/sources.list.d/ceph.list
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# add key&lt;/span&gt;
-wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
-
-
-
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
