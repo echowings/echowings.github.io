@@ -62,7 +62,7 @@
 <meta property="og:description" content="A devops blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2021-01-04T18:33:47+08:00" />
+<meta property="og:updated_time" content="2021-01-11T01:13:07+08:00" />
 <meta itemprop="name" content="My Blog - For Fun">
 <meta itemprop="description" content="A devops blog.">
 <meta name="twitter:card" content="summary"/>
@@ -344,6 +344,40 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/graylog/how-to-install-graylog-with-docker-compose/">How to Install Graylog With Docker Compose</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-12-24" class="post-time">
+        2019-12-24
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/graylog/"> graylog </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to Install Graylog with Docker-compose    Hostname my-graylog    Docker-compose.yaml version:&#39;2&#39;services:# MongoDB: https://hub.docker.com/_/mongo/mongodb:image:mongo:3volumes:- ./data/mongo_data:/data/db- /etc/localtime:/etc/localtime:ro# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.htmlelasticsearch:image:docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2volumes:- ./data/es_data:/usr/share/elasticsearch/data- /etc/localtime:/etc/localtime:roenvironment:- http.host=0.0.0.0- transport.host=localhost- network.host=0.0.0.0- &#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&#34;ulimits:memlock:soft:-1hard:-1mem_limit:1g# Graylog: https://hub.docker.com/r/graylog/graylog/graylog:image:graylog/graylog:3.1volumes:- ./data/graylog_journal:/usr/share/graylog/data/journal- /etc/localtime:/etc/localtime:roenvironment:# CHANGE ME (must be at least 16 characters)!- GRAYLOG_PASSWORD_SECRET=somepasswordpepper# Password: admin- GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918- GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/links:- mongodb:mongo- elasticsearchdepends_on:- mongodb- elasticsearchports:# Graylog web interface and REST API- 9000:9000# Syslog TCP- 1514:1514# Syslog UDP- 1514:1514/udp# GELF TCP- 12201:12201# GELF UDP- 12201:12201/udp# Volumes for persisting data, see https://docs.
+    </div>
+    <div class="read-more">
+      <a href="/post/graylog/how-to-install-graylog-with-docker-compose/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -827,42 +861,6 @@ Fixe Perl error waring export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 expor
     </div>
     <div class="read-more">
       <a href="/post/install-proxmox-ve-6.x/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/change-rhel6.8-yum-repo-to-centos6/">How to upgrade RHEL6 with yum repo of centos </a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-07-15" class="post-time">
-        2019-07-15
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to upgrade RHEL6 with yum repo of centos Today I will show you how to setup rhel6 at proxmox VE.
-After installed REHL6.8,We didn&rsquo;t have RHEL subscription,but how to get update and install software via yum ? The right answer is to change yum repo.
-Fix perl error export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable RHEL subsription subscription-manager config --rhsm.manage_repos=0 Chang yum repo to Centos 6  delete rhel yum software  rpm -qa | grep yum rpm -qa | grep yum | xargs rpm -e --nodeps  Download centos yum software  mkdir -p /tmp/yum cd /tmp/yum wget http://mirrors.
-    </div>
-    <div class="read-more">
-      <a href="/post/change-rhel6.8-yum-repo-to-centos6/" class="read-more-link">Read more</a>
     </div>
     
   </div>

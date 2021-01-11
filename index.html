@@ -62,7 +62,7 @@
 <meta property="og:description" content="A devops blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2021-01-04T18:33:47+08:00" />
+<meta property="og:updated_time" content="2021-01-11T01:13:07+08:00" />
 <meta itemprop="name" content="My Blog - For Fun">
 <meta itemprop="description" content="A devops blog.">
 <meta name="twitter:card" content="summary"/>
@@ -344,6 +344,40 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/dns/how-to-install-freedns-go-on-vyos/">How to Install Freedns Go on Vyos</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2021-01-11" class="post-time">
+        2021-01-11
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/networking/"> networking </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      #Switch to root mode sudo su #Define freedns version freedns_version=v2020.9.17 #Create dcompass temp folder sudo mkdir -p /tmp/freedns # Swich to folder just we created. cd /tmp/freedns #Download dcompass binary  sudo curl -fsSLO &#34;https://github.com/tuna/freedns-go/releases/download/$freedns_version/freedns-go-linux-amd64&#34; sudo cp -af /tmp/freedns/freedns-go-linux-amd64 /usr/local/bin/freedns sudo chown root:root /usr/local/bin/freedns sudo chmod +x /usr/local/bin/freedns sudo bash -c &#39;cat &gt; /lib/systemd/system/freedns.service&#39; &lt;&lt; EOF [Unit] Description=freedns service [Service] ExecStart=/usr/local/bin/freedns -f 114.114.114.114:53 -c 8.8.8.8:53 -l 127.0.0.3:53 Restart=on-failure RestartSec=42s [Install] WantedBy=multi-user.
+    </div>
+    <div class="read-more">
+      <a href="/post/dns/how-to-install-freedns-go-on-vyos/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -826,40 +860,6 @@ Install ntfs-3g brew install ntfs-3g Replace ntfs-3g Since from OS X 10.
     </div>
     <div class="read-more">
       <a href="/post/macos/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/graylog/how-to-install-graylog-with-docker-compose/">How to Install Graylog With Docker Compose</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-12-24" class="post-time">
-        2019-12-24
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/graylog/"> graylog </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to Install Graylog with Docker-compose    Hostname my-graylog    Docker-compose.yaml version:&#39;2&#39;services:# MongoDB: https://hub.docker.com/_/mongo/mongodb:image:mongo:3volumes:- ./data/mongo_data:/data/db- /etc/localtime:/etc/localtime:ro# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.htmlelasticsearch:image:docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2volumes:- ./data/es_data:/usr/share/elasticsearch/data- /etc/localtime:/etc/localtime:roenvironment:- http.host=0.0.0.0- transport.host=localhost- network.host=0.0.0.0- &#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&#34;ulimits:memlock:soft:-1hard:-1mem_limit:1g# Graylog: https://hub.docker.com/r/graylog/graylog/graylog:image:graylog/graylog:3.1volumes:- ./data/graylog_journal:/usr/share/graylog/data/journal- /etc/localtime:/etc/localtime:roenvironment:# CHANGE ME (must be at least 16 characters)!- GRAYLOG_PASSWORD_SECRET=somepasswordpepper# Password: admin- GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918- GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/links:- mongodb:mongo- elasticsearchdepends_on:- mongodb- elasticsearchports:# Graylog web interface and REST API- 9000:9000# Syslog TCP- 1514:1514# Syslog UDP- 1514:1514/udp# GELF TCP- 12201:12201# GELF UDP- 12201:12201/udp# Volumes for persisting data, see https://docs.
-    </div>
-    <div class="read-more">
-      <a href="/post/graylog/how-to-install-graylog-with-docker-compose/" class="read-more-link">Read more</a>
     </div>
     
   </div>

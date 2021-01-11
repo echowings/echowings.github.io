@@ -6,7 +6,7 @@
     <description>Recent content on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 04 Jan 2021 18:33:47 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 11 Jan 2021 01:13:07 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -25,6 +25,65 @@
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
+      
+    </item>
+    
+    <item>
+      <title>How to Install Freedns Go on Vyos</title>
+      <link>https://blog.stevedong.com/post/dns/how-to-install-freedns-go-on-vyos/</link>
+      <pubDate>Mon, 11 Jan 2021 01:13:07 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/dns/how-to-install-freedns-go-on-vyos/</guid>
+      
+        <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Switch to root mode&lt;/span&gt;
+sudo su
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Define freedns version&lt;/span&gt;
+&lt;span style=&#34;color:#033&#34;&gt;freedns_version&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;v2020.9.17
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Create dcompass temp folder&lt;/span&gt;
+sudo mkdir -p /tmp/freedns
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Swich to folder  just we created.&lt;/span&gt;
+&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /tmp/freedns
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Download dcompass binary &lt;/span&gt;
+sudo curl -fsSLO &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;https://github.com/tuna/freedns-go/releases/download/&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;$freedns_version&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;/freedns-go-linux-amd64&amp;#34;&lt;/span&gt;
+
+
+
+sudo cp -af /tmp/freedns/freedns-go-linux-amd64 /usr/local/bin/freedns
+sudo chown root:root /usr/local/bin/freedns
+sudo chmod +x /usr/local/bin/freedns
+
+sudo bash -c &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;cat &amp;gt; /lib/systemd/system/freedns.service&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt; EOF
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;[Unit]
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Description=freedns service
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;[Service]
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;ExecStart=/usr/local/bin/freedns  -f 114.114.114.114:53 -c 8.8.8.8:53 -l 127.0.0.3:53
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;Restart=on-failure
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;RestartSec=42s
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;[Install]
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;WantedBy=multi-user.target
+&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Reload systemclt daemon&lt;/span&gt;
+sudo systemctl daemon-reload
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Delete temp directory.&lt;/span&gt;
+sudo rm -rf /tmp/freedns
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Enable service of dcompass auto startup when system reboot&lt;/span&gt;
+sudo systemctl &lt;span style=&#34;color:#366&#34;&gt;enable&lt;/span&gt; freedns
+
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Restart service of freedns&lt;/span&gt;
+sudo systemctl restart freedns
+&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Check dcompass status of freedns.&lt;/span&gt;
+sudo systemctl status freedns
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     
@@ -4710,27 +4769,6 @@ chmod &lt;span style=&#34;color:#f60&#34;&gt;600&lt;/span&gt; acme.json
 &lt;/table&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker-compose up -d
 docker-compose logs -f
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>How to Fix Linux Perl LC_ALL_ERROR</title>
-      <link>https://blog.stevedong.com/post/how-to-fix-linux-perl-lc_all_error/</link>
-      <pubDate>Tue, 16 Apr 2019 14:36:34 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/how-to-fix-linux-perl-lc_all_error/</guid>
-      
-        <description>&lt;h1 id=&#34;how-to-fix-perl-lc_all-error&#34;&gt;How to fix perl LC_ALL ERROR&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;LANGUAGE&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;en_US.UTF-8
-&lt;span style=&#34;color:#366&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;LANG&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;en_US.UTF-8
-&lt;span style=&#34;color:#366&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#033&#34;&gt;LC_ALL&lt;/span&gt;&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;en_US.UTF-8
-
-cat &amp;gt;&amp;gt; /etc/environment &lt;span style=&#34;color:#c30&#34;&gt;&amp;lt;&amp;lt;EOF
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;LC_ALL=en_US.UTF-8
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;LANG=en_US.UTF-8
-&lt;/span&gt;&lt;span style=&#34;color:#c30&#34;&gt;EOF&lt;/span&gt;
-
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
