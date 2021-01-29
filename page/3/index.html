@@ -62,7 +62,7 @@
 <meta property="og:description" content="A devops blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2021-01-11T01:13:07+08:00" />
+<meta property="og:updated_time" content="2021-01-22T13:31:14+08:00" />
 <meta itemprop="name" content="My Blog - For Fun">
 <meta itemprop="description" content="A devops blog.">
 <meta name="twitter:card" content="summary"/>
@@ -344,6 +344,44 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/install-proxmox-ve-6.x/">Install Proxmox VE  6.x</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-07-17" class="post-time">
+        2019-07-17
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      Install Proxmox VE 6.x After installed Proxmox VE 6.x, What we gone do ?
+Download Proxmox VE 6.x iSO file in mirrors.ustc.edu.cn Download iso images from here:
+http://mirrors.ustc.edu.cn/proxmox/iso/
+Fixe Perl error waring export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable subscription Warning  Disable subscription warning via script  below 6.3
+sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  Manually disable subscription warning  cd /usr/share/javascript/proxmox-widget-toolkit cp proxmoxlib.
+    </div>
+    <div class="read-more">
+      <a href="/post/install-proxmox-ve-6.x/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -833,40 +871,6 @@ Install snmpd on proxmox ve apt update apt install -y snmpd Configure snmpd.conf
     </div>
     <div class="read-more">
       <a href="/post/proxmox-ve-how-to-install-snmp-service-on-promxox-ve/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/diy-thin-itx-pc/">DIY Thin Itx PC</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-04-27" class="post-time">
-        2019-04-27
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/hardware/"> Hardware </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Option 1 :Intel Pentium G4560/8G RAM/ 1TB nvme ssd No. type details quantity UnitPrice Total Price 01 机箱 立人E-T4超薄迷你Thin-ITX立式台式机HTPC电脑空机箱支持VESA背挂 1 ¥90(90.00*
-    </div>
-    <div class="read-more">
-      <a href="/post/diy-thin-itx-pc/" class="read-more-link">Read more</a>
     </div>
     
   </div>

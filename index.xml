@@ -6,7 +6,7 @@
     <description>Recent content on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 11 Jan 2021 01:13:07 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 22 Jan 2021 13:31:14 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -25,6 +25,34 @@
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
+      
+    </item>
+    
+    <item>
+      <title>Install and Configure Snmp on Debian 10</title>
+      <link>https://blog.stevedong.com/post/debian/install-and-configure-snmp-on-debian-10/</link>
+      <pubDate>Fri, 22 Jan 2021 13:31:14 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/debian/install-and-configure-snmp-on-debian-10/</guid>
+      
+        <description>&lt;h1 id=&#34;install-and-configure-snmp-on-debian-10&#34;&gt;Install and Configure snmp on debian 10&lt;/h1&gt;
+&lt;h2 id=&#34;install-snmp&#34;&gt;INSTALL SNMP&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;
+apt install -y snmpd snmp libsnmp-dev
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;configure-snmp-on-debian-10&#34;&gt;CONFIGURE SNMP ON DEBIAN 10&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;backup original configure file. &lt;!-- raw HTML omitted --&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;cp /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.orig
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Edit snmpd.conf&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;
+agentAddress udp:127.0.0.1:161,udp:192.168.1.1:161
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     
@@ -2557,6 +2585,7 @@ cat &amp;gt;&amp;gt; /etc/environment &lt;span style=&#34;color:#c30&#34;&gt;&am
 &lt;ul&gt;
 &lt;li&gt;Disable subscription warning via script&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;below 6.3&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -i.bak &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34;&lt;/span&gt; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; systemctl restart pveproxy.service
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;Manually disable subscription warning&lt;/li&gt;
@@ -2572,6 +2601,51 @@ nano proxmoxlib.js
 
 &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#restart pveproxy.service&lt;/span&gt;
 systemctl restart pveproxy.service
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;above 6.3&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -Ezi.bak &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;s/(Ext.Msg.show\(\{\s+title: gettext\(&amp;#39;No valid sub)/void\(\{ \/\/\1/g&amp;#34;&lt;/span&gt; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &lt;span style=&#34;color:#555&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; systemctl restart pveproxy.service
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;manual-setup&#34;&gt;manual setup&lt;/h3&gt;
+&lt;p&gt;Manual Steps
+Here are alternative step by step instructions so you can understand what the above command is doing:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Change to working directory&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; /usr/share/javascript/proxmox-widget-toolkit
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Make a backup&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;cp proxmoxlib.js proxmoxlib.js.bak
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Edit the file&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;nano proxmoxlib.js
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Locate the following code
+(Use ctrl+w in nano and search for “No valid subscription”)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;Ext.Msg.show({
+  title&lt;span style=&#34;color:#555&#34;&gt;:&lt;/span&gt; gettext(&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;No valid subscription&amp;#39;&lt;/span&gt;),
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Replace “Ext.Msg.show” with “void”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#069;font-weight:bold&#34;&gt;void&lt;/span&gt;({ &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;//Ext.Msg.show({
+&lt;/span&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;&lt;/span&gt;  title&lt;span style=&#34;color:#555&#34;&gt;:&lt;/span&gt; gettext(&lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;No valid subscription&amp;#39;&lt;/span&gt;),
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Restart the Proxmox web service (also be sure to clear your browser cache, depending on the browser you may need to open a new tab or restart the browser)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;systemctl restart pveproxy.service
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Additional Notes
+You can quickly check if the change has been made:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;grep -n -B &lt;span style=&#34;color:#f60&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;No valid sub&amp;#39;&lt;/span&gt; proxmoxlib.js
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You have three options to revert the changes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Manually edit  proxmoxlib.js to to undo the changes you made&lt;/li&gt;
+&lt;li&gt;Restore the backup file you created from the proxmox-widget-toolkit directory&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mv proxmoxlib.js.bak proxmoxlib.js
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Reinstall the proxmox-widget-toolkit package from the repository&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt-get install --reinstall proxmox-widget-toolkit
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;chang--apt-sourcelist-to-mirrorsustceducn&#34;&gt;Chang  apt sourcelist to mirrors.ustc.edu.cn&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Backup sources.list&lt;/span&gt;
 mv /etc/apt/sources.list /etc/apt/sources.list.backup
@@ -4696,80 +4770,6 @@ qrencode -t ansiutf8 &amp;lt; client_wireguard_ios.conf
 &lt;li&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-      
-    </item>
-    
-    <item>
-      <title>Librenms Deploy Librenms With Docker Container</title>
-      <link>https://blog.stevedong.com/post/librenms-deploy-librenms-with-docker-container/</link>
-      <pubDate>Tue, 16 Apr 2019 16:56:08 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/librenms-deploy-librenms-with-docker-container/</guid>
-      
-        <description>&lt;h1 id=&#34;how-to-deploy-librenms-monitoring-system-with-docker-container&#34;&gt;How to deploy librenms monitoring system with docker container&lt;/h1&gt;
-&lt;p&gt;Librenms is a very light and easy handle moniting software. It is suitable for us to monitoring server,networdevice, printer etc via snmp.&lt;/p&gt;
-&lt;p&gt;At now, docker is easy for software deployment. After deploy librenms in ubuntu vm, I have a try to deploy librenms with docker-compose.&lt;/p&gt;
-&lt;h2 id=&#34;install-librenms-with-docker-compose&#34;&gt;Install librenms with docker-compose&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mkdir -p librenms-docker-compose
-&lt;span style=&#34;color:#366&#34;&gt;cd&lt;/span&gt; ./librenms-docker-compose
-wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/.env
-wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/docker-compose.yml
-wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/librenms.env
-touch acme.json
-chmod &lt;span style=&#34;color:#f60&#34;&gt;600&lt;/span&gt; acme.json
-
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;change-docker-composeyml&#34;&gt;Change &lt;code&gt;docker-compose.yml&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;vi docker-compose.yml&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;change &lt;code&gt;services | traefik | command &lt;/code&gt; section.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;     - &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;--docker.domain=mydomain.net&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;Change &lt;code&gt;services | &lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;KEY&lt;/th&gt;
-&lt;th&gt;VALUE&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;hostname&lt;/td&gt;
-&lt;td&gt;mylibrenms&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;domainname&lt;/td&gt;
-&lt;td&gt;mydomain.net&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;ul&gt;
-&lt;li&gt;Chang &lt;code&gt;syslog-ng&lt;/code&gt; section&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;KEY&lt;/th&gt;
-&lt;th&gt;VALUE&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;hostname&lt;/td&gt;
-&lt;td&gt;mylibrenms&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;domainname&lt;/td&gt;
-&lt;td&gt;mydomain.net&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker-compose up -d
-docker-compose logs -f
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     

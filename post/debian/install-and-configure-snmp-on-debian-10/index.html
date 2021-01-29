@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Archive - My Blog - For Fun</title>
+  <title>Install and Configure Snmp on Debian 10 - My Blog - For Fun</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Steve Dong" />
-  <meta name="description" content="A devops blog." />
+  <meta name="description" content="Install and Configure snmp on debian 10 INSTALL SNMP apt install -y snmpd snmp libsnmp-dev CONFIGURE SNMP ON DEBIAN 10  backup original configure file.   cp /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.orig  Edit snmpd.conf  agentAddress udp:127.0.0.1:161,udp:192.168.1.1:161 " />
+
   <meta name="keywords" content="proxmox ve, network, devops, sdn, system Administation" />
 
 
@@ -34,8 +35,8 @@
 <meta name="generator" content="Hugo 0.79.1" />
 
 
-<link rel="canonical" href="https://blog.stevedong.com/post/" />
-<link href="/post/index.xml" rel="alternate" type="application/rss+xml" title="My Blog - For Fun" />
+<link rel="canonical" href="https://blog.stevedong.com/post/debian/install-and-configure-snmp-on-debian-10/" />
+
 
 
 
@@ -58,16 +59,24 @@
 
 
 
-<meta property="og:title" content="Posts" />
-<meta property="og:description" content="A devops blog." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://blog.stevedong.com/post/" />
-<meta property="og:updated_time" content="2021-01-22T13:31:14+08:00" />
-<meta itemprop="name" content="Posts">
-<meta itemprop="description" content="A devops blog.">
+<meta property="og:title" content="Install and Configure Snmp on Debian 10" />
+<meta property="og:description" content="Install and Configure snmp on debian 10 INSTALL SNMP apt install -y snmpd snmp libsnmp-dev CONFIGURE SNMP ON DEBIAN 10  backup original configure file.   cp /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.orig  Edit snmpd.conf  agentAddress udp:127.0.0.1:161,udp:192.168.1.1:161 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.stevedong.com/post/debian/install-and-configure-snmp-on-debian-10/" />
+<meta property="article:published_time" content="2021-01-22T13:31:14+08:00" />
+<meta property="article:modified_time" content="2021-01-22T13:31:14+08:00" />
+<meta itemprop="name" content="Install and Configure Snmp on Debian 10">
+<meta itemprop="description" content="Install and Configure snmp on debian 10 INSTALL SNMP apt install -y snmpd snmp libsnmp-dev CONFIGURE SNMP ON DEBIAN 10  backup original configure file.   cp /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.orig  Edit snmpd.conf  agentAddress udp:127.0.0.1:161,udp:192.168.1.1:161 ">
+<meta itemprop="datePublished" content="2021-01-22T13:31:14+08:00" />
+<meta itemprop="dateModified" content="2021-01-22T13:31:14+08:00" />
+<meta itemprop="wordCount" content="31">
+
+
+
+<meta itemprop="keywords" content="debian,debian10,snmp," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content="A devops blog."/>
+<meta name="twitter:title" content="Install and Configure Snmp on Debian 10"/>
+<meta name="twitter:description" content="Install and Configure snmp on debian 10 INSTALL SNMP apt install -y snmpd snmp libsnmp-dev CONFIGURE SNMP ON DEBIAN 10  backup original configure file.   cp /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.orig  Edit snmpd.conf  agentAddress udp:127.0.0.1:161,udp:192.168.1.1:161 "/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -256,7 +265,7 @@ if (!doNotTrack) {
 
       </li>
     
-        <li class="menu-item active">
+        <li class="menu-item">
         
           
           
@@ -337,200 +346,158 @@ if (!doNotTrack) {
     <main id="main" class="main bg-llight">
       <div class="content-wrapper">
         <div id="content" class="content container">
-          
-<section id="archive" class="archive">
+          <article class="post bg-white">
     
-      <div class="collection-title">
-        <h2 class="archive-year">2018</h2>
+    <header class="post-header">
+      <h1 class="post-title">Install and Configure Snmp on Debian 10</h1>
+      
+      <div class="post-meta">
+        <time datetime="2021-01-22" class="post-time">
+          2021-01-22
+        </time>
+        <div class="post-category">
+            <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
+            
+          </div>
+        
+
+        
+        
+
+        
+        
       </div>
+    </header>
 
-    <div class="archive-post">
-      <time datetime="2018-12-26" class="archive-post-time">
-        2018-12-26
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/macos-update-time-via-ntpserver/" class="archive-post-link">
-          Macos Update Time via Ntpserver
-        </a>
-      </span>
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#install-snmp">INSTALL SNMP</a></li>
+    <li><a href="#configure-snmp-on-debian-10">CONFIGURE SNMP ON DEBIAN 10</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <h1 id="install-and-configure-snmp-on-debian-10">Install and Configure snmp on debian 10</h1>
+<h2 id="install-snmp">INSTALL SNMP</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+apt install -y snmpd snmp libsnmp-dev
+
+</code></pre></div><h2 id="configure-snmp-on-debian-10">CONFIGURE SNMP ON DEBIAN 10</h2>
+<ul>
+<li>backup original configure file. <!-- raw HTML omitted --></li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.orig
+
+</code></pre></div><ul>
+<li>Edit snmpd.conf</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+agentAddress udp:127.0.0.1:161,udp:192.168.1.1:161
+
+</code></pre></div>
     </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Steve Dong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+      2021-01-22
+      
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    
+    
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://blog.stevedong.com/tags/debian/">debian</a>
+          <a href="https://blog.stevedong.com/tags/debian10/">debian10</a>
+          <a href="https://blog.stevedong.com/tags/snmp/">snmp</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/dns/how-to-install-freedns-go-on-vyos/">
+            <span class="next-text nav-default">How to Install Freedns Go on Vyos</span>
+            <span class="prev-text nav-mobile">Next</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "echowings/blogcomment"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+  
+
+  
+
+  
+
+  
+
     
 
-    <div class="archive-post">
-      <time datetime="2018-12-25" class="archive-post-time">
-        2018-12-25
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/learning-flask-01/" class="archive-post-link">
-          Learning Flask 01
-        </a>
-      </span>
-    </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2018-12-24" class="archive-post-time">
-        2018-12-24
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/proxmox-ve-network-adapter-pass-through/" class="archive-post-link">
-          Proxmox Ve Network Adapter Pass Through
-        </a>
-      </span>
-    </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2018-12-24" class="archive-post-time">
-        2018-12-24
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/dockerfile-for-overture/" class="archive-post-link">
-          Dockerfile for Overture
-        </a>
-      </span>
-    </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2018-12-24" class="archive-post-time">
-        2018-12-24
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/debian-or-ubuntu-chinese-language-support/" class="archive-post-link">
-          Debian or Ubuntu Chinese Language Support
-        </a>
-      </span>
-    </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2018-12-18" class="archive-post-time">
-        2018-12-18
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/install-powerdns-and-mysql-on-freebsd12/" class="archive-post-link">
-          Install PowerDNS and Mysql on Freebsd12
-        </a>
-      </span>
-    </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2018-12-18" class="archive-post-time">
-        2018-12-18
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/deploy-overture-with-docker-and-freebsd/" class="archive-post-link">
-          Deploy Overture With Docker and Freebsd
-        </a>
-      </span>
-    </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2018-12-01" class="archive-post-time">
-        2018-12-01
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/proxmox-ve-how-to-install-proxmoxve5-on-debian9/" class="archive-post-link">
-          How to install ProxmoxVE 5.x on Debian 9
-        </a>
-      </span>
-    </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2018-11-29" class="archive-post-time">
-        2018-11-29
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/how-to-testing-network-bandwith-with-iperf/" class="archive-post-link">
-          How to Testing Network Bandwith With Iperf
-        </a>
-      </span>
-    </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2018-11-29" class="archive-post-time">
-        2018-11-29
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/how-to-remove-lc_ctype-error/" class="archive-post-link">
-          How to Remove LC_CTYPE Error
-        </a>
-      </span>
-    </div></section>
-
-
-
-
-
-
   
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-  <nav class="pagination">
-    <ul>
-      
-      <li >
-        <a href="/post/">1</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/2/">2</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/3/">3</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/4/">4</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/5/">5</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/6/">6</a>
-      </li>
-      
-      <li  class="active" >
-        <a href="/post/page/7/">7</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/8/">8</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/9/">9</a>
-      </li>
-      
-    </ul>
-  </nav>
-
-  
-  
-
-
-
-
 
         </div>
       </div>
@@ -635,6 +602,13 @@ if (!doNotTrack) {
 
 
 
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 
 

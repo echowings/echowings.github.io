@@ -55,7 +55,8 @@ sed -i &amp;#39;s/template:\ 1//g&amp;#39; /etc/pve/qemu-server/{vm-id}.conf Cha
       <description>Install Proxmox VE 6.x After installed Proxmox VE 6.x, What we gone do ?
 Download Proxmox VE 6.x iSO file in mirrors.ustc.edu.cn Download iso images from here:
 http://mirrors.ustc.edu.cn/proxmox/iso/
-Fixe Perl error waring export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable subscription Warning  Disable subscription warning via script  sed -i.bak &amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;amp;&amp;amp; systemctl restart pveproxy.service  Manually disable subscription warning  cd /usr/share/javascript/proxmox-widget-toolkit cp proxmoxlib.</description>
+Fixe Perl error waring export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable subscription Warning  Disable subscription warning via script  below 6.3
+sed -i.bak &amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;amp;&amp;amp; systemctl restart pveproxy.service  Manually disable subscription warning  cd /usr/share/javascript/proxmox-widget-toolkit cp proxmoxlib.</description>
     </item>
     
     <item>
