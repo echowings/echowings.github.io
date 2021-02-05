@@ -62,7 +62,7 @@
 <meta property="og:description" content="A devops blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2021-01-22T13:31:14+08:00" />
+<meta property="og:updated_time" content="2021-02-05T11:27:59+08:00" />
 <meta itemprop="name" content="My Blog - For Fun">
 <meta itemprop="description" content="A devops blog.">
 <meta name="twitter:card" content="summary"/>
@@ -344,6 +344,41 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/ssl/how-to-convert-cert-to-ssl/">How to Convert Cert to Ssl</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2020-01-21" class="post-time">
+        2020-01-21
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to convert godaddy certification files from .cert to .pem Recently days, I met an issue to renew ssl certification file for a website. The former developer setup certification file to .pem. It take a long time to make it work. Here we go.
+Convert .crt to .pem # convert .key file to key.pem openssl rsa -in mywebsite.com.key -text &gt; key.pem # convert .cert to cert.pem cat mywebsite.com.crt &gt; cert.pem # add cert chain to the cert.
+    </div>
+    <div class="read-more">
+      <a href="/post/ssl/how-to-convert-cert-to-ssl/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -825,42 +860,6 @@ After install deiban 10  Change source list  mv /etc/apt/sources.list /etc/apt/s
     </div>
     <div class="read-more">
       <a href="/post/how-to-configure-debian-10-as-a-docker-server/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/how-to-modify-template-in-proxmox-ve/">How to Modify Template in Proxmox Ve</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-07-18" class="post-time">
-        2019-07-18
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to Modify Template im Proxox VE Sometime I wonder how to convert template back to vm and modify it and convert it back to vm? Here is the solution
-Convert Template to VM Delete template: 1 in vm config.
-sed -i &#39;s/template:\ 1//g&#39; /etc/pve/qemu-server/{vm-id}.conf Change access permission of VM disk cd /var/lib/vz/images/1{VM-ID}/ chattr -i * chmod 755 * Then covert it back to template 
-    </div>
-    <div class="read-more">
-      <a href="/post/how-to-modify-template-in-proxmox-ve/" class="read-more-link">Read more</a>
     </div>
     
   </div>

@@ -62,7 +62,7 @@
 <meta property="og:description" content="A devops blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2021-01-22T13:31:14+08:00" />
+<meta property="og:updated_time" content="2021-02-05T11:27:59+08:00" />
 <meta itemprop="name" content="My Blog - For Fun">
 <meta itemprop="description" content="A devops blog.">
 <meta name="twitter:card" content="summary"/>
@@ -344,6 +344,42 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/how-to-modify-template-in-proxmox-ve/">How to Modify Template in Proxmox Ve</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-07-18" class="post-time">
+        2019-07-18
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to Modify Template im Proxox VE Sometime I wonder how to convert template back to vm and modify it and convert it back to vm? Here is the solution
+Convert Template to VM Delete template: 1 in vm config.
+sed -i &#39;s/template:\ 1//g&#39; /etc/pve/qemu-server/{vm-id}.conf Change access permission of VM disk cd /var/lib/vz/images/1{VM-ID}/ chattr -i * chmod 755 * Then covert it back to template 
+    </div>
+    <div class="read-more">
+      <a href="/post/how-to-modify-template-in-proxmox-ve/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -836,41 +872,6 @@ It will end nightmare that someone or montoring system tell you that your servic
     </div>
     <div class="read-more">
       <a href="/post/proxmox-ve-build-hyper-converged-infrastructure-with-ceph-on-pve/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/proxmox-ve-how-to-install-snmp-service-on-promxox-ve/">How to Install Snmp Service on Promxox VE</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-04-27" class="post-time">
-        2019-04-27
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to install snmp service on proxmox ve How to setup snmp service to let us to use librenms to moniting our proxmox ve healthy status is very important for us.
-Install snmpd on proxmox ve apt update apt install -y snmpd Configure snmpd.conf  backup original configuration file.  mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.backup  Create a new config file.  cat &gt; /etc/snmp/snmpd.conf &lt;&lt; EOF # this create a SNMPv1/SNMPv2c community named &#34;&#34; # and restricts access to LAN adresses 192.
-    </div>
-    <div class="read-more">
-      <a href="/post/proxmox-ve-how-to-install-snmp-service-on-promxox-ve/" class="read-more-link">Read more</a>
     </div>
     
   </div>

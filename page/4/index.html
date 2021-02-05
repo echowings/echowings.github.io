@@ -62,7 +62,7 @@
 <meta property="og:description" content="A devops blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.stevedong.com/" />
-<meta property="og:updated_time" content="2021-01-22T13:31:14+08:00" />
+<meta property="og:updated_time" content="2021-02-05T11:27:59+08:00" />
 <meta itemprop="name" content="My Blog - For Fun">
 <meta itemprop="description" content="A devops blog.">
 <meta name="twitter:card" content="summary"/>
@@ -344,6 +344,41 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/proxmox-ve-how-to-install-snmp-service-on-promxox-ve/">How to Install Snmp Service on Promxox VE</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-04-27" class="post-time">
+        2019-04-27
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to install snmp service on proxmox ve How to setup snmp service to let us to use librenms to moniting our proxmox ve healthy status is very important for us.
+Install snmpd on proxmox ve apt update apt install -y snmpd Configure snmpd.conf  backup original configuration file.  mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.backup  Create a new config file.  cat &gt; /etc/snmp/snmpd.conf &lt;&lt; EOF # this create a SNMPv1/SNMPv2c community named &#34;&#34; # and restricts access to LAN adresses 192.
+    </div>
+    <div class="read-more">
+      <a href="/post/proxmox-ve-how-to-install-snmp-service-on-promxox-ve/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
     <article class="post bg-white">
   <header class="post-header">
@@ -830,43 +865,6 @@ Stop all the vm on proxmox VE  stop all virtual machines with shell command.  ro
     </div>
     <div class="read-more">
       <a href="/post/how-to-extend-lvm-allocted-pe-with-freee-pe/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/cisco-ssh-error/">Cisco Ssh Error</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2018-12-29" class="post-time">
-        2018-12-29
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/ssh/"> ssh </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      cisco ssh error When you met error like this:
-ssh cisco@10.32.3.1 Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1 Solution:
-$ ssh -l &lt;USERNAME&gt; -oHostKeyAlgorithms=+ssh-dss -oKexAlgorithms=+diffie-hellman-group1-sha1 &lt;HOST&gt; or
-ssh -l &lt;username&gt; -o HostKeyAlgorithms=+ssh-dss -o KexAlgorithms=+diffie-hellman-group1-sha1 -c 3des-cbc &lt;hostname&gt; Reference  SSH failed on 3750 switch SSH Not Working After Update To 10.13.2 (HighSierra)  
-    </div>
-    <div class="read-more">
-      <a href="/post/cisco-ssh-error/" class="read-more-link">Read more</a>
     </div>
     
   </div>

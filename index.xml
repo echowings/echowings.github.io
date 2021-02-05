@@ -6,7 +6,7 @@
     <description>Recent content on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 22 Jan 2021 13:31:14 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 05 Feb 2021 11:27:59 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -24,6 +24,40 @@
 &lt;li&gt;Love cooking.&lt;/li&gt;
 &lt;li&gt;Love hacking.&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>奥林岛财务软件安装</title>
+      <link>https://blog.stevedong.com/post/helpdesk/how-to-install-aolindao/</link>
+      <pubDate>Fri, 05 Feb 2021 11:27:59 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/helpdesk/how-to-install-aolindao/</guid>
+      
+        <description>&lt;p&gt;#奥林岛财务软件在win7/win8/win10安装&lt;/p&gt;
+&lt;h1 id=&#34;安装32bit的office&#34;&gt;安装32bit的Office&lt;/h1&gt;
+&lt;p&gt;Office 2007. office 2013、office 2016,office2 019的32bit版本皆可！不可装64bit版本office.&lt;/p&gt;
+&lt;h1 id=&#34;安装病注册vsflex6ocx&#34;&gt;安装病注册Vsflex6.ocx&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;下载vsflex6.ocx &lt;!-- raw HTML omitted --&gt; &lt;strong&gt;下载链接L&lt;/strong&gt;&lt;!-- raw HTML omitted --&gt;(1). &lt;a href=&#34;https://dllyes.com/wp-content/uploads//OCX/201511071744/Vsflex6.zip&#34;&gt;Vsflex6.zip&lt;/a&gt; &lt;!-- raw HTML omitted --&gt; (2). &lt;a href=&#34;https://blog.stevedong.com/post/file/Vsflex6.zip&#34;&gt;Vsflex6.zip&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;解压出来的文件Vsflex6.ocx，复制粘贴到c:/windows/system32/目录。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;管理员权限打开CMD.&lt;!-- raw HTML omitted --&gt;在如下图所示图标右键。在“CommandPrompt“点击右键。然后在弹出的菜单 ”Run as Administror”，单击打开。
+如下图
+&lt;img src=&#34;2016-09-14_101553.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重新运行这个命令.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;regsvr32 c:\windows\system32\Vsflex6.ocx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;即可正常于行&lt;/p&gt;
+&lt;p&gt;&amp;ndash;THE END&amp;ndash;&lt;/p&gt;
 </description>
       
     </item>
@@ -4618,156 +4652,6 @@ qemu-img convert -f raw source-vm-flate.vmdk -O qcow2 source-vm-flate.qcow2
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://pve.proxmox.com/wiki/Migration_of_servers_to_Proxmox_VE&#34;&gt;Migration of servers to Proxmox VE&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://pve.proxmox.com/wiki/Windows_VirtIO_Drivers&#34;&gt;Windows VirtIO Drivers&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Vyos How to Setup Wireguard</title>
-      <link>https://blog.stevedong.com/post/vyos-how-to-setup-wireguard/</link>
-      <pubDate>Wed, 17 Apr 2019 12:31:08 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/vyos-how-to-setup-wireguard/</guid>
-      
-        <description>&lt;h1 id=&#34;how-to-conifugre-wireguard-in-vyos&#34;&gt;How to conifugre wireguard in vyos&lt;/h1&gt;
-&lt;p&gt;WireGuard is an extremely simple yet fast and modern VPN that utilizes state-of-the-art &lt;a href=&#34;https://www.wireguard.com/protocol/&#34;&gt;cryptography&lt;/a&gt;.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.wireguard.com/&#34;&gt;Wireguard&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Today I will try to deploy wireguard  with two vyos .&lt;/p&gt;
-&lt;h2 id=&#34;site-to-sit-mode&#34;&gt;Site-to-Sit mode&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;
-Toplogy
-|--------------------------------|               |---------------------------------|
-|      Server                    |               |        Client                   | 
-|                                |-----cloud ----|  wan:&lt;span style=&#34;color:#a00&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#033&#34;&gt;wan&lt;/span&gt;-address&lt;span style=&#34;color:#a00&#34;&gt;}&lt;/span&gt;             |                            
-| wireguard tunnel interface:wg01|               | Wireguard tunnel interface:wg01 |
-|--------------------------------|               |---------------------------------|
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;server-configuration&#34;&gt;Server configuration&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one.&lt;/span&gt;
-generate wireguard keypair
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Show the private key&lt;/span&gt;
-show wireguard privkey 
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Show the public key&lt;/span&gt;
-show wireguard pubkey
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Enter configuration mode&lt;/span&gt;
-configure
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#set virtual network interfaces for wireguard&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 address &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.100.1/24&amp;#39;&lt;/span&gt;
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set Wireguard listen port&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 port &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;50100&amp;#39;&lt;/span&gt;
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Add CLIENT1&lt;/span&gt;
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set wireguard allow client ip ranges to access.&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer CLIENT1 allowed-ips &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.100.2/32&amp;#39;&lt;/span&gt; 
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set how offten to send keep alives in seconds&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer CLIENT1 persistent-keepalive &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;15&amp;#39;&lt;/span&gt;
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set presharekey&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer CLIENT1 preshared-key gLdIlCM/AsobjfDgFK/cdgsAcjILTzLY4df5BskRcqY&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set client public key&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer CLIENT1 pubkey &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;${client-pubkey}&amp;#39;&lt;/span&gt;
-
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#set static routing.&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; protocols static interface-route &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.100.0/24&amp;#39;&lt;/span&gt; next-hop-interface wg01
-
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#make configuration applied&lt;/span&gt;
-commit
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Save configuration&lt;/span&gt;
-save
-
-
-
- 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;client-configuration&#34;&gt;Client configuration&lt;/h3&gt;
-&lt;h4 id=&#34;1-vyos-wireguard-client&#34;&gt;1. vyos wireguard client&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;# Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one.&lt;/span&gt;
-generate wireguard keypair
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Show the private key&lt;/span&gt;
-show wireguard privkey 
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Show the public key&lt;/span&gt;
-show wireguard pubkey
-
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set wireguard virtual network interfaces&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 address &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.100.2/32&amp;#39;&lt;/span&gt;
-
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#set wireguard accept packets of network.&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer SERVER allow-ips &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;0.0.0.0/0&amp;#39;&lt;/span&gt;
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set connection to server&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer SERVER endpoint &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;${server-wan-address}:50100&amp;#39;&lt;/span&gt;
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set how offten to send keep alives in seconds&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer SERVEr persistent-keepalive &lt;span style=&#34;color:#f60&#34;&gt;15&lt;/span&gt;
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set public key for server&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer SERVER pubkey &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;${server-pubkey}&amp;#39;&lt;/span&gt;
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Set presharekey&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; interfaces wireguard wg01 peer SERVER preshared-key gLdIlCM/AsobjfDgFK/cdgsAcjILTzLY4df5BskRcqY&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt;
-
-
-
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#set static routing to client.&lt;/span&gt;
-&lt;span style=&#34;color:#366&#34;&gt;set&lt;/span&gt; protocols static interface-route &lt;span style=&#34;color:#c30&#34;&gt;&amp;#39;172.16.100.0/24&amp;#39;&lt;/span&gt; next-hop-interface wg01
-
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Make the settings applied!&lt;/span&gt;
-commit 
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#save configuration&lt;/span&gt;
-save
-
-
-&lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#Test wireguard connection&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;2-macos-wireguard-client&#34;&gt;2. macos wireguard client&lt;/h5&gt;
-&lt;ol&gt;
-&lt;li&gt;Download wireguard client for macos: &lt;a href=&#34;https://itunes.apple.com/us/app/wireguard/id1451685025?ls=1&amp;amp;mt=12&#34;&gt;Download from AppStore&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;set configure like this&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;[&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;Interface&lt;/span&gt;]
-&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;PrivateKey&lt;/span&gt; &lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;AJ&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;oJcAbxCmeovofOMrJooMMlLMNNKGWuTqffF&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;7&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;oXVU=&lt;/span&gt;
-&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;Address&lt;/span&gt; &lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;172.16&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;100.3&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;32&lt;/span&gt;
-&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;DNS&lt;/span&gt; &lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;1.1&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;1.1&lt;/span&gt;
-
-[&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;Peer&lt;/span&gt;]
-&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;PublicKey&lt;/span&gt; &lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;m&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;6&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;oJcAbxCmeovofOMrPCCCDkGWuTqfkGWufeovofEII=&lt;/span&gt;
-&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;AllowedIPs&lt;/span&gt; &lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;0.0&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;0.0&lt;/span&gt;&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#f60&#34;&gt;0&lt;/span&gt;
-&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;Endpoint&lt;/span&gt; &lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;$WIREGUARD_SERVER_ADDRESS:$PORT&lt;/span&gt;
-&lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;PersistentKeepalive&lt;/span&gt; &lt;span style=&#34;color:#a00;background-color:#faa&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f60&#34;&gt;15&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;3-andoridios&#34;&gt;3. andorid/ios&lt;/h4&gt;
-&lt;ol&gt;
-&lt;li&gt;Edit a configuration and save it as a config file.&lt;/li&gt;
-&lt;li&gt;install qeencode&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;brew install qrencode
-qrencode
-qrencode -t ansiutf8 &amp;lt; client_wireguard_ios.conf
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;with wireguard client scan qr to confirm it.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://wiki.vyos.net/wiki/Wireguard&#34;&gt;Wireguard&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
       
