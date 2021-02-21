@@ -69,7 +69,7 @@
 <meta itemprop="description" content="How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&rsquo;m trying to build a new">
 <meta itemprop="datePublished" content="2019-10-13T14:52:31+08:00" />
 <meta itemprop="dateModified" content="2019-10-13T14:52:31+08:00" />
-<meta itemprop="wordCount" content="1014">
+<meta itemprop="wordCount" content="1099">
 
 
 
@@ -386,6 +386,7 @@ if (!doNotTrack) {
       </ul>
     </li>
     <li><a href="#install-mysqldaloradius-to-make-management-freeradius-with-web-access">Install mysql,daloradius to make management freeradius with web access</a></li>
+    <li><a href="#renew-certficiation">Renew certficiation</a></li>
     <li><a href="#reference">Reference</a></li>
   </ul>
 </nav>
@@ -591,7 +592,8 @@ sudo chgrp winbindd_priv /var/lib/samba/winbindd_privileged/
 </code></pre></div></li>
 <li>
 <p>Configure RADIUS client</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">client 0.0.0.0/0 <span style="color:#555">{</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/freeradius/3.0/clients.conf
+</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">client 0.0.0.0/0 <span style="color:#555">{</span>
    <span style="color:#033">secret</span>  <span style="color:#555">=</span> myauthpassword
    <span style="color:#033">shortname</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;nas access&#34;</span>
 <span style="color:#555">}</span>
@@ -719,7 +721,40 @@ DEFAULT Group !<span style="color:#555">=</span> <span style="color:#c30">&#34;V
 <li>Install mariadb database</li>
 </ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt install -y mariadb-server
-</code></pre></div><h2 id="reference">Reference</h2>
+</code></pre></div><h2 id="renew-certficiation">Renew certficiation</h2>
+<p>We purchased godaddy certification, so we will replace ssl certification</p>
+<ul>
+<li>
+<p>backup default eap configure file</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp /etc/freeradius/3.0/mods-enabled/eap /etc/freeradius/3.0/mods-enabled/eap.backup
+ 
+</code></pre></div></li>
+<li>
+<p>Place pem file to <code>/etc/freeradius/3.0/certs/mycerts</code></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ls -al /etc/freeradius/3.0/certs/mycerts
+</code></pre></div></li>
+</ul>
+<p>-rw-r&ndash;r&ndash; 1 root    root    1728 Feb 21 11:11 mycerts-ca.pem
+-rw-r&ndash;r&ndash; 1 root    root    1704 Feb 21 11:09 mycerts.key
+-rw-r&ndash;r&ndash; 1 root    root    2248 Feb 21 11:13 mycerts.pem</p>
+<pre><code>- Modified `/etc/freeradius/3.0/mods-enabled/eap` file.
+
+```bash
+  tls-config tls-common {
+      #private_key_password = whatever
+      private_key_file = /etc/freeradius/3.0/certs/vpn.grapecity.com.cn/mycerts.key
+...
+      certificate_file = /etc/freeradius/3.0/certs/vpn.grapecity.com.cn/mycerts.pem
+...
+      ca-file = /etc/freeradius/3.0/certs/vpn.grapecity.com.cn/mycerts-ca.pem
+
+</code></pre><ul>
+<li>
+<p>Restart freeradius service.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart freeradius
+</code></pre></div></li>
+</ul>
+<h2 id="reference">Reference</h2>
 <ol>
 <li><a href="https://www.dangtrinh.com/2017/03/wpa2-enterprise-with-freeradius-and-ad.html">WPA2 Enterprise with FreeRADIUS and AD integration on Ubuntu16.04</a></li>
 <li><a href="https://blog.csdn.net/d9394952/article/details/93597621">调试freeradius 3.0 与microsoft AD通过LDAP认证的笔记</a></li>

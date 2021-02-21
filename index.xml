@@ -1942,7 +1942,8 @@ sudo chgrp winbindd_priv /var/lib/samba/winbindd_privileged/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Configure RADIUS client&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;client 0.0.0.0/0 &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;vi /etc/freeradius/3.0/clients.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;client 0.0.0.0/0 &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
    &lt;span style=&#34;color:#033&#34;&gt;secret&lt;/span&gt;  &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; myauthpassword
    &lt;span style=&#34;color:#033&#34;&gt;shortname&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#c30&#34;&gt;&amp;#34;nas access&amp;#34;&lt;/span&gt;
 &lt;span style=&#34;color:#555&#34;&gt;}&lt;/span&gt;
@@ -2070,7 +2071,40 @@ DEFAULT Group !&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span st
 &lt;li&gt;Install mariadb database&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt install -y mariadb-server
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;renew-certficiation&#34;&gt;Renew certficiation&lt;/h2&gt;
+&lt;p&gt;We purchased godaddy certification, so we will replace ssl certification&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;backup default eap configure file&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;cp /etc/freeradius/3.0/mods-enabled/eap /etc/freeradius/3.0/mods-enabled/eap.backup
+ 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Place pem file to &lt;code&gt;/etc/freeradius/3.0/certs/mycerts&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ls -al /etc/freeradius/3.0/certs/mycerts
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;-rw-r&amp;ndash;r&amp;ndash; 1 root    root    1728 Feb 21 11:11 mycerts-ca.pem
+-rw-r&amp;ndash;r&amp;ndash; 1 root    root    1704 Feb 21 11:09 mycerts.key
+-rw-r&amp;ndash;r&amp;ndash; 1 root    root    2248 Feb 21 11:13 mycerts.pem&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- Modified `/etc/freeradius/3.0/mods-enabled/eap` file.
+
+```bash
+  tls-config tls-common {
+      #private_key_password = whatever
+      private_key_file = /etc/freeradius/3.0/certs/vpn.grapecity.com.cn/mycerts.key
+...
+      certificate_file = /etc/freeradius/3.0/certs/vpn.grapecity.com.cn/mycerts.pem
+...
+      ca-file = /etc/freeradius/3.0/certs/vpn.grapecity.com.cn/mycerts-ca.pem
+
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Restart freeradius service.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;systemctl restart freeradius
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.dangtrinh.com/2017/03/wpa2-enterprise-with-freeradius-and-ad.html&#34;&gt;WPA2 Enterprise with FreeRADIUS and AD integration on Ubuntu16.04&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/d9394952/article/details/93597621&#34;&gt;调试freeradius 3.0 与microsoft AD通过LDAP认证的笔记&lt;/a&gt;&lt;/li&gt;
