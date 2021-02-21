@@ -244,10 +244,6 @@ group:          files systemd winbind
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">reboot
 </code></pre></div></li>
 <li>
-<p>Restart samba and winbind service</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart smbd winbind
-</code></pre></div></li>
-<li>
 <p>Join domain</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#net join -U mypoweruser</span>
 net ads join -U Administrator
@@ -258,8 +254,8 @@ No DNS domain configured <span style="color:#069;font-weight:bold">for</span> sm
 DNS update failed: NT_STATUS_INVALID_PARAMETER
 </code></pre></div></li>
 <li>
-<p>Restart winbind</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart winbind
+<p>Restart samba and winbind service</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart smbd winbind
 </code></pre></div></li>
 <li>
 <p>Testing samba AD authentication:</p>
