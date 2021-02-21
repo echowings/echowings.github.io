@@ -2087,29 +2087,35 @@ DEFAULT Group !&lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; &lt;span st
 &lt;p&gt;-rw-r&amp;ndash;r&amp;ndash; 1 root    root    1728 Feb 21 11:11 mycerts-ca.pem
 -rw-r&amp;ndash;r&amp;ndash; 1 root    root    1704 Feb 21 11:09 mycerts.key
 -rw-r&amp;ndash;r&amp;ndash; 1 root    root    2248 Feb 21 11:13 mycerts.pem&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- Modified `/etc/freeradius/3.0/mods-enabled/eap` file.
+&lt;pre&gt;&lt;code&gt;- Convert crt to pem
 
 ```bash
-  tls-config tls-common {
-      #private_key_password = whatever
-      private_key_file = /etc/freeradius/3.0/certs/vpn.grapecity.com.cn/mycerts.key
-...
-      certificate_file = /etc/freeradius/3.0/certs/vpn.grapecity.com.cn/mycerts.pem
-...
-      ca-file = /etc/freeradius/3.0/certs/vpn.grapecity.com.cn/mycerts-ca.pem
-
+openssl x509 -in mycert-ca.crt -out mycert-ca.pem -outform PEM
 &lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Restart freeradius service.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;systemctl restart freeradius
+&lt;p&gt;Modified &lt;code&gt;/etc/freeradius/3.0/mods-enabled/eap&lt;/code&gt; file.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;  tls-config tls-common &lt;span style=&#34;color:#555&#34;&gt;{&lt;/span&gt;
+      &lt;span style=&#34;color:#09f;font-style:italic&#34;&gt;#private_key_password = whatever&lt;/span&gt;
+      &lt;span style=&#34;color:#033&#34;&gt;private_key_file&lt;/span&gt; &lt;span style=&#34;color:#555&#34;&gt;=&lt;/span&gt; /etc/freeradius/3.0/certs/vpn.grapecity.com.cn/mycerts.key
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;p&gt;&amp;hellip;
+certificate_file = /etc/freeradius/3.0/certs/vpn.grapecity.com.cn/mycerts.pem
+&amp;hellip;
+ca-file = /etc/freeradius/3.0/certs/vpn.grapecity.com.cn/mycerts-ca.pem&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+- Restart freeradius service.
+
+```bash
+systemctl restart freeradius
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.dangtrinh.com/2017/03/wpa2-enterprise-with-freeradius-and-ad.html&#34;&gt;WPA2 Enterprise with FreeRADIUS and AD integration on Ubuntu16.04&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/d9394952/article/details/93597621&#34;&gt;调试freeradius 3.0 与microsoft AD通过LDAP认证的笔记&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://serverfault.com/questions/622205/configure-freeradius-with-active-driectory-allow-specific-group-of-users-to-auth&#34;&gt;Configure FreeRADIUS with Active Driectory allow specific group of users to authenticate&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.server-world.info/en/note?os=Debian_10&amp;amp;p=samba&amp;amp;f=3&#34;&gt;Join in Windows Active Directory Domain with Samba Winbind.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bbs.ui.com.cn/t/802-1x-peap-mschapv2/48063/5&#34;&gt;802.1x PEAP mschapv2认证证书问题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/4691699/how-to-convert-crt-to-pem&#34;&gt;How to convert .crt to .pem [duplicate]&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
       

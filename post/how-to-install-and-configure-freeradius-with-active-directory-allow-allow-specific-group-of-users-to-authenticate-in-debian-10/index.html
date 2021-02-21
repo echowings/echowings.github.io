@@ -69,7 +69,7 @@
 <meta itemprop="description" content="How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&rsquo;m trying to build a new">
 <meta itemprop="datePublished" content="2019-10-13T14:52:31+08:00" />
 <meta itemprop="dateModified" content="2019-10-13T14:52:31+08:00" />
-<meta itemprop="wordCount" content="1099">
+<meta itemprop="wordCount" content="1136">
 
 
 
@@ -737,29 +737,35 @@ DEFAULT Group !<span style="color:#555">=</span> <span style="color:#c30">&#34;V
 <p>-rw-r&ndash;r&ndash; 1 root    root    1728 Feb 21 11:11 mycerts-ca.pem
 -rw-r&ndash;r&ndash; 1 root    root    1704 Feb 21 11:09 mycerts.key
 -rw-r&ndash;r&ndash; 1 root    root    2248 Feb 21 11:13 mycerts.pem</p>
-<pre><code>- Modified `/etc/freeradius/3.0/mods-enabled/eap` file.
+<pre><code>- Convert crt to pem
 
 ```bash
-  tls-config tls-common {
-      #private_key_password = whatever
-      private_key_file = /etc/freeradius/3.0/certs/vpn.grapecity.com.cn/mycerts.key
-...
-      certificate_file = /etc/freeradius/3.0/certs/vpn.grapecity.com.cn/mycerts.pem
-...
-      ca-file = /etc/freeradius/3.0/certs/vpn.grapecity.com.cn/mycerts-ca.pem
-
+openssl x509 -in mycert-ca.crt -out mycert-ca.pem -outform PEM
 </code></pre><ul>
 <li>
-<p>Restart freeradius service.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart freeradius
+<p>Modified <code>/etc/freeradius/3.0/mods-enabled/eap</code> file.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  tls-config tls-common <span style="color:#555">{</span>
+      <span style="color:#09f;font-style:italic">#private_key_password = whatever</span>
+      <span style="color:#033">private_key_file</span> <span style="color:#555">=</span> /etc/freeradius/3.0/certs/vpn.grapecity.com.cn/mycerts.key
 </code></pre></div></li>
 </ul>
-<h2 id="reference">Reference</h2>
+<p>&hellip;
+certificate_file = /etc/freeradius/3.0/certs/vpn.grapecity.com.cn/mycerts.pem
+&hellip;
+ca-file = /etc/freeradius/3.0/certs/vpn.grapecity.com.cn/mycerts-ca.pem</p>
+<pre><code>
+- Restart freeradius service.
+
+```bash
+systemctl restart freeradius
+</code></pre><h2 id="reference">Reference</h2>
 <ol>
 <li><a href="https://www.dangtrinh.com/2017/03/wpa2-enterprise-with-freeradius-and-ad.html">WPA2 Enterprise with FreeRADIUS and AD integration on Ubuntu16.04</a></li>
 <li><a href="https://blog.csdn.net/d9394952/article/details/93597621">调试freeradius 3.0 与microsoft AD通过LDAP认证的笔记</a></li>
 <li><a href="https://serverfault.com/questions/622205/configure-freeradius-with-active-driectory-allow-specific-group-of-users-to-auth">Configure FreeRADIUS with Active Driectory allow specific group of users to authenticate</a></li>
 <li><a href="https://www.server-world.info/en/note?os=Debian_10&amp;p=samba&amp;f=3">Join in Windows Active Directory Domain with Samba Winbind.</a></li>
+<li><a href="https://bbs.ui.com.cn/t/802-1x-peap-mschapv2/48063/5">802.1x PEAP mschapv2认证证书问题</a></li>
+<li><a href="https://stackoverflow.com/questions/4691699/how-to-convert-crt-to-pem">How to convert .crt to .pem [duplicate]</a></li>
 </ol>
 
     </div>
