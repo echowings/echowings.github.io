@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>kms on My Blog - For Fun</title>
-    <link>https://blog.stevedong.com/tags/kms/</link>
-    <description>Recent content in kms on My Blog - For Fun</description>
+    <title>vlmcsd on My Blog - For Fun</title>
+    <link>https://blog.stevedong.com/categories/vlmcsd/</link>
+    <description>Recent content in vlmcsd on My Blog - For Fun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy;Steve Dong 2021</copyright>
-    <lastBuildDate>Tue, 02 Mar 2021 12:19:36 +0800</lastBuildDate><atom:link href="https://blog.stevedong.com/tags/kms/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Mar 2021 12:19:36 +0800</lastBuildDate><atom:link href="https://blog.stevedong.com/categories/vlmcsd/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to Install Vlmcsd on Debian</title>
       <link>https://blog.stevedong.com/post/kms/how-to-install-vlmcsd-on-debian/</link>
@@ -15,17 +15,6 @@
       
       <guid>https://blog.stevedong.com/post/kms/how-to-install-vlmcsd-on-debian/</guid>
       <description>How to Install VLMCSD on debian VLMCSD vlmcsd-1113-2020-03-28-Hotbird64 Download and install VLMCSD_VERSION=svn113 curl -fsSLO https://github.com/Wind4/vlmcsd/releases/download/$VLMCSD_VERSION/binaries.tar.gz tar -zxvf binaries.tar.gz sudo cp -af ./binaries/Linux/intel/glibc/vlmcsd-x64-glibc /usr/local/bin/ chown root:root /usr/local/bin/vlmcsd-x64-glibc chmod +x /usr/local/bin/vlmcsd-64-glibc sudo bash -c &amp;#39;cat &amp;gt; /lib/systemd/system/vlmcsd.service&amp;#39; &amp;lt;&amp;lt; EOF [Unit] Description=vlmcsd service [Service] ExecStart=/usr/local/bin/vlmcsd-x64-glibc -l /var/log/vlmcsd-64-glibc.log &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 Restart=on-failure RestartSec=42s [Install] WantedBy=multi-user.target EOF #Reload systemctl daemon sudo systemctl daemon-reload #Delete temp directory. sudo rm -rf ./binaries sudo rm -rf ./binaries.tar.gz #Enable</description>
-    </item>
-    
-    <item>
-      <title>How to Build a Kms Server</title>
-      <link>https://blog.stevedong.com/post/how-to-build-a-kms-server/</link>
-      <pubDate>Thu, 11 Apr 2019 00:17:37 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/how-to-build-a-kms-server/</guid>
-      <description>How to build a kms server Option 1: docker mode docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername Option 2: docker compose docker-compose.yml
-version:&amp;#39;3&amp;#39;services:frontend:image:luodaoyi/kms-servercontainer_name:mykmsports:- 1688:1688restart:alwaysdocker-compose start the container
-docker-compose up -d Active Script echo &amp;#34;To active office&amp;#34; cd &amp;#34;%programfiles%\Microsoft Office\Office16&amp;#34; cscript ospp.vbs /sethst:xx.xx.xx.xx cscript ospp.vbs /act echo &amp;#34;to active windows&amp;#34; slmgr /skms xxx.xxx.xxx.xxx slmgr /ato Reference  blog  </description>
     </item>
     
   </channel>

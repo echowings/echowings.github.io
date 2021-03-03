@@ -348,6 +348,40 @@ if (!doNotTrack) {
   <header class="post-header">
     <h1 class="post-title">
       
+      <a class="post-link" href="/post/kms/how-to-install-vlmcsd-on-debian/">How to Install Vlmcsd on Debian</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2021-03-02" class="post-time">
+        2021-03-02
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/vlmcsd/"> vlmcsd </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to Install VLMCSD on debian VLMCSD vlmcsd-1113-2020-03-28-Hotbird64 Download and install VLMCSD_VERSION=svn113 curl -fsSLO https://github.com/Wind4/vlmcsd/releases/download/$VLMCSD_VERSION/binaries.tar.gz tar -zxvf binaries.tar.gz sudo cp -af ./binaries/Linux/intel/glibc/vlmcsd-x64-glibc /usr/local/bin/ chown root:root /usr/local/bin/vlmcsd-x64-glibc chmod +x /usr/local/bin/vlmcsd-64-glibc sudo bash -c &#39;cat &gt; /lib/systemd/system/vlmcsd.service&#39; &lt;&lt; EOF [Unit] Description=vlmcsd service [Service] ExecStart=/usr/local/bin/vlmcsd-x64-glibc -l /var/log/vlmcsd-64-glibc.log &gt; /dev/null 2&gt;&amp;1 Restart=on-failure RestartSec=42s [Install] WantedBy=multi-user.target EOF #Reload systemctl daemon sudo systemctl daemon-reload #Delete temp directory. sudo rm -rf ./binaries sudo rm -rf ./binaries.tar.gz #Enable
+    </div>
+    <div class="read-more">
+      <a href="/post/kms/how-to-install-vlmcsd-on-debian/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
       <a class="post-link" href="/post/helpdesk/how-to-install-aolindao/">奥林岛财务软件在win7/win8/win10安装</a>
     </h1>
     
@@ -821,40 +855,6 @@ Setup vpn on vyos  Generate a preshare key  $ generate wireguard preshared-key u
     </div>
     <div class="read-more">
       <a href="/post/vyos/how-to-build-l2tp-over-ipsec-vpn-with-vyos/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/jitsi/how-to-deploy-jitsi-server-with-docker-compose/">How to Deploy Jitsi Server With Docker Compose</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2020-05-21" class="post-time">
-        2020-05-21
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to deploy Jisti Server with docker-compose Install jisti Server git clone latest version git clone https://github.com/jitsi/docker-jitsi-meet &amp;&amp; cd docker-jitsi-meet cp env.example .env Generate security password ./gen-passwords.sh #mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody,jicofo,jvb} mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri} Modify .env copy env.example to .env. cp env.example .env Modify key and value as followed. CONFIG=~/.jitsi-meet-cfg # Exposed HTTP port HTTP_PORT=80 # Exposed HTTPS port HTTPS_PORT=443 # System time zone TZ=Asia/Shanghai # Public URL for the web
-    </div>
-    <div class="read-more">
-      <a href="/post/jitsi/how-to-deploy-jitsi-server-with-docker-compose/" class="read-more-link">Read more</a>
     </div>
     
   </div>

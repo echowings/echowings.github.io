@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy;Steve Dong 2021</copyright>
-    <lastBuildDate>Mon, 11 Jan 2021 01:13:07 +0800</lastBuildDate><atom:link href="https://blog.stevedong.com/tags/vyos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Mar 2021 12:19:36 +0800</lastBuildDate><atom:link href="https://blog.stevedong.com/tags/vyos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Install Vlmcsd on Debian</title>
+      <link>https://blog.stevedong.com/post/kms/how-to-install-vlmcsd-on-debian/</link>
+      <pubDate>Tue, 02 Mar 2021 12:19:36 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/kms/how-to-install-vlmcsd-on-debian/</guid>
+      <description>How to Install VLMCSD on debian VLMCSD vlmcsd-1113-2020-03-28-Hotbird64 Download and install VLMCSD_VERSION=svn113 curl -fsSLO https://github.com/Wind4/vlmcsd/releases/download/$VLMCSD_VERSION/binaries.tar.gz tar -zxvf binaries.tar.gz sudo cp -af ./binaries/Linux/intel/glibc/vlmcsd-x64-glibc /usr/local/bin/ chown root:root /usr/local/bin/vlmcsd-x64-glibc chmod +x /usr/local/bin/vlmcsd-64-glibc sudo bash -c &amp;#39;cat &amp;gt; /lib/systemd/system/vlmcsd.service&amp;#39; &amp;lt;&amp;lt; EOF [Unit] Description=vlmcsd service [Service] ExecStart=/usr/local/bin/vlmcsd-x64-glibc -l /var/log/vlmcsd-64-glibc.log &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 Restart=on-failure RestartSec=42s [Install] WantedBy=multi-user.target EOF #Reload systemctl daemon sudo systemctl daemon-reload #Delete temp directory. sudo rm -rf ./binaries sudo rm -rf ./binaries.tar.gz #Enable</description>
+    </item>
+    
     <item>
       <title>How to Install Freedns Go on Vyos</title>
       <link>https://blog.stevedong.com/post/dns/how-to-install-freedns-go-on-vyos/</link>
