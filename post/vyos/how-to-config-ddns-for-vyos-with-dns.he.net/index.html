@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/vyos/how-to-config-ddns-for-vyos-with-dns.he.net/" />
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,19 +62,15 @@
 <meta property="og:title" content="How to Config Ddns for Vyos With Dns.he.net" />
 <meta property="og:description" content="How to config DDNS for vyos with dns.he.net Register A Recored  Register a domian host.mydomain.com on your https://dns.he.net Generate a key 64LGiLiuoiuoiuoi  Run command to setup the ddns service configure set service dns dynamic interface pppoe0 service dyndns host-name &#39;host.mydomain.com&#39; set service dns dynamic interface pppoe0 service dyndns login &#39;host.mydomain.com&#39; set service dns dynamic interface pppoe0 service dyndns password &#39;64LGiLiuoiuoiuoi&#39; set service dns dynamic interface pppoe0 service dyndns server &#39;dyn." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/vyos/how-to-config-ddns-for-vyos-with-dns.he.net/" />
-<meta property="article:published_time" content="2020-08-05T16:26:46+08:00" />
-<meta property="article:modified_time" content="2020-08-05T16:26:46+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/vyos/how-to-config-ddns-for-vyos-with-dns.he.net/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-08-05T16:26:46&#43;08:00" />
+<meta property="article:modified_time" content="2020-08-05T17:55:09&#43;08:00" />
+
 <meta itemprop="name" content="How to Config Ddns for Vyos With Dns.he.net">
-<meta itemprop="description" content="How to config DDNS for vyos with dns.he.net Register A Recored  Register a domian host.mydomain.com on your https://dns.he.net Generate a key 64LGiLiuoiuoiuoi  Run command to setup the ddns service configure set service dns dynamic interface pppoe0 service dyndns host-name &#39;host.mydomain.com&#39; set service dns dynamic interface pppoe0 service dyndns login &#39;host.mydomain.com&#39; set service dns dynamic interface pppoe0 service dyndns password &#39;64LGiLiuoiuoiuoi&#39; set service dns dynamic interface pppoe0 service dyndns server &#39;dyn.">
-<meta itemprop="datePublished" content="2020-08-05T16:26:46+08:00" />
-<meta itemprop="dateModified" content="2020-08-05T16:26:46+08:00" />
+<meta itemprop="description" content="How to config DDNS for vyos with dns.he.net Register A Recored  Register a domian host.mydomain.com on your https://dns.he.net Generate a key 64LGiLiuoiuoiuoi  Run command to setup the ddns service configure set service dns dynamic interface pppoe0 service dyndns host-name &#39;host.mydomain.com&#39; set service dns dynamic interface pppoe0 service dyndns login &#39;host.mydomain.com&#39; set service dns dynamic interface pppoe0 service dyndns password &#39;64LGiLiuoiuoiuoi&#39; set service dns dynamic interface pppoe0 service dyndns server &#39;dyn."><meta itemprop="datePublished" content="2020-08-05T16:26:46&#43;08:00" />
+<meta itemprop="dateModified" content="2020-08-05T17:55:09&#43;08:00" />
 <meta itemprop="wordCount" content="72">
-
-
-
-<meta itemprop="keywords" content="vyos,ddns,he.net," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="vyos,ddns,he.net," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Config Ddns for Vyos With Dns.he.net"/>
 <meta name="twitter:description" content="How to config DDNS for vyos with dns.he.net Register A Recored  Register a domian host.mydomain.com on your https://dns.he.net Generate a key 64LGiLiuoiuoiuoi  Run command to setup the ddns service configure set service dns dynamic interface pppoe0 service dyndns host-name &#39;host.mydomain.com&#39; set service dns dynamic interface pppoe0 service dyndns login &#39;host.mydomain.com&#39; set service dns dynamic interface pppoe0 service dyndns password &#39;64LGiLiuoiuoiuoi&#39; set service dns dynamic interface pppoe0 service dyndns server &#39;dyn."/>
 
@@ -392,12 +388,12 @@ if (!doNotTrack) {
 <li>Generate a key <code>64LGiLiuoiuoiuoi</code></li>
 </ol>
 <h2 id="run-command-to-setup-the-ddns-service">Run command to setup the ddns service</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">configure
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">configure
 
-<span style="color:#366">set</span> service dns dynamic interface pppoe0 service dyndns host-name <span style="color:#c30">&#39;host.mydomain.com&#39;</span>
-<span style="color:#366">set</span> service dns dynamic interface pppoe0 service dyndns login <span style="color:#c30">&#39;host.mydomain.com&#39;</span>
-<span style="color:#366">set</span> service dns dynamic interface pppoe0 service dyndns password <span style="color:#c30">&#39;64LGiLiuoiuoiuoi&#39;</span>
-<span style="color:#366">set</span> service dns dynamic interface pppoe0 service dyndns server <span style="color:#c30">&#39;dyn.dns.he.net&#39;</span>
+<span class="nb">set</span> service dns dynamic interface pppoe0 service dyndns host-name <span class="s1">&#39;host.mydomain.com&#39;</span>
+<span class="nb">set</span> service dns dynamic interface pppoe0 service dyndns login <span class="s1">&#39;host.mydomain.com&#39;</span>
+<span class="nb">set</span> service dns dynamic interface pppoe0 service dyndns password <span class="s1">&#39;64LGiLiuoiuoiuoi&#39;</span>
+<span class="nb">set</span> service dns dynamic interface pppoe0 service dyndns server <span class="s1">&#39;dyn.dns.he.net&#39;</span>
 commit
 save
 
@@ -579,7 +575,7 @@ save
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

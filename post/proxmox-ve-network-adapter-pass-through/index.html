@@ -33,7 +33,7 @@ Recently days, I just learn proxmox and find pci-e pass through function. I thin
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/proxmox-ve-network-adapter-pass-through/" />
@@ -54,7 +54,7 @@ Recently days, I just learn proxmox and find pci-e pass through function. I thin
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -64,19 +64,16 @@ Recently days, I just learn proxmox and find pci-e pass through function. I thin
 <meta property="og:description" content="Proxmox Network Adapter Pass Through Long time ago, I konw virtualization is go very good solution to server. But how about router build in virtualization? After tried to do it, I was failed. because virtual switch made networking very slow. So i just use dedicate server as a router.
 Recently days, I just learn proxmox and find pci-e pass through function. I think maybe it is way to make routing virtualization." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-network-adapter-pass-through/" />
-<meta property="article:published_time" content="2018-12-24T16:01:23+08:00" />
-<meta property="article:modified_time" content="2018-12-24T16:01:23+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-network-adapter-pass-through/" /><meta property="article:section" content="post" />
+
+<meta property="article:modified_time" content="2018-12-24T16:01:23&#43;08:00" />
+
 <meta itemprop="name" content="Proxmox Ve Network Adapter Pass Through">
 <meta itemprop="description" content="Proxmox Network Adapter Pass Through Long time ago, I konw virtualization is go very good solution to server. But how about router build in virtualization? After tried to do it, I was failed. because virtual switch made networking very slow. So i just use dedicate server as a router.
 Recently days, I just learn proxmox and find pci-e pass through function. I think maybe it is way to make routing virtualization.">
-<meta itemprop="dateModified" content="2018-12-24T16:01:23+08:00" />
+<meta itemprop="dateModified" content="2018-12-24T16:01:23&#43;08:00" />
 <meta itemprop="wordCount" content="258">
-
-
-
-<meta itemprop="keywords" content="PVE,pass through," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="PVE,pass through," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Proxmox Ve Network Adapter Pass Through"/>
 <meta name="twitter:description" content="Proxmox Network Adapter Pass Through Long time ago, I konw virtualization is go very good solution to server. But how about router build in virtualization? After tried to do it, I was failed. because virtual switch made networking very slow. So i just use dedicate server as a router.
 Recently days, I just learn proxmox and find pci-e pass through function. I think maybe it is way to make routing virtualization."/>
@@ -444,45 +441,45 @@ if (!doNotTrack) {
 <li>Edit /etc/modules</li>
 </ul>
 <p>Add</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vfio
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">vfio
 vfio_iommu_type1
 vfio_pci
 vfio_virqfd
 </code></pre></div><ul>
 <li>Check IOMMU enable or not</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">dmesg | grep ecap
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dmesg <span class="p">|</span> grep ecap
 </code></pre></div><ul>
 <li>script to make sure IOMMU is enabled</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#099">#!/bin/sh
-</span><span style="color:#099"></span><span style="color:#069;font-weight:bold">if</span> <span style="color:#555">[</span> <span style="color:#069;font-weight:bold">$(</span>dmesg | grep ecap | wc -l<span style="color:#069;font-weight:bold">)</span> -eq <span style="color:#f60">0</span> <span style="color:#555">]</span>; <span style="color:#069;font-weight:bold">then</span>
-    <span style="color:#366">echo</span> <span style="color:#c30">&#34;No interrupt remapping support found&#34;</span>
-    <span style="color:#366">exit</span> <span style="color:#f60">1</span>
-<span style="color:#069;font-weight:bold">fi</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+</span><span class="cp"></span><span class="k">if</span> <span class="o">[</span> <span class="k">$(</span>dmesg <span class="p">|</span> grep ecap <span class="p">|</span> wc -l<span class="k">)</span> -eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&#34;No interrupt remapping support found&#34;</span>
+    <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
 
-<span style="color:#069;font-weight:bold">for</span> i in <span style="color:#069;font-weight:bold">$(</span>dmesg | grep ecap | awk <span style="color:#c30">&#39;{print $NF}&#39;</span><span style="color:#069;font-weight:bold">)</span>; <span style="color:#069;font-weight:bold">do</span>
-    <span style="color:#069;font-weight:bold">if</span> <span style="color:#555">[</span> <span style="color:#069;font-weight:bold">$((</span> <span style="color:#555">(</span><span style="color:#f60">0</span>x<span style="color:#033">$i</span> <span style="color:#555">&amp;</span> <span style="color:#f60">0</span>xf<span style="color:#555">)</span> &gt;&gt; <span style="color:#f60">3</span> <span style="color:#069;font-weight:bold">))</span> -ne <span style="color:#f60">1</span> <span style="color:#555">]</span>; <span style="color:#069;font-weight:bold">then</span>
-        <span style="color:#366">echo</span> <span style="color:#c30">&#34;Interrupt remapping not supported&#34;</span>
-        <span style="color:#366">exit</span> <span style="color:#f60">1</span>
-<span style="color:#069;font-weight:bold">fi</span>
-<span style="color:#069;font-weight:bold">done</span>
+<span class="k">for</span> i in <span class="k">$(</span>dmesg <span class="p">|</span> grep ecap <span class="p">|</span> awk <span class="s1">&#39;{print $NF}&#39;</span><span class="k">)</span><span class="p">;</span> <span class="k">do</span>
+    <span class="k">if</span> <span class="o">[</span> <span class="k">$((</span> <span class="o">(</span><span class="m">0</span>x<span class="nv">$i</span> <span class="o">&amp;</span> <span class="m">0</span>xf<span class="o">)</span> &gt;&gt; <span class="m">3</span> <span class="k">))</span> -ne <span class="m">1</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;Interrupt remapping not supported&#34;</span>
+        <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+<span class="k">done</span>
 </code></pre></div><ul>
 <li>Verify IOMMU isolation</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">find /sys/kernel/iommu_groups/ -type l
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">find /sys/kernel/iommu_groups/ -type l
 </code></pre></div><h2 id="add-pci-e-device-to-vm">Add PCI-E Device to VM</h2>
 <ul>
 <li>Run <code>lspci</code> to check address of network pci-e adapter device. like this</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">lspci
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">lspci
 </code></pre></div><pre><code>hostpci0: 01:00.0
 </code></pre><ul>
 <li>Add configure of yoru VM <code>/etc/pve/qemu-server/&lt;vmid&gt;.conf</code></li>
 <li>Add configure like this to set pci-expres passthrough.</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  machine: q35
-  hostpci0: 00:00.0,pcie<span style="color:#555">=</span><span style="color:#f60">1</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">  machine: q35
+  hostpci0: 00:00.0,pcie<span class="o">=</span><span class="m">1</span>
 </code></pre></div><h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://pve.proxmox.com/wiki/Pci_passthrough">Pci passthrough</a></li>
@@ -664,7 +661,7 @@ vfio_virqfd
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

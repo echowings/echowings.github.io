@@ -34,7 +34,7 @@ Site-to-Sit mode Toplogy |--------------------------------| |-------------------
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/vyos-how-to-setup-wireguard/" />
@@ -55,7 +55,7 @@ Site-to-Sit mode Toplogy |--------------------------------| |-------------------
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -66,21 +66,17 @@ Site-to-Sit mode Toplogy |--------------------------------| |-------------------
  Wireguard  Today I will try to deploy wireguard with two vyos .
 Site-to-Sit mode Toplogy |--------------------------------| |---------------------------------| | Server | | Client | | |-----cloud ----| wan:${wan-address} | | wireguard tunnel interface:wg01| | Wireguard tunnel interface:wg01 | |--------------------------------| |---------------------------------| Server configuration # Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/vyos-how-to-setup-wireguard/" />
-<meta property="article:published_time" content="2019-04-17T12:31:08+08:00" />
-<meta property="article:modified_time" content="2019-04-17T12:31:08+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/vyos-how-to-setup-wireguard/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-04-17T12:31:08&#43;08:00" />
+<meta property="article:modified_time" content="2020-09-03T04:43:30&#43;08:00" />
+
 <meta itemprop="name" content="Vyos How to Setup Wireguard">
 <meta itemprop="description" content="How to conifugre wireguard in vyos WireGuard is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
  Wireguard  Today I will try to deploy wireguard with two vyos .
-Site-to-Sit mode Toplogy |--------------------------------| |---------------------------------| | Server | | Client | | |-----cloud ----| wan:${wan-address} | | wireguard tunnel interface:wg01| | Wireguard tunnel interface:wg01 | |--------------------------------| |---------------------------------| Server configuration # Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one.">
-<meta itemprop="datePublished" content="2019-04-17T12:31:08+08:00" />
-<meta itemprop="dateModified" content="2019-04-17T12:31:08+08:00" />
+Site-to-Sit mode Toplogy |--------------------------------| |---------------------------------| | Server | | Client | | |-----cloud ----| wan:${wan-address} | | wireguard tunnel interface:wg01| | Wireguard tunnel interface:wg01 | |--------------------------------| |---------------------------------| Server configuration # Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one."><meta itemprop="datePublished" content="2019-04-17T12:31:08&#43;08:00" />
+<meta itemprop="dateModified" content="2020-09-03T04:43:30&#43;08:00" />
 <meta itemprop="wordCount" content="413">
-
-
-
-<meta itemprop="keywords" content="vyos,wireguard,networking," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="vyos,wireguard,networking," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Vyos How to Setup Wireguard"/>
 <meta name="twitter:description" content="How to conifugre wireguard in vyos WireGuard is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
  Wireguard  Today I will try to deploy wireguard with two vyos .
@@ -405,54 +401,54 @@ if (!doNotTrack) {
 </ul>
 <p>Today I will try to deploy wireguard  with two vyos .</p>
 <h2 id="site-to-sit-mode">Site-to-Sit mode</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">
 Toplogy
-|--------------------------------|               |---------------------------------|
-|      Server                    |               |        Client                   | 
-|                                |-----cloud ----|  wan:<span style="color:#a00">${</span><span style="color:#033">wan</span>-address<span style="color:#a00">}</span>             |                            
-| wireguard tunnel interface:wg01|               | Wireguard tunnel interface:wg01 |
-|--------------------------------|               |---------------------------------|
+<span class="p">|</span>--------------------------------<span class="p">|</span>               <span class="p">|</span>---------------------------------<span class="p">|</span>
+<span class="p">|</span>      Server                    <span class="p">|</span>               <span class="p">|</span>        Client                   <span class="p">|</span> 
+<span class="p">|</span>                                <span class="p">|</span>-----cloud ----<span class="p">|</span>  wan:<span class="si">${</span><span class="nv">wan</span><span class="p">-address</span><span class="si">}</span>             <span class="p">|</span>                            
+<span class="p">|</span> wireguard tunnel interface:wg01<span class="p">|</span>               <span class="p">|</span> Wireguard tunnel interface:wg01 <span class="p">|</span>
+<span class="p">|</span>--------------------------------<span class="p">|</span>               <span class="p">|</span>---------------------------------<span class="p">|</span>
 
 </code></pre></div><h3 id="server-configuration">Server configuration</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one.</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one.</span>
 generate wireguard keypair
 
-<span style="color:#09f;font-style:italic">#Show the private key</span>
+<span class="c1">#Show the private key</span>
 show wireguard privkey 
 
-<span style="color:#09f;font-style:italic">#Show the public key</span>
+<span class="c1">#Show the public key</span>
 show wireguard pubkey
 
-<span style="color:#09f;font-style:italic">#Enter configuration mode</span>
+<span class="c1">#Enter configuration mode</span>
 configure
 
-<span style="color:#09f;font-style:italic">#set virtual network interfaces for wireguard</span>
-<span style="color:#366">set</span> interfaces wireguard wg01 address <span style="color:#c30">&#39;172.16.100.1/24&#39;</span>
+<span class="c1">#set virtual network interfaces for wireguard</span>
+<span class="nb">set</span> interfaces wireguard wg01 address <span class="s1">&#39;172.16.100.1/24&#39;</span>
 
-<span style="color:#09f;font-style:italic">#Set Wireguard listen port</span>
-<span style="color:#366">set</span> interfaces wireguard wg01 port <span style="color:#c30">&#39;50100&#39;</span>
+<span class="c1">#Set Wireguard listen port</span>
+<span class="nb">set</span> interfaces wireguard wg01 port <span class="s1">&#39;50100&#39;</span>
 
-<span style="color:#09f;font-style:italic">#Add CLIENT1</span>
-<span style="color:#09f;font-style:italic">#Set wireguard allow client ip ranges to access.</span>
-<span style="color:#366">set</span> interfaces wireguard wg01 peer CLIENT1 allowed-ips <span style="color:#c30">&#39;172.16.100.2/32&#39;</span> 
+<span class="c1">#Add CLIENT1</span>
+<span class="c1">#Set wireguard allow client ip ranges to access.</span>
+<span class="nb">set</span> interfaces wireguard wg01 peer CLIENT1 allowed-ips <span class="s1">&#39;172.16.100.2/32&#39;</span> 
 
-<span style="color:#09f;font-style:italic">#Set how offten to send keep alives in seconds</span>
-<span style="color:#366">set</span> interfaces wireguard wg01 peer CLIENT1 persistent-keepalive <span style="color:#c30">&#39;15&#39;</span>
+<span class="c1">#Set how offten to send keep alives in seconds</span>
+<span class="nb">set</span> interfaces wireguard wg01 peer CLIENT1 persistent-keepalive <span class="s1">&#39;15&#39;</span>
 
-<span style="color:#09f;font-style:italic">#Set presharekey</span>
-<span style="color:#366">set</span> interfaces wireguard wg01 peer CLIENT1 preshared-key gLdIlCM/AsobjfDgFK/cdgsAcjILTzLY4df5BskRcqY<span style="color:#555">=</span>
-<span style="color:#09f;font-style:italic">#Set client public key</span>
-<span style="color:#366">set</span> interfaces wireguard wg01 peer CLIENT1 pubkey <span style="color:#c30">&#39;${client-pubkey}&#39;</span>
-
-
-<span style="color:#09f;font-style:italic">#set static routing.</span>
-<span style="color:#366">set</span> protocols static interface-route <span style="color:#c30">&#39;172.16.100.0/24&#39;</span> next-hop-interface wg01
+<span class="c1">#Set presharekey</span>
+<span class="nb">set</span> interfaces wireguard wg01 peer CLIENT1 preshared-key gLdIlCM/AsobjfDgFK/cdgsAcjILTzLY4df5BskRcqY<span class="o">=</span>
+<span class="c1">#Set client public key</span>
+<span class="nb">set</span> interfaces wireguard wg01 peer CLIENT1 pubkey <span class="s1">&#39;${client-pubkey}&#39;</span>
 
 
-<span style="color:#09f;font-style:italic">#make configuration applied</span>
+<span class="c1">#set static routing.</span>
+<span class="nb">set</span> protocols static interface-route <span class="s1">&#39;172.16.100.0/24&#39;</span> next-hop-interface wg01
+
+
+<span class="c1">#make configuration applied</span>
 commit
 
-<span style="color:#09f;font-style:italic">#Save configuration</span>
+<span class="c1">#Save configuration</span>
 save
 
 
@@ -460,73 +456,73 @@ save
  
 </code></pre></div><h3 id="client-configuration">Client configuration</h3>
 <h4 id="1-vyos-wireguard-client">1. vyos wireguard client</h4>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one.</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># Generates a new keypair, if one exists already is asks you if you want to overwrite the existing one.</span>
 generate wireguard keypair
 
-<span style="color:#09f;font-style:italic">#Show the private key</span>
+<span class="c1">#Show the private key</span>
 show wireguard privkey 
 
-<span style="color:#09f;font-style:italic">#Show the public key</span>
+<span class="c1">#Show the public key</span>
 show wireguard pubkey
 
 
-<span style="color:#09f;font-style:italic">#Set wireguard virtual network interfaces</span>
-<span style="color:#366">set</span> interfaces wireguard wg01 address <span style="color:#c30">&#39;172.16.100.2/32&#39;</span>
+<span class="c1">#Set wireguard virtual network interfaces</span>
+<span class="nb">set</span> interfaces wireguard wg01 address <span class="s1">&#39;172.16.100.2/32&#39;</span>
 
 
-<span style="color:#09f;font-style:italic">#set wireguard accept packets of network.</span>
-<span style="color:#366">set</span> interfaces wireguard wg01 peer SERVER allow-ips <span style="color:#c30">&#39;0.0.0.0/0&#39;</span>
+<span class="c1">#set wireguard accept packets of network.</span>
+<span class="nb">set</span> interfaces wireguard wg01 peer SERVER allow-ips <span class="s1">&#39;0.0.0.0/0&#39;</span>
 
-<span style="color:#09f;font-style:italic">#Set connection to server</span>
-<span style="color:#366">set</span> interfaces wireguard wg01 peer SERVER endpoint <span style="color:#c30">&#39;${server-wan-address}:50100&#39;</span>
+<span class="c1">#Set connection to server</span>
+<span class="nb">set</span> interfaces wireguard wg01 peer SERVER endpoint <span class="s1">&#39;${server-wan-address}:50100&#39;</span>
 
-<span style="color:#09f;font-style:italic">#Set how offten to send keep alives in seconds</span>
-<span style="color:#366">set</span> interfaces wireguard wg01 peer SERVEr persistent-keepalive <span style="color:#f60">15</span>
+<span class="c1">#Set how offten to send keep alives in seconds</span>
+<span class="nb">set</span> interfaces wireguard wg01 peer SERVEr persistent-keepalive <span class="m">15</span>
 
-<span style="color:#09f;font-style:italic">#Set public key for server</span>
-<span style="color:#366">set</span> interfaces wireguard wg01 peer SERVER pubkey <span style="color:#c30">&#39;${server-pubkey}&#39;</span>
+<span class="c1">#Set public key for server</span>
+<span class="nb">set</span> interfaces wireguard wg01 peer SERVER pubkey <span class="s1">&#39;${server-pubkey}&#39;</span>
 
-<span style="color:#09f;font-style:italic">#Set presharekey</span>
-<span style="color:#366">set</span> interfaces wireguard wg01 peer SERVER preshared-key gLdIlCM/AsobjfDgFK/cdgsAcjILTzLY4df5BskRcqY<span style="color:#555">=</span>
-
-
+<span class="c1">#Set presharekey</span>
+<span class="nb">set</span> interfaces wireguard wg01 peer SERVER preshared-key gLdIlCM/AsobjfDgFK/cdgsAcjILTzLY4df5BskRcqY<span class="o">=</span>
 
 
-<span style="color:#09f;font-style:italic">#set static routing to client.</span>
-<span style="color:#366">set</span> protocols static interface-route <span style="color:#c30">&#39;172.16.100.0/24&#39;</span> next-hop-interface wg01
 
 
-<span style="color:#09f;font-style:italic">#Make the settings applied!</span>
+<span class="c1">#set static routing to client.</span>
+<span class="nb">set</span> protocols static interface-route <span class="s1">&#39;172.16.100.0/24&#39;</span> next-hop-interface wg01
+
+
+<span class="c1">#Make the settings applied!</span>
 commit 
 
-<span style="color:#09f;font-style:italic">#save configuration</span>
+<span class="c1">#save configuration</span>
 save
 
 
-<span style="color:#09f;font-style:italic">#Test wireguard connection</span>
+<span class="c1">#Test wireguard connection</span>
 
 </code></pre></div><h5 id="2-macos-wireguard-client">2. macos wireguard client</h5>
 <ol>
 <li>Download wireguard client for macos: <a href="https://itunes.apple.com/us/app/wireguard/id1451685025?ls=1&amp;mt=12">Download from AppStore</a></li>
 <li>set configure like this</li>
 </ol>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">[<span style="color:#a00;background-color:#faa">Interface</span>]
-<span style="color:#a00;background-color:#faa">PrivateKey</span> <span style="color:#a00;background-color:#faa">=</span> <span style="color:#a00;background-color:#faa">AJ</span><span style="color:#f60">2</span><span style="color:#a00;background-color:#faa">oJcAbxCmeovofOMrJooMMlLMNNKGWuTqffF</span><span style="color:#f60">7</span><span style="color:#a00;background-color:#faa">oXVU=</span>
-<span style="color:#a00;background-color:#faa">Address</span> <span style="color:#a00;background-color:#faa">=</span> <span style="color:#f60">172.16</span><span style="color:#a00;background-color:#faa">.</span><span style="color:#f60">100.3</span><span style="color:#a00;background-color:#faa">/</span><span style="color:#f60">32</span>
-<span style="color:#a00;background-color:#faa">DNS</span> <span style="color:#a00;background-color:#faa">=</span> <span style="color:#f60">1.1</span><span style="color:#a00;background-color:#faa">.</span><span style="color:#f60">1.1</span>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">[</span><span class="err">Interface</span><span class="p">]</span>
+<span class="err">PrivateKey</span> <span class="err">=</span> <span class="err">AJ</span><span class="mi">2</span><span class="err">oJcAbxCmeovofOMrJooMMlLMNNKGWuTqffF</span><span class="mi">7</span><span class="err">oXVU=</span>
+<span class="err">Address</span> <span class="err">=</span> <span class="mf">172.16</span><span class="err">.</span><span class="mf">100.3</span><span class="err">/</span><span class="mi">32</span>
+<span class="err">DNS</span> <span class="err">=</span> <span class="mf">1.1</span><span class="err">.</span><span class="mf">1.1</span>
 
-[<span style="color:#a00;background-color:#faa">Peer</span>]
-<span style="color:#a00;background-color:#faa">PublicKey</span> <span style="color:#a00;background-color:#faa">=</span> <span style="color:#a00;background-color:#faa">m</span><span style="color:#f60">6</span><span style="color:#a00;background-color:#faa">oJcAbxCmeovofOMrPCCCDkGWuTqfkGWufeovofEII=</span>
-<span style="color:#a00;background-color:#faa">AllowedIPs</span> <span style="color:#a00;background-color:#faa">=</span> <span style="color:#f60">0.0</span><span style="color:#a00;background-color:#faa">.</span><span style="color:#f60">0.0</span><span style="color:#a00;background-color:#faa">/</span><span style="color:#f60">0</span>
-<span style="color:#a00;background-color:#faa">Endpoint</span> <span style="color:#a00;background-color:#faa">=</span> <span style="color:#a00;background-color:#faa">$WIREGUARD_SERVER_ADDRESS:$PORT</span>
-<span style="color:#a00;background-color:#faa">PersistentKeepalive</span> <span style="color:#a00;background-color:#faa">=</span> <span style="color:#f60">15</span>
+<span class="p">[</span><span class="err">Peer</span><span class="p">]</span>
+<span class="err">PublicKey</span> <span class="err">=</span> <span class="err">m</span><span class="mi">6</span><span class="err">oJcAbxCmeovofOMrPCCCDkGWuTqfkGWufeovofEII=</span>
+<span class="err">AllowedIPs</span> <span class="err">=</span> <span class="mf">0.0</span><span class="err">.</span><span class="mf">0.0</span><span class="err">/</span><span class="mi">0</span>
+<span class="err">Endpoint</span> <span class="err">=</span> <span class="err">$WIREGUARD_SERVER_ADDRESS:$PORT</span>
+<span class="err">PersistentKeepalive</span> <span class="err">=</span> <span class="mi">15</span>
 
 </code></pre></div><h4 id="3-andoridios">3. andorid/ios</h4>
 <ol>
 <li>Edit a configuration and save it as a config file.</li>
 <li>install qeencode</li>
 </ol>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install qrencode
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">brew install qrencode
 qrencode
 qrencode -t ansiutf8 &lt; client_wireguard_ios.conf
 </code></pre></div><ol start="3">
@@ -550,7 +546,7 @@ qrencode -t ansiutf8 &lt; client_wireguard_ios.conf
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2019-04-17
+      2020-09-03
       
     </span>
   </p>
@@ -706,7 +702,7 @@ qrencode -t ansiutf8 &lt; client_wireguard_ios.conf
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

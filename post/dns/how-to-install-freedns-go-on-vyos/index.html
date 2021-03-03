@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/dns/how-to-install-freedns-go-on-vyos/" />
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,19 +62,15 @@
 <meta property="og:title" content="How to Install Freedns Go on Vyos" />
 <meta property="og:description" content="#Switch to root mode sudo su #Define freedns version freedns_version=v2020.9.17 #Create dcompass temp folder sudo mkdir -p /tmp/freedns # Swich to folder just we created. cd /tmp/freedns #Download dcompass binary  sudo curl -fsSLO &#34;https://github.com/tuna/freedns-go/releases/download/$freedns_version/freedns-go-linux-amd64&#34; sudo cp -af /tmp/freedns/freedns-go-linux-amd64 /usr/local/bin/freedns sudo chown root:root /usr/local/bin/freedns sudo chmod &#43;x /usr/local/bin/freedns sudo bash -c &#39;cat &gt; /lib/systemd/system/freedns.service&#39; &lt;&lt; EOF [Unit] Description=freedns service [Service] ExecStart=/usr/local/bin/freedns -f 114.114.114.114:53 -c 8.8.8.8:53 -l 127.0.0.3:53 Restart=on-failure RestartSec=42s [Install] WantedBy=multi-user." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/dns/how-to-install-freedns-go-on-vyos/" />
-<meta property="article:published_time" content="2021-01-11T01:13:07+08:00" />
-<meta property="article:modified_time" content="2021-01-11T01:13:07+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/dns/how-to-install-freedns-go-on-vyos/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-01-11T01:13:07&#43;08:00" />
+<meta property="article:modified_time" content="2021-01-11T08:01:32&#43;08:00" />
+
 <meta itemprop="name" content="How to Install Freedns Go on Vyos">
-<meta itemprop="description" content="#Switch to root mode sudo su #Define freedns version freedns_version=v2020.9.17 #Create dcompass temp folder sudo mkdir -p /tmp/freedns # Swich to folder just we created. cd /tmp/freedns #Download dcompass binary  sudo curl -fsSLO &#34;https://github.com/tuna/freedns-go/releases/download/$freedns_version/freedns-go-linux-amd64&#34; sudo cp -af /tmp/freedns/freedns-go-linux-amd64 /usr/local/bin/freedns sudo chown root:root /usr/local/bin/freedns sudo chmod &#43;x /usr/local/bin/freedns sudo bash -c &#39;cat &gt; /lib/systemd/system/freedns.service&#39; &lt;&lt; EOF [Unit] Description=freedns service [Service] ExecStart=/usr/local/bin/freedns -f 114.114.114.114:53 -c 8.8.8.8:53 -l 127.0.0.3:53 Restart=on-failure RestartSec=42s [Install] WantedBy=multi-user.">
-<meta itemprop="datePublished" content="2021-01-11T01:13:07+08:00" />
-<meta itemprop="dateModified" content="2021-01-11T01:13:07+08:00" />
+<meta itemprop="description" content="#Switch to root mode sudo su #Define freedns version freedns_version=v2020.9.17 #Create dcompass temp folder sudo mkdir -p /tmp/freedns # Swich to folder just we created. cd /tmp/freedns #Download dcompass binary  sudo curl -fsSLO &#34;https://github.com/tuna/freedns-go/releases/download/$freedns_version/freedns-go-linux-amd64&#34; sudo cp -af /tmp/freedns/freedns-go-linux-amd64 /usr/local/bin/freedns sudo chown root:root /usr/local/bin/freedns sudo chmod &#43;x /usr/local/bin/freedns sudo bash -c &#39;cat &gt; /lib/systemd/system/freedns.service&#39; &lt;&lt; EOF [Unit] Description=freedns service [Service] ExecStart=/usr/local/bin/freedns -f 114.114.114.114:53 -c 8.8.8.8:53 -l 127.0.0.3:53 Restart=on-failure RestartSec=42s [Install] WantedBy=multi-user."><meta itemprop="datePublished" content="2021-01-11T01:13:07&#43;08:00" />
+<meta itemprop="dateModified" content="2021-01-11T08:01:32&#43;08:00" />
 <meta itemprop="wordCount" content="114">
-
-
-
-<meta itemprop="keywords" content="vyos,freedns,go," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="vyos,freedns,go," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Install Freedns Go on Vyos"/>
 <meta name="twitter:description" content="#Switch to root mode sudo su #Define freedns version freedns_version=v2020.9.17 #Create dcompass temp folder sudo mkdir -p /tmp/freedns # Swich to folder just we created. cd /tmp/freedns #Download dcompass binary  sudo curl -fsSLO &#34;https://github.com/tuna/freedns-go/releases/download/$freedns_version/freedns-go-linux-amd64&#34; sudo cp -af /tmp/freedns/freedns-go-linux-amd64 /usr/local/bin/freedns sudo chown root:root /usr/local/bin/freedns sudo chmod &#43;x /usr/local/bin/freedns sudo bash -c &#39;cat &gt; /lib/systemd/system/freedns.service&#39; &lt;&lt; EOF [Unit] Description=freedns service [Service] ExecStart=/usr/local/bin/freedns -f 114.114.114.114:53 -c 8.8.8.8:53 -l 127.0.0.3:53 Restart=on-failure RestartSec=42s [Install] WantedBy=multi-user."/>
 
@@ -380,19 +376,19 @@ if (!doNotTrack) {
 
     
     <div class="post-content">
-      <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#Switch to root mode</span>
+      <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#Switch to root mode</span>
 sudo su
 
-<span style="color:#09f;font-style:italic">#Define freedns version</span>
-<span style="color:#033">freedns_version</span><span style="color:#555">=</span>v2020.9.17
-<span style="color:#09f;font-style:italic">#Create dcompass temp folder</span>
+<span class="c1">#Define freedns version</span>
+<span class="nv">freedns_version</span><span class="o">=</span>v2020.9.17
+<span class="c1">#Create dcompass temp folder</span>
 sudo mkdir -p /tmp/freedns
 
-<span style="color:#09f;font-style:italic"># Swich to folder  just we created.</span>
-<span style="color:#366">cd</span> /tmp/freedns
+<span class="c1"># Swich to folder  just we created.</span>
+<span class="nb">cd</span> /tmp/freedns
 
-<span style="color:#09f;font-style:italic">#Download dcompass binary </span>
-sudo curl -fsSLO <span style="color:#c30">&#34;https://github.com/tuna/freedns-go/releases/download/</span><span style="color:#033">$freedns_version</span><span style="color:#c30">/freedns-go-linux-amd64&#34;</span>
+<span class="c1">#Download dcompass binary </span>
+sudo curl -fsSLO <span class="s2">&#34;https://github.com/tuna/freedns-go/releases/download/</span><span class="nv">$freedns_version</span><span class="s2">/freedns-go-linux-amd64&#34;</span>
 
 
 
@@ -400,31 +396,31 @@ sudo cp -af /tmp/freedns/freedns-go-linux-amd64 /usr/local/bin/freedns
 sudo chown root:root /usr/local/bin/freedns
 sudo chmod +x /usr/local/bin/freedns
 
-sudo bash -c <span style="color:#c30">&#39;cat &gt; /lib/systemd/system/freedns.service&#39;</span> <span style="color:#c30">&lt;&lt; EOF
-</span><span style="color:#c30">[Unit]
-</span><span style="color:#c30">Description=freedns service
-</span><span style="color:#c30">
-</span><span style="color:#c30">[Service]
-</span><span style="color:#c30">ExecStart=/usr/local/bin/freedns  -f 114.114.114.114:53 -c 8.8.8.8:53 -l 127.0.0.3:53
-</span><span style="color:#c30">Restart=on-failure
-</span><span style="color:#c30">RestartSec=42s
-</span><span style="color:#c30">
-</span><span style="color:#c30">[Install]
-</span><span style="color:#c30">WantedBy=multi-user.target
-</span><span style="color:#c30">EOF</span>
+sudo bash -c <span class="s1">&#39;cat &gt; /lib/systemd/system/freedns.service&#39;</span> <span class="s">&lt;&lt; EOF
+</span><span class="s">[Unit]
+</span><span class="s">Description=freedns service
+</span><span class="s">
+</span><span class="s">[Service]
+</span><span class="s">ExecStart=/usr/local/bin/freedns  -f 114.114.114.114:53 -c 8.8.8.8:53 -l 127.0.0.3:53
+</span><span class="s">Restart=on-failure
+</span><span class="s">RestartSec=42s
+</span><span class="s">
+</span><span class="s">[Install]
+</span><span class="s">WantedBy=multi-user.target
+</span><span class="s">EOF</span>
 
-<span style="color:#09f;font-style:italic">#Reload systemclt daemon</span>
+<span class="c1">#Reload systemclt daemon</span>
 sudo systemctl daemon-reload
 
-<span style="color:#09f;font-style:italic">#Delete temp directory.</span>
+<span class="c1">#Delete temp directory.</span>
 sudo rm -rf /tmp/freedns
 
-<span style="color:#09f;font-style:italic">#Enable service of dcompass auto startup when system reboot</span>
-sudo systemctl <span style="color:#366">enable</span> freedns
+<span class="c1">#Enable service of dcompass auto startup when system reboot</span>
+sudo systemctl <span class="nb">enable</span> freedns
 
-<span style="color:#09f;font-style:italic">#Restart service of freedns</span>
+<span class="c1">#Restart service of freedns</span>
 sudo systemctl restart freedns
-<span style="color:#09f;font-style:italic">#Check dcompass status of freedns.</span>
+<span class="c1">#Check dcompass status of freedns.</span>
 sudo systemctl status freedns
 
 
@@ -606,7 +602,7 @@ sudo systemctl status freedns
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

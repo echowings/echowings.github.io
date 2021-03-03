@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/how-to-install-centos-7-on-proxmox-ve/" />
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,19 +62,15 @@
 <meta property="og:title" content="How to Install Centos 7 on Proxmox VE" />
 <meta property="og:description" content="How to Install CentOS 7 on Proxmox VE Today I want to deploy kubernetes ,follow the book, it need to install centos 7. Okay! Deploy a centos 7 firstly. Install Centos 7 Download latest image of centos 7 Download CentOS 7 images from mirrors.ustc.edu.cn Download centos 7 images form here:CentOS-7-x86_64-Minimal-1810.iso Install Centos 7 Uploading this images to datatstore of pve Create a centos 7 vm on pve boot and install" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/how-to-install-centos-7-on-proxmox-ve/" />
-<meta property="article:published_time" content="2019-05-01T17:57:17+08:00" />
-<meta property="article:modified_time" content="2019-05-01T17:57:17+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/how-to-install-centos-7-on-proxmox-ve/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-05-01T17:57:17&#43;08:00" />
+<meta property="article:modified_time" content="2019-11-01T16:29:16&#43;08:00" />
+
 <meta itemprop="name" content="How to Install Centos 7 on Proxmox VE">
-<meta itemprop="description" content="How to Install CentOS 7 on Proxmox VE Today I want to deploy kubernetes ,follow the book, it need to install centos 7. Okay! Deploy a centos 7 firstly. Install Centos 7 Download latest image of centos 7 Download CentOS 7 images from mirrors.ustc.edu.cn Download centos 7 images form here:CentOS-7-x86_64-Minimal-1810.iso Install Centos 7 Uploading this images to datatstore of pve Create a centos 7 vm on pve boot and install">
-<meta itemprop="datePublished" content="2019-05-01T17:57:17+08:00" />
-<meta itemprop="dateModified" content="2019-05-01T17:57:17+08:00" />
+<meta itemprop="description" content="How to Install CentOS 7 on Proxmox VE Today I want to deploy kubernetes ,follow the book, it need to install centos 7. Okay! Deploy a centos 7 firstly. Install Centos 7 Download latest image of centos 7 Download CentOS 7 images from mirrors.ustc.edu.cn Download centos 7 images form here:CentOS-7-x86_64-Minimal-1810.iso Install Centos 7 Uploading this images to datatstore of pve Create a centos 7 vm on pve boot and install"><meta itemprop="datePublished" content="2019-05-01T17:57:17&#43;08:00" />
+<meta itemprop="dateModified" content="2019-11-01T16:29:16&#43;08:00" />
 <meta itemprop="wordCount" content="314">
-
-
-
-<meta itemprop="keywords" content="centos,pve,linux," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="centos,pve,linux," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Install Centos 7 on Proxmox VE"/>
 <meta name="twitter:description" content="How to Install CentOS 7 on Proxmox VE Today I want to deploy kubernetes ,follow the book, it need to install centos 7. Okay! Deploy a centos 7 firstly. Install Centos 7 Download latest image of centos 7 Download CentOS 7 images from mirrors.ustc.edu.cn Download centos 7 images form here:CentOS-7-x86_64-Minimal-1810.iso Install Centos 7 Uploading this images to datatstore of pve Create a centos 7 vm on pve boot and install"/>
 
@@ -418,80 +414,80 @@ Okay! Deploy a centos 7 firstly.</p>
 </ul>
 <h2 id="setup-centos-7">Setup Centos 7</h2>
 <h2 id="fixed-perl-error">Fixed perl error</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-<span style="color:#366">export</span> <span style="color:#033">LANGUAGE</span><span style="color:#555">=</span>en_US.UTF-8
-<span style="color:#366">export</span> <span style="color:#033">LANG</span><span style="color:#555">=</span>en_US.UTF-8
-<span style="color:#366">export</span> <span style="color:#033">LC_ALL</span><span style="color:#555">=</span>en_US.UTF-8
-<span style="color:#09f;font-style:italic">#locale-gen en_US.UTF-8</span>
-cat &gt;&gt; /etc/environment <span style="color:#c30">&lt;&lt;EOF
-</span><span style="color:#c30">LC_ALL=en_US.UTF-8
-</span><span style="color:#c30">LANG=en_US.UTF-8
-</span><span style="color:#c30">EOF</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">
+<span class="nb">export</span> <span class="nv">LANGUAGE</span><span class="o">=</span>en_US.UTF-8
+<span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+<span class="nb">export</span> <span class="nv">LC_ALL</span><span class="o">=</span>en_US.UTF-8
+<span class="c1">#locale-gen en_US.UTF-8</span>
+cat &gt;&gt; /etc/environment <span class="s">&lt;&lt;EOF
+</span><span class="s">LC_ALL=en_US.UTF-8
+</span><span class="s">LANG=en_US.UTF-8
+</span><span class="s">EOF</span>
 </code></pre></div><h2 id="set-timezone">Set timezone</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">timedatectl list-timezones
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">timedatectl list-timezones
 timedatectl set-timezone Asia/Shanghai
 </code></pre></div><h3 id="change-yum-update-repo">Change yum update repo</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">
 mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
 
-<span style="color:#366">echo</span> <span style="color:#c30">&#34;
-</span><span style="color:#c30"># CentOS-Base.repo
-</span><span style="color:#c30">#
-</span><span style="color:#c30"># The mirror system uses the connecting IP address of the client and the
-</span><span style="color:#c30"># update status of each mirror to pick mirrors that are updated to and
-</span><span style="color:#c30"># geographically close to the client.  You should use this for CentOS updates
-</span><span style="color:#c30"># unless you are manually picking other mirrors.
-</span><span style="color:#c30">#
-</span><span style="color:#c30"># If the mirrorlist= does not work for you, as a fall back you can try the
-</span><span style="color:#c30"># remarked out baseurl= line instead.
-</span><span style="color:#c30">#
-</span><span style="color:#c30">#
-</span><span style="color:#c30">
-</span><span style="color:#c30">[base]
-</span><span style="color:#c30">name=CentOS-</span><span style="color:#033">$releasever</span><span style="color:#c30"> - Base
-</span><span style="color:#c30">#mirrorlist=http://mirrorlist.centos.org/?release=</span><span style="color:#033">$releasever</span><span style="color:#c30">&amp;arch=</span><span style="color:#033">$basearch</span><span style="color:#c30">&amp;repo=os
-</span><span style="color:#c30">baseurl=https://mirrors.ustc.edu.cn/centos/</span><span style="color:#033">$releasever</span><span style="color:#c30">/os/</span><span style="color:#033">$basearch</span><span style="color:#c30">/
-</span><span style="color:#c30">gpgcheck=1
-</span><span style="color:#c30">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-</span><span style="color:#c30">
-</span><span style="color:#c30">#released updates
-</span><span style="color:#c30">[updates]
-</span><span style="color:#c30">name=CentOS-</span><span style="color:#033">$releasever</span><span style="color:#c30"> - Updates
-</span><span style="color:#c30"># mirrorlist=http://mirrorlist.centos.org/?release=</span><span style="color:#033">$releasever</span><span style="color:#c30">&amp;arch=</span><span style="color:#033">$basearch</span><span style="color:#c30">&amp;repo=updates
-</span><span style="color:#c30">baseurl=https://mirrors.ustc.edu.cn/centos/</span><span style="color:#033">$releasever</span><span style="color:#c30">/updates/</span><span style="color:#033">$basearch</span><span style="color:#c30">/
-</span><span style="color:#c30">gpgcheck=1
-</span><span style="color:#c30">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-</span><span style="color:#c30">
-</span><span style="color:#c30">#additional packages that may be useful
-</span><span style="color:#c30">[extras]
-</span><span style="color:#c30">name=CentOS-</span><span style="color:#033">$releasever</span><span style="color:#c30"> - Extras
-</span><span style="color:#c30"># mirrorlist=http://mirrorlist.centos.org/?release=</span><span style="color:#033">$releasever</span><span style="color:#c30">&amp;arch=</span><span style="color:#033">$basearch</span><span style="color:#c30">&amp;repo=extras
-</span><span style="color:#c30">baseurl=https://mirrors.ustc.edu.cn/centos/</span><span style="color:#033">$releasever</span><span style="color:#c30">/extras/</span><span style="color:#033">$basearch</span><span style="color:#c30">/
-</span><span style="color:#c30">gpgcheck=1
-</span><span style="color:#c30">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-</span><span style="color:#c30">
-</span><span style="color:#c30">#additional packages that extend functionality of existing packages
-</span><span style="color:#c30">[centosplus]
-</span><span style="color:#c30">name=CentOS-</span><span style="color:#033">$releasever</span><span style="color:#c30"> - Plus
-</span><span style="color:#c30"># mirrorlist=http://mirrorlist.centos.org/?release=</span><span style="color:#033">$releasever</span><span style="color:#c30">&amp;arch=</span><span style="color:#033">$basearch</span><span style="color:#c30">&amp;repo=centosplus
-</span><span style="color:#c30">baseurl=https://mirrors.ustc.edu.cn/centos/</span><span style="color:#033">$releasever</span><span style="color:#c30">/centosplus/</span><span style="color:#033">$basearch</span><span style="color:#c30">/
-</span><span style="color:#c30">gpgcheck=1
-</span><span style="color:#c30">enabled=0
-</span><span style="color:#c30">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-</span><span style="color:#c30">&#34;</span> &gt; /etc/yum.repos.d/CentOS-Base.repo 
+<span class="nb">echo</span> <span class="s2">&#34;
+</span><span class="s2"># CentOS-Base.repo
+</span><span class="s2">#
+</span><span class="s2"># The mirror system uses the connecting IP address of the client and the
+</span><span class="s2"># update status of each mirror to pick mirrors that are updated to and
+</span><span class="s2"># geographically close to the client.  You should use this for CentOS updates
+</span><span class="s2"># unless you are manually picking other mirrors.
+</span><span class="s2">#
+</span><span class="s2"># If the mirrorlist= does not work for you, as a fall back you can try the
+</span><span class="s2"># remarked out baseurl= line instead.
+</span><span class="s2">#
+</span><span class="s2">#
+</span><span class="s2">
+</span><span class="s2">[base]
+</span><span class="s2">name=CentOS-</span><span class="nv">$releasever</span><span class="s2"> - Base
+</span><span class="s2">#mirrorlist=http://mirrorlist.centos.org/?release=</span><span class="nv">$releasever</span><span class="s2">&amp;arch=</span><span class="nv">$basearch</span><span class="s2">&amp;repo=os
+</span><span class="s2">baseurl=https://mirrors.ustc.edu.cn/centos/</span><span class="nv">$releasever</span><span class="s2">/os/</span><span class="nv">$basearch</span><span class="s2">/
+</span><span class="s2">gpgcheck=1
+</span><span class="s2">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+</span><span class="s2">
+</span><span class="s2">#released updates
+</span><span class="s2">[updates]
+</span><span class="s2">name=CentOS-</span><span class="nv">$releasever</span><span class="s2"> - Updates
+</span><span class="s2"># mirrorlist=http://mirrorlist.centos.org/?release=</span><span class="nv">$releasever</span><span class="s2">&amp;arch=</span><span class="nv">$basearch</span><span class="s2">&amp;repo=updates
+</span><span class="s2">baseurl=https://mirrors.ustc.edu.cn/centos/</span><span class="nv">$releasever</span><span class="s2">/updates/</span><span class="nv">$basearch</span><span class="s2">/
+</span><span class="s2">gpgcheck=1
+</span><span class="s2">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+</span><span class="s2">
+</span><span class="s2">#additional packages that may be useful
+</span><span class="s2">[extras]
+</span><span class="s2">name=CentOS-</span><span class="nv">$releasever</span><span class="s2"> - Extras
+</span><span class="s2"># mirrorlist=http://mirrorlist.centos.org/?release=</span><span class="nv">$releasever</span><span class="s2">&amp;arch=</span><span class="nv">$basearch</span><span class="s2">&amp;repo=extras
+</span><span class="s2">baseurl=https://mirrors.ustc.edu.cn/centos/</span><span class="nv">$releasever</span><span class="s2">/extras/</span><span class="nv">$basearch</span><span class="s2">/
+</span><span class="s2">gpgcheck=1
+</span><span class="s2">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+</span><span class="s2">
+</span><span class="s2">#additional packages that extend functionality of existing packages
+</span><span class="s2">[centosplus]
+</span><span class="s2">name=CentOS-</span><span class="nv">$releasever</span><span class="s2"> - Plus
+</span><span class="s2"># mirrorlist=http://mirrorlist.centos.org/?release=</span><span class="nv">$releasever</span><span class="s2">&amp;arch=</span><span class="nv">$basearch</span><span class="s2">&amp;repo=centosplus
+</span><span class="s2">baseurl=https://mirrors.ustc.edu.cn/centos/</span><span class="nv">$releasever</span><span class="s2">/centosplus/</span><span class="nv">$basearch</span><span class="s2">/
+</span><span class="s2">gpgcheck=1
+</span><span class="s2">enabled=0
+</span><span class="s2">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+</span><span class="s2">&#34;</span> &gt; /etc/yum.repos.d/CentOS-Base.repo 
 
 </code></pre></div><h3 id="install-epel-and-change-to-mirrorsustceducn">Install epel and change to mirrors.ustc.edu.cn</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo yum install -y epel-release
-sudo sed -e <span style="color:#c30">&#39;s!^mirrorlist=!#mirrorlist=!g&#39;</span> <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>         -e <span style="color:#c30">&#39;s!^#baseurl=!baseurl=!g&#39;</span> <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>         -e <span style="color:#c30">&#39;s!//download\.fedoraproject\.org/pub!//mirrors.ustc.edu.cn!g&#39;</span> <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>         -e <span style="color:#c30">&#39;s!http://mirrors\.ustc!https://mirrors.ustc!g&#39;</span> <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>         -i /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel-testing.repo
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo yum install -y epel-release
+sudo sed -e <span class="s1">&#39;s!^mirrorlist=!#mirrorlist=!g&#39;</span> <span class="se">\
+</span><span class="se"></span>         -e <span class="s1">&#39;s!^#baseurl=!baseurl=!g&#39;</span> <span class="se">\
+</span><span class="se"></span>         -e <span class="s1">&#39;s!//download\.fedoraproject\.org/pub!//mirrors.ustc.edu.cn!g&#39;</span> <span class="se">\
+</span><span class="se"></span>         -e <span class="s1">&#39;s!http://mirrors\.ustc!https://mirrors.ustc!g&#39;</span> <span class="se">\
+</span><span class="se"></span>         -i /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel-testing.repo
 
 
 yum makecache
 </code></pre></div><h3 id="install-software">Install software</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">yum install git vim zsh qemu-guest-agent  curl wget 
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">yum install git vim zsh qemu-guest-agent  curl wget 
 </code></pre></div><h3 id="setup-vim">Setup vim</h3>
 <p>Please follow this article to setup vim:</p>
 <p><a href="https://blog.stevedong.com/post/how-to-setup-vim/">How to Setup Vim</a></p>
@@ -517,7 +513,7 @@ yum makecache
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2019-05-01
+      2019-11-01
       
     </span>
   </p>
@@ -682,7 +678,7 @@ yum makecache
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

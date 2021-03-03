@@ -33,7 +33,7 @@ Convert .crt to .pem # convert .key file to key.pem openssl rsa -in mywebsite.co
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/ssl/how-to-convert-cert-to-ssl/" />
@@ -54,7 +54,7 @@ Convert .crt to .pem # convert .key file to key.pem openssl rsa -in mywebsite.co
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -64,20 +64,16 @@ Convert .crt to .pem # convert .key file to key.pem openssl rsa -in mywebsite.co
 <meta property="og:description" content="How to convert godaddy certification files from .cert to .pem Recently days, I met an issue to renew ssl certification file for a website. The former developer setup certification file to .pem. It take a long time to make it work. Here we go.
 Convert .crt to .pem # convert .key file to key.pem openssl rsa -in mywebsite.com.key -text &gt; key.pem # convert .cert to cert.pem cat mywebsite.com.crt &gt; cert.pem # add cert chain to the cert." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/ssl/how-to-convert-cert-to-ssl/" />
-<meta property="article:published_time" content="2020-01-21T16:49:32+08:00" />
-<meta property="article:modified_time" content="2020-01-21T16:49:32+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/ssl/how-to-convert-cert-to-ssl/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-01-21T16:49:32&#43;08:00" />
+<meta property="article:modified_time" content="2020-01-21T16:59:01&#43;08:00" />
+
 <meta itemprop="name" content="How to Convert Cert to Ssl">
 <meta itemprop="description" content="How to convert godaddy certification files from .cert to .pem Recently days, I met an issue to renew ssl certification file for a website. The former developer setup certification file to .pem. It take a long time to make it work. Here we go.
-Convert .crt to .pem # convert .key file to key.pem openssl rsa -in mywebsite.com.key -text &gt; key.pem # convert .cert to cert.pem cat mywebsite.com.crt &gt; cert.pem # add cert chain to the cert.">
-<meta itemprop="datePublished" content="2020-01-21T16:49:32+08:00" />
-<meta itemprop="dateModified" content="2020-01-21T16:49:32+08:00" />
+Convert .crt to .pem # convert .key file to key.pem openssl rsa -in mywebsite.com.key -text &gt; key.pem # convert .cert to cert.pem cat mywebsite.com.crt &gt; cert.pem # add cert chain to the cert."><meta itemprop="datePublished" content="2020-01-21T16:49:32&#43;08:00" />
+<meta itemprop="dateModified" content="2020-01-21T16:59:01&#43;08:00" />
 <meta itemprop="wordCount" content="135">
-
-
-
-<meta itemprop="keywords" content="nginx,ssl,openssl," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="nginx,ssl,openssl," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Convert Cert to Ssl"/>
 <meta name="twitter:description" content="How to convert godaddy certification files from .cert to .pem Recently days, I met an issue to renew ssl certification file for a website. The former developer setup certification file to .pem. It take a long time to make it work. Here we go.
 Convert .crt to .pem # convert .key file to key.pem openssl rsa -in mywebsite.com.key -text &gt; key.pem # convert .cert to cert.pem cat mywebsite.com.crt &gt; cert.pem # add cert chain to the cert."/>
@@ -392,32 +388,32 @@ if (!doNotTrack) {
       <h1 id="how-to-convert-godaddy-certification-files-from-cert-to-pem">How to convert godaddy certification files from <code>.cert</code> to <code>.pem</code></h1>
 <p>Recently days, I met an issue to renew ssl certification file for a website. The former developer setup certification file to <code>.pem</code>. It take a long time to make it work. Here we go.</p>
 <h2 id="convert-crt-to-pem">Convert <code>.crt</code> to <code>.pem</code></h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-<span style="color:#09f;font-style:italic"># convert .key file to key.pem</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">
+<span class="c1"># convert .key file to key.pem</span>
 openssl rsa -in mywebsite.com.key -text &gt; key.pem
 
-<span style="color:#09f;font-style:italic"># convert .cert to cert.pem</span>
+<span class="c1"># convert .cert to cert.pem</span>
 cat mywebsite.com.crt &gt; cert.pem
 
-<span style="color:#09f;font-style:italic"># add cert chain to the cert.pem</span>
+<span class="c1"># add cert chain to the cert.pem</span>
 cat mywebsite.com.ca-bundle &gt;&gt; cert.pem
 
-<span style="color:#09f;font-style:italic"># clone pem</span>
+<span class="c1"># clone pem</span>
 cp cert.pem staging.pem
 
-<span style="color:#09f;font-style:italic">#</span>
-openssl dhparam -dsaparam -out /etc/nginx/ssl/dhparam.pem <span style="color:#f60">4096</span>
+<span class="c1">#</span>
+openssl dhparam -dsaparam -out /etc/nginx/ssl/dhparam.pem <span class="m">4096</span>
 tar -cxvf tar -jcvf mywebsite.com-v3.tar.bz2 *.pem
 
 </code></pre></div><h2 id="upload-mywebsitecom-v3tarbz2-to-server-and-renew-ssl-certification">Upload <code>mywebsite.com-v3.tar.bz2</code> to server and renew ssl certification</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">
 tar -jxvf mywebsite.com-v3.tar.bz2
 mv all the pem file to /home/mywebsitepath
 
-<span style="color:#09f;font-style:italic"># Testing nginx configuration</span>
-docker <span style="color:#366">exec</span> -it nginx nginx -t
+<span class="c1"># Testing nginx configuration</span>
+docker <span class="nb">exec</span> -it nginx nginx -t
 
-<span style="color:#09f;font-style:italic"># Restart nginx instance</span>
+<span class="c1"># Restart nginx instance</span>
 docker restart nginx
 
 </code></pre></div>
@@ -598,7 +594,7 @@ docker restart nginx
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

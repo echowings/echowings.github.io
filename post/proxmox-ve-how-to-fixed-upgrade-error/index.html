@@ -33,7 +33,7 @@ ERROR 1:&amp;ldquo;No space left on device&amp;rdquo; error on latest upgrade If
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/proxmox-ve-how-to-fixed-upgrade-error/" />
@@ -54,7 +54,7 @@ ERROR 1:&amp;ldquo;No space left on device&amp;rdquo; error on latest upgrade If
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -64,20 +64,16 @@ ERROR 1:&amp;ldquo;No space left on device&amp;rdquo; error on latest upgrade If
 <meta property="og:description" content="How solove Proxmox VE 5.4 upgrade issue Today I&rsquo;m trying to upgrade proxmox ve 5.3. to proxmox ve 5.4 version. But I failed. After install and uninstall proxmox-manager, Force to reboot and the node has kernel panic error. Then force reboot the node. At grub menu select second line to select an old pve kernel to boot proxmox-ve.
 ERROR 1:&ldquo;No space left on device&rdquo; error on latest upgrade If you met issue like this:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-how-to-fixed-upgrade-error/" />
-<meta property="article:published_time" content="2019-05-15T12:11:14+08:00" />
-<meta property="article:modified_time" content="2019-05-15T12:11:14+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-how-to-fixed-upgrade-error/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-05-15T12:11:14&#43;08:00" />
+<meta property="article:modified_time" content="2019-11-01T16:29:16&#43;08:00" />
+
 <meta itemprop="name" content="Proxmox Ve How to Fixed Upgrade Error">
 <meta itemprop="description" content="How solove Proxmox VE 5.4 upgrade issue Today I&rsquo;m trying to upgrade proxmox ve 5.3. to proxmox ve 5.4 version. But I failed. After install and uninstall proxmox-manager, Force to reboot and the node has kernel panic error. Then force reboot the node. At grub menu select second line to select an old pve kernel to boot proxmox-ve.
-ERROR 1:&ldquo;No space left on device&rdquo; error on latest upgrade If you met issue like this:">
-<meta itemprop="datePublished" content="2019-05-15T12:11:14+08:00" />
-<meta itemprop="dateModified" content="2019-05-15T12:11:14+08:00" />
+ERROR 1:&ldquo;No space left on device&rdquo; error on latest upgrade If you met issue like this:"><meta itemprop="datePublished" content="2019-05-15T12:11:14&#43;08:00" />
+<meta itemprop="dateModified" content="2019-11-01T16:29:16&#43;08:00" />
 <meta itemprop="wordCount" content="1238">
-
-
-
-<meta itemprop="keywords" content="pve," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="pve," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Proxmox Ve How to Fixed Upgrade Error"/>
 <meta name="twitter:description" content="How solove Proxmox VE 5.4 upgrade issue Today I&rsquo;m trying to upgrade proxmox ve 5.3. to proxmox ve 5.4 version. But I failed. After install and uninstall proxmox-manager, Force to reboot and the node has kernel panic error. Then force reboot the node. At grub menu select second line to select an old pve kernel to boot proxmox-ve.
 ERROR 1:&ldquo;No space left on device&rdquo; error on latest upgrade If you met issue like this:"/>
@@ -415,176 +411,176 @@ if (!doNotTrack) {
 <p>Today I&rsquo;m trying to upgrade proxmox ve 5.3. to proxmox ve 5.4 version. But I failed. After install and uninstall proxmox-manager, Force to reboot and the node has kernel panic error. Then force reboot the node. At grub menu select second line to select an old pve kernel to boot proxmox-ve.</p>
 <h2 id="error-1no-space-left-on-device-error-on-latest-upgrade">ERROR 1:&ldquo;No space left on device&rdquo; error on latest upgrade</h2>
 <p>If  you met issue like this:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-<span style="color:#09f;font-style:italic">#gzip: stdout: No space left on device</span>
-<span style="color:#09f;font-style:italic">#E: mkinitramfs failure find 141 cpio 141 gzip 1</span>
-<span style="color:#09f;font-style:italic">#update-initramfs: failed for /boot/initrd.img-4.15.18-10-pve with 1.</span>
-<span style="color:#09f;font-style:italic">#run-parts: /etc/kernel/postinst.d/initramfs-tools exited with return code 1</span>
-<span style="color:#09f;font-style:italic">#Failed to process /etc/kernel/postinst.d at /var/lib/dpkg/info/pve-#kernel-4.15.18-10-pve.postinst line 19.</span>
-<span style="color:#09f;font-style:italic">#dpkg: error processing package pve-kernel-4.15.18-10-pve (--configure):</span>
-<span style="color:#09f;font-style:italic"># subprocess installed post-installation script returned error exit status 2</span>
-<span style="color:#09f;font-style:italic">#Setting up pve-xtermjs (3.10.1-1) ...</span>
-<span style="color:#09f;font-style:italic">#Setting up libpve-storage-perl (5.0-36) ...</span>
-<span style="color:#09f;font-style:italic">#dpkg: dependency problems prevent configuration of pve-kernel-4.15:</span>
-<span style="color:#09f;font-style:italic"># pve-kernel-4.15 depends on pve-kernel-4.15.18-10-pve; however:</span>
-<span style="color:#09f;font-style:italic">#  Package pve-kernel-4.15.18-10-pve is not configured yet.</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">
+<span class="c1">#gzip: stdout: No space left on device</span>
+<span class="c1">#E: mkinitramfs failure find 141 cpio 141 gzip 1</span>
+<span class="c1">#update-initramfs: failed for /boot/initrd.img-4.15.18-10-pve with 1.</span>
+<span class="c1">#run-parts: /etc/kernel/postinst.d/initramfs-tools exited with return code 1</span>
+<span class="c1">#Failed to process /etc/kernel/postinst.d at /var/lib/dpkg/info/pve-#kernel-4.15.18-10-pve.postinst line 19.</span>
+<span class="c1">#dpkg: error processing package pve-kernel-4.15.18-10-pve (--configure):</span>
+<span class="c1"># subprocess installed post-installation script returned error exit status 2</span>
+<span class="c1">#Setting up pve-xtermjs (3.10.1-1) ...</span>
+<span class="c1">#Setting up libpve-storage-perl (5.0-36) ...</span>
+<span class="c1">#dpkg: dependency problems prevent configuration of pve-kernel-4.15:</span>
+<span class="c1"># pve-kernel-4.15 depends on pve-kernel-4.15.18-10-pve; however:</span>
+<span class="c1">#  Package pve-kernel-4.15.18-10-pve is not configured yet.</span>
 
-<span style="color:#09f;font-style:italic">#dpkg: error processing package pve-kernel-4.15 (--configure):</span>
-<span style="color:#09f;font-style:italic"># dependency problems - leaving unconfigured</span>
-<span style="color:#09f;font-style:italic">#Setting up libpve-guest-common-perl (2.0-19) ...</span>
-<span style="color:#09f;font-style:italic">#Setting up qemu-server (5.0-45) ...</span>
-<span style="color:#09f;font-style:italic">#Setting up pve-ha-manager (2.0-6) ...</span>
-<span style="color:#09f;font-style:italic">#Setting up pve-container (2.0-33) ...</span>
-<span style="color:#09f;font-style:italic">#Setting up pve-manager (5.3-8) ...</span>
-<span style="color:#09f;font-style:italic">#Processing triggers for initramfs-tools (0.130) ...</span>
-<span style="color:#09f;font-style:italic">#update-initramfs: Generating /boot/initrd.img-4.15.18-9-pve</span>
+<span class="c1">#dpkg: error processing package pve-kernel-4.15 (--configure):</span>
+<span class="c1"># dependency problems - leaving unconfigured</span>
+<span class="c1">#Setting up libpve-guest-common-perl (2.0-19) ...</span>
+<span class="c1">#Setting up qemu-server (5.0-45) ...</span>
+<span class="c1">#Setting up pve-ha-manager (2.0-6) ...</span>
+<span class="c1">#Setting up pve-container (2.0-33) ...</span>
+<span class="c1">#Setting up pve-manager (5.3-8) ...</span>
+<span class="c1">#Processing triggers for initramfs-tools (0.130) ...</span>
+<span class="c1">#update-initramfs: Generating /boot/initrd.img-4.15.18-9-pve</span>
 
-<span style="color:#09f;font-style:italic">#gzip: stdout: No space left on device</span>
-<span style="color:#09f;font-style:italic">#E: mkinitramfs failure find 141 cpio 141 gzip 1</span>
-<span style="color:#09f;font-style:italic">#update-initramfs: failed for /boot/initrd.img-4.15.18-9-pve with 1.</span>
-<span style="color:#09f;font-style:italic">#dpkg: error processing package initramfs-tools (--configure):</span>
-<span style="color:#09f;font-style:italic"># subprocess installed post-installation script returned error exit status 1</span>
-<span style="color:#09f;font-style:italic">#Processing triggers for pve-ha-manager (2.0-6) ...</span>
-<span style="color:#09f;font-style:italic">#Processing triggers for systemd (232-25+deb9u8) ...</span>
-<span style="color:#09f;font-style:italic">#Errors were encountered while processing:</span>
-<span style="color:#09f;font-style:italic"># pve-kernel-4.15.18-10-pve</span>
-<span style="color:#09f;font-style:italic"># pve-kernel-4.15</span>
-<span style="color:#09f;font-style:italic"># initramfs-tools</span>
-<span style="color:#09f;font-style:italic">#E: Sub-process /usr/bin/dpkg returned an error code (1)</span>
+<span class="c1">#gzip: stdout: No space left on device</span>
+<span class="c1">#E: mkinitramfs failure find 141 cpio 141 gzip 1</span>
+<span class="c1">#update-initramfs: failed for /boot/initrd.img-4.15.18-9-pve with 1.</span>
+<span class="c1">#dpkg: error processing package initramfs-tools (--configure):</span>
+<span class="c1"># subprocess installed post-installation script returned error exit status 1</span>
+<span class="c1">#Processing triggers for pve-ha-manager (2.0-6) ...</span>
+<span class="c1">#Processing triggers for systemd (232-25+deb9u8) ...</span>
+<span class="c1">#Errors were encountered while processing:</span>
+<span class="c1"># pve-kernel-4.15.18-10-pve</span>
+<span class="c1"># pve-kernel-4.15</span>
+<span class="c1"># initramfs-tools</span>
+<span class="c1">#E: Sub-process /usr/bin/dpkg returned an error code (1)</span>
 
 </code></pre></div><p>You can fixed it with command like this.</p>
 <h3 id="solution">Solution:</h3>
 <p>List all of pve-kernel, Then remove pve-kernel except pve-kernel current your system running.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># Check status of mounted filesytem </span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Check status of mounted filesytem </span>
 df -h
-<span style="color:#09f;font-style:italic"># Check lvm status</span>
+<span class="c1"># Check lvm status</span>
 lvs -a
-<span style="color:#09f;font-style:italic"># List installed pve kernel</span>
-dpkg -l | grep pve-kernel
+<span class="c1"># List installed pve kernel</span>
+dpkg -l <span class="p">|</span> grep pve-kernel
 
-<span style="color:#09f;font-style:italic"># Check current running kernel </span>
+<span class="c1"># Check current running kernel </span>
 uname -r
 
-<span style="color:#09f;font-style:italic">#Delete kernel old than current running kern</span>
+<span class="c1">#Delete kernel old than current running kern</span>
 apt purge pve-kernel-4.13.16-2-pve
 
 </code></pre></div><h2 id="error-2-the-configuration-should-be-retried-usingdpkg---configure-package-or-the-configure-menu-option-in-dselect">Error 2 :The configuration should be retried using<code>dpkg --configure &lt;package&gt;</code> or the configure menu option in dselect</h2>
 <p>When I met error like this.</p>
 <h3 id="error-detail-dpkg-error-processing-package-pve-ha-manager---configure-dependency-problems---leaving-triggers-unprocessed-errors-were-encountered-while-processing">ERROR Detail: dpkg: error processing package pve-ha-manager (&ndash;configure): dependency problems - leaving triggers unprocessed Errors were encountered while processing:</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># $ apt update</span>
-<span style="color:#09f;font-style:italic">#$ apt upgrade</span>
-<span style="color:#09f;font-style:italic">#Reading package lists... Done</span>
-<span style="color:#09f;font-style:italic">#Building dependency tree</span>
-<span style="color:#09f;font-style:italic">#Reading state information... Done</span>
-<span style="color:#09f;font-style:italic">#Calculating upgrade... Done</span>
-<span style="color:#09f;font-style:italic">#0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.</span>
-<span style="color:#09f;font-style:italic">#7 not fully installed or removed.</span>
-<span style="color:#09f;font-style:italic">#After this operation, 0 B of additional disk space will be used.</span>
-<span style="color:#09f;font-style:italic">#Do you want to continue? [Y/n] y</span>
-<span style="color:#09f;font-style:italic">#Setting up pve-cluster (5.0-30) ...</span>
-<span style="color:#09f;font-style:italic">#Failed to retrieve unit: No such method &#39;GetUnit&#39;</span>
-<span style="color:#09f;font-style:italic">#Failed to retrieve unit: No such method &#39;GetUnit&#39;</span>
-<span style="color:#09f;font-style:italic">#Failed to start pve-ha-lrm.service: Unknown unit: pve-ha-lrm.service</span>
-<span style="color:#09f;font-style:italic">#See system logs and &#39;systemctl status pve-ha-lrm.service&#39; for details.</span>
-<span style="color:#09f;font-style:italic">#dpkg: error processing package pve-cluster (--configure):</span>
-<span style="color:#09f;font-style:italic"># subprocess installed post-installation script returned error exit status 1</span>
-<span style="color:#09f;font-style:italic">#dpkg: dependency problems prevent configuration of pve-firewall:</span>
-<span style="color:#09f;font-style:italic"># pve-firewall depends on pve-cluster; however:</span>
-<span style="color:#09f;font-style:italic">#  Package pve-cluster is not configured yet.</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># $ apt update</span>
+<span class="c1">#$ apt upgrade</span>
+<span class="c1">#Reading package lists... Done</span>
+<span class="c1">#Building dependency tree</span>
+<span class="c1">#Reading state information... Done</span>
+<span class="c1">#Calculating upgrade... Done</span>
+<span class="c1">#0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.</span>
+<span class="c1">#7 not fully installed or removed.</span>
+<span class="c1">#After this operation, 0 B of additional disk space will be used.</span>
+<span class="c1">#Do you want to continue? [Y/n] y</span>
+<span class="c1">#Setting up pve-cluster (5.0-30) ...</span>
+<span class="c1">#Failed to retrieve unit: No such method &#39;GetUnit&#39;</span>
+<span class="c1">#Failed to retrieve unit: No such method &#39;GetUnit&#39;</span>
+<span class="c1">#Failed to start pve-ha-lrm.service: Unknown unit: pve-ha-lrm.service</span>
+<span class="c1">#See system logs and &#39;systemctl status pve-ha-lrm.service&#39; for details.</span>
+<span class="c1">#dpkg: error processing package pve-cluster (--configure):</span>
+<span class="c1"># subprocess installed post-installation script returned error exit status 1</span>
+<span class="c1">#dpkg: dependency problems prevent configuration of pve-firewall:</span>
+<span class="c1"># pve-firewall depends on pve-cluster; however:</span>
+<span class="c1">#  Package pve-cluster is not configured yet.</span>
 
-<span style="color:#09f;font-style:italic">#dpkg: error processing package pve-firewall (--configure):</span>
-<span style="color:#09f;font-style:italic"># dependency problems - leaving unconfigured</span>
-<span style="color:#09f;font-style:italic">#dpkg: dependency problems prevent configuration of libpve-guest-common-perl:</span>
-<span style="color:#09f;font-style:italic"># libpve-guest-common-perl depends on pve-cluster; however:</span>
-<span style="color:#09f;font-style:italic">#  Package pve-cluster is not configured yet.</span>
+<span class="c1">#dpkg: error processing package pve-firewall (--configure):</span>
+<span class="c1"># dependency problems - leaving unconfigured</span>
+<span class="c1">#dpkg: dependency problems prevent configuration of libpve-guest-common-perl:</span>
+<span class="c1"># libpve-guest-common-perl depends on pve-cluster; however:</span>
+<span class="c1">#  Package pve-cluster is not configured yet.</span>
 
-<span style="color:#09f;font-style:italic">#dpkg: error processing package libpve-guest-common-perl (--configure):</span>
-<span style="color:#09f;font-style:italic"># dependency problems - leaving unconfigured</span>
-<span style="color:#09f;font-style:italic">#dpkg: dependency problems prevent configuration of qemu-server:</span>
-<span style="color:#09f;font-style:italic"># qemu-server depends on libpve-guest-common-perl; however:</span>
-<span style="color:#09f;font-style:italic">#  Package libpve-guest-common-perl is not configured yet.</span>
-<span style="color:#09f;font-style:italic"># qemu-server depends on pve-cluster; however:</span>
-<span style="color:#09f;font-style:italic">#  Package pve-cluster is not configured yet.</span>
-<span style="color:#09f;font-style:italic"># qemu-server depends on pve-firewall; however:</span>
-<span style="color:#09f;font-style:italic">#  Package pve-firewall is not configured yet.</span>
+<span class="c1">#dpkg: error processing package libpve-guest-common-perl (--configure):</span>
+<span class="c1"># dependency problems - leaving unconfigured</span>
+<span class="c1">#dpkg: dependency problems prevent configuration of qemu-server:</span>
+<span class="c1"># qemu-server depends on libpve-guest-common-perl; however:</span>
+<span class="c1">#  Package libpve-guest-common-perl is not configured yet.</span>
+<span class="c1"># qemu-server depends on pve-cluster; however:</span>
+<span class="c1">#  Package pve-cluster is not configured yet.</span>
+<span class="c1"># qemu-server depends on pve-firewall; however:</span>
+<span class="c1">#  Package pve-firewall is not configured yet.</span>
 
-<span style="color:#09f;font-style:italic">#dpkg: error processing package qemu-server (--configure):</span>
-<span style="color:#09f;font-style:italic"># dependency problems - leaving unconfigured</span>
-<span style="color:#09f;font-style:italic">#dpkg: dependency problems prevent configuration of libpve-storage-perl:</span>
-<span style="color:#09f;font-style:italic"># libpve-storage-perl depends on pve-cluster; however:</span>
-<span style="color:#09f;font-style:italic">#  Package pve-cluster is not configured yet.</span>
+<span class="c1">#dpkg: error processing package qemu-server (--configure):</span>
+<span class="c1"># dependency problems - leaving unconfigured</span>
+<span class="c1">#dpkg: dependency problems prevent configuration of libpve-storage-perl:</span>
+<span class="c1"># libpve-storage-perl depends on pve-cluster; however:</span>
+<span class="c1">#  Package pve-cluster is not configured yet.</span>
 
-<span style="color:#09f;font-style:italic">#dpkg: error processing package libpve-storage-perl (--configure):</span>
-<span style="color:#09f;font-style:italic"># dependency problems - leaving unconfigured</span>
-<span style="color:#09f;font-style:italic">#dpkg: dependency problems prevent configuration of pve-manager:</span>
-<span style="color:#09f;font-style:italic"># pve-manager depends on libpve-guest-common-perl (&gt;= 2.0-14); however:</span>
-<span style="color:#09f;font-style:italic">#  Package libpve-guest-common-perl is not configured yet.</span>
-<span style="color:#09f;font-style:italic"># pve-manager depends on libpve-storage-perl (&gt;= 5.0-18); however:</span>
-<span style="color:#09f;font-style:italic">#  Package libpve-storage-perl is not configured yet.</span>
-<span style="color:#09f;font-style:italic"># pve-manager depends on pve-cluster (&gt;= 5.0-27); however:</span>
-<span style="color:#09f;font-style:italic">#  Package pve-cluster is not configured yet.</span>
-<span style="color:#09f;font-style:italic"># pve-manager depends on pve-firewall; however:</span>
-<span style="color:#09f;font-style:italic">#  Package pve-firewall is not configured yet.</span>
-<span style="color:#09f;font-style:italic"># pve-manager depends on qemu-server (&gt;= 5.0-24); however:</span>
-<span style="color:#09f;font-style:italic">#  Package qemu-server is not configured yet.</span>
+<span class="c1">#dpkg: error processing package libpve-storage-perl (--configure):</span>
+<span class="c1"># dependency problems - leaving unconfigured</span>
+<span class="c1">#dpkg: dependency problems prevent configuration of pve-manager:</span>
+<span class="c1"># pve-manager depends on libpve-guest-common-perl (&gt;= 2.0-14); however:</span>
+<span class="c1">#  Package libpve-guest-common-perl is not configured yet.</span>
+<span class="c1"># pve-manager depends on libpve-storage-perl (&gt;= 5.0-18); however:</span>
+<span class="c1">#  Package libpve-storage-perl is not configured yet.</span>
+<span class="c1"># pve-manager depends on pve-cluster (&gt;= 5.0-27); however:</span>
+<span class="c1">#  Package pve-cluster is not configured yet.</span>
+<span class="c1"># pve-manager depends on pve-firewall; however:</span>
+<span class="c1">#  Package pve-firewall is not configured yet.</span>
+<span class="c1"># pve-manager depends on qemu-server (&gt;= 5.0-24); however:</span>
+<span class="c1">#  Package qemu-server is not configured yet.</span>
 
-<span style="color:#09f;font-style:italic">#dpkg: error processing package pve-manager (--configure):</span>
-<span style="color:#09f;font-style:italic"># dependency problems - leaving unconfigured</span>
-<span style="color:#09f;font-style:italic">#dpkg: dependency problems prevent configuration of pve-container:</span>
-<span style="color:#09f;font-style:italic"># pve-container depends on libpve-guest-common-perl; however:</span>
-<span style="color:#09f;font-style:italic">#  Package libpve-guest-common-perl is not configured yet.</span>
-<span style="color:#09f;font-style:italic"># pve-container depends on libpve-storage-perl (&gt;= 5.0-18); however:</span>
-<span style="color:#09f;font-style:italic">#  Package libpve-storage-perl is not configured yet.</span>
-<span style="color:#09f;font-style:italic"># pve-container depends on pve-cluster (&gt;= 4.0-8); however:</span>
-<span style="color:#09f;font-style:italic">#  Package pve-cluster is not configured yet.</span>
+<span class="c1">#dpkg: error processing package pve-manager (--configure):</span>
+<span class="c1"># dependency problems - leaving unconfigured</span>
+<span class="c1">#dpkg: dependency problems prevent configuration of pve-container:</span>
+<span class="c1"># pve-container depends on libpve-guest-common-perl; however:</span>
+<span class="c1">#  Package libpve-guest-common-perl is not configured yet.</span>
+<span class="c1"># pve-container depends on libpve-storage-perl (&gt;= 5.0-18); however:</span>
+<span class="c1">#  Package libpve-storage-perl is not configured yet.</span>
+<span class="c1"># pve-container depends on pve-cluster (&gt;= 4.0-8); however:</span>
+<span class="c1">#  Package pve-cluster is not configured yet.</span>
 
-<span style="color:#09f;font-style:italic">#dpkg: error processing package pve-container (--configure):</span>
-<span style="color:#09f;font-style:italic"># dependency problems - leaving unconfigured</span>
-<span style="color:#09f;font-style:italic">#dpkg: dependency problems prevent processing triggers for pve-ha-manager:</span>
-<span style="color:#09f;font-style:italic"># pve-ha-manager depends on pve-cluster (&gt;= 3.0-17); however:</span>
-<span style="color:#09f;font-style:italic">#  Package pve-cluster is not configured yet.</span>
-<span style="color:#09f;font-style:italic"># pve-ha-manager depends on qemu-server; however:</span>
-<span style="color:#09f;font-style:italic">#  Package qemu-server is not configured yet.</span>
+<span class="c1">#dpkg: error processing package pve-container (--configure):</span>
+<span class="c1"># dependency problems - leaving unconfigured</span>
+<span class="c1">#dpkg: dependency problems prevent processing triggers for pve-ha-manager:</span>
+<span class="c1"># pve-ha-manager depends on pve-cluster (&gt;= 3.0-17); however:</span>
+<span class="c1">#  Package pve-cluster is not configured yet.</span>
+<span class="c1"># pve-ha-manager depends on qemu-server; however:</span>
+<span class="c1">#  Package qemu-server is not configured yet.</span>
 
-<span style="color:#09f;font-style:italic">#dpkg: error processing package pve-ha-manager (--configure):</span>
-<span style="color:#09f;font-style:italic"># dependency problems - leaving triggers unprocessed</span>
-<span style="color:#09f;font-style:italic">#Errors were encountered while processing:</span>
-<span style="color:#09f;font-style:italic"># pve-cluster</span>
-<span style="color:#09f;font-style:italic"># pve-firewall</span>
-<span style="color:#09f;font-style:italic"># libpve-guest-common-perl</span>
-<span style="color:#09f;font-style:italic"># qemu-server</span>
-<span style="color:#09f;font-style:italic"># libpve-storage-perl</span>
-<span style="color:#09f;font-style:italic"># pve-manager</span>
-<span style="color:#09f;font-style:italic"># pve-container</span>
-<span style="color:#09f;font-style:italic"># pve-ha-manager</span>
-<span style="color:#09f;font-style:italic">#E: Sub-process /usr/bin/dpkg returned an error code (1)</span>
-<span style="color:#09f;font-style:italic">#</span>
-<span style="color:#09f;font-style:italic">#$ dpkg -C</span>
-<span style="color:#09f;font-style:italic">#The following packages have been unpacked but not yet configured.</span>
-<span style="color:#09f;font-style:italic">#They must be configured using dpkg --configure or the configure</span>
-<span style="color:#09f;font-style:italic">#menu option in dselect for them to work:</span>
-<span style="color:#09f;font-style:italic"># libpve-guest-common-perl Proxmox VE common guest-related modules</span>
-<span style="color:#09f;font-style:italic"># libpve-storage-perl  Proxmox VE storage management library</span>
-<span style="color:#09f;font-style:italic"># pve-container        Proxmox VE Container management tool</span>
-<span style="color:#09f;font-style:italic"># pve-firewall         Proxmox VE Firewall</span>
-<span style="color:#09f;font-style:italic"># pve-manager          Proxmox Virtual Environment Management Tools</span>
-<span style="color:#09f;font-style:italic"># qemu-server          Qemu Server Tools</span>
+<span class="c1">#dpkg: error processing package pve-ha-manager (--configure):</span>
+<span class="c1"># dependency problems - leaving triggers unprocessed</span>
+<span class="c1">#Errors were encountered while processing:</span>
+<span class="c1"># pve-cluster</span>
+<span class="c1"># pve-firewall</span>
+<span class="c1"># libpve-guest-common-perl</span>
+<span class="c1"># qemu-server</span>
+<span class="c1"># libpve-storage-perl</span>
+<span class="c1"># pve-manager</span>
+<span class="c1"># pve-container</span>
+<span class="c1"># pve-ha-manager</span>
+<span class="c1">#E: Sub-process /usr/bin/dpkg returned an error code (1)</span>
+<span class="c1">#</span>
+<span class="c1">#$ dpkg -C</span>
+<span class="c1">#The following packages have been unpacked but not yet configured.</span>
+<span class="c1">#They must be configured using dpkg --configure or the configure</span>
+<span class="c1">#menu option in dselect for them to work:</span>
+<span class="c1"># libpve-guest-common-perl Proxmox VE common guest-related modules</span>
+<span class="c1"># libpve-storage-perl  Proxmox VE storage management library</span>
+<span class="c1"># pve-container        Proxmox VE Container management tool</span>
+<span class="c1"># pve-firewall         Proxmox VE Firewall</span>
+<span class="c1"># pve-manager          Proxmox Virtual Environment Management Tools</span>
+<span class="c1"># qemu-server          Qemu Server Tools</span>
 
-<span style="color:#09f;font-style:italic">#The following packages are only half configured, probably due to problems</span>
-<span style="color:#09f;font-style:italic">#configuring them the first time.  The configuration should be retried using</span>
-<span style="color:#09f;font-style:italic">#dpkg --configure &lt;package&gt; or the configure menu option in dselect:</span>
-<span style="color:#09f;font-style:italic"># pve-cluster          Cluster Infrastructure for Proxmox Virtual Environment</span>
+<span class="c1">#The following packages are only half configured, probably due to problems</span>
+<span class="c1">#configuring them the first time.  The configuration should be retried using</span>
+<span class="c1">#dpkg --configure &lt;package&gt; or the configure menu option in dselect:</span>
+<span class="c1"># pve-cluster          Cluster Infrastructure for Proxmox Virtual Environment</span>
 
-<span style="color:#09f;font-style:italic">#The following packages have been triggered, but the trigger processing</span>
-<span style="color:#09f;font-style:italic">#has not yet been done.  Trigger processing can be requested using</span>
-<span style="color:#09f;font-style:italic">#dselect or dpkg --configure --pending (or dpkg --triggers-only):</span>
-<span style="color:#09f;font-style:italic"># pve-ha-manager       Proxmox VE HA Manager</span>
+<span class="c1">#The following packages have been triggered, but the trigger processing</span>
+<span class="c1">#has not yet been done.  Trigger processing can be requested using</span>
+<span class="c1">#dselect or dpkg --configure --pending (or dpkg --triggers-only):</span>
+<span class="c1"># pve-ha-manager       Proxmox VE HA Manager</span>
 
 </code></pre></div><h3 id="solution-1">Solution:</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">dpkg --configure pve-manager
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">dpkg --configure pve-manager
 dpkg --configure -a 
 
-<span style="color:#09f;font-style:italic">#remove all of these software</span>
+<span class="c1">#remove all of these software</span>
 apt remove pve-cluster pve-ha-manager pve-container pve-manager libpve-storage-perl qemu-server libpve-guest-common-perl pve-firewall proxmox-ve
 
 
@@ -594,30 +590,30 @@ apt remove pve-cluster pve-ha-manager pve-container pve-manager libpve-storage-p
 <h2 id="remove-proxmox-ve">Remove proxmox-ve</h2>
 <h3 id="error-you-are-attempting-to-remove-the-meta-package-proxmox-ve">Error <code>You are attempting to remove the meta-package 'proxmox-ve'!</code></h3>
 <p>This is  proxmox ve warning. We need follow the instruction to uninstall proxmox ve.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># **This is now command, this is prompt dialog**</span>
-Do you want to <span style="color:#069;font-weight:bold">continue</span>? <span style="color:#555">[</span>Y/n<span style="color:#555">]</span> y
-W: <span style="color:#555">(</span>pve-apt-hook<span style="color:#555">)</span> !! WARNING !!
-W: <span style="color:#555">(</span>pve-apt-hook<span style="color:#555">)</span> You are attempting to remove the meta-package <span style="color:#c30">&#39;proxmox-ve&#39;</span>!
-W: <span style="color:#555">(</span>pve-apt-hook<span style="color:#555">)</span>
-W: <span style="color:#555">(</span>pve-apt-hook<span style="color:#555">)</span> If you really you want to permanently remove <span style="color:#c30">&#39;proxmox-ve&#39;</span> from your system, run the following <span style="color:#366">command</span>
-W: <span style="color:#555">(</span>pve-apt-hook<span style="color:#555">)</span>       touch <span style="color:#c30">&#39;/please-remove-proxmox-ve&#39;</span>
-W: <span style="color:#555">(</span>pve-apt-hook<span style="color:#555">)</span> and repeat your apt-get/apt invocation.
-W: <span style="color:#555">(</span>pve-apt-hook<span style="color:#555">)</span>
-W: <span style="color:#555">(</span>pve-apt-hook<span style="color:#555">)</span> If you are unsure why <span style="color:#c30">&#39;proxmox-ve&#39;</span> would be removed, please verify
-W: <span style="color:#555">(</span>pve-apt-hook<span style="color:#555">)</span>       - your APT repository settings
-W: <span style="color:#555">(</span>pve-apt-hook<span style="color:#555">)</span>       - that you are using <span style="color:#c30">&#39;apt-get dist-upgrade&#39;</span> or <span style="color:#c30">&#39;apt full-upgrade&#39;</span> to upgrade your system
-E: Sub-process /usr/share/proxmox-ve/pve-apt-hook returned an error code <span style="color:#555">(</span>1<span style="color:#555">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># **This is now command, this is prompt dialog**</span>
+Do you want to <span class="k">continue</span>? <span class="o">[</span>Y/n<span class="o">]</span> y
+W: <span class="o">(</span>pve-apt-hook<span class="o">)</span> !! WARNING !!
+W: <span class="o">(</span>pve-apt-hook<span class="o">)</span> You are attempting to remove the meta-package <span class="s1">&#39;proxmox-ve&#39;</span>!
+W: <span class="o">(</span>pve-apt-hook<span class="o">)</span>
+W: <span class="o">(</span>pve-apt-hook<span class="o">)</span> If you really you want to permanently remove <span class="s1">&#39;proxmox-ve&#39;</span> from your system, run the following <span class="nb">command</span>
+W: <span class="o">(</span>pve-apt-hook<span class="o">)</span>       touch <span class="s1">&#39;/please-remove-proxmox-ve&#39;</span>
+W: <span class="o">(</span>pve-apt-hook<span class="o">)</span> and repeat your apt-get/apt invocation.
+W: <span class="o">(</span>pve-apt-hook<span class="o">)</span>
+W: <span class="o">(</span>pve-apt-hook<span class="o">)</span> If you are unsure why <span class="s1">&#39;proxmox-ve&#39;</span> would be removed, please verify
+W: <span class="o">(</span>pve-apt-hook<span class="o">)</span>       - your APT repository settings
+W: <span class="o">(</span>pve-apt-hook<span class="o">)</span>       - that you are using <span class="s1">&#39;apt-get dist-upgrade&#39;</span> or <span class="s1">&#39;apt full-upgrade&#39;</span> to upgrade your system
+E: Sub-process /usr/share/proxmox-ve/pve-apt-hook returned an error code <span class="o">(</span>1<span class="o">)</span>
 E: Failure running script /usr/share/proxmox-ve/pve-apt-hook
 </code></pre></div><h3 id="solution-2">Solution</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">touch <span style="color:#c30">&#39;/please-remove-proxmox-ve&#39;</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">touch <span class="s1">&#39;/please-remove-proxmox-ve&#39;</span>
 
 </code></pre></div><h2 id="error-with-update-binsh-1-usrshareproxmox-vepve-apt-hook-not-found">Error with update: /bin/sh: 1: /usr/share/proxmox-ve/pve-apt-hook: not found</h2>
 <h3 id="error">Error:</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/bin/sh: 1: /usr/share/proxmox-ve/pve-apt-hook: not found
-E: Sub-process /usr/share/proxmox-ve/pve-apt-hook returned an error code <span style="color:#555">(</span>127<span style="color:#555">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">/bin/sh: 1: /usr/share/proxmox-ve/pve-apt-hook: not found
+E: Sub-process /usr/share/proxmox-ve/pve-apt-hook returned an error code <span class="o">(</span>127<span class="o">)</span>
 E: Failure running script /usr/share/proxmox-ve/pve-apt-hook
 </code></pre></div><h3 id="solution-3">Solution:</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir /usr/share/proxmox-ve
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">mkdir /usr/share/proxmox-ve
 touch /usr/share/proxmox-ve/pve-apt-hook
 chmod  u+x /usr/share/proxmox-ve/pve-apt-hook
 apt install proxmox-ve
@@ -642,7 +638,7 @@ apt install proxmox-ve
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2019-05-15
+      2019-11-01
       
     </span>
   </p>
@@ -805,7 +801,7 @@ apt install proxmox-ve
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

@@ -33,7 +33,7 @@ With cloudinit images it is easy to do that." />
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/build-ubuntu18.04-with-cloudinit-support/" />
@@ -54,7 +54,7 @@ With cloudinit images it is easy to do that." />
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -64,20 +64,16 @@ With cloudinit images it is easy to do that." />
 <meta property="og:description" content="Build Ubuntu 18.04 with cloudinit support on proxmox VE To create a ubuntu images from iso file is not flexible for us to clone and deploy a new virtual machine. we can now setting networking, hostname or other configuration before boot the server with configuration. If we want to expand the capicity of the disk, we need a lot of command to reach the goal.
 With cloudinit images it is easy to do that." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/build-ubuntu18.04-with-cloudinit-support/" />
-<meta property="article:published_time" content="2019-06-12T11:22:48+08:00" />
-<meta property="article:modified_time" content="2019-06-12T11:22:48+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/build-ubuntu18.04-with-cloudinit-support/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-06-12T11:22:48&#43;08:00" />
+<meta property="article:modified_time" content="2019-11-01T16:29:16&#43;08:00" />
+
 <meta itemprop="name" content="Build Ubuntu 18.04 server with cloudinit support">
 <meta itemprop="description" content="Build Ubuntu 18.04 with cloudinit support on proxmox VE To create a ubuntu images from iso file is not flexible for us to clone and deploy a new virtual machine. we can now setting networking, hostname or other configuration before boot the server with configuration. If we want to expand the capicity of the disk, we need a lot of command to reach the goal.
-With cloudinit images it is easy to do that.">
-<meta itemprop="datePublished" content="2019-06-12T11:22:48+08:00" />
-<meta itemprop="dateModified" content="2019-06-12T11:22:48+08:00" />
+With cloudinit images it is easy to do that."><meta itemprop="datePublished" content="2019-06-12T11:22:48&#43;08:00" />
+<meta itemprop="dateModified" content="2019-11-01T16:29:16&#43;08:00" />
 <meta itemprop="wordCount" content="633">
-
-
-
-<meta itemprop="keywords" content="pve,linux," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="pve,linux," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Build Ubuntu 18.04 server with cloudinit support"/>
 <meta name="twitter:description" content="Build Ubuntu 18.04 with cloudinit support on proxmox VE To create a ubuntu images from iso file is not flexible for us to clone and deploy a new virtual machine. we can now setting networking, hostname or other configuration before boot the server with configuration. If we want to expand the capicity of the disk, we need a lot of command to reach the goal.
 With cloudinit images it is easy to do that."/>
@@ -407,49 +403,49 @@ if (!doNotTrack) {
 <p>To create a ubuntu images from iso file is not flexible for us to clone and deploy a new virtual machine. we can now setting networking, hostname or other configuration before boot the server with configuration. If we want to expand the capicity of the disk, we need a lot of command to reach the goal.</p>
 <p>With cloudinit images it is easy to do that.</p>
 <h2 id="downlaod-ubuntu-1804-cloudinit-images">Downlaod ubuntu 18.04 cloudinit images</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic">#download cloudinit images of ubuntu 18.04 for kvm</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#download cloudinit images of ubuntu 18.04 for kvm</span>
 
-<span style="color:#09f;font-style:italic">#change directory to dicrectory of image storage.</span>
-<span style="color:#366">cd</span> /var/lib/vz/images
+<span class="c1">#change directory to dicrectory of image storage.</span>
+<span class="nb">cd</span> /var/lib/vz/images
 
 
-<span style="color:#09f;font-style:italic">#Option 1: For China User,Download images from ustc mirror for china users</span>
+<span class="c1">#Option 1: For China User,Download images from ustc mirror for china users</span>
 wget http://mirrors.ustc.edu.cn/ubuntu-cloud-images/bionic/current/bionic-server-cloudimg-amd64.img
 
-<span style="color:#09f;font-style:italic"># Option 2: For other country,Download images from offical website.</span>
+<span class="c1"># Option 2: For other country,Download images from offical website.</span>
 wget https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img
 
 </code></pre></div><h2 id="create-cloudinit-template">Create cloudinit template</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">
 
-<span style="color:#09f;font-style:italic"># create a new VM with name template-ubuntu18.04server-cloudinit</span>
-qm create <span style="color:#f60">9000</span> --memory <span style="color:#f60">4096</span> --net0 virtio,bridge<span style="color:#555">=</span>vmbr0  --name template-ubuntu18.04server-cloudinit
+<span class="c1"># create a new VM with name template-ubuntu18.04server-cloudinit</span>
+qm create <span class="m">9000</span> --memory <span class="m">4096</span> --net0 virtio,bridge<span class="o">=</span>vmbr0  --name template-ubuntu18.04server-cloudinit
 
-<span style="color:#09f;font-style:italic"># import the downloaded disk to local-lvm storage</span>
-qm importdisk <span style="color:#f60">9000</span> bionic-server-cloudimg-amd64.img local-lvm
+<span class="c1"># import the downloaded disk to local-lvm storage</span>
+qm importdisk <span class="m">9000</span> bionic-server-cloudimg-amd64.img local-lvm
 
-<span style="color:#09f;font-style:italic"># Attach the new disk to the vm as scsi driver</span>
+<span class="c1"># Attach the new disk to the vm as scsi driver</span>
 
-qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --scsihw virtio-scsi-pci --scsi0 local-lvm:9000/vm-9000-disk-0.raw
+qm <span class="nb">set</span> <span class="m">9000</span> --scsihw virtio-scsi-pci --scsi0 local-lvm:9000/vm-9000-disk-0.raw
 </code></pre></div><h2 id="add-cloud-init-cdrom-drive">Add Cloud-init CDROM drive</h2>
 <p>The next step is to configure a CDROM drive which will be used to pass the Cloud-init data to the VM.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --ide2 local-lvm:cloudinit
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">
+qm <span class="nb">set</span> <span class="m">9000</span> --ide2 local-lvm:cloudinit
 
 </code></pre></div><p>Make the virtual machine boot from cdrom  to make cloud init running firstly.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --boot c --bootdisk scsi0
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">
+qm <span class="nb">set</span> <span class="m">9000</span> --boot c --bootdisk scsi0
 
 
 </code></pre></div><p>configure a serial console.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --serial0 socket --vga serial0
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">
+qm <span class="nb">set</span> <span class="m">9000</span> --serial0 socket --vga serial0
 
 </code></pre></div><p>Convert the vm to template. We can not run the vm directly.
 By the way, to convert template to vm just edit vm configuration file to delete <code>template: 1</code>.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">
 vi /etc/pve/qemu-server/9000.conf
-<span style="color:#09f;font-style:italic"># The delete `template: 1`</span>
+<span class="c1"># The delete `template: 1`</span>
 
 </code></pre></div><h2 id="deploy-virtual-machine">Deploy virtual machine</h2>
 <p>Login PVE web gui and right click template with ID <code>9000</code>.</p>
@@ -470,57 +466,57 @@ vi /etc/pve/qemu-server/9000.conf
 <p>After booting and the cloudinit will running to setting the vm as you wanted.
 After that we need change something base on our location.</p>
 <h3 id="install-some-software">Install some software</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">apt update <span style="color:#555">&amp;&amp;</span> apt -y dist-upgrade
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">apt update <span class="o">&amp;&amp;</span> apt -y dist-upgrade
 apt install -y vim apt-transport-https qemu-guest-agent vim net-tools
 </code></pre></div><p>Then you can check &ldquo;Summary&rdquo; of the VM with &ldquo;IPS&rsquo;. We cant seed the ip address in pve web gui.</p>
 <h3 id="chang-sourcelist-to-mirrorsustccom">Chang sourcelist to mirrors.ustc.com</h3>
 <p>Please select right sourcelist to match your linux version.
 <a href="https://mirrors.ustc.edu.cn/repogen/">mirrors.ustc.edu.cn
 repository file generator</a></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat <span style="color:#c30">&lt;&lt; EOF &gt; /etc/apt/sources.list
-</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
-</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
-</span><span style="color:#c30">
-</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
-</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
-</span><span style="color:#c30">
-</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
-</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
-</span><span style="color:#c30">
-</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
-</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
-</span><span style="color:#c30">
-</span><span style="color:#c30">## Not recommended
-</span><span style="color:#c30"># deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
-</span><span style="color:#c30"># deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
-</span><span style="color:#c30">EOF</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">cat <span class="s">&lt;&lt; EOF &gt; /etc/apt/sources.list
+</span><span class="s">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
+</span><span class="s">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
+</span><span class="s">
+</span><span class="s">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+</span><span class="s">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+</span><span class="s">
+</span><span class="s">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+</span><span class="s">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+</span><span class="s">
+</span><span class="s">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+</span><span class="s">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+</span><span class="s">
+</span><span class="s">## Not recommended
+</span><span class="s"># deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+</span><span class="s"># deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+</span><span class="s">EOF</span>
 
-apt update <span style="color:#555">&amp;&amp;</span> apt -y dist-upgrade
+apt update <span class="o">&amp;&amp;</span> apt -y dist-upgrade
 
 </code></pre></div><h3 id="install-docker">Install docker</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-apt-get -y install <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    apt-transport-https <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    ca-certificates <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    curl <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    gnupg-agent <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    software-properties-common  <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">
+apt-get -y install <span class="se">\
+</span><span class="se"></span>    apt-transport-https <span class="se">\
+</span><span class="se"></span>    ca-certificates <span class="se">\
+</span><span class="se"></span>    curl <span class="se">\
+</span><span class="se"></span>    gnupg-agent <span class="se">\
+</span><span class="se"></span>    software-properties-common  <span class="se">\
+</span><span class="se"></span>
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> sudo apt-key add -
 
 apt-key fingerprint 0EBFCD88
-sudo add-apt-repository <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>   <span style="color:#c30">&#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-</span><span style="color:#c30">   </span><span style="color:#069;font-weight:bold">$(</span>lsb_release -cs<span style="color:#069;font-weight:bold">)</span><span style="color:#c30"> \
-</span><span style="color:#c30">   stable&#34;</span>
+sudo add-apt-repository <span class="se">\
+</span><span class="se"></span>   <span class="s2">&#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+</span><span class="s2">   </span><span class="k">$(</span>lsb_release -cs<span class="k">)</span><span class="s2"> \
+</span><span class="s2">   stable&#34;</span>
 
-sed -i <span style="color:#c30">&#39;s/download.docker.com/mirrors.ustc.edu.cn\/docker-ce/g&#39;</span> /etc/apt/sources.list
+sed -i <span class="s1">&#39;s/download.docker.com/mirrors.ustc.edu.cn\/docker-ce/g&#39;</span> /etc/apt/sources.list
 
 apt-get update
 apt-get install -y docker-ce docker-ce-cli containerd.io
 
 </code></pre></div><h3 id="instlal-docker-compose">Instlal Docker-compose</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo curl -L <span style="color:#c30">&#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-</span><span style="color:#069;font-weight:bold">$(</span>uname -s<span style="color:#069;font-weight:bold">)</span><span style="color:#c30">-</span><span style="color:#069;font-weight:bold">$(</span>uname -m<span style="color:#069;font-weight:bold">)</span><span style="color:#c30">&#34;</span> -o /usr/local/bin/docker-compose
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo curl -L <span class="s2">&#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-</span><span class="k">$(</span>uname -s<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname -m<span class="k">)</span><span class="s2">&#34;</span> -o /usr/local/bin/docker-compose
 
 sudo chmod +x /usr/local/bin/docker-compose
 
@@ -528,7 +524,7 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 </code></pre></div><h3 id="extend-disk-size-of-vm">Extend disk size of vm.</h3>
 <p>Shutdown the vm then change disk size as you wish ,After that start the vm. Extend disk is easy.</p>
 <h3 id="enable-ssh-password-authentication">Enable SSH password Authentication</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo sed -i <span style="color:#c30">&#39;s/PasswordAuthentication\ no/PasswordAuthentication\ yes/g&#39;</span> /et/c/ssh/sshd_config
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo sed -i <span class="s1">&#39;s/PasswordAuthentication\ no/PasswordAuthentication\ yes/g&#39;</span> /et/c/ssh/sshd_config
 sudo systemctl daemon-reload
 sudo systemctl restart sshd
 </code></pre></div><h2 id="swell">Swell</h2>
@@ -549,7 +545,7 @@ sudo systemctl restart sshd
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2019-06-12
+      2019-11-01
       
     </span>
   </p>
@@ -713,7 +709,7 @@ sudo systemctl restart sshd
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

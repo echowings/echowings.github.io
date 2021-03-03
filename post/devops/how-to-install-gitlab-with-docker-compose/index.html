@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/devops/how-to-install-gitlab-with-docker-compose/" />
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,19 +62,15 @@
 <meta property="og:title" content="How to Install Gitlab With Docker-Compose" />
 <meta property="og:description" content="How to Install gitlab with docer-compose version:&#34;3.5&#34;services:gitlab:image:gitlab/gitlab-ce:latestcontainer_name:gitlabrestart:alwayshostname:&#39;xa-gitlab&#39;environment:GITLAB_OMNIBUS_CONFIG:|external_url &#39;http://xa-gitlab&#39; gitlab_rails[&#39;backup_keep_time&#39;] = 604800 gitlab_rails[&#39;time_zone&#39;] = &#39;Asia/Shanghai&#39; gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 1022 #gitlab_rails[&#39;ldap_enabled&#39;] = true #gitlab_rails[&#39;ldap_servers&#39;] = YAML.load &lt;&lt;-EOS #main: # label: &#39;LDAP&#39; # host: &#39;192.168.1.1&#39; # port: 389 # uid: &#39;uid&#39; # bind_dn: &#39;CN=admin,DC=lotbrick,DC=com&#39; # password: &#39;admin&#39; # user_filter: &#39;objectclass=person&#39; # base: &#39;ou=People,dc=xxxxx,dc=com&#39; # active_directory: false # method: &#39;plain&#39; # attributes: # username: [&#34;cn&#34;] # email: [&#39;email&#39;] # name: &#39;displayName&#39; # first_name: &#39;givenName&#39; #" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/devops/how-to-install-gitlab-with-docker-compose/" />
-<meta property="article:published_time" content="2019-11-27T12:24:57+08:00" />
-<meta property="article:modified_time" content="2019-11-27T12:24:57+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/devops/how-to-install-gitlab-with-docker-compose/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-11-27T12:24:57&#43;08:00" />
+<meta property="article:modified_time" content="2019-12-10T22:34:54&#43;08:00" />
+
 <meta itemprop="name" content="How to Install Gitlab With Docker-Compose">
-<meta itemprop="description" content="How to Install gitlab with docer-compose version:&#34;3.5&#34;services:gitlab:image:gitlab/gitlab-ce:latestcontainer_name:gitlabrestart:alwayshostname:&#39;xa-gitlab&#39;environment:GITLAB_OMNIBUS_CONFIG:|external_url &#39;http://xa-gitlab&#39; gitlab_rails[&#39;backup_keep_time&#39;] = 604800 gitlab_rails[&#39;time_zone&#39;] = &#39;Asia/Shanghai&#39; gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 1022 #gitlab_rails[&#39;ldap_enabled&#39;] = true #gitlab_rails[&#39;ldap_servers&#39;] = YAML.load &lt;&lt;-EOS #main: # label: &#39;LDAP&#39; # host: &#39;192.168.1.1&#39; # port: 389 # uid: &#39;uid&#39; # bind_dn: &#39;CN=admin,DC=lotbrick,DC=com&#39; # password: &#39;admin&#39; # user_filter: &#39;objectclass=person&#39; # base: &#39;ou=People,dc=xxxxx,dc=com&#39; # active_directory: false # method: &#39;plain&#39; # attributes: # username: [&#34;cn&#34;] # email: [&#39;email&#39;] # name: &#39;displayName&#39; # first_name: &#39;givenName&#39; #">
-<meta itemprop="datePublished" content="2019-11-27T12:24:57+08:00" />
-<meta itemprop="dateModified" content="2019-11-27T12:24:57+08:00" />
+<meta itemprop="description" content="How to Install gitlab with docer-compose version:&#34;3.5&#34;services:gitlab:image:gitlab/gitlab-ce:latestcontainer_name:gitlabrestart:alwayshostname:&#39;xa-gitlab&#39;environment:GITLAB_OMNIBUS_CONFIG:|external_url &#39;http://xa-gitlab&#39; gitlab_rails[&#39;backup_keep_time&#39;] = 604800 gitlab_rails[&#39;time_zone&#39;] = &#39;Asia/Shanghai&#39; gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 1022 #gitlab_rails[&#39;ldap_enabled&#39;] = true #gitlab_rails[&#39;ldap_servers&#39;] = YAML.load &lt;&lt;-EOS #main: # label: &#39;LDAP&#39; # host: &#39;192.168.1.1&#39; # port: 389 # uid: &#39;uid&#39; # bind_dn: &#39;CN=admin,DC=lotbrick,DC=com&#39; # password: &#39;admin&#39; # user_filter: &#39;objectclass=person&#39; # base: &#39;ou=People,dc=xxxxx,dc=com&#39; # active_directory: false # method: &#39;plain&#39; # attributes: # username: [&#34;cn&#34;] # email: [&#39;email&#39;] # name: &#39;displayName&#39; # first_name: &#39;givenName&#39; #"><meta itemprop="datePublished" content="2019-11-27T12:24:57&#43;08:00" />
+<meta itemprop="dateModified" content="2019-12-10T22:34:54&#43;08:00" />
 <meta itemprop="wordCount" content="104">
-
-
-
-<meta itemprop="keywords" content="devops,gitlab,docker," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="devops,gitlab,docker," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Install Gitlab With Docker-Compose"/>
 <meta name="twitter:description" content="How to Install gitlab with docer-compose version:&#34;3.5&#34;services:gitlab:image:gitlab/gitlab-ce:latestcontainer_name:gitlabrestart:alwayshostname:&#39;xa-gitlab&#39;environment:GITLAB_OMNIBUS_CONFIG:|external_url &#39;http://xa-gitlab&#39; gitlab_rails[&#39;backup_keep_time&#39;] = 604800 gitlab_rails[&#39;time_zone&#39;] = &#39;Asia/Shanghai&#39; gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 1022 #gitlab_rails[&#39;ldap_enabled&#39;] = true #gitlab_rails[&#39;ldap_servers&#39;] = YAML.load &lt;&lt;-EOS #main: # label: &#39;LDAP&#39; # host: &#39;192.168.1.1&#39; # port: 389 # uid: &#39;uid&#39; # bind_dn: &#39;CN=admin,DC=lotbrick,DC=com&#39; # password: &#39;admin&#39; # user_filter: &#39;objectclass=person&#39; # base: &#39;ou=People,dc=xxxxx,dc=com&#39; # active_directory: false # method: &#39;plain&#39; # attributes: # username: [&#34;cn&#34;] # email: [&#39;email&#39;] # name: &#39;displayName&#39; # first_name: &#39;givenName&#39; #"/>
 
@@ -385,49 +381,49 @@ if (!doNotTrack) {
     
     <div class="post-content">
       <h1 id="how-to-install-gitlab-with-docer-compose">How to Install gitlab with docer-compose</h1>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#309;font-weight:bold">version</span>:<span style="color:#bbb"> </span><span style="color:#c30">&#34;3.5&#34;</span><span style="color:#bbb">
-</span><span style="color:#bbb"></span><span style="color:#309;font-weight:bold">services</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">  </span><span style="color:#309;font-weight:bold">gitlab</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">     </span><span style="color:#309;font-weight:bold">image</span>:<span style="color:#bbb"> </span>gitlab/gitlab-ce:latest<span style="color:#bbb">
-</span><span style="color:#bbb">     </span><span style="color:#309;font-weight:bold">container_name</span>:<span style="color:#bbb"> </span>gitlab<span style="color:#bbb">
-</span><span style="color:#bbb">     </span><span style="color:#309;font-weight:bold">restart</span>:<span style="color:#bbb"> </span>always<span style="color:#bbb">
-</span><span style="color:#bbb">     </span><span style="color:#309;font-weight:bold">hostname</span>:<span style="color:#bbb"> </span><span style="color:#c30">&#39;xa-gitlab&#39;</span><span style="color:#bbb">
-</span><span style="color:#bbb">     </span><span style="color:#309;font-weight:bold">environment</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">       </span><span style="color:#309;font-weight:bold">GITLAB_OMNIBUS_CONFIG</span>:<span style="color:#bbb"> </span>|<span style="color:#c30;font-style:italic">
-</span><span style="color:#c30;font-style:italic">         external_url &#39;http://xa-gitlab&#39;
-</span><span style="color:#c30;font-style:italic">         gitlab_rails[&#39;backup_keep_time&#39;] = 604800
-</span><span style="color:#c30;font-style:italic">         gitlab_rails[&#39;time_zone&#39;] = &#39;Asia/Shanghai&#39;
-</span><span style="color:#c30;font-style:italic">         gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 1022
-</span><span style="color:#c30;font-style:italic">         #gitlab_rails[&#39;ldap_enabled&#39;] = true
-</span><span style="color:#c30;font-style:italic">         #gitlab_rails[&#39;ldap_servers&#39;] = YAML.load &lt;&lt;-EOS
-</span><span style="color:#c30;font-style:italic">         #main:
-</span><span style="color:#c30;font-style:italic">         #  label: &#39;LDAP&#39;
-</span><span style="color:#c30;font-style:italic">         #  host: &#39;192.168.1.1&#39;
-</span><span style="color:#c30;font-style:italic">         #  port: 389
-</span><span style="color:#c30;font-style:italic">         #  uid: &#39;uid&#39;
-</span><span style="color:#c30;font-style:italic">         #  bind_dn: &#39;CN=admin,DC=lotbrick,DC=com&#39;
-</span><span style="color:#c30;font-style:italic">         #  password: &#39;admin&#39;
-</span><span style="color:#c30;font-style:italic">         #  user_filter: &#39;objectclass=person&#39;
-</span><span style="color:#c30;font-style:italic">         #  base: &#39;ou=People,dc=xxxxx,dc=com&#39;
-</span><span style="color:#c30;font-style:italic">         #  active_directory: false
-</span><span style="color:#c30;font-style:italic">         #  method: &#39;plain&#39;
-</span><span style="color:#c30;font-style:italic">         #  attributes:
-</span><span style="color:#c30;font-style:italic">         #    username: [&#34;cn&#34;]
-</span><span style="color:#c30;font-style:italic">         #    email: [&#39;email&#39;]
-</span><span style="color:#c30;font-style:italic">         #    name: &#39;displayName&#39;
-</span><span style="color:#c30;font-style:italic">         #    first_name: &#39;givenName&#39;
-</span><span style="color:#c30;font-style:italic">         #    last_name:  &#39;sn&#39;
-</span><span style="color:#c30;font-style:italic">         #EOS</span><span style="color:#bbb">         
-</span><span style="color:#bbb">     </span><span style="color:#309;font-weight:bold">ports</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">       </span>- <span style="color:#c30">&#39;80:80&#39;</span><span style="color:#bbb">
-</span><span style="color:#bbb">       </span>- <span style="color:#c30">&#39;443:443&#39;</span><span style="color:#bbb">
-</span><span style="color:#bbb">       </span>- <span style="color:#c30">&#39;1022:22&#39;</span><span style="color:#bbb">
-</span><span style="color:#bbb">     </span><span style="color:#309;font-weight:bold">volumes</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">       </span>- ./gitlab/config:/etc/gitlab<span style="color:#bbb">
-</span><span style="color:#bbb">       </span>- ./gitlab/logs:/var/log/gitlab<span style="color:#bbb">
-</span><span style="color:#bbb">       </span>- ./gitlab/data:/var/opt/gitlab<span style="color:#bbb">
-</span><span style="color:#bbb">       </span><span style="color:#09f;font-style:italic"># - &#34;/etc/localtime:/etc/localtime:ro&#34;</span><span style="color:#bbb">
-</span><span style="color:#bbb">
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.5&#34;</span><span class="w">
+</span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">gitlab</span><span class="p">:</span><span class="w">
+</span><span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">gitlab/gitlab-ce:latest</span><span class="w">
+</span><span class="w">     </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">gitlab</span><span class="w">
+</span><span class="w">     </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
+</span><span class="w">     </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;xa-gitlab&#39;</span><span class="w">
+</span><span class="w">     </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span><span class="w">       </span><span class="nt">GITLAB_OMNIBUS_CONFIG</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">         external_url &#39;http://xa-gitlab&#39;
+</span><span class="sd">         gitlab_rails[&#39;backup_keep_time&#39;] = 604800
+</span><span class="sd">         gitlab_rails[&#39;time_zone&#39;] = &#39;Asia/Shanghai&#39;
+</span><span class="sd">         gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 1022
+</span><span class="sd">         #gitlab_rails[&#39;ldap_enabled&#39;] = true
+</span><span class="sd">         #gitlab_rails[&#39;ldap_servers&#39;] = YAML.load &lt;&lt;-EOS
+</span><span class="sd">         #main:
+</span><span class="sd">         #  label: &#39;LDAP&#39;
+</span><span class="sd">         #  host: &#39;192.168.1.1&#39;
+</span><span class="sd">         #  port: 389
+</span><span class="sd">         #  uid: &#39;uid&#39;
+</span><span class="sd">         #  bind_dn: &#39;CN=admin,DC=lotbrick,DC=com&#39;
+</span><span class="sd">         #  password: &#39;admin&#39;
+</span><span class="sd">         #  user_filter: &#39;objectclass=person&#39;
+</span><span class="sd">         #  base: &#39;ou=People,dc=xxxxx,dc=com&#39;
+</span><span class="sd">         #  active_directory: false
+</span><span class="sd">         #  method: &#39;plain&#39;
+</span><span class="sd">         #  attributes:
+</span><span class="sd">         #    username: [&#34;cn&#34;]
+</span><span class="sd">         #    email: [&#39;email&#39;]
+</span><span class="sd">         #    name: &#39;displayName&#39;
+</span><span class="sd">         #    first_name: &#39;givenName&#39;
+</span><span class="sd">         #    last_name:  &#39;sn&#39;
+</span><span class="sd">         #EOS</span><span class="w">         
+</span><span class="w">     </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="w">       </span>- <span class="s1">&#39;80:80&#39;</span><span class="w">
+</span><span class="w">       </span>- <span class="s1">&#39;443:443&#39;</span><span class="w">
+</span><span class="w">       </span>- <span class="s1">&#39;1022:22&#39;</span><span class="w">
+</span><span class="w">     </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">       </span>- <span class="l">./gitlab/config:/etc/gitlab</span><span class="w">
+</span><span class="w">       </span>- <span class="l">./gitlab/logs:/var/log/gitlab</span><span class="w">
+</span><span class="w">       </span>- <span class="l">./gitlab/data:/var/opt/gitlab</span><span class="w">
+</span><span class="w">       </span><span class="c"># - &#34;/etc/localtime:/etc/localtime:ro&#34;</span><span class="w">
+</span><span class="w">
 </span></code></pre></div><h2 id="reference">Reference</h2>
 <hr>
 <ul>
@@ -447,7 +443,7 @@ if (!doNotTrack) {
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2019-11-27
+      2019-12-10
       
     </span>
   </p>
@@ -612,7 +608,7 @@ if (!doNotTrack) {
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

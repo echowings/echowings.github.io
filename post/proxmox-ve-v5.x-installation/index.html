@@ -33,7 +33,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/proxmox-ve-v5.x-installation/" />
@@ -54,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -64,20 +64,16 @@
 <meta property="og:description" content="Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
  Boot the proxmox installer USB Select Debug Mode Press “CTRL&#43;D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  manual solution:  cd /usr/share/javascript/proxmox-widget-toolkit cp proxmoxlib." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-v5.x-installation/" />
-<meta property="article:published_time" content="2018-11-19T23:38:39+08:00" />
-<meta property="article:modified_time" content="2018-11-19T23:38:39+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-v5.x-installation/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2018-11-19T23:38:39&#43;08:00" />
+<meta property="article:modified_time" content="2019-11-01T16:29:16&#43;08:00" />
+
 <meta itemprop="name" content="Proxmoxve VE V5.x Installation">
 <meta itemprop="description" content="Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
- Boot the proxmox installer USB Select Debug Mode Press “CTRL&#43;D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  manual solution:  cd /usr/share/javascript/proxmox-widget-toolkit cp proxmoxlib.">
-<meta itemprop="datePublished" content="2018-11-19T23:38:39+08:00" />
-<meta itemprop="dateModified" content="2018-11-19T23:38:39+08:00" />
+ Boot the proxmox installer USB Select Debug Mode Press “CTRL&#43;D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  manual solution:  cd /usr/share/javascript/proxmox-widget-toolkit cp proxmoxlib."><meta itemprop="datePublished" content="2018-11-19T23:38:39&#43;08:00" />
+<meta itemprop="dateModified" content="2019-11-01T16:29:16&#43;08:00" />
 <meta itemprop="wordCount" content="232">
-
-
-
-<meta itemprop="keywords" content="PVE," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="PVE," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Proxmoxve VE V5.x Installation"/>
 <meta name="twitter:description" content="Proxmox VE 5.x Installation Proxmox won’t install- “A volume group called pve already exists Solution:
  Boot the proxmox installer USB Select Debug Mode Press “CTRL&#43;D” to start the installer wizard. Click on abort Run “vgdisplay” to dislay the LVM PG’s. Run “vgremode pve ” to remove pve PG.  Remove “No valid Subscription” Message  shell solution.  sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  manual solution:  cd /usr/share/javascript/proxmox-widget-toolkit cp proxmoxlib."/>
@@ -409,52 +405,52 @@ if (!doNotTrack) {
 <ul>
 <li>shell solution.</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i.bak <span style="color:#c30">&#34;s/data.status !== &#39;Active&#39;/false/g&#34;</span> /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js <span style="color:#555">&amp;&amp;</span> systemctl restart pveproxy.service
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sed -i.bak <span class="s2">&#34;s/data.status !== &#39;Active&#39;/false/g&#34;</span> /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js <span class="o">&amp;&amp;</span> systemctl restart pveproxy.service
 	
 </code></pre></div><ul>
 <li>manual solution:</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> /usr/share/javascript/proxmox-widget-toolkit
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /usr/share/javascript/proxmox-widget-toolkit
 cp proxmoxlib.js proxmoxlib.js.bak
 nano proxmoxlib.js
 
-<span style="color:#09f;font-style:italic"># change </span>
-<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span>data.status !<span style="color:#555">==</span> <span style="color:#c30">&#39;Active&#39;</span><span style="color:#555">)</span> <span style="color:#555">{</span>
+<span class="c1"># change </span>
+<span class="k">if</span> <span class="o">(</span>data.status !<span class="o">==</span> <span class="s1">&#39;Active&#39;</span><span class="o">)</span> <span class="o">{</span>
 
-<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span><span style="color:#366">false</span><span style="color:#555">)</span> <span style="color:#555">{</span>
+<span class="k">if</span> <span class="o">(</span><span class="nb">false</span><span class="o">)</span> <span class="o">{</span>
 
-<span style="color:#09f;font-style:italic">#restart pveproxy.service</span>
+<span class="c1">#restart pveproxy.service</span>
 systemctl restart pveproxy.service
 </code></pre></div><h2 id="change-update-source">Change update source</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#chang debian source list</span>
-<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
-</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
-</span><span style="color:#c30">
-</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
-</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
-</span><span style="color:#c30">
-</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
-</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
-</span><span style="color:#c30">
-</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free
-</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&#34;</span> &gt; /etc/apt/sources.list
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#chang debian source list</span>
+<span class="nb">echo</span> <span class="s2">&#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
+</span><span class="s2">deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
+</span><span class="s2">
+</span><span class="s2">deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
+</span><span class="s2">deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
+</span><span class="s2">
+</span><span class="s2">deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
+</span><span class="s2">deb-src https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
+</span><span class="s2">
+</span><span class="s2">deb https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free
+</span><span class="s2">deb-src https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&#34;</span> &gt; /etc/apt/sources.list
 
-<span style="color:#09f;font-style:italic">#change pve 5.x update source list</span>
-<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&#34;</span> &gt;&gt; /etc/apt/sources.list
+<span class="c1">#change pve 5.x update source list</span>
+<span class="nb">echo</span> <span class="s2">&#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&#34;</span> &gt;&gt; /etc/apt/sources.list
 
-<span style="color:#09f;font-style:italic">#change ceph source list to utsc mirrors</span>
-<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&#34;</span> &gt;&gt; /etc/apt/sources.list
+<span class="c1">#change ceph source list to utsc mirrors</span>
+<span class="nb">echo</span> <span class="s2">&#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&#34;</span> &gt;&gt; /etc/apt/sources.list
 
-<span style="color:#09f;font-style:italic"># add key</span>
+<span class="c1"># add key</span>
 wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
 
-apt update <span style="color:#555">&amp;&amp;</span> apt -y dist-upgrade
+apt update <span class="o">&amp;&amp;</span> apt -y dist-upgrade
 update-grub
 </code></pre></div><h1 id="remove-sourcelist-of-pve-enterprise-subscription-and-ceph">Remove sourcelist of pve enterprise subscription and ceph</h1>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># Delete Enterprise subscription.</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># Delete Enterprise subscription.</span>
 rm -rf /etc/apt/sources.list.d/pve-enterprise.list
 
-<span style="color:#09f;font-style:italic"># Delete proxmox ve offical ceph source. </span>
+<span class="c1"># Delete proxmox ve offical ceph source. </span>
 rm -rf /etc/apt/sources.list.d/ceph.list
 
 
@@ -476,7 +472,7 @@ rm -rf /etc/apt/sources.list.d/ceph.list
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2018-11-19
+      2019-11-01
       
     </span>
   </p>
@@ -639,7 +635,7 @@ rm -rf /etc/apt/sources.list.d/ceph.list
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

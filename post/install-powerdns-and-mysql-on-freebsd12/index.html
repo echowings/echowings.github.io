@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/" />
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,19 +62,15 @@
 <meta property="og:title" content="Install PowerDNS and Mysql on Freebsd12" />
 <meta property="og:description" content="Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&#34;YES&#34; service mysql-server restart Database and User Configuration $ mysql mysql&gt; create database powerdns charset = utf8; mysql&gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&gt; FLUSH PRIVILEGES; #For security, we also give the main admin password $ mysqladmin -u root password &#34;PASSWORD_OF_ROOT&#34; Install powerdns pkg install powerdns Reference  How to manage MySQL databases and users from the command line PowerDNS, PowerAdmin with Mysql in Freebsd 10." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/" />
-<meta property="article:published_time" content="2018-12-18T00:51:47+08:00" />
-<meta property="article:modified_time" content="2018-03-01T16:01:23+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/install-powerdns-and-mysql-on-freebsd12/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2018-12-18T00:51:47&#43;08:00" />
+<meta property="article:modified_time" content="2018-03-01T16:01:23&#43;08:00" />
+
 <meta itemprop="name" content="Install PowerDNS and Mysql on Freebsd12">
-<meta itemprop="description" content="Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&#34;YES&#34; service mysql-server restart Database and User Configuration $ mysql mysql&gt; create database powerdns charset = utf8; mysql&gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&gt; FLUSH PRIVILEGES; #For security, we also give the main admin password $ mysqladmin -u root password &#34;PASSWORD_OF_ROOT&#34; Install powerdns pkg install powerdns Reference  How to manage MySQL databases and users from the command line PowerDNS, PowerAdmin with Mysql in Freebsd 10.">
-<meta itemprop="datePublished" content="2018-12-18T00:51:47+08:00" />
-<meta itemprop="dateModified" content="2018-03-01T16:01:23+08:00" />
+<meta itemprop="description" content="Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&#34;YES&#34; service mysql-server restart Database and User Configuration $ mysql mysql&gt; create database powerdns charset = utf8; mysql&gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&gt; FLUSH PRIVILEGES; #For security, we also give the main admin password $ mysqladmin -u root password &#34;PASSWORD_OF_ROOT&#34; Install powerdns pkg install powerdns Reference  How to manage MySQL databases and users from the command line PowerDNS, PowerAdmin with Mysql in Freebsd 10."><meta itemprop="datePublished" content="2018-12-18T00:51:47&#43;08:00" />
+<meta itemprop="dateModified" content="2018-03-01T16:01:23&#43;08:00" />
 <meta itemprop="wordCount" content="101">
-
-
-
-<meta itemprop="keywords" content="powerdns,freebsd,mysql," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="powerdns,freebsd,mysql," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Install PowerDNS and Mysql on Freebsd12"/>
 <meta name="twitter:description" content="Install PowerDNS and Mysql on FreeBSD 12 Database Installation pkg install mysql56-server sysrc mysql_server=&#34;YES&#34; service mysql-server restart Database and User Configuration $ mysql mysql&gt; create database powerdns charset = utf8; mysql&gt; CREATE USER &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; ###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;### mysql&gt; grant all privileges on powerdns.* to &#39;powerdns&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;XianAdmin&#39;; mysql&gt; FLUSH PRIVILEGES; #For security, we also give the main admin password $ mysqladmin -u root password &#34;PASSWORD_OF_ROOT&#34; Install powerdns pkg install powerdns Reference  How to manage MySQL databases and users from the command line PowerDNS, PowerAdmin with Mysql in Freebsd 10."/>
 
@@ -390,30 +386,30 @@ if (!doNotTrack) {
     <div class="post-content">
       <h1 id="install-powerdns-and-mysql-on-freebsd-12">Install PowerDNS and Mysql on FreeBSD 12</h1>
 <h2 id="database-installation">Database Installation</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pkg install mysql56-server
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pkg install mysql56-server
 
-sysrc <span style="color:#033">mysql_server</span><span style="color:#555">=</span><span style="color:#c30">&#34;YES&#34;</span>
+sysrc <span class="nv">mysql_server</span><span class="o">=</span><span class="s2">&#34;YES&#34;</span>
 
 service mysql-server restart
 </code></pre></div><h2 id="database-and-user-configuration">Database and User Configuration</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mysql
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mysql
 
-mysql&gt; create database powerdns <span style="color:#033">charset</span> <span style="color:#555">=</span> utf8;
+mysql&gt; create database powerdns <span class="nv">charset</span> <span class="o">=</span> utf8<span class="p">;</span>
 
-mysql&gt; CREATE USER <span style="color:#c30">&#39;powerdns&#39;</span>@<span style="color:#c30">&#39;localhost&#39;</span> IDENTIFIED BY <span style="color:#c30">&#39;XianAdmin&#39;</span>;
+mysql&gt; CREATE USER <span class="s1">&#39;powerdns&#39;</span>@<span class="s1">&#39;localhost&#39;</span> IDENTIFIED BY <span class="s1">&#39;XianAdmin&#39;</span><span class="p">;</span>
 
-<span style="color:#09f;font-style:italic">###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;###</span>
-mysql&gt; grant all privileges on powerdns.* to <span style="color:#c30">&#39;powerdns&#39;</span>@<span style="color:#c30">&#39;localhost&#39;</span> IDENTIFIED BY <span style="color:#c30">&#39;XianAdmin&#39;</span>;
-
-
-mysql&gt; FLUSH PRIVILEGES;
+<span class="c1">###mysql&gt; GRANT ALL PRIVILEGES ON powerdns.* TO &#39;%&#39; WITH GRANT OPTION;###</span>
+mysql&gt; grant all privileges on powerdns.* to <span class="s1">&#39;powerdns&#39;</span>@<span class="s1">&#39;localhost&#39;</span> IDENTIFIED BY <span class="s1">&#39;XianAdmin&#39;</span><span class="p">;</span>
 
 
-<span style="color:#09f;font-style:italic">#For security, we also give the main admin password</span>
+mysql&gt; FLUSH PRIVILEGES<span class="p">;</span>
 
-$ mysqladmin -u root password <span style="color:#c30">&#34;PASSWORD_OF_ROOT&#34;</span>
+
+<span class="c1">#For security, we also give the main admin password</span>
+
+$ mysqladmin -u root password <span class="s2">&#34;PASSWORD_OF_ROOT&#34;</span>
 </code></pre></div><h2 id="install-powerdns">Install powerdns</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pkg install powerdns
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pkg install powerdns
 </code></pre></div><h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://www.a2hosting.com/kb/developer-corner/mysql/managing-mysql-databases-and-users-from-the-command-line">How to manage MySQL databases and users from the command line</a></li>
@@ -597,7 +593,7 @@ $ mysqladmin -u root password <span style="color:#c30">&#34;PASSWORD_OF_ROOT&#34
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

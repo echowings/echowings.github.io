@@ -35,7 +35,7 @@ Option 2: Manually Setup cloud-init We can do this with 2 steps." />
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/how-to-setup-cloud-init-in-proxmoxve/" />
@@ -56,7 +56,7 @@ Option 2: Manually Setup cloud-init We can do this with 2 steps." />
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -68,22 +68,18 @@ There are two ways to setup cloud-init: command line or change settings in GUI.
 Option 1: Download cloud-init image and setup with shell Please reference my blog Build Ubuntu 18.04 server with cloudinit support
 Option 2: Manually Setup cloud-init We can do this with 2 steps." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/how-to-setup-cloud-init-in-proxmoxve/" />
-<meta property="article:published_time" content="2019-07-12T14:04:03+08:00" />
-<meta property="article:modified_time" content="2019-07-12T14:04:03+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/how-to-setup-cloud-init-in-proxmoxve/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-07-12T14:04:03&#43;08:00" />
+<meta property="article:modified_time" content="2019-11-01T16:29:16&#43;08:00" />
+
 <meta itemprop="name" content="How to Setup Cloud Init in Proxmoxve">
 <meta itemprop="description" content="How to setup cloud-init in prxmox ve Cloud-init can help us to deploy or change settings of linux virutal machine via api or manually by ourself.
 There are two ways to setup cloud-init: command line or change settings in GUI.
 Option 1: Download cloud-init image and setup with shell Please reference my blog Build Ubuntu 18.04 server with cloudinit support
-Option 2: Manually Setup cloud-init We can do this with 2 steps.">
-<meta itemprop="datePublished" content="2019-07-12T14:04:03+08:00" />
-<meta itemprop="dateModified" content="2019-07-12T14:04:03+08:00" />
+Option 2: Manually Setup cloud-init We can do this with 2 steps."><meta itemprop="datePublished" content="2019-07-12T14:04:03&#43;08:00" />
+<meta itemprop="dateModified" content="2019-11-01T16:29:16&#43;08:00" />
 <meta itemprop="wordCount" content="312">
-
-
-
-<meta itemprop="keywords" content="pve,cloud-init,linux," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="pve,cloud-init,linux," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Setup Cloud Init in Proxmoxve"/>
 <meta name="twitter:description" content="How to setup cloud-init in prxmox ve Cloud-init can help us to deploy or change settings of linux virutal machine via api or manually by ourself.
 There are two ways to setup cloud-init: command line or change settings in GUI.
@@ -425,10 +421,10 @@ if (!doNotTrack) {
 <h3 id="install-and-setup-cloud-init">Install and setup cloud-init</h3>
 <p>After installed an linux.</p>
 <h4 id="debianubuntu">debian/ubuntu</h4>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">apt update <span style="color:#555">&amp;&amp;</span> apt -y dist-upgrade
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">apt update <span class="o">&amp;&amp;</span> apt -y dist-upgrade
 apt install -y cloud-init
 </code></pre></div><h4 id="rhelcentos">RHEL/Centos</h4>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">yum upate 
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">yum upate 
 yum install -y cloud-init
 </code></pre></div><h3 id="create-a-cloud-init-boot-disk">Create a cloud-init boot disk</h3>
 <ol>
@@ -443,39 +439,39 @@ yum install -y cloud-init
 <h2 id="change-some-settings">Change some settings</h2>
 <p>After setup cloud-init, Seem like it automatically reset your sourelist to default settings and we couldn&rsquo;t login via ssh with password.</p>
 <h3 id="enable-password-authentication">Enable password authentication</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo sed -i <span style="color:#c30">&#39;s/PasswordAuthentication\ no/PasswordAuthentication\ yes/g&#39;</span> /etc/ssh/sshd_config
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo sed -i <span class="s1">&#39;s/PasswordAuthentication\ no/PasswordAuthentication\ yes/g&#39;</span> /etc/ssh/sshd_config
 sudo systemctl daemon-reload
 sudo systemctl restart sshd
 
 </code></pre></div><h3 id="permit-root-can-loing-with-password">Permit root can loing with password</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo sed -i <span style="color:#c30">&#39;s/#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/g&#39;</span> /etc/ssh/sshd_config
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo sed -i <span class="s1">&#39;s/#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/g&#39;</span> /etc/ssh/sshd_config
 sudo systemctl daemon-reload
 sudo systemctl restart sshd
 
 
 </code></pre></div><h3 id="change-machine-id">Change machine-id</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm /var/lib/dbus/machine-id
-truncate -s <span style="color:#f60">0</span>  /etc/machine-id
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">rm /var/lib/dbus/machine-id
+truncate -s <span class="m">0</span>  /etc/machine-id
 ln -s /etc/machine-id /var/lib/dbus/machine-id
 </code></pre></div><h3 id="change-hostname-with-ubuntu-1804">change hostname with ubuntu 18.04</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i <span style="color:#c30">&#39;s/preserve_hostname:\ false/preserve_hostname:\ true/g&#39;</span> /etc/cloud/cloud.cfg
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sed -i <span class="s1">&#39;s/preserve_hostname:\ false/preserve_hostname:\ true/g&#39;</span> /etc/cloud/cloud.cfg
 
-<span style="color:#09f;font-style:italic">#check settings</span>
-cat /etc/cloud/cloud.cfg |grep preserve_hostname
-<span style="color:#09f;font-style:italic"># If it works and you will see:</span>
-<span style="color:#09f;font-style:italic">#preserve_hostname: true</span>
+<span class="c1">#check settings</span>
+cat /etc/cloud/cloud.cfg <span class="p">|</span>grep preserve_hostname
+<span class="c1"># If it works and you will see:</span>
+<span class="c1">#preserve_hostname: true</span>
 
-<span style="color:#09f;font-style:italic">#Set hostname to myserver-forloadbalance2-node175</span>
+<span class="c1">#Set hostname to myserver-forloadbalance2-node175</span>
 hostnamectl set-hostname myserver-forloadbalance2-node-175
 
-<span style="color:#09f;font-style:italic"># reboot host</span>
+<span class="c1"># reboot host</span>
 reboot now
 
 
 </code></pre></div><h3 id="permit-modified-sourelist">Permit modified sourelist</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo cat <span style="color:#c30">&lt;&lt; EOF &gt;&gt; /etc/cloud/cloud.cfg
-</span><span style="color:#c30">apt_preserve_sources_list: true
-</span><span style="color:#c30">EOF</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo cat <span class="s">&lt;&lt; EOF &gt;&gt; /etc/cloud/cloud.cfg
+</span><span class="s">apt_preserve_sources_list: true
+</span><span class="s">EOF</span>
 
 </code></pre></div><p>Then you can change sourelist without worried about the sourcelist will be overwriten by cloud-init</p>
 <h2 id="heading"></h2>
@@ -495,7 +491,7 @@ reboot now
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2019-07-12
+      2019-11-01
       
     </span>
   </p>
@@ -660,7 +656,7 @@ reboot now
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

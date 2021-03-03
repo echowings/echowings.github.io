@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/how-to-deploy-docker-in-debian-10/" />
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,17 +62,15 @@
 <meta property="og:title" content="How to Deploy Docker in Debian 10" />
 <meta property="og:description" content="How to deploy docker in debian 10 cat &lt;&lt; EOF &gt; /etc/docker/aemon.json\n{\n &#34;registry-mirrors&#34;: [&#34;https://docker.mirrors.ustc.edu.cn/&#34;]\n}\n\nEOF systemctl retart docker systemctl restart docker Install docker-compose sudo curl -L &#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)&#34; -o /usr/local/bin/docker-compose sudo chmod &#43;x /usr/local/bin/docker-compose sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/how-to-deploy-docker-in-debian-10/" />
+<meta property="og:url" content="https://blog.stevedong.com/post/how-to-deploy-docker-in-debian-10/" /><meta property="article:section" content="post" />
+
+<meta property="article:modified_time" content="2019-11-01T16:29:16&#43;08:00" />
 
 <meta itemprop="name" content="How to Deploy Docker in Debian 10">
 <meta itemprop="description" content="How to deploy docker in debian 10 cat &lt;&lt; EOF &gt; /etc/docker/aemon.json\n{\n &#34;registry-mirrors&#34;: [&#34;https://docker.mirrors.ustc.edu.cn/&#34;]\n}\n\nEOF systemctl retart docker systemctl restart docker Install docker-compose sudo curl -L &#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)&#34; -o /usr/local/bin/docker-compose sudo chmod &#43;x /usr/local/bin/docker-compose sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose ">
-
+<meta itemprop="dateModified" content="2019-11-01T16:29:16&#43;08:00" />
 <meta itemprop="wordCount" content="39">
-
-
-
-<meta itemprop="keywords" content="debian,docker,docker-compose,linux," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="debian,docker,docker-compose,linux," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Deploy Docker in Debian 10"/>
 <meta name="twitter:description" content="How to deploy docker in debian 10 cat &lt;&lt; EOF &gt; /etc/docker/aemon.json\n{\n &#34;registry-mirrors&#34;: [&#34;https://docker.mirrors.ustc.edu.cn/&#34;]\n}\n\nEOF systemctl retart docker systemctl restart docker Install docker-compose sudo curl -L &#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)&#34; -o /usr/local/bin/docker-compose sudo chmod &#43;x /usr/local/bin/docker-compose sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose "/>
 
@@ -383,11 +381,11 @@ if (!doNotTrack) {
     
     <div class="post-content">
       <h1 id="how-to-deploy-docker-in-debian-10">How to deploy docker in debian 10</h1>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat <span style="color:#c30">&lt;&lt; EOF &gt; /etc/docker/aemon.json\n{\n  &#34;registry-mirrors&#34;: [&#34;https://docker.mirrors.ustc.edu.cn/&#34;]\n}\n\nEOF</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cat <span class="s">&lt;&lt; EOF &gt; /etc/docker/aemon.json\n{\n  &#34;registry-mirrors&#34;: [&#34;https://docker.mirrors.ustc.edu.cn/&#34;]\n}\n\nEOF</span>
 systemctl retart docker
 systemctl restart docker
 </code></pre></div><h2 id="install-docker-compose">Install docker-compose</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo curl -L <span style="color:#c30">&#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-</span><span style="color:#069;font-weight:bold">$(</span>uname -s<span style="color:#069;font-weight:bold">)</span><span style="color:#c30">-</span><span style="color:#069;font-weight:bold">$(</span>uname -m<span style="color:#069;font-weight:bold">)</span><span style="color:#c30">&#34;</span> -o /usr/local/bin/docker-compose
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo curl -L <span class="s2">&#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-</span><span class="k">$(</span>uname -s<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname -m<span class="k">)</span><span class="s2">&#34;</span> -o /usr/local/bin/docker-compose
 
 sudo chmod +x /usr/local/bin/docker-compose
 
@@ -405,7 +403,7 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      0001-01-01
+      2019-11-01
       
     </span>
   </p>
@@ -549,7 +547,7 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

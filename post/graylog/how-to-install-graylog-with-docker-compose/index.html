@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/graylog/how-to-install-graylog-with-docker-compose/" />
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,19 +62,15 @@
 <meta property="og:title" content="How to Install Graylog With Docker Compose" />
 <meta property="og:description" content="How to Install Graylog with Docker-compose    Hostname my-graylog    Docker-compose.yaml version:&#39;2&#39;services:# MongoDB: https://hub.docker.com/_/mongo/mongodb:image:mongo:3volumes:- ./data/mongo_data:/data/db- /etc/localtime:/etc/localtime:ro# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.htmlelasticsearch:image:docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2volumes:- ./data/es_data:/usr/share/elasticsearch/data- /etc/localtime:/etc/localtime:roenvironment:- http.host=0.0.0.0- transport.host=localhost- network.host=0.0.0.0- &#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&#34;ulimits:memlock:soft:-1hard:-1mem_limit:1g# Graylog: https://hub.docker.com/r/graylog/graylog/graylog:image:graylog/graylog:3.1volumes:- ./data/graylog_journal:/usr/share/graylog/data/journal- /etc/localtime:/etc/localtime:roenvironment:# CHANGE ME (must be at least 16 characters)!- GRAYLOG_PASSWORD_SECRET=somepasswordpepper# Password: admin- GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918- GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/links:- mongodb:mongo- elasticsearchdepends_on:- mongodb- elasticsearchports:# Graylog web interface and REST API- 9000:9000# Syslog TCP- 1514:1514# Syslog UDP- 1514:1514/udp# GELF TCP- 12201:12201# GELF UDP- 12201:12201/udp# Volumes for persisting data, see https://docs." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/graylog/how-to-install-graylog-with-docker-compose/" />
-<meta property="article:published_time" content="2019-12-24T11:27:21+08:00" />
-<meta property="article:modified_time" content="2019-12-24T11:27:21+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/graylog/how-to-install-graylog-with-docker-compose/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-12-24T11:27:21&#43;08:00" />
+<meta property="article:modified_time" content="2019-12-24T17:53:30&#43;08:00" />
+
 <meta itemprop="name" content="How to Install Graylog With Docker Compose">
-<meta itemprop="description" content="How to Install Graylog with Docker-compose    Hostname my-graylog    Docker-compose.yaml version:&#39;2&#39;services:# MongoDB: https://hub.docker.com/_/mongo/mongodb:image:mongo:3volumes:- ./data/mongo_data:/data/db- /etc/localtime:/etc/localtime:ro# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.htmlelasticsearch:image:docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2volumes:- ./data/es_data:/usr/share/elasticsearch/data- /etc/localtime:/etc/localtime:roenvironment:- http.host=0.0.0.0- transport.host=localhost- network.host=0.0.0.0- &#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&#34;ulimits:memlock:soft:-1hard:-1mem_limit:1g# Graylog: https://hub.docker.com/r/graylog/graylog/graylog:image:graylog/graylog:3.1volumes:- ./data/graylog_journal:/usr/share/graylog/data/journal- /etc/localtime:/etc/localtime:roenvironment:# CHANGE ME (must be at least 16 characters)!- GRAYLOG_PASSWORD_SECRET=somepasswordpepper# Password: admin- GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918- GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/links:- mongodb:mongo- elasticsearchdepends_on:- mongodb- elasticsearchports:# Graylog web interface and REST API- 9000:9000# Syslog TCP- 1514:1514# Syslog UDP- 1514:1514/udp# GELF TCP- 12201:12201# GELF UDP- 12201:12201/udp# Volumes for persisting data, see https://docs.">
-<meta itemprop="datePublished" content="2019-12-24T11:27:21+08:00" />
-<meta itemprop="dateModified" content="2019-12-24T11:27:21+08:00" />
+<meta itemprop="description" content="How to Install Graylog with Docker-compose    Hostname my-graylog    Docker-compose.yaml version:&#39;2&#39;services:# MongoDB: https://hub.docker.com/_/mongo/mongodb:image:mongo:3volumes:- ./data/mongo_data:/data/db- /etc/localtime:/etc/localtime:ro# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.htmlelasticsearch:image:docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2volumes:- ./data/es_data:/usr/share/elasticsearch/data- /etc/localtime:/etc/localtime:roenvironment:- http.host=0.0.0.0- transport.host=localhost- network.host=0.0.0.0- &#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&#34;ulimits:memlock:soft:-1hard:-1mem_limit:1g# Graylog: https://hub.docker.com/r/graylog/graylog/graylog:image:graylog/graylog:3.1volumes:- ./data/graylog_journal:/usr/share/graylog/data/journal- /etc/localtime:/etc/localtime:roenvironment:# CHANGE ME (must be at least 16 characters)!- GRAYLOG_PASSWORD_SECRET=somepasswordpepper# Password: admin- GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918- GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/links:- mongodb:mongo- elasticsearchdepends_on:- mongodb- elasticsearchports:# Graylog web interface and REST API- 9000:9000# Syslog TCP- 1514:1514# Syslog UDP- 1514:1514/udp# GELF TCP- 12201:12201# GELF UDP- 12201:12201/udp# Volumes for persisting data, see https://docs."><meta itemprop="datePublished" content="2019-12-24T11:27:21&#43;08:00" />
+<meta itemprop="dateModified" content="2019-12-24T17:53:30&#43;08:00" />
 <meta itemprop="wordCount" content="90">
-
-
-
-<meta itemprop="keywords" content="graylog,docker,docker-compose,linux," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="graylog,docker,docker-compose,linux," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Install Graylog With Docker Compose"/>
 <meta name="twitter:description" content="How to Install Graylog with Docker-compose    Hostname my-graylog    Docker-compose.yaml version:&#39;2&#39;services:# MongoDB: https://hub.docker.com/_/mongo/mongodb:image:mongo:3volumes:- ./data/mongo_data:/data/db- /etc/localtime:/etc/localtime:ro# Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.htmlelasticsearch:image:docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2volumes:- ./data/es_data:/usr/share/elasticsearch/data- /etc/localtime:/etc/localtime:roenvironment:- http.host=0.0.0.0- transport.host=localhost- network.host=0.0.0.0- &#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&#34;ulimits:memlock:soft:-1hard:-1mem_limit:1g# Graylog: https://hub.docker.com/r/graylog/graylog/graylog:image:graylog/graylog:3.1volumes:- ./data/graylog_journal:/usr/share/graylog/data/journal- /etc/localtime:/etc/localtime:roenvironment:# CHANGE ME (must be at least 16 characters)!- GRAYLOG_PASSWORD_SECRET=somepasswordpepper# Password: admin- GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918- GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/links:- mongodb:mongo- elasticsearchdepends_on:- mongodb- elasticsearchports:# Graylog web interface and REST API- 9000:9000# Syslog TCP- 1514:1514# Syslog UDP- 1514:1514/udp# GELF TCP- 12201:12201# GELF UDP- 12201:12201/udp# Volumes for persisting data, see https://docs."/>
 
@@ -396,65 +392,65 @@ if (!doNotTrack) {
 </thead>
 </table>
 <h2 id="docker-composeyaml">Docker-compose.yaml</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#309;font-weight:bold">version</span>:<span style="color:#bbb"> </span><span style="color:#c30">&#39;2&#39;</span><span style="color:#bbb">
-</span><span style="color:#bbb"></span><span style="color:#309;font-weight:bold">services</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">  </span><span style="color:#09f;font-style:italic"># MongoDB: https://hub.docker.com/_/mongo/</span><span style="color:#bbb">
-</span><span style="color:#bbb">  </span><span style="color:#309;font-weight:bold">mongodb</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">image</span>:<span style="color:#bbb"> </span>mongo:3<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">volumes</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- ./data/mongo_data:/data/db<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- /etc/localtime:/etc/localtime:ro<span style="color:#bbb">
-</span><span style="color:#bbb">  </span><span style="color:#09f;font-style:italic"># Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html</span><span style="color:#bbb">
-</span><span style="color:#bbb">  </span><span style="color:#309;font-weight:bold">elasticsearch</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">image</span>:<span style="color:#bbb"> </span>docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">volumes</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- ./data/es_data:/usr/share/elasticsearch/data<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- /etc/localtime:/etc/localtime:ro<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">environment</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- http.host=0.0.0.0<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- transport.host=localhost<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- network.host=0.0.0.0<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- <span style="color:#c30">&#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&#34;</span><span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">ulimits</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">      </span><span style="color:#309;font-weight:bold">memlock</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">        </span><span style="color:#309;font-weight:bold">soft</span>:<span style="color:#bbb"> </span>-<span style="color:#f60">1</span><span style="color:#bbb">
-</span><span style="color:#bbb">        </span><span style="color:#309;font-weight:bold">hard</span>:<span style="color:#bbb"> </span>-<span style="color:#f60">1</span><span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">mem_limit</span>:<span style="color:#bbb"> </span>1g<span style="color:#bbb">
-</span><span style="color:#bbb">  </span><span style="color:#09f;font-style:italic"># Graylog: https://hub.docker.com/r/graylog/graylog/</span><span style="color:#bbb">
-</span><span style="color:#bbb">  </span><span style="color:#309;font-weight:bold">graylog</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">image</span>:<span style="color:#bbb"> </span>graylog/graylog:3.1<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">volumes</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- ./data/graylog_journal:/usr/share/graylog/data/journal<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- /etc/localtime:/etc/localtime:ro<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">environment</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># CHANGE ME (must be at least 16 characters)!</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- GRAYLOG_PASSWORD_SECRET=somepasswordpepper<span style="color:#bbb">
-</span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># Password: admin</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">links</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- mongodb:mongo<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- elasticsearch<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">depends_on</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- mongodb<span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- elasticsearch<span style="color:#bbb">
-</span><span style="color:#bbb">    </span><span style="color:#309;font-weight:bold">ports</span>:<span style="color:#bbb">
-</span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># Graylog web interface and REST API</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- <span style="color:#f60">9000</span>:<span style="color:#f60">9000</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># Syslog TCP</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- <span style="color:#f60">1514</span>:<span style="color:#f60">1514</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># Syslog UDP</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- <span style="color:#f60">1514</span>:<span style="color:#f60">1514</span>/udp<span style="color:#bbb">
-</span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># GELF TCP</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- <span style="color:#f60">12201</span>:<span style="color:#f60">12201</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span><span style="color:#09f;font-style:italic"># GELF UDP</span><span style="color:#bbb">
-</span><span style="color:#bbb">      </span>- <span style="color:#f60">12201</span>:<span style="color:#f60">12201</span>/udp<span style="color:#bbb">
-</span><span style="color:#bbb"></span><span style="color:#09f;font-style:italic"># Volumes for persisting data, see https://docs.docker.com/engine/admin/volumes/volumes/</span><span style="color:#bbb">
-</span><span style="color:#bbb">
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="c"># MongoDB: https://hub.docker.com/_/mongo/</span><span class="w">
+</span><span class="w">  </span><span class="nt">mongodb</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">mongo:3</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">./data/mongo_data:/data/db</span><span class="w">
+</span><span class="w">      </span>- <span class="l">/etc/localtime:/etc/localtime:ro</span><span class="w">
+</span><span class="w">  </span><span class="c"># Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html</span><span class="w">
+</span><span class="w">  </span><span class="nt">elasticsearch</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">./data/es_data:/usr/share/elasticsearch/data</span><span class="w">
+</span><span class="w">      </span>- <span class="l">/etc/localtime:/etc/localtime:ro</span><span class="w">
+</span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">http.host=0.0.0.0</span><span class="w">
+</span><span class="w">      </span>- <span class="l">transport.host=localhost</span><span class="w">
+</span><span class="w">      </span>- <span class="l">network.host=0.0.0.0</span><span class="w">
+</span><span class="w">      </span>- <span class="s2">&#34;ES_JAVA_OPTS=-Xms512m -Xmx512m&#34;</span><span class="w">
+</span><span class="w">    </span><span class="nt">ulimits</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">memlock</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">soft</span><span class="p">:</span><span class="w"> </span>-<span class="m">1</span><span class="w">
+</span><span class="w">        </span><span class="nt">hard</span><span class="p">:</span><span class="w"> </span>-<span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">mem_limit</span><span class="p">:</span><span class="w"> </span><span class="l">1g</span><span class="w">
+</span><span class="w">  </span><span class="c"># Graylog: https://hub.docker.com/r/graylog/graylog/</span><span class="w">
+</span><span class="w">  </span><span class="nt">graylog</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">graylog/graylog:3.1</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">./data/graylog_journal:/usr/share/graylog/data/journal</span><span class="w">
+</span><span class="w">      </span>- <span class="l">/etc/localtime:/etc/localtime:ro</span><span class="w">
+</span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="c"># CHANGE ME (must be at least 16 characters)!</span><span class="w">
+</span><span class="w">      </span>- <span class="l">GRAYLOG_PASSWORD_SECRET=somepasswordpepper</span><span class="w">
+</span><span class="w">      </span><span class="c"># Password: admin</span><span class="w">
+</span><span class="w">      </span>- <span class="l">GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918</span><span class="w">
+</span><span class="w">      </span>- <span class="l">GRAYLOG_HTTP_EXTERNAL_URI=http://my-graylog:9000/</span><span class="w">
+</span><span class="w">    </span><span class="nt">links</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">mongodb:mongo</span><span class="w">
+</span><span class="w">      </span>- <span class="l">elasticsearch</span><span class="w">
+</span><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">mongodb</span><span class="w">
+</span><span class="w">      </span>- <span class="l">elasticsearch</span><span class="w">
+</span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="c"># Graylog web interface and REST API</span><span class="w">
+</span><span class="w">      </span>- <span class="m">9000</span><span class="p">:</span><span class="m">9000</span><span class="w">
+</span><span class="w">      </span><span class="c"># Syslog TCP</span><span class="w">
+</span><span class="w">      </span>- <span class="m">1514</span><span class="p">:</span><span class="m">1514</span><span class="w">
+</span><span class="w">      </span><span class="c"># Syslog UDP</span><span class="w">
+</span><span class="w">      </span>- <span class="m">1514</span><span class="p">:</span><span class="m">1514</span><span class="l">/udp</span><span class="w">
+</span><span class="w">      </span><span class="c"># GELF TCP</span><span class="w">
+</span><span class="w">      </span>- <span class="m">12201</span><span class="p">:</span><span class="m">12201</span><span class="w">
+</span><span class="w">      </span><span class="c"># GELF UDP</span><span class="w">
+</span><span class="w">      </span>- <span class="m">12201</span><span class="p">:</span><span class="m">12201</span><span class="l">/udp</span><span class="w">
+</span><span class="w"></span><span class="c"># Volumes for persisting data, see https://docs.docker.com/engine/admin/volumes/volumes/</span><span class="w">
+</span><span class="w">
 </span></code></pre></div><h2 id="start-graylog">Start graylog</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-compose up -d
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose up -d
 </code></pre></div><h2 id="fixed-permission-of-folder">Fixed permission of folder</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chown -R 1100:1100 data/graylog_journal/
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">chown -R 1100:1100 data/graylog_journal/
 chown -R 1000:1000 data/es_data/
 
 docker-compose down
@@ -639,7 +635,7 @@ docker-compose up -d
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

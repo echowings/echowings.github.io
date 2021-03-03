@@ -33,7 +33,7 @@ Setup vpn on vyos  Generate a preshare key  $ generate wireguard preshared-key u
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/vyos/how-to-build-l2tp-over-ipsec-vpn-with-vyos/" />
@@ -54,7 +54,7 @@ Setup vpn on vyos  Generate a preshare key  $ generate wireguard preshared-key u
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -64,20 +64,16 @@ Setup vpn on vyos  Generate a preshare key  $ generate wireguard preshared-key u
 <meta property="og:description" content="How to build L2tp over ipsec vpn with vyos Today, I will show you how to build a l2tp over ipsec vpn with adsl wan address.
 Setup vpn on vyos  Generate a preshare key  $ generate wireguard preshared-key uND0O6RYI1O833NL2&#43;qwSrW4htMll1hJAUM2nPQaa8k= With authentication local   configuration VPN     Key Value     WAN interface pppoe0   l2tp vpn network 172.16.100.0/24   PRESHARE KEY uND0O6RYI1O833NL2&#43;qwSrW4htMll1hJAUM2nPQaa8k=   DNS server 01 192." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/vyos/how-to-build-l2tp-over-ipsec-vpn-with-vyos/" />
-<meta property="article:published_time" content="2020-08-05T10:57:22+08:00" />
-<meta property="article:modified_time" content="2020-08-05T10:57:22+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/vyos/how-to-build-l2tp-over-ipsec-vpn-with-vyos/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-08-05T10:57:22&#43;08:00" />
+<meta property="article:modified_time" content="2020-08-05T18:06:32&#43;08:00" />
+
 <meta itemprop="name" content="How to Build L2tp Over Ipsec VPN With Vyos">
 <meta itemprop="description" content="How to build L2tp over ipsec vpn with vyos Today, I will show you how to build a l2tp over ipsec vpn with adsl wan address.
-Setup vpn on vyos  Generate a preshare key  $ generate wireguard preshared-key uND0O6RYI1O833NL2&#43;qwSrW4htMll1hJAUM2nPQaa8k= With authentication local   configuration VPN     Key Value     WAN interface pppoe0   l2tp vpn network 172.16.100.0/24   PRESHARE KEY uND0O6RYI1O833NL2&#43;qwSrW4htMll1hJAUM2nPQaa8k=   DNS server 01 192.">
-<meta itemprop="datePublished" content="2020-08-05T10:57:22+08:00" />
-<meta itemprop="dateModified" content="2020-08-05T10:57:22+08:00" />
+Setup vpn on vyos  Generate a preshare key  $ generate wireguard preshared-key uND0O6RYI1O833NL2&#43;qwSrW4htMll1hJAUM2nPQaa8k= With authentication local   configuration VPN     Key Value     WAN interface pppoe0   l2tp vpn network 172.16.100.0/24   PRESHARE KEY uND0O6RYI1O833NL2&#43;qwSrW4htMll1hJAUM2nPQaa8k=   DNS server 01 192."><meta itemprop="datePublished" content="2020-08-05T10:57:22&#43;08:00" />
+<meta itemprop="dateModified" content="2020-08-05T18:06:32&#43;08:00" />
 <meta itemprop="wordCount" content="501">
-
-
-
-<meta itemprop="keywords" content="vyos ,vpn,pppoe,adsl," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="vyos ,vpn,pppoe,adsl," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Build L2tp Over Ipsec VPN With Vyos"/>
 <meta name="twitter:description" content="How to build L2tp over ipsec vpn with vyos Today, I will show you how to build a l2tp over ipsec vpn with adsl wan address.
 Setup vpn on vyos  Generate a preshare key  $ generate wireguard preshared-key uND0O6RYI1O833NL2&#43;qwSrW4htMll1hJAUM2nPQaa8k= With authentication local   configuration VPN     Key Value     WAN interface pppoe0   l2tp vpn network 172.16.100.0/24   PRESHARE KEY uND0O6RYI1O833NL2&#43;qwSrW4htMll1hJAUM2nPQaa8k=   DNS server 01 192."/>
@@ -403,8 +399,8 @@ if (!doNotTrack) {
 <hr>
 <h3 id="generate-a-preshare-key">Generate a preshare key</h3>
 <hr>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ generate wireguard preshared-key
-uND0O6RYI1O833NL2+qwSrW4htMll1hJAUM2nPQaa8k<span style="color:#555">=</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ generate wireguard preshared-key
+uND0O6RYI1O833NL2+qwSrW4htMll1hJAUM2nPQaa8k<span class="o">=</span>
 </code></pre></div><h3 id="with-authentication-local">With authentication local</h3>
 <hr>
 <ol>
@@ -440,113 +436,113 @@ uND0O6RYI1O833NL2+qwSrW4htMll1hJAUM2nPQaa8k<span style="color:#555">=</span>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">configure
-<span style="color:#366">set</span> vpn ipsec auto-update <span style="color:#c30">&#39;30&#39;</span>
-<span style="color:#366">set</span> vpn ipsec ipsec-interfaces interface <span style="color:#c30">&#39;pppoe0&#39;</span>
-<span style="color:#366">set</span> vpn ipsec nat-networks allowed-network 0.0.0.0/0
-<span style="color:#366">set</span> vpn ipsec nat-traversal <span style="color:#c30">&#39;enable&#39;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">configure
+<span class="nb">set</span> vpn ipsec auto-update <span class="s1">&#39;30&#39;</span>
+<span class="nb">set</span> vpn ipsec ipsec-interfaces interface <span class="s1">&#39;pppoe0&#39;</span>
+<span class="nb">set</span> vpn ipsec nat-networks allowed-network 0.0.0.0/0
+<span class="nb">set</span> vpn ipsec nat-traversal <span class="s1">&#39;enable&#39;</span>
 
-<span style="color:#366">set</span> vpn l2tp remote-access authentication mode <span style="color:#c30">&#39;local&#39;</span>
-<span style="color:#366">set</span> vpn l2tp remote-access authentication require <span style="color:#c30">&#39;mschap-v2&#39;</span>
-<span style="color:#366">set</span> vpn l2tp remote-access client-ip-pool start <span style="color:#c30">&#39;172.16.100.1&#39;</span>
-<span style="color:#366">set</span> vpn l2tp remote-access client-ip-pool stop <span style="color:#c30">&#39;172.16.100.254&#39;</span>
-<span style="color:#366">set</span> vpn l2tp remote-access dns-servers server-1 <span style="color:#c30">&#39;192.168.0.1&#39;</span>
-<span style="color:#366">set</span> vpn l2tp remote-access ipsec-settings authentication mode <span style="color:#c30">&#39;pre-shared-secret&#39;</span>
-<span style="color:#366">set</span> vpn l2tp remote-access ipsec-settings authentication pre-shared-secret <span style="color:#c30">&#39;uND0O6RYI1O833NL2+qwSrW4htMll1hJAUM2nPQaa8k=&#39;</span>
-<span style="color:#366">set</span> vpn l2tp remote-access ipsec-settings ike-lifetime <span style="color:#c30">&#39;3600&#39;</span>
-<span style="color:#366">set</span> vpn l2tp remote-access ipsec-settings lifetime <span style="color:#c30">&#39;3600&#39;</span>
-<span style="color:#366">set</span> vpn l2tp remote-access outside-address <span style="color:#c30">&#39;0.0.0.0&#39;</span>
+<span class="nb">set</span> vpn l2tp remote-access authentication mode <span class="s1">&#39;local&#39;</span>
+<span class="nb">set</span> vpn l2tp remote-access authentication require <span class="s1">&#39;mschap-v2&#39;</span>
+<span class="nb">set</span> vpn l2tp remote-access client-ip-pool start <span class="s1">&#39;172.16.100.1&#39;</span>
+<span class="nb">set</span> vpn l2tp remote-access client-ip-pool stop <span class="s1">&#39;172.16.100.254&#39;</span>
+<span class="nb">set</span> vpn l2tp remote-access dns-servers server-1 <span class="s1">&#39;192.168.0.1&#39;</span>
+<span class="nb">set</span> vpn l2tp remote-access ipsec-settings authentication mode <span class="s1">&#39;pre-shared-secret&#39;</span>
+<span class="nb">set</span> vpn l2tp remote-access ipsec-settings authentication pre-shared-secret <span class="s1">&#39;uND0O6RYI1O833NL2+qwSrW4htMll1hJAUM2nPQaa8k=&#39;</span>
+<span class="nb">set</span> vpn l2tp remote-access ipsec-settings ike-lifetime <span class="s1">&#39;3600&#39;</span>
+<span class="nb">set</span> vpn l2tp remote-access ipsec-settings lifetime <span class="s1">&#39;3600&#39;</span>
+<span class="nb">set</span> vpn l2tp remote-access outside-address <span class="s1">&#39;0.0.0.0&#39;</span>
 
 </code></pre></div><h3 id="auth--users--to-access-vpn">Auth  users  to access vpn</h3>
 <hr>
 <ol>
 <li>Generate password</li>
 </ol>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">dd <span style="color:#069;font-weight:bold">if</span><span style="color:#555">=</span>/dev/urandom <span style="color:#033">bs</span><span style="color:#555">=</span><span style="color:#f60">1</span> <span style="color:#033">count</span><span style="color:#555">=</span><span style="color:#f60">15</span> | base64
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dd <span class="k">if</span><span class="o">=</span>/dev/urandom <span class="nv">bs</span><span class="o">=</span><span class="m">1</span> <span class="nv">count</span><span class="o">=</span><span class="m">15</span> <span class="p">|</span> base64
 </code></pre></div><ol start="2">
 <li>create user named <code>zhangsan</code> with password <code>J+Yi8o5ICLjKtezv0+i9</code></li>
 </ol>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">configure
-<span style="color:#366">set</span> vpn l2tp remote-acces	authentication local-users username zhangshan password J+Yi8o5ICLjKtezv0+i9
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">configure
+<span class="nb">set</span> vpn l2tp remote-acces	authentication local-users username zhangshan password J+Yi8o5ICLjKtezv0+i9
 commit
 save
 
 </code></pre></div><h3 id="start-the-service">Start the service</h3>
 <hr>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo systemctl <span style="color:#366">enable</span> xl2tpd
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl <span class="nb">enable</span> xl2tpd
 sudo systemctl restart xl2tpd
 
 </code></pre></div><h2 id="vpn-setup-script-for-windows-10">vpn setup script for windows 10</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bat" data-lang="bat">
-@<span style="color:#069;font-weight:bold">echo</span> off&amp;<span style="color:#069;font-weight:bold">PUSHD</span> <span style="color:#033">%~DP0</span> &amp;<span style="color:#069;font-weight:bold">TITLE</span> ikev2 VPN InstallUninstall programme
+<div class="highlight"><pre class="chroma"><code class="language-bat" data-lang="bat">
+<span class="p">@</span><span class="k">echo</span> off<span class="p">&amp;</span><span class="k">PUSHD</span> <span class="nv">%~DP0</span> <span class="p">&amp;</span><span class="k">TITLE</span> ikev2 VPN InstallUninstall programme
 mode con cols=160 lines=50
-<span style="color:#069;font-weight:bold">set</span> <span style="color:#033">TempFile_Name</span>=<span style="color:#033">%SystemRoot%</span>\System32\BatTestUACin_SysRt<span style="color:#033">%Random%</span>.batemp
-( <span style="color:#069;font-weight:bold">echo</span> <span style="color:#c30">&#34;BAT Test UAC in Temp&#34;</span> &gt;<span style="color:#033">%TempFile_Name%</span> ) <span style="color:#f60">1</span>&gt;nul <span style="color:#f60">2</span>&gt;nul
-<span style="color:#069;font-weight:bold">if</span> <span style="color:#069;font-weight:bold">exist</span> <span style="color:#033">%TempFile_Name%</span> (
-<span style="color:#069;font-weight:bold">del</span> <span style="color:#033">%TempFile_Name%</span> <span style="color:#f60">1</span>&gt;nul <span style="color:#f60">2</span>&gt;nul&amp;&amp;<span style="color:#069;font-weight:bold">goto</span> :<span style="color:#99f">install</span>
-) <span style="color:#069;font-weight:bold">else</span> (
-<span style="color:#069;font-weight:bold">echo</span>;Please run the script as administrator,Press any key to quit... &amp;&amp;<span style="color:#069;font-weight:bold">goto</span> :<span style="color:#99f">end</span>
+<span class="k">set</span> <span class="nv">TempFile_Name</span><span class="p">=</span><span class="nv">%SystemRoot%</span>\System32\BatTestUACin_SysRt<span class="nv">%Random%</span>.batemp
+<span class="p">(</span> <span class="k">echo</span> <span class="s2">&#34;BAT Test UAC in Temp&#34;</span> <span class="p">&gt;</span><span class="nv">%TempFile_Name%</span> <span class="p">)</span> <span class="mi">1</span><span class="p">&gt;</span>nul <span class="mi">2</span><span class="p">&gt;</span>nul
+<span class="k">if</span> <span class="k">exist</span> <span class="nv">%TempFile_Name%</span> <span class="p">(</span>
+<span class="k">del</span> <span class="nv">%TempFile_Name%</span> <span class="mi">1</span><span class="p">&gt;</span>nul <span class="mi">2</span><span class="p">&gt;</span>nul<span class="p">&amp;&amp;</span><span class="k">goto</span> <span class="p">:</span><span class="nl">install</span>
+<span class="p">)</span> <span class="k">else</span> <span class="p">(</span>
+<span class="k">echo</span>;Please run the script as administrator,Press any key to quit... <span class="p">&amp;&amp;</span><span class="k">goto</span> <span class="p">:</span><span class="nl">end</span>
 
-)
+<span class="p">)</span>
 
-<span style="color:#069;font-weight:bold">echo</span>;VPN List:
-<span style="color:#069;font-weight:bold">echo</span>; Welcome! This programme will help your install MY-VPN, or uninstall it. 
+<span class="k">echo</span>;VPN List:
+<span class="k">echo</span>; Welcome! This programme will help your install MY-VPN, or uninstall it. 
 
-:<span style="color:#99f">install</span>
-<span style="color:#069;font-weight:bold">cls</span>
+<span class="p">:</span><span class="nl">install</span>
+<span class="k">cls</span>
 
-<span style="color:#069;font-weight:bold">echo</span>;1:MY-VPN(L2tp/ipsec)
-<span style="color:#069;font-weight:bold">echo</span>;Please select Install or Uninstall VPN(ikev2)(Enter &#39;i&#39; for install, &#39;u&#39; for uninstall, &#39;q&#39; for quit):
-<span style="color:#069;font-weight:bold">echo</span>;i:Install MY-VPN(L2TP/IPSEC VPN)
-<span style="color:#069;font-weight:bold">echo</span>;u:Uninstall MY-VPN(L2TP/IPSEC VPN)
-<span style="color:#069;font-weight:bold">echo</span>;q:Quit
-<span style="color:#069;font-weight:bold">set/p</span> <span style="color:#033">choose1</span>=Please enter your selection and press enter key to confirm:
-<span style="color:#069;font-weight:bold">echo</span> <span style="color:#033">%choose1%</span>|findstr /i <span style="color:#c30">&#34;[iuq]&#34;</span>&gt;nul&amp;&amp;<span style="color:#069;font-weight:bold">goto</span> :<span style="color:#99f">%choose1%</span>
-<span style="color:#069;font-weight:bold">goto</span> :<span style="color:#99f">install</span>
+<span class="k">echo</span>;1:MY-VPN(L2tp/ipsec)
+<span class="k">echo</span>;Please select Install or Uninstall VPN(ikev2)(Enter &#39;i&#39; for install, &#39;u&#39; for uninstall, &#39;q&#39; for quit):
+<span class="k">echo</span>;i:Install MY-VPN(L2TP/IPSEC VPN)
+<span class="k">echo</span>;u:Uninstall MY-VPN(L2TP/IPSEC VPN)
+<span class="k">echo</span>;q:Quit
+<span class="k">set/p</span> <span class="nv">choose1</span><span class="p">=</span>Please enter your selection and press enter key to confirm:
+<span class="k">echo</span> <span class="nv">%choose1%</span><span class="p">|</span>findstr /i <span class="s2">&#34;[iuq]&#34;</span><span class="p">&gt;</span>nul<span class="p">&amp;&amp;</span><span class="k">goto</span> <span class="p">:</span><span class="nl">%choose1%</span>
+<span class="k">goto</span> <span class="p">:</span><span class="nl">install</span>
 
-:<span style="color:#99f">i</span>
-<span style="color:#069;font-weight:bold">cls</span>
-<span style="color:#069;font-weight:bold">echo</span>;Install 1:MY-VPN(L2TP/IPSEC VPN)
-<span style="color:#069;font-weight:bold">echo</span>;===========================
-<span style="color:#069;font-weight:bold">echo</span>;***Step 1:Delete VPN with the same name ***
-(powershell -Command <span style="color:#c30">&#34;&amp; {Remove-VpnConnection -Name &#34;</span>MY-VPN<span style="color:#c30">&#34; -Force -PassThru;}&#34;</span>) <span style="color:#f60">1</span>&gt;nul <span style="color:#f60">2</span>&gt;nul
-<span style="color:#069;font-weight:bold">echo</span>;Successfully!
-<span style="color:#069;font-weight:bold">echo</span>;
-<span style="color:#069;font-weight:bold">echo</span>;***Step 2: Install new VPN***
-(powershell -Command <span style="color:#c30">&#34;&amp; {Enable-PSRemoting -Force;}&#34;</span>) <span style="color:#f60">1</span>&gt;nul <span style="color:#f60">2</span>&gt;nul
-(powershell -Command <span style="color:#c30">&#34;&amp; {Add-VpnConnection -Name &#34;</span>MY-VPN<span style="color:#c30">&#34; -ServerAddress &#34;</span>myvpn.mydomain.com<span style="color:#c30">&#34; -TunnelType &#34;</span>L2tp<span style="color:#c30">&#34; -EncryptionLevel &#34;</span>Required<span style="color:#c30">&#34; -AuthenticationMethod MSChapv2  -L2tpPsk &#34;</span>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<span style="color:#c30">&#34; -Force -RememberCredential -DnsSuffix &#34;</span>MYDOMAIN.NET<span style="color:#c30">&#34; -PassThru;}&#34;</span>) <span style="color:#f60">1</span>&gt;nul <span style="color:#f60">2</span>&gt;nul
-<span style="color:#069;font-weight:bold">echo</span>;Done!
-<span style="color:#069;font-weight:bold">echo</span>;
+<span class="p">:</span><span class="nl">i</span>
+<span class="k">cls</span>
+<span class="k">echo</span>;Install 1:MY-VPN(L2TP/IPSEC VPN)
+<span class="k">echo</span>;===========================
+<span class="k">echo</span>;***Step 1:Delete VPN with the same name ***
+<span class="p">(</span>powershell -Command <span class="s2">&#34;&amp; {Remove-VpnConnection -Name &#34;</span>MY-VPN<span class="s2">&#34; -Force -PassThru;}&#34;</span><span class="p">)</span> <span class="mi">1</span><span class="p">&gt;</span>nul <span class="mi">2</span><span class="p">&gt;</span>nul
+<span class="k">echo</span>;Successfully!
+<span class="k">echo</span>;
+<span class="k">echo</span>;***Step 2: Install new VPN***
+<span class="p">(</span>powershell -Command <span class="s2">&#34;&amp; {Enable-PSRemoting -Force;}&#34;</span><span class="p">)</span> <span class="mi">1</span><span class="p">&gt;</span>nul <span class="mi">2</span><span class="p">&gt;</span>nul
+<span class="p">(</span>powershell -Command <span class="s2">&#34;&amp; {Add-VpnConnection -Name &#34;</span>MY-VPN<span class="s2">&#34; -ServerAddress &#34;</span>myvpn.mydomain.com<span class="s2">&#34; -TunnelType &#34;</span>L2tp<span class="s2">&#34; -EncryptionLevel &#34;</span>Required<span class="s2">&#34; -AuthenticationMethod MSChapv2  -L2tpPsk &#34;</span>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<span class="s2">&#34; -Force -RememberCredential -DnsSuffix &#34;</span>MYDOMAIN.NET<span class="s2">&#34; -PassThru;}&#34;</span><span class="p">)</span> <span class="mi">1</span><span class="p">&gt;</span>nul <span class="mi">2</span><span class="p">&gt;</span>nul
+<span class="k">echo</span>;Done!
+<span class="k">echo</span>;
 
-<span style="color:#069;font-weight:bold">echo</span>;***Step 3:Clean key in regedit***
-(powershell -Command <span style="color:#c30">&#34;&amp; {Remove-ItemProperty HKLM:\System\CurrentControlSet\Services\Rasman\Parameters -name &#34;</span>NegotiateDH2048_AES256<span style="color:#c30">&#34;; Remove-ItemProperty HKLM:\System\CurrentControlSet\Services\PolicyAgent -name &#34;</span>AssumeUDPEncapsulationContextOnSendRule <span style="color:#c30">&#34;;}&#34;</span>) <span style="color:#f60">1</span>&gt;nul <span style="color:#f60">2</span>&gt;nul
-<span style="color:#069;font-weight:bold">echo</span>;Done!
-<span style="color:#069;font-weight:bold">echo</span>;
-<span style="color:#069;font-weight:bold">echo</span>;***Step 4:Add key in Regedit***
-(powershell -Command <span style="color:#c30">&#34;&amp; {New-ItemProperty HKLM:\System\CurrentControlSet\Services\Rasman\Parameters -name &#34;</span>NegotiateDH2048_AES256<span style="color:#c30">&#34; -value 1 -propertyType dword; New-ItemProperty HKLM:\System\CurrentControlSet\Services\PolicyAgent -name &#34;</span>AssumeUDPEncapsulationContextOnSendRule <span style="color:#c30">&#34; -value 2 -propertyType dword;}&#34;</span>) <span style="color:#f60">1</span>&gt;nul <span style="color:#f60">2</span>&gt;nul
-<span style="color:#069;font-weight:bold">echo</span>;Done!
-<span style="color:#069;font-weight:bold">echo</span>;
-<span style="color:#069;font-weight:bold">echo</span>;***Step 5:Set regedit***
-powershell -Command <span style="color:#c30">&#34;&amp; {Set-ItemProperty HKLM:\System\CurrentControlSet\Services\Rasman\Parameters -name &#34;</span>NegotiateDH2048_AES256<span style="color:#c30">&#34; -value 1; Set-ItemProperty HKLM:\System\CurrentControlSet\Services\PolicyAgent -name &#34;</span>AssumeUDPEncapsulationContextOnSendRule <span style="color:#c30">&#34; -value 2;}&#34;</span>
-<span style="color:#069;font-weight:bold">echo</span>;Done!
-<span style="color:#069;font-weight:bold">echo</span>;
-<span style="color:#069;font-weight:bold">echo</span>;***Step 6:Reboot your Windows***
-<span style="color:#069;font-weight:bold">echo</span>;Press any key to reboot your windows, or press X to quit the script and manually reboot your windows.
-<span style="color:#069;font-weight:bold">pause</span>&gt;nul
-<span style="color:#069;font-weight:bold">goto</span> :<span style="color:#99f">end</span>
+<span class="k">echo</span>;***Step 3:Clean key in regedit***
+<span class="p">(</span>powershell -Command <span class="s2">&#34;&amp; {Remove-ItemProperty HKLM:\System\CurrentControlSet\Services\Rasman\Parameters -name &#34;</span>NegotiateDH2048_AES256<span class="s2">&#34;; Remove-ItemProperty HKLM:\System\CurrentControlSet\Services\PolicyAgent -name &#34;</span>AssumeUDPEncapsulationContextOnSendRule <span class="s2">&#34;;}&#34;</span><span class="p">)</span> <span class="mi">1</span><span class="p">&gt;</span>nul <span class="mi">2</span><span class="p">&gt;</span>nul
+<span class="k">echo</span>;Done!
+<span class="k">echo</span>;
+<span class="k">echo</span>;***Step 4:Add key in Regedit***
+<span class="p">(</span>powershell -Command <span class="s2">&#34;&amp; {New-ItemProperty HKLM:\System\CurrentControlSet\Services\Rasman\Parameters -name &#34;</span>NegotiateDH2048_AES256<span class="s2">&#34; -value 1 -propertyType dword; New-ItemProperty HKLM:\System\CurrentControlSet\Services\PolicyAgent -name &#34;</span>AssumeUDPEncapsulationContextOnSendRule <span class="s2">&#34; -value 2 -propertyType dword;}&#34;</span><span class="p">)</span> <span class="mi">1</span><span class="p">&gt;</span>nul <span class="mi">2</span><span class="p">&gt;</span>nul
+<span class="k">echo</span>;Done!
+<span class="k">echo</span>;
+<span class="k">echo</span>;***Step 5:Set regedit***
+powershell -Command <span class="s2">&#34;&amp; {Set-ItemProperty HKLM:\System\CurrentControlSet\Services\Rasman\Parameters -name &#34;</span>NegotiateDH2048_AES256<span class="s2">&#34; -value 1; Set-ItemProperty HKLM:\System\CurrentControlSet\Services\PolicyAgent -name &#34;</span>AssumeUDPEncapsulationContextOnSendRule <span class="s2">&#34; -value 2;}&#34;</span>
+<span class="k">echo</span>;Done!
+<span class="k">echo</span>;
+<span class="k">echo</span>;***Step 6:Reboot your Windows***
+<span class="k">echo</span>;Press any key to reboot your windows, or press X to quit the script and manually reboot your windows.
+<span class="k">pause</span><span class="p">&gt;</span>nul
+<span class="k">goto</span> <span class="p">:</span><span class="nl">end</span>
 
-:<span style="color:#99f">u</span>
-<span style="color:#069;font-weight:bold">cls</span>
-<span style="color:#069;font-weight:bold">echo</span>;Uninstall MY-VPN(L2TP/IPSEC VPN)
-<span style="color:#069;font-weight:bold">echo</span>;===========================
-(powershell -Command <span style="color:#c30">&#34;&amp; {Remove-VpnConnection -Name &#34;</span>MY-VPN<span style="color:#c30">&#34; -Force -PassThru;}&#34;</span>) <span style="color:#f60">1</span>&gt;nul <span style="color:#f60">2</span>&gt;nul
-<span style="color:#069;font-weight:bold">echo</span>;Done, Press any key to quit...
-<span style="color:#069;font-weight:bold">goto</span> :<span style="color:#99f">end</span>
+<span class="p">:</span><span class="nl">u</span>
+<span class="k">cls</span>
+<span class="k">echo</span>;Uninstall MY-VPN(L2TP/IPSEC VPN)
+<span class="k">echo</span>;===========================
+<span class="p">(</span>powershell -Command <span class="s2">&#34;&amp; {Remove-VpnConnection -Name &#34;</span>MY-VPN<span class="s2">&#34; -Force -PassThru;}&#34;</span><span class="p">)</span> <span class="mi">1</span><span class="p">&gt;</span>nul <span class="mi">2</span><span class="p">&gt;</span>nul
+<span class="k">echo</span>;Done, Press any key to quit...
+<span class="k">goto</span> <span class="p">:</span><span class="nl">end</span>
 
 
 
-:<span style="color:#99f">end</span>
-<span style="color:#069;font-weight:bold">pause</span>&gt;nul
+<span class="p">:</span><span class="nl">end</span>
+<span class="k">pause</span><span class="p">&gt;</span>nul
 
 
 </code></pre></div>
@@ -728,7 +724,7 @@ powershell -Command <span style="color:#c30">&#34;&amp; {Set-ItemProperty HKLM:\
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

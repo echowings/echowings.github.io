@@ -35,7 +35,7 @@ ssh -l &amp;lt;username&amp;gt; -o HostKeyAlgorithms=&#43;ssh-dss -o KexAlgorith
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/cisco-ssh-error/" />
@@ -56,7 +56,7 @@ ssh -l &amp;lt;username&amp;gt; -o HostKeyAlgorithms=&#43;ssh-dss -o KexAlgorith
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -68,22 +68,18 @@ ssh cisco@10.32.3.1 Unable to negotiate with 10.32.3.1 port 22: no matching key 
 $ ssh -l &lt;USERNAME&gt; -oHostKeyAlgorithms=&#43;ssh-dss -oKexAlgorithms=&#43;diffie-hellman-group1-sha1 &lt;HOST&gt; or
 ssh -l &lt;username&gt; -o HostKeyAlgorithms=&#43;ssh-dss -o KexAlgorithms=&#43;diffie-hellman-group1-sha1 -c 3des-cbc &lt;hostname&gt; Reference  SSH failed on 3750 switch SSH Not Working After Update To 10.13.2 (HighSierra)  " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/cisco-ssh-error/" />
-<meta property="article:published_time" content="2018-12-29T12:19:12+08:00" />
-<meta property="article:modified_time" content="2018-12-29T12:19:12+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/cisco-ssh-error/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2018-12-29T12:19:12&#43;08:00" />
+<meta property="article:modified_time" content="2019-11-01T16:29:16&#43;08:00" />
+
 <meta itemprop="name" content="Cisco Ssh Error">
 <meta itemprop="description" content="cisco ssh error When you met error like this:
 ssh cisco@10.32.3.1 Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1 Solution:
 $ ssh -l &lt;USERNAME&gt; -oHostKeyAlgorithms=&#43;ssh-dss -oKexAlgorithms=&#43;diffie-hellman-group1-sha1 &lt;HOST&gt; or
-ssh -l &lt;username&gt; -o HostKeyAlgorithms=&#43;ssh-dss -o KexAlgorithms=&#43;diffie-hellman-group1-sha1 -c 3des-cbc &lt;hostname&gt; Reference  SSH failed on 3750 switch SSH Not Working After Update To 10.13.2 (HighSierra)  ">
-<meta itemprop="datePublished" content="2018-12-29T12:19:12+08:00" />
-<meta itemprop="dateModified" content="2018-12-29T12:19:12+08:00" />
+ssh -l &lt;username&gt; -o HostKeyAlgorithms=&#43;ssh-dss -o KexAlgorithms=&#43;diffie-hellman-group1-sha1 -c 3des-cbc &lt;hostname&gt; Reference  SSH failed on 3750 switch SSH Not Working After Update To 10.13.2 (HighSierra)  "><meta itemprop="datePublished" content="2018-12-29T12:19:12&#43;08:00" />
+<meta itemprop="dateModified" content="2019-11-01T16:29:16&#43;08:00" />
 <meta itemprop="wordCount" content="60">
-
-
-
-<meta itemprop="keywords" content="cisco,ssh," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="cisco,ssh," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cisco Ssh Error"/>
 <meta name="twitter:description" content="cisco ssh error When you met error like this:
 ssh cisco@10.32.3.1 Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1 Solution:
@@ -398,12 +394,12 @@ if (!doNotTrack) {
     <div class="post-content">
       <h1 id="cisco-ssh-error">cisco ssh error</h1>
 <p>When you met error like this:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh  cisco@10.32.3.1
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh  cisco@10.32.3.1
 Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1
 </code></pre></div><p>Solution:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ssh -l &lt;USERNAME&gt; -oHostKeyAlgorithms<span style="color:#555">=</span>+ssh-dss -oKexAlgorithms<span style="color:#555">=</span>+diffie-hellman-group1-sha1 &lt;HOST&gt;
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh -l &lt;USERNAME&gt; -oHostKeyAlgorithms<span class="o">=</span>+ssh-dss -oKexAlgorithms<span class="o">=</span>+diffie-hellman-group1-sha1 &lt;HOST&gt;
 </code></pre></div><p>or</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh -l &lt;username&gt; -o <span style="color:#033">HostKeyAlgorithms</span><span style="color:#555">=</span>+ssh-dss -o <span style="color:#033">KexAlgorithms</span><span style="color:#555">=</span>+diffie-hellman-group1-sha1 -c 3des-cbc &lt;hostname&gt;
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh -l &lt;username&gt; -o <span class="nv">HostKeyAlgorithms</span><span class="o">=</span>+ssh-dss -o <span class="nv">KexAlgorithms</span><span class="o">=</span>+diffie-hellman-group1-sha1 -c 3des-cbc &lt;hostname&gt;
 </code></pre></div><h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://community.cisco.com/t5/vpn-and-anyconnect/ssh-failed-on-3750-switch/td-p/3043810">SSH failed on 3750 switch</a></li>
@@ -422,7 +418,7 @@ Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method foun
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2018-12-29
+      2019-11-01
       
     </span>
   </p>
@@ -586,7 +582,7 @@ Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method foun
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

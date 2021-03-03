@@ -34,7 +34,7 @@ Here are the steps.
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/proxmox-ve-how-to-upgrade-pve/" />
@@ -55,7 +55,7 @@ Here are the steps.
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -66,21 +66,17 @@ Here are the steps.
 Here are the steps.
 1. Change debian,pve,ceph upgrade source, and upgrade your PVE #chang debian source list echo &#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free deb-src https://mirrors." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-how-to-upgrade-pve/" />
-<meta property="article:published_time" content="2019-04-16T12:12:58+08:00" />
-<meta property="article:modified_time" content="2019-04-16T12:12:58+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-how-to-upgrade-pve/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-04-16T12:12:58&#43;08:00" />
+<meta property="article:modified_time" content="2019-11-01T16:29:16&#43;08:00" />
+
 <meta itemprop="name" content="Proxmov Ve How to Upgrade Pve">
 <meta itemprop="description" content="How to ugrade Proxmove VE If your proxmox ve server in china ,Change utsc mirrors will speed up your proxmoxve upgrade speed.
 Here are the steps.
-1. Change debian,pve,ceph upgrade source, and upgrade your PVE #chang debian source list echo &#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free deb-src https://mirrors.">
-<meta itemprop="datePublished" content="2019-04-16T12:12:58+08:00" />
-<meta itemprop="dateModified" content="2019-04-16T12:12:58+08:00" />
+1. Change debian,pve,ceph upgrade source, and upgrade your PVE #chang debian source list echo &#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free deb-src https://mirrors."><meta itemprop="datePublished" content="2019-04-16T12:12:58&#43;08:00" />
+<meta itemprop="dateModified" content="2019-11-01T16:29:16&#43;08:00" />
 <meta itemprop="wordCount" content="197">
-
-
-
-<meta itemprop="keywords" content="PVE," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="PVE," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Proxmov Ve How to Upgrade Pve"/>
 <meta name="twitter:description" content="How to ugrade Proxmove VE If your proxmox ve server in china ,Change utsc mirrors will speed up your proxmoxve upgrade speed.
 Here are the steps.
@@ -397,44 +393,44 @@ if (!doNotTrack) {
 <p>If your proxmox ve server in china ,Change utsc mirrors will speed up your proxmoxve upgrade speed.</p>
 <p>Here are the steps.</p>
 <h2 id="1-change-debianpveceph-upgrade-source-and-upgrade-your-pve">1. Change debian,pve,ceph upgrade source, and upgrade your PVE</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic">#chang debian source list</span>
-<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
-</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
-</span><span style="color:#c30">
-</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
-</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
-</span><span style="color:#c30">
-</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
-</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
-</span><span style="color:#c30">
-</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free
-</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&#34;</span> &gt; /etc/apt/sources.list
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#chang debian source list</span>
+<span class="nb">echo</span> <span class="s2">&#34;deb https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
+</span><span class="s2">deb-src https://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free
+</span><span class="s2">
+</span><span class="s2">deb https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
+</span><span class="s2">deb-src https://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free
+</span><span class="s2">
+</span><span class="s2">deb https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
+</span><span class="s2">deb-src https://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free
+</span><span class="s2">
+</span><span class="s2">deb https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free
+</span><span class="s2">deb-src https://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&#34;</span> &gt; /etc/apt/sources.list
 
-<span style="color:#09f;font-style:italic">#change pve 5.x update source list to no subscription</span>
-<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&#34;</span> &gt; /etc/apt/sources.list.d/pve-no-sub.list
+<span class="c1">#change pve 5.x update source list to no subscription</span>
+<span class="nb">echo</span> <span class="s2">&#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&#34;</span> &gt; /etc/apt/sources.list.d/pve-no-sub.list
  
-<span style="color:#09f;font-style:italic"># Disable pve 5.x enterprise subscription</span>
-sed -i.bak <span style="color:#c30">&#39;s|deb https://enterprise.proxmox.com/debian stretch pve-enterprise|\# deb https://enterprise.proxmox.com/debian stretch pve-enterprise|&#39;</span> /etc/apt/sources.list.d/pve-enterprise.list
+<span class="c1"># Disable pve 5.x enterprise subscription</span>
+sed -i.bak <span class="s1">&#39;s|deb https://enterprise.proxmox.com/debian stretch pve-enterprise|\# deb https://enterprise.proxmox.com/debian stretch pve-enterprise|&#39;</span> /etc/apt/sources.list.d/pve-enterprise.list
 
-<span style="color:#09f;font-style:italic">#change ceph source list</span>
-<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&#34;</span> &gt;&gt; /etc/apt/sources.list.d/ceph.list
+<span class="c1">#change ceph source list</span>
+<span class="nb">echo</span> <span class="s2">&#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&#34;</span> &gt;&gt; /etc/apt/sources.list.d/ceph.list
 
-<span style="color:#09f;font-style:italic"># add key</span>
+<span class="c1"># add key</span>
 wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
 
-apt updat <span style="color:#555">&amp;&amp;</span> apt -y dis-ugprade
+apt updat <span class="o">&amp;&amp;</span> apt -y dis-ugprade
 update-grub
 
 </code></pre></div><h2 id="2-change-settings-after-upgrade">2. Change settings after upgrade</h2>
 <p>This step to change pve upgrade to no subscription and ceph soucre .</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#09f;font-style:italic">#change pve 5.x update source list</span>
-<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&#34;</span> &gt; /etc/apt/sources.list.d/pve-enterprise.list
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">
+<span class="c1">#change pve 5.x update source list</span>
+<span class="nb">echo</span> <span class="s2">&#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/pve/ stretch pve-no-subscription&#34;</span> &gt; /etc/apt/sources.list.d/pve-enterprise.list
 
-<span style="color:#09f;font-style:italic">#change ceph source list</span>
-<span style="color:#366">echo</span> <span style="color:#c30">&#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&#34;</span> &gt; /etc/apt/sources.list.d/ceph.list
+<span class="c1">#change ceph source list</span>
+<span class="nb">echo</span> <span class="s2">&#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous stretch main&#34;</span> &gt; /etc/apt/sources.list.d/ceph.list
 
-<span style="color:#09f;font-style:italic"># add key</span>
+<span class="c1"># add key</span>
 wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
 
 
@@ -453,7 +449,7 @@ wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /et
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2019-04-16
+      2019-11-01
       
     </span>
   </p>
@@ -616,7 +612,7 @@ wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-5.x.gpg -O /et
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

@@ -35,7 +35,7 @@ Install ntfs-3g brew install ntfs-3g Replace ntfs-3g Since from OS X 10." />
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/macos/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/" />
@@ -56,7 +56,7 @@ Install ntfs-3g brew install ntfs-3g Replace ntfs-3g Since from OS X 10." />
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -68,22 +68,18 @@ Install FUSE for macos You can download latest FUSE for macOS from here: FUSE fo
 Then you can install it by yourself.
 Install ntfs-3g brew install ntfs-3g Replace ntfs-3g Since from OS X 10." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/macos/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/" />
-<meta property="article:published_time" content="2019-12-27T11:20:00+08:00" />
-<meta property="article:modified_time" content="2019-12-27T11:20:00+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/macos/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-12-27T11:20:00&#43;08:00" />
+<meta property="article:modified_time" content="2019-12-27T12:02:13&#43;08:00" />
+
 <meta itemprop="name" content="How to Enable Ntfs Read and Write in Macos Catalina 10.15">
 <meta itemprop="description" content="How to enable NTFS Read and Write in Macos Catalina 10.15 For a long time. It was much trouble to enable ntfs write mode in macos. Today I done it about enable ntfs wirte support with fuse and ntfs-3g.
 Install FUSE for macos You can download latest FUSE for macOS from here: FUSE for macOS
 Then you can install it by yourself.
-Install ntfs-3g brew install ntfs-3g Replace ntfs-3g Since from OS X 10.">
-<meta itemprop="datePublished" content="2019-12-27T11:20:00+08:00" />
-<meta itemprop="dateModified" content="2019-12-27T11:20:00+08:00" />
+Install ntfs-3g brew install ntfs-3g Replace ntfs-3g Since from OS X 10."><meta itemprop="datePublished" content="2019-12-27T11:20:00&#43;08:00" />
+<meta itemprop="dateModified" content="2019-12-27T12:02:13&#43;08:00" />
 <meta itemprop="wordCount" content="300">
-
-
-
-<meta itemprop="keywords" content="macos,ntfs,catalina," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="macos,ntfs,catalina," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Enable Ntfs Read and Write in Macos Catalina 10.15"/>
 <meta name="twitter:description" content="How to enable NTFS Read and Write in Macos Catalina 10.15 For a long time. It was much trouble to enable ntfs write mode in macos. Today I done it about enable ntfs wirte support with fuse and ntfs-3g.
 Install FUSE for macos You can download latest FUSE for macOS from here: FUSE for macOS
@@ -413,7 +409,7 @@ if (!doNotTrack) {
 <p>You can download latest FUSE for macOS from here: <a href="https://github.com/osxfuse/osxfuse/releases">FUSE for macOS</a></p>
 <p>Then you can install it by yourself.</p>
 <h2 id="install-ntfs-3g">Install ntfs-3g</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">
 brew install ntfs-3g
 </code></pre></div><h2 id="replace-ntfs-3g">Replace ntfs-3g</h2>
 <p>Since from OS X 10.11 version ,macos enabled  system integrity protection we need to disable it to replace the <code>ntfs_mount</code>.</p>
@@ -431,7 +427,7 @@ brew install ntfs-3g
 <li>Open <code>Terminal</code></li>
 <li>Enter commands as show below</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mount -uw /
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo mount -uw /
 sudo mv /sbin/mount_ntfs /sbin/mount_ntfs.original
 sudo ln -s /usr/local/sbin/mount_ntfs /sbin/mount_ntfs
 
@@ -633,7 +629,7 @@ Run command in Terminal <code>csrutil enble</code>.</li>
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

@@ -34,7 +34,7 @@ kod_init_kod_db(): Cannot open KoD db file /var/db/ntp-kod: No such file or dire
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/macos-update-time-via-ntpserver/" />
@@ -55,7 +55,7 @@ kod_init_kod_db(): Cannot open KoD db file /var/db/ntp-kod: No such file or dire
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -66,21 +66,17 @@ kod_init_kod_db(): Cannot open KoD db file /var/db/ntp-kod: No such file or dire
 Majove update time sudo sntp -sS time.asia.apple.com When you&rsquo;re getting this error
 kod_init_kod_db(): Cannot open KoD db file /var/db/ntp-kod: No such file or directory You can solved the problems with:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/macos-update-time-via-ntpserver/" />
-<meta property="article:published_time" content="2018-12-26T09:26:04+08:00" />
-<meta property="article:modified_time" content="2018-12-26T09:26:04+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/macos-update-time-via-ntpserver/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2018-12-26T09:26:04&#43;08:00" />
+<meta property="article:modified_time" content="2019-11-01T16:29:16&#43;08:00" />
+
 <meta itemprop="name" content="Macos Update Time via Ntpserver">
 <meta itemprop="description" content="How to update time via ntpserver Today, My MBP is out of power. I cannot surfing internet. and the brower tell me my time was wrong. Then I checked my time in my MBB, I&rsquo;m back in time jan 1, 2018. Wow, I got extra whole year time!
 Majove update time sudo sntp -sS time.asia.apple.com When you&rsquo;re getting this error
-kod_init_kod_db(): Cannot open KoD db file /var/db/ntp-kod: No such file or directory You can solved the problems with:">
-<meta itemprop="datePublished" content="2018-12-26T09:26:04+08:00" />
-<meta itemprop="dateModified" content="2018-12-26T09:26:04+08:00" />
+kod_init_kod_db(): Cannot open KoD db file /var/db/ntp-kod: No such file or directory You can solved the problems with:"><meta itemprop="datePublished" content="2018-12-26T09:26:04&#43;08:00" />
+<meta itemprop="dateModified" content="2019-11-01T16:29:16&#43;08:00" />
 <meta itemprop="wordCount" content="113">
-
-
-
-<meta itemprop="keywords" content="macos,ntp," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="macos,ntp," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Macos Update Time via Ntpserver"/>
 <meta name="twitter:description" content="How to update time via ntpserver Today, My MBP is out of power. I cannot surfing internet. and the brower tell me my time was wrong. Then I checked my time in my MBB, I&rsquo;m back in time jan 1, 2018. Wow, I got extra whole year time!
 Majove update time sudo sntp -sS time.asia.apple.com When you&rsquo;re getting this error
@@ -396,19 +392,19 @@ if (!doNotTrack) {
       <h1 id="how-to-update-time-via-ntpserver">How to update time via ntpserver</h1>
 <p>Today, My MBP is out of power. I cannot surfing internet. and the brower tell me my time was wrong. Then I checked my time in my MBB, I&rsquo;m back in time jan 1, 2018. Wow, I got extra whole year time!</p>
 <h1 id="majove-update-time">Majove update time</h1>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo sntp -sS time.asia.apple.com
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo sntp -sS time.asia.apple.com
 
 
 </code></pre></div><p>When you&rsquo;re getting this error</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-kod_init_kod_db<span style="color:#555">()</span>: Cannot open KoD db file /var/db/ntp-kod: No such file or directory
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">
+kod_init_kod_db<span class="o">()</span>: Cannot open KoD db file /var/db/ntp-kod: No such file or directory
 
 </code></pre></div><p>You can solved the problems with:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo touch /var/db/ntp-kod
-sudo chmod <span style="color:#f60">666</span> /var/db/ntp-kod
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo touch /var/db/ntp-kod
+sudo chmod <span class="m">666</span> /var/db/ntp-kod
 
 </code></pre></div><h2 id="disable-no-subscription-warning">Disable No subscription warning</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i.bak <span style="color:#c30">&#34;s/data.status !== &#39;Active&#39;/false/g&#34;</span> /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js <span style="color:#555">&amp;&amp;</span> systemctl restart pveproxy.service
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sed -i.bak <span class="s2">&#34;s/data.status !== &#39;Active&#39;/false/g&#34;</span> /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js <span class="o">&amp;&amp;</span> systemctl restart pveproxy.service
 </code></pre></div><h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://apple.stackexchange.com/questions/117864/how-can-i-tell-if-my-mac-is-keeping-the-clock-updated-properly?noredirect=1&amp;lq=1">How can I tell if my Mac is keeping the clock updated properly?</a></li>
@@ -426,7 +422,7 @@ sudo chmod <span style="color:#f60">666</span> /var/db/ntp-kod
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2018-12-26
+      2019-11-01
       
     </span>
   </p>
@@ -590,7 +586,7 @@ sudo chmod <span style="color:#f60">666</span> /var/db/ntp-kod
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

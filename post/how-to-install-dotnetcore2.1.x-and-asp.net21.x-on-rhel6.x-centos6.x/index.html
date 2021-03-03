@@ -33,7 +33,7 @@ After a few days research, I found that .net core website is support RHEL 6.X,bu
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/how-to-install-dotnetcore2.1.x-and-asp.net21.x-on-rhel6.x-centos6.x/" />
@@ -54,7 +54,7 @@ After a few days research, I found that .net core website is support RHEL 6.X,bu
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -64,20 +64,16 @@ After a few days research, I found that .net core website is support RHEL 6.X,bu
 <meta property="og:description" content="How to install netcore/aspnetcore 2.1.4 on RHEL 6.8 Recently days, we met a scenario that is our client production environment must be RHEL 6.8. But our product is base asp.net core 2.1.x version. Rehat and Microsoft has never say the are support RHEL 6.X version.
 After a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core. And you know what?" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/how-to-install-dotnetcore2.1.x-and-asp.net21.x-on-rhel6.x-centos6.x/" />
-<meta property="article:published_time" content="2018-10-26T22:29:04+08:00" />
-<meta property="article:modified_time" content="2018-10-26T22:29:04+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/how-to-install-dotnetcore2.1.x-and-asp.net21.x-on-rhel6.x-centos6.x/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2018-10-26T22:29:04&#43;08:00" />
+<meta property="article:modified_time" content="2019-11-01T16:29:16&#43;08:00" />
+
 <meta itemprop="name" content="How to Install Dotnetcore2.1.x and Asp.net21.x on RHEL6.x CENTOS6">
 <meta itemprop="description" content="How to install netcore/aspnetcore 2.1.4 on RHEL 6.8 Recently days, we met a scenario that is our client production environment must be RHEL 6.8. But our product is base asp.net core 2.1.x version. Rehat and Microsoft has never say the are support RHEL 6.X version.
-After a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core. And you know what?">
-<meta itemprop="datePublished" content="2018-10-26T22:29:04+08:00" />
-<meta itemprop="dateModified" content="2018-10-26T22:29:04+08:00" />
+After a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core. And you know what?"><meta itemprop="datePublished" content="2018-10-26T22:29:04&#43;08:00" />
+<meta itemprop="dateModified" content="2019-11-01T16:29:16&#43;08:00" />
 <meta itemprop="wordCount" content="247">
-
-
-
-<meta itemprop="keywords" content="dotnetcore,linux," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="dotnetcore,linux," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Install Dotnetcore2.1.x and Asp.net21.x on RHEL6.x CENTOS6"/>
 <meta name="twitter:description" content="How to install netcore/aspnetcore 2.1.4 on RHEL 6.8 Recently days, we met a scenario that is our client production environment must be RHEL 6.8. But our product is base asp.net core 2.1.x version. Rehat and Microsoft has never say the are support RHEL 6.X version.
 After a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core. And you know what?"/>
@@ -398,51 +394,51 @@ if (!doNotTrack) {
 <p>Recently days, we met a scenario that is our client production environment must be RHEL 6.8. But our product is base asp.net core 2.1.x version. Rehat and Microsoft has never say the are support RHEL 6.X version.</p>
 <p>After a few days research, I found that .net core website is support RHEL 6.X,but no runtime.We can download install SDK to support asp.net core. And you know what? It works well finally!</p>
 <h3 id="install-netcore-214-sdk">Install netcore 2.1.4 sdk</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#099">#!/bin/sh
-</span><span style="color:#099"></span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/sh
+</span><span class="cp"></span>
 yum install -y wget epel-release
 yum install -y openssl-devel libnghttp2-devel libidn-devel gcc libtool m4 automake
-<span style="color:#366">cd</span> /tmp/
+<span class="nb">cd</span> /tmp/
 
 curl -O https://curl.haxx.se/download/curl-7.45.0.tar.gz
 tar -xf curl-7.45.0.tar.gz
-<span style="color:#366">cd</span> curl-7.45.0
-./configure <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --disable-dict <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --disable-file <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --disable-ftp <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --disable-gopher <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --disable-imap <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --disable-ldap <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --disable-ldaps <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --disable-libcurl-option <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --disable-manual <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --disable-pop3 <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --disable-rtsp <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --disable-smb <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --disable-smtp <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --disable-telnet <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --disable-tftp <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --enable-ipv6 <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --enable-optimize <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --enable-symbol-hiding <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --with-ca-bundle<span style="color:#555">=</span>/etc/pki/tls/certs/ca-bundle.crt <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --with-nghttp2 <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --with-gssapi <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --with-ssl <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --without-librtmp <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>    --prefix<span style="color:#555">=</span><span style="color:#033">$PWD</span>/install/usr/local
+<span class="nb">cd</span> curl-7.45.0
+./configure <span class="se">\
+</span><span class="se"></span>    --disable-dict <span class="se">\
+</span><span class="se"></span>    --disable-file <span class="se">\
+</span><span class="se"></span>    --disable-ftp <span class="se">\
+</span><span class="se"></span>    --disable-gopher <span class="se">\
+</span><span class="se"></span>    --disable-imap <span class="se">\
+</span><span class="se"></span>    --disable-ldap <span class="se">\
+</span><span class="se"></span>    --disable-ldaps <span class="se">\
+</span><span class="se"></span>    --disable-libcurl-option <span class="se">\
+</span><span class="se"></span>    --disable-manual <span class="se">\
+</span><span class="se"></span>    --disable-pop3 <span class="se">\
+</span><span class="se"></span>    --disable-rtsp <span class="se">\
+</span><span class="se"></span>    --disable-smb <span class="se">\
+</span><span class="se"></span>    --disable-smtp <span class="se">\
+</span><span class="se"></span>    --disable-telnet <span class="se">\
+</span><span class="se"></span>    --disable-tftp <span class="se">\
+</span><span class="se"></span>    --enable-ipv6 <span class="se">\
+</span><span class="se"></span>    --enable-optimize <span class="se">\
+</span><span class="se"></span>    --enable-symbol-hiding <span class="se">\
+</span><span class="se"></span>    --with-ca-bundle<span class="o">=</span>/etc/pki/tls/certs/ca-bundle.crt <span class="se">\
+</span><span class="se"></span>    --with-nghttp2 <span class="se">\
+</span><span class="se"></span>    --with-gssapi <span class="se">\
+</span><span class="se"></span>    --with-ssl <span class="se">\
+</span><span class="se"></span>    --without-librtmp <span class="se">\
+</span><span class="se"></span>    --prefix<span class="o">=</span><span class="nv">$PWD</span>/install/usr/local
     
 </code></pre></div><h3 id="make-install">make install</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> install
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> install
 tar -czf curl-7_45_0-RHEL6-x64.tgz *
 curl -O http://download.icu-project.org/files/icu4c/57.1/icu4c-57_1-RHEL6-x64.tgz
 tar -xf curl-7_45_0-RHEL6-x64.tgz -C /
 tar -xf icu4c-57_1-RHEL6-x64.tgz -C /
-<span style="color:#366">echo</span> <span style="color:#c30">&#34;export LD_LIBRARY_PATH=/usr/local/lib&#34;</span> &gt;&gt; /etc/profile
-<span style="color:#366">export</span> <span style="color:#033">LD_LIBRARY_PATH</span><span style="color:#555">=</span>/usr/local/lib
+<span class="nb">echo</span> <span class="s2">&#34;export LD_LIBRARY_PATH=/usr/local/lib&#34;</span> &gt;&gt; /etc/profile
+<span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/lib
 
-<span style="color:#366">cd</span> /tmp/
+<span class="nb">cd</span> /tmp/
 mkdir dotnetsdk
 
 curl -O https://download.microsoft.com/download/8/A/7/8A765126-50CA-4C6F-890B-19AE47961E4B/dotnet-sdk-2.1.402-rhel.6-x64.tar.gz
@@ -452,16 +448,16 @@ tar -zxvf dotnet-sdk-2.1.402-rhel.6-x64.tar.gz -C dotnetsdk/
 mv dotnetsdk /opt/
 ln -s /opt/dotnetsdk/dotnet /usr/bin/dotnet
 
-curl -sSL https://github.com/libuv/libuv/archive/v1.4.2.tar.gz | sudo tar zxfv - -C /usr/local/src
+curl -sSL https://github.com/libuv/libuv/archive/v1.4.2.tar.gz <span class="p">|</span> sudo tar zxfv - -C /usr/local/src
 
 
-<span style="color:#09f;font-style:italic"># Insall libuv-1.4.2 </span>
-<span style="color:#366">cd</span> /usr/local/src/libuv-1.4.2
+<span class="c1"># Insall libuv-1.4.2 </span>
+<span class="nb">cd</span> /usr/local/src/libuv-1.4.2
 sh autogen.sh
 ./configure
 make
 make install
-rm -rf /usr/local/src/libuv-1.4.2 <span style="color:#555">&amp;&amp;</span> <span style="color:#366">cd</span> ~/
+rm -rf /usr/local/src/libuv-1.4.2 <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ~/
 ldconfig
 
 </code></pre></div><h2 id="reference">Reference</h2>
@@ -486,7 +482,7 @@ ldconfig
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2018-10-26
+      2019-11-01
       
     </span>
   </p>
@@ -650,7 +646,7 @@ ldconfig
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/new/" />
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,17 +62,15 @@
 <meta property="og:title" content="" />
 <meta property="og:description" content="No. Name IP Address ISP Info Location comments Status     01 GCXA 111.20.173.250 China Mobile Guangdong Xi&rsquo;an Shaanxi , China china mobile network Disuse   02 GCXA2 23.88.109.101 ipsec vpn on anlai vpn Enzu Dallas Texas , United States Disuse   03 GCXA3 117.28.243.175 CN2 network China Telecom Quanzhou Fujian , China Using   04 GCXA4 202.60.225.114 Telstra network Superhub Hong Kong , China Using   05 GCXA5 1." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/new/" />
+<meta property="og:url" content="https://blog.stevedong.com/post/new/" /><meta property="article:section" content="post" />
+
+<meta property="article:modified_time" content="2019-11-25T09:22:52&#43;08:00" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="No. Name IP Address ISP Info Location comments Status     01 GCXA 111.20.173.250 China Mobile Guangdong Xi&rsquo;an Shaanxi , China china mobile network Disuse   02 GCXA2 23.88.109.101 ipsec vpn on anlai vpn Enzu Dallas Texas , United States Disuse   03 GCXA3 117.28.243.175 CN2 network China Telecom Quanzhou Fujian , China Using   04 GCXA4 202.60.225.114 Telstra network Superhub Hong Kong , China Using   05 GCXA5 1.">
-
+<meta itemprop="dateModified" content="2019-11-25T09:22:52&#43;08:00" />
 <meta itemprop="wordCount" content="288">
-
-
-
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="No. Name IP Address ISP Info Location comments Status     01 GCXA 111.20.173.250 China Mobile Guangdong Xi&rsquo;an Shaanxi , China china mobile network Disuse   02 GCXA2 23.88.109.101 ipsec vpn on anlai vpn Enzu Dallas Texas , United States Disuse   03 GCXA3 117.28.243.175 CN2 network China Telecom Quanzhou Fujian , China Using   04 GCXA4 202.60.225.114 Telstra network Superhub Hong Kong , China Using   05 GCXA5 1."/>
 
@@ -444,52 +442,52 @@ if (!doNotTrack) {
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">
 
-qm create <span style="color:#f60">9000</span> --name template-centos7-cloudinit --memory <span style="color:#f60">4096</span> --net0 virtio,bridge<span style="color:#555">=</span>vmbr5 --cores <span style="color:#f60">4</span> --socket <span style="color:#f60">1</span> --cpu <span style="color:#033">cputype</span><span style="color:#555">=</span>kvm64 --description <span style="color:#c30">&#34;centos7-cloud-images&#34;</span>
-qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --scsihw virtio-scsi-pci --scsi0 local:9000
-qm importdisk <span style="color:#f60">9000</span> CentOS-7-x86_64-GenericCloud.qcow2 <span style="color:#366">local</span>
-
-
+qm create <span class="m">9000</span> --name template-centos7-cloudinit --memory <span class="m">4096</span> --net0 virtio,bridge<span class="o">=</span>vmbr5 --cores <span class="m">4</span> --socket <span class="m">1</span> --cpu <span class="nv">cputype</span><span class="o">=</span>kvm64 --description <span class="s2">&#34;centos7-cloud-images&#34;</span>
+qm <span class="nb">set</span> <span class="m">9000</span> --scsihw virtio-scsi-pci --scsi0 local:9000
+qm importdisk <span class="m">9000</span> CentOS-7-x86_64-GenericCloud.qcow2 <span class="nb">local</span>
 
 
 
 
 
 
- qm create <span style="color:#f60">9000</span> --name template-ubuntu18.04server-cloudinit --memory <span style="color:#f60">4096</span> --net0 virtio,bridge<span style="color:#555">=</span>vmbr0 --cores <span style="color:#f60">4</span> --sockets <span style="color:#f60">1</span> --cpu <span style="color:#033">cputype</span><span style="color:#555">=</span>kvm64 --description <span style="color:#c30">&#34;ubuntu18.04server-cloudinit&#34;</span>
- <span style="color:#09f;font-style:italic">#qm importdisk 9000 bionic-server-cloudimg-amd64.img  local</span>
- qm importdisk <span style="color:#f60">9000</span> ubuntu-18.04-minimal-cloudimg-amd64.img <span style="color:#366">local</span>
- qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --scsihw virtio-scsi-pci --scsi0 local:9000
 
- qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --ide2 local:cloudinit
- qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --boot c --bootdisk scsi0
- qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --serial0 socket --vga serial0
+
+ qm create <span class="m">9000</span> --name template-ubuntu18.04server-cloudinit --memory <span class="m">4096</span> --net0 virtio,bridge<span class="o">=</span>vmbr0 --cores <span class="m">4</span> --sockets <span class="m">1</span> --cpu <span class="nv">cputype</span><span class="o">=</span>kvm64 --description <span class="s2">&#34;ubuntu18.04server-cloudinit&#34;</span>
+ <span class="c1">#qm importdisk 9000 bionic-server-cloudimg-amd64.img  local</span>
+ qm importdisk <span class="m">9000</span> ubuntu-18.04-minimal-cloudimg-amd64.img <span class="nb">local</span>
+ qm <span class="nb">set</span> <span class="m">9000</span> --scsihw virtio-scsi-pci --scsi0 local:9000
+
+ qm <span class="nb">set</span> <span class="m">9000</span> --ide2 local:cloudinit
+ qm <span class="nb">set</span> <span class="m">9000</span> --boot c --bootdisk scsi0
+ qm <span class="nb">set</span> <span class="m">9000</span> --serial0 socket --vga serial0
   
-  <span style="color:#f60">518</span>  qm destroy <span style="color:#f60">9000</span>
-  <span style="color:#f60">519</span>  <span style="color:#366">cd</span> /var/lib/vz/images
-  <span style="color:#f60">520</span>  <span style="color:#09f;font-style:italic">#Option 1: For China User,Download images from ustc mirror for china users</span>
-  <span style="color:#f60">521</span>  wget http://mirrors.ustc.edu.cn/ubuntu-cloud-images/bionic/current/bionic-server-cloudimg-amd64.img
-  <span style="color:#f60">522</span>  qm create <span style="color:#f60">9000</span> --memory <span style="color:#f60">4096</span> --net0 virtio,bridge<span style="color:#555">=</span>vmbr0  --name template-ubuntu18.04server-cloudinit
-  <span style="color:#f60">523</span>  qm importdisk <span style="color:#f60">9000</span> bionic-server-cloudimg-amd64.img <span style="color:#366">local</span>
-  <span style="color:#f60">524</span>  qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --scsihw virtio-scsi-pci --scsi0 local:9000/vm-9000-disk-0.raw
-  <span style="color:#f60">525</span>  qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --ide2 local:cloudinit
-  <span style="color:#f60">526</span>  qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --boot c --bootdisk scsi0
-  <span style="color:#f60">527</span>  qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --serial0 socket --vga serial0
-  <span style="color:#f60">528</span>  ls
-  <span style="color:#f60">529</span>  ls bon
-  <span style="color:#f60">530</span>  ls -al
-  <span style="color:#f60">531</span>  <span style="color:#366">cd</span> <span style="color:#f60">9000</span>
-  <span style="color:#f60">532</span>  ls -al
-  <span style="color:#f60">533</span>  df -h
-  <span style="color:#f60">534</span>  ls -alh
-  <span style="color:#f60">535</span>  <span style="color:#366">history</span>
-  <span style="color:#f60">536</span>  qm <span style="color:#366">set</span> <span style="color:#f60">9000</span> --boot c --bootdisk scsi0
-  <span style="color:#f60">537</span>  qm stop <span style="color:#f60">9000</span>
-  <span style="color:#f60">538</span>  qm start <span style="color:#f60">9000</span>
-  <span style="color:#f60">539</span>  qm terminal <span style="color:#f60">9000</span>
-  <span style="color:#f60">540</span>  qm stop <span style="color:#f60">9000</span>
-  <span style="color:#f60">541</span>  qm destroy <span style="color:#f60">9000</span>
+  <span class="m">518</span>  qm destroy <span class="m">9000</span>
+  <span class="m">519</span>  <span class="nb">cd</span> /var/lib/vz/images
+  <span class="m">520</span>  <span class="c1">#Option 1: For China User,Download images from ustc mirror for china users</span>
+  <span class="m">521</span>  wget http://mirrors.ustc.edu.cn/ubuntu-cloud-images/bionic/current/bionic-server-cloudimg-amd64.img
+  <span class="m">522</span>  qm create <span class="m">9000</span> --memory <span class="m">4096</span> --net0 virtio,bridge<span class="o">=</span>vmbr0  --name template-ubuntu18.04server-cloudinit
+  <span class="m">523</span>  qm importdisk <span class="m">9000</span> bionic-server-cloudimg-amd64.img <span class="nb">local</span>
+  <span class="m">524</span>  qm <span class="nb">set</span> <span class="m">9000</span> --scsihw virtio-scsi-pci --scsi0 local:9000/vm-9000-disk-0.raw
+  <span class="m">525</span>  qm <span class="nb">set</span> <span class="m">9000</span> --ide2 local:cloudinit
+  <span class="m">526</span>  qm <span class="nb">set</span> <span class="m">9000</span> --boot c --bootdisk scsi0
+  <span class="m">527</span>  qm <span class="nb">set</span> <span class="m">9000</span> --serial0 socket --vga serial0
+  <span class="m">528</span>  ls
+  <span class="m">529</span>  ls bon
+  <span class="m">530</span>  ls -al
+  <span class="m">531</span>  <span class="nb">cd</span> <span class="m">9000</span>
+  <span class="m">532</span>  ls -al
+  <span class="m">533</span>  df -h
+  <span class="m">534</span>  ls -alh
+  <span class="m">535</span>  <span class="nb">history</span>
+  <span class="m">536</span>  qm <span class="nb">set</span> <span class="m">9000</span> --boot c --bootdisk scsi0
+  <span class="m">537</span>  qm stop <span class="m">9000</span>
+  <span class="m">538</span>  qm start <span class="m">9000</span>
+  <span class="m">539</span>  qm terminal <span class="m">9000</span>
+  <span class="m">540</span>  qm stop <span class="m">9000</span>
+  <span class="m">541</span>  qm destroy <span class="m">9000</span>
 
 </code></pre></div>
     </div>
@@ -504,7 +502,7 @@ qm importdisk <span style="color:#f60">9000</span> CentOS-7-x86_64-GenericCloud.
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      0001-01-01
+      2019-11-25
       
     </span>
   </p>
@@ -655,7 +653,7 @@ qm importdisk <span style="color:#f60">9000</span> CentOS-7-x86_64-GenericCloud.
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

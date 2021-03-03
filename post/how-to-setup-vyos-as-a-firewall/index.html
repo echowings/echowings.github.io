@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/how-to-setup-vyos-as-a-firewall/" />
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,19 +62,15 @@
 <meta property="og:title" content="How to Setup Vyos as a Firewall" />
 <meta property="og:description" content="How to Setup Vyos as a Firewall Setup interface    Interface IP Address Description     eth0 pppoe WAN   eth1 192.168.68.1 / 24 DMZ   eth2 10.0.0.1 / 24 LAN    set interface ethernet eth0 pppoe 0 user-id &#39;&lt;pppoe accout&gt;&#39; set interface ethernet eth0 pppoe 0 password &#39;&lt;pppoe password&gt;&#39; set interface ethernet eth0 pppoe 0 name-server &#39;none&#39; set interface ethernet eth0 description &#39;WAN&#39; set interface ethernet eth1 address 192." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/how-to-setup-vyos-as-a-firewall/" />
-<meta property="article:published_time" content="2019-08-08T13:58:35+08:00" />
-<meta property="article:modified_time" content="2019-08-08T13:58:35+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/how-to-setup-vyos-as-a-firewall/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-08-08T13:58:35&#43;08:00" />
+<meta property="article:modified_time" content="2019-11-01T16:29:16&#43;08:00" />
+
 <meta itemprop="name" content="How to Setup Vyos as a Firewall">
-<meta itemprop="description" content="How to Setup Vyos as a Firewall Setup interface    Interface IP Address Description     eth0 pppoe WAN   eth1 192.168.68.1 / 24 DMZ   eth2 10.0.0.1 / 24 LAN    set interface ethernet eth0 pppoe 0 user-id &#39;&lt;pppoe accout&gt;&#39; set interface ethernet eth0 pppoe 0 password &#39;&lt;pppoe password&gt;&#39; set interface ethernet eth0 pppoe 0 name-server &#39;none&#39; set interface ethernet eth0 description &#39;WAN&#39; set interface ethernet eth1 address 192.">
-<meta itemprop="datePublished" content="2019-08-08T13:58:35+08:00" />
-<meta itemprop="dateModified" content="2019-08-08T13:58:35+08:00" />
+<meta itemprop="description" content="How to Setup Vyos as a Firewall Setup interface    Interface IP Address Description     eth0 pppoe WAN   eth1 192.168.68.1 / 24 DMZ   eth2 10.0.0.1 / 24 LAN    set interface ethernet eth0 pppoe 0 user-id &#39;&lt;pppoe accout&gt;&#39; set interface ethernet eth0 pppoe 0 password &#39;&lt;pppoe password&gt;&#39; set interface ethernet eth0 pppoe 0 name-server &#39;none&#39; set interface ethernet eth0 description &#39;WAN&#39; set interface ethernet eth1 address 192."><meta itemprop="datePublished" content="2019-08-08T13:58:35&#43;08:00" />
+<meta itemprop="dateModified" content="2019-11-01T16:29:16&#43;08:00" />
 <meta itemprop="wordCount" content="683">
-
-
-
-<meta itemprop="keywords" content="vyos,firewall,network," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="vyos,firewall,network," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Setup Vyos as a Firewall"/>
 <meta name="twitter:description" content="How to Setup Vyos as a Firewall Setup interface    Interface IP Address Description     eth0 pppoe WAN   eth1 192.168.68.1 / 24 DMZ   eth2 10.0.0.1 / 24 LAN    set interface ethernet eth0 pppoe 0 user-id &#39;&lt;pppoe accout&gt;&#39; set interface ethernet eth0 pppoe 0 password &#39;&lt;pppoe password&gt;&#39; set interface ethernet eth0 pppoe 0 name-server &#39;none&#39; set interface ethernet eth0 description &#39;WAN&#39; set interface ethernet eth1 address 192."/>
 
@@ -427,143 +423,143 @@ if (!doNotTrack) {
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> interface ethernet eth0 pppoe <span style="color:#f60">0</span> user-id <span style="color:#c30">&#39;&lt;pppoe accout&gt;&#39;</span>
-<span style="color:#366">set</span> interface ethernet eth0 pppoe <span style="color:#f60">0</span> password <span style="color:#c30">&#39;&lt;pppoe password&gt;&#39;</span>
-<span style="color:#366">set</span> interface ethernet eth0 pppoe <span style="color:#f60">0</span> name-server <span style="color:#c30">&#39;none&#39;</span>
-<span style="color:#366">set</span> interface ethernet eth0 description <span style="color:#c30">&#39;WAN&#39;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> interface ethernet eth0 pppoe <span class="m">0</span> user-id <span class="s1">&#39;&lt;pppoe accout&gt;&#39;</span>
+<span class="nb">set</span> interface ethernet eth0 pppoe <span class="m">0</span> password <span class="s1">&#39;&lt;pppoe password&gt;&#39;</span>
+<span class="nb">set</span> interface ethernet eth0 pppoe <span class="m">0</span> name-server <span class="s1">&#39;none&#39;</span>
+<span class="nb">set</span> interface ethernet eth0 description <span class="s1">&#39;WAN&#39;</span>
 
-<span style="color:#366">set</span> interface ethernet eth1 address 192.168.68.1/24
-<span style="color:#366">set</span> interface ethernet eth1 description DMZ
+<span class="nb">set</span> interface ethernet eth1 address 192.168.68.1/24
+<span class="nb">set</span> interface ethernet eth1 description DMZ
 
-<span style="color:#366">set</span> interface ethernet eth2 address 10.0.0.1/24
-<span style="color:#366">set</span> interface ethernet eth2 description <span style="color:#c30">&#39;LAN&#39;</span>
+<span class="nb">set</span> interface ethernet eth2 address 10.0.0.1/24
+<span class="nb">set</span> interface ethernet eth2 description <span class="s1">&#39;LAN&#39;</span>
 </code></pre></div><h2 id="dhcp-server">DHCP Server</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> shared-network-name lan.local subnet 192.168.68.0/24 default-router 192.168.68.1
-<span style="color:#366">set</span> shared-network-name lan.local subnet 192.168.68.0/24 dns-server 192.168.68.1
-<span style="color:#366">set</span> shared-network-name lan.local subnet 192.168.68.0/24 domain-name lan.local
-<span style="color:#366">set</span> shared-network-name lan.local subnet 192.168.68.0/24 range <span style="color:#f60">0</span> start 192.168.50
-<span style="color:#366">set</span> shared-network-name lan.local subnet 192.168.68.0/24 range <span style="color:#f60">0</span> stop 192.168.68.254<span style="color:#a00;background-color:#faa">&#39;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> shared-network-name lan.local subnet 192.168.68.0/24 default-router 192.168.68.1
+<span class="nb">set</span> shared-network-name lan.local subnet 192.168.68.0/24 dns-server 192.168.68.1
+<span class="nb">set</span> shared-network-name lan.local subnet 192.168.68.0/24 domain-name lan.local
+<span class="nb">set</span> shared-network-name lan.local subnet 192.168.68.0/24 range <span class="m">0</span> start 192.168.50
+<span class="nb">set</span> shared-network-name lan.local subnet 192.168.68.0/24 range <span class="m">0</span> stop 192.168.68.254<span class="err">&#39;</span>
 
 </code></pre></div><h2 id="dns-forwarding">DNS forwarding</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> cache-size <span style="color:#c30">&#39;0&#39;</span>
-<span style="color:#366">set</span> listen-address 192.168.68.1
-<span style="color:#366">set</span> name-server &lt;public dns server ip ,like 8.8.8.8&gt;
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> cache-size <span class="s1">&#39;0&#39;</span>
+<span class="nb">set</span> listen-address 192.168.68.1
+<span class="nb">set</span> name-server &lt;public dns server ip ,like 8.8.8.8&gt;
 
 </code></pre></div><h2 id="set-loging-banner">Set loging banner</h2>
 <p>You are able to set post-login or pre-login messages with the following lines:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> system login banner pre-login <span style="color:#c30">&#34;UNAUTHORIZED USE OF THIS SYSTEM IS PROHIBITED\n&#34;</span>
-<span style="color:#366">set</span> system login banner post-login <span style="color:#c30">&#34;Welcome to VyOS&#34;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> system login banner pre-login <span class="s2">&#34;UNAUTHORIZED USE OF THIS SYSTEM IS PROHIBITED\n&#34;</span>
+<span class="nb">set</span> system login banner post-login <span class="s2">&#34;Welcome to VyOS&#34;</span>
 </code></pre></div><h2 id="nat">NAT</h2>
 <h3 id="snat">SNAT</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> <span style="color:#366">source</span> rule <span style="color:#f60">10</span> outbound-interface pppoe0
-<span style="color:#366">set</span> <span style="color:#366">source</span> rule <span style="color:#f60">10</span> <span style="color:#366">source</span> address 192.168.68.0/24
-<span style="color:#366">set</span> <span style="color:#366">source</span> rule <span style="color:#f60">10</span> translation address masquerade
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> <span class="nb">source</span> rule <span class="m">10</span> outbound-interface pppoe0
+<span class="nb">set</span> <span class="nb">source</span> rule <span class="m">10</span> <span class="nb">source</span> address 192.168.68.0/24
+<span class="nb">set</span> <span class="nb">source</span> rule <span class="m">10</span> translation address masquerade
 
 </code></pre></div><h3 id="dnat">DNAT</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> nat destination rule <span style="color:#f60">10</span> destination address <span style="color:#c30">&#39;10.0.0.5&#39;</span>
-<span style="color:#366">set</span> nat destination rule <span style="color:#f60">10</span> destination port <span style="color:#c30">&#39;3389&#39;</span>
-<span style="color:#366">set</span> nat destination rule <span style="color:#f60">10</span> inbound-interface <span style="color:#c30">&#39;eth2&#39;</span>
-<span style="color:#366">set</span> nat destination rule <span style="color:#f60">10</span> protocol <span style="color:#c30">&#39;tcp_udp&#39;</span>
-<span style="color:#366">set</span> nat destination rule <span style="color:#f60">10</span> translation address <span style="color:#c30">&#39;192.168.68.50&#39;</span>
-<span style="color:#366">set</span> nat destination rule <span style="color:#f60">10</span> translation port <span style="color:#c30">&#39;3389&#39;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> nat destination rule <span class="m">10</span> destination address <span class="s1">&#39;10.0.0.5&#39;</span>
+<span class="nb">set</span> nat destination rule <span class="m">10</span> destination port <span class="s1">&#39;3389&#39;</span>
+<span class="nb">set</span> nat destination rule <span class="m">10</span> inbound-interface <span class="s1">&#39;eth2&#39;</span>
+<span class="nb">set</span> nat destination rule <span class="m">10</span> protocol <span class="s1">&#39;tcp_udp&#39;</span>
+<span class="nb">set</span> nat destination rule <span class="m">10</span> translation address <span class="s1">&#39;192.168.68.50&#39;</span>
+<span class="nb">set</span> nat destination rule <span class="m">10</span> translation port <span class="s1">&#39;3389&#39;</span>
 </code></pre></div><h2 id="default-routing">Default routing</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> static interface-route 0.0.0.0/0 next-hop-interface pppoe0
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> static interface-route 0.0.0.0/0 next-hop-interface pppoe0
 </code></pre></div><h2 id="setting-of-firewall">Setting of firewall</h2>
 <h3 id="zone-base-firewall">Zone base firewall</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-<span style="color:#09f;font-style:italic"># Chang firewall to statue firewall</span>
-<span style="color:#366">set</span> firewall state-policy established action <span style="color:#c30">&#39;accept&#39;</span>
-<span style="color:#366">set</span> firewall state-policy related action <span style="color:#c30">&#39;accept&#39;</span>
-<span style="color:#366">set</span> firewall state-policy invalid action <span style="color:#c30">&#39;drop&#39;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">
+<span class="c1"># Chang firewall to statue firewall</span>
+<span class="nb">set</span> firewall state-policy established action <span class="s1">&#39;accept&#39;</span>
+<span class="nb">set</span> firewall state-policy related action <span class="s1">&#39;accept&#39;</span>
+<span class="nb">set</span> firewall state-policy invalid action <span class="s1">&#39;drop&#39;</span>
 
-<span style="color:#09f;font-style:italic"># Set Zone for interfaces</span>
-<span style="color:#366">set</span> zone-policy zone dmz interface <span style="color:#c30">&#39;eth1&#39;</span>
-<span style="color:#366">set</span> zone-policy zone private interface <span style="color:#c30">&#39;eth2&#39;</span>
-<span style="color:#366">set</span> zone-policy zone <span style="color:#366">local</span> local-zone
-<span style="color:#366">set</span> zone-policy zone public interface <span style="color:#c30">&#39;pppoe0&#39;</span>
+<span class="c1"># Set Zone for interfaces</span>
+<span class="nb">set</span> zone-policy zone dmz interface <span class="s1">&#39;eth1&#39;</span>
+<span class="nb">set</span> zone-policy zone private interface <span class="s1">&#39;eth2&#39;</span>
+<span class="nb">set</span> zone-policy zone <span class="nb">local</span> local-zone
+<span class="nb">set</span> zone-policy zone public interface <span class="s1">&#39;pppoe0&#39;</span>
 
-<span style="color:#09f;font-style:italic"># define firewall policy</span>
-<span style="color:#366">set</span> firewall name dmz-local default-action <span style="color:#c30">&#39;drop&#39;</span>
-<span style="color:#366">set</span> firewall name dmz-local rule <span style="color:#f60">10</span> action <span style="color:#c30">&#39;accept&#39;</span>
-<span style="color:#366">set</span> firewall name dmz-local rule <span style="color:#f60">10</span> destination address <span style="color:#c30">&#39;192.168.68.1&#39;</span>
-<span style="color:#366">set</span> firewall name dmz-local rule <span style="color:#f60">10</span> destination port <span style="color:#c30">&#39;53&#39;</span>
-<span style="color:#366">set</span> firewall name dmz-local rule <span style="color:#f60">10</span> protocol <span style="color:#c30">&#39;udp&#39;</span>
+<span class="c1"># define firewall policy</span>
+<span class="nb">set</span> firewall name dmz-local default-action <span class="s1">&#39;drop&#39;</span>
+<span class="nb">set</span> firewall name dmz-local rule <span class="m">10</span> action <span class="s1">&#39;accept&#39;</span>
+<span class="nb">set</span> firewall name dmz-local rule <span class="m">10</span> destination address <span class="s1">&#39;192.168.68.1&#39;</span>
+<span class="nb">set</span> firewall name dmz-local rule <span class="m">10</span> destination port <span class="s1">&#39;53&#39;</span>
+<span class="nb">set</span> firewall name dmz-local rule <span class="m">10</span> protocol <span class="s1">&#39;udp&#39;</span>
 
-<span style="color:#366">set</span> firewall name dmz-local rule <span style="color:#f60">11</span> action <span style="color:#c30">&#39;accept&#39;</span>
-<span style="color:#366">set</span> firewall name dmz-local rule <span style="color:#f60">11</span> icmp type-name <span style="color:#c30">&#39;echo-request&#39;</span>
-<span style="color:#366">set</span> firewall name dmz-local rule <span style="color:#f60">11</span> protocol <span style="color:#c30">&#39;icmp&#39;</span>
+<span class="nb">set</span> firewall name dmz-local rule <span class="m">11</span> action <span class="s1">&#39;accept&#39;</span>
+<span class="nb">set</span> firewall name dmz-local rule <span class="m">11</span> icmp type-name <span class="s1">&#39;echo-request&#39;</span>
+<span class="nb">set</span> firewall name dmz-local rule <span class="m">11</span> protocol <span class="s1">&#39;icmp&#39;</span>
 
-<span style="color:#366">set</span> firewall name dmz-private default-action <span style="color:#c30">&#39;drop&#39;</span>
-<span style="color:#366">set</span> firewall name dmz-private rule <span style="color:#f60">10</span> action <span style="color:#c30">&#39;accept&#39;</span>
-<span style="color:#366">set</span> firewall name dmz-private rule <span style="color:#f60">10</span> destination address <span style="color:#c30">&#39;192.168.68.1&#39;</span>
-<span style="color:#366">set</span> firewall name dmz-private rule <span style="color:#f60">10</span> destination port <span style="color:#c30">&#39;53&#39;</span>
-<span style="color:#366">set</span> firewall name dmz-private rule <span style="color:#f60">10</span> protocol <span style="color:#c30">&#39;udp&#39;</span>
+<span class="nb">set</span> firewall name dmz-private default-action <span class="s1">&#39;drop&#39;</span>
+<span class="nb">set</span> firewall name dmz-private rule <span class="m">10</span> action <span class="s1">&#39;accept&#39;</span>
+<span class="nb">set</span> firewall name dmz-private rule <span class="m">10</span> destination address <span class="s1">&#39;192.168.68.1&#39;</span>
+<span class="nb">set</span> firewall name dmz-private rule <span class="m">10</span> destination port <span class="s1">&#39;53&#39;</span>
+<span class="nb">set</span> firewall name dmz-private rule <span class="m">10</span> protocol <span class="s1">&#39;udp&#39;</span>
 
-<span style="color:#366">set</span> firewall name dmz-public default-action <span style="color:#c30">&#39;accept&#39;</span>
-
-
-<span style="color:#366">set</span> firewall name local-dmz default-action <span style="color:#c30">&#39;accept&#39;</span>
-
-<span style="color:#366">set</span> firewall name local-private default-action <span style="color:#c30">&#39;accept&#39;</span>
-
-<span style="color:#366">set</span> firewall name local-public default-action <span style="color:#c30">&#39;accept&#39;</span>
-
-<span style="color:#366">set</span> firewall name private-dmz default-action <span style="color:#c30">&#39;accept&#39;</span>
-
-<span style="color:#366">set</span> firewall name private-local default-action <span style="color:#c30">&#39;accept&#39;</span>
-
-<span style="color:#09f;font-style:italic"># Allow ping</span>
-<span style="color:#366">set</span> firewall name private-local rule <span style="color:#f60">1</span> action <span style="color:#c30">&#39;accept&#39;</span>
-<span style="color:#366">set</span> firewall name private-local rule <span style="color:#f60">1</span> icmp type-name <span style="color:#c30">&#39;echo-request&#39;</span>
-<span style="color:#366">set</span> firewall name private-local rule <span style="color:#f60">1</span> protocol <span style="color:#c30">&#39;icmp&#39;</span>
-
-<span style="color:#366">set</span> firewall name private-public default-action <span style="color:#c30">&#39;accept&#39;</span>
-
-<span style="color:#366">set</span> firewall name public-dmz default-action <span style="color:#c30">&#39;drop&#39;</span>
-
-<span style="color:#366">set</span> firewall name public-local default-action <span style="color:#c30">&#39;drop&#39;</span>
-
-<span style="color:#366">set</span> firewall name public-private default-action <span style="color:#c30">&#39;drop&#39;</span>
+<span class="nb">set</span> firewall name dmz-public default-action <span class="s1">&#39;accept&#39;</span>
 
 
+<span class="nb">set</span> firewall name local-dmz default-action <span class="s1">&#39;accept&#39;</span>
+
+<span class="nb">set</span> firewall name local-private default-action <span class="s1">&#39;accept&#39;</span>
+
+<span class="nb">set</span> firewall name local-public default-action <span class="s1">&#39;accept&#39;</span>
+
+<span class="nb">set</span> firewall name private-dmz default-action <span class="s1">&#39;accept&#39;</span>
+
+<span class="nb">set</span> firewall name private-local default-action <span class="s1">&#39;accept&#39;</span>
+
+<span class="c1"># Allow ping</span>
+<span class="nb">set</span> firewall name private-local rule <span class="m">1</span> action <span class="s1">&#39;accept&#39;</span>
+<span class="nb">set</span> firewall name private-local rule <span class="m">1</span> icmp type-name <span class="s1">&#39;echo-request&#39;</span>
+<span class="nb">set</span> firewall name private-local rule <span class="m">1</span> protocol <span class="s1">&#39;icmp&#39;</span>
+
+<span class="nb">set</span> firewall name private-public default-action <span class="s1">&#39;accept&#39;</span>
+
+<span class="nb">set</span> firewall name public-dmz default-action <span class="s1">&#39;drop&#39;</span>
+
+<span class="nb">set</span> firewall name public-local default-action <span class="s1">&#39;drop&#39;</span>
+
+<span class="nb">set</span> firewall name public-private default-action <span class="s1">&#39;drop&#39;</span>
 
 
 
-<span style="color:#366">set</span> zone-policy zone dmz default-action <span style="color:#c30">&#39;drop&#39;</span>
-<span style="color:#366">set</span> zone-policy zone private default-action <span style="color:#c30">&#39;drop&#39;</span>
-<span style="color:#366">set</span> zone-policy zone public default-action <span style="color:#c30">&#39;drop&#39;</span>
-
-<span style="color:#366">set</span> zone-policy zone dmz from <span style="color:#366">local</span> firewall name <span style="color:#c30">&#39;local-dmz&#39;</span>
-<span style="color:#366">set</span> zone-policy zone dmz from private firewall name <span style="color:#c30">&#39;private-dmz&#39;</span>
-<span style="color:#366">set</span> zone-policy zone dmz from public firewall name <span style="color:#c30">&#39;public-dmz&#39;</span>
-
-<span style="color:#366">set</span> zone-policy zone <span style="color:#366">local</span> from dmz firewall name <span style="color:#c30">&#39;dmz-local&#39;</span>
-<span style="color:#366">set</span> zone-policy zone <span style="color:#366">local</span> from private firewall name <span style="color:#c30">&#39;private-local&#39;</span>
-<span style="color:#366">set</span> zone-policy zone <span style="color:#366">local</span> from public firewall name <span style="color:#c30">&#39;public-local&#39;</span>
 
 
-<span style="color:#366">set</span> zone-policy zone private from dmz firewall name <span style="color:#c30">&#39;dmz-private&#39;</span>
-<span style="color:#366">set</span> zone-policy zone private from <span style="color:#366">local</span> firewall name <span style="color:#c30">&#39;local-private&#39;</span>
-<span style="color:#366">set</span> zone-policy zone private from public firewall name <span style="color:#c30">&#39;public-private&#39;</span>
+<span class="nb">set</span> zone-policy zone dmz default-action <span class="s1">&#39;drop&#39;</span>
+<span class="nb">set</span> zone-policy zone private default-action <span class="s1">&#39;drop&#39;</span>
+<span class="nb">set</span> zone-policy zone public default-action <span class="s1">&#39;drop&#39;</span>
 
-<span style="color:#366">set</span> zone-policy zone public from dmz firewall name <span style="color:#c30">&#39;dmz-public&#39;</span>
-<span style="color:#366">set</span> zone-policy zone public from <span style="color:#366">local</span> firewall name <span style="color:#c30">&#39;local-public&#39;</span>
-<span style="color:#366">set</span> zone-policy zone public from private firewall name <span style="color:#c30">&#39;private-public&#39;</span>
+<span class="nb">set</span> zone-policy zone dmz from <span class="nb">local</span> firewall name <span class="s1">&#39;local-dmz&#39;</span>
+<span class="nb">set</span> zone-policy zone dmz from private firewall name <span class="s1">&#39;private-dmz&#39;</span>
+<span class="nb">set</span> zone-policy zone dmz from public firewall name <span class="s1">&#39;public-dmz&#39;</span>
+
+<span class="nb">set</span> zone-policy zone <span class="nb">local</span> from dmz firewall name <span class="s1">&#39;dmz-local&#39;</span>
+<span class="nb">set</span> zone-policy zone <span class="nb">local</span> from private firewall name <span class="s1">&#39;private-local&#39;</span>
+<span class="nb">set</span> zone-policy zone <span class="nb">local</span> from public firewall name <span class="s1">&#39;public-local&#39;</span>
+
+
+<span class="nb">set</span> zone-policy zone private from dmz firewall name <span class="s1">&#39;dmz-private&#39;</span>
+<span class="nb">set</span> zone-policy zone private from <span class="nb">local</span> firewall name <span class="s1">&#39;local-private&#39;</span>
+<span class="nb">set</span> zone-policy zone private from public firewall name <span class="s1">&#39;public-private&#39;</span>
+
+<span class="nb">set</span> zone-policy zone public from dmz firewall name <span class="s1">&#39;dmz-public&#39;</span>
+<span class="nb">set</span> zone-policy zone public from <span class="nb">local</span> firewall name <span class="s1">&#39;local-public&#39;</span>
+<span class="nb">set</span> zone-policy zone public from private firewall name <span class="s1">&#39;private-public&#39;</span>
 
 
 
-<span style="color:#366">set</span> firewall all-ping <span style="color:#c30">&#39;enable&#39;</span>
-<span style="color:#366">set</span> firewall broadcast-ping <span style="color:#c30">&#39;disable&#39;</span>
-<span style="color:#366">set</span> firewall config-trap <span style="color:#c30">&#39;disable&#39;</span>
-<span style="color:#366">set</span> firewall receive-redirects <span style="color:#c30">&#39;disable&#39;</span>
-<span style="color:#366">set</span> firewall send-redirects <span style="color:#c30">&#39;enable&#39;</span>
-<span style="color:#366">set</span> firewall source-validation <span style="color:#c30">&#39;disable&#39;</span>
-<span style="color:#366">set</span> firewall syn-cookies <span style="color:#c30">&#39;enable&#39;</span>
-<span style="color:#366">set</span> firewall twa-hazards-protection <span style="color:#c30">&#39;disable&#39;</span>
-<span style="color:#366">set</span> firewall ip-src-route <span style="color:#c30">&#39;disable&#39;</span>
-<span style="color:#366">set</span> firewall ipv6-receive-redirects <span style="color:#c30">&#39;disable&#39;</span>
-<span style="color:#366">set</span> firewall ipv6-src-route <span style="color:#c30">&#39;disable&#39;</span>
-<span style="color:#366">set</span> firewall log-martians <span style="color:#c30">&#39;enable&#39;</span>
+<span class="nb">set</span> firewall all-ping <span class="s1">&#39;enable&#39;</span>
+<span class="nb">set</span> firewall broadcast-ping <span class="s1">&#39;disable&#39;</span>
+<span class="nb">set</span> firewall config-trap <span class="s1">&#39;disable&#39;</span>
+<span class="nb">set</span> firewall receive-redirects <span class="s1">&#39;disable&#39;</span>
+<span class="nb">set</span> firewall send-redirects <span class="s1">&#39;enable&#39;</span>
+<span class="nb">set</span> firewall source-validation <span class="s1">&#39;disable&#39;</span>
+<span class="nb">set</span> firewall syn-cookies <span class="s1">&#39;enable&#39;</span>
+<span class="nb">set</span> firewall twa-hazards-protection <span class="s1">&#39;disable&#39;</span>
+<span class="nb">set</span> firewall ip-src-route <span class="s1">&#39;disable&#39;</span>
+<span class="nb">set</span> firewall ipv6-receive-redirects <span class="s1">&#39;disable&#39;</span>
+<span class="nb">set</span> firewall ipv6-src-route <span class="s1">&#39;disable&#39;</span>
+<span class="nb">set</span> firewall log-martians <span class="s1">&#39;enable&#39;</span>
 
 
 commit
@@ -583,7 +579,7 @@ save
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2019-08-08
+      2019-11-01
       
     </span>
   </p>
@@ -748,7 +744,7 @@ save
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

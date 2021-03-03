@@ -33,7 +33,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/proxmoxve/how-to-extend-all-available-disk-to-local-data/" />
@@ -54,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -64,20 +64,16 @@
 <meta property="og:description" content="How to extend all available disk to local-data After install Proxmove VE, the local-data only have about 50GB disk availabe. But how to let all availabld disk space to the local-data? Here we go:
 # Remove local-data lvremove /dev/pve/data # Extend all available disk to /dev/pve/root lvresize -l &#43;100%FREE /dev/pve/root #recreate pve-root resize2fs /dev/mapper/pve-root Reference  Proxmox – Remove LVM local-data  " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/proxmoxve/how-to-extend-all-available-disk-to-local-data/" />
-<meta property="article:published_time" content="2020-09-04T09:11:30+08:00" />
-<meta property="article:modified_time" content="2020-09-04T09:11:30+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/proxmoxve/how-to-extend-all-available-disk-to-local-data/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-09-04T09:11:30&#43;08:00" />
+<meta property="article:modified_time" content="2020-09-04T09:37:28&#43;08:00" />
+
 <meta itemprop="name" content="How to Extend All Available Disk to Local Data">
 <meta itemprop="description" content="How to extend all available disk to local-data After install Proxmove VE, the local-data only have about 50GB disk availabe. But how to let all availabld disk space to the local-data? Here we go:
-# Remove local-data lvremove /dev/pve/data # Extend all available disk to /dev/pve/root lvresize -l &#43;100%FREE /dev/pve/root #recreate pve-root resize2fs /dev/mapper/pve-root Reference  Proxmox – Remove LVM local-data  ">
-<meta itemprop="datePublished" content="2020-09-04T09:11:30+08:00" />
-<meta itemprop="dateModified" content="2020-09-04T09:11:30+08:00" />
+# Remove local-data lvremove /dev/pve/data # Extend all available disk to /dev/pve/root lvresize -l &#43;100%FREE /dev/pve/root #recreate pve-root resize2fs /dev/mapper/pve-root Reference  Proxmox – Remove LVM local-data  "><meta itemprop="datePublished" content="2020-09-04T09:11:30&#43;08:00" />
+<meta itemprop="dateModified" content="2020-09-04T09:37:28&#43;08:00" />
 <meta itemprop="wordCount" content="60">
-
-
-
-<meta itemprop="keywords" content="pve,lvm," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="pve,lvm," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Extend All Available Disk to Local Data"/>
 <meta name="twitter:description" content="How to extend all available disk to local-data After install Proxmove VE, the local-data only have about 50GB disk availabe. But how to let all availabld disk space to the local-data? Here we go:
 # Remove local-data lvremove /dev/pve/data # Extend all available disk to /dev/pve/root lvresize -l &#43;100%FREE /dev/pve/root #recreate pve-root resize2fs /dev/mapper/pve-root Reference  Proxmox – Remove LVM local-data  "/>
@@ -390,13 +386,13 @@ if (!doNotTrack) {
     <div class="post-content">
       <h1 id="how-to-extend-all-available-disk-to-local-data">How to extend all available disk to local-data</h1>
 <p>After install Proxmove VE, the local-data only have about 50GB disk availabe. But how to let all availabld disk space to the local-data? Here we go:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># Remove local-data</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Remove local-data</span>
 lvremove /dev/pve/data
 
-<span style="color:#09f;font-style:italic"># Extend all available disk to /dev/pve/root</span>
+<span class="c1"># Extend all available disk to /dev/pve/root</span>
 lvresize -l +100%FREE /dev/pve/root
 
-<span style="color:#09f;font-style:italic">#recreate pve-root</span>
+<span class="c1">#recreate pve-root</span>
 resize2fs /dev/mapper/pve-root
 </code></pre></div><h2 id="reference">Reference</h2>
 <ul>
@@ -579,7 +575,7 @@ resize2fs /dev/mapper/pve-root
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

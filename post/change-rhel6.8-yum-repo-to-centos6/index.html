@@ -34,7 +34,7 @@ Fix perl error export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/change-rhel6.8-yum-repo-to-centos6/" />
@@ -55,7 +55,7 @@ Fix perl error export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -66,21 +66,17 @@ Fix perl error export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL
 After installed REHL6.8,We didn&rsquo;t have RHEL subscription,but how to get update and install software via yum ? The right answer is to change yum repo.
 Fix perl error export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable RHEL subsription subscription-manager config --rhsm.manage_repos=0 Chang yum repo to Centos 6  delete rhel yum software  rpm -qa | grep yum rpm -qa | grep yum | xargs rpm -e --nodeps  Download centos yum software  mkdir -p /tmp/yum cd /tmp/yum wget http://mirrors." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/change-rhel6.8-yum-repo-to-centos6/" />
-<meta property="article:published_time" content="2019-07-15T17:07:51+08:00" />
-<meta property="article:modified_time" content="2019-07-15T17:07:51+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/change-rhel6.8-yum-repo-to-centos6/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-07-15T17:07:51&#43;08:00" />
+<meta property="article:modified_time" content="2019-11-01T16:29:16&#43;08:00" />
+
 <meta itemprop="name" content="How to upgrade RHEL6 with yum repo of centos ">
 <meta itemprop="description" content="How to upgrade RHEL6 with yum repo of centos Today I will show you how to setup rhel6 at proxmox VE.
 After installed REHL6.8,We didn&rsquo;t have RHEL subscription,but how to get update and install software via yum ? The right answer is to change yum repo.
-Fix perl error export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable RHEL subsription subscription-manager config --rhsm.manage_repos=0 Chang yum repo to Centos 6  delete rhel yum software  rpm -qa | grep yum rpm -qa | grep yum | xargs rpm -e --nodeps  Download centos yum software  mkdir -p /tmp/yum cd /tmp/yum wget http://mirrors.">
-<meta itemprop="datePublished" content="2019-07-15T17:07:51+08:00" />
-<meta itemprop="dateModified" content="2019-07-15T17:07:51+08:00" />
+Fix perl error export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable RHEL subsription subscription-manager config --rhsm.manage_repos=0 Chang yum repo to Centos 6  delete rhel yum software  rpm -qa | grep yum rpm -qa | grep yum | xargs rpm -e --nodeps  Download centos yum software  mkdir -p /tmp/yum cd /tmp/yum wget http://mirrors."><meta itemprop="datePublished" content="2019-07-15T17:07:51&#43;08:00" />
+<meta itemprop="dateModified" content="2019-11-01T16:29:16&#43;08:00" />
 <meta itemprop="wordCount" content="209">
-
-
-
-<meta itemprop="keywords" content="rhel,linux,pve," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="rhel,linux,pve," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to upgrade RHEL6 with yum repo of centos "/>
 <meta name="twitter:description" content="How to upgrade RHEL6 with yum repo of centos Today I will show you how to setup rhel6 at proxmox VE.
 After installed REHL6.8,We didn&rsquo;t have RHEL subscription,but how to get update and install software via yum ? The right answer is to change yum repo.
@@ -400,27 +396,27 @@ if (!doNotTrack) {
 <p>Today I will show you how to setup rhel6 at proxmox VE.</p>
 <p>After installed REHL6.8,We didn&rsquo;t have RHEL subscription,but how to get update and install software via yum ? The right answer is to change yum repo.</p>
 <h2 id="fix-perl-error">Fix perl error</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">export</span> <span style="color:#033">LANGUAGE</span><span style="color:#555">=</span>en_US.UTF-8
-<span style="color:#366">export</span> <span style="color:#033">LANG</span><span style="color:#555">=</span>en_US.UTF-8
-<span style="color:#366">export</span> <span style="color:#033">LC_ALL</span><span style="color:#555">=</span>en_US.UTF-8
-<span style="color:#09f;font-style:italic">#locale-gen en_US.UTF-8</span>
-cat &gt;&gt; /etc/environment <span style="color:#c30">&lt;&lt;EOF
-</span><span style="color:#c30">LC_ALL=en_US.UTF-8
-</span><span style="color:#c30">LANG=en_US.UTF-8
-</span><span style="color:#c30">EOF</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">LANGUAGE</span><span class="o">=</span>en_US.UTF-8
+<span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+<span class="nb">export</span> <span class="nv">LC_ALL</span><span class="o">=</span>en_US.UTF-8
+<span class="c1">#locale-gen en_US.UTF-8</span>
+cat &gt;&gt; /etc/environment <span class="s">&lt;&lt;EOF
+</span><span class="s">LC_ALL=en_US.UTF-8
+</span><span class="s">LANG=en_US.UTF-8
+</span><span class="s">EOF</span>
 </code></pre></div><h2 id="disable-rhel-subsription">Disable RHEL subsription</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">subscription-manager config --rhsm.manage_repos<span style="color:#555">=</span><span style="color:#f60">0</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">subscription-manager config --rhsm.manage_repos<span class="o">=</span><span class="m">0</span>
 </code></pre></div><h2 id="chang-yum-repo-to-centos-6">Chang yum repo to Centos 6</h2>
 <ul>
 <li>delete rhel yum software</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rpm -qa | grep yum
-rpm -qa | grep yum | xargs rpm -e --nodeps
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">rpm -qa <span class="p">|</span> grep yum
+rpm -qa <span class="p">|</span> grep yum <span class="p">|</span> xargs rpm -e --nodeps
 </code></pre></div><ul>
 <li>Download  centos yum software</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p /tmp/yum
-<span style="color:#366">cd</span> /tmp/yum
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mkdir -p /tmp/yum
+<span class="nb">cd</span> /tmp/yum
 wget http://mirrors.163.com/centos/6/os/x86_64/Packages/python-iniparse-0.3.1-2.1.el6.noarch.rpm
 wget http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-3.2.29-81.el6.centos.noarch.rpm
 wget http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-metadata-parser-1.1.2-16.el6.x86_64.rpm
@@ -428,28 +424,28 @@ wget http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-plugin-fastestmirror
 </code></pre></div><ul>
 <li>Install centos yum software</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rpm -ivh python-iniparse-0.3.1-2.1.el6.noarch.rpm
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">rpm -ivh python-iniparse-0.3.1-2.1.el6.noarch.rpm
 rpm -ivh yum-metadata-parser-1.1.2-16.el6.x86_64.rpm
 rpm -ivh yum-3.2.29-81.el6.centos.noarch.rpm yum-plugin-fastestmirror-1.1.30-41.el6.noarch.rpm
 </code></pre></div><ul>
 <li>Delete other repos file</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -rf /etc/yum.repos.d/*
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">rm -rf /etc/yum.repos.d/*
 </code></pre></div><ul>
 <li>Download yum.repos file of centos.</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS6-Base-163.repo
-sed -i <span style="color:#c30">&#39;s/$releasever/6/g&#39;</span> CentOS-Base.repo
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS6-Base-163.repo
+sed -i <span class="s1">&#39;s/$releasever/6/g&#39;</span> CentOS-Base.repo
 yum clean all
 yum makecache
 </code></pre></div><h2 id="install-cloud-ini-and-qemu-guest-agent">Install cloud-ini and qemu-guest-agent</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum update
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">yum update
 yum install cloud-init qemu-guest-agent
 
 </code></pre></div><p>Then enable qemu agent in <code>option</code> and  add a cloud-init disk in vm settings on proxmox ve.</p>
 <h2 id="change-ssh-config-to-allow-user-login-with-password">Change SSH config to allow user login with password</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo sed -i <span style="color:#c30">&#39;s/PasswordAuthentication\ no/PasswordAuthentication\ yes/g&#39;</span> /etc/ssh/sshd_config
-sudo sed -i <span style="color:#c30">&#39;s/#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/g&#39;</span> /etc/ssh/sshd_config
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo sed -i <span class="s1">&#39;s/PasswordAuthentication\ no/PasswordAuthentication\ yes/g&#39;</span> /etc/ssh/sshd_config
+sudo sed -i <span class="s1">&#39;s/#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/g&#39;</span> /etc/ssh/sshd_config
 sudo service ssh restart
 sudo service sshd restart
 </code></pre></div>
@@ -465,7 +461,7 @@ sudo service sshd restart
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2019-07-15
+      2019-11-01
       
     </span>
   </p>
@@ -630,7 +626,7 @@ sudo service sshd restart
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

@@ -33,7 +33,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/windows/how-to-uninstall-windows-update-which-install-failed/" />
@@ -54,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -64,20 +64,16 @@
 <meta property="og:description" content="How to uninstlal windows update which install failed  Uninstall failed windows update   Reboot your pc or laptop and select troubleshoot   Select to open the command prompt and stay away from any other auto repair options.   Loading the software rigistry.
   #Load the softeware registry hive as follows. reg load hklm/temp c:\windows\system32\config\software #Delete the sessionPending registry key, if it exists by running: reg delete &#34;HKLM\temp\Microsoft\Windows\CurrentVersion\Component Based Servicing\SessionPending&#34; /v Exclusive # Unload the software registry hive: reg unload HKLM\temp Remove failed updates with DISM command  List failed updated." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/windows/how-to-uninstall-windows-update-which-install-failed/" />
-<meta property="article:published_time" content="2020-12-29T11:50:20+08:00" />
-<meta property="article:modified_time" content="2020-12-29T11:50:20+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/windows/how-to-uninstall-windows-update-which-install-failed/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-12-29T11:50:20&#43;08:00" />
+<meta property="article:modified_time" content="2020-12-29T12:21:12&#43;08:00" />
+
 <meta itemprop="name" content="How to Uninstall Windows Update Which Install Failed">
 <meta itemprop="description" content="How to uninstlal windows update which install failed  Uninstall failed windows update   Reboot your pc or laptop and select troubleshoot   Select to open the command prompt and stay away from any other auto repair options.   Loading the software rigistry.
-  #Load the softeware registry hive as follows. reg load hklm/temp c:\windows\system32\config\software #Delete the sessionPending registry key, if it exists by running: reg delete &#34;HKLM\temp\Microsoft\Windows\CurrentVersion\Component Based Servicing\SessionPending&#34; /v Exclusive # Unload the software registry hive: reg unload HKLM\temp Remove failed updates with DISM command  List failed updated.">
-<meta itemprop="datePublished" content="2020-12-29T11:50:20+08:00" />
-<meta itemprop="dateModified" content="2020-12-29T11:50:20+08:00" />
+  #Load the softeware registry hive as follows. reg load hklm/temp c:\windows\system32\config\software #Delete the sessionPending registry key, if it exists by running: reg delete &#34;HKLM\temp\Microsoft\Windows\CurrentVersion\Component Based Servicing\SessionPending&#34; /v Exclusive # Unload the software registry hive: reg unload HKLM\temp Remove failed updates with DISM command  List failed updated."><meta itemprop="datePublished" content="2020-12-29T11:50:20&#43;08:00" />
+<meta itemprop="dateModified" content="2020-12-29T12:21:12&#43;08:00" />
 <meta itemprop="wordCount" content="156">
-
-
-
-<meta itemprop="keywords" content="windows,blue screen,repair boot," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="windows,blue screen,repair boot," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Uninstall Windows Update Which Install Failed"/>
 <meta name="twitter:description" content="How to uninstlal windows update which install failed  Uninstall failed windows update   Reboot your pc or laptop and select troubleshoot   Select to open the command prompt and stay away from any other auto repair options.   Loading the software rigistry.
   #Load the softeware registry hive as follows. reg load hklm/temp c:\windows\system32\config\software #Delete the sessionPending registry key, if it exists by running: reg delete &#34;HKLM\temp\Microsoft\Windows\CurrentVersion\Component Based Servicing\SessionPending&#34; /v Exclusive # Unload the software registry hive: reg unload HKLM\temp Remove failed updates with DISM command  List failed updated."/>
@@ -406,24 +402,24 @@ if (!doNotTrack) {
 <p>Loading the software rigistry.</p>
 </li>
 </ol>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#Load the softeware registry hive as follows.</span>
-reg load hklm/temp c:<span style="color:#c30;font-weight:bold">\w</span>indows<span style="color:#c30;font-weight:bold">\s</span>ystem32<span style="color:#c30;font-weight:bold">\c</span>onfig<span style="color:#c30;font-weight:bold">\s</span>oftware
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#Load the softeware registry hive as follows.</span>
+reg load hklm/temp c:<span class="se">\w</span>indows<span class="se">\s</span>ystem32<span class="se">\c</span>onfig<span class="se">\s</span>oftware
 
-<span style="color:#09f;font-style:italic">#Delete the sessionPending registry key, if it exists by running:</span>
-reg delete <span style="color:#c30">&#34;HKLM\temp\Microsoft\Windows\CurrentVersion\Component Based Servicing\SessionPending&#34;</span> /v Exclusive
+<span class="c1">#Delete the sessionPending registry key, if it exists by running:</span>
+reg delete <span class="s2">&#34;HKLM\temp\Microsoft\Windows\CurrentVersion\Component Based Servicing\SessionPending&#34;</span> /v Exclusive
 
-<span style="color:#09f;font-style:italic"># Unload the software registry hive:</span>
-reg unload HKLM<span style="color:#c30;font-weight:bold">\t</span>emp
+<span class="c1"># Unload the software registry hive:</span>
+reg unload HKLM<span class="se">\t</span>emp
 </code></pre></div><h2 id="remove-failed-updates-with-dism-command">Remove failed updates with <code>DISM</code> command</h2>
 <ol>
 <li>List failed updated.</li>
 </ol>
 <p>The yellow one are the ones of interest and you can see the first one never even got an install time.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#List updates installed that caused issue.</span>
-dism /image:c:<span style="color:#c30;font-weight:bold">\ </span>/get-packages
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#List updates installed that caused issue.</span>
+dism /image:c:<span class="se">\ </span>/get-packages
 </code></pre></div><p><img src="https://blog.workinghardinit.work/wp-content/uploads/2017/10/image-3.png" alt="">
 2. Remove error udpates with <code>DISM</code>.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">dism /image:c:<span style="color:#c30;font-weight:bold">\ </span>/remove-package /packagename:myproblematicpackagetoremove /scratchdir:c:<span style="color:#c30;font-weight:bold">\t</span>emp
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dism /image:c:<span class="se">\ </span>/remove-package /packagename:myproblematicpackagetoremove /scratchdir:c:<span class="se">\t</span>emp
 </code></pre></div><p><img src="https://blog.workinghardinit.work/wp-content/uploads/2017/10/image-4.png" alt="">
 3. After finished uninstall error updates,we can reboot your pc.</p>
 <p><img src="https://blog.workinghardinit.work/wp-content/uploads/2017/10/image-5.png" alt=""></p>
@@ -610,7 +606,7 @@ dism /image:c:<span style="color:#c30;font-weight:bold">\ </span>/get-packages
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

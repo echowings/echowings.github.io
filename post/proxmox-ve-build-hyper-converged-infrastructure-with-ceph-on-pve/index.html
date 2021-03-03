@@ -33,7 +33,7 @@ It will end nightmare that someone or montoring system tell you that your servic
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/proxmox-ve-build-hyper-converged-infrastructure-with-ceph-on-pve/" />
@@ -54,7 +54,7 @@ It will end nightmare that someone or montoring system tell you that your servic
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -64,20 +64,16 @@ It will end nightmare that someone or montoring system tell you that your servic
 <meta property="og:description" content="Build Hyper-Converged Infrastructure with ceph on PVE&quot; Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is enterprise-ready. Today I will build a HCI with ceph on proxmox VE 5.x.
 It will end nightmare that someone or montoring system tell you that your service was down, you need be a fire fighter to fixed as soon as possible under tremendous pressure form your boss. With proxmox ve , We can say &lsquo;no more!" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-build-hyper-converged-infrastructure-with-ceph-on-pve/" />
-<meta property="article:published_time" content="2019-04-29T10:56:16+08:00" />
-<meta property="article:modified_time" content="2019-04-29T10:56:16+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-build-hyper-converged-infrastructure-with-ceph-on-pve/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-04-29T10:56:16&#43;08:00" />
+<meta property="article:modified_time" content="2019-11-01T16:29:16&#43;08:00" />
+
 <meta itemprop="name" content="Build Hyper-Converged Infrastructure With Ceph on PVE">
 <meta itemprop="description" content="Build Hyper-Converged Infrastructure with ceph on PVE&quot; Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is enterprise-ready. Today I will build a HCI with ceph on proxmox VE 5.x.
-It will end nightmare that someone or montoring system tell you that your service was down, you need be a fire fighter to fixed as soon as possible under tremendous pressure form your boss. With proxmox ve , We can say &lsquo;no more!">
-<meta itemprop="datePublished" content="2019-04-29T10:56:16+08:00" />
-<meta itemprop="dateModified" content="2019-04-29T10:56:16+08:00" />
+It will end nightmare that someone or montoring system tell you that your service was down, you need be a fire fighter to fixed as soon as possible under tremendous pressure form your boss. With proxmox ve , We can say &lsquo;no more!"><meta itemprop="datePublished" content="2019-04-29T10:56:16&#43;08:00" />
+<meta itemprop="dateModified" content="2019-11-01T16:29:16&#43;08:00" />
 <meta itemprop="wordCount" content="608">
-
-
-
-<meta itemprop="keywords" content="pve,HCI,ceph,cluster," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="pve,HCI,ceph,cluster," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Build Hyper-Converged Infrastructure With Ceph on PVE"/>
 <meta name="twitter:description" content="Build Hyper-Converged Infrastructure with ceph on PVE&quot; Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is enterprise-ready. Today I will build a HCI with ceph on proxmox VE 5.x.
 It will end nightmare that someone or montoring system tell you that your service was down, you need be a fire fighter to fixed as soon as possible under tremendous pressure form your boss. With proxmox ve , We can say &lsquo;no more!"/>
@@ -448,76 +444,76 @@ if (!doNotTrack) {
 </ul>
 <h4 id="delete-disk-partition-on-2rd-disk">Delete disk partition on 2rd disk.</h4>
 <p>If the disk has data, we can use <code>fdisk /dev/sdb</code> to delete partition of sdb.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">fdisk /dev/sdb
-<span style="color:#09f;font-style:italic"># Repeat enter m to delete partiton of sdb.</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">fdisk /dev/sdb
+<span class="c1"># Repeat enter m to delete partiton of sdb.</span>
 m
-<span style="color:#09f;font-style:italic"># Save configuration with w.</span>
+<span class="c1"># Save configuration with w.</span>
 w
 
 </code></pre></div><h3 id="create-pve-cluster">Create PVE Cluster</h3>
 <h4 id="create-pve-clusteroperating-on-proxmox-ve-node-pve-test01">Create pve cluster:Operating on proxmox ve node <code>pve-test01</code></h4>
 <p>Login via ssh to <code>pve-test01</code> the first proxmox ve node. Use a unique name for your cluster, the name cannot be changed later.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pvecm create mycloud
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">pvecm create mycloud
 </code></pre></div><p>To check the state of cluster:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pvecm status
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">pvecm status
 </code></pre></div><h4 id="heading"></h4>
 <h4 id="to-join-node-to-pve-cluseroperate-on-proxmox-ve-node">To join node to pve cluser:Operate on proxmox ve node.</h4>
 <p>Run coomand like these on the rest of pve nodes.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># 192.168.0.85 is the ip address of pve node `pve-test01`</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 192.168.0.85 is the ip address of pve node `pve-test01`</span>
 pvecm add 192.168.0.85 
-<span style="color:#09f;font-style:italic">#Check pve cluster status on `pve-test02`</span>
+<span class="c1">#Check pve cluster status on `pve-test02`</span>
 pvecm status
 
 </code></pre></div><h3 id="setup-ntp-servic-for-proxmox-ve">Setup NTP Servic for proxmox ve</h3>
 <ul>
 <li>If you have a lan ntp server setup like this. mutilpy ntp server separated with blank space.</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt;&gt; /etc/systemd/timesyncd.conf <span style="color:#c30">&lt;&lt; EOF
-</span><span style="color:#c30">NTP=192.168.0.2 192.168.0.3
-</span><span style="color:#c30">EOF</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">cat &gt;&gt; /etc/systemd/timesyncd.conf <span class="s">&lt;&lt; EOF
+</span><span class="s">NTP=192.168.0.2 192.168.0.3
+</span><span class="s">EOF</span>
 
 
 </code></pre></div><ul>
 <li>Or if you can sync ntp with aliyun ntp server in china.</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt;&gt; /etc/systemd/timesyncd.conf <span style="color:#c30">&lt;&lt; EOF
-</span><span style="color:#c30">NTP=ntp1.aliyun.com ntp2.aliyun.com
-</span><span style="color:#c30">EOF</span>
-<span style="color:#09f;font-style:italic"># Restart systemd-timesyncd service to apply settings</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">cat &gt;&gt; /etc/systemd/timesyncd.conf <span class="s">&lt;&lt; EOF
+</span><span class="s">NTP=ntp1.aliyun.com ntp2.aliyun.com
+</span><span class="s">EOF</span>
+<span class="c1"># Restart systemd-timesyncd service to apply settings</span>
 systemctl restart systemd-timesyncd
 
 </code></pre></div><h3 id="ceph-setup">Ceph Setup</h3>
 <h4 id="install-ceph-on-all-of-pve-nodes">Install ceph on all of pve nodes.</h4>
 <p>Run Each host with this command to install ceph on</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#09f;font-style:italic">#Install ceph</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">
+<span class="c1">#Install ceph</span>
 pveceph install
 
 </code></pre></div><h4 id="create-ceph-storage-network-on-master-node">Create ceph storage network on master node</h4>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># pve-node-01(10.32.0.85)</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># pve-node-01(10.32.0.85)</span>
 pveceph init --network 192.168.0.0/24
 
 </code></pre></div><h4 id="run-all-the-command-on-each-node">Run all the command on each node</h4>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># Create mon moniting service</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># Create mon moniting service</span>
 pveceph createmon
 
-<span style="color:#09f;font-style:italic"># Create OSD service </span>
+<span class="c1"># Create OSD service </span>
 pveceph createdosd /dev/sdb
 
-<span style="color:#09f;font-style:italic"># Check ost status</span>
+<span class="c1"># Check ost status</span>
 ceph osd stat
 ceph osd tree
 </code></pre></div><h4 id="create-ceph-cluster-resource-pool-on-master-node">Create ceph cluster resource pool on master node</h4>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ceph osd pool creae pvepool1 <span style="color:#f60">128</span> <span style="color:#f60">128</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">ceph osd pool creae pvepool1 <span class="m">128</span> <span class="m">128</span>
 
 </code></pre></div><h4 id="copy-storage-id-and-key-to-the-right-position">copy storage ID and key to the right position</h4>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic">#Run the command on master node.</span>
-<span style="color:#366">cd</span> /etc/pve/priv/
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#Run the command on master node.</span>
+<span class="nb">cd</span> /etc/pve/priv/
 mkdir ceph
 cp /etc/ceph/ceph.client.admin.keyring ceph/my-ceph-storage.keyring
 
 </code></pre></div><h4 id="check-ceph-cluster-status">Check ceph cluster status</h4>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ceph -s
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">ceph -s
 </code></pre></div><h4 id="create-osd-on-proxmox-ve-portal">Create OSD on proxmox ve portal</h4>
 <ol>
 <li>your can access portal on each node</li>
@@ -590,7 +586,7 @@ cp /etc/ceph/ceph.client.admin.keyring ceph/my-ceph-storage.keyring
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2019-04-29
+      2019-11-01
       
     </span>
   </p>
@@ -756,7 +752,7 @@ cp /etc/ceph/ceph.client.admin.keyring ceph/my-ceph-storage.keyring
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

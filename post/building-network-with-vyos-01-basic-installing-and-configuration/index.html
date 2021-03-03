@@ -35,7 +35,7 @@ Install vyos   Download vyos form the office website:
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/building-network-with-vyos-01-basic-installing-and-configuration/" />
@@ -56,7 +56,7 @@ Install vyos   Download vyos form the office website:
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -68,22 +68,18 @@ At now, vyos version will be vyos version 1.2 released. I will wirte the turtura
 Install vyos   Download vyos form the office website:
  Download Link: vyos-1.2.0-rc-4-amd64    Write iso image to usb disk  Linux and Mac:  ddi if=vyos-1." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/building-network-with-vyos-01-basic-installing-and-configuration/" />
-<meta property="article:published_time" content="2018-10-26T22:44:02+08:00" />
-<meta property="article:modified_time" content="2018-10-26T22:44:02+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/building-network-with-vyos-01-basic-installing-and-configuration/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2018-10-26T22:44:02&#43;08:00" />
+<meta property="article:modified_time" content="2019-11-01T16:29:16&#43;08:00" />
+
 <meta itemprop="name" content="Building Network With Vyos 01---Basic Installing and Configuration">
 <meta itemprop="description" content="Building Network With Vyos.-.01.Basic Installing and Configuration Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn’t web UI, but only command line configration just like JUNOS.
 At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.
 Install vyos   Download vyos form the office website:
- Download Link: vyos-1.2.0-rc-4-amd64    Write iso image to usb disk  Linux and Mac:  ddi if=vyos-1.">
-<meta itemprop="datePublished" content="2018-10-26T22:44:02+08:00" />
-<meta itemprop="dateModified" content="2018-10-26T22:44:02+08:00" />
+ Download Link: vyos-1.2.0-rc-4-amd64    Write iso image to usb disk  Linux and Mac:  ddi if=vyos-1."><meta itemprop="datePublished" content="2018-10-26T22:44:02&#43;08:00" />
+<meta itemprop="dateModified" content="2019-11-01T16:29:16&#43;08:00" />
 <meta itemprop="wordCount" content="264">
-
-
-
-<meta itemprop="keywords" content="vyos," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="vyos," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Building Network With Vyos 01---Basic Installing and Configuration"/>
 <meta name="twitter:description" content="Building Network With Vyos.-.01.Basic Installing and Configuration Vyos is a debian base router. it is fork form vyatta core.It is very stable and fast router OS. It hasn’t web UI, but only command line configration just like JUNOS.
 At now, vyos version will be vyos version 1.2 released. I will wirte the turtural with vyos 1.2RC4.
@@ -419,7 +415,7 @@ if (!doNotTrack) {
 <ul>
 <li>Linux and Mac:</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ddi <span style="color:#069;font-weight:bold">if</span><span style="color:#555">=</span>vyos-1.2.0-rc-4-amd64.iso <span style="color:#033">of</span><span style="color:#555">=</span>/dev/<span style="color:#033">$yourusbdisk</span> <span style="color:#033">bs</span><span style="color:#555">=</span>1M
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ddi <span class="k">if</span><span class="o">=</span>vyos-1.2.0-rc-4-amd64.iso <span class="nv">of</span><span class="o">=</span>/dev/<span class="nv">$yourusbdisk</span> <span class="nv">bs</span><span class="o">=</span>1M
 </code></pre></div><ul>
 <li>Windows:</li>
 </ul>
@@ -434,7 +430,7 @@ if (!doNotTrack) {
 </li>
 <li>
 <p>Enter Default username and password to login livecd.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"></code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"></code></pre></div></li>
 </ol>
 <p>vyos login: vyos
 Password: vyos</p>
@@ -447,7 +443,7 @@ install image
 </code></pre><ul>
 <li>Reboot System to boot from local disk.</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">reboot now
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">reboot now
 </code></pre></div><h2 id="basic-command">Basic Command</h2>
 <p>vyos command line include 2 mode: Operation mode and configure mode.</p>
 <ul>
@@ -463,46 +459,46 @@ These command usually change configuration of vyos.</p>
 </li>
 </ul>
 <h3 id="operation-mode">Operation Mode</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#09f;font-style:italic"># Enter configure mode</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># Enter configure mode</span>
 configure
 
 
-<span style="color:#09f;font-style:italic">#Exit to operation Mode</span>
-<span style="color:#366">exit</span>
-<span style="color:#09f;font-style:italic">#Check vyos version</span>
+<span class="c1">#Exit to operation Mode</span>
+<span class="nb">exit</span>
+<span class="c1">#Check vyos version</span>
 show version
-<span style="color:#09f;font-style:italic">#Check vyos running time</span>
+<span class="c1">#Check vyos running time</span>
 show system uptime
-<span style="color:#09f;font-style:italic">#Check system time and timezone</span>
+<span class="c1">#Check system time and timezone</span>
 show date
-<span style="color:#09f;font-style:italic">#Reboot system</span>
+<span class="c1">#Reboot system</span>
 reboot now
-<span style="color:#09f;font-style:italic">#Shutdown System</span>
+<span class="c1">#Shutdown System</span>
 poweroff now
-<span style="color:#09f;font-style:italic">#upgrade system image version</span>
-add system image <span style="color:#033">$URL_or_path</span>
+<span class="c1">#upgrade system image version</span>
+add system image <span class="nv">$URL_or_path</span>
 
 
-<span style="color:#09f;font-style:italic">#Reset configuration</span>
-<span style="color:#09f;font-style:italic"># Enter config mode</span>
+<span class="c1">#Reset configuration</span>
+<span class="c1"># Enter config mode</span>
 configure
-<span style="color:#09f;font-style:italic">#loading default configure</span>
+<span class="c1">#loading default configure</span>
 load /opt/vyatta/etc/config.boot.default  
-<span style="color:#09f;font-style:italic"># commit loading default configure</span>
+<span class="c1"># commit loading default configure</span>
 commit
 
-<span style="color:#09f;font-style:italic"># save to default boot configure file.</span>
+<span class="c1"># save to default boot configure file.</span>
 save
 
-<span style="color:#09f;font-style:italic">#Exit configure mode</span>
-<span style="color:#366">exit</span>
+<span class="c1">#Exit configure mode</span>
+<span class="nb">exit</span>
 
-<span style="color:#09f;font-style:italic">#Reboot system now to finish loading default configuration.</span>
+<span class="c1">#Reboot system now to finish loading default configuration.</span>
 reboot now
 
 
 
-<span style="color:#09f;font-style:italic">#bonding</span>
+<span class="c1">#bonding</span>
 
 </code></pre></div><p>&lt;conitune&hellip;&gt;</p>
 
@@ -518,7 +514,7 @@ reboot now
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2018-10-26
+      2019-11-01
       
     </span>
   </p>
@@ -681,7 +677,7 @@ reboot now
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

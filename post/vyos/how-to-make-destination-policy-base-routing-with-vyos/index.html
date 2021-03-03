@@ -33,7 +33,7 @@ Make a network group #Define a netwrok-group set firewall group network-group ch
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/vyos/how-to-make-destination-policy-base-routing-with-vyos/" />
@@ -54,7 +54,7 @@ Make a network group #Define a netwrok-group set firewall group network-group ch
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -64,20 +64,16 @@ Make a network group #Define a netwrok-group set firewall group network-group ch
 <meta property="og:description" content="How to make Destination Base Routing with Vyos I have 2 network interfaces. one for user access inboard network,another for user to access network aboard. How to make it work with vyos?
 Make a network group #Define a netwrok-group set firewall group network-group china-ip-ranges #Define lan network group set firewall group network-group lan-net-group network &#39;192.168.11.0/24&#39; set policy set policy route network-shunt rule 20 destination group network-group &#39;china-ip-ranges&#39; set policy route network-shunt rule 20 set table &#39;20&#39; set policy route network-shunt rule 20 source group network-group &#39;lan-net-group&#39; set policy route network-shunt rule 30 set table &#39;30&#39; set policy route network-shunt rule 30 source group network-group &#39;lan-net-group&#39; Download and set the network-group with ipset  Download and make a list for network-group loading when booting." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/vyos/how-to-make-destination-policy-base-routing-with-vyos/" />
-<meta property="article:published_time" content="2020-09-03T16:36:31+08:00" />
-<meta property="article:modified_time" content="2020-09-03T16:36:31+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/vyos/how-to-make-destination-policy-base-routing-with-vyos/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-09-03T16:36:31&#43;08:00" />
+<meta property="article:modified_time" content="2020-09-04T00:32:06&#43;08:00" />
+
 <meta itemprop="name" content="How to make Destination Base Routing With Vyos">
 <meta itemprop="description" content="How to make Destination Base Routing with Vyos I have 2 network interfaces. one for user access inboard network,another for user to access network aboard. How to make it work with vyos?
-Make a network group #Define a netwrok-group set firewall group network-group china-ip-ranges #Define lan network group set firewall group network-group lan-net-group network &#39;192.168.11.0/24&#39; set policy set policy route network-shunt rule 20 destination group network-group &#39;china-ip-ranges&#39; set policy route network-shunt rule 20 set table &#39;20&#39; set policy route network-shunt rule 20 source group network-group &#39;lan-net-group&#39; set policy route network-shunt rule 30 set table &#39;30&#39; set policy route network-shunt rule 30 source group network-group &#39;lan-net-group&#39; Download and set the network-group with ipset  Download and make a list for network-group loading when booting.">
-<meta itemprop="datePublished" content="2020-09-03T16:36:31+08:00" />
-<meta itemprop="dateModified" content="2020-09-03T16:36:31+08:00" />
+Make a network group #Define a netwrok-group set firewall group network-group china-ip-ranges #Define lan network group set firewall group network-group lan-net-group network &#39;192.168.11.0/24&#39; set policy set policy route network-shunt rule 20 destination group network-group &#39;china-ip-ranges&#39; set policy route network-shunt rule 20 set table &#39;20&#39; set policy route network-shunt rule 20 source group network-group &#39;lan-net-group&#39; set policy route network-shunt rule 30 set table &#39;30&#39; set policy route network-shunt rule 30 source group network-group &#39;lan-net-group&#39; Download and set the network-group with ipset  Download and make a list for network-group loading when booting."><meta itemprop="datePublished" content="2020-09-03T16:36:31&#43;08:00" />
+<meta itemprop="dateModified" content="2020-09-04T00:32:06&#43;08:00" />
 <meta itemprop="wordCount" content="234">
-
-
-
-<meta itemprop="keywords" content="vyos,PBR,network_shunt," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="vyos,PBR,network_shunt," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to make Destination Base Routing With Vyos"/>
 <meta name="twitter:description" content="How to make Destination Base Routing with Vyos I have 2 network interfaces. one for user access inboard network,another for user to access network aboard. How to make it work with vyos?
 Make a network group #Define a netwrok-group set firewall group network-group china-ip-ranges #Define lan network group set firewall group network-group lan-net-group network &#39;192.168.11.0/24&#39; set policy set policy route network-shunt rule 20 destination group network-group &#39;china-ip-ranges&#39; set policy route network-shunt rule 20 set table &#39;20&#39; set policy route network-shunt rule 20 source group network-group &#39;lan-net-group&#39; set policy route network-shunt rule 30 set table &#39;30&#39; set policy route network-shunt rule 30 source group network-group &#39;lan-net-group&#39; Download and set the network-group with ipset  Download and make a list for network-group loading when booting."/>
@@ -395,48 +391,48 @@ if (!doNotTrack) {
       <h1 id="how-to-make-destination-base-routing-with-vyos">How to make Destination Base Routing with Vyos</h1>
 <p>I have 2 network interfaces. one for user access inboard network,another for user to access network aboard. How to make it work with vyos?</p>
 <h2 id="make-a-network-group">Make a network group</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#Define a netwrok-group</span>
-<span style="color:#366">set</span> firewall group network-group china-ip-ranges
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#Define a netwrok-group</span>
+<span class="nb">set</span> firewall group network-group china-ip-ranges
 
-<span style="color:#09f;font-style:italic">#Define lan network group</span>
-<span style="color:#366">set</span> firewall group network-group lan-net-group network <span style="color:#c30">&#39;192.168.11.0/24&#39;</span>
+<span class="c1">#Define lan network group</span>
+<span class="nb">set</span> firewall group network-group lan-net-group network <span class="s1">&#39;192.168.11.0/24&#39;</span>
 </code></pre></div><h2 id="set-policy">set policy</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> policy route network-shunt rule <span style="color:#f60">20</span> destination group network-group <span style="color:#c30">&#39;china-ip-ranges&#39;</span>
-<span style="color:#366">set</span> policy route network-shunt rule <span style="color:#f60">20</span> <span style="color:#366">set</span> table <span style="color:#c30">&#39;20&#39;</span>
-<span style="color:#366">set</span> policy route network-shunt rule <span style="color:#f60">20</span> <span style="color:#366">source</span> group network-group <span style="color:#c30">&#39;lan-net-group&#39;</span>
-<span style="color:#366">set</span> policy route network-shunt rule <span style="color:#f60">30</span> <span style="color:#366">set</span> table <span style="color:#c30">&#39;30&#39;</span>
-<span style="color:#366">set</span> policy route network-shunt rule <span style="color:#f60">30</span> <span style="color:#366">source</span> group network-group <span style="color:#c30">&#39;lan-net-group&#39;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> policy route network-shunt rule <span class="m">20</span> destination group network-group <span class="s1">&#39;china-ip-ranges&#39;</span>
+<span class="nb">set</span> policy route network-shunt rule <span class="m">20</span> <span class="nb">set</span> table <span class="s1">&#39;20&#39;</span>
+<span class="nb">set</span> policy route network-shunt rule <span class="m">20</span> <span class="nb">source</span> group network-group <span class="s1">&#39;lan-net-group&#39;</span>
+<span class="nb">set</span> policy route network-shunt rule <span class="m">30</span> <span class="nb">set</span> table <span class="s1">&#39;30&#39;</span>
+<span class="nb">set</span> policy route network-shunt rule <span class="m">30</span> <span class="nb">source</span> group network-group <span class="s1">&#39;lan-net-group&#39;</span>
 
 </code></pre></div><h2 id="download-and-set-the-network-group-with-ipset">Download and set the network-group with ipset</h2>
 <ul>
 <li>Download and make a list for network-group loading when booting.</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#create the update shell script</span>
-cat  &gt; /config/scripts/generate_china_ip_address.sh <span style="color:#c30">&lt;&lt;EOF
-</span><span style="color:#c30">#!/bin/sh
-</span><span style="color:#c30">wget -c http://ftp.apnic.net/stats/apnic/delegated-apnic-latest -O - | cat | awk -F &#39;|&#39; &#39;/CN/&amp;&amp;/ipv4/ {print $4 &#34;/&#34; 32-log($5)/log(2)}&#39; | cat &gt; /config/chinaiprange.txt
-</span><span style="color:#c30">EOF</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#create the update shell script</span>
+cat  &gt; /config/scripts/generate_china_ip_address.sh <span class="s">&lt;&lt;EOF
+</span><span class="s">#!/bin/sh
+</span><span class="s">wget -c http://ftp.apnic.net/stats/apnic/delegated-apnic-latest -O - | cat | awk -F &#39;|&#39; &#39;/CN/&amp;&amp;/ipv4/ {print $4 &#34;/&#34; 32-log($5)/log(2)}&#39; | cat &gt; /config/chinaiprange.txt
+</span><span class="s">EOF</span>
 
-<span style="color:#09f;font-style:italic"># make the script an run</span>
+<span class="c1"># make the script an run</span>
 chmod +x /config/scripts/generate_china_ip_address.sh 
 
-<span style="color:#09f;font-style:italic">#Run the script</span>
+<span class="c1">#Run the script</span>
 /config/scripts/generate_china_ip_address.sh 
 
 </code></pre></div><ul>
 <li>Create boot loading script</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat &gt;&gt; /config/scripts/vyos-postconfig-bootup.script <span style="color:#c30">&lt;&lt; EOF
-</span><span style="color:#c30">for l in `cat /config/chinaiprange.txt`; do sudo ipset add china-ip-ranges $l;done
-</span><span style="color:#c30">EOF</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cat &gt;&gt; /config/scripts/vyos-postconfig-bootup.script <span class="s">&lt;&lt; EOF
+</span><span class="s">for l in `cat /config/chinaiprange.txt`; do sudo ipset add china-ip-ranges $l;done
+</span><span class="s">EOF</span>
 
 </code></pre></div><h2 id="set-protocol">Set protocol</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> protocols static interface-route 0.0.0.0/0 next-hop-interface pppoe0
-<span style="color:#366">set</span> protocols static interface-route 172.16.131.0/24 next-hop-interface wg01
-<span style="color:#366">set</span> protocols static table <span style="color:#f60">20</span> interface-route 0.0.0.0/0 next-hop-interface pppoe0
-<span style="color:#366">set</span> protocols static table <span style="color:#f60">30</span> route 0.0.0.0/0 next-hop 172.16.131.1
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> protocols static interface-route 0.0.0.0/0 next-hop-interface pppoe0
+<span class="nb">set</span> protocols static interface-route 172.16.131.0/24 next-hop-interface wg01
+<span class="nb">set</span> protocols static table <span class="m">20</span> interface-route 0.0.0.0/0 next-hop-interface pppoe0
+<span class="nb">set</span> protocols static table <span class="m">30</span> route 0.0.0.0/0 next-hop 172.16.131.1
 </code></pre></div><h2 id="apply-pbr-policy-on-lan-interface">Apply PBR Policy on lan interface</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">set</span> interfaces bridge br0 policy route network-shunt
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> interfaces bridge br0 policy route network-shunt
 </code></pre></div>
     </div>
 
@@ -450,7 +446,7 @@ chmod +x /config/scripts/generate_china_ip_address.sh
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2020-09-03
+      2020-09-04
       
     </span>
   </p>
@@ -615,7 +611,7 @@ chmod +x /config/scripts/generate_china_ip_address.sh
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

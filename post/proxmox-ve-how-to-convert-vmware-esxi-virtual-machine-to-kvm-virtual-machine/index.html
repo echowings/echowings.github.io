@@ -36,7 +36,7 @@ Convert windows VM   Remove VWware tools Uninstall vmware tools and reboot vm.
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/proxmox-ve-how-to-convert-vmware-esxi-virtual-machine-to-kvm-virtual-machine/" />
@@ -57,7 +57,7 @@ Convert windows VM   Remove VWware tools Uninstall vmware tools and reboot vm.
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -70,23 +70,19 @@ Convert windows VM   Remove VWware tools Uninstall vmware tools and reboot vm.
   Download Mergeide, unzip it and run it,then reboot your vm. or you can save follow code as mergeide.reg.
   Windows Registry Editor Version 5.00 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\primary_ide_channel] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\secondary_ide_channel] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\*pnp0600] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\*azt0502] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\gendisk] &#34;ClassGUID&#34;=&#34;{4D36E967-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;disk&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#cc_0101] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_0e11&amp;dev_ae33] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1039&amp;dev_0601] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1039&amp;dev_5513] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1042&amp;dev_1000] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_105a&amp;dev_4d33] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0640] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0646] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0646&amp;REV_05] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0646&amp;REV_07] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0648] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0649] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1097&amp;dev_0038] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10ad&amp;dev_0001] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10ad&amp;dev_0150] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;dev_5215] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;dev_5219] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;dev_5229] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1106&amp;dev_0571] &#34;Service&#34;=&#34;pciide&#34; &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_1222] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_1230] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_2411] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_2421] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_7010] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_7111] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_7199] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; ;Add driver for Atapi (requires Atapi." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-how-to-convert-vmware-esxi-virtual-machine-to-kvm-virtual-machine/" />
-<meta property="article:published_time" content="2019-04-26T22:12:14+08:00" />
-<meta property="article:modified_time" content="2019-04-26T22:12:14+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/proxmox-ve-how-to-convert-vmware-esxi-virtual-machine-to-kvm-virtual-machine/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-04-26T22:12:14&#43;08:00" />
+<meta property="article:modified_time" content="2019-11-01T16:29:16&#43;08:00" />
+
 <meta itemprop="name" content="Proxmox VE - How to Convert Vmware Esxi VM to proxmox-VE VM">
 <meta itemprop="description" content="How to convert vmware esix VM to proxmox-VE VM V2V Convert vmware virtual machines to kvm virtual machine is easy.
 Convert windows VM   Remove VWware tools Uninstall vmware tools and reboot vm.
   Switch disk mode to IDE
   Download Mergeide, unzip it and run it,then reboot your vm. or you can save follow code as mergeide.reg.
-  Windows Registry Editor Version 5.00 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\primary_ide_channel] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\secondary_ide_channel] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\*pnp0600] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\*azt0502] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\gendisk] &#34;ClassGUID&#34;=&#34;{4D36E967-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;disk&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#cc_0101] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_0e11&amp;dev_ae33] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1039&amp;dev_0601] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1039&amp;dev_5513] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1042&amp;dev_1000] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_105a&amp;dev_4d33] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0640] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0646] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0646&amp;REV_05] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0646&amp;REV_07] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0648] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0649] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1097&amp;dev_0038] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10ad&amp;dev_0001] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10ad&amp;dev_0150] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;dev_5215] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;dev_5219] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;dev_5229] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1106&amp;dev_0571] &#34;Service&#34;=&#34;pciide&#34; &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_1222] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_1230] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_2411] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_2421] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_7010] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_7111] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_7199] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; ;Add driver for Atapi (requires Atapi.">
-<meta itemprop="datePublished" content="2019-04-26T22:12:14+08:00" />
-<meta itemprop="dateModified" content="2019-04-26T22:12:14+08:00" />
+  Windows Registry Editor Version 5.00 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\primary_ide_channel] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\secondary_ide_channel] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\*pnp0600] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\*azt0502] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;atapi&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\gendisk] &#34;ClassGUID&#34;=&#34;{4D36E967-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;disk&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#cc_0101] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_0e11&amp;dev_ae33] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1039&amp;dev_0601] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1039&amp;dev_5513] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1042&amp;dev_1000] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_105a&amp;dev_4d33] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0640] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0646] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0646&amp;REV_05] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0646&amp;REV_07] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0648] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;dev_0649] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1097&amp;dev_0038] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10ad&amp;dev_0001] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10ad&amp;dev_0150] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;dev_5215] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;dev_5219] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;dev_5229] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;pciide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1106&amp;dev_0571] &#34;Service&#34;=&#34;pciide&#34; &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_1222] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_1230] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_2411] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_2421] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_7010] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_7111] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;dev_7199] &#34;ClassGUID&#34;=&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34; &#34;Service&#34;=&#34;intelide&#34; ;Add driver for Atapi (requires Atapi."><meta itemprop="datePublished" content="2019-04-26T22:12:14&#43;08:00" />
+<meta itemprop="dateModified" content="2019-11-01T16:29:16&#43;08:00" />
 <meta itemprop="wordCount" content="389">
-
-
-
-<meta itemprop="keywords" content="pve," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="pve," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Proxmox VE - How to Convert Vmware Esxi VM to proxmox-VE VM"/>
 <meta name="twitter:description" content="How to convert vmware esix VM to proxmox-VE VM V2V Convert vmware virtual machines to kvm virtual machine is easy.
 Convert windows VM   Remove VWware tools Uninstall vmware tools and reboot vm.
@@ -422,168 +418,168 @@ Uninstall vmware tools and reboot vm.</p>
 <p>Download <a href="https://pve.proxmox.com/wiki/File:Mergeide.zip">Mergeide</a>, unzip it and run it,then reboot your vm. or you can save follow code as <code>mergeide.reg</code>.</p>
 </li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Windows Registry Editor Version 5.00
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">Windows Registry Editor Version 5.00
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>rimary_ide_channel<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;atapi&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>rimary_ide_channel<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;atapi&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\s</span>econdary_ide_channel<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;atapi&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\s</span>econdary_ide_channel<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;atapi&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\*</span>pnp0600<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;atapi&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\*</span>pnp0600<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;atapi&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\*</span>azt0502<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;atapi&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\*</span>azt0502<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;atapi&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\g</span>endisk<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E967-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;disk&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\g</span>endisk<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E967-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;disk&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#cc_0101<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#cc_0101<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_0e11&amp;dev_ae33<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_0e11<span class="p">&amp;</span>dev_ae33<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_1039&amp;dev_0601<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_1039<span class="p">&amp;</span>dev_0601<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_1039&amp;dev_5513<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_1039<span class="p">&amp;</span>dev_5513<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_1042&amp;dev_1000<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_1042<span class="p">&amp;</span>dev_1000<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_105a&amp;dev_4d33<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_105a<span class="p">&amp;</span>dev_4d33<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_1095&amp;dev_0640<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_1095<span class="p">&amp;</span>dev_0640<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_1095&amp;dev_0646<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_1095<span class="p">&amp;</span>dev_0646<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_1095&amp;dev_0646&amp;REV_05<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_1095<span class="p">&amp;</span>dev_0646<span class="p">&amp;</span>REV_05<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_1095&amp;dev_0646&amp;REV_07<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_1095<span class="p">&amp;</span>dev_0646<span class="p">&amp;</span>REV_07<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_1095&amp;dev_0648<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_1095<span class="p">&amp;</span>dev_0648<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_1095&amp;dev_0649<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_1095<span class="p">&amp;</span>dev_0649<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_1097&amp;dev_0038<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_1097<span class="p">&amp;</span>dev_0038<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_10ad&amp;dev_0001<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_10ad<span class="p">&amp;</span>dev_0001<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_10ad&amp;dev_0150<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_10ad<span class="p">&amp;</span>dev_0150<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_10b9&amp;dev_5215<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_10b9<span class="p">&amp;</span>dev_5215<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_10b9&amp;dev_5219<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_10b9<span class="p">&amp;</span>dev_5219<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_10b9&amp;dev_5229<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_10b9<span class="p">&amp;</span>dev_5229<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_1106&amp;dev_0571<span style="color:#555">]</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;pciide&#34;</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_1106<span class="p">&amp;</span>dev_0571<span class="o">]</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;pciide&#34;</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_8086&amp;dev_1222<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;intelide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_8086<span class="p">&amp;</span>dev_1222<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;intelide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_8086&amp;dev_1230<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;intelide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_8086<span class="p">&amp;</span>dev_1230<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;intelide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_8086&amp;dev_2411<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;intelide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_8086<span class="p">&amp;</span>dev_2411<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;intelide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_8086&amp;dev_2421<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;intelide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_8086<span class="p">&amp;</span>dev_2421<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;intelide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_8086&amp;dev_7010<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;intelide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_8086<span class="p">&amp;</span>dev_7010<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;intelide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_8086&amp;dev_7111<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;intelide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_8086<span class="p">&amp;</span>dev_7111<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;intelide&#34;</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\C</span>ontrol<span style="color:#c30;font-weight:bold">\C</span>riticalDeviceDatabase<span style="color:#c30;font-weight:bold">\p</span>ci#ven_8086&amp;dev_7199<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ClassGUID&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
-<span style="color:#c30">&#34;Service&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;intelide&#34;</span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\C</span>riticalDeviceDatabase<span class="se">\p</span>ci#ven_8086<span class="p">&amp;</span>dev_7199<span class="o">]</span>
+<span class="s2">&#34;ClassGUID&#34;</span><span class="o">=</span><span class="s2">&#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&#34;</span>
+<span class="s2">&#34;Service&#34;</span><span class="o">=</span><span class="s2">&#34;intelide&#34;</span>
 
-;Add driver <span style="color:#069;font-weight:bold">for</span> Atapi <span style="color:#555">(</span>requires Atapi.sys in Drivers directory<span style="color:#555">)</span>
+<span class="p">;</span>Add driver <span class="k">for</span> Atapi <span class="o">(</span>requires Atapi.sys in Drivers directory<span class="o">)</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\S</span>ervices<span style="color:#c30;font-weight:bold">\a</span>tapi<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ErrorControl&#34;</span><span style="color:#555">=</span>dword:00000001
-<span style="color:#c30">&#34;Group&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;SCSI miniport&#34;</span>
-<span style="color:#c30">&#34;Start&#34;</span><span style="color:#555">=</span>dword:00000000
-<span style="color:#c30">&#34;Tag&#34;</span><span style="color:#555">=</span>dword:00000019
-<span style="color:#c30">&#34;Type&#34;</span><span style="color:#555">=</span>dword:00000001
-<span style="color:#c30">&#34;DisplayName&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;Standard IDE/ESDI Hard Disk Controller&#34;</span>
-<span style="color:#c30">&#34;ImagePath&#34;</span><span style="color:#555">=</span>hex<span style="color:#555">(</span>2<span style="color:#555">)</span>:53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,44,00,<span style="color:#c30;font-weight:bold">\ </span>
-  52,00,49,00,56,00,45,00,52,00,53,00,5c,00,61,00,74,00,61,00,70,00,69,00,2e,<span style="color:#c30;font-weight:bold">\ </span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\S</span>ervices<span class="se">\a</span>tapi<span class="o">]</span>
+<span class="s2">&#34;ErrorControl&#34;</span><span class="o">=</span>dword:00000001
+<span class="s2">&#34;Group&#34;</span><span class="o">=</span><span class="s2">&#34;SCSI miniport&#34;</span>
+<span class="s2">&#34;Start&#34;</span><span class="o">=</span>dword:00000000
+<span class="s2">&#34;Tag&#34;</span><span class="o">=</span>dword:00000019
+<span class="s2">&#34;Type&#34;</span><span class="o">=</span>dword:00000001
+<span class="s2">&#34;DisplayName&#34;</span><span class="o">=</span><span class="s2">&#34;Standard IDE/ESDI Hard Disk Controller&#34;</span>
+<span class="s2">&#34;ImagePath&#34;</span><span class="o">=</span>hex<span class="o">(</span>2<span class="o">)</span>:53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,44,00,<span class="se">\ </span>
+  52,00,49,00,56,00,45,00,52,00,53,00,5c,00,61,00,74,00,61,00,70,00,69,00,2e,<span class="se">\ </span>
   00,73,00,79,00,73,00,00,00
 
-;Add driver <span style="color:#069;font-weight:bold">for</span> intelide <span style="color:#555">(</span>requires intelide.sys in drivers directory<span style="color:#555">)</span>
+<span class="p">;</span>Add driver <span class="k">for</span> intelide <span class="o">(</span>requires intelide.sys in drivers directory<span class="o">)</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\S</span>ervices<span style="color:#c30;font-weight:bold">\I</span>ntelIde<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ErrorControl&#34;</span><span style="color:#555">=</span>dword:00000001
-<span style="color:#c30">&#34;Group&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;System Bus Extender&#34;</span>
-<span style="color:#c30">&#34;Start&#34;</span><span style="color:#555">=</span>dword:00000000
-<span style="color:#c30">&#34;Tag&#34;</span><span style="color:#555">=</span>dword:00000004
-<span style="color:#c30">&#34;Type&#34;</span><span style="color:#555">=</span>dword:00000001
-<span style="color:#c30">&#34;ImagePath&#34;</span><span style="color:#555">=</span>hex<span style="color:#555">(</span>2<span style="color:#555">)</span>:53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,44,00,<span style="color:#c30;font-weight:bold">\ </span>
-  52,00,49,00,56,00,45,00,52,00,53,00,5c,00,69,00,6e,00,74,00,65,00,6c,00,69,<span style="color:#c30;font-weight:bold">\ </span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\S</span>ervices<span class="se">\I</span>ntelIde<span class="o">]</span>
+<span class="s2">&#34;ErrorControl&#34;</span><span class="o">=</span>dword:00000001
+<span class="s2">&#34;Group&#34;</span><span class="o">=</span><span class="s2">&#34;System Bus Extender&#34;</span>
+<span class="s2">&#34;Start&#34;</span><span class="o">=</span>dword:00000000
+<span class="s2">&#34;Tag&#34;</span><span class="o">=</span>dword:00000004
+<span class="s2">&#34;Type&#34;</span><span class="o">=</span>dword:00000001
+<span class="s2">&#34;ImagePath&#34;</span><span class="o">=</span>hex<span class="o">(</span>2<span class="o">)</span>:53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,44,00,<span class="se">\ </span>
+  52,00,49,00,56,00,45,00,52,00,53,00,5c,00,69,00,6e,00,74,00,65,00,6c,00,69,<span class="se">\ </span>
   00,64,00,65,00,2e,00,73,00,79,00,73,00,00,00
 
 
-;Add driver <span style="color:#069;font-weight:bold">for</span> Pciide <span style="color:#555">(</span>requires Pciide.sys and Pciidex.sys in Drivers directory<span style="color:#555">)</span>
+<span class="p">;</span>Add driver <span class="k">for</span> Pciide <span class="o">(</span>requires Pciide.sys and Pciidex.sys in Drivers directory<span class="o">)</span>
 
-<span style="color:#555">[</span>HKEY_LOCAL_MACHINE<span style="color:#c30;font-weight:bold">\S</span>YSTEM<span style="color:#c30;font-weight:bold">\C</span>urrentControlSet<span style="color:#c30;font-weight:bold">\S</span>ervices<span style="color:#c30;font-weight:bold">\P</span>CIIde<span style="color:#555">]</span>
-<span style="color:#c30">&#34;ErrorControl&#34;</span><span style="color:#555">=</span>dword:00000001
-<span style="color:#c30">&#34;Group&#34;</span><span style="color:#555">=</span><span style="color:#c30">&#34;System Bus Extender&#34;</span>
-<span style="color:#c30">&#34;Start&#34;</span><span style="color:#555">=</span>dword:00000000
-<span style="color:#c30">&#34;Tag&#34;</span><span style="color:#555">=</span>dword:00000003
-<span style="color:#c30">&#34;Type&#34;</span><span style="color:#555">=</span>dword:00000001
-<span style="color:#c30">&#34;ImagePath&#34;</span><span style="color:#555">=</span>hex<span style="color:#555">(</span>2<span style="color:#555">)</span>:53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,44,00,<span style="color:#c30;font-weight:bold">\ </span>
-  52,00,49,00,56,00,45,00,52,00,53,00,5c,00,70,00,63,00,69,00,69,00,64,00,65,<span style="color:#c30;font-weight:bold">\ </span>
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\S</span>ervices<span class="se">\P</span>CIIde<span class="o">]</span>
+<span class="s2">&#34;ErrorControl&#34;</span><span class="o">=</span>dword:00000001
+<span class="s2">&#34;Group&#34;</span><span class="o">=</span><span class="s2">&#34;System Bus Extender&#34;</span>
+<span class="s2">&#34;Start&#34;</span><span class="o">=</span>dword:00000000
+<span class="s2">&#34;Tag&#34;</span><span class="o">=</span>dword:00000003
+<span class="s2">&#34;Type&#34;</span><span class="o">=</span>dword:00000001
+<span class="s2">&#34;ImagePath&#34;</span><span class="o">=</span>hex<span class="o">(</span>2<span class="o">)</span>:53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,44,00,<span class="se">\ </span>
+  52,00,49,00,56,00,45,00,52,00,53,00,5c,00,70,00,63,00,69,00,69,00,64,00,65,<span class="se">\ </span>
   00,2e,00,73,00,79,00,73,00,00,00
 
   
@@ -591,14 +587,14 @@ Uninstall vmware tools and reboot vm.</p>
 <li>Copy *-flat.vmdk file to proxmxo ve host.</li>
 </ul>
 <p>Shutdown your vm.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">
 scp root@xx.xx.xx.xx:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk
 
 
 </code></pre></div><ul>
 <li>Convert vmdk file to qcow2</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">          
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">          
 qemu-img convert -f raw source-vm-flate.vmdk -O qcow2 source-vm-flate.qcow2
       
 
@@ -630,12 +626,12 @@ qemu-img convert -f raw source-vm-flate.vmdk -O qcow2 source-vm-flate.qcow2
 <li>Copy *-flat.vmdk file to proxmxo ve host.</li>
 </ul>
 <p>Shutdown your vm.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scp root@xx.xx.xx.xx:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">scp root@xx.xx.xx.xx:/vmfs/volumes/datastore/source-vm/source-vm-flat.vmdk /var/lib/vz/images/soure-vm-flate.vmdk
   
 </code></pre></div><ul>
 <li>Convert vmdk file to qcow2</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">  
 qemu-img convert -f raw source-vm-flate.vmdk -O qcow2 source-vm-flate.qcow2
   
 </code></pre></div><ul>
@@ -661,7 +657,7 @@ qemu-img convert -f raw source-vm-flate.vmdk -O qcow2 source-vm-flate.qcow2
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2019-04-26
+      2019-11-01
       
     </span>
   </p>
@@ -824,7 +820,7 @@ qemu-img convert -f raw source-vm-flate.vmdk -O qcow2 source-vm-flate.qcow2
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 

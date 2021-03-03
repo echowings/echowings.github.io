@@ -36,7 +36,7 @@ sed -i.bak &amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34; 
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="https://blog.stevedong.com/post/install-proxmox-ve-6.x/" />
@@ -57,7 +57,7 @@ sed -i.bak &amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34; 
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.f1e506a781bf25d33ffc18aa6b4e972a965c58049d27d4f92b7db2e9bf28e4bf.css" integrity="sha256-8eUGp4G/JdM//Biqa06XKpZcWASdJ9T5K32y6b8o5L8=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.9c3f74785689e1d6a69411345ec9043a190655c87d7a44093b74089785613cae.css" integrity="sha256-nD90eFaJ4damlBE0XskEOhkGVch9ekQJO3QIl4VhPK4=" media="screen" crossorigin="anonymous">
 
 
 
@@ -70,23 +70,19 @@ http://mirrors.ustc.edu.cn/proxmox/iso/
 Fixe Perl error waring export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable subscription Warning  Disable subscription warning via script  below 6.3
 sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  Manually disable subscription warning  cd /usr/share/javascript/proxmox-widget-toolkit cp proxmoxlib." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.stevedong.com/post/install-proxmox-ve-6.x/" />
-<meta property="article:published_time" content="2019-07-17T16:07:55+08:00" />
-<meta property="article:modified_time" content="2019-07-17T16:07:55+08:00" />
+<meta property="og:url" content="https://blog.stevedong.com/post/install-proxmox-ve-6.x/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-07-17T16:07:55&#43;08:00" />
+<meta property="article:modified_time" content="2021-01-29T10:56:29&#43;08:00" />
+
 <meta itemprop="name" content="Install Proxmox VE  6.x">
 <meta itemprop="description" content="Install Proxmox VE 6.x After installed Proxmox VE 6.x, What we gone do ?
 Download Proxmox VE 6.x iSO file in mirrors.ustc.edu.cn Download iso images from here:
 http://mirrors.ustc.edu.cn/proxmox/iso/
 Fixe Perl error waring export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF Disable subscription Warning  Disable subscription warning via script  below 6.3
-sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  Manually disable subscription warning  cd /usr/share/javascript/proxmox-widget-toolkit cp proxmoxlib.">
-<meta itemprop="datePublished" content="2019-07-17T16:07:55+08:00" />
-<meta itemprop="dateModified" content="2019-07-17T16:07:55+08:00" />
+sed -i.bak &#34;s/data.status !== &#39;Active&#39;/false/g&#34; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &amp;&amp; systemctl restart pveproxy.service  Manually disable subscription warning  cd /usr/share/javascript/proxmox-widget-toolkit cp proxmoxlib."><meta itemprop="datePublished" content="2019-07-17T16:07:55&#43;08:00" />
+<meta itemprop="dateModified" content="2021-01-29T10:56:29&#43;08:00" />
 <meta itemprop="wordCount" content="410">
-
-
-
-<meta itemprop="keywords" content="pve," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="pve," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Install Proxmox VE  6.x"/>
 <meta name="twitter:description" content="Install Proxmox VE 6.x After installed Proxmox VE 6.x, What we gone do ?
 Download Proxmox VE 6.x iSO file in mirrors.ustc.edu.cn Download iso images from here:
@@ -414,128 +410,128 @@ if (!doNotTrack) {
 <p>Download iso images from here:</p>
 <p><a href="http://mirrors.ustc.edu.cn/proxmox/iso/">http://mirrors.ustc.edu.cn/proxmox/iso/</a></p>
 <h2 id="fixe-perl-error-waring">Fixe Perl error waring</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">export</span> <span style="color:#033">LANGUAGE</span><span style="color:#555">=</span>en_US.UTF-8
-<span style="color:#366">export</span> <span style="color:#033">LANG</span><span style="color:#555">=</span>en_US.UTF-8
-<span style="color:#366">export</span> <span style="color:#033">LC_ALL</span><span style="color:#555">=</span>en_US.UTF-8
-<span style="color:#09f;font-style:italic">#locale-gen en_US.UTF-8</span>
-cat &gt;&gt; /etc/environment <span style="color:#c30">&lt;&lt;EOF
-</span><span style="color:#c30">LC_ALL=en_US.UTF-8
-</span><span style="color:#c30">LANG=en_US.UTF-8
-</span><span style="color:#c30">EOF</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">LANGUAGE</span><span class="o">=</span>en_US.UTF-8
+<span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+<span class="nb">export</span> <span class="nv">LC_ALL</span><span class="o">=</span>en_US.UTF-8
+<span class="c1">#locale-gen en_US.UTF-8</span>
+cat &gt;&gt; /etc/environment <span class="s">&lt;&lt;EOF
+</span><span class="s">LC_ALL=en_US.UTF-8
+</span><span class="s">LANG=en_US.UTF-8
+</span><span class="s">EOF</span>
 
 </code></pre></div><h2 id="disable-subscription-warning">Disable subscription Warning</h2>
 <ul>
 <li>Disable subscription warning via script</li>
 </ul>
 <p>below 6.3</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i.bak <span style="color:#c30">&#34;s/data.status !== &#39;Active&#39;/false/g&#34;</span> /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js <span style="color:#555">&amp;&amp;</span> systemctl restart pveproxy.service
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sed -i.bak <span class="s2">&#34;s/data.status !== &#39;Active&#39;/false/g&#34;</span> /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js <span class="o">&amp;&amp;</span> systemctl restart pveproxy.service
 </code></pre></div><ul>
 <li>Manually disable subscription warning</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> /usr/share/javascript/proxmox-widget-toolkit
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /usr/share/javascript/proxmox-widget-toolkit
 cp proxmoxlib.js proxmoxlib.js.bak
 nano proxmoxlib.js
 
-<span style="color:#09f;font-style:italic"># change the value as show below</span>
-<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span>data.status !<span style="color:#555">==</span> <span style="color:#c30">&#39;Active&#39;</span><span style="color:#555">)</span> <span style="color:#555">{</span>
-<span style="color:#09f;font-style:italic">#to</span>
-<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span><span style="color:#366">false</span><span style="color:#555">)</span> <span style="color:#555">{</span>
+<span class="c1"># change the value as show below</span>
+<span class="k">if</span> <span class="o">(</span>data.status !<span class="o">==</span> <span class="s1">&#39;Active&#39;</span><span class="o">)</span> <span class="o">{</span>
+<span class="c1">#to</span>
+<span class="k">if</span> <span class="o">(</span><span class="nb">false</span><span class="o">)</span> <span class="o">{</span>
 
-<span style="color:#09f;font-style:italic">#restart pveproxy.service</span>
+<span class="c1">#restart pveproxy.service</span>
 systemctl restart pveproxy.service
 </code></pre></div><p>above 6.3</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -Ezi.bak <span style="color:#c30">&#34;s/(Ext.Msg.show\(\{\s+title: gettext\(&#39;No valid sub)/void\(\{ \/\/\1/g&#34;</span> /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js <span style="color:#555">&amp;&amp;</span> systemctl restart pveproxy.service
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sed -Ezi.bak <span class="s2">&#34;s/(Ext.Msg.show\(\{\s+title: gettext\(&#39;No valid sub)/void\(\{ \/\/\1/g&#34;</span> /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js <span class="o">&amp;&amp;</span> systemctl restart pveproxy.service
 </code></pre></div><h3 id="manual-setup">manual setup</h3>
 <p>Manual Steps
 Here are alternative step by step instructions so you can understand what the above command is doing:</p>
 <ol>
 <li>Change to working directory</li>
 </ol>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> /usr/share/javascript/proxmox-widget-toolkit
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /usr/share/javascript/proxmox-widget-toolkit
 </code></pre></div><ol start="2">
 <li>Make a backup</li>
 </ol>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp proxmoxlib.js proxmoxlib.js.bak
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cp proxmoxlib.js proxmoxlib.js.bak
 </code></pre></div><ol start="3">
 <li>Edit the file</li>
 </ol>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nano proxmoxlib.js
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">nano proxmoxlib.js
 </code></pre></div><ol start="4">
 <li>Locate the following code
 (Use ctrl+w in nano and search for “No valid subscription”)</li>
 </ol>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">Ext.Msg.show({
-  title<span style="color:#555">:</span> gettext(<span style="color:#c30">&#39;No valid subscription&#39;</span>),
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">Ext</span><span class="p">.</span><span class="nx">Msg</span><span class="p">.</span><span class="nx">show</span><span class="p">({</span>
+  <span class="nx">title</span><span class="o">:</span> <span class="nx">gettext</span><span class="p">(</span><span class="s1">&#39;No valid subscription&#39;</span><span class="p">),</span>
 </code></pre></div><ol start="5">
 <li>Replace “Ext.Msg.show” with “void”</li>
 </ol>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#069;font-weight:bold">void</span>({ <span style="color:#09f;font-style:italic">//Ext.Msg.show({
-</span><span style="color:#09f;font-style:italic"></span>  title<span style="color:#555">:</span> gettext(<span style="color:#c30">&#39;No valid subscription&#39;</span>),
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">void</span><span class="p">({</span> <span class="c1">//Ext.Msg.show({
+</span><span class="c1"></span>  <span class="nx">title</span><span class="o">:</span> <span class="nx">gettext</span><span class="p">(</span><span class="s1">&#39;No valid subscription&#39;</span><span class="p">),</span>
 </code></pre></div><ol start="6">
 <li>Restart the Proxmox web service (also be sure to clear your browser cache, depending on the browser you may need to open a new tab or restart the browser)</li>
 </ol>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart pveproxy.service
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">systemctl restart pveproxy.service
 </code></pre></div><p>Additional Notes
 You can quickly check if the change has been made:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">grep -n -B <span style="color:#f60">1</span> <span style="color:#c30">&#39;No valid sub&#39;</span> proxmoxlib.js
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">grep -n -B <span class="m">1</span> <span class="s1">&#39;No valid sub&#39;</span> proxmoxlib.js
 </code></pre></div><p>You have three options to revert the changes:</p>
 <ul>
 <li>Manually edit  proxmoxlib.js to to undo the changes you made</li>
 <li>Restore the backup file you created from the proxmox-widget-toolkit directory</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mv proxmoxlib.js.bak proxmoxlib.js
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mv proxmoxlib.js.bak proxmoxlib.js
 </code></pre></div><ul>
 <li>Reinstall the proxmox-widget-toolkit package from the repository</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt-get install --reinstall proxmox-widget-toolkit
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">apt-get install --reinstall proxmox-widget-toolkit
 </code></pre></div><h2 id="chang--apt-sourcelist-to-mirrorsustceducn">Chang  apt sourcelist to mirrors.ustc.edu.cn</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#Backup sources.list</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#Backup sources.list</span>
 mv /etc/apt/sources.list /etc/apt/sources.list.backup
 
 
-<span style="color:#09f;font-style:italic"># Change debian 10 sourcelist to mirrors.ustc.edu.cn</span>
-<span style="color:#09f;font-style:italic"># https://mirrors.ustc.edu.cn/repogen/</span>
+<span class="c1"># Change debian 10 sourcelist to mirrors.ustc.edu.cn</span>
+<span class="c1"># https://mirrors.ustc.edu.cn/repogen/</span>
 
-cat <span style="color:#c30">&lt;&lt; EOF &gt; /etc/apt/sources.list
-</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
-</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
-</span><span style="color:#c30">
-</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
-</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
-</span><span style="color:#c30">
-</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free
-</span><span style="color:#c30">deb-src https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free
-</span><span style="color:#c30">EOF</span>
+cat <span class="s">&lt;&lt; EOF &gt; /etc/apt/sources.list
+</span><span class="s">deb https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
+</span><span class="s">deb-src https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
+</span><span class="s">
+</span><span class="s">deb https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
+</span><span class="s">deb-src https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
+</span><span class="s">
+</span><span class="s">deb https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free
+</span><span class="s">deb-src https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free
+</span><span class="s">EOF</span>
 
-<span style="color:#09f;font-style:italic"># Add pve-no-subscription with mirrors.ustc.edu.cn</span>
-<span style="color:#09f;font-style:italic">#change pve 5.x update source list</span>
-cat <span style="color:#c30">&lt;&lt; EOF &gt;&gt; /etc/apt/sources.list
-</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/proxmox/debian/pve/ buster pve-no-subscription
-</span><span style="color:#c30">EOF</span>
+<span class="c1"># Add pve-no-subscription with mirrors.ustc.edu.cn</span>
+<span class="c1">#change pve 5.x update source list</span>
+cat <span class="s">&lt;&lt; EOF &gt;&gt; /etc/apt/sources.list
+</span><span class="s">deb https://mirrors.ustc.edu.cn/proxmox/debian/pve/ buster pve-no-subscription
+</span><span class="s">EOF</span>
 
-<span style="color:#09f;font-style:italic">##change ceph source list to utsc mirrors</span>
-cat <span style="color:#c30">&lt;&lt; EOF &gt;&gt;  /etc/apt/sources.list
-</span><span style="color:#c30">deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-nautilus/ buster main
-</span><span style="color:#c30">EOF</span>
+<span class="c1">##change ceph source list to utsc mirrors</span>
+cat <span class="s">&lt;&lt; EOF &gt;&gt;  /etc/apt/sources.list
+</span><span class="s">deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-nautilus/ buster main
+</span><span class="s">EOF</span>
 
-<span style="color:#09f;font-style:italic"># Add Key</span>
+<span class="c1"># Add Key</span>
 wget https://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-6.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-6.x.gpg
 
 
-<span style="color:#09f;font-style:italic"># Delete `pve-enterprise.list`</span>
+<span class="c1"># Delete `pve-enterprise.list`</span>
 rm -rf /etc/apt/sources.list.d/pve-enterprise.list
 
-<span style="color:#09f;font-style:italic"># Upgrade pve</span>
-apt update <span style="color:#555">&amp;&amp;</span> apt -y dist-upgrade
-pveupdate <span style="color:#555">&amp;&amp;</span> pveupgrade -y
+<span class="c1"># Upgrade pve</span>
+apt update <span class="o">&amp;&amp;</span> apt -y dist-upgrade
+pveupdate <span class="o">&amp;&amp;</span> pveupgrade -y
 
 
-<span style="color:#09f;font-style:italic"># update grub settings</span>
+<span class="c1"># update grub settings</span>
 update-grub
 
 
 </code></pre></div><h2 id="install-openvswitch">Install openvswitch</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt install -y openvswitch-switch
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">apt install -y openvswitch-switch
 </code></pre></div>
     </div>
 
@@ -549,7 +545,7 @@ update-grub
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2019-07-17
+      2021-01-29
       
     </span>
   </p>
@@ -712,7 +708,7 @@ update-grub
 
       </i>
     </span><span class="author">
-        Steve Dong
+        &copy;Steve Dong 2021
         
       </span></span>
 
