@@ -348,6 +348,74 @@ if (!doNotTrack) {
   <header class="post-header">
     <h1 class="post-title">
       
+      <a class="post-link" href="/post/pve/pbs/how-to-install-pbs-on-debian10/">How to Install Pbs on Debian10</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2021-03-11" class="post-time">
+        2021-03-11
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/pve/"> pve </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to Install PBS on Debian 10 export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF cat &lt;&lt; EOF &gt; /etc/apt/sources.list deb https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free deb https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free EOF apt update &amp;&amp; apt dist-upgrade -y apt install -y net-tools dnsutils vim firmware-linux-nonfree CODENAME=`cat /etc/os-release |grep CODENAME |cut -f 2 -d &#34;=&#34;` echo &#34;deb https://mirrors.
+    </div>
+    <div class="read-more">
+      <a href="/post/pve/pbs/how-to-install-pbs-on-debian10/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/pve/hci/bcache/">Bcache</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2021-03-09" class="post-time">
+        2021-03-09
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to operate becache Recently I just try to add bcache with zfs and ceph. So I just wirte down it. Install bcache-tools Since bcache implement in Linux kernel. So it will default enabled. We just need to install bcache-tools to operate bcache. apt install -y bcache-tools Configure bcache # make a cache disk for bcache .It must be a ssd disk. make-bcache -C /dev/nvme1n1 # make a disk as
+    </div>
+    <div class="read-more">
+      <a href="/post/pve/hci/bcache/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
       <a class="post-link" href="/post/kms/how-to-install-vlmcsd-on-debian/">How to Install Vlmcsd on Debian</a>
     </h1>
     
@@ -372,6 +440,40 @@ if (!doNotTrack) {
     </div>
     <div class="read-more">
       <a href="/post/kms/how-to-install-vlmcsd-on-debian/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/pve/how-to-install-proxmox-ve-6-on-debian-10/">How to Install Proxmox VE 6 on Debian 10</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2021-03-01" class="post-time">
+        2021-03-01
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to Install Proxmox VE 6 on Debian 10 Install debian 10 Modifiy hostname and hosts file export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF cat &lt;&lt; EOF &gt; /etc/apt/sources.list deb https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free deb https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free EOF apt update &amp;&amp; apt dist-upgrade -y apt install -y net-tools dnsutils vim firmware-linux-nonfree #sed -i &#39;s/127.
+    </div>
+    <div class="read-more">
+      <a href="/post/pve/how-to-install-proxmox-ve-6-on-debian-10/" class="read-more-link">Read more</a>
     </div>
     
   </div>
@@ -751,110 +853,6 @@ mkdir rime &amp;&amp; cd rime git clone https://github.com/wongdean/rime-setting
     </div>
     <div class="read-more">
       <a href="/post/proxmoxve/how-to-extend-all-available-disk-to-local-data/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/vyos/how-to-make-destination-policy-base-routing-with-vyos/">How to make Destination Base Routing With Vyos</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2020-09-03" class="post-time">
-        2020-09-03
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/networking/"> networking </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to make Destination Base Routing with Vyos I have 2 network interfaces. one for user access inboard network,another for user to access network aboard. How to make it work with vyos?
-Make a network group #Define a netwrok-group set firewall group network-group china-ip-ranges #Define lan network group set firewall group network-group lan-net-group network &#39;192.168.11.0/24&#39; set policy set policy route network-shunt rule 20 destination group network-group &#39;china-ip-ranges&#39; set policy route network-shunt rule 20 set table &#39;20&#39; set policy route network-shunt rule 20 source group network-group &#39;lan-net-group&#39; set policy route network-shunt rule 30 set table &#39;30&#39; set policy route network-shunt rule 30 source group network-group &#39;lan-net-group&#39; Download and set the network-group with ipset  Download and make a list for network-group loading when booting.
-    </div>
-    <div class="read-more">
-      <a href="/post/vyos/how-to-make-destination-policy-base-routing-with-vyos/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/vyos/how-to-config-ddns-for-vyos-with-dns.he.net/">How to Config Ddns for Vyos With Dns.he.net</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2020-08-05" class="post-time">
-        2020-08-05
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/networking/"> networking </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to config DDNS for vyos with dns.he.net Register A Recored  Register a domian host.mydomain.com on your https://dns.he.net Generate a key 64LGiLiuoiuoiuoi  Run command to setup the ddns service configure set service dns dynamic interface pppoe0 service dyndns host-name &#39;host.mydomain.com&#39; set service dns dynamic interface pppoe0 service dyndns login &#39;host.mydomain.com&#39; set service dns dynamic interface pppoe0 service dyndns password &#39;64LGiLiuoiuoiuoi&#39; set service dns dynamic interface pppoe0 service dyndns server &#39;dyn.
-    </div>
-    <div class="read-more">
-      <a href="/post/vyos/how-to-config-ddns-for-vyos-with-dns.he.net/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/vyos/how-to-build-l2tp-over-ipsec-vpn-with-vyos/">How to Build L2tp Over Ipsec VPN With Vyos</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2020-08-05" class="post-time">
-        2020-08-05
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/networking/"> networking </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to build L2tp over ipsec vpn with vyos Today, I will show you how to build a l2tp over ipsec vpn with adsl wan address.
-Setup vpn on vyos  Generate a preshare key  $ generate wireguard preshared-key uND0O6RYI1O833NL2+qwSrW4htMll1hJAUM2nPQaa8k= With authentication local   configuration VPN     Key Value     WAN interface pppoe0   l2tp vpn network 172.16.100.0/24   PRESHARE KEY uND0O6RYI1O833NL2+qwSrW4htMll1hJAUM2nPQaa8k=   DNS server 01 192.
-    </div>
-    <div class="read-more">
-      <a href="/post/vyos/how-to-build-l2tp-over-ipsec-vpn-with-vyos/" class="read-more-link">Read more</a>
     </div>
     
   </div>

@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy;Steve Dong 2021</copyright>
-    <lastBuildDate>Tue, 02 Mar 2021 12:19:36 +0800</lastBuildDate><atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Mar 2021 16:58:45 +0800</lastBuildDate><atom:link href="https://blog.stevedong.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Install Pbs on Debian10</title>
+      <link>https://blog.stevedong.com/post/pve/pbs/how-to-install-pbs-on-debian10/</link>
+      <pubDate>Thu, 11 Mar 2021 16:58:45 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/pve/pbs/how-to-install-pbs-on-debian10/</guid>
+      <description>How to Install PBS on Debian 10 export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF cat &amp;lt;&amp;lt; EOF &amp;gt; /etc/apt/sources.list deb https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free deb https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free EOF apt update &amp;amp;&amp;amp; apt dist-upgrade -y apt install -y net-tools dnsutils vim firmware-linux-nonfree CODENAME=`cat /etc/os-release |grep CODENAME |cut -f 2 -d &amp;#34;=&amp;#34;` echo &amp;#34;deb https://mirrors.</description>
+    </item>
+    
+    <item>
+      <title>Bcache</title>
+      <link>https://blog.stevedong.com/post/pve/hci/bcache/</link>
+      <pubDate>Tue, 09 Mar 2021 16:20:42 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/pve/hci/bcache/</guid>
+      <description>How to operate becache Recently I just try to add bcache with zfs and ceph. So I just wirte down it. Install bcache-tools Since bcache implement in Linux kernel. So it will default enabled. We just need to install bcache-tools to operate bcache. apt install -y bcache-tools Configure bcache # make a cache disk for bcache .It must be a ssd disk. make-bcache -C /dev/nvme1n1 # make a disk as</description>
+    </item>
+    
     <item>
       <title>How to Install Vlmcsd on Debian</title>
       <link>https://blog.stevedong.com/post/kms/how-to-install-vlmcsd-on-debian/</link>
@@ -15,6 +33,15 @@
       
       <guid>https://blog.stevedong.com/post/kms/how-to-install-vlmcsd-on-debian/</guid>
       <description>How to Install VLMCSD on debian VLMCSD vlmcsd-1113-2020-03-28-Hotbird64 Download and install VLMCSD_VERSION=svn113 curl -fsSLO https://github.com/Wind4/vlmcsd/releases/download/$VLMCSD_VERSION/binaries.tar.gz tar -zxvf binaries.tar.gz sudo cp -af ./binaries/Linux/intel/glibc/vlmcsd-x64-glibc /usr/local/bin/ chown root:root /usr/local/bin/vlmcsd-x64-glibc chmod +x /usr/local/bin/vlmcsd-64-glibc sudo bash -c &amp;#39;cat &amp;gt; /lib/systemd/system/vlmcsd.service&amp;#39; &amp;lt;&amp;lt; EOF [Unit] Description=vlmcsd service [Service] ExecStart=/usr/local/bin/vlmcsd-x64-glibc -l /var/log/vlmcsd-64-glibc.log &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 Restart=on-failure RestartSec=42s [Install] WantedBy=multi-user.target EOF #Reload systemctl daemon sudo systemctl daemon-reload #Delete temp directory. sudo rm -rf ./binaries sudo rm -rf ./binaries.tar.gz #Enable</description>
+    </item>
+    
+    <item>
+      <title>How to Install Proxmox VE 6 on Debian 10</title>
+      <link>https://blog.stevedong.com/post/pve/how-to-install-proxmox-ve-6-on-debian-10/</link>
+      <pubDate>Mon, 01 Mar 2021 13:28:01 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/pve/how-to-install-proxmox-ve-6-on-debian-10/</guid>
+      <description>How to Install Proxmox VE 6 on Debian 10 Install debian 10 Modifiy hostname and hosts file export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF cat &amp;lt;&amp;lt; EOF &amp;gt; /etc/apt/sources.list deb https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free deb https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free EOF apt update &amp;amp;&amp;amp; apt dist-upgrade -y apt install -y net-tools dnsutils vim firmware-linux-nonfree #sed -i &amp;#39;s/127.</description>
     </item>
     
     <item>
@@ -470,39 +497,6 @@ It will end nightmare that someone or montoring system tell you that your servic
       <guid>https://blog.stevedong.com/post/proxmox-ve-how-to-install-snmp-service-on-promxox-ve/</guid>
       <description>How to install snmp service on proxmox ve How to setup snmp service to let us to use librenms to moniting our proxmox ve healthy status is very important for us.
 Install snmpd on proxmox ve apt update apt install -y snmpd Configure snmpd.conf  backup original configuration file.  mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.backup  Create a new config file.  cat &amp;gt; /etc/snmp/snmpd.conf &amp;lt;&amp;lt; EOF # this create a SNMPv1/SNMPv2c community named &amp;#34;&amp;#34; # and restricts access to LAN adresses 192.</description>
-    </item>
-    
-    <item>
-      <title>DIY Thin Itx PC</title>
-      <link>https://blog.stevedong.com/post/diy-thin-itx-pc/</link>
-      <pubDate>Sat, 27 Apr 2019 12:25:36 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/diy-thin-itx-pc/</guid>
-      <description>Option 1 :Intel Pentium G4560/8G RAM/ 1TB nvme ssd No. type details quantity UnitPrice Total Price 01 机箱 立人E-T4超薄迷你Thin-ITX立式台式机HTPC电脑空机箱支持VESA背挂 1 ¥90(90.00*</description>
-    </item>
-    
-    <item>
-      <title>Proxmox Ve How to Chang Network of Hosting Without Reboot Proxmox Ve</title>
-      <link>https://blog.stevedong.com/post/proxmox-ve-how-to-chang-network-of-hosting-without-reboot-proxmox-ve/</link>
-      <pubDate>Sat, 27 Apr 2019 11:36:16 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/proxmox-ve-how-to-chang-network-of-hosting-without-reboot-proxmox-ve/</guid>
-      <description>How to change Network settings of proxmox-ve host without rebooting. Eache time when I want to change network settings like change netowrks and I must reboot to apply it. It is really trouble me.
-Solution Proxmox VE is based on debian. After check interface of network with the path /etc/network/
-I found that each time when i change network settings. There will be a named interfaces.new created and it content new network settings wait for apply when i reboot.</description>
-    </item>
-    
-    <item>
-      <title>Proxmox VE - How to Convert Vmware Esxi VM to proxmox-VE VM</title>
-      <link>https://blog.stevedong.com/post/proxmox-ve-how-to-convert-vmware-esxi-virtual-machine-to-kvm-virtual-machine/</link>
-      <pubDate>Fri, 26 Apr 2019 22:12:14 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/proxmox-ve-how-to-convert-vmware-esxi-virtual-machine-to-kvm-virtual-machine/</guid>
-      <description>How to convert vmware esix VM to proxmox-VE VM V2V Convert vmware virtual machines to kvm virtual machine is easy.
-Convert windows VM   Remove VWware tools Uninstall vmware tools and reboot vm.
-  Switch disk mode to IDE
-  Download Mergeide, unzip it and run it,then reboot your vm. or you can save follow code as mergeide.reg.
-  Windows Registry Editor Version 5.00 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\primary_ide_channel] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;atapi&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\secondary_ide_channel] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;atapi&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\*pnp0600] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;atapi&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\*azt0502] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;atapi&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\gendisk] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E967-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;disk&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#cc_0101] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_0e11&amp;amp;dev_ae33] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1039&amp;amp;dev_0601] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1039&amp;amp;dev_5513] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1042&amp;amp;dev_1000] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_105a&amp;amp;dev_4d33] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;amp;dev_0640] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;amp;dev_0646] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;amp;dev_0646&amp;amp;REV_05] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;amp;dev_0646&amp;amp;REV_07] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;amp;dev_0648] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1095&amp;amp;dev_0649] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1097&amp;amp;dev_0038] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10ad&amp;amp;dev_0001] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10ad&amp;amp;dev_0150] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;amp;dev_5215] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;amp;dev_5219] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_10b9&amp;amp;dev_5229] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1106&amp;amp;dev_0571] &amp;#34;Service&amp;#34;=&amp;#34;pciide&amp;#34; &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_1222] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_1230] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_2411] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_2421] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_7010] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_7111] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&amp;amp;dev_7199] &amp;#34;ClassGUID&amp;#34;=&amp;#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}&amp;#34; &amp;#34;Service&amp;#34;=&amp;#34;intelide&amp;#34; ;Add driver for Atapi (requires Atapi.</description>
     </item>
     
   </channel>

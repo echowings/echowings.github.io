@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy;Steve Dong 2021</copyright>
-    <lastBuildDate>Tue, 02 Mar 2021 12:19:36 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 11 Mar 2021 16:58:45 +0800</lastBuildDate>
     
         <atom:link href="https://blog.stevedong.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -24,6 +24,151 @@
 &lt;li&gt;Love coding.&lt;/li&gt;
 &lt;li&gt;Love cooking.&lt;/li&gt;
 &lt;li&gt;Love hacking.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>How to Install Pbs on Debian10</title>
+      <link>https://blog.stevedong.com/post/pve/pbs/how-to-install-pbs-on-debian10/</link>
+      <pubDate>Thu, 11 Mar 2021 16:58:45 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/pve/pbs/how-to-install-pbs-on-debian10/</guid>
+      
+        <description>&lt;h1 id=&#34;how-to-install-pbs-on-debian-10&#34;&gt;How to Install PBS on Debian 10&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;
+&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;LANGUAGE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;en_US.UTF-8
+&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;LANG&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;en_US.UTF-8
+&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;LC_ALL&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;en_US.UTF-8
+&lt;span class=&#34;c1&#34;&gt;#locale-gen en_US.UTF-8&lt;/span&gt;
+cat &amp;gt;&amp;gt; /etc/environment &lt;span class=&#34;s&#34;&gt;&amp;lt;&amp;lt;EOF
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;LC_ALL=en_US.UTF-8
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;LANG=en_US.UTF-8
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;EOF&lt;/span&gt;
+cat &lt;span class=&#34;s&#34;&gt;&amp;lt;&amp;lt; EOF &amp;gt; /etc/apt/sources.list
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;deb https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;deb https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;deb https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;EOF&lt;/span&gt;
+
+apt update &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt dist-upgrade -y
+apt install -y  net-tools dnsutils vim firmware-linux-nonfree
+
+&lt;span class=&#34;nv&#34;&gt;CODENAME&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;cat /etc/os-release &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;grep CODENAME &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cut -f &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; -d &lt;span class=&#34;s2&#34;&gt;&amp;#34;=&amp;#34;&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/pve &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$CODENAME&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; pve-no-subscription&amp;#34;&lt;/span&gt; &amp;gt; /etc/apt/sources.list.d/pbs-no-subscription.list
+
+
+wget https://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-6.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-6.x.gpg
+
+apt update &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt full-upgrade -y
+apt install -y proxmox-backup-server
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Bcache</title>
+      <link>https://blog.stevedong.com/post/pve/hci/bcache/</link>
+      <pubDate>Tue, 09 Mar 2021 16:20:42 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/pve/hci/bcache/</guid>
+      
+        <description>&lt;h1 id=&#34;how-to-operate-becache&#34;&gt;How to operate becache&lt;/h1&gt;
+&lt;p&gt;Recently I just try to add bcache with zfs and ceph. So I just wirte down it.&lt;/p&gt;
+&lt;h2 id=&#34;install-bcache-tools&#34;&gt;Install bcache-tools&lt;/h2&gt;
+&lt;p&gt;Since bcache implement in Linux kernel. So it will default enabled. We just need to install &lt;code&gt;bcache-tools&lt;/code&gt; to operate bcache.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apt install -y bcache-tools
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;configure-bcache&#34;&gt;Configure bcache&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# make a cache disk for bcache .It must be a ssd disk.&lt;/span&gt;
+make-bcache -C /dev/nvme1n1 
+
+&lt;span class=&#34;c1&#34;&gt;# make a disk as backend disk.It must be a slow sata/sas disk.&lt;/span&gt;
+make-bcache -B /dev/sda
+&lt;span class=&#34;c1&#34;&gt;#if you have a lot of disks like me.your can add backend disk as this.&lt;/span&gt;
+make-bcache -B /dev/sd&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;a..f&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;###Check bcache status&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;lsblk
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;add-bcache-manually&#34;&gt;Add bcache manually&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#show `cset.uuid&lt;/span&gt;
+root@xa-autotest-hci01:~# bcache-super-show /dev/sda
+sb.magic		ok
+sb.first_sector		&lt;span class=&#34;m&#34;&gt;8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;match&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+sb.csum			ED8FD98E20A2E91E &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;match&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+sb.version		&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;backing device&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+
+dev.label		&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;empty&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+dev.uuid		e7b350fe-3496-47e2-a276-5faa5637f8a5
+dev.sectors_per_block	&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
+dev.sectors_per_bucket	&lt;span class=&#34;m&#34;&gt;1024&lt;/span&gt;
+dev.data.first_sector	&lt;span class=&#34;m&#34;&gt;16&lt;/span&gt;
+dev.data.cache_mode	&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;writeback&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+dev.data.cache_state	&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;clean&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+
+cset.uuid		d3fcd781-a10a-453a-96dd-6eba13abfc5b
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;####Add cache disk&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;d3fcd781-a10a-453a-96dd-6eba13abfc5b&amp;#34;&lt;/span&gt; &amp;gt; /sys/block/bcache0/bcache/attach
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;if you have a lot of disk, you can add it with for loop.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; i in range&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;0..5&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;d3fcd781-a10a-453a-96dd-6eba13abfc5b&amp;#34;&lt;/span&gt; &amp;gt; /sys/block/bcache&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;expr &lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;/bcache/attach&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;delete-cache-disk&#34;&gt;Delete cache disk&lt;/h4&gt;
+&lt;p&gt;if you want to delete bcache disk&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;d3fcd781-a10a-453a-96dd-6eba13abfc5b&amp;#34;&lt;/span&gt; &amp;gt; /sys/block/bcache0/bcache/detach
+&lt;span class=&#34;c1&#34;&gt;# delete a lot disk &lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; i in range&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;0..5&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;d3fcd781-a10a-453a-96dd-6eba13abfc5b&amp;#34;&lt;/span&gt; &amp;gt; /sys/block/bcache&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;expr &lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;/bcache/detach&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;unrigister-cache-disk&#34;&gt;unrigister cache disk&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;umount /dev/bcach0
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &amp;gt; /sys/block/bcache0/bcache/stop
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you onle have one nvme disk and you can add them all in one
+make-bcache -C /dev/nvme1n1 -B /dev/sd{a..f} &amp;ndash;writeback&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+## Change bcache write policy
+
+```bash
+make-bcache -B/dev/
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;manually-resigter-udev-disk&#34;&gt;Manually resigter udev disk&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; /dev/sdb &amp;gt; /sys/fs/bcache/register
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;change-bcache-write-mode&#34;&gt;Change bcache write mode&lt;/h2&gt;
+&lt;p&gt;When you run command like &lt;code&gt;make-bcache -C /dev/nvme1n1 -B /dev/sda&lt;/code&gt; it will be set &lt;code&gt;write through&lt;/code&gt; mode. If you have UPS and you can change it to &lt;code&gt;writeback&lt;/code&gt; mode.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; writeback &amp;gt; /sys/block/bcache0/bcache/cache_mode
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;check-bcache-status&#34;&gt;Check bcache status&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;cat /sys/block/bcache0/bcache/state
+no cache: this means you have not attached a caching device to your backing bcache device&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+clean: this means everything is ok. The cache is clean&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+dirty: this means everything is setup fine and that you have enabled writeback and that the cache is dirty&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+inconsistent: you are in trouble because the backing device is not in sync with the caching device&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+bcache-status
+lsblk
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;bcache-optimized&#34;&gt;bcache optimized&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#modify cache policy &lt;/span&gt;
+cat /sys/block/bcache0/bcache/cache_mode
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; writeback &amp;gt; /sys/block/bcache0/bcache/cache_mode
+&lt;span class=&#34;c1&#34;&gt;#Disable ip track&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &amp;gt; /sys/fs/bcache/&lt;span class=&#34;nv&#34;&gt;$CacheSetUUID&lt;/span&gt;/congested_read_threshold_us
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &amp;gt; /sys/fs/bcache/&lt;span class=&#34;nv&#34;&gt;$CacheSetUUID&lt;/span&gt;/congested_write_threshold_us
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;disable-bcache&#34;&gt;disable bcache&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#check `CACHE_SET_UUID`&lt;/span&gt;
+ls /sys/fs/bcache
+&lt;span class=&#34;c1&#34;&gt;#Unregister ssd cache disk&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &amp;gt;/sys/fs/bcache/06e33354-7c21-4c52-990d-1a653617ab20/unregister
+
+&lt;span class=&#34;c1&#34;&gt;#disable backend disk&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &amp;gt; /sys/block/sdb/bcache/stop
+&lt;span class=&#34;c1&#34;&gt;#write back cache to backend disk&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &amp;gt; /sys/block/bcache0/bcache/writeback_percent
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;##Reference&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.geek-share.com/detail/2719485821.html&#34;&gt;A block layer cache (bcache)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.itread01.com/content/1548985342.html&#34;&gt;bcache狀態和配置檔案詳細介紹(翻譯自官網）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://webcache.googleusercontent.com/search?q=cache:9eiyDtuwt9AJ:https://wiki2.xbits.net:4430/storage:%25E7%25BC%2593%25E5%25AD%2598%25E6%258A%2580%25E6%259C%25AF:bcache:bcache%25E6%2589%258B%25E5%2586%258C+&amp;amp;cd=1&amp;amp;hl=en&amp;amp;ct=clnk&amp;amp;gl=hk&#34;&gt;bcache手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.mr-mao.cn/archives/linux-bcache-performance-testing.html&#34;&gt;Linux下SSD缓存加速之bcache试用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://billtian.github.io/digoal.blog/2016/09/19/01.html&#34;&gt;bcache / 如何使用bcache构建LVM,软RAID / 如何优化bcache&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
       
@@ -97,6 +242,69 @@ slmgr /ato
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://invictuscj.win/articles/os/win-kms/&#34;&gt;在debian中搭建kms服务器&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>How to Install Proxmox VE 6 on Debian 10</title>
+      <link>https://blog.stevedong.com/post/pve/how-to-install-proxmox-ve-6-on-debian-10/</link>
+      <pubDate>Mon, 01 Mar 2021 13:28:01 +0800</pubDate>
+      
+      <guid>https://blog.stevedong.com/post/pve/how-to-install-proxmox-ve-6-on-debian-10/</guid>
+      
+        <description>&lt;h1 id=&#34;how-to-install-proxmox-ve-6-on-debian-10&#34;&gt;How to Install Proxmox VE 6 on Debian 10&lt;/h1&gt;
+&lt;h2 id=&#34;install-debian-10&#34;&gt;Install debian 10&lt;/h2&gt;
+&lt;h2 id=&#34;modifiy-hostname-and-hosts-file&#34;&gt;Modifiy hostname and hosts file&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;LANGUAGE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;en_US.UTF-8
+&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;LANG&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;en_US.UTF-8
+&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;LC_ALL&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;en_US.UTF-8
+&lt;span class=&#34;c1&#34;&gt;#locale-gen en_US.UTF-8&lt;/span&gt;
+cat &amp;gt;&amp;gt; /etc/environment &lt;span class=&#34;s&#34;&gt;&amp;lt;&amp;lt;EOF
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;LC_ALL=en_US.UTF-8
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;LANG=en_US.UTF-8
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;EOF&lt;/span&gt;
+cat &lt;span class=&#34;s&#34;&gt;&amp;lt;&amp;lt; EOF &amp;gt; /etc/apt/sources.list
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;deb https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;deb https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;deb https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;deb-src https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;EOF&lt;/span&gt;
+
+apt update &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt dist-upgrade -y
+apt install -y  net-tools dnsutils vim firmware-linux-nonfree
+&lt;span class=&#34;c1&#34;&gt;#sed -i &amp;#39;s/127.0.1.1/10.32.4.37/g&amp;#39; /etc/hosts&lt;/span&gt;
+
+hostname --ip-address
+
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;deb http://mirrors.ustc.edu.cn/proxmox/debian/pve buster pve-no-subscription&amp;#34;&lt;/span&gt; &amp;gt; /etc/apt/sources.list.d/pve-install-repo.list
+
+wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-6.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-6.x.gpg
+
+apt update &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y full-upgrade
+apt install -y proxmox-ve postfix open-iscsi
+apt -y remove os-prober
+
+&lt;span class=&#34;c1&#34;&gt;#Disable supscription alert&lt;/span&gt;
+sed -Ezi.bak &lt;span class=&#34;s2&#34;&gt;&amp;#34;s/(Ext.Msg.show\(\{\s+title: gettext\(&amp;#39;No valid sub)/void\(\{ \/\/\1/g&amp;#34;&lt;/span&gt; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; systemctl restart pveproxy.service
+
+&lt;span class=&#34;c1&#34;&gt;#Delete pve enterprise subscription&lt;/span&gt;
+rm -rf /etc/apt/sources.list.d/pve-enterprise.list
+
+&lt;span class=&#34;c1&#34;&gt;#Modify ceph apt list source&lt;/span&gt;
+sed -i &lt;span class=&#34;s1&#34;&gt;&amp;#39;s/download.proxmox.com/mirrors.ustc.edu.cn\/proxmox/g&amp;#39;&lt;/span&gt; /etc/apt/sources.list.d/ceph.list
+apt update &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt full-upgrade -y
+apt install  -y ifupdown2 acpid openvswitch-switch
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://pve.proxmox.com/wiki/Install_Proxmox_VE_on_Debian_Buster&#34;&gt;Install Proxmox VE on Debian Buster&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
       
@@ -4194,325 +4402,6 @@ cp /etc/ceph/ceph.client.admin.keyring ceph/my-ceph-storage.keyring
 &lt;li&gt;&lt;a href=&#34;https://www.kclouder.cn/proxmoxceph/&#34;&gt;PROXMOX+CEPH TO BUILD HCI&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
-      
-    </item>
-    
-    <item>
-      <title>How to Install Snmp Service on Promxox VE</title>
-      <link>https://blog.stevedong.com/post/proxmox-ve-how-to-install-snmp-service-on-promxox-ve/</link>
-      <pubDate>Sat, 27 Apr 2019 20:29:36 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/proxmox-ve-how-to-install-snmp-service-on-promxox-ve/</guid>
-      
-        <description>&lt;h1 id=&#34;how-to-install-snmp-service-on-proxmox-ve&#34;&gt;How to install snmp service on proxmox ve&lt;/h1&gt;
-&lt;p&gt;How to setup snmp service to let us to use librenms to moniting our proxmox ve healthy status is very important for us.&lt;/p&gt;
-&lt;h2 id=&#34;install-snmpd-on-proxmox-ve&#34;&gt;Install snmpd on proxmox ve&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;apt update
-apt install -y snmpd
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;configure-snmpdconf&#34;&gt;Configure snmpd.conf&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;backup original configuration file.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;
-mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.backup
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;Create a new config file.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat &amp;gt; /etc/snmp/snmpd.conf &lt;span class=&#34;s&#34;&gt;&amp;lt;&amp;lt; EOF
-&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;# this create a  SNMPv1/SNMPv2c community named &amp;#34;&amp;#34;
-&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;# and restricts access to LAN adresses 192.168.0.0/22 (last two 0&amp;#39;s are ranges)
-&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;rocommunity OkayWorld 192.168.0.0/22
-&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;# setup info
-&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;syslocation  &amp;#34;rack 1, room 3, serverrroom&amp;#34;
-&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;syscontact  &amp;#34;xxx@xxx.xxx&amp;#34;
-&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;# open up
-&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;agentAddress  udp:161
-&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;# run as
-&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;agentuser  root
-&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;# dont log connection from UDP:
-&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;dontLogTCPWrappersConnects yes
-&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;# fix for disks larger then 2TB
-&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;realStorageUnits 0
-&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;EOF&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;firewall-allow-lan-can-access&#34;&gt;Firewall allow lan can access&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;iptables -A INPUT -s 192.168.0.0/22 -p udp --dport &lt;span class=&#34;m&#34;&gt;161&lt;/span&gt; -j ACCEPT
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;restart-snmpd-service-to-apply-settings&#34;&gt;Restart snmpd service to apply settings&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;
-systemctl restart snmpd
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;testing&#34;&gt;Testing&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;snmpwalk -c OkayWorld -v1 &lt;span class=&#34;nv&#34;&gt;$servername&lt;/span&gt;$ SNMPv2-MIB::sysDescr.0
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;qa&#34;&gt;QA&lt;/h2&gt;
-&lt;h3 id=&#34;error-on-subcontainer-ia_addr-insert--1&#34;&gt;error on subcontainer &amp;lsquo;ia_addr&amp;rsquo; insert (-1)&lt;/h3&gt;
-&lt;p&gt;After systemd migration starting from Debian 9 Stretch, you need to change &lt;code&gt;/lib/systemd/system/snmpd.service&lt;/code&gt; file, not &lt;code&gt;/etc/default/snmpd&lt;/code&gt; file:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -i &lt;span class=&#34;s2&#34;&gt;&amp;#34;s|-Lsd|-LS6d|&amp;#34;&lt;/span&gt; /lib/systemd/system/snmpd.service
-systemctl daemon-reload
-systemctl restart  snmpd
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.svennd.be/how-to-install-snmp-service-on-proxmox/&#34;&gt;how to install SNMP service on Proxmox&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://linux-tips.com/t/how-can-i-disable-snmpd-ia-addr-insert-messages/281/2&#34;&gt;How can I disable snmpd ia_addr insert messages?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.leonli.co.uk/blog/487/solved-snmpd-gives-error-on-subcontainer-ia_addr-insert-1-warnings&#34;&gt;[Solved] snmpd gives “error on subcontainer” ‘ia_addr’ insert (-1) warnings
-&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>DIY Thin Itx PC</title>
-      <link>https://blog.stevedong.com/post/diy-thin-itx-pc/</link>
-      <pubDate>Sat, 27 Apr 2019 12:25:36 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/diy-thin-itx-pc/</guid>
-      
-        <description>&lt;h2 id=&#34;option-1-intel-pentium-g45608g-ram-1tb-nvme-ssd&#34;&gt;Option 1 :Intel Pentium G4560/8G RAM/ 1TB nvme ssd&lt;/h2&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;No.&lt;/th&gt;
-&lt;th&gt;type&lt;/th&gt;
-&lt;th&gt;details&lt;/th&gt;
-&lt;th&gt;quantity&lt;/th&gt;
-&lt;th&gt;UnitPrice&lt;/th&gt;
-&lt;th&gt;Total Price&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;01&lt;/td&gt;
-&lt;td&gt;机箱&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://item.taobao.com/item.htm?id=534857489261&amp;amp;scm=20140619.rec.2429537308.534857489261&#34;&gt;立人E-T4超薄迷你Thin-ITX立式台式机HTPC电脑空机箱支持VESA背挂&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;¥90(90.00*1.04)&lt;/td&gt;
-&lt;td&gt;93.00&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;02&lt;/td&gt;
-&lt;td&gt;CPU&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://item.jd.com/4167802.html?jd_pop=68e8eedb-d94b-4d9b-90e5-f45e43cd1f59&amp;amp;abt=3#crumb-wrap&#34;&gt;英特尔（Intel）奔腾双核G4560 盒装CPU处理器	&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;￥599.00&lt;/td&gt;
-&lt;td&gt;599.00&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;03&lt;/td&gt;
-&lt;td&gt;视频转换接头&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://item.jd.com/5160386.html#crumb-wrap&#34;&gt;山泽(SAMZHE)HDMI转VGA转换器带音频供电接口 高清视频转接头 电脑华为小米盒子接电视投影仪1080p 黑 ZH-22&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;￥35.90&lt;/td&gt;
-&lt;td&gt;35.90&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;04&lt;/td&gt;
-&lt;td&gt;键鼠套装&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://item.jd.com/2291748.html&#34;&gt;罗技（Logitech）MK275 无线光电键鼠套装 无线鼠标无线键盘套装&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;99.00&lt;/td&gt;
-&lt;td&gt;99&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;05&lt;/td&gt;
-&lt;td&gt;主板&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://item.taobao.com/item.htm?id=587272133214&amp;amp;tracelogww=ltckbburl&#34;&gt;ASUS/华硕PRIME H310T2 R2.0 THIN ITX小主板 迷你主机一体机HTPC&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;¥ 699&lt;/td&gt;
-&lt;td&gt;755&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;06&lt;/td&gt;
-&lt;td&gt;电源适配器&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://item.taobao.com/item.htm?spm=a1z10.5-c.w4002-17511240392.20.44c47365cIMEzk&amp;amp;id=18283712549&#34;&gt;酷鱼19V-7.1A足135W电源适配器/技嘉华硕微星ITX主板通用7.4X5.0&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;¥129.00&lt;/td&gt;
-&lt;td&gt;139.32(129 * 1.08)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;07&lt;/td&gt;
-&lt;td&gt;内存&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://detail.tmall.com/item.htm?id=546597769363&amp;amp;spm=0.0.0.0&amp;amp;skuId=3813291359835&#34;&gt;三星内存条8g DDR4 2666 8G 16G笔记本内存条四代吃鸡内存原厂兼容戴尔华硕联想苹果笔记本内存条&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;¥ 319.00&lt;/td&gt;
-&lt;td&gt;¥319.00&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;08&lt;/td&gt;
-&lt;td&gt;WiFi套件&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://item.taobao.com/item.htm?spm=a1z09.2.0.0.1097dcfdM8oysD&amp;amp;id=537236266618&amp;amp;_u=iebjch9df5&#34;&gt;INTELAC7265 M.2 NGFF1000M/5G/2.4G/4.0网卡华硕H110T技嘉H110TN&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;￥135.00&lt;/td&gt;
-&lt;td&gt;￥145.80(135*1.08)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;09&lt;/td&gt;
-&lt;td&gt;cpu散热器&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://detail.tmall.com/item.htm?spm=a230r.1.14.1.76bf523MbXdki&amp;amp;id=43878066181&amp;amp;cm_id=140105335569ed55e27b&amp;amp;abbucket=14&#34;&gt;ID-COOLING IS-20i 26 Intel平台CPU散热器8CM HTP超薄温控风扇&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;¥ 38.00&lt;/td&gt;
-&lt;td&gt;¥ 38.00&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;SSD&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://item.jd.com/100002183461.html#crumb-wrap&#34;&gt;三星（SAMSUNG）1TB SSD固态硬盘 M.2接口(NVMe协议) 970 EVO Plus（MZ-V7S1T0B）&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;￥1899.00&lt;/td&gt;
-&lt;td&gt;￥1899.00&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;Sum&lt;/td&gt;
-&lt;td&gt;￥4123.02&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id=&#34;optiion-2-intel-i5-8400-6-core8g-ram-1tb-nvme-ssd&#34;&gt;Optiion 2 :Intel i5 8400 6 core/8G RAM/ 1TB nvme ssd&lt;/h2&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;No.&lt;/th&gt;
-&lt;th&gt;type&lt;/th&gt;
-&lt;th&gt;details&lt;/th&gt;
-&lt;th&gt;quantity&lt;/th&gt;
-&lt;th&gt;UnitPrice&lt;/th&gt;
-&lt;th&gt;Total Price&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;01&lt;/td&gt;
-&lt;td&gt;机箱&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://item.taobao.com/item.htm?id=534857489261&amp;amp;scm=20140619.rec.2429537308.534857489261&#34;&gt;立人E-T4超薄迷你Thin-ITX立式台式机HTPC电脑空机箱支持VESA背挂&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;¥90(90.00*1.04)&lt;/td&gt;
-&lt;td&gt;93.00&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;02&lt;/td&gt;
-&lt;td&gt;CPU&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://item.jd.com/5008397.html&#34;&gt;英特尔（Intel） i5 8400 酷睿六核 盒装CPU处理器	&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;￥1549.00&lt;/td&gt;
-&lt;td&gt;1549.00&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;03&lt;/td&gt;
-&lt;td&gt;视频转换接头&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://item.jd.com/5160386.html#crumb-wrap&#34;&gt;山泽(SAMZHE)HDMI转VGA转换器带音频供电接口 高清视频转接头 电脑华为小米盒子接电视投影仪1080p 黑 ZH-22&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;￥35.90&lt;/td&gt;
-&lt;td&gt;35.90&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;04&lt;/td&gt;
-&lt;td&gt;键鼠套装&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://item.jd.com/2291748.html&#34;&gt;罗技（Logitech）MK275 无线光电键鼠套装 无线鼠标无线键盘套装&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;99.00&lt;/td&gt;
-&lt;td&gt;99&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;05&lt;/td&gt;
-&lt;td&gt;主板&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://item.taobao.com/item.htm?id=587272133214&amp;amp;tracelogww=ltckbburl&#34;&gt;ASUS/华硕PRIME H310T2 R2.0 THIN ITX小主板 迷你主机一体机HTPC&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;¥ 699&lt;/td&gt;
-&lt;td&gt;755&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;06&lt;/td&gt;
-&lt;td&gt;电源适配器&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://item.taobao.com/item.htm?spm=a1z10.5-c.w4002-17511240392.20.44c47365cIMEzk&amp;amp;id=18283712549&#34;&gt;酷鱼19V-7.1A足135W电源适配器/技嘉华硕微星ITX主板通用7.4X5.0&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;¥129.00&lt;/td&gt;
-&lt;td&gt;139.32(129 * 1.08)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;07&lt;/td&gt;
-&lt;td&gt;内存&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://detail.tmall.com/item.htm?id=546597769363&amp;amp;spm=0.0.0.0&amp;amp;skuId=3813291359835&#34;&gt;三星内存条8g DDR4 2666 8G 16G笔记本内存条四代吃鸡内存原厂兼容戴尔华硕联想苹果笔记本内存条&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;¥ 319.00&lt;/td&gt;
-&lt;td&gt;¥319.00&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;08&lt;/td&gt;
-&lt;td&gt;WiFi套件&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://item.taobao.com/item.htm?spm=a1z09.2.0.0.1097dcfdM8oysD&amp;amp;id=537236266618&amp;amp;_u=iebjch9df5&#34;&gt;INTELAC7265 M.2 NGFF1000M/5G/2.4G/4.0网卡华硕H110T技嘉H110TN&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;135.00&lt;/td&gt;
-&lt;td&gt;￥145.80(135*1.08)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;09&lt;/td&gt;
-&lt;td&gt;cpu散热器&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://item.taobao.com/item.htm?id=527079297198&amp;amp;tracelogww=ltckbburl&#34;&gt;超薄21mm 1150/1151/ CPU散热器 CPU风扇 适用于立人T3机箱&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;¥ 89.00&lt;/td&gt;
-&lt;td&gt;93.45（89*1.05）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;SSD&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://item.jd.com/100002183461.html#crumb-wrap&#34;&gt;三星（SAMSUNG）1TB SSD固态硬盘 M.2接口(NVMe协议) 970 EVO Plus（MZ-V7S1T0B）&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;￥1899.00&lt;/td&gt;
-&lt;td&gt;￥1899.00&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;Sum&lt;/td&gt;
-&lt;td&gt;￥5128.47&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Proxmox Ve How to Chang Network of Hosting Without Reboot Proxmox Ve</title>
-      <link>https://blog.stevedong.com/post/proxmox-ve-how-to-chang-network-of-hosting-without-reboot-proxmox-ve/</link>
-      <pubDate>Sat, 27 Apr 2019 11:36:16 +0800</pubDate>
-      
-      <guid>https://blog.stevedong.com/post/proxmox-ve-how-to-chang-network-of-hosting-without-reboot-proxmox-ve/</guid>
-      
-        <description>&lt;h1 id=&#34;how-to-change-network-settings-of-proxmox-ve-host-without-rebooting&#34;&gt;How to change Network settings of proxmox-ve host without rebooting.&lt;/h1&gt;
-&lt;p&gt;Eache time when  I want to change network settings like change netowrks and I must reboot to apply it. It is really trouble me.&lt;/p&gt;
-&lt;h2 id=&#34;solution&#34;&gt;Solution&lt;/h2&gt;
-&lt;p&gt;Proxmox VE is based on debian. After check interface of network with the path &lt;code&gt;/etc/network/&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;I found that each time when i change network settings. There will be a named &lt;code&gt;interfaces.new&lt;/code&gt; created and it content new network settings wait for apply when i reboot. So I try to backup the old networking interfaces settings and replace it with the new file.&lt;/p&gt;
-&lt;h3 id=&#34;manual-change&#34;&gt;Manual change&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Backup interfaces&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cp /etc/network/interfaces /etc/network/interfaces.old
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;Copy interface.new to interface&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cp /etc/network/interfaces.new /etc/network/interfaces
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;Reboot networking service&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;
-systemctl restart networking
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;scirpt-change&#34;&gt;Scirpt change&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mv interfaces interfaces.backup &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; mv interfaces.new interfaces &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; systemctl restart networking.service
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     

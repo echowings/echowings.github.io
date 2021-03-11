@@ -348,6 +348,109 @@ if (!doNotTrack) {
   <header class="post-header">
     <h1 class="post-title">
       
+      <a class="post-link" href="/post/install-kubernetes-on-centos7/">Install Kubernetes on CentOS7</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-05-01" class="post-time">
+        2019-05-01
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/devops/"> devops </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      Install Kubernetes on Centos 7 Disable and stop firewall # Disable firewall service systemctl disable firewalld # Stop firewall service systemctl stop firewalld Install etcd and kubernetes Install etcd and kubernetes and it will also install docker.
+yum install -y etcd kubernetes Start service in order systemctl start etcd systemctl start docker systemctl start kube-apiserver systemctl start kube-controller-manager systemctl start kube-scheduler systemctl start kubelet systemctl start start kube-proxy 
+    </div>
+    <div class="read-more">
+      <a href="/post/install-kubernetes-on-centos7/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/how-to-install-centos-7-on-proxmox-ve/">How to Install Centos 7 on Proxmox VE</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-05-01" class="post-time">
+        2019-05-01
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to Install CentOS 7 on Proxmox VE Today I want to deploy kubernetes ,follow the book, it need to install centos 7. Okay! Deploy a centos 7 firstly. Install Centos 7 Download latest image of centos 7 Download CentOS 7 images from mirrors.ustc.edu.cn Download centos 7 images form here:CentOS-7-x86_64-Minimal-1810.iso Install Centos 7 Uploading this images to datatstore of pve Create a centos 7 vm on pve boot and install
+    </div>
+    <div class="read-more">
+      <a href="/post/how-to-install-centos-7-on-proxmox-ve/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/nginx-how-to-compile-nginx-with-source-code/">How to Compile Nginx With Source Code</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-04-29" class="post-time">
+        2019-04-29
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/nginx/"> nginx </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to compile nginx with source code Download source code  Access nginx.org to download latest stable version of nginx.  wget https://nginx.org/download/nginx-1.16.0.tar.gz tar -zxvf nginx-1.16.0.tar.gz Compile source code cd nginx-1.16.0 apt update &amp;&amp; apt install -y gcc build-essential ./configure --prefix=/home/echowings/nginx make make install Trouble shooting  PCRE missing error.  ./configure: error: the HTTP rewrite module requires the PCRE library. You can either disable the module by using —without–http_rewrite_module option, or install the PCRE library into the system, or build the PCRE library statically from the source with nginx by using —with–pcre=&amp;lt;path&amp;gt; option.
+    </div>
+    <div class="read-more">
+      <a href="/post/nginx-how-to-compile-nginx-with-source-code/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
       <a class="post-link" href="/post/proxmox-ve-build-hyper-converged-infrastructure-with-ceph-on-pve/">Build Hyper-Converged Infrastructure With Ceph on PVE</a>
     </h1>
     
@@ -763,107 +866,6 @@ docker-compose up -d Active Script echo &#34;To active office&#34; cd &#34;%prog
     </div>
     <div class="read-more">
       <a href="/post/how-to-setup-vim/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/how-to-enable-docker-in-lxc/">How to Enable Docker in Lxc</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-03-23" class="post-time">
-        2019-03-23
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
-          <a href="https://blog.stevedong.com/categories/devops/"> devops </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to install docker-ce in lxc container in pve At now, Proxmox is base debian and it can be install docker directly. To install docker in host without proxmox support. It will be lost HA function. Deploy a vm then install docker-ce in the vm, it works. but take a lot resource than directly install docker in proxmox. Is there a way to take less performance ,at the same time
-    </div>
-    <div class="read-more">
-      <a href="/post/how-to-enable-docker-in-lxc/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/docker-compose-to-build-prometheus/">Docker Compose to Build Prometheus</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-02-21" class="post-time">
-        2019-02-21
-      </time>
-      
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Build Prometheus with docker-compose docker-compose up -d 
-    </div>
-    <div class="read-more">
-      <a href="/post/docker-compose-to-build-prometheus/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/how-to-enable-proxmoxve-nested-virtualization/">How to Enable Proxmoxve Nested Virtualization</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-02-14" class="post-time">
-        2019-02-14
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to enable Proxmox VE nested virtualization To enable nested virtualization on Proxmox VE, we need to stop all the vm and enable nested virtualization to linux kernel. then change vm settings
-Stop all the vm on proxmox VE  stop all virtual machines with shell command.  root@xa-sys-pve01:~# pvesh create /nodes/localhost/stopall Stopping VM 116 (timeout = 180 seconds) Stopping VM 115 (timeout = 180 seconds) Stopping CT 112 (timeout = 60 seconds) Stopping CT 111 (timeout = 60 seconds) Stopping CT 108 (timeout = 60 seconds) Stopping CT 106 (timeout = 60 seconds) Stopping VM 101 (timeout = 180 seconds) UPID:xa-sys-pve01:0036EA66:01992199:5CB98D6C:stopall::root@pam:  stop all the virtual machine with admin web.
-    </div>
-    <div class="read-more">
-      <a href="/post/how-to-enable-proxmoxve-nested-virtualization/" class="read-more-link">Read more</a>
     </div>
     
   </div>

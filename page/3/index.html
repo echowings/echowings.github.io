@@ -348,6 +348,109 @@ if (!doNotTrack) {
   <header class="post-header">
     <h1 class="post-title">
       
+      <a class="post-link" href="/post/proxmoxve/how-to-change-default-swap-settings-for-proxmox-ve/">How to Change Default Swap Settings for Proxmox Ve</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-08-09" class="post-time">
+        2019-08-09
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to change default swap settings for Proxmox VE  Check Default swap policy from value 60 to 0  cat /proc/sys/vm/swappiness #default value is 60 , it means when the memory remain 60, the swap will be enable  Change swap policy  # Temp to change default swap enable when memory remain 0. sysctl vm.swappiness=0 # Permanent to change swapp cat &lt;&lt; EOF &gt;&gt; /etc/sysctl.conf vm.swappiness=0 #apply settings sysctl -p # check  cat /proc/sys/vm/swappiness  Vacuum swap  swapoff -a swapon -a 
+    </div>
+    <div class="read-more">
+      <a href="/post/proxmoxve/how-to-change-default-swap-settings-for-proxmox-ve/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/how-to-setup-vyos-as-a-firewall/">How to Setup Vyos as a Firewall</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-08-08" class="post-time">
+        2019-08-08
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/networking/"> networking </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to Setup Vyos as a Firewall Setup interface    Interface IP Address Description     eth0 pppoe WAN   eth1 192.168.68.1 / 24 DMZ   eth2 10.0.0.1 / 24 LAN    set interface ethernet eth0 pppoe 0 user-id &#39;&lt;pppoe accout&gt;&#39; set interface ethernet eth0 pppoe 0 password &#39;&lt;pppoe password&gt;&#39; set interface ethernet eth0 pppoe 0 name-server &#39;none&#39; set interface ethernet eth0 description &#39;WAN&#39; set interface ethernet eth1 address 192.
+    </div>
+    <div class="read-more">
+      <a href="/post/how-to-setup-vyos-as-a-firewall/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/how-to-deploy-bookstack-with-docker-compose/">How to Deploy Bookstack With Docker Compose</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-07-30" class="post-time">
+        2019-07-30
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/linux/"> Linux </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to Deploy Bookstack with Docker Compose Bookstack is a good opensource solution for enterprie document management with light footprinting. It support auth like ldap,active directory,google,azure,aws,slack etc. and it can export document as pdf file.
+Preparation  Install docker and docker-compose on debian 10 Information for bookstack installation.     Type Value     Hostname mybookstack   Domainame mydomain.local   AD Auth User stevedong   Domain Controller IP &lt;domain contoller IP&gt;   Time Zone Asia/Shanghai    How to fix export chinese pdf document with error  Install chinese fonts on docker server host  apt install fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy customized dockerfile with option:  environments:# To let bookstack export pdf with chinese language supported.
+    </div>
+    <div class="read-more">
+      <a href="/post/how-to-deploy-bookstack-with-docker-compose/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
       <a class="post-link" href="/post/how-to-configure-debian-10-as-a-docker-server/">How to Configure Debian 10 as a Docker Server</a>
     </h1>
     
@@ -769,109 +872,6 @@ ERROR 1:&ldquo;No space left on device&rdquo; error on latest upgrade If you met
     </div>
     <div class="read-more">
       <a href="/post/proxmox-how-to-import-disk-to-ceph/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/install-kubernetes-on-centos7/">Install Kubernetes on CentOS7</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-05-01" class="post-time">
-        2019-05-01
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/devops/"> devops </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Install Kubernetes on Centos 7 Disable and stop firewall # Disable firewall service systemctl disable firewalld # Stop firewall service systemctl stop firewalld Install etcd and kubernetes Install etcd and kubernetes and it will also install docker.
-yum install -y etcd kubernetes Start service in order systemctl start etcd systemctl start docker systemctl start kube-apiserver systemctl start kube-controller-manager systemctl start kube-scheduler systemctl start kubelet systemctl start start kube-proxy 
-    </div>
-    <div class="read-more">
-      <a href="/post/install-kubernetes-on-centos7/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/how-to-install-centos-7-on-proxmox-ve/">How to Install Centos 7 on Proxmox VE</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-05-01" class="post-time">
-        2019-05-01
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to Install CentOS 7 on Proxmox VE Today I want to deploy kubernetes ,follow the book, it need to install centos 7. Okay! Deploy a centos 7 firstly. Install Centos 7 Download latest image of centos 7 Download CentOS 7 images from mirrors.ustc.edu.cn Download centos 7 images form here:CentOS-7-x86_64-Minimal-1810.iso Install Centos 7 Uploading this images to datatstore of pve Create a centos 7 vm on pve boot and install
-    </div>
-    <div class="read-more">
-      <a href="/post/how-to-install-centos-7-on-proxmox-ve/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/nginx-how-to-compile-nginx-with-source-code/">How to Compile Nginx With Source Code</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-04-29" class="post-time">
-        2019-04-29
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/nginx/"> nginx </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to compile nginx with source code Download source code  Access nginx.org to download latest stable version of nginx.  wget https://nginx.org/download/nginx-1.16.0.tar.gz tar -zxvf nginx-1.16.0.tar.gz Compile source code cd nginx-1.16.0 apt update &amp;&amp; apt install -y gcc build-essential ./configure --prefix=/home/echowings/nginx make make install Trouble shooting  PCRE missing error.  ./configure: error: the HTTP rewrite module requires the PCRE library. You can either disable the module by using —without–http_rewrite_module option, or install the PCRE library into the system, or build the PCRE library statically from the source with nginx by using —with–pcre=&amp;lt;path&amp;gt; option.
-    </div>
-    <div class="read-more">
-      <a href="/post/nginx-how-to-compile-nginx-with-source-code/" class="read-more-link">Read more</a>
     </div>
     
   </div>
