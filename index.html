@@ -348,6 +348,40 @@ if (!doNotTrack) {
   <header class="post-header">
     <h1 class="post-title">
       
+      <a class="post-link" href="/post/pve/opencas/how-to-setup-opencase-on-pve6.x/">How to Setup Opencase on Pve6</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2021-03-13" class="post-time">
+        2021-03-13
+      </time>
+      <div class="post-category">
+          <a href="https://blog.stevedong.com/categories/linux/"> linux </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      How to setup open cas on pve 6.x Install prepare software  apt update &amp;&amp; apt -y dist-upgrade apt install -y make gcc build-essential apt install -y pve-kernel-$(uname -r) apt install -y pve-headers-$(uname -r) OPENCAS_VERSION=20.12.2.0444 OPENCAS_SOFTWARE=open-cas-linux-$OPENCAS_VERSION.release wget https://github.com/Open-CAS/open-cas-linux/releases/download/v20.12.2/$OPENCAS_SOFTWARE.tar.gz tar -zxvf $OPENCAS_SOFTWARE.tar.gz # compile with DKMS  apt update &amp;&amp; apt install -y dkms cp -r $OPENCAS_SOFTWARE /usr/src/ cat &lt;&lt; EOF &gt;&gt;/usr/src/$OPENCAS_SOFTWARE/dkms.conf PACKAGE_NAME=&#34;open-cas-linux&#34; #PACKAGE_VERSION=&#34;20.12.2.0444&#34; PACKAGE_VERSION=&#34;$OPENCAS_VERSION&#34; PRE_BUILD=&#34;configure&#34; AUTOINSTALL=&#34;yes&#34; CLEAN=&#34;make clean&#34; MAKE[0]=&#34;&#39;make&#39;&#34; BUILT_MODULE_NAME[0]=&#34;cas_disk&#34; BUILT_MODULE_LOCATION[0]=&#34;modules/cas_disk&#34; DEST_MODULE_LOCATION[0]=&#34;/extra&#34; BUILT_MODULE_NAME[1]=&#34;cas_cache&#34; BUILT_MODULE_LOCATION[1]=&#34;modules/cas_cache&#34; DEST_MODULE_LOCATION[1]=&#34;/extra&#34; EOF OPENCAS_VERSION=20.
+    </div>
+    <div class="read-more">
+      <a href="/post/pve/opencas/how-to-setup-opencase-on-pve6.x/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
       <a class="post-link" href="/post/pve/pbs/how-to-install-pbs-on-debian10/">How to Install Pbs on Debian 10</a>
     </h1>
     
@@ -818,41 +852,6 @@ mkdir rime &amp;&amp; cd rime git clone https://github.com/wongdean/rime-setting
     </div>
     <div class="read-more">
       <a href="/post/vyos/how-to-reset-vyos-to-default-settings/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/proxmoxve/how-to-extend-all-available-disk-to-local-data/">How to Extend All Available Disk to Local Data</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2020-09-04" class="post-time">
-        2020-09-04
-      </time>
-      <div class="post-category">
-          <a href="https://blog.stevedong.com/categories/virtualization/"> virtualization </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      How to extend all available disk to local-data After install Proxmove VE, the local-data only have about 50GB disk availabe. But how to let all availabld disk space to the local-data? Here we go:
-# Remove local-data lvremove /dev/pve/data # Extend all available disk to /dev/pve/root lvresize -l +100%FREE /dev/pve/root #recreate pve-root resize2fs /dev/mapper/pve-root Reference  Proxmox – Remove LVM local-data  
-    </div>
-    <div class="read-more">
-      <a href="/post/proxmoxve/how-to-extend-all-available-disk-to-local-data/" class="read-more-link">Read more</a>
     </div>
     
   </div>
