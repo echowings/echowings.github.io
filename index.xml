@@ -297,7 +297,8 @@ sed -Ezi.bak &lt;span class=&#34;s2&#34;&gt;&amp;#34;s/(Ext.Msg.show\(\{\s+title
 rm -rf /etc/apt/sources.list.d/pve-enterprise.list
 
 &lt;span class=&#34;c1&#34;&gt;#Modify ceph apt list source&lt;/span&gt;
-sed -i &lt;span class=&#34;s1&#34;&gt;&amp;#39;s/download.proxmox.com/mirrors.ustc.edu.cn\/proxmox/g&amp;#39;&lt;/span&gt; /etc/apt/sources.list.d/ceph.list
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-octopus buster main&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/apt/sources.list.d/ceph-octopus.list
+
 apt update &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt full-upgrade -y
 apt install  -y ifupdown2 acpid openvswitch-switch
 

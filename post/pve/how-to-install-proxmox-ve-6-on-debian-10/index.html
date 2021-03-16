@@ -64,12 +64,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.stevedong.com/post/pve/how-to-install-proxmox-ve-6-on-debian-10/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-03-01T13:28:01&#43;08:00" />
-<meta property="article:modified_time" content="2021-03-09T16:21:10&#43;08:00" />
+<meta property="article:modified_time" content="2021-03-17T02:36:37&#43;08:00" />
 
 <meta itemprop="name" content="How to Install Proxmox VE 6 on Debian 10">
 <meta itemprop="description" content="How to Install Proxmox VE 6 on Debian 10 Install debian 10 Modifiy hostname and hosts file export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF cat &lt;&lt; EOF &gt; /etc/apt/sources.list deb https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free deb https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free EOF apt update &amp;&amp; apt dist-upgrade -y apt install -y net-tools dnsutils vim firmware-linux-nonfree #sed -i &#39;s/127."><meta itemprop="datePublished" content="2021-03-01T13:28:01&#43;08:00" />
-<meta itemprop="dateModified" content="2021-03-09T16:21:10&#43;08:00" />
-<meta itemprop="wordCount" content="170">
+<meta itemprop="dateModified" content="2021-03-17T02:36:37&#43;08:00" />
+<meta itemprop="wordCount" content="173">
 <meta itemprop="keywords" content="pve,debian,debian 10," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Install Proxmox VE 6 on Debian 10"/>
 <meta name="twitter:description" content="How to Install Proxmox VE 6 on Debian 10 Install debian 10 Modifiy hostname and hosts file export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &gt;&gt; /etc/environment &lt;&lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF cat &lt;&lt; EOF &gt; /etc/apt/sources.list deb https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free deb https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free deb https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free EOF apt update &amp;&amp; apt dist-upgrade -y apt install -y net-tools dnsutils vim firmware-linux-nonfree #sed -i &#39;s/127."/>
@@ -425,7 +425,8 @@ sed -Ezi.bak <span class="s2">&#34;s/(Ext.Msg.show\(\{\s+title: gettext\(&#39;No
 rm -rf /etc/apt/sources.list.d/pve-enterprise.list
 
 <span class="c1">#Modify ceph apt list source</span>
-sed -i <span class="s1">&#39;s/download.proxmox.com/mirrors.ustc.edu.cn\/proxmox/g&#39;</span> /etc/apt/sources.list.d/ceph.list
+<span class="nb">echo</span> <span class="s2">&#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-octopus buster main&#34;</span> &gt;&gt; /etc/apt/sources.list.d/ceph-octopus.list
+
 apt update <span class="o">&amp;&amp;</span> apt full-upgrade -y
 apt install  -y ifupdown2 acpid openvswitch-switch
 
@@ -447,7 +448,7 @@ apt install  -y ifupdown2 acpid openvswitch-switch
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2021-03-09
+      2021-03-17
       
     </span>
   </p>
