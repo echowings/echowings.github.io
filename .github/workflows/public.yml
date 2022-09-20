@@ -1,0 +1,37 @@
+name: Build and Publish Blog
+on: push
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v3
+
+      - name: setup hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+            hugo-version: 'latest'
+      - name: update theme
+        run: git submodule update --init --recursive
+      
+      - name: Install modules
+        run: hugo mod tidy
+
+      - name: git submodule init
+        run: git submodule init
+
+      - name: git submodule update
+        run: git submodule update
+
+      - name: build hugo
+        run: hugo --minify 
+
+      - name: Deploy Hugo
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.GITPAGE_PUSH_TOKEN }}
+          external_repository: echowings/echowings.github.io     
+          publish_dir: ./public
+          user_name: echowings
+          user_email: echowings@gmail.com
+          publish_branch: master
