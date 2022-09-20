@@ -1,15 +1,19 @@
 ---
-title: "How to Enable Http Api Service Locally"
+title: "How to Enable Http Api Service on VyOS"
 date: 2022-04-26T00:17:15+08:00
 lastmode: 2022-04-26T00:17:15+08:00
 draft: false
 tags: [ "vyos", "api" ]
 categories: ["networking"]
+layout: 
+  - page 
+slug:
+  - VyOS
 reward: true
 mathjax: true
 image: https://picsum.photos/800/600.webp?random={{ substr (md5 (.Date)) 4 8 }}
 slug:
-  - myslug
+  - VyOS
 ---
 
 **How to enable API serivce on VyOS**
@@ -30,6 +34,34 @@ set service https api socket
 
 ```bash
 curl --unix-socket /run/api.sock -X POST -Fkey=qwerty -Fdata='{"op": "showConfig", "path": []}' http://localhost/retrieve
+```
+
+## Enable api https service with let's encryption
+
+```bash
+#!/bin/vbash
+source /opt/vyatta/etc/functions/script-template
+configure
+
+# Define variable
+ID="my_id"
+APIKEY="12345"
+APIPORT="1234"
+VHOST="myvps"
+FULL_FQDN="xxx.xxx.xxx"
+LISTEN_ADDRESS="IP ADDRESS"
+EMAIL="my@emal.com"
+
+set service https api key id $ID key $APIKEY
+set service https certificates certbot domain-name $FULL_FQDN
+set service https certificates certbot email $EMAIL
+set service https api strict
+set service https virtual-host $VHOST listen-address $LISTEN_ADDRESS
+set service https virtual-host $VHOST listen-port $APIPORT
+set service https virtual-host $VHOST server-name $FULL_FQDN
+commit
+save
+exit
 ```
 
 
