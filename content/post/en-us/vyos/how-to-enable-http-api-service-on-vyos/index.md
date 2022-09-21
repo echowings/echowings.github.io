@@ -5,15 +5,11 @@ lastmode: 2022-04-26T00:17:15+08:00
 draft: false
 tags: [ "vyos", "api" ]
 categories: ["networking"]
-layout: 
-  - page 
-slug:
-  - VyOS
+layout: "page"
+slug: "page"
 reward: true
 mathjax: true
 image: https://picsum.photos/800/600.webp?random={{ substr (md5 (.Date)) 4 8 }}
-slug:
-  - VyOS
 ---
 
 **How to enable API serivce on VyOS**
