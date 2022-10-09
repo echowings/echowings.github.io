@@ -158,5 +158,9 @@ fi
 
 
 ```bash
+#update A record
+sudo bash /config/scripts/ddns/cloudflare-ddns.sh ipv4 <MY_DOMAIN_NAME>
+
+#update AAAA record
 sudo bash /config/scripts/ddns/cloudflare-ddns.sh ipv4 <MY_DOMAIN_NAME>
 ```
