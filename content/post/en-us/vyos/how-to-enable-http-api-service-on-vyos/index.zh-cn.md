@@ -9,7 +9,7 @@ layout: "page"
 slug: "How to Enable Http Api Service on VyOS"
 reward: true
 mathjax: true
-image: image: https://picsum.photos/800/600.webp?random=71ff97d5
+image: https://picsum.photos/800/600.webp?random=71ff97d5
 ---
 
 # 如何在VyOS上启用api服务
