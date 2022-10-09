@@ -162,5 +162,5 @@ fi
 sudo bash /config/scripts/ddns/cloudflare-ddns.sh ipv4 <MY_DOMAIN_NAME>
 
 #update AAAA record
-sudo bash /config/scripts/ddns/cloudflare-ddns.sh ipv4 <MY_DOMAIN_NAME>
+sudo bash /config/scripts/ddns/cloudflare-ddns.sh ipv6 <MY_DOMAIN_NAME>
 ```
