@@ -9,8 +9,11 @@ tags:
   - Hugo
 slug:
   - test
-layout: "post"
-slug: "post"
+layout: 
+  - post
+slug: 
+  - post
+
 license: CC BY-NC-ND
 ---
 
