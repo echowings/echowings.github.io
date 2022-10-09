@@ -3,13 +3,14 @@ title: "VyOS で API サービスを有効にする方法"
 date: 2022-04-26T00:17:15+08:00
 lastmode: 2022-04-26T00:17:15+08:00
 draft: false
+
 tags: [ "vyos", "api" ]
-categories: ["networking"]
+categories: ["network"]
 layout: "page"
-slug: "page"
+slug: "How to Enable Http Api Service on VyOS"
 reward: true
 mathjax: true
-image: https://picsum.photos/800/600.webp?random={{ substr (md5 (.Date)) 4 8 }}
+image: image: https://picsum.photos/800/600.webp?random=71ff97d5
 ---
 
 
