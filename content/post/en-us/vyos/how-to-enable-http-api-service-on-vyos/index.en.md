@@ -1,12 +1,12 @@
 ---
-title: "How to Enable Http Api Service on VyOS--copy"
+title: "How to Enable Http Api Service on VyOS"
 date: 2022-04-26T00:17:15+08:00
 lastmode: 2022-04-26T00:17:15+08:00
 draft: false
 tags: [ "vyos", "api" ]
-categories: ["networking"]
+categories: ["network"]
 layout: "page"
-slug: "page"
+slug: How to Enable Http Api Service on VyOS
 reward: true
 mathjax: true
 image: https://picsum.photos/800/600.webp?random=71ff97d5
