@@ -1,12 +1,13 @@
 ---
 title: "Shell Script to Update Cloudflare Ddns"
-date: 2022-10-09T09:49:14+08:00
+date: 2022-10-09T09:50:14+08:00
 draft: false
 tags: [ "ddns", "cloudflare" ]
 categories: ["network"]
 layout: "page"
-slug: "page"
-image: https://picsum.photos/800/600.webp?random={{ substr (md5 (.Date)) 4 8 }}
+slug: "Shell Script to Update Cloudflare Ddns"
+image: https://picsum.photos/800/600.webp?random=7257319e
+
 ---
 
 # Shell Script to Update Cloudflare Ddns
