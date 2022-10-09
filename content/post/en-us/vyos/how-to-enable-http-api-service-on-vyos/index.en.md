@@ -6,7 +6,7 @@ draft: false
 tags: [ "vyos", "api" ]
 categories: ["network"]
 layout: "page"
-slug: How to Enable Http Api Service on VyOS
+slug: "How to Enable Http Api Service on VyOS"
 reward: true
 mathjax: true
 image: https://picsum.photos/800/600.webp?random=71ff97d5
