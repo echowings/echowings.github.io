@@ -4,6 +4,9 @@ date: 2022-10-09T09:49:14+08:00
 draft: false
 tags: [ "ddns", "cloudflare" ]
 categories: ["network"]
+layout: "page"
+slug: "page"
+image: https://picsum.photos/800/600.webp?random={{ substr (md5 (.Date)) 4 8 }}
 ---
 
 # Shell Script to Update Cloudflare Ddns
