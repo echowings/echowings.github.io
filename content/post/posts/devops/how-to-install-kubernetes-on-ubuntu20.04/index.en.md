@@ -42,6 +42,7 @@ Here is my plan to install kubernetes:
 ## Provision 3 ubuntu server  on 3 proxmox ve nodes
 ### Create ubuntu 20.04 template on 3 proxmox ve nodes
 Run following command on eache proxmox ve server to create ubuntu 20.04 server template with cloudinit enabled.
+
 ```bash
 cat << 'EOF' | tee create_ubuntu_20.04_template.sh
 #!/bin/bash
@@ -53,6 +54,9 @@ STORAGE_FULL_PATH="/mnt/pve"
 VCPUS=4
 VM_MEMORY=4096
 #STORAGE_FULL_PATH="/var/lib/vz"
+
+# Download ubuntu 20.04 LTS cloud image
+[ ! -f /var/lib/vz/template/qcow/focal-server-cloudimg-amd64.img ] && curl -fsSL https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img -o /var/lib/vz/template/qcow/focal-server-cloudimg-amd64.img
 
 qm create $VMID --name ${VM_NAME} \
 	--memory ${VM_MEMORY}  \
