@@ -4,7 +4,7 @@ date: 2022-11-13T18:53:31+08:00
 draft: false
 image: https://picsum.photos/800/600.webp?random=dddca1a9
 categories:
-  - Blog
+  - DEVOPS
 tags:
   - devops
   - kubernetes
