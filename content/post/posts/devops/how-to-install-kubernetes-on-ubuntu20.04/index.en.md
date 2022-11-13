@@ -22,10 +22,17 @@ license: CC BY-NC-ND
 ---
 
 # How to install kubernetes on ubuntu 20.04
+I have 3 proxmox ve node separately. So here are the steps:
 
+  1. Create ubuntu 20.04 cloud image on 3 proxmox ve server
+  2. Delpy 3 ubuntu 20.04 virtual machines on each 3 proxmox ve server.(1 for kubernetes master node, other 2 for kubernetes work nodes)
+  3. Install kubeadm,kubelet,kubectl,containerd on each nodes(includ master node and worker nodes)
+  4. Initalize Kubernetes on master node and install calico network CNI
+  5. Let worker nodes join kubernets cluster
+  
 
-## 1. Provision 3 ubuntu server  on 3 proxmox ve nodes
-### 1.1 Create ubuntu 20.04 template on 3 proxmox ve nodes
+## Provision 3 ubuntu server  on 3 proxmox ve nodes
+### Create ubuntu 20.04 template on 3 proxmox ve nodes
 ```bash
 cat << 'EOF' | tee create_ubuntu_20.04_template.sh
 #!/bin/bash
