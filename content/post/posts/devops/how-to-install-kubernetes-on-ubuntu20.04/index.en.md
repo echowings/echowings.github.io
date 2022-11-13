@@ -22,7 +22,14 @@ license: CC BY-NC-ND
 ---
 
 # How to install kubernetes on ubuntu 20.04
-I have 3 proxmox ve node separately. So here are the steps:
+Kubernetes is new linux os at nowadays. This is manually install kubernetes on ubuntu 20.04 with kubeadm.
+I have 3 proxmox ve server. So I plan to install 3 ubuntu virtual machines on eache proxmox ve server.here are the steps:
+
+|No. |Name|OS| IP ADDRESS|
+|---|---|---|---|
+|01 | ubuntu-k8s-master | ubuntu 20.04 LTS | 192.168.11.71 |
+|02 | ubuntu-k8s-node01 | ubuntu 20.04 LTS | 192.168.11.72 |
+|03 | ubuntu-k8s-node02 | ubuntu 20.04 LTS | 192.168.11.73 |
 
   1. Create ubuntu 20.04 cloud image on 3 proxmox ve server
   2. Delpy 3 ubuntu 20.04 virtual machines on each 3 proxmox ve server.(1 for kubernetes master node, other 2 for kubernetes work nodes)
@@ -118,7 +125,7 @@ sudo apt -y full-upgrade
 ### Forwarding IPv4 and letting iptables see bridged traffic
 
 ```bash
-cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+cat <<EOF | sudo tee /etc/modules-load.d/kubernetes.conf
 overlay
 br_netfilter
 EOF
@@ -127,7 +134,7 @@ sudo modprobe overlay
 sudo modprobe br_netfilter
 
 # sysctl params required by setup, params persist across reboots
-cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+cat <<EOF | sudo tee /etc/sysctl.d/kubernetes.conf
 net.bridge.bridge-nf-call-iptables  = 1
 net.bridge.bridge-nf-call-ip6tables = 1
 net.ipv4.ip_forward                 = 1
