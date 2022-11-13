@@ -1,5 +1,5 @@
 ---
-title: "How to install kubernetes on ubuntu 20.04"
+title: "How to install kubernetes on ubuntu 20.04 with kubeadm"
 date: 2022-11-13T18:53:31+08:00
 draft: false
 image: https://picsum.photos/800/600.webp?random=dddca1a9
@@ -276,7 +276,7 @@ kubectl get pods -n calico-system -w
 kubeadm token create  --print-join-command
 ```
 
-#### **Option:** Reset nodes and try it agaion
+### **Option:** Reset nodes and try it agaion
 
 ```bash
 sudo su
