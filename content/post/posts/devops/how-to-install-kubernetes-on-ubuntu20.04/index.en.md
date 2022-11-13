@@ -24,7 +24,8 @@ license: CC BY-NC-ND
 # How to install kubernetes on ubuntu 20.04
 
 
-## Provision 3 ubuntu server  on 3 proxmox ve nodes
+## 1. Provision 3 ubuntu server  on 3 proxmox ve nodes
+### 1.1 Create ubuntu 20.04 template on 3 proxmox ve nodes
 ```bash
 cat << 'EOF' | tee create_ubuntu_20.04_template.sh
 #!/bin/bash
@@ -77,7 +78,7 @@ bash create_ubuntu_20.04_template.sh
 
 ```
 
-# Create 3 nodes from template
+# 1.2 Create 3 kubernetes nodes from template 
 ```bash
 
 qm clone 9003 113 --full --name ubuntu-k8s-master
@@ -95,7 +96,7 @@ qm set 113 --onboot 1
 
 
 ## Install Prerequest packects
-### 1. Change Debian sourcelist  and update OS
+### 1. Change ubuntu sourcelist and update OS if nessary
 
 ```bash 
 source /etc/os-release
@@ -157,7 +158,7 @@ sudo apt install -y containerd.io
 sudo rm -rf /etc/containerd/config.toml
 sudo containerd config default | sudo tee /etc/containerd/config.toml
 
-#set plugins.cri.systemd_cgroup = true in
+#set plugins.cri.systemd_cgroup = true in /etc/containerd/config.toml
 sudo sed -i 's/SystemdCgroup\ =\ false/SystemdCgroup\ =\ true/g' /etc/containerd/config.toml
 sudo systemctl restart containerd
 sudo systemctl enable containerd
