@@ -96,7 +96,7 @@ qm set 113 --onboot 1
 
 
 ## Install Prerequest packects
-### 1. Change ubuntu sourcelist and update OS if nessary
+###  Change ubuntu sourcelist and update OS if nessary
 
 ```bash 
 source /etc/os-release
@@ -108,7 +108,7 @@ sudo apt -y full-upgrade
 [ -f /var/run/reboot-requried ] && sudo reboot -f
 ```
 
-### 2. Forwarding IPv4 and letting iptables see bridged traffic
+### Forwarding IPv4 and letting iptables see bridged traffic
 
 ```bash
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
@@ -130,7 +130,7 @@ EOF
 sudo sysctl --system
 ```
 
-### 3. Install containerd runtime
+### Install containerd runtime
 ```bash
 sudo apt-get update
 #sudo apt-get install  ca-certificates  curl  gnupg lsb-release
@@ -151,7 +151,7 @@ sudo mkdir -p /etc/apt/keyrings
 sudo apt update
 sudo apt install -y containerd.io
 ```
-### 4. Modify containerd configuration
+### Modify containerd configuration
 
 ```bash
 [ ! -f /etc/containerd ] && mkdir -p /etc/containerd
@@ -164,7 +164,7 @@ sudo systemctl restart containerd
 sudo systemctl enable containerd
 ```
 
-### 5. Disable SWAP
+### Disable SWAP
 
 
 ```bash
@@ -177,7 +177,7 @@ free -h
 
 ```
 
-### 6.  Install kubectl，kubeadm,kubelet
+### Install kubectl，kubeadm,kubelet
 ```bash
 sudo apt-get install -y ca-certificates curl apt-transport-https vim git curl wget 
 
