@@ -23,7 +23,7 @@ license: CC BY-NC-ND
 
 # How to install kubernetes on ubuntu 20.04
 Kubernetes is new linux os at nowadays. This is manually install kubernetes on ubuntu 20.04 with kubeadm.
-I have 3 proxmox ve server. So I plan to install 3 ubuntu virtual machines on eache proxmox ve server.here are the steps:
+I have 3 proxmox ve servers. then I plan to install 3 ubuntu virtual machines on eache proxmox ve server.
 
 |No. |Name|OS| IP ADDRESS|
 |---|---|---|---|
@@ -31,15 +31,17 @@ I have 3 proxmox ve server. So I plan to install 3 ubuntu virtual machines on ea
 |02 | ubuntu-k8s-node01 | ubuntu 20.04 LTS | 192.168.11.72 |
 |03 | ubuntu-k8s-node02 | ubuntu 20.04 LTS | 192.168.11.73 |
 
+Here is my plan to install kubernetes:
   1. Create ubuntu 20.04 cloud image on 3 proxmox ve server
   2. Delpy 3 ubuntu 20.04 virtual machines on each 3 proxmox ve server.(1 for kubernetes master node, other 2 for kubernetes work nodes)
-  3. Install kubeadm,kubelet,kubectl,containerd on each nodes(includ master node and worker nodes)
+  3. Install kubeadm,kubelet,kubectl,containerd on each nodes(include master node and worker nodes)
   4. Initalize Kubernetes on master node and install calico network CNI
-  5. Let worker nodes join kubernets cluster
+  5. Let worker nodes join kubernets cluster.
   
 
 ## Provision 3 ubuntu server  on 3 proxmox ve nodes
 ### Create ubuntu 20.04 template on 3 proxmox ve nodes
+Run following command on eache proxmox ve server to create ubuntu 20.04 server template with cloudinit enabled.
 ```bash
 cat << 'EOF' | tee create_ubuntu_20.04_template.sh
 #!/bin/bash
@@ -87,22 +89,30 @@ sed -i 's/.raw/.qcow2/g' /etc/pve/qemu-server/${VMID}.conf
 rm -rf ${STORAGE_FULL_PATH}/${STORAGE}/images/${VMID}/*.raw
 qm set $VMID --template
 EOF
+```
+
+## Run the command on proxmxo ve server to create ubuntu server 20.04 template
+```bash
 # Run script to create ubuntu 20.04 template
 bash create_ubuntu_20.04_template.sh
-
 ```
 
 # 1.2 Create 3 kubernetes nodes from template 
-```bash
 
+Create ubuntu server 20.04 as kubernetes nodes from template
+
+```bash
+# Run commands on proxmox ve server 01
 qm clone 9003 113 --full --name ubuntu-k8s-master
 qm set 113 --ipconfig0 ip=192.168.11.71/24,gw=192.168.11.1
 qm set 113 --onboot 1
 
+# Run commands on proxmox ve server 02
 qm clone 9003 113 --full --name ubuntu-k8s-node01
 qm set 113 --ipconfig0 ip=192.168.11.72/24,gw=192.168.11.1
 qm set 113 --onboot 1
 
+# Run commands on proxmox ve server 03
 qm clone 9003 113 --full --name ubuntu-k8s-node02
 qm set 113 --ipconfig0 ip=192.168.11.73/24,gw=192.168.11.1
 qm set 113 --onboot 1
@@ -110,8 +120,9 @@ qm set 113 --onboot 1
 
 
 ## Install Prerequest packects
-###  Change ubuntu sourcelist and update OS if nessary
+###  Change ubuntu sourcelist and update OS  then reboot it if necessary.
 
+Change ubuntu sourcelist and update packages
 ```bash 
 source /etc/os-release
 echo $VERSION_CODENAME
@@ -182,16 +193,16 @@ sudo systemctl enable containerd
 
 
 ```bash
-sudo sed -i '/swap/d' /etc/fstab
+# sudo sed -i '/swap/d' /etc/fstab
 # Search for a swap line and add # (hashtag) sign in front of the line.
-# sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 sudo swapoff -a
 sudo mount -a
 free -h
 
 ```
 
-### Install kubectl，kubeadm,kubelet
+### Install kubectl，kubeadm, kubelet
 ```bash
 sudo apt-get install -y ca-certificates curl apt-transport-https vim git curl wget 
 
@@ -231,7 +242,8 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-### Install calico 
+### Install network CNI calico on master node 
+
 ```bash
 
 kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
@@ -255,7 +267,15 @@ kubectl get pods -n calico-system -w
 # if you forget the join information, you can query it with commands as show below
 kubeadm token create  --print-join-command
 ```
-## Setup Worker Node
+
+#### **Option:** Reset nodes and try it agaion
+
+```bash
+sudo su
+kubeadm reset -f
+```
+
+## Setup Worker Nodes 
 
 ```bash
 sudo kubeadm config images pull
