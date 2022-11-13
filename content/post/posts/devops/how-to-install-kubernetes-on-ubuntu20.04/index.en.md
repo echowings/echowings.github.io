@@ -220,11 +220,14 @@ sudo apt-get install -y apt-transport-https
 [ ! -f /etc/apt/sources.list.d/kubernetes.list ] && echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
 apt update
+
+# Chek kubeadm version for us to select the right version of kubernete to install
 apt-cache madison kubeadm
 
 #1.23.10-00
 sudo apt-get install -y kubelet=1.23.10-00 kubeadm=1.23.10-00 kubectl=1.23.10-00
 # Provent auto update new version
+# Hold the current version
 sudo apt-mark hold kubelet kubeadm kubectl
 
 # Verify whether kubectl has been successfully installed by running the following command upon the completion of the previous steps: 
@@ -244,6 +247,7 @@ kubeadm init --pod-network-cidr=10.244.0.0/16 --upload-certs
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
 ```
 
 ### Install network CNI calico on master node 
