@@ -249,6 +249,12 @@ kubeadm join 192.168.11.71:6443 --token akn012.rp0e7oxw0qn7b5o3 \
 	--discovery-token-ca-cert-hash sha256:f78548da4af356ea8b006531962673b5945dd1c36588e137c6ec44c99d4ad7e1
 ```
 
+## Check Node status
+
+```bash
+kubectl get nodes
+kubectl get pods -A -o wide
+```
 
 ## Reference
 
