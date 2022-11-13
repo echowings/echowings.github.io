@@ -95,13 +95,13 @@ qm set $VMID --template
 EOF
 ```
 
-## Run the command on proxmxo ve server to create ubuntu server 20.04 template
+### Run the command on proxmxo ve server to create ubuntu server 20.04 template
 ```bash
 # Run script to create ubuntu 20.04 template
 bash create_ubuntu_20.04_template.sh
 ```
 
-# 1.2 Create 3 kubernetes nodes from template 
+## Create 3 kubernetes nodes from template 
 
 Create ubuntu server 20.04 as kubernetes nodes from template
 
