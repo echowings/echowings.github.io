@@ -81,7 +81,7 @@ qm set $VMID --ide2 ${STORAGE}:cloudinit
 qm set $VMID --serial0 socket --vga serial0
 qm set $VMID --sshkey /etc/pve/pub_keys/pub_key.pub
 qm set $VMID --ciuser ubuntu
-qm set $VMID --cipassword xA123456
+qm set $VMID --cipassword MyPassW0rd
 qm set $VMID --ipconfig0 ip=dhcp
 qm resize $VMID virtio0 +50G
 
