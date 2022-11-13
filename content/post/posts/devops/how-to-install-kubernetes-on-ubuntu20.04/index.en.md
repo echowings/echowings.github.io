@@ -36,15 +36,16 @@ STORAGE_FULL_PATH="/mnt/pve"
 VCPUS=4
 VM_MEMORY=4096
 #STORAGE_FULL_PATH="/var/lib/vz"
+
 qm create $VMID --name ${VM_NAME} \
-	             --memory ${VM_MEMORY}  \
-							 --net0 virtio,bridge=vmbr0 \
-							 --cores ${VCPUS} \
-							 --sockets 1 \
-							 --cpu cputype=host \
-							 --description "${VM_NAME}" \
-							 --kvm 1 \
-							 --machine q35
+	--memory ${VM_MEMORY}  \
+	--net0 virtio,bridge=vmbr0 \
+	--cores ${VCPUS} \
+	--sockets 1 \
+	--cpu cputype=host \
+	--description "${VM_NAME}" \
+	--kvm 1 \
+	--machine q35
 
 qm importdisk $VMID /var/lib/vz/template/qcow/${IMAGE_NAME} ${STORAGE}
 qm set $VMID --scsihw virtio-scsi-pci --virtio0 ${STORAGE}:${VMID}/vm-$VMID-disk-0.raw
