@@ -100,7 +100,8 @@ kubectl uncordon ubuntu-k8s-master
 
 ```bash
 kubeadm version
-kubelet version
+kubelet --version
+
 ```
 
 
@@ -115,12 +116,20 @@ apt-mark hold kubeadm
 
 ### Plan the kubeadm upgrade
 
+
+### Apply the kubeadm upgrade
+
 ```bash 
 kubeadm upgrade node
 ```
 
-### Apply the kubeadm upgrade
+### cordon the worker node
 
+```bash
+kubectl drain ubuntu-k8s-node01
+```
+
+### Upgrade the kubelet
 ```bash
 apt-mark unhold kubelet kubectl && \
 apt-get update && apt-get install -y kubelet=1.23.11-00 kubectl=1.23.11-00 && \
@@ -131,11 +140,10 @@ sudo systemctl daemon-reload
 sudo systemctl restart kubelet
 ```
 
-### Cordon the node
-
-### Upgrade the kubelet
-
 ### uncordon the node
+```bash
+kubectl uncordon ubuntu-k8s-node01
+```
 
 ### Exit the worker node
 
