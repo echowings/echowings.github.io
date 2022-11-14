@@ -21,7 +21,9 @@ license: CC BY-NC-ND
 
 
 # How to upgrade kubernetes
-To upgrade kuberetes I will 2 steps to implement it.
+To upgrade kubernetes I will 2 steps to implement it. 
+  1. Upgrade master node
+  2. Upgrade worker nodes
 ## Master node upgrade process
 ### Check out the current kubeadm and kubelet version
 First thing first, login the master node with ssh.
