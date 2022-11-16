@@ -5,6 +5,7 @@ draft: false
 image: https://picsum.photos/800/600.webp?random=dddca1a9
 categories:
   - DEVOPS
+  - kubernets
 tags:
   - devops
   - kubernetes
