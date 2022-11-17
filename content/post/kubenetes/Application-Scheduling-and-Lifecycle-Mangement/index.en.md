@@ -40,7 +40,7 @@ kubectl run nginx-pod --image=nginx:alpine
 kubectl describe pod nginx-pod
 ```
 
-### Create pods with YAML-defined 
+### Create pods with declarative management
 Create a yaml file
 
 ```yaml
@@ -62,12 +62,12 @@ To create pods with kubectl apply -f file
 kubectl apply -f <your-spec>.yaml
 ```
 
-### run busybox 
+#### run busybox 
 ```bash
 kubctl run busybox --rm -it --image=busybox /bin/sh
 ```
 
-### export yaml file with --dry-run
+#### export yaml file with --dry-run
 
 ```bash
 kubectl run nginx --image=nginx:alpine --dry-run -o yaml > nginx-sample.yaml
