@@ -75,8 +75,46 @@ kubectl apply nginx-sample.yaml
 ```
 
 ## Understanding Liveness, readiness, and startup probes
+  - Liveness probes
+  - Readiness probes
+  - Startup probes
 
-To ex
+## Understanding a multi-conainter pod
 
+Multi-container pods are simply pods with more than one container working together as a single unit. When it coms to multiple containers residing in a pod, a conainer ineracts with another in the following two ways:
 
+  - **Shared networking:** When two containers are running on the same host when they are in the same pod, they can access each other by simpley using localhost. All the listening ports are accessible to other containers in the pod, even if they're not exposed outside the pod.
+ 
+  - **Shared storage volumes:** We can mount the same volume to two different conainers so that they can both interact with the same data - it is possible to have one container write data to the volume and the other container read that data from the same volume. Some volumes even allow concurrent reading and writing. 
+
+### Create multiple containers in a pod:
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  neme: multi-app-pod
+  labels:
+    app: multi-app
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+    - containerPort: 80"wq
+    - 
+  - name: busybox-sidecar
+    image: busybox
+    command: [ 'sh', '-c', 'while true; do sleep 3600; done;' ]
+    
+```
+
+## Understanding an init container
+
+```yaml
+apiVerion: v1
+kind: Pod
+metedata:
+  name: 
+spec:
+```
 
