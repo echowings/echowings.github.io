@@ -165,13 +165,19 @@ We need remember
 ## Listing etcd cluster members
 
 ```bash
-kubectl exec etcd-ubuntu-k8s-master -n kube-system -- sh -c "ETCDCTL_API=3 etcdctl  --endpoints=https://127.0.0.1:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --write-out=table member list"
+kubectl exec etcd-ubuntu-k8s-master -n kube-system \
+	-- sh -c "ETCDCTL_API=3 etcdctl  \
+	--endpoints=https://127.0.0.1:2379 \
+	--cacert=/etc/kubernetes/pki/etcd/ca.crt \
+	--cert=/etc/kubernetes/pki/etcd/server.crt \
+	--key=/etc/kubernetes/pki/etcd/server.key \
+	--write-out=table \
+	member list"
 ```
 
 output:
 
 ```bash
-root@ubuntu-k8s-master:/home/ubuntu# kubectl exec etcd-ubuntu-k8s-master -n kube-system -- sh -c "ETCDCTL_API=3 etcdctl member list --endpoints=https://127.0.0.1:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --write-out=table"
 +------------------+---------+-------------------+-----------------------+----------------------------+------------+
 |        ID        | STATUS  |       NAME        |      PEER ADDRS       |        CLIENT ADDRS        | IS LEARNER |
 +------------------+---------+-------------------+-----------------------+----------------------------+------------+
@@ -183,7 +189,14 @@ root@ubuntu-k8s-master:/home/ubuntu# kubectl exec etcd-ubuntu-k8s-master -n kube
 `ETCDCTL_API=3 etcdctl endpoint status`
 
 ```bash
-kubectl -n kube-system exec etcd-ubuntu-k8s-master -- sh  -c "ETCDCTL_API=3 etcdctl  --endpoints=https://192.168.11.71:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --write-out=table endpoint status"
+kubectl -n kube-system exec etcd-ubuntu-k8s-master \
+	-- sh  -c "ETCDCTL_API=3 etcdctl  \
+	--endpoints=https://192.168.11.71:2379 \
+	--cacert=/etc/kubernetes/pki/etcd/ca.crt \
+	--cert=/etc/kubernetes/pki/etcd/server.crt \
+	--key=/etc/kubernetes/pki/etcd/server.key \
+	--write-out=table \
+	endpoint status"
 ```
 output:
 
@@ -196,7 +209,14 @@ output:
 ```
 
 ```bash
-kubectl -n kube-system exec etcd-ubuntu-k8s-master -- sh  -c "ETCDCTL_API=3 etcdctl --endpoints=https://192.168.11.71:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --write-out=table endpoint health "
+kubectl -n kube-system exec etcd-ubuntu-k8s-master \
+	-- sh  -c "ETCDCTL_API=3 etcdctl \
+	--endpoints=https://192.168.11.71:2379 \
+	--cacert=/etc/kubernetes/pki/etcd/ca.crt \
+	--cert=/etc/kubernetes/pki/etcd/server.crt\
+	--key=/etc/kubernetes/pki/etcd/server.key \
+	--write-out=table \
+	endpoint health "
 ```
 output:
 
@@ -218,7 +238,8 @@ etcdctl version
 ```
 or
 ```bash
-kubectl -n kube-system exec etcd-ubuntu-k8s-master -- sh -c "ETCDCTL_API=3 etcdctl version"
+kubectl -n kube-system exec etcd-ubuntu-k8s-master \
+	-- sh -c "ETCDCTL_API=3 etcdctl version"
 ```
 
 ## Backing up etcd
