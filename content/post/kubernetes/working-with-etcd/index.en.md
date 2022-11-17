@@ -258,22 +258,23 @@ snapshotdb"{"level":"info","ts":1668525609.0965416,"caller":"snapshot/v3_snapsho
 ### Check the etcd status
 
 ```bash
-sudo ETCDCTL_API=3 etcdctl  --endpoint https://192.168.11.71:2379 \  
-								 --cacert=/etc/kubernetes/pki/etcd/ca.crt \
-								 --cert=/etc/kubernetes/pki/etcd/server.crt \
-								 --key=/etc/kubernetes/pki/etcd/server.key  \
-								 restore snapshotdb
+sudo ETCDCTL_API=3 etcdctl  \
+	--endpoint https://192.168.11.71:2379 \  
+	--cacert=/etc/kubernetes/pki/etcd/ca.crt \
+	--cert=/etc/kubernetes/pki/etcd/server.crt \
+	--key=/etc/kubernetes/pki/etcd/server.key  \
+	restore snapshotdb
 ```
 
 ### Restore the etcd backup
 
 ```bash
 sudo ETCDCTL_API=3 etcdctl --endpoint https://192.168.11.71:2379 
-								--cacert=/etc/kubernetes/pki/etcd/ca.crt \
-								--cert=/etc/kubernetes/pki/etcd/server.crt \
-								--key=/etc/kubernetes/pki/etcd/server.key \
-								--write-out=table \
-								endpoint status
+	--cacert=/etc/kubernetes/pki/etcd/ca.crt \
+	--cert=/etc/kubernetes/pki/etcd/server.crt \
+	--key=/etc/kubernetes/pki/etcd/server.key \
+	--write-out=table \
+	endpoint status
 ```
 
 ### Exit the master node
