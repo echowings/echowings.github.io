@@ -19,7 +19,7 @@ layout:
 license: CC BY-NC-ND
 ---
 
-This article describes how to use kubernetes deployments to deploy pods, scale pods, perform rolling updates and rollbacks, carry out resource management, and use ConfigMaps to configurepods using `kubectl` command and YAML definitions.
+This article describs how to use kubernetes deployments to deploy pods, scale pods, perform rolling updates and rollbacks, carry out resource management, and use ConfigMaps to configurepods using `kubectl` command and YAML definitions.
 
 
 ## Run a container
