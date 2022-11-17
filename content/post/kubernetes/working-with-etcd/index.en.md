@@ -230,12 +230,24 @@ kubectl -n kube-system exec etcd-ubuntu-k8s-master -- sh -c "ETCDCTL_API=3 etcdc
 ```bash
 # kubectl describe <etcd-podname> 
 kubectl describe etcd-ubuntu-k8s-master 
-kubectl -n kube-system exec etcd-ubuntu-k8s-master -- sh -c "ETCDCTL_API=3 etcdctl --endpoints=https://192.168.11.71:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --write-out=table endpoint status"
+kubectl -n kube-system exec etcd-ubuntu-k8s-master \
+	-- sh -c "ETCDCTL_API=3 etcdctl \
+	--endpoints=https://192.168.11.71:2379 \
+	--cacert=/etc/kubernetes/pki/etcd/ca.crt \
+	--cert=/etc/kubernetes/pki/etcd/server.crt \
+	--key=/etc/kubernetes/pki/etcd/server.key \
+	--write-out=table endpoint status"
 
 ```
 ### Perform the etcd backup
 ```bash
-sudo kubectl -n kube-system exec etcd-ubuntu-k8s-master -- sh -c "ETCDCTL_API=3 etcdctl --endpoints=https://192.168.11.71:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key snapshot save"
+sudo kubectl -n kube-system exec etcd-ubuntu-k8s-master. \
+ 	-- sh -c "ETCDCTL_API=3 etcdctl \
+ 	--endpoints=https://192.168.11.71:2379 \
+ 	--cacert=/etc/kubernetes/pki/etcd/ca.crt \
+ 	--cert=/etc/kubernetes/pki/etcd/server.crt \
+ 	--key=/etc/kubernetes/pki/etcd/server.key \
+ 	snapshot save"
 ```
 output
 
