@@ -165,7 +165,7 @@ We need remember
 ## Listing etcd cluster members
 
 ```bash
-kubectl exec etcd-ubuntu-k8s-master -n kube-system -- sh -c "ETCDCTL_API=3 etcdctl member list --endpoints=https://127.0.0.1:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --write-out=table"
+kubectl exec etcd-ubuntu-k8s-master -n kube-system -- sh -c "ETCDCTL_API=3 etcdctl  --endpoints=https://127.0.0.1:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --write-out=table member list"
 ```
 
 output:
@@ -183,7 +183,7 @@ root@ubuntu-k8s-master:/home/ubuntu# kubectl exec etcd-ubuntu-k8s-master -n kube
 `ETCDCTL_API=3 etcdctl endpoint status`
 
 ```bash
-kubectl -n kube-system exec etcd-ubuntu-k8s-master -- sh  -c "ETCDCTL_API=3 etcdctl endpoint status --endpoints=https://192.168.11.71:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --write-out=table"
+kubectl -n kube-system exec etcd-ubuntu-k8s-master -- sh  -c "ETCDCTL_API=3 etcdctl  --endpoints=https://192.168.11.71:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --write-out=table endpoint status"
 ```
 output:
 
@@ -196,7 +196,7 @@ output:
 ```
 
 ```bash
-kubectl -n kube-system exec etcd-ubuntu-k8s-master -- sh  -c "ETCDCTL_API=3 etcdctl endpoint health --endpoints=https://192.168.11.71:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --write-out=table"
+kubectl -n kube-system exec etcd-ubuntu-k8s-master -- sh  -c "ETCDCTL_API=3 etcdctl --endpoints=https://192.168.11.71:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --write-out=table endpoint health "
 ```
 output:
 
@@ -250,6 +250,22 @@ snapshotdb"{"level":"info","ts":1668525609.0965416,"caller":"snapshot/v3_snapsho
 
 ### Exit the master nodes
 
+## Restoring etcd
+
+### SSH to the etcd cluster node.
+
+-- skip --
+### Check the etcd status
+
+sudo ETCDCTL_API=3 etcdctl --endpoint https://192.168.11.71:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key restore snapshotdb
+
+### Restore the etcd backup
+
+
+sudo ETCDCTL_API=3 etcdctl --endpoint https://192.168.11.71:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --write-out=table endpoint status
+### Exit the master node
+
+--skip--
 
 
 
