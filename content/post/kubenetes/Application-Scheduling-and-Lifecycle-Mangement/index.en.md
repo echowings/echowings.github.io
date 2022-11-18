@@ -114,7 +114,20 @@ spec:
 apiVerion: v1
 kind: Pod
 metedata:
-  name: 
+  name: melon-pod
+  labels:
+  	app: melonapp
 spec:
+  containers:
+  - name: melonapp-container
+    image:busybox:latest
+    command: ['sh', '-c', 'echo The melonapp is running! && sleep 3600']
+  initContainers:
+  - name: init-melonservice
+    image: busybox:latest
+    command: ['sh', '-c', 'until nslookup melonservice; do echo waiting for melonserivce; sleep 2; done;']
+  - name: init-melondb
+    image: busybox:latest
+    command: ['sh', '-c', 'until nslookup melondb; do echo waiting for melondb; sleep 2; done;']
 ```
 
