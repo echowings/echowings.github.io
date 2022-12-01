@@ -111,16 +111,16 @@ spec:
 ## Understanding an init container
 
 ```yaml
-apiVerion: v1
+apiVersion: v1
 kind: Pod
-metedata:
+metadata:
   name: melon-pod
   labels:
-  	app: melonapp
+    name: melonapp
 spec:
   containers:
   - name: melonapp-container
-    image:busybox:latest
+    image: busybox:latest
     command: ['sh', '-c', 'echo The melonapp is running! && sleep 3600']
   initContainers:
   - name: init-melonservice
@@ -129,5 +129,10 @@ spec:
   - name: init-melondb
     image: busybox:latest
     command: ['sh', '-c', 'until nslookup melondb; do echo waiting for melondb; sleep 2; done;']
+    
 ```
+## Understanding a static Pod
+
+
+
 
