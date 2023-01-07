@@ -11,6 +11,14 @@ mathjax: true
 
 #How to batch rename filesname
 
+
+## Rename a file
 ```bash
-ls *.mp4| awk -F" 【中文 www.zhongwen.zw 】" '{print "mv \""$0"\" \""$1$2"\""}'  | bash:
+ls *.mp4| awk -F" 【中文 www.zhongwen.zw 】" '{print "mv \""$0"\" \""$1$2"\""}'  | bash
+```
+
+## Rename a  folder
+
+```bash
+ ls -d * | awk -F " 【中文 www.zhongwen.zw 】"  '{print "mv \""$0"\" \""$1$2"\""}' | bash
 ```
