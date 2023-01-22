@@ -22,3 +22,6 @@ ls *.mp4| awk -F "TEXT_TO_DELETE" '{print "mv \""$0"\" \""$1$2"\""}'  | bash
 ```bash
 ls -d * | awk -F "TEXT_TO_DELETE"  '{print "mv \""$0"\" \""$1$2"\""}' | bash
 ```
+
+
+## Reference
