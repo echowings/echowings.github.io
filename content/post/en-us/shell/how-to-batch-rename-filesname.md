@@ -25,3 +25,4 @@ ls -d * | awk -F "TEXT_TO_DELETE"  '{print "mv \""$0"\" \""$1$2"\""}' | bash
 
 
 ## Reference
+ - demo
