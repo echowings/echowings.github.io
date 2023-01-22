@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>container on Steve&#39;s Blog</title>
+    <link>https://echowings.github.io/categories/container/</link>
+    <description>Recent content in container on Steve&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 22 Aug 2021 22:46:37 +0800</lastBuildDate><atom:link href="https://echowings.github.io/categories/container/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Deploy Vlmcsd With Docker-Compose</title>
+      <link>https://echowings.github.io/p/how-to-deploy-vlmcsd-with-docker-compose/</link>
+      <pubDate>Sun, 22 Aug 2021 22:46:37 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-deploy-vlmcsd-with-docker-compose/</guid>
+      <description>How to deploy vlmcsd with docker-compose 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 FROM alpine:latest as builder WORKDIR /root RUN sed -i &amp;#39;s/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g&amp;#39; /etc/apk/repositories RUN apk add --no-cache git make build-base &amp;amp;&amp;amp; \ &amp;amp;&amp;amp; rm -rf /var/lib/apt/lists/* &amp;amp;&amp;amp; rm -rf /var/cache/apk/* &amp;amp;&amp;amp; \ git clone --branch master --single-branch https://github.com/Wind4/vlmcsd.git &amp;amp;&amp;amp; \ cd vlmcsd &amp;amp;&amp;amp; \ make FROM alpine:latest COPY --from=builder /root/vlmcsd/bin/vlmcsd /vlmcsd RUN apk add --no-cache tzdata EXPOSE 1688/tcp CMD [&amp;#34;/vlmcsd&amp;#34;, &amp;#34;-D&amp;#34;, &amp;#34;-d&amp;#34;, &amp;#34;-t&amp;#34;, &amp;#34;3&amp;#34;, &amp;#34;-e&amp;#34;, &amp;#34;-v&amp;#34;] </description>
+    </item>
+    
+  </channel>
+</rss>

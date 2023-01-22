@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hci on Steve&#39;s Blog</title>
+    <link>https://echowings.github.io/tags/hci/</link>
+    <description>Recent content in hci on Steve&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 01 Jul 2021 14:06:58 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/hci/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Delete Ghost Monitor in Ceph Cluster</title>
+      <link>https://echowings.github.io/p/how-to-delete-ghost-monitor-in-ceph-cluster/</link>
+      <pubDate>Thu, 01 Jul 2021 14:06:58 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-delete-ghost-monitor-in-ceph-cluster/</guid>
+      <description>How to delete ghost monitor in ceph cluster Today , after I let a new server join pve cluster. ceph mon is stopped. I want to start or delete it , I always got a failed notification. After search and try to fix it. At last I fixed it.Here is what I had do
+Issue description 1 2 3 4 root@xa-autotest-hci04:~# pveceph createmon monitor &amp;#39;xa-autotest-hci04&amp;#39; already exists root@xa-autotest-hci04:~# pveceph mon destroy xa-autotest-hci04 no such monitor id &amp;#39;xa-autotest-hci04&amp;#39; How to fixed it 1 2 3 4 5 6 7 8 9 10 11 12 #stop ceph-mon@xa-autotest-hci04 service systemctl stop ceph-mon@xa-autotest-hci04 #Disable ceph-mon@xa-autotest-hci04 service systemctl disable ceph-mon@xa-autotest-hci04 pveceph purge rm -rf /var/lib/ceph/mon/ceph-xa-autotest-hci04 pveceph createmon #Created symlink /etc/systemd/system/ceph-mon.</description>
+    </item>
+    
+    <item>
+      <title>How to Let a New Server Join Hci System</title>
+      <link>https://echowings.github.io/p/how-to-let-a-new-server-join-hci-system/</link>
+      <pubDate>Thu, 01 Jul 2021 06:38:10 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-let-a-new-server-join-hci-system/</guid>
+      <description>##How to let a new server join the exist HCI cluster
+1. Insall the pve on the server &amp;ndash;skip&amp;mdash;
+2. Let the new server join the pve cluster 1 2 #ssh login the server pvecm add 10.32.4.37 3. configure NTP server 1 2 3 4 5 cat &amp;gt;&amp;gt; /etc/systemd/timesyncd.conf &amp;lt;&amp;lt; EOF NTP=192.168.0.2 192.168.0.3 EOF # Restart systemd-timesyncd service to apply settings systemctl restart systemd-timesyncd 4. Install ceph 1 pveceph install 5.</description>
+    </item>
+    
+    <item>
+      <title>Bcache</title>
+      <link>https://echowings.github.io/p/bcache/</link>
+      <pubDate>Tue, 09 Mar 2021 16:20:42 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/bcache/</guid>
+      <description>How to operate becache Recently I just try to add bcache with zfs and ceph. So I just wirte down it. Install bcache-tools Since bcache implement in Linux kernel. So it will default enabled. We just need to install bcache-tools to operate bcache. 1 apt install -y bcache-tools Configure bcache 1 2 3 4 5 6 7 # make a cache disk for bcache .It must be a ssd disk.</description>
+    </item>
+    
+    <item>
+      <title>Build Hyper-Converged Infrastructure With Ceph on PVE</title>
+      <link>https://echowings.github.io/p/build-hyper-converged-infrastructure-with-ceph-on-pve/</link>
+      <pubDate>Mon, 29 Apr 2019 10:56:16 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/build-hyper-converged-infrastructure-with-ceph-on-pve/</guid>
+      <description>Build Hyper-Converged Infrastructure with ceph on PVE&amp;quot; Ceph is really a king of SDS(Software Defin Storage). Opensource. After yeasr evolved, It is enterprise-ready. Today I will build a HCI with ceph on proxmox VE 5.x.
+It will end nightmare that someone or montoring system tell you that your service was down, you need be a fire fighter to fixed as soon as possible under tremendous pressure form your boss. With proxmox ve , We can say &amp;rsquo;no more!</description>
+    </item>
+    
+  </channel>
+</rss>

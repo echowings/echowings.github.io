@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kubernetes on Steve&#39;s Blog</title>
+    <link>https://echowings.github.io/categories/kubernetes/</link>
+    <description>Recent content in kubernetes on Steve&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 17 Nov 2022 15:47:56 +0800</lastBuildDate><atom:link href="https://echowings.github.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Application Scheduling and Lifecycle Mangement</title>
+      <link>https://echowings.github.io/p/application-scheduling-and-lifecycle-mangement/</link>
+      <pubDate>Thu, 17 Nov 2022 15:47:56 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/application-scheduling-and-lifecycle-mangement/</guid>
+      <description>This article describs how to use kubernetes deployments to deploy pods, scale pods, perform rolling updates and rollbacks, carry out resource management, and use ConfigMaps to configurepods using kubectl command and YAML definitions.
+Run a container Cretae a pod using am imperative command Create pods with kubectl command 1 kubectl run &amp;lt;pod-name&amp;gt; --image=&amp;lt;image-name:image-tag&amp;gt; for instance:
+1 kubectl run nginx-pod --image=nginx:alpine Check the pod&amp;rsquo;s status 1 kubectl describe pod nginx-pod Create pods with declarative management Create a yaml file</description>
+    </item>
+    
+    <item>
+      <title>Working With Etcd</title>
+      <link>https://echowings.github.io/p/working-with-etcd/</link>
+      <pubDate>Tue, 15 Nov 2022 18:32:33 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/working-with-etcd/</guid>
+      <description>Working with Etcd Today, we will learn how to interactve with etcd . to backup and restore the etcd database. First thing first, let&amp;rsquo;s check the etcd pod name in our kubernetes cluster. Let&amp;rsquo;s go!
+Check etcd pod name Run the command on master node to get the etcd pod name
+1 kubectl get pods -n kube-system output:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 root@ubuntu-k8s-master:/home/ubuntu# kubectl get pods -n kube-system NAME READY STATUS RESTARTS AGE calico-kube-controllers-7b8458594b-5d84q 1/1 Running 86 (104m ago) 26h calico-node-2l8mt 1/1 Running 2 (104m ago) 2d17h calico-node-hrfjc 1/1 Running 2 (105m ago) 2d17h calico-node-rkwth 1/1 Running 5 (105m ago) 2d17h coredns-64897985d-cb85v 1/1 Running 1 (104m ago) 26h coredns-64897985d-fp25w 1/1 Running 1 (105m ago) 26h etcd-ubuntu-k8s-master 1/1 Running 73 (17m ago) 2d18h kube-apiserver-ubuntu-k8s-master 1/1 Running 63 (15m ago) 26h kube-controller-manager-ubuntu-k8s-master 1/1 Running 8 (105m ago) 26h kube-proxy-5xrhj 1/1 Running 2 (105m ago) 26h kube-proxy-qqkbz 1/1 Running 1 (105m ago) 26h kube-proxy-t7l2p 1/1 Running 1 (104m ago) 26h kube-scheduler-ubuntu-k8s-master 1/1 Running 7 (105m ago) 26h metrics-server-7cf8b65d65-wnvtd 1/1 Running 2 (105m ago) 2d17h My single kubernetes cluster has etcd pod named etcd-ubuntu-k8s-master</description>
+    </item>
+    
+  </channel>
+</rss>

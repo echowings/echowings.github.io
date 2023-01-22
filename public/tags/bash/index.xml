@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bash on Steve&#39;s Blog</title>
+    <link>https://echowings.github.io/tags/bash/</link>
+    <description>Recent content in bash on Steve&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 26 Mar 2021 15:23:43 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Rename Vm Id on Pve</title>
+      <link>https://echowings.github.io/p/how-to-rename-vm-id-on-pve/</link>
+      <pubDate>Fri, 26 Mar 2021 15:23:43 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-rename-vm-id-on-pve/</guid>
+      <description>How to rename VMID on PVE 1 2 3 4 5 6 7 8 9 VMID=121 &amp;amp;&amp;amp; \ NEW_VMID=1001 &amp;amp;&amp;amp; \ POOL_NAME=tank &amp;amp;&amp;amp; \ qm unlock $VMID &amp;amp;&amp;amp; \ qm stop $VMID &amp;amp;&amp;amp; \ sed -i &amp;#34;s/$VMID/$NEW_VMID/g&amp;#34; /etc/pve/qemu-server/$VMID.conf &amp;amp;&amp;amp; \ mv /etc/pve/qemu-server/$VMID.conf /etc/pve/qemu-server/$NEW_VMID.conf &amp;amp;&amp;amp; \ rbd --pool $POOL_NAME rename vm-$VMID-disk-0 vm-$NEW_VMID-disk-0 &amp;amp;&amp;amp;\ qm start $NEW_VMID </description>
+    </item>
+    
+  </channel>
+</rss>

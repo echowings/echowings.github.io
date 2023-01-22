@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on Steve&#39;s Blog</title>
+    <link>https://echowings.github.io/categories/docker/</link>
+    <description>Recent content in docker on Steve&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Apr 2019 16:56:08 +0800</lastBuildDate><atom:link href="https://echowings.github.io/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Librenms Deploy Librenms With Docker Container</title>
+      <link>https://echowings.github.io/p/librenms-deploy-librenms-with-docker-container/</link>
+      <pubDate>Tue, 16 Apr 2019 16:56:08 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/librenms-deploy-librenms-with-docker-container/</guid>
+      <description>How to deploy librenms monitoring system with docker container Librenms is a very light and easy handle moniting software. It is suitable for us to monitoring server,networdevice, printer etc via snmp.
+At now, docker is easy for software deployment. After deploy librenms in ubuntu vm, I have a try to deploy librenms with docker-compose.
+Install librenms with docker-compose 1 2 3 4 5 6 7 mkdir -p librenms-docker-compose cd ./librenms-docker-compose wget https://raw.</description>
+    </item>
+    
+    <item>
+      <title>How to Build a Kms Server</title>
+      <link>https://echowings.github.io/p/how-to-build-a-kms-server/</link>
+      <pubDate>Thu, 11 Apr 2019 00:17:37 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-build-a-kms-server/</guid>
+      <description>How to build a kms server Option 1: docker mode 1 2 3 4 5 docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername Option 2: docker compose docker-compose.yml
+1 2 3 4 5 6 7 8 9 10 version: &amp;#39;3&amp;#39; services: frontend: image: luodaoyi/kms-server container_name: mykms ports: - 1688:1688 restart: always docker-compose start the container
+1 docker-compose up -d Active Script 1 2 3 4 5 6 7 8 echo &amp;#34;To active office&amp;#34; cd &amp;#34;%programfiles%\Microsoft Office\Office16&amp;#34; cscript ospp.</description>
+    </item>
+    
+    <item>
+      <title>Dockerfile for Overture</title>
+      <link>https://echowings.github.io/p/dockerfile-for-overture/</link>
+      <pubDate>Mon, 24 Dec 2018 00:55:14 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/dockerfile-for-overture/</guid>
+      <description>How to Wirte docker file for overture Hence we need to custom overture docker image as we desire, I write this dockerfile.
+How to map VOLUME and copy file from docker images to directory of docker host. When define VOLUME, build docker images will not copy file to the path, But we can copy the files when docker running.
+if [ &amp;ldquo;ls -A /config&amp;rdquo; = &amp;quot;&amp;quot; ]; then cp /srv/config.json /config/ &amp;amp;&amp;amp; cp /srv/*.</description>
+    </item>
+    
+    <item>
+      <title>Deploy Overture With Docker and Freebsd</title>
+      <link>https://echowings.github.io/p/deploy-overture-with-docker-and-freebsd/</link>
+      <pubDate>Tue, 18 Dec 2018 00:44:13 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/deploy-overture-with-docker-and-freebsd/</guid>
+      <description>Run overture on Docker and FreeBSD 12 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 ENV foo /overture WORKDIR ${foo} RUN apt-get update &amp;amp;&amp;amp; apt-get install -y ca-certificates RUN printf &amp;#34;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.</description>
+    </item>
+    
+  </channel>
+</rss>
