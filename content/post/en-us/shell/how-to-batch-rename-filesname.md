@@ -23,6 +23,35 @@ ls -d * | awk -F "TEXT_TO_DELETE"  '{print "mv \""$0"\" \""$1$2"\""}' | bash
 ```
 
 
+## Batch rename file
+
+  - bash file
+```bash
+#!/bin/bash
+#
+
+
+for dir in `ls .`
+do 
+	if [ -d $dir ]
+	then
+		echo $dir
+		cd $dir
+		for file in `ls . | tr " " "?"`
+		do
+			echo $file  | tr "?" " " | awk -F "【瑞客论坛 www.ruike1.com】" '{print "mv \""$0"\" \""$1""$2"\""}' | bash
+			
+		done
+		cd ..
+	fi
+done
+
+```
+  - one command line script
+```bash
+for dir in `ls .`;do if [ -d $dir ];then;echo $dir && cd $dir && for file in `ls . | tr " " "?"`;do echo $file | tr "?" " " | awk -F "【瑞客论坛 www.ruike1.com】" '{print "mv \""$0"\" \""$1""$2"\""}' | bash; done;cd ..;fi;done
+```
+
 
 
 
