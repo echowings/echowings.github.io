@@ -1,5 +1,5 @@
 ---
-title: "如何从源码安装构建nginx docker镜像并启用weak cipher选项"
+title: "How to build nginx docker image with openssl weak "
 date: 2023-02-15T08:46:43+08:00
 draft: false
 image: https://picsum.photos/800/600.webp?random=0217b741
