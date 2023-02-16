@@ -1,55 +1,213 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>macos on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/categories/macos/</link>
-    <description>Recent content in macos on Steve&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 04 Jan 2021 18:33:47 +0800</lastBuildDate><atom:link href="https://echowings.github.io/categories/macos/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to Extend Free Disk Space for Macos</title>
-      <link>https://echowings.github.io/p/how-to-extend-free-disk-space-for-macos/</link>
-      <pubDate>Mon, 04 Jan 2021 18:33:47 +0800</pubDate>
-      
-      <guid>https://echowings.github.io/p/how-to-extend-free-disk-space-for-macos/</guid>
-      <description>Extend disk with diskutils Delete partition &amp;ldquo;Free Space&amp;rdquo; to extend disk to current macos partition.
-Fixed Error “The new size must be different than the existing size” 1 2 3 4 5 #repair (internal, disk0 - in your case) diskutil repairdisk disk0 #resize (synthesized, disk1 - in your case with HS) diskutil apfs resizeContainer disk1 0 Reference Cannot resize APFS partition - “The new size must be different than the existing size” </description>
-    </item>
-    
-    <item>
-      <title>How to Install Squirrel on Macos</title>
-      <link>https://echowings.github.io/p/how-to-install-squirrel-on-macos/</link>
-      <pubDate>Fri, 20 Nov 2020 17:47:43 +0800</pubDate>
-      
-      <guid>https://echowings.github.io/p/how-to-install-squirrel-on-macos/</guid>
-      <description>How to install squirrel as your chinese input method for your macos 1. Install squirrel 1 brew cask install squirrel 2. Logout and login or Reboot your mac Reboot your mac
-3. Copy squirrel configuration for you configuration file: https://github.com/wongdean/rime-settings#
-1 2 mkdir rime &amp;amp;&amp;amp; cd rime git clone https://github.com/wongdean/rime-settings.git 4. configure squrriel Press control + space key to enable squirrel. Then click settings... Copy all contents in rime-settings expect fonts folder to configure folder.</description>
-    </item>
-    
-    <item>
-      <title>How to Enable Ntfs Read and Write in Macos Catalina 10.15</title>
-      <link>https://echowings.github.io/p/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/</link>
-      <pubDate>Fri, 27 Dec 2019 11:20:00 +0800</pubDate>
-      
-      <guid>https://echowings.github.io/p/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/</guid>
-      <description>How to enable NTFS Read and Write in Macos Catalina 10.15 For a long time. It was much trouble to enable ntfs write mode in macos. Today I done it about enable ntfs wirte support with fuse and ntfs-3g.
-Install FUSE for macos You can download latest FUSE for macOS from here: FUSE for macOS
-Then you can install it by yourself.
-Install ntfs-3g 1 2 brew install ntfs-3g Replace ntfs-3g Since from OS X 10.</description>
-    </item>
-    
-    <item>
-      <title>Macos Update Time via Ntpserver</title>
-      <link>https://echowings.github.io/p/macos-update-time-via-ntpserver/</link>
-      <pubDate>Wed, 26 Dec 2018 09:26:04 +0800</pubDate>
-      
-      <guid>https://echowings.github.io/p/macos-update-time-via-ntpserver/</guid>
-      <description>How to update time via ntpserver Today, My MBP is out of power. I cannot surfing internet. and the brower tell me my time was wrong. Then I checked my time in my MBB, I&amp;rsquo;m back in time jan 1, 2018. Wow, I got extra whole year time!
-Majove update time 1 sudo sntp -sS time.asia.apple.com When you&amp;rsquo;re getting this error
-1 2 kod_init_kod_db(): Cannot open KoD db file /var/db/ntp-kod: No such file or directory You can solved the problems with:</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>macos on Steve&#39;s Blog</title>
+        <link>https://echowings.github.io/categories/macos/</link>
+        <description>Recent content in macos on Steve&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 04 Jan 2021 18:33:47 +0800</lastBuildDate><atom:link href="https://echowings.github.io/categories/macos/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>How to Extend Free Disk Space for Macos</title>
+        <link>https://echowings.github.io/p/how-to-extend-free-disk-space-for-macos/</link>
+        <pubDate>Mon, 04 Jan 2021 18:33:47 +0800</pubDate>
+        
+        <guid>https://echowings.github.io/p/how-to-extend-free-disk-space-for-macos/</guid>
+        <description>&lt;h2 id=&#34;extend-disk-with-diskutils&#34;&gt;Extend disk with diskutils&lt;/h2&gt;
+&lt;p&gt;Delete partition &amp;ldquo;Free Space&amp;rdquo; to extend disk to current macos partition.&lt;/p&gt;
+&lt;h2 id=&#34;fixed-error-the-new-size-must-be-different-than-the-existing-size&#34;&gt;Fixed Error “The new size must be different than the existing size”&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#repair (internal, disk0 - in your case)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;diskutil repairdisk disk0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#resize (synthesized, disk1 - in your case with HS)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;diskutil apfs resizeContainer disk1 &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://apple.stackexchange.com/questions/375136/cannot-resize-apfs-partition-the-new-size-must-be-different-than-the-existing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Cannot resize APFS partition - “The new size must be different than the existing size”&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>How to Install Squirrel on Macos</title>
+        <link>https://echowings.github.io/p/how-to-install-squirrel-on-macos/</link>
+        <pubDate>Fri, 20 Nov 2020 17:47:43 +0800</pubDate>
+        
+        <guid>https://echowings.github.io/p/how-to-install-squirrel-on-macos/</guid>
+        <description>&lt;h1 id=&#34;how-to-install-squirrel-as-your-chinese-input-method-for-your-macos&#34;&gt;How to install squirrel as your chinese input method for your macos&lt;/h1&gt;
+&lt;h2 id=&#34;1-install-squirrel&#34;&gt;1. Install squirrel&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew cask install squirrel
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;2-logout-and-login-or--reboot-your-mac&#34;&gt;2. Logout and login or  Reboot your mac&lt;/h2&gt;
+&lt;p&gt;Reboot your mac&lt;/p&gt;
+&lt;h2 id=&#34;3-copy-squirrel-configuration-for-you&#34;&gt;3. Copy squirrel configuration for you&lt;/h2&gt;
+&lt;p&gt;configuration file: &lt;a class=&#34;link&#34; href=&#34;https://github.com/wongdean/rime-settings#&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/wongdean/rime-settings#&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir rime &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; rime
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/wongdean/rime-settings.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;4-configure-squrriel&#34;&gt;4. configure squrriel&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Press &lt;code&gt;control&lt;/code&gt; + &lt;code&gt;space&lt;/code&gt; key to enable &lt;code&gt;squirrel&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Then click &lt;code&gt;settings...&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Copy all contents in &lt;code&gt;rime-settings&lt;/code&gt; expect &lt;code&gt;fonts&lt;/code&gt; folder to configure folder.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>How to Enable Ntfs Read and Write in Macos Catalina 10.15</title>
+        <link>https://echowings.github.io/p/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/</link>
+        <pubDate>Fri, 27 Dec 2019 11:20:00 +0800</pubDate>
+        
+        <guid>https://echowings.github.io/p/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/</guid>
+        <description>&lt;h1 id=&#34;how-to-enable-ntfs-read-and-write-in-macos-catalina-1015&#34;&gt;How to enable NTFS Read and Write in Macos Catalina 10.15&lt;/h1&gt;
+&lt;p&gt;For a long time. It was much trouble to enable ntfs write mode in macos. Today I  done it about enable ntfs wirte support with fuse and ntfs-3g.&lt;/p&gt;
+&lt;h2 id=&#34;install-fuse-for-macos&#34;&gt;Install FUSE for macos&lt;/h2&gt;
+&lt;p&gt;You can download latest FUSE for macOS from here: &lt;a class=&#34;link&#34; href=&#34;https://github.com/osxfuse/osxfuse/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;FUSE for macOS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Then you can install it by yourself.&lt;/p&gt;
+&lt;h2 id=&#34;install-ntfs-3g&#34;&gt;Install ntfs-3g&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install ntfs-3g
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;replace-ntfs-3g&#34;&gt;Replace ntfs-3g&lt;/h2&gt;
+&lt;p&gt;Since from OS X 10.11 version ,macos enabled  system integrity protection we need to disable it to replace the &lt;code&gt;ntfs_mount&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;So we gonna to disable System integrity Protection in Recovery mode ,then boot to normal mode to replace &lt;code&gt;ntfs_mount&lt;/code&gt;, at last we need to boot to recovery mode again to enable system integrity protection.&lt;/p&gt;
+&lt;h3 id=&#34;1-disable-system-integrity-protection&#34;&gt;1. Disable system integrity protection&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Shutdown your macos&lt;/li&gt;
+&lt;li&gt;Press &lt;code&gt;Command + R&lt;/code&gt;,the press power buttion to start macos and enter the recovery mode.&lt;/li&gt;
+&lt;li&gt;After enter &lt;code&gt;recovery mode&lt;/code&gt;, then we can open Terminal.&lt;/li&gt;
+&lt;li&gt;Run command in Terminal &lt;code&gt;csrutil disable&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Reboot macos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-replace-mount_ntfs&#34;&gt;2. Replace &lt;code&gt;mount_ntfs&lt;/code&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Open &lt;code&gt;Terminal&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Enter commands as show below&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo mount -uw /
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo mv /sbin/mount_ntfs /sbin/mount_ntfs.original
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ln -s /usr/local/sbin/mount_ntfs /sbin/mount_ntfs
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Then shutdown your. macos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-enable-system-integrity-protection&#34;&gt;3. Enable system integrity protection&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Press &lt;code&gt;Command + R&lt;/code&gt;,the press power buttion to start macos and enter the recovery mode.&lt;/li&gt;
+&lt;li&gt;After enter &lt;code&gt;recovery mode&lt;/code&gt;, then we can open Terminal.
+Run command in Terminal &lt;code&gt;csrutil enble&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Reboot macos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-follow-the-system-notification-to-enable-fuse-ntfs&#34;&gt;4. Follow the system notification to enable fuse ntfs&lt;/h3&gt;
+&lt;p&gt;After we boot macos normally, we need follow the system notification to enable permission for fuse ntfs.&lt;/p&gt;
+&lt;h2 id=&#34;pro-and-cons&#34;&gt;Pro and Cons&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Pro:&lt;/strong&gt; We can write ntfs format disk for free.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cons:&lt;/strong&gt; We need to do it again when we upgrade macos to a new major release.&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://medium.com/macoclock/enabling-ntfs-write-in-macos-10-15-catalina-the-open-source-way-a5fd0d1cb32e&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Enabling NTFS write in macOS 10.15 Catalina the Open source way&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://support.apple.com/en-hk/HT204899&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;About System Integrity Protection on your Mac&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Macos Update Time via Ntpserver</title>
+        <link>https://echowings.github.io/p/macos-update-time-via-ntpserver/</link>
+        <pubDate>Wed, 26 Dec 2018 09:26:04 +0800</pubDate>
+        
+        <guid>https://echowings.github.io/p/macos-update-time-via-ntpserver/</guid>
+        <description>&lt;h1 id=&#34;how-to-update-time-via-ntpserver&#34;&gt;How to update time via ntpserver&lt;/h1&gt;
+&lt;p&gt;Today, My MBP is out of power. I cannot surfing internet. and the brower tell me my time was wrong. Then I checked my time in my MBB, I&amp;rsquo;m back in time jan 1, 2018. Wow, I got extra whole year time!&lt;/p&gt;
+&lt;h1 id=&#34;majove-update-time&#34;&gt;Majove update time&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo sntp -sS time.asia.apple.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;When you&amp;rsquo;re getting this error&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kod_init_kod_db&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;: Cannot open KoD db file /var/db/ntp-kod: No such file or directory
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;You can solved the problems with:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo touch /var/db/ntp-kod
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo chmod &lt;span class=&#34;m&#34;&gt;666&lt;/span&gt; /var/db/ntp-kod
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;disable-no-subscription-warning&#34;&gt;Disable No subscription warning&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sed -i.bak &lt;span class=&#34;s2&#34;&gt;&amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34;&lt;/span&gt; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; systemctl restart pveproxy.service
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://apple.stackexchange.com/questions/117864/how-can-i-tell-if-my-mac-is-keeping-the-clock-updated-properly?noredirect=1&amp;amp;lq=1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;How can I tell if my Mac is keeping the clock updated properly?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>
