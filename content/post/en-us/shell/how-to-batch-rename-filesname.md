@@ -56,5 +56,3 @@ for dir in `ls . | tr " " "?" `;do new_dir=(`echo $dir  | tr "?" " "`)&& (if [ -
 
 
 
-## Reference
- - demo
