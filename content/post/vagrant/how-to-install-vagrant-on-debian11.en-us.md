@@ -11,6 +11,7 @@ tags:
   - linux
   - devops
   - debian11
+  - virtualbox 
 slug:
   - vagrant
 layout: 
