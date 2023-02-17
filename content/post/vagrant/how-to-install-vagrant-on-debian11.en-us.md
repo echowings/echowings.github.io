@@ -19,7 +19,7 @@ layout:
 
 license: CC BY-NC-ND
 ---
-## Install vagrant
+## Install vagrant work with libervit
 
 ### Update apt sourcelist
 
@@ -34,7 +34,7 @@ sudo apt update
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 ```
 
-#### Add vagrant repository
+### Add vagrant repository
 
 ```bash
 wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
@@ -42,7 +42,10 @@ echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://
 sudo apt update && sudo apt install vagrant
 vagrant version
 ```
-### 
+
+
+### Add vagrant provider 
+#### Option 1: Install libvirt as vagrant provider
 
 ```bash
 apt install  -y libvirt-dev
@@ -51,7 +54,36 @@ systemctl disable nfs-kernel-server.service
 systemctl enable nfs-kernel-server.service
 systemctl start nfs-kernel-server.service
 vagrant plugin install vagrant-libvirt
+```
+ Create a virtual machine
+
+```bash
+mkdir playbooks
+cd playbooks
+vagrant init debian/bullseye64
 vagrant up --provider=libvirt
+```
+
+#### Option 2: Install virtualbox as provider 
+
+```bash
+sudo apt install curl wget gnupg2 lsb-release -y
+curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/vbox.gpg
+curl -fsSL https://www.virtualbox.org/download/oracle_vbox.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/oracle_vbox.gpg
+echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
+sudo apt update
+sudo apt install linux-headers-$(uname -r) dkms 
+sudo apt install virtualbox-7.0 -y
+
+```
+
+ Create a virtual machine
+
+```bash
+mkdir playbooks
+cd playbooks
+vagrant init ubuntu/focal64
+vagrant up --provider=virtualbox
 ```
 
 ### Vagrant Stop
@@ -80,3 +112,4 @@ sudo apt-get remove --auto-remove vagrant
   - [Using NFS with vagrant doesn't work](https://stackoverflow.com/questions/27089090/using-nfs-with-vagrant-doesnt-work)
   - [Vagrant-libvirt install unsuccessful on Debian 11 Bullseye? "The provider 'libvirt' could not be found"](https://unix.stackexchange.com/questions/723835/vagrant-libvirt-install-unsuccessful-on-debian-11-bullseye-the-provider-libvi)
   - [Vagrant](https://wiki.debian.org/Vagrant)
+  - [How to Install VirtualBox on Debian 11 (Bullseye)](https://www.linuxtechi.com/how-to-install-virtualbox-on-debian/)
