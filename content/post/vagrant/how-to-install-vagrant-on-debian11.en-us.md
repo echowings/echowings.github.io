@@ -87,12 +87,12 @@ vagrant init ubuntu/focal64
 vagrant up --provider=virtualbox
 ```
 
-### Vagrant Stop
+## Vagrant Stop
 
 ```bash
 vagrant stop
 ```
-### Vagrant Destory
+## Vagrant Destory
 
 ```bash
 vagrant destroy
