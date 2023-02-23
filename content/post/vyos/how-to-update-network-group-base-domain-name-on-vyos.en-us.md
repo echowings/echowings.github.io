@@ -125,11 +125,13 @@ for ip_address in ${resolved_ips[*]};do
 	echo "**********************************************************************"
 	echo "* Add $ip_address into  network group ${domain_group} on remote VyOS *"
 	echo "**********************************************************************"
+	# Update ip address to the network group
 	curl -k -s  --connect-timeout ${TIMEOUT}  \
              -X POST -F key=${REMOTE_API_KEY} -F data='{"op": "set", "path": ["firewall","group","network-group","'"${domain_group}"'","network", "'"${ip_address}"'"]}'  \
               https://${REMOTE_SERVER}:${REMOTE_PORT}/configure
 
  	echo -e "/nsave configure./n"
+ 	# Save configure to vyos
 	curl -k -s  --connect-timeout ${TIMEOUT}  \
              -X POST -F key=${REMOTE_API_KEY} -F data='{"op": "save"}'  \
               "https://${REMOTE_SERVER}:${REMOTE_PORT}/config-file"
