@@ -25,8 +25,8 @@ license: CC BY-NC-ND
 set -e
 
 # Domain list
-domain_group="chatgpt-ip-ranges"
-domain_list=(auth0.openai.com chat.openai.com)
+domain_group="example-web"
+domain_list=(auth0.example.com chat.example.com)
 dns_server="114.114.114.114"
 declare -a resolved_ips=()
 
@@ -65,13 +65,16 @@ done
 echo "**************************************************************"
 echo "* Step 2. Get ${domain_group} group in vyos with curl comman *"
 echo "**************************************************************"
-ips=$(curl -k -s --connect-timeout ${TIMEOUT} \
-    --location --request POST "https://${LOCAL_SERVER}/retrieve"  \
-    --form data='{"op": "showConfig", "path": ["firewall","group","network-group","'"${domain_group}"'","network"]}'  --form key="${LOCAL_API_KEY}"  | jq  '.data.network' | xargs)
+ips=$(curl -k  -s --unix-socket /run/api.sock \
+    --connect-timeout ${TIMEOUT} \
+    --location \
+    --request POST "http://${LOCAL_SERVER}/retrieve"  \
+    --form data='{"op": "showConfig", "path": ["firewall","group","network-group","'"${domain_group}"'","network"]}' \
+    --form key="${LOCAL_API_KEY}"  | jq  '.data.network' | xargs)
 local_ips=$(echo $ips | sed -e 's/\[ //g' -e 's/\ ]//g' -e 's/\,//g')
 echo "local_ips: $local_ips"
 
-ips=$(curl -k  -s  --connect-timeout ${TIMEOUT} \
+ips=$(curl -k -s  --connect-timeout ${TIMEOUT} \
     --location --request POST "https://${REMOTE_SERVER}:${REMOTE_PORT}/retrieve" \
     --form data='{"op": "showConfig", "path": ["firewall","group","network-group","'"${domain_group}"'","network"]}'  --form key="${REMOTE_API_KEY}"  | jq '.data.network' | xargs)
 remote_ips=$(echo $ips | sed -e 's/\[ //g' -e 's/\ ]//g' -e 's/\,//g')
@@ -97,9 +100,21 @@ for ip_address in ${resolved_ips[*]};do
 	echo "*********************************************************************"
 	echo "* Add $ip_address into  network group ${domain_group} on local VyOS *"
 	echo "*********************************************************************"
-	curl -k -s --connect-timeout ${TIMEOUT} --unix-socket /run/api.sock   -X POST -F key=${LOCAL_API_KEY}  \
+	echo "${LOCAL_SERVER}"
+        curl -k -s --connect-timeout ${TIMEOUT} \
+             --unix-socket /run/api.sock  \
+             --location \
+             -X POST "http://${LOCAL_SERVER}/configure" \
              -F data='{"op": "set", "path": ["firewall","group","network-group","'"${domain_group}"'","network", "'"${ip_address}"'"]}' \
-             http://${LOCAL_SERVER}/configure
+             -F key=${LOCAL_API_KEY}
+ 	echo -e "/nsave configure./n"
+        curl -k -s --connect-timeout ${TIMEOUT} \
+             --unix-socket /run/api.sock  \
+             --location \
+             -X POST "http://${LOCAL_SERVER}/config-file" \
+             -F data='{"op": "save"}' \
+             -F key=${LOCAL_API_KEY}
+        echo -e "/n"
     fi
 
     if [[ "${remote_ips[@]}" =~ ${ip_address} ]]
@@ -114,9 +129,13 @@ for ip_address in ${resolved_ips[*]};do
              -X POST -F key=${REMOTE_API_KEY} -F data='{"op": "set", "path": ["firewall","group","network-group","'"${domain_group}"'","network", "'"${ip_address}"'"]}'  \
               https://${REMOTE_SERVER}:${REMOTE_PORT}/configure
 
+ 	echo -e "/nsave configure./n"
+	curl -k -s  --connect-timeout ${TIMEOUT}  \
+             -X POST -F key=${REMOTE_API_KEY} -F data='{"op": "save"}'  \
+              "https://${REMOTE_SERVER}:${REMOTE_PORT}/config-file"
+        echo -e "/n"
     fi
 done
-
 
 ```
 
