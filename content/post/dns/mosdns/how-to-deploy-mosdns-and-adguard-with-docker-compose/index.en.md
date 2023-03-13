@@ -105,10 +105,9 @@ plugins:
     args:
       concurrent: 3
       upstreams:
-        - addr: "https://dns.alidns.com/dns-query"
-        - addr: "tls://dns.alidns.com"
-        - addr: "https://1.12.12.12/dns-query"
-        - addr: "https://120.53.53.53/dns-query"
+        - addr: "udp://114.114.114.114"
+        - addr: "udp://223.5.5.5"
+        - addr: "udp://223.6.6.6"
 
   # 转发至远程服务器的插件
   - tag: forward_remote
@@ -116,10 +115,9 @@ plugins:
     args:
       concurrent: 3
       upstreams:
-        - addr: "https://cloudflare-dns.com/dns-query"
-        - addr: "tls://1dot1dot1dot1.cloudflare-dns.com"
-        - addr: "https://dns.google/dns-query"
-        - addr: "tls://dns.google"
+        - addr: "udp://1.1.1.1"
+        - addr: "udp://8.8.8.8"
+        - addr: "udp://8.8.4.4"
 
   - tag: "primary_forward"
     type: sequence
@@ -203,20 +201,20 @@ plugins:
     type: "udp_server"
     args:
       entry: main_sequence
-      listen: 0.0.0.0:53
+      listen: 0.0.0.0:5353
 
   - tag: "tcp_server"
     type: "tcp_server"
     args:
       entry: main_sequence
-      listen: 0.0.0.0:53
+      listen: 0.0.0.0:5353
 ```
 
 ### Create `docker-compose.yaml`
 **Path:** `./docker-compose.yaml`
 
 ```yaml
-version: "3.9"
+version: "3.8"
 services:
   mosdns:
     container_name: mosdns
@@ -224,15 +222,7 @@ services:
     restart: always
     volumes:
       - ./mosdns-data:/etc/mosdns
-    ports:
-      - 5353:53/udp
-    networks:
-      - default
-
-networks:
-  default:
-    name: dns-network
-    external: true
+    network_mode: "host"
 ```
 
 ## Deploy ADguard
@@ -245,7 +235,7 @@ conf.d/AdGuardHome.yaml
 
 |USERNAME|PASSWORD|
 |---|---|
-|root|password|
+|admin|xA123456|
 
 
 ```yaml
@@ -253,8 +243,8 @@ bind_host: 0.0.0.0
 bind_port: 3000
 beta_bind_port: 0
 users:
-  - name: root
-    password: $2y$05$F8csZw491Os2TXC60Mbt/OwS0DS8I/l.wk0CAsyNOne8JWsoSL8cK
+  - name: admin
+    password: $2y$05$5tqrLmdpGL8pvxt2ZDgokOqe/qioxAK3FwT46afRK9sIiXS1cRAnO
 auth_attempts: 5
 block_auth_min: 15
 http_proxy: ""
@@ -268,7 +258,7 @@ dns:
   statistics_interval: 1
   querylog_enabled: true
   querylog_file_enabled: true
-  querylog_interval: 6h
+  querylog_interval: 24h
   querylog_size_memory: 1000
   anonymize_client_ip: false
   protection_enabled: true
@@ -282,23 +272,25 @@ dns:
   ratelimit_whitelist: []
   refuse_any: true
   upstream_dns:
-    - udp://mosdns:53
+    - udp://127.0.0.1:5353
   upstream_dns_file: ""
   bootstrap_dns:
-    - 9.9.9.10
-    - 149.112.112.10
-    - 2620:fe::10
-    - 2620:fe::fe:10
-  all_servers: false
+    - 8.8.8.8
+    - 8.8.4.4
+    - 9.9.9.11
+    - 149.112.112.11
+  all_servers: true
   fastest_addr: false
   fastest_timeout: 1s
-  allowed_clients: []
+  allowed_clients:
+    - 0.0.0.0/0
   disallowed_clients: []
   blocked_hosts:
     - version.bind
     - id.server
     - hostname.bind
   trusted_proxies:
+    - 0.0.0.0/0
     - 127.0.0.0/8
     - ::1/128
   cache_size: 0
@@ -306,17 +298,17 @@ dns:
   cache_ttl_max: 0
   cache_optimistic: false
   bogus_nxdomain: []
-  aaaa_disabled: true
-  enable_dnssec: true
-  edns_client_subnet: true
+  aaaa_disabled: false
+  enable_dnssec: false
+  edns_client_subnet: false
   max_goroutines: 300
   handle_ddr: true
   ipset: []
   filtering_enabled: true
   filters_update_interval: 24
   parental_enabled: false
-  safesearch_enabled: false
-  safebrowsing_enabled: false
+  safesearch_enabled: true
+  safebrowsing_enabled: true
   safebrowsing_cache_size: 1048576
   safesearch_cache_size: 1048576
   parental_cache_size: 1048576
@@ -326,8 +318,7 @@ dns:
   upstream_timeout: 10s
   private_networks: []
   use_private_ptr_resolvers: true
-  local_ptr_upstreams:
-    - 192.168.11.1
+  local_ptr_upstreams: []
 tls:
   enabled: false
   server_name: ""
@@ -360,15 +351,15 @@ filters:
     url: https://gitee.com/halflife/list/raw/master/ad.txt
     name: HalfLife
     id: 1662217243
-  - enabled: false
+  - enabled: true
     url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/rule.txt
     name: xinggsf，乘风广告过滤规则
     id: 1662217244
-  - enabled: false
+  - enabled: true
     url: https://easylist-downloads.adblockplus.org/easyprivacy.txt
     name: EasyPrivacy
     id: 1662217245
-  - enabled: true
+  - enabled: false
     url: https://www.i-dont-care-about-cookies.eu/abp/
     name: I don’t care about cookies
     id: 1662217246
@@ -380,36 +371,81 @@ filters:
     url: https://gist.githubusercontent.com/Ewpratten/a25ae63a7200c02c850fede2f32453cf/raw/b9318009399b99e822515d388b8458557d828c37/hosts-yt-ads
     name: YouTube-去广告
     id: 1662217248
-  - enabled: false
+  - enabled: true
     url: https://anti-ad.net/easylist.txt
     name: easylist.txt
     id: 1662225908
-  - enabled: true
+  - enabled: false
     url: https://raw.githubusercontent.com/Goooler/1024_hosts/master/hosts
     name: 1024网站及澳门皇家赌场及恶意广告主机列表
     id: 1662918853
-  - enabled: false
+  - enabled: true
     url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/mv.txt
     name: 乘风视频规则（周更），可过滤爱优腾三大视频网站的片头秒跳广告
     id: 1662918854
-  - enabled: true
+  - enabled: false
     url: https://cdn1.tianli0.top/gh/zqzess/rule_for_quantumultX@master/Loon/Plugin/AdBlock.plugin
     name: 圈X规则 zqzess/rule_for_quantumultX：常见国内app去广告
     id: 1662918855
-  - enabled: false
+  - enabled: true
     url: https://raw.githubusercontent.com/v2ray/domain-list-community/master/data/google-ads
     name: google ads
     id: 1662918856
+  - enabled: true
+    url: https://raw.githubusercontent.com/alexsannikov/adguardhome-filters/master/porn.txt
+    name: porn
+    id: 1677740002
+  - enabled: false
+    url: https://abp.oisd.nl/basic/
+    name: OISD Blocklist Basic
+    id: 1678418114
+  - enabled: false
+    url: https://raw.githubusercontent.com/durablenapkin/scamblocklist/master/adguard.txt
+    name: Scam Blocklist by DurableNapkin
+    id: 1678418115
+  - enabled: false
+    url: https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/hosts.txt
+    name: NoCoin Filter List
+    id: 1678418116
+  - enabled: false
+    url: https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareAdGuardHome.txt
+    name: Dandelion Sprout's Anti-Malware List
+    id: 1678418117
+  - enabled: false
+    url: https://malware-filter.gitlab.io/malware-filter/urlhaus-filter-agh-online.txt
+    name: Online Malicious URL Blocklist
+    id: 1678418118
+  - enabled: false
+    url: https://raw.githubusercontent.com/mitchellkrogza/The-Big-List-of-Hacked-Malware-Web-Sites/master/hosts
+    name: The Big List of Hacked Malware Web Sites
+    id: 1678418119
+  - enabled: true
+    url: https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
+    name: WindowsSpyBlocker - Hosts spy rules
+    id: 1678418120
+  - enabled: true
+    url: https://big.oisd.nl/
+    name: oisd-big
+    id: 1678418121
+  - enabled: true
+    url: https://someonewhocares.org/hosts/zero/hosts
+    name: Dan Pollock's List
+    id: 1678636426
+  - enabled: true
+    url: https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/SmartTV-AGH.txt
+    name: Perflyst and Dandelion Sprout's Smart-TV Blocklist
+    id: 1678636427
+  - enabled: true
+    url: https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&showintro=1&mimetype=plaintext
+    name: Peter Lowe's List
+    id: 1678636428
+  - enabled: true
+    url: https://raw.githubusercontent.com/DandelionSprout/adfilt/master/GameConsoleAdblockList.txt
+    name: Game Console Adblock List
+    id: 1678636429
 whitelist_filters: []
 user_rules:
-  - /googleads.$~script,domain=~googleads.github.io
-  - /pagead/lvz?
-  - '||google.com/pagead/'
-  - '||static.doubleclick.net^$domain=youtube.com'
-  - '||youtube.com/get_midroll_'
-  - '@@||www.paypalobjects.com^'
-  - '@@||draculatheme.com^'
-  - '@@||sysdig.com^'
+  - ""
 dhcp:
   enabled: false
   interface_name: ""
@@ -457,22 +493,14 @@ services:
   adguardhome:
     container_name: adguardhome
     image: adguard/adguardhome
+    network_mode: "host"
     ports:
       - 3000:3000
-      - 53:53/udp
     volumes:
       - ./data:/opt/adguardhome/work/data
       - ./conf.d:/opt/adguardhome/conf
       - /etc/localtime:/etc/localtime:ro
-    networks:
-      - default
     restart: always
-
-
-networks:
-  default:
-    name: dns-network
-    external: true
 ```
 
 
