@@ -1,7 +1,7 @@
 ---
 title: "How to Install Pbs2.3 on Debian11"
 date: 2023-03-24T11:10:21+08:00
-draft: true
+draft: false
 image: https://picsum.photos/800/600.webp?random=244bc190
 categories:
   - Blog
