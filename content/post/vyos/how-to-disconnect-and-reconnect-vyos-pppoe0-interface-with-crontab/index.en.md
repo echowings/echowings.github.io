@@ -28,9 +28,9 @@ mkdir /config/scripts/reboot_pppoe_connection
 ### Create script
 
 ```bash
-vi /config/scripts/reboot_pppoe_connection/reboot_pppoe_connection.sh
-```
-```bash
+mv /config/scripts/reboot_pppoe_connection/reboot_pppoe_connection.sh{,.bak}
+ls /config/scripts/reboot_pppoe_connection/
+tee -a  /config/scripts/reboot_pppoe_connection/reboot_pppoe_connection.sh << "EOF"
 #!/bin/vbash
 source /opt/vyatta/etc/functions/script-template
 logfile=/var/log/reconnect_pppoe0.log
@@ -46,6 +46,7 @@ run  show interfaces  | grep -A 2 ppoe0 | tee >> ${logfile} 2>&1
 date '+%Y-%m-%d %H:%M:%S' >>  ${logfile} 2>&1
 echo "==================================" >> ${logfile} 2>&1
 exit
+EOF
 ```
 
 ### Chmod +x to vbash script
