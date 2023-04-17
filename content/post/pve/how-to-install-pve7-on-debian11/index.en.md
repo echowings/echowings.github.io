@@ -24,14 +24,7 @@ license: CC BY-NC-ND
 
 # how-to-install-pve-on-debian11
 
-## Change network name from enp* to eth*
 
-```bash
-cp /etc/default/grub /etc/default/grub-bak
-sed -i '/GRUB_CMDLINE_LINUX=/s/"$/ net.ifnames=0 biosdevname=0"/' /etc/default/grub
-sed -i 's/enp1s0/eth0/' /etc/network/interfaces
-```
-Then reboot your server
 
 
 ## change sourcelist to utsc
@@ -46,6 +39,21 @@ apt update && apt -y dist-upgrade
 apt install -y neovim net-tools
 ```
 
+
+## Change network name from enp* to eth*
+
+```bash
+export PATH=$PATH:/usr/sbin:/home/$(whoami)/.local/bin
+echo "export PATH=$PATH:/usr/sbin:/home/$(whoami)/.local/bin" >> ~/.bashrc
+
+cp /etc/default/grub /etc/default/grub-bak
+sed -i '/GRUB_CMDLINE_LINUX=/s/"$/net.ifnames=0 biosdevname=0"/' /etc/default/grub
+sed -i 's/enp2s0/eth0/' /etc/network/interfaces
+update-grub
+
+
+```
+Then reboot your server
 
 
 ```bash
