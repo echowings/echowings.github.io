@@ -26,7 +26,7 @@ deb http://ppa.launchpad.net/ansible/ansible/ubuntu focal main
 EOF
 
 
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 93C4A3FD7BB9C367
 apt update 
 apt install ansible -y
 ansible --version
