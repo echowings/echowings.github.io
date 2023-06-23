@@ -6,7 +6,10 @@ image: https://picsum.photos/800/600.webp?random=078d942e
 categories:
   - Blog
 tags:
-  - pve  pve8
+  - pve  
+  - pve8
+  - debian 12
+  - debian
 slug:
   - test
 layout: 
