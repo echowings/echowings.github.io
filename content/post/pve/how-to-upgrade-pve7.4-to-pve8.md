@@ -4,14 +4,14 @@ date: 2023-06-23T10:02:06+08:00
 draft: false
 image: https://picsum.photos/800/600.webp?random=078d942e
 categories:
-  - Blog
+  - pve
 tags:
   - pve  
   - pve8
   - debian 12
   - debian
 slug:
-  - test
+  - pve
 layout: 
   - post
 slug: 
