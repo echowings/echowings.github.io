@@ -35,7 +35,7 @@ Here is how to
 apt update && apt -y dist-upgrade
 
 # Reboot
-reboot
+systemctl reboot
 
 # pve7to8 checklist script
 pve7to8 --full
@@ -48,6 +48,7 @@ mv  /etc/apt/sources.list  /etc/apt/sources.list.debian11
 
 # Downlaod and Install debian 12 sourcelist
 curl -fsSL https://mirrors.ustc.edu.cn/repogen/conf/debian-https-4-bookworm -o  /etc/apt/sources.list
+```
 
 
 
@@ -90,17 +91,19 @@ wget https://mirrors.ustc.edu.cn/proxmox/debian/proxmox-release-bookworm.gpg -O 
 echo "deb http://download.proxmox.com/debian/ceph-quincy bookworm no-subscription" > /etc/apt/sources.list.d/ceph.list
 ```
 #### Option 2: utsc
+
 ```bash
 echo "deb http://download.proxmox.com/debian/ceph-quincy bookworm no-subscription" > /etc/apt/sources.list.d/ceph.list
 ```
 
 
 ## Upgrade
+
 ```bash
 apt update && apt  -y full-upgrade
 pveversion
 
-#Reboot server
+# Reboot server
 systemctl reboot
 ```
 
