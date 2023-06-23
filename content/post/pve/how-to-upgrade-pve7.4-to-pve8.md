@@ -29,7 +29,7 @@ Last night, When I found that proxmox ve 8 has been released. Then I want to try
 ### 1.2 Backup /etc/ folder
 --skip--
 
-## Check upgrade statsu
+## Check upgrade status
 ```bash
 # Upgrade to latest pve 7.4
 apt update && apt -y dist-upgrade
