@@ -89,14 +89,14 @@ wget https://mirrors.ustc.edu.cn/proxmox/debian/proxmox-release-bookworm.gpg -O 
 
 ### Change Ceph 
 
-#### Option 1: Offical 
+#### Option 1: pve offical 
 ```bash
 echo "deb http://download.proxmox.com/debian/ceph-quincy bookworm no-subscription" > /etc/apt/sources.list.d/ceph.list
 ```
-#### Option 2: utsc
+#### Option 2: mirrors.ustc.edu.cn
 
 ```bash
-echo "deb http://download.proxmox.com/debian/ceph-quincy bookworm no-subscription" > /etc/apt/sources.list.d/ceph.list
+echo "deb http://https://mirrors.ustc.edu.cn/proxmox/debian/ceph-quincy bookworm no-subscription" > /etc/apt/sources.list.d/ceph.list
 ```
 
 
