@@ -19,9 +19,9 @@ license: CC BY-NC-ND
 
 # How to Upgrade Pve7.4 to Pve8
 
-Last night, When I relized that proxmox ve 8 has been released. Then I want to try it and I do it immediately
+Last night, When I found that proxmox ve 8 has been released. Then I want to try it and I do it immediately. Here is what I did to upgrade pve.
 
-Here is how to 
+
 
 ##  1 Backup 
 ### 1.2 backup vms and containers
