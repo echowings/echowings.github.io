@@ -1,5 +1,5 @@
 ---
-title: "如何在debian 12 上安装 proxmox ve 8"
+title: "如何在Debian 12上安装Proxmox VE 8"
 date: 2023-06-24T18:17:00+08:00
 draft: false
 image: https://picsum.photos/800/600.webp?random=aa27590c
@@ -19,7 +19,7 @@ slug:
 
 license: CC BY-NC-ND
 ---
-## 更改deiban 12的apt安装源
+## 更改Debian 12的apt安装源
 
 ```bash
 #备份 /et/apt/source.list
@@ -48,8 +48,7 @@ apt install -y neovim net-tools
 ```
 
 
-## 网卡更名，把网卡名字还原为ethx
-**可选操作**
+## 网卡更名，把网卡名字还原为ethx(**可选操作**)
 
 ```bash
 export PATH=$PATH:/usr/sbin:/home/$(whoami)/.local/bin
@@ -57,13 +56,14 @@ echo "export PATH=$PATH:/usr/sbin:/home/$(whoami)/.local/bin" >> ~/.bashrc
 
 cp /etc/default/grub /etc/default/grub-bak
 sed -i '/GRUB_CMDLINE_LINUX=/s/"$/net.ifnames=0 biosdevname=0"/' /etc/default/grub
+
+#更改网卡名字 enp2s0 更改为eth0，根据你实际网卡名字更改
 sed -i 's/enp2s0/eth0/' /etc/network/interfaces
 update-grub
 
 
 # 重启系统生效
 systemctl reboot
-
 ```
 
 ## 更改hosts文件的hostname
