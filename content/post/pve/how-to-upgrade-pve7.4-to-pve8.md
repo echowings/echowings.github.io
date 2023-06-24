@@ -58,6 +58,7 @@ curl -fsSL https://mirrors.ustc.edu.cn/repogen/conf/debian-https-4-bookworm -o  
 ## Change sourcelist for pve 8
 
 ### Update pve 8 sourcelist
+You can choose to run one of the option command. 
 
 #### Option 1: PVE Offical sourcelist
 ```bash
@@ -76,6 +77,7 @@ EOF
 ```
 
 ### Downlaod and install  gpg key
+You can choose to run one of the option command. 
 #### Option 1. Download gpg key from pve offical site
 
 ```bash
@@ -88,7 +90,7 @@ wget https://mirrors.ustc.edu.cn/proxmox/debian/proxmox-release-bookworm.gpg -O 
 ```
 
 ### Change Ceph 
-
+You can choose to run one of the option command. 
 #### Option 1: pve offical 
 ```bash
 echo "deb http://download.proxmox.com/debian/ceph-quincy bookworm no-subscription" > /etc/apt/sources.list.d/ceph.list
@@ -96,7 +98,7 @@ echo "deb http://download.proxmox.com/debian/ceph-quincy bookworm no-subscriptio
 #### Option 2: mirrors.ustc.edu.cn
 
 ```bash
-echo "deb http://https://mirrors.ustc.edu.cn/proxmox/debian/ceph-quincy bookworm no-subscription" > /etc/apt/sources.list.d/ceph.list
+echo "deb https://mirrors.ustc.edu.cn/proxmox/debian/ceph-quincy bookworm no-subscription" > /etc/apt/sources.list.d/ceph.list
 ```
 
 
