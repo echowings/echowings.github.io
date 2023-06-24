@@ -27,13 +27,25 @@ license: CC BY-NC-ND
 
 
 
-## change sourcelist to utsc
-
+## change sourcelist 
 
 ```bash
 # Backup /et/apt/source.list
 cp /etc/apt/sources.list /etc/apt/sources.list-bak
 
+#OPTION 1
+tee /etc/apt/sources.list << "EOF
+deb http://deb.debian.org/debian bookworm main non-free-firmware
+deb-src http://deb.debian.org/debian bookworm main non-free-firmware
+
+deb http://deb.debian.org/debian-security/ bookworm-security main non-free-firmware
+deb-src http://deb.debian.org/debian-security/ bookworm-security main non-free-firmware
+
+deb http://deb.debian.org/debian bookworm-updates main non-free-firmware
+deb-src http://deb.debian.org/debian bookworm-updates main non-free-firmware
+EOF
+
+#OPTION 2 mirrors.utsc.edu.cn
 # Downlaod and Install debian 12 sourcelist
 curl -fsSL https://mirrors.ustc.edu.cn/repogen/conf/debian-https-4-bookworm -o  /etc/apt/sources.list
 
@@ -56,8 +68,10 @@ sed -i 's/enp2s0/eth0/' /etc/network/interfaces
 update-grub
 
 
+# Reboot
+systemctl reboot
+
 ```
-Then reboot your server
 
 
 ```bash
@@ -79,6 +93,7 @@ hostname --ip-address
 #Option 1: PVE Offical sourcelist
 tee /etc/apt/sources.list.d/pve-install-repo.list << "EOF"
 deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription
+EOF
 
 # Option 2: mirrors utsc
 tee /etc/apt/sources.list.d/pve-install-repo.list << "EOF"
@@ -109,6 +124,7 @@ apt update && apt  -y full-upgrade
 # Install proxmxo ve kernel
 apt install pve-kernel-6.2
 
+# Reboot
 systemctl reboot
 
 # Install the Proxmox VE packages
@@ -118,6 +134,7 @@ apt install -y  proxmox-ve postfix open-iscsi
 apt remove linux-image-amd64 'linux-image-6.1*'
 update-grub
 
+# REMOVE OS-PROBER
 apt remove  -y os-prober
 
 # Disable no valid subscription alert
@@ -138,3 +155,4 @@ sed -i 's|http://download.proxmox.com|https://mirrors.ustc.edu.cn/proxmox|g' /us
 
 ## Reference
   - [Install Proxmox VE on Debian 12 Bookworm](https://pve.proxmox.com/wiki/Install_Proxmox_VE_on_Debian_12_Bookworm)
+  - [Debian SourcesList](https://wiki.debian.org/SourcesList)
