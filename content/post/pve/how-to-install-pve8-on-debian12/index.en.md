@@ -34,7 +34,7 @@ license: CC BY-NC-ND
 cp /etc/apt/sources.list /etc/apt/sources.list-bak
 
 #OPTION 1
-tee /etc/apt/sources.list << "EOF
+tee /etc/apt/sources.list << "EOF"
 deb http://deb.debian.org/debian bookworm main non-free-firmware
 deb-src http://deb.debian.org/debian bookworm main non-free-firmware
 
@@ -73,20 +73,18 @@ systemctl reboot
 
 ```
 
-
+## Change hostname
 ```bash
-
-
 ipv4_addr=$(ip -4 route get 8.8.8.8 | awk {'print $7'} | tr -d '\n')
 echo $ipv4_addr
 sed -i "s/127.0.1.1/${ipv4_addr}/g" /etc/hosts
 cat /etc/hosts 
 
 hostname --ip-address
+```
 
-
-
-
+## Change PVE Sourcelist
+```bash
 #Update pve 8 sourcelist
 #You can choose to run one of the option command.
 
@@ -126,7 +124,10 @@ apt install pve-kernel-6.2
 
 # Reboot
 systemctl reboot
+```
 
+## Install Proxmox VE 8
+```bash
 # Install the Proxmox VE packages
 apt install -y  proxmox-ve postfix open-iscsi
 
@@ -142,6 +143,8 @@ sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/
 
 # delete pve enterprise list
 rm -f /etc/apt/sources.list.d/pve-enterprise.list
+
+# Install openvswitch-switch
 apt install -y  openvswitch-switch
 ```
 
