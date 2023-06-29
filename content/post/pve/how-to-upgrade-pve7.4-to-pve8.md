@@ -72,7 +72,7 @@ EOF
 
 ```bash
 tee /etc/apt/sources.list.d/pve-install-repo.list << "EOF"
-deb [arch=amd64] https://mirrors.ustc.edu.cn/proxmox/debian/pve bullseye pve-no-subscription
+deb [arch=amd64] https://mirrors.ustc.edu.cn/proxmox/debian/pve bookworm pve-no-subscription
 EOF
 ```
 
