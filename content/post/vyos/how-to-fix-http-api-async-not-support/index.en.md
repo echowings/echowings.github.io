@@ -22,12 +22,11 @@ license: CC BY-NC-ND
 ---
 
 For a long time ago, When I try to implement some automation job with vyos api, when mutiple client call a server side api, will make the server `config.boot` cut off.
-When the server of vyos reboot, the configuration will broken and not working well.
+When the server of vyos reboot, the configuration will broken and not working anymore.
 
-After report the bug to vyos developer team. They tell me that this is the miss configration of http-api issue. But it can be patch by change some code of `/usr/libexec/vyos/services/vyos-http-api-server`. 
+After report the bug to vyos developer team. They tell me that this is the miss configration of http-api issue. But it can be patch by modify the file`/usr/libexec/vyos/services/vyos-http-api-server`.
 
-After patch the api source code. it works well. Here is the solution to modify the code.
-
+After patch the api source code. it works well. Here is the solution.
 ## Create Script
 ```bash
 tee  /config/scripts/patch_api_trunk_bug.sh << "EOF"
