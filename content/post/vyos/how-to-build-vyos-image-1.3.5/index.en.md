@@ -25,11 +25,16 @@ YOUR_MAIL="MYMAIL@EXAMPLE.COM"
 curl -O -L https://github.com/vyos/vyos-build/archive/refs/tags/$VYOS_VERSION.zip
 unzip $VYOS_VERSION.zip
 cd vyos-build-$VYOS_VERSION
-docker build -t vyos-builder docker
-docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos-builder bash
-#vi scripts/packer.json
 
-sed -i 'disk_size/c\"disk_size":\ 2048,' scripts/packer.json
+docker build -t vyos-builder docker
+
+
+docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos-builder bash
+
+VYOS_VERSION="1.3.5"
+YOUR_MAIL="MYMAIL@EXAMPLE.COM
+
+# vi scripts/packer.json
 sed -i '/"disk_size/c\"disk_size":\ 2048,' scripts/packer.json
 cat scripts/packer.json | grep disk_size
 
