@@ -32,7 +32,7 @@ docker build -t vyos-builder docker
 docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos-builder bash
 
 VYOS_VERSION="1.3.5"
-YOUR_MAIL="MYMAIL@EXAMPLE.COM
+YOUR_MAIL="MYMAIL@EXAMPLE.COM"
 
 # vi scripts/packer.json
 sed -i '/"disk_size/c\"disk_size":\ 2048,' scripts/packer.json
