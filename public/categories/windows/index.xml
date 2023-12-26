@@ -1,126 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>windows on Steve&#39;s Blog</title>
-        <link>https://echowings.github.io/categories/windows/</link>
-        <description>Recent content in windows on Steve&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <lastBuildDate>Tue, 29 Dec 2020 11:50:20 +0800</lastBuildDate><atom:link href="https://echowings.github.io/categories/windows/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>How to Uninstall Windows Update Which Install Failed</title>
-        <link>https://echowings.github.io/p/how-to-uninstall-windows-update-which-install-failed/</link>
-        <pubDate>Tue, 29 Dec 2020 11:50:20 +0800</pubDate>
-        
-        <guid>https://echowings.github.io/p/how-to-uninstall-windows-update-which-install-failed/</guid>
-        <description>&lt;h1 id=&#34;how-to-uninstlal-windows-update-which-install-failed&#34;&gt;How to uninstlal windows update which install failed&lt;/h1&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;uninstall-failed-windows-update&#34;&gt;Uninstall failed windows update&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Reboot your pc or laptop and select &lt;code&gt;troubleshoot&lt;/code&gt;
-&lt;img src=&#34;https://blog.workinghardinit.work/wp-content/uploads/2017/10/image_thumb-1.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Select to open the command prompt and stay away from any other auto repair options.
-&lt;img src=&#34;https://blog.workinghardinit.work/wp-content/uploads/2017/10/image-2.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Loading the software rigistry.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#Load the softeware registry hive as follows.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;reg load hklm/temp c:&lt;span class=&#34;se&#34;&gt;\w&lt;/span&gt;indows&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&lt;span class=&#34;se&#34;&gt;\c&lt;/span&gt;onfig&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;oftware
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#Delete the sessionPending registry key, if it exists by running:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;reg delete &lt;span class=&#34;s2&#34;&gt;&amp;#34;HKLM\temp\Microsoft\Windows\CurrentVersion\Component Based Servicing\SessionPending&amp;#34;&lt;/span&gt; /v Exclusive
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Unload the software registry hive:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;reg unload HKLM&lt;span class=&#34;se&#34;&gt;\t&lt;/span&gt;emp
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;remove-failed-updates-with-dism-command&#34;&gt;Remove failed updates with &lt;code&gt;DISM&lt;/code&gt; command&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;List failed updated.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The yellow one are the ones of interest and you can see the first one never even got an install time.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#List updates installed that caused issue.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dism /image:c:&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;/get-packages
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.workinghardinit.work/wp-content/uploads/2017/10/image-3.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
-&gt;
-2. Remove error udpates with &lt;code&gt;DISM&lt;/code&gt;.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dism /image:c:&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;/remove-package /packagename:myproblematicpackagetoremove /scratchdir:c:&lt;span class=&#34;se&#34;&gt;\t&lt;/span&gt;emp
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.workinghardinit.work/wp-content/uploads/2017/10/image-4.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
-&gt;
-3. After finished uninstall error updates,we can reboot your pc.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.workinghardinit.work/wp-content/uploads/2017/10/image-5.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.workinghardinit.work/2017/10/11/quick-fix-publish-vm-wont-boot-after-october-2017-updates-for-windows-server-2016-and-windows-10-kb4041691/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Quick Fix Publish : VM won’t boot after October 2017 Updates for Windows Server 2016 and Windows 10 (KB4041691)&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        </item>
-        
-    </channel>
+  <channel>
+    <title>windows on Steve&#39;s Blog</title>
+    <link>https://echowings.github.io/categories/windows/</link>
+    <description>Recent content in windows on Steve&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 22 Dec 2023 22:55:42 +0800</lastBuildDate><atom:link href="https://echowings.github.io/categories/windows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Generate Windows Reboot Task Scheduler</title>
+      <link>https://echowings.github.io/p/how-to-generate-windows-reboot-task-scheduler/</link>
+      <pubDate>Fri, 22 Dec 2023 22:55:42 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-generate-windows-reboot-task-scheduler/</guid>
+      <description>Powershell 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 #create-reboot-task-scheduler.ps1 $ErrorActionPreference = &amp;#39;Stop&amp;#39; # Define the trigger (every Sunday at 6:00 AM) $trigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Sunday -At 6am # Define the action to be performed (in this case, a system restart) $action = New-ScheduledTaskAction -Execute &amp;#39;shutdown&amp;#39; -Argument &amp;#39;/r /f /t 0&amp;#39; # Register the task with the Task Scheduler Register-ScheduledTask -TaskName &amp;#34;RebootTask&amp;#34; ` -Action $action ` -Trigger $trigger ` -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries) ` -RunLevel Highest ` -User &amp;#34;NT AUTHORITY\SYSTEM&amp;#34; ` -Description &amp;#34;Reboot server every Sunday at 6am&amp;#34; # Get task to confirm it was created Get-ScheduledTask -TaskName &amp;#34;RebootTask&amp;#34; Ansible 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 --- - name: Create Reboot Server Scheduler at every 5:00AM Sunday ON WINDOWS SERVER hosts: &amp;#34;windows&amp;#34; gather_facts: no tasks: - name: Create scheduled task win_scheduled_task: name: Reboot_Task description: &amp;#34;Reboot every Sunday at 6:00 AM&amp;#34; actions: - path: &amp;#34;C:\\Windows\\System32\\shutdown.</description>
+    </item>
+    
+    <item>
+      <title>How to Uninstall Windows Update Which Install Failed</title>
+      <link>https://echowings.github.io/p/how-to-uninstall-windows-update-which-install-failed/</link>
+      <pubDate>Tue, 29 Dec 2020 11:50:20 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-uninstall-windows-update-which-install-failed/</guid>
+      <description>How to uninstlal windows update which install failed Uninstall failed windows update Reboot your pc or laptop and select troubleshoot Select to open the command prompt and stay away from any other auto repair options. Loading the software rigistry.
+1 2 3 4 5 6 7 8 #Load the softeware registry hive as follows. reg load hklm/temp c:\windows\system32\config\software #Delete the sessionPending registry key, if it exists by running: reg delete &amp;#34;HKLM\temp\Microsoft\Windows\CurrentVersion\Component Based Servicing\SessionPending&amp;#34; /v Exclusive # Unload the software registry hive: reg unload HKLM\temp Remove failed updates with DISM command List failed updated.</description>
+    </item>
+    
+  </channel>
 </rss>

@@ -1,56 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>ssh on Steve&#39;s Blog</title>
-        <link>https://echowings.github.io/categories/ssh/</link>
-        <description>Recent content in ssh on Steve&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <lastBuildDate>Sat, 29 Dec 2018 12:19:12 +0800</lastBuildDate><atom:link href="https://echowings.github.io/categories/ssh/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Cisco Ssh Error</title>
-        <link>https://echowings.github.io/p/cisco-ssh-error/</link>
-        <pubDate>Sat, 29 Dec 2018 12:19:12 +0800</pubDate>
-        
-        <guid>https://echowings.github.io/p/cisco-ssh-error/</guid>
-        <description>&lt;h1 id=&#34;cisco-ssh-error&#34;&gt;cisco ssh error&lt;/h1&gt;
-&lt;p&gt;When you met error like this:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ssh  cisco@10.32.3.1
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;Solution:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ ssh -l &amp;lt;USERNAME&amp;gt; -oHostKeyAlgorithms&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;+ssh-dss -oKexAlgorithms&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;+diffie-hellman-group1-sha1 &amp;lt;HOST&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;or&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ssh -l &amp;lt;username&amp;gt; -o &lt;span class=&#34;nv&#34;&gt;HostKeyAlgorithms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;+ssh-dss -o &lt;span class=&#34;nv&#34;&gt;KexAlgorithms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;+diffie-hellman-group1-sha1 -c 3des-cbc &amp;lt;hostname&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://community.cisco.com/t5/vpn-and-anyconnect/ssh-failed-on-3750-switch/td-p/3043810&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;SSH failed on 3750 switch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://discussions.apple.com/thread/8196671&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;SSH Not Working After Update To 10.13.2 (HighSierra)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        </item>
-        
-    </channel>
+  <channel>
+    <title>ssh on Steve&#39;s Blog</title>
+    <link>https://echowings.github.io/categories/ssh/</link>
+    <description>Recent content in ssh on Steve&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Dec 2018 12:19:12 +0800</lastBuildDate><atom:link href="https://echowings.github.io/categories/ssh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cisco Ssh Error</title>
+      <link>https://echowings.github.io/p/cisco-ssh-error/</link>
+      <pubDate>Sat, 29 Dec 2018 12:19:12 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/cisco-ssh-error/</guid>
+      <description>cisco ssh error When you met error like this:
+1 2 ssh cisco@10.32.3.1 Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1 Solution:
+1 $ ssh -l &amp;lt;USERNAME&amp;gt; -oHostKeyAlgorithms=+ssh-dss -oKexAlgorithms=+diffie-hellman-group1-sha1 &amp;lt;HOST&amp;gt; or
+1 ssh -l &amp;lt;username&amp;gt; -o HostKeyAlgorithms=+ssh-dss -o KexAlgorithms=+diffie-hellman-group1-sha1 -c 3des-cbc &amp;lt;hostname&amp;gt; Reference SSH failed on 3750 switch SSH Not Working After Update To 10.13.2 (HighSierra) </description>
+    </item>
+    
+  </channel>
 </rss>
