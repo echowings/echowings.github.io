@@ -4,13 +4,18 @@ date: 2023-12-26T15:31:54+08:00
 draft: false
 image: https://picsum.photos/800/600.webp?random=24352ced
 categories:
+  - cloud native
   - k8s
+  - kvm
+  - virtualization
 tags:
   - talos
   - k8s
   - bare metal
+  - kubevirt
+  - kvm
 slug:
-  - talos
+  - k8s
 layout: 
   - post
 slug: 
