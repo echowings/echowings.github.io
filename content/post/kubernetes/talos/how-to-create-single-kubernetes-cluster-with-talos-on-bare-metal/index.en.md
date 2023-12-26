@@ -4,11 +4,13 @@ date: 2023-12-26T15:31:54+08:00
 draft: false
 image: https://picsum.photos/800/600.webp?random=24352ced
 categories:
-  - Blog
+  - k8s
 tags:
-  - Hugo
+  - talos
+  - k8s
+  - bare metal
 slug:
-  - test
+  - talos
 layout: 
   - post
 slug: 
