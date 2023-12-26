@@ -163,8 +163,49 @@ kubectl get svc
 
 ```
 
+
+### Install kubevirt
+
+```shell
+
+export RELEASE=$(curl https://storage.googleapis.com/kubevirt-prow/release/kubevirt/kubevirt/stable.txt)
+kubectl apply -f https://github.com/kubevirt/kubevirt/releases/download/$RELEASE/kubevirt-operator.yaml
+kubectl apply -f https://github.com/kubevirt/kubevirt/releases/download/$RELEASE/kubevirt-cr.yaml
+kubectl -n kubevirt wait kv kubevirt --for condition=Available
+kubectl get po -n kubevirt
+
+
+```
+### Install virtctl
+
+```shell
+VERSION=$(kubectl get kubevirt.kubevirt.io/kubevirt -n kubevirt -o=jsonpath="{.status.observedKubeVirtVersion}")
+ARCH=$(uname -s | tr A-Z a-z)-$(uname -m | sed 's/x86_64/amd64/') || windows-amd64.exe
+echo ${ARCH}
+curl -L -o virtctl https://github.com/kubevirt/kubevirt/releases/download/${VERSION}/virtctl-${VERSION}-${ARCH}
+chmod +x virtctl
+sudo install virtctl /usr/local/bin
+virtctl
+```
+
+### Deploy VM
+
+```shell
+
+kubectl apply -f https://kubevirt.io/labs/manifests/vm.yaml
+kubectl get vms
+virtctl start testvm
+kubectl get vmi
+kubectl get pods -n default | grep -i launcher
+
+virtctl console --kubeconfig=$KUBECONFIG testvm
+```
+
+
 ## Reference
 
   - [Install Kubernetes Cluster using Talos Container Linux](https://computingforgeeks.com/install-kubernetes-using-talos-container-linux/)
   - [How to enable workers on your control plane nodes](https://www.talos.dev/v1.6/talos-guides/howto/workers-on-controlplane/)
+  - [Talos + Kubevirt Bare Metal & Nested Tenant Cluster](https://gist.github.com/usrbinkat/4dfe24590a56434139744fb7d1bc6ce9)
+  - [Virtual Machine Orchestration in Kubernetes using KubeVirt](https://medium.com/@arbnair97/virtual-machine-orchestration-in-kubernetes-using-kubevirt-91bd0e81a5bd)
 
