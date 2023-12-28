@@ -1,7 +1,7 @@
 ---
 title: "How to Enable Ntp in Debian 12"
 date: 2023-12-28T19:03:56+08:00
-draft: true
+draft: false
 image: https://picsum.photos/800/600.webp?random=242a325a
 categories:
   - linux
