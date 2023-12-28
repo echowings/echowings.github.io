@@ -164,7 +164,15 @@ kubectl expose deployment nginx-deployment --type=NodePort --port=80
 
 # Get the service port:
 kubectl get svc
+```
 
+
+### talos config
+
+```shell
+talosctl list /var/local-path-provisioner -n 192.168.11.61  --endpoints 192.168.11.61 --talosconfig _out/talosconfig 
+
+talosctl edit machineconfig -n 192.168.11.61  --endpoints 192.168.11.61 --talosconfig _out/talosconfig
 
 ```
 
@@ -205,6 +213,9 @@ kubectl get pods -n default | grep -i launcher
 
 virtctl console --kubeconfig=$KUBECONFIG testvm
 ```
+
+
+
 
 
 ## Reference
