@@ -25,28 +25,38 @@ license: CC BY-NC-ND
 ## Powershell
 
 ```powershell
-#create-reboot-task-scheduler.ps1
 $ErrorActionPreference = 'Stop'
 
+Write-Host "Current Timezone...`n"
+#Get current timezone
+Get-Timezone
+
+
+$Date = Get-Date -Date "2023-12-31 6:00:00"
+
 # Define the trigger (every Sunday at 6:00 AM)
-$trigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Sunday -At 6am
+$trigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Sunday -At 6am 
+
+# Set StartBoundary to disable 'synchronize across time zones'
+$trigger.StartBoundary = (Get-Date -Date $Date -Format 'yyyy-MM-ddTHH:mm:ss')
 
 # Define the action to be performed (in this case, a system restart)
 $action = New-ScheduledTaskAction -Execute 'shutdown' -Argument '/r /f /t 0'
 
+# Create settings that specify to not synch across time zones
+$settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
 
+
+Write-Host "Create Tasck scheduler to reboot server at 6:00am every sunday morning...`n"
 # Register the task with the Task Scheduler
 Register-ScheduledTask -TaskName "RebootTask" `
                        -Action $action `
                        -Trigger $trigger `
-                       -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries) `
+                       -Settings $settings `
                        -RunLevel Highest `
                        -User "NT AUTHORITY\SYSTEM" `
                        -Description "Reboot server every Sunday at 6am"
-
-# Get task to confirm it was created
-Get-ScheduledTask -TaskName "RebootTask"
-
+Write-Host "Successfully Created the reboot task scheduler...`n"
 ```
 
 ## Ansible
@@ -90,3 +100,7 @@ Get-ScheduledTask -TaskName "RebootTask"
       
 
 ```
+
+## Reference
+
+  - [Scheduled Task Trigger - Synchronize Across Time Zones](https://www.thecliguy.co.uk/2020/02/09/scheduled-task-trigger-synchronize-across-time-zones/)
