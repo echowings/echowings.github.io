@@ -215,7 +215,11 @@ virtctl console --kubeconfig=$KUBECONFIG testvm
 ```
 
 
+### Delete virt pod with Error or complated status 
 
+```shell
+ for virtpod in $(k get po -A | grep -e 'Error' -e 'Completed' | awk '{print $2}'); do k delete pod $virtpod -n kubevirt ;done
+```
 
 
 ## Reference
