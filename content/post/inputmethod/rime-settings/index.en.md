@@ -27,18 +27,22 @@ license: CC BY-NC-ND
 
 
 ## Install rime /squirrel on mac/windows/linux
-
+---
 
 
 ### Windows
+---
 
 Install [RIME](https://rime.im/)
 
 ### MacOS
+---
+
 ```shell
 brew install squirrel
 ```
 ### Linux
+---
 
 ## Clone git repo to local
 
@@ -47,12 +51,16 @@ git clone https://github.com/Iorest/rime-setting.git
 ```
 
 ## Install configuration
+---
+
 ### Install configuration on windows
+---
 
 copy all files except `font` folder into
 `%APPDATA%\Rime`
 
 ### Install configuration on macos
+---
 
 Copy all files except `font` folder inot
 `~/Library/Rime`
@@ -66,6 +74,7 @@ Copy all files except `font` folder inot
 ```
 
 ## Change fonts in file `weasel.custom.yaml`
+---
 
 ```yaml
   "style/font_face": "LXGW WenKai GB Screen R"
@@ -73,3 +82,4 @@ Copy all files except `font` folder inot
 
 
 ## Click redeploy on rime
+---
