@@ -47,3 +47,4 @@ reg add "HKLM\SYSTEM\Setup\LabConfig" /v "BypassRAMCheck"  /t REG_DWORD /d 1 /f
 ## Reference
   - [How to Install Windows 11 on a VMware Virtual Machine](https://woshub.com/install-windows-11-vmware-vm/)
   - [How to disable Hyper-V in Windows 11](https://www.xda-developers.com/disable-hyper-v-windows-11/)
+  - [Windows 11 Disable Hyper-V](https://www.makeuseof.com/windows-11-disable-hyper-v/)
