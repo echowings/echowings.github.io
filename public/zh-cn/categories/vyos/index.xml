@@ -1,21 +1,69 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>vyos on Steve的博客</title>
-    <link>https://echowings.github.io/zh-cn/categories/vyos/</link>
-    <description>Recent content in vyos on Steve的博客</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 14 Nov 2022 09:09:33 +0800</lastBuildDate><atom:link href="https://echowings.github.io/zh-cn/categories/vyos/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to Install Sshpass on Vyos 1.3.x</title>
-      <link>https://echowings.github.io/zh-cn/p/how-to-install-sshpass-on-vyos-1.3.x/</link>
-      <pubDate>Mon, 14 Nov 2022 09:09:33 +0800</pubDate>
-      
-      <guid>https://echowings.github.io/zh-cn/p/how-to-install-sshpass-on-vyos-1.3.x/</guid>
-      <description>How to Install SSHPASS on VyOS 1.3.x how-to-install-sshpass-on- vyos-1.3.x Since vyos 1.3.x base on debian 10, so we can install sshpass 1.06 for debian on vyos 1.3.x
-Download and install sshpass 1.06 for debian 10 1 2 3 wget http://ftp.de.debian.org/debian/pool/main/s/sshpass/sshpass_1.06-1_amd64.deb sudo dpkg -i sshpass_1.06-1_amd64.deb Run sshpass 1 2 3 4 5 6 7 8 9 10 11 12 13 # run command via ssh without inactively sshpass -p &amp;#39;ssh_password&amp;#39; ssh -t root@ssh_host -p 22 &amp;#39;uptime&amp;#39; # Copy files to remote sshpass -p &amp;#39;ssh_password&amp;#39; scp -P 22 myfile.</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>vyos on Steve的博客</title>
+        <link>https://echowings.github.io/zh-cn/categories/vyos/</link>
+        <description>Recent content in vyos on Steve的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 14 Nov 2022 09:09:33 +0800</lastBuildDate><atom:link href="https://echowings.github.io/zh-cn/categories/vyos/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>How to Install Sshpass on Vyos 1.3.x</title>
+        <link>https://echowings.github.io/zh-cn/p/how-to-install-sshpass-on-vyos-1.3.x/</link>
+        <pubDate>Mon, 14 Nov 2022 09:09:33 +0800</pubDate>
+        
+        <guid>https://echowings.github.io/zh-cn/p/how-to-install-sshpass-on-vyos-1.3.x/</guid>
+        <description>&lt;img src="https://picsum.photos/800/600.webp?random=81ff83c3" alt="Featured image of post How to Install Sshpass on Vyos 1.3.x" /&gt;&lt;h1 id=&#34;how-to-install-sshpass-on-vyos-13x&#34;&gt;How to Install SSHPASS on VyOS 1.3.x&lt;/h1&gt;
+&lt;p&gt;how-to-install-sshpass-on-
+vyos-1.3.x
+Since vyos 1.3.x base on debian 10, so we can install sshpass 1.06 for debian on vyos 1.3.x&lt;/p&gt;
+&lt;h2 id=&#34;download-and-install-sshpass-106-for-debian-10&#34;&gt;Download and install sshpass 1.06 for debian 10&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; wget http://ftp.de.debian.org/debian/pool/main/s/sshpass/sshpass_1.06-1_amd64.deb
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo dpkg -i sshpass_1.06-1_amd64.deb
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;run-sshpass&#34;&gt;Run sshpass&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# run command via ssh without inactively&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sshpass -p &lt;span class=&#34;s1&#34;&gt;&amp;#39;ssh_password&amp;#39;&lt;/span&gt; ssh -t root@ssh_host -p &lt;span class=&#34;m&#34;&gt;22&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;uptime&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Copy files to remote &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sshpass -p &lt;span class=&#34;s1&#34;&gt;&amp;#39;ssh_password&amp;#39;&lt;/span&gt; scp -P &lt;span class=&#34;m&#34;&gt;22&lt;/span&gt; myfile.txt gcadmin@ssh_host
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# loop running command&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; i in 192.168.11.5&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;1..3&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; sshpass -p &lt;span class=&#34;s1&#34;&gt;&amp;#39;ssh_password&amp;#39;&lt;/span&gt; ssh -t root@&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt; -p &lt;span class=&#34;m&#34;&gt;22&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;uptime&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Loop copy files&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; i in host1 host2 host3&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sshpass -p &lt;span class=&#34;s1&#34;&gt;&amp;#39;ssh_password&amp;#39;&lt;/span&gt; scp -P &lt;span class=&#34;m&#34;&gt;22&lt;/span&gt; myfile.txt gcadmin@&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        
+    </channel>
 </rss>

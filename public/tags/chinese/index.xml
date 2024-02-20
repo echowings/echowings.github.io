@@ -1,40 +1,203 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>chinese on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/tags/chinese/</link>
-    <description>Recent content in chinese on Steve&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 01 Aug 2021 21:51:14 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/chinese/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to Batch Rename Filesname</title>
-      <link>https://echowings.github.io/p/how-to-batch-rename-filesname/</link>
-      <pubDate>Sun, 01 Aug 2021 21:51:14 +0800</pubDate>
-      
-      <guid>https://echowings.github.io/p/how-to-batch-rename-filesname/</guid>
-      <description>How to batch rename filesname Rename a file 1 ls *.mp4| awk -F &amp;#34;TEXT_TO_DELETE&amp;#34; &amp;#39;{print &amp;#34;mv \&amp;#34;&amp;#34;$0&amp;#34;\&amp;#34; \&amp;#34;&amp;#34;$1$2&amp;#34;\&amp;#34;&amp;#34;}&amp;#39; | bash Rename a folder 1 ls -d * | awk -F &amp;#34;TEXT_TO_DELETE&amp;#34; &amp;#39;{print &amp;#34;mv \&amp;#34;&amp;#34;$0&amp;#34;\&amp;#34; \&amp;#34;&amp;#34;$1$2&amp;#34;\&amp;#34;&amp;#34;}&amp;#39; | bash Batch rename file bash file 1 2 3 4 5 6 7 8 9 10 11 12 #!/bin/bash for dir in `ls . | tr &amp;#34; &amp;#34; &amp;#34;?&amp;#34; ` do new_dir=(`echo $dir |</description>
-    </item>
-    
-    <item>
-      <title>How to Install Squirrel on Macos</title>
-      <link>https://echowings.github.io/p/how-to-install-squirrel-on-macos/</link>
-      <pubDate>Fri, 20 Nov 2020 17:47:43 +0800</pubDate>
-      
-      <guid>https://echowings.github.io/p/how-to-install-squirrel-on-macos/</guid>
-      <description>How to install squirrel as your chinese input method for your macos 1. Install squirrel 1 brew cask install squirrel 2. Logout and login or Reboot your mac Reboot your mac
-3. Copy squirrel configuration for you configuration file: https://github.com/wongdean/rime-settings#
-1 2 mkdir rime &amp;amp;&amp;amp; cd rime git clone https://github.com/wongdean/rime-settings.git 4. configure squrriel Press control + space key to enable squirrel. Then click settings... Copy all contents in rime-settings expect fonts folder to configure folder.</description>
-    </item>
-    
-    <item>
-      <title>Debian or Ubuntu Chinese Language Support</title>
-      <link>https://echowings.github.io/p/debian-or-ubuntu-chinese-language-support/</link>
-      <pubDate>Mon, 24 Dec 2018 00:39:51 +0800</pubDate>
-      
-      <guid>https://echowings.github.io/p/debian-or-ubuntu-chinese-language-support/</guid>
-      <description>Ubuntu Chinese Language Support 编辑/etc/environment如下: 1 vi /etc/environment 添加如下: 1 2 3 4 LC_ALL=&amp;#34;en_US.UTF-8&amp;#34; LANG=&amp;#34;zh_CN.UTF-8&amp;#34; UNZIP=&amp;#39;-O CP936&amp;#34; ZIPINFO=&amp;#34;-O CP936&amp;#34; 重新生成语言设置 1 2 sudo locale-gen en_US en_US.UTF-8 zh_CN zh_CN.UTF-8 sudo dpkg-reconfigure locales 1 2 3 4 5 6 7 8</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>chinese on Steve&#39;s Blog</title>
+        <link>https://echowings.github.io/tags/chinese/</link>
+        <description>Recent content in chinese on Steve&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 01 Aug 2021 21:51:14 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/chinese/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>How to Batch Rename Filesname</title>
+        <link>https://echowings.github.io/p/how-to-batch-rename-filesname/</link>
+        <pubDate>Sun, 01 Aug 2021 21:51:14 +0800</pubDate>
+        
+        <guid>https://echowings.github.io/p/how-to-batch-rename-filesname/</guid>
+        <description>&lt;h1 id=&#34;how-to-batch-rename-filesname&#34;&gt;How to batch rename filesname&lt;/h1&gt;
+&lt;h2 id=&#34;rename-a-file&#34;&gt;Rename a file&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ls *.mp4&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; awk -F &lt;span class=&#34;s2&#34;&gt;&amp;#34;TEXT_TO_DELETE&amp;#34;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;{print &amp;#34;mv \&amp;#34;&amp;#34;$0&amp;#34;\&amp;#34; \&amp;#34;&amp;#34;$1$2&amp;#34;\&amp;#34;&amp;#34;}&amp;#39;&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; bash
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;rename-a--folder&#34;&gt;Rename a  folder&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ls -d * &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; awk -F &lt;span class=&#34;s2&#34;&gt;&amp;#34;TEXT_TO_DELETE&amp;#34;&lt;/span&gt;  &lt;span class=&#34;s1&#34;&gt;&amp;#39;{print &amp;#34;mv \&amp;#34;&amp;#34;$0&amp;#34;\&amp;#34; \&amp;#34;&amp;#34;$1$2&amp;#34;\&amp;#34;&amp;#34;}&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; bash
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;batch-rename-file&#34;&gt;Batch rename file&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;bash file&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; dir in &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;ls . &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; tr &lt;span class=&#34;s2&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;?&amp;#34;&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nv&#34;&gt;new_dir&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=(&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$dir&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; tr &lt;span class=&#34;s2&#34;&gt;&amp;#34;?&amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; -d  &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$new_dir&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$new_dir&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$new_dir&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ls &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; awk -F &lt;span class=&#34;s2&#34;&gt;&amp;#34;【瑞客论坛 www.ruike1.com】&amp;#34;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;{print &amp;#34;mv \&amp;#34;&amp;#34;$0&amp;#34;\&amp;#34; \&amp;#34;&amp;#34;$1&amp;#34;&amp;#34;$2&amp;#34;\&amp;#34;&amp;#34;}&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bash  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; .. 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;one command line script&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; dir in &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;ls . &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; tr &lt;span class=&#34;s2&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;?&amp;#34;&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;new_dir&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=(&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$dir&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; tr &lt;span class=&#34;s2&#34;&gt;&amp;#34;?&amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; -d  &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$new_dir&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$new_dir&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$new_dir&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;ls &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; awk -F &lt;span class=&#34;s2&#34;&gt;&amp;#34;【瑞客论坛 www.ruike1.com】&amp;#34;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;{print &amp;#34;mv \&amp;#34;&amp;#34;$0&amp;#34;\&amp;#34; \&amp;#34;&amp;#34;$1&amp;#34;&amp;#34;$2&amp;#34;\&amp;#34;&amp;#34;}&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bash  &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; .. &lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        <item>
+        <title>How to Install Squirrel on Macos</title>
+        <link>https://echowings.github.io/p/how-to-install-squirrel-on-macos/</link>
+        <pubDate>Fri, 20 Nov 2020 17:47:43 +0800</pubDate>
+        
+        <guid>https://echowings.github.io/p/how-to-install-squirrel-on-macos/</guid>
+        <description>&lt;h1 id=&#34;how-to-install-squirrel-as-your-chinese-input-method-for-your-macos&#34;&gt;How to install squirrel as your chinese input method for your macos&lt;/h1&gt;
+&lt;h2 id=&#34;1-install-squirrel&#34;&gt;1. Install squirrel&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew cask install squirrel
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;2-logout-and-login-or--reboot-your-mac&#34;&gt;2. Logout and login or  Reboot your mac&lt;/h2&gt;
+&lt;p&gt;Reboot your mac&lt;/p&gt;
+&lt;h2 id=&#34;3-copy-squirrel-configuration-for-you&#34;&gt;3. Copy squirrel configuration for you&lt;/h2&gt;
+&lt;p&gt;configuration file: &lt;a class=&#34;link&#34; href=&#34;https://github.com/wongdean/rime-settings#&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/wongdean/rime-settings#&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir rime &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; rime
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/wongdean/rime-settings.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;4-configure-squrriel&#34;&gt;4. configure squrriel&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Press &lt;code&gt;control&lt;/code&gt; + &lt;code&gt;space&lt;/code&gt; key to enable &lt;code&gt;squirrel&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Then click &lt;code&gt;settings...&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Copy all contents in &lt;code&gt;rime-settings&lt;/code&gt; expect &lt;code&gt;fonts&lt;/code&gt; folder to configure folder.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>Debian or Ubuntu Chinese Language Support</title>
+        <link>https://echowings.github.io/p/debian-or-ubuntu-chinese-language-support/</link>
+        <pubDate>Mon, 24 Dec 2018 00:39:51 +0800</pubDate>
+        
+        <guid>https://echowings.github.io/p/debian-or-ubuntu-chinese-language-support/</guid>
+        <description>&lt;p&gt;Ubuntu Chinese Language Support&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;编辑/etc/environment如下:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vi /etc/environment
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;添加如下:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;LC_ALL&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;en_US.UTF-8&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;LANG&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;zh_CN.UTF-8&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;UNZIP&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;-O CP936&lt;span class=&#34;s2&#34;&gt;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;ZIPINFO=&amp;#34;&lt;/span&gt;-O CP936&lt;span class=&#34;s2&#34;&gt;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;重新生成语言设置&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; sudo locale-gen  en_US en_US.UTF-8 zh_CN zh_CN.UTF-8
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; sudo dpkg-reconfigure locales
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;## 中文支持
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;### vim中文支持
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;编辑~/.vimrc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;``` bash
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   set termencoding=utf-8
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   set encoding=utf-8
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;中文支持&#34;&gt;中文支持&lt;/h3&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

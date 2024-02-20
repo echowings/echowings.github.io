@@ -1,20 +1,44 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>vmid on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/tags/vmid/</link>
-    <description>Recent content in vmid on Steve&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 26 Mar 2021 15:23:43 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/vmid/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to Rename Vm Id on Pve</title>
-      <link>https://echowings.github.io/p/how-to-rename-vm-id-on-pve/</link>
-      <pubDate>Fri, 26 Mar 2021 15:23:43 +0800</pubDate>
-      
-      <guid>https://echowings.github.io/p/how-to-rename-vm-id-on-pve/</guid>
-      <description>How to rename VMID on PVE 1 2 3 4 5 6 7 8 9 VMID=121 &amp;amp;&amp;amp; \ NEW_VMID=1001 &amp;amp;&amp;amp; \ POOL_NAME=tank &amp;amp;&amp;amp; \ qm unlock $VMID &amp;amp;&amp;amp; \ qm stop $VMID &amp;amp;&amp;amp; \ sed -i &amp;#34;s/$VMID/$NEW_VMID/g&amp;#34; /etc/pve/qemu-server/$VMID.conf &amp;amp;&amp;amp; \ mv /etc/pve/qemu-server/$VMID.conf /etc/pve/qemu-server/$NEW_VMID.conf &amp;amp;&amp;amp; \ rbd --pool $POOL_NAME rename vm-$VMID-disk-0 vm-$NEW_VMID-disk-0 &amp;amp;&amp;amp;\ qm start $NEW_VMID </description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>vmid on Steve&#39;s Blog</title>
+        <link>https://echowings.github.io/tags/vmid/</link>
+        <description>Recent content in vmid on Steve&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 26 Mar 2021 15:23:43 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/vmid/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>How to Rename Vm Id on Pve</title>
+        <link>https://echowings.github.io/p/how-to-rename-vm-id-on-pve/</link>
+        <pubDate>Fri, 26 Mar 2021 15:23:43 +0800</pubDate>
+        
+        <guid>https://echowings.github.io/p/how-to-rename-vm-id-on-pve/</guid>
+        <description>&lt;h1 id=&#34;how-to-rename-vmid-on-pve&#34;&gt;How to rename VMID on PVE&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;VMID&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;121&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;nv&#34;&gt;NEW_VMID&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1001&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;nv&#34;&gt;POOL_NAME&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;tank &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;	qm unlock &lt;span class=&#34;nv&#34;&gt;$VMID&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;	qm stop &lt;span class=&#34;nv&#34;&gt;$VMID&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;	sed -i &lt;span class=&#34;s2&#34;&gt;&amp;#34;s/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$VMID&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$NEW_VMID&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/g&amp;#34;&lt;/span&gt; /etc/pve/qemu-server/&lt;span class=&#34;nv&#34;&gt;$VMID&lt;/span&gt;.conf &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;	mv /etc/pve/qemu-server/&lt;span class=&#34;nv&#34;&gt;$VMID&lt;/span&gt;.conf /etc/pve/qemu-server/&lt;span class=&#34;nv&#34;&gt;$NEW_VMID&lt;/span&gt;.conf &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;  &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;	rbd --pool &lt;span class=&#34;nv&#34;&gt;$POOL_NAME&lt;/span&gt; rename vm-&lt;span class=&#34;nv&#34;&gt;$VMID&lt;/span&gt;-disk-0 vm-&lt;span class=&#34;nv&#34;&gt;$NEW_VMID&lt;/span&gt;-disk-0 &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt; 	qm start &lt;span class=&#34;nv&#34;&gt;$NEW_VMID&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        
+    </channel>
 </rss>
