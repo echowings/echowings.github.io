@@ -1,683 +1,656 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>bcache on Steve&#39;s Blog</title>
-        <link>https://echowings.github.io/tags/bcache/</link>
-        <description>Recent content in bcache on Steve&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <lastBuildDate>Thu, 01 Jul 2021 06:38:10 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/bcache/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>How to Let a New Server Join Hci System</title>
-        <link>https://echowings.github.io/p/how-to-let-a-new-server-join-hci-system/</link>
-        <pubDate>Thu, 01 Jul 2021 06:38:10 +0800</pubDate>
-        
-        <guid>https://echowings.github.io/p/how-to-let-a-new-server-join-hci-system/</guid>
-        <description>&lt;p&gt;##How to let a new server join the exist HCI cluster&lt;/p&gt;
-&lt;h3 id=&#34;1-insall-the-pve-on-the-server&#34;&gt;1. Insall the pve on the server&lt;/h3&gt;
-&lt;p&gt;&amp;ndash;skip&amp;mdash;&lt;/p&gt;
-&lt;h3 id=&#34;2-let-the-new-server-join-the-pve-cluster&#34;&gt;2. Let the new server join the pve cluster&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#ssh login the server&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pvecm add 10.32.4.37
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;3-configure-ntp-server&#34;&gt;3. configure NTP server&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cat &amp;gt;&amp;gt; /etc/systemd/timesyncd.conf &lt;span class=&#34;s&#34;&gt;&amp;lt;&amp;lt; EOF
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;NTP=192.168.0.2 192.168.0.3
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;EOF&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Restart systemd-timesyncd service to apply settings&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl restart systemd-timesyncd
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;4-install-ceph&#34;&gt;4. Install ceph&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pveceph install
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;5-partition-nvme-disk&#34;&gt;5. Partition nvme disk&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;partitin 1-6 for block.wal(ceph)&lt;/li&gt;
-&lt;li&gt;partition 7-12 for block.db(ceph)&lt;/li&gt;
-&lt;li&gt;partition 13-18 for bcache&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mktable gpt
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mkpart primary 1M 10G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mkpart primary 10G 20G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mkpart primary 20G 30G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mkpart primary 30G 40G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mkpart primary 40G 50G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mkpart primary 50G 60G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mkpart primary 60G 110G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mkpart primary 110G 160G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mkpart primary 160G 210G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mkpart primary 210G 260G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mkpart primary 260G 310G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mkpart primary 310G 360G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mkpart primary 360G 433G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mkpart primary 433G 506G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mkpart primary 506G 579G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mkpart primary 579G 652G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mkpart primary 652G 725G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme1n1 mkpart primary 725G 800G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mktable gpt
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mkpart primary 1M 10G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mkpart primary 10G 20G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mkpart primary 20G 30G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mkpart primary 30G 40G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mkpart primary 40G 50G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mkpart primary 50G 60G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mkpart primary 60G 110G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mkpart primary 110G 160G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mkpart primary 160G 210G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mkpart primary 210G 260G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mkpart primary 260G 310G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mkpart primary 310G 360G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mkpart primary 360G 433G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mkpart primary 433G 506G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mkpart primary 506G 579G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mkpart primary 579G 652G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mkpart primary 652G 725G
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;parted -s /dev/nvme2n1 mkpart primary 725G 800G
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;6-list-disk-by-id&#34;&gt;6. list disk by-id&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# list sas disk by id&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ls -al &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep wwn
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root    &lt;span class=&#34;m&#34;&gt;9&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 wwn-0x5000c500943614ab -&amp;gt; ../../sdl
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root    &lt;span class=&#34;m&#34;&gt;9&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 wwn-0x5000cca0801eb5c8 -&amp;gt; ../../sdc
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root    &lt;span class=&#34;m&#34;&gt;9&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 wwn-0x5000cca080248ff8 -&amp;gt; ../../sdh
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root    &lt;span class=&#34;m&#34;&gt;9&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 wwn-0x5000cca08024aca8 -&amp;gt; ../../sdk
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root    &lt;span class=&#34;m&#34;&gt;9&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 wwn-0x5000cca08024f0d0 -&amp;gt; ../../sdi
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root    &lt;span class=&#34;m&#34;&gt;9&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 wwn-0x5000cca080253734 -&amp;gt; ../../sdj
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root    &lt;span class=&#34;m&#34;&gt;9&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 wwn-0x5000cca0802601cc -&amp;gt; ../../sdf
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root    &lt;span class=&#34;m&#34;&gt;9&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 wwn-0x5000cca0802735ec -&amp;gt; ../../sda
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root    &lt;span class=&#34;m&#34;&gt;9&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 wwn-0x5000cca0802747c8 -&amp;gt; ../../sdd
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root    &lt;span class=&#34;m&#34;&gt;9&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 wwn-0x5000cca0802afad0 -&amp;gt; ../../sdb
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root    &lt;span class=&#34;m&#34;&gt;9&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 wwn-0x5000cca0802ba6ac -&amp;gt; ../../sdg
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root    &lt;span class=&#34;m&#34;&gt;9&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 wwn-0x5000cca080326bd0 -&amp;gt; ../../sde
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#list nvme disk by uuid&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ls -al &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep nvme-MT
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;13&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 nvme-MT0800KEXUU_CVFT73520058800MGN -&amp;gt; ../../nvme1n1
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:07 nvme-MT0800KEXUU_CVFT73520058800MGN-part1 -&amp;gt; ../../nvme1n1p1
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:08 nvme-MT0800KEXUU_CVFT73520058800MGN-part10 -&amp;gt; ../../nvme1n1p10
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:08 nvme-MT0800KEXUU_CVFT73520058800MGN-part11 -&amp;gt; ../../nvme1n1p11
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:08 nvme-MT0800KEXUU_CVFT73520058800MGN-part12 -&amp;gt; ../../nvme1n1p12
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 nvme-MT0800KEXUU_CVFT73520058800MGN-part13 -&amp;gt; ../../nvme1n1p13
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 nvme-MT0800KEXUU_CVFT73520058800MGN-part14 -&amp;gt; ../../nvme1n1p14
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 nvme-MT0800KEXUU_CVFT73520058800MGN-part15 -&amp;gt; ../../nvme1n1p15
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 nvme-MT0800KEXUU_CVFT73520058800MGN-part16 -&amp;gt; ../../nvme1n1p16
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 nvme-MT0800KEXUU_CVFT73520058800MGN-part17 -&amp;gt; ../../nvme1n1p17
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 nvme-MT0800KEXUU_CVFT73520058800MGN-part18 -&amp;gt; ../../nvme1n1p18
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:07 nvme-MT0800KEXUU_CVFT73520058800MGN-part2 -&amp;gt; ../../nvme1n1p2
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:08 nvme-MT0800KEXUU_CVFT73520058800MGN-part3 -&amp;gt; ../../nvme1n1p3
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:08 nvme-MT0800KEXUU_CVFT73520058800MGN-part4 -&amp;gt; ../../nvme1n1p4
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:08 nvme-MT0800KEXUU_CVFT73520058800MGN-part5 -&amp;gt; ../../nvme1n1p5
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:08 nvme-MT0800KEXUU_CVFT73520058800MGN-part6 -&amp;gt; ../../nvme1n1p6
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:07 nvme-MT0800KEXUU_CVFT73520058800MGN-part7 -&amp;gt; ../../nvme1n1p7
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:07 nvme-MT0800KEXUU_CVFT73520058800MGN-part8 -&amp;gt; ../../nvme1n1p8
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:08 nvme-MT0800KEXUU_CVFT73520058800MGN-part9 -&amp;gt; ../../nvme1n1p9
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;13&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 nvme-MT0800KEXUU_CVFT7352005S800MGN -&amp;gt; ../../nvme2n1
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:08 nvme-MT0800KEXUU_CVFT7352005S800MGN-part1 -&amp;gt; ../../nvme2n1p1
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:09 nvme-MT0800KEXUU_CVFT7352005S800MGN-part10 -&amp;gt; ../../nvme2n1p10
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:09 nvme-MT0800KEXUU_CVFT7352005S800MGN-part11 -&amp;gt; ../../nvme2n1p11
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:10 nvme-MT0800KEXUU_CVFT7352005S800MGN-part12 -&amp;gt; ../../nvme2n1p12
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 nvme-MT0800KEXUU_CVFT7352005S800MGN-part13 -&amp;gt; ../../nvme2n1p13
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 nvme-MT0800KEXUU_CVFT7352005S800MGN-part14 -&amp;gt; ../../nvme2n1p14
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 nvme-MT0800KEXUU_CVFT7352005S800MGN-part15 -&amp;gt; ../../nvme2n1p15
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 nvme-MT0800KEXUU_CVFT7352005S800MGN-part16 -&amp;gt; ../../nvme2n1p16
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 nvme-MT0800KEXUU_CVFT7352005S800MGN-part17 -&amp;gt; ../../nvme2n1p17
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 05:49 nvme-MT0800KEXUU_CVFT7352005S800MGN-part18 -&amp;gt; ../../nvme2n1p18
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:09 nvme-MT0800KEXUU_CVFT7352005S800MGN-part2 -&amp;gt; ../../nvme2n1p2
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:09 nvme-MT0800KEXUU_CVFT7352005S800MGN-part3 -&amp;gt; ../../nvme2n1p3
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:09 nvme-MT0800KEXUU_CVFT7352005S800MGN-part4 -&amp;gt; ../../nvme2n1p4
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:09 nvme-MT0800KEXUU_CVFT7352005S800MGN-part5 -&amp;gt; ../../nvme2n1p5
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:10 nvme-MT0800KEXUU_CVFT7352005S800MGN-part6 -&amp;gt; ../../nvme2n1p6
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:08 nvme-MT0800KEXUU_CVFT7352005S800MGN-part7 -&amp;gt; ../../nvme2n1p7
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:09 nvme-MT0800KEXUU_CVFT7352005S800MGN-part8 -&amp;gt; ../../nvme2n1p8
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt; Jul  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; 06:09 nvme-MT0800KEXUU_CVFT7352005S800MGN-part9 -&amp;gt; ../../nvme2n1p9
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;after sort the data ,will will got this list&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#sas disk&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/wwn-0x5000cca0802735ec
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/wwn-0x5000cca0802afad0
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/wwn-0x5000cca0801eb5c8
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/wwn-0x5000cca0802747c8
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/wwn-0x5000cca080326bd0
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/wwn-0x5000cca0802601cc
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/wwn-0x5000cca0802ba6ac
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/wwn-0x5000cca080248ff8
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/wwn-0x5000cca08024f0d0
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/wwn-0x5000cca080253734
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/wwn-0x5000cca08024aca8
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/wwn-0x5000c500943614ab
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# nvme&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part1 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part2 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part3 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part4 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part5 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part6 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part7 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part8 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part9 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part10
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part11
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part12
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part1 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part2 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part3 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part4 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part5 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part6 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part7 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part8 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part9 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part10
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part11
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part12
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;7-make-bcache-disk&#34;&gt;7. Make Bcache disk&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part13 -B /dev/disk/by-id/wwn-0x5000cca0802735ec --writeback
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part14 -B /dev/disk/by-id/wwn-0x5000cca0802afad0 --writeback
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part15 -B /dev/disk/by-id/wwn-0x5000cca0801eb5c8 --writeback
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part16 -B /dev/disk/by-id/wwn-0x5000cca0802747c8 --writeback
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part17 -B /dev/disk/by-id/wwn-0x5000cca080326bd0 --writeback
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part18 -B /dev/disk/by-id/wwn-0x5000cca0802601cc --writeback
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part13 -B /dev/disk/by-id/wwn-0x5000cca0802ba6ac --writeback
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part14 -B /dev/disk/by-id/wwn-0x5000cca080248ff8 --writeback
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part15 -B /dev/disk/by-id/wwn-0x5000cca08024f0d0 --writeback
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part16 -B /dev/disk/by-id/wwn-0x5000cca080253734 --writeback
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part17 -B /dev/disk/by-id/wwn-0x5000cca08024aca8 --writeback
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part18 -B /dev/disk/by-id/wwn-0x5000c500943614ab --writeback
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;8-reboot-to-make-bcache-works&#34;&gt;8. Reboot to make bcache works&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;reboot now
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;9-create-osd&#34;&gt;9. create OSD&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ceph-volume lvm create --bluestore --data /dev/bcache0 --block.wal /dev/nvme1n1p1  --block.db /dev/nvme1n1p7
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ceph-volume lvm create --bluestore --data /dev/bcache1 --block.wal /dev/nvme1n1p2  --block.db /dev/nvme1n1p8
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ceph-volume lvm create --bluestore --data /dev/bcache2 --block.wal /dev/nvme1n1p3  --block.db /dev/nvme1n1p9
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ceph-volume lvm create --bluestore --data /dev/bcache3 --block.wal /dev/nvme1n1p4  --block.db /dev/nvme1n1p10
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ceph-volume lvm create --bluestore --data /dev/bcache4 --block.wal /dev/nvme1n1p5  --block.db /dev/nvme1n1p11
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ceph-volume lvm create --bluestore --data /dev/bcache5 --block.wal /dev/nvme1n1p6  --block.db /dev/nvme1n1p12
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ceph-volume lvm create --bluestore --data /dev/bcache6 --block.wal /dev/nvme2n1p1  --block.db /dev/nvme2n1p7
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ceph-volume lvm create --bluestore --data /dev/bcache7 --block.wal /dev/nvme2n1p2  --block.db /dev/nvme2n1p8
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ceph-volume lvm create --bluestore --data /dev/bcache8 --block.wal /dev/nvme2n1p3  --block.db /dev/nvme2n1p9
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ceph-volume lvm create --bluestore --data /dev/bcache9 --block.wal /dev/nvme2n1p4  --block.db /dev/nvme2n1p10
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ceph-volume lvm create --bluestore --data /dev/bcache10 --block.wal /dev/nvme2n1p5  --block.db /dev/nvme2n1p11
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ceph-volume lvm create --bluestore --data /dev/bcache11 --block.wal /dev/nvme2n1p6  --block.db /dev/nvme2n1p12
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
-        </item>
-        <item>
-        <title>Bcache</title>
-        <link>https://echowings.github.io/p/bcache/</link>
-        <pubDate>Tue, 09 Mar 2021 16:20:42 +0800</pubDate>
-        
-        <guid>https://echowings.github.io/p/bcache/</guid>
-        <description>&lt;h1 id=&#34;how-to-operate-becache&#34;&gt;How to operate becache&lt;/h1&gt;
-&lt;p&gt;Recently I just try to add bcache with zfs and ceph. So I just wirte down it.&lt;/p&gt;
-&lt;h2 id=&#34;install-bcache-tools&#34;&gt;Install bcache-tools&lt;/h2&gt;
-&lt;p&gt;Since bcache implement in Linux kernel. So it will default enabled. We just need to install &lt;code&gt;bcache-tools&lt;/code&gt; to operate bcache.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;apt install -y bcache-tools
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;configure-bcache&#34;&gt;Configure bcache&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# make a cache disk for bcache .It must be a ssd disk.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make-bcache -C /dev/nvme1n1 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# make a disk as backend disk.It must be a slow sata/sas disk.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make-bcache -B /dev/sda
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#if you have a lot of disks like me.your can add backend disk as this.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make-bcache -B /dev/sd&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;a..f&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;###Check bcache status&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lsblk
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;add-bcache-manually&#34;&gt;Add bcache manually&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#show `cset.uuid&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;root@xa-autotest-hci01:~# bcache-super-show /dev/sda
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sb.magic		ok
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sb.first_sector		&lt;span class=&#34;m&#34;&gt;8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;match&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sb.csum			ED8FD98E20A2E91E &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;match&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sb.version		&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;backing device&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dev.label		&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;empty&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dev.uuid		e7b350fe-3496-47e2-a276-5faa5637f8a5
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dev.sectors_per_block	&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dev.sectors_per_bucket	&lt;span class=&#34;m&#34;&gt;1024&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dev.data.first_sector	&lt;span class=&#34;m&#34;&gt;16&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dev.data.cache_mode	&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;writeback&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dev.data.cache_state	&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;clean&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cset.uuid		d3fcd781-a10a-453a-96dd-6eba13abfc5b
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;####Add cache disk&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;d3fcd781-a10a-453a-96dd-6eba13abfc5b&amp;#34;&lt;/span&gt; &amp;gt; /sys/block/bcache0/bcache/attach
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;if you have a lot of disk, you can add it with for loop.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; i in range&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;0..5&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;d3fcd781-a10a-453a-96dd-6eba13abfc5b&amp;#34;&lt;/span&gt; &amp;gt; /sys/block/bcache&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;expr &lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;/bcache/attach&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h4 id=&#34;delete-cache-disk&#34;&gt;Delete cache disk&lt;/h4&gt;
-&lt;p&gt;if you want to delete bcache disk&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;d3fcd781-a10a-453a-96dd-6eba13abfc5b&amp;#34;&lt;/span&gt; &amp;gt; /sys/block/bcache0/bcache/detach
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# delete a lot disk &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; i in range&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;0..5&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;d3fcd781-a10a-453a-96dd-6eba13abfc5b&amp;#34;&lt;/span&gt; &amp;gt; /sys/block/bcache&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;expr &lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;/bcache/detach&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h4 id=&#34;unrigister-cache-disk&#34;&gt;unrigister cache disk&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;umount /dev/bcach0
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &amp;gt; /sys/block/bcache0/bcache/stop
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;If you onle have one nvme disk and you can add them all in one
-make-bcache -C /dev/nvme1n1 -B /dev/sd{a..f} &amp;ndash;writeback&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;## Change bcache write policy
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;```bash
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make-bcache -B/dev/
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;manually-resigter-udev-disk&#34;&gt;Manually resigter udev disk&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; /dev/sdb &amp;gt; /sys/fs/bcache/register
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;change-bcache-write-mode&#34;&gt;Change bcache write mode&lt;/h2&gt;
-&lt;p&gt;When you run command like &lt;code&gt;make-bcache -C /dev/nvme1n1 -B /dev/sda&lt;/code&gt; it will be set &lt;code&gt;write through&lt;/code&gt; mode. If you have UPS and you can change it to &lt;code&gt;writeback&lt;/code&gt; mode.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; writeback &amp;gt; /sys/block/bcache0/bcache/cache_mode
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;check-bcache-status&#34;&gt;Check bcache status&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cat /sys/block/bcache0/bcache/state
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;no cache: this means you have not attached a caching device to your backing bcache device&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;clean: this means everything is ok. The cache is clean&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dirty: this means everything is setup fine and that you have enabled writeback and that the cache is dirty&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;inconsistent: you are in trouble because the backing device is not in sync with the caching device&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;bcache-status
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lsblk
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;bcache-optimized&#34;&gt;bcache optimized&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#modify cache policy &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cat /sys/block/bcache0/bcache/cache_mode
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; writeback &amp;gt; /sys/block/bcache0/bcache/cache_mode
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#Disable ip track&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &amp;gt; /sys/fs/bcache/&lt;span class=&#34;nv&#34;&gt;$CacheSetUUID&lt;/span&gt;/congested_read_threshold_us
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &amp;gt; /sys/fs/bcache/&lt;span class=&#34;nv&#34;&gt;$CacheSetUUID&lt;/span&gt;/congested_write_threshold_us
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;disable-bcache&#34;&gt;disable bcache&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#check `CACHE_SET_UUID`&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ls /sys/fs/bcache
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#Unregister ssd cache disk&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &amp;gt;/sys/fs/bcache/06e33354-7c21-4c52-990d-1a653617ab20/unregister
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#disable backend disk&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &amp;gt; /sys/block/sdb/bcache/stop
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#write back cache to backend disk&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &amp;gt; /sys/block/bcache0/bcache/writeback_percent
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;##Reference&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.geek-share.com/detail/2719485821.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;A block layer cache (bcache)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.itread01.com/content/1548985342.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;bcache狀態和配置檔案詳細介紹(翻譯自官網）&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://webcache.googleusercontent.com/search?q=cache:9eiyDtuwt9AJ:https://wiki2.xbits.net:4430/storage:%25E7%25BC%2593%25E5%25AD%2598%25E6%258A%2580%25E6%259C%25AF:bcache:bcache%25E6%2589%258B%25E5%2586%258C&amp;#43;&amp;amp;cd=1&amp;amp;hl=en&amp;amp;ct=clnk&amp;amp;gl=hk&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;bcache手册&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.mr-mao.cn/archives/linux-bcache-performance-testing.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Linux下SSD缓存加速之bcache试用&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://billtian.github.io/digoal.blog/2016/09/19/01.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;bcache / 如何使用bcache构建LVM,软RAID / 如何优化bcache&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        </item>
-        
-    </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>bcache on Steve's Blog</title><link>https://echowings.github.io/tags/bcache/</link><description>Recent content in bcache on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 01 Jul 2021 06:38:10 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/bcache/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Let a New Server Join Hci System</title><link>https://echowings.github.io/p/how-to-let-a-new-server-join-hci-system/</link><pubDate>Thu, 01 Jul 2021 06:38:10 +0800</pubDate><guid>https://echowings.github.io/p/how-to-let-a-new-server-join-hci-system/</guid><description>&lt;p>##How to let a new server join the exist HCI cluster&lt;/p>
+&lt;h3 id="1-insall-the-pve-on-the-server">1. Insall the pve on the server&lt;/h3>
+&lt;p>&amp;ndash;skip&amp;mdash;&lt;/p>
+&lt;h3 id="2-let-the-new-server-join-the-pve-cluster">2. Let the new server join the pve cluster&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#ssh login the server&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pvecm add 10.32.4.37
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="3-configure-ntp-server">3. configure NTP server&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cat &amp;gt;&amp;gt; /etc/systemd/timesyncd.conf &lt;span class="s">&amp;lt;&amp;lt; EOF
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">NTP=192.168.0.2 192.168.0.3
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">EOF&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Restart systemd-timesyncd service to apply settings&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">systemctl restart systemd-timesyncd
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="4-install-ceph">4. Install ceph&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pveceph install
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="5-partition-nvme-disk">5. Partition nvme disk&lt;/h3>
+&lt;ul>
+&lt;li>partitin 1-6 for block.wal(ceph)&lt;/li>
+&lt;li>partition 7-12 for block.db(ceph)&lt;/li>
+&lt;li>partition 13-18 for bcache&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mktable gpt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mkpart primary 1M 10G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mkpart primary 10G 20G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mkpart primary 20G 30G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mkpart primary 30G 40G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mkpart primary 40G 50G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mkpart primary 50G 60G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mkpart primary 60G 110G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mkpart primary 110G 160G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mkpart primary 160G 210G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mkpart primary 210G 260G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mkpart primary 260G 310G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mkpart primary 310G 360G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mkpart primary 360G 433G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mkpart primary 433G 506G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mkpart primary 506G 579G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mkpart primary 579G 652G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mkpart primary 652G 725G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme1n1 mkpart primary 725G 800G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mktable gpt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mkpart primary 1M 10G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mkpart primary 10G 20G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mkpart primary 20G 30G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mkpart primary 30G 40G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mkpart primary 40G 50G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mkpart primary 50G 60G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mkpart primary 60G 110G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mkpart primary 110G 160G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mkpart primary 160G 210G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mkpart primary 210G 260G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mkpart primary 260G 310G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mkpart primary 310G 360G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mkpart primary 360G 433G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mkpart primary 433G 506G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mkpart primary 506G 579G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mkpart primary 579G 652G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mkpart primary 652G 725G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">parted -s /dev/nvme2n1 mkpart primary 725G 800G
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="6-list-disk-by-id">6. list disk by-id&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># list sas disk by id&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ls -al &lt;span class="p">|&lt;/span> grep wwn
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">9&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 wwn-0x5000c500943614ab -&amp;gt; ../../sdl
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">9&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 wwn-0x5000cca0801eb5c8 -&amp;gt; ../../sdc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">9&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 wwn-0x5000cca080248ff8 -&amp;gt; ../../sdh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">9&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 wwn-0x5000cca08024aca8 -&amp;gt; ../../sdk
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">9&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 wwn-0x5000cca08024f0d0 -&amp;gt; ../../sdi
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">9&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 wwn-0x5000cca080253734 -&amp;gt; ../../sdj
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">9&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 wwn-0x5000cca0802601cc -&amp;gt; ../../sdf
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">9&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 wwn-0x5000cca0802735ec -&amp;gt; ../../sda
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">9&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 wwn-0x5000cca0802747c8 -&amp;gt; ../../sdd
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">9&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 wwn-0x5000cca0802afad0 -&amp;gt; ../../sdb
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">9&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 wwn-0x5000cca0802ba6ac -&amp;gt; ../../sdg
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">9&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 wwn-0x5000cca080326bd0 -&amp;gt; ../../sde
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#list nvme disk by uuid&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ls -al &lt;span class="p">|&lt;/span> grep nvme-MT
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">13&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 nvme-MT0800KEXUU_CVFT73520058800MGN -&amp;gt; ../../nvme1n1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">15&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:07 nvme-MT0800KEXUU_CVFT73520058800MGN-part1 -&amp;gt; ../../nvme1n1p1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">16&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:08 nvme-MT0800KEXUU_CVFT73520058800MGN-part10 -&amp;gt; ../../nvme1n1p10
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">16&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:08 nvme-MT0800KEXUU_CVFT73520058800MGN-part11 -&amp;gt; ../../nvme1n1p11
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">16&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:08 nvme-MT0800KEXUU_CVFT73520058800MGN-part12 -&amp;gt; ../../nvme1n1p12
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">16&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 nvme-MT0800KEXUU_CVFT73520058800MGN-part13 -&amp;gt; ../../nvme1n1p13
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">16&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 nvme-MT0800KEXUU_CVFT73520058800MGN-part14 -&amp;gt; ../../nvme1n1p14
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">16&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 nvme-MT0800KEXUU_CVFT73520058800MGN-part15 -&amp;gt; ../../nvme1n1p15
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">16&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 nvme-MT0800KEXUU_CVFT73520058800MGN-part16 -&amp;gt; ../../nvme1n1p16
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">16&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 nvme-MT0800KEXUU_CVFT73520058800MGN-part17 -&amp;gt; ../../nvme1n1p17
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">16&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 nvme-MT0800KEXUU_CVFT73520058800MGN-part18 -&amp;gt; ../../nvme1n1p18
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">15&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:07 nvme-MT0800KEXUU_CVFT73520058800MGN-part2 -&amp;gt; ../../nvme1n1p2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">15&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:08 nvme-MT0800KEXUU_CVFT73520058800MGN-part3 -&amp;gt; ../../nvme1n1p3
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">15&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:08 nvme-MT0800KEXUU_CVFT73520058800MGN-part4 -&amp;gt; ../../nvme1n1p4
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">15&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:08 nvme-MT0800KEXUU_CVFT73520058800MGN-part5 -&amp;gt; ../../nvme1n1p5
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">15&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:08 nvme-MT0800KEXUU_CVFT73520058800MGN-part6 -&amp;gt; ../../nvme1n1p6
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">15&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:07 nvme-MT0800KEXUU_CVFT73520058800MGN-part7 -&amp;gt; ../../nvme1n1p7
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">15&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:07 nvme-MT0800KEXUU_CVFT73520058800MGN-part8 -&amp;gt; ../../nvme1n1p8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">15&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:08 nvme-MT0800KEXUU_CVFT73520058800MGN-part9 -&amp;gt; ../../nvme1n1p9
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">13&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 nvme-MT0800KEXUU_CVFT7352005S800MGN -&amp;gt; ../../nvme2n1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">15&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:08 nvme-MT0800KEXUU_CVFT7352005S800MGN-part1 -&amp;gt; ../../nvme2n1p1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">16&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:09 nvme-MT0800KEXUU_CVFT7352005S800MGN-part10 -&amp;gt; ../../nvme2n1p10
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">16&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:09 nvme-MT0800KEXUU_CVFT7352005S800MGN-part11 -&amp;gt; ../../nvme2n1p11
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">16&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:10 nvme-MT0800KEXUU_CVFT7352005S800MGN-part12 -&amp;gt; ../../nvme2n1p12
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">16&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 nvme-MT0800KEXUU_CVFT7352005S800MGN-part13 -&amp;gt; ../../nvme2n1p13
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">16&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 nvme-MT0800KEXUU_CVFT7352005S800MGN-part14 -&amp;gt; ../../nvme2n1p14
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">16&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 nvme-MT0800KEXUU_CVFT7352005S800MGN-part15 -&amp;gt; ../../nvme2n1p15
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">16&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 nvme-MT0800KEXUU_CVFT7352005S800MGN-part16 -&amp;gt; ../../nvme2n1p16
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">16&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 nvme-MT0800KEXUU_CVFT7352005S800MGN-part17 -&amp;gt; ../../nvme2n1p17
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">16&lt;/span> Jul &lt;span class="m">1&lt;/span> 05:49 nvme-MT0800KEXUU_CVFT7352005S800MGN-part18 -&amp;gt; ../../nvme2n1p18
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">15&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:09 nvme-MT0800KEXUU_CVFT7352005S800MGN-part2 -&amp;gt; ../../nvme2n1p2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">15&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:09 nvme-MT0800KEXUU_CVFT7352005S800MGN-part3 -&amp;gt; ../../nvme2n1p3
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">15&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:09 nvme-MT0800KEXUU_CVFT7352005S800MGN-part4 -&amp;gt; ../../nvme2n1p4
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">15&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:09 nvme-MT0800KEXUU_CVFT7352005S800MGN-part5 -&amp;gt; ../../nvme2n1p5
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">15&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:10 nvme-MT0800KEXUU_CVFT7352005S800MGN-part6 -&amp;gt; ../../nvme2n1p6
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">15&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:08 nvme-MT0800KEXUU_CVFT7352005S800MGN-part7 -&amp;gt; ../../nvme2n1p7
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">15&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:09 nvme-MT0800KEXUU_CVFT7352005S800MGN-part8 -&amp;gt; ../../nvme2n1p8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lrwxrwxrwx &lt;span class="m">1&lt;/span> root root &lt;span class="m">15&lt;/span> Jul &lt;span class="m">1&lt;/span> 06:09 nvme-MT0800KEXUU_CVFT7352005S800MGN-part9 -&amp;gt; ../../nvme2n1p9
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>after sort the data ,will will got this list&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#sas disk&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/wwn-0x5000cca0802735ec
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/wwn-0x5000cca0802afad0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/wwn-0x5000cca0801eb5c8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/wwn-0x5000cca0802747c8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/wwn-0x5000cca080326bd0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/wwn-0x5000cca0802601cc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/wwn-0x5000cca0802ba6ac
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/wwn-0x5000cca080248ff8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/wwn-0x5000cca08024f0d0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/wwn-0x5000cca080253734
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/wwn-0x5000cca08024aca8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/wwn-0x5000c500943614ab
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># nvme&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part3
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part4
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part5
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part6
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part7
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part9
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part10
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part11
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part12
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part3
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part4
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part5
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part6
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part7
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part9
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part10
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part11
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part12
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="7-make-bcache-disk">7. Make Bcache disk&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part13 -B /dev/disk/by-id/wwn-0x5000cca0802735ec --writeback
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part14 -B /dev/disk/by-id/wwn-0x5000cca0802afad0 --writeback
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part15 -B /dev/disk/by-id/wwn-0x5000cca0801eb5c8 --writeback
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part16 -B /dev/disk/by-id/wwn-0x5000cca0802747c8 --writeback
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part17 -B /dev/disk/by-id/wwn-0x5000cca080326bd0 --writeback
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT73520058800MGN-part18 -B /dev/disk/by-id/wwn-0x5000cca0802601cc --writeback
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part13 -B /dev/disk/by-id/wwn-0x5000cca0802ba6ac --writeback
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part14 -B /dev/disk/by-id/wwn-0x5000cca080248ff8 --writeback
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part15 -B /dev/disk/by-id/wwn-0x5000cca08024f0d0 --writeback
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part16 -B /dev/disk/by-id/wwn-0x5000cca080253734 --writeback
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part17 -B /dev/disk/by-id/wwn-0x5000cca08024aca8 --writeback
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make-bcache -C /dev/disk/by-id/nvme-MT0800KEXUU_CVFT7352005S800MGN-part18 -B /dev/disk/by-id/wwn-0x5000c500943614ab --writeback
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="8-reboot-to-make-bcache-works">8. Reboot to make bcache works&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">reboot now
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="9-create-osd">9. create OSD&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ceph-volume lvm create --bluestore --data /dev/bcache0 --block.wal /dev/nvme1n1p1 --block.db /dev/nvme1n1p7
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ceph-volume lvm create --bluestore --data /dev/bcache1 --block.wal /dev/nvme1n1p2 --block.db /dev/nvme1n1p8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ceph-volume lvm create --bluestore --data /dev/bcache2 --block.wal /dev/nvme1n1p3 --block.db /dev/nvme1n1p9
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ceph-volume lvm create --bluestore --data /dev/bcache3 --block.wal /dev/nvme1n1p4 --block.db /dev/nvme1n1p10
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ceph-volume lvm create --bluestore --data /dev/bcache4 --block.wal /dev/nvme1n1p5 --block.db /dev/nvme1n1p11
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ceph-volume lvm create --bluestore --data /dev/bcache5 --block.wal /dev/nvme1n1p6 --block.db /dev/nvme1n1p12
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ceph-volume lvm create --bluestore --data /dev/bcache6 --block.wal /dev/nvme2n1p1 --block.db /dev/nvme2n1p7
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ceph-volume lvm create --bluestore --data /dev/bcache7 --block.wal /dev/nvme2n1p2 --block.db /dev/nvme2n1p8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ceph-volume lvm create --bluestore --data /dev/bcache8 --block.wal /dev/nvme2n1p3 --block.db /dev/nvme2n1p9
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ceph-volume lvm create --bluestore --data /dev/bcache9 --block.wal /dev/nvme2n1p4 --block.db /dev/nvme2n1p10
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ceph-volume lvm create --bluestore --data /dev/bcache10 --block.wal /dev/nvme2n1p5 --block.db /dev/nvme2n1p11
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ceph-volume lvm create --bluestore --data /dev/bcache11 --block.wal /dev/nvme2n1p6 --block.db /dev/nvme2n1p12
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Bcache</title><link>https://echowings.github.io/p/bcache/</link><pubDate>Tue, 09 Mar 2021 16:20:42 +0800</pubDate><guid>https://echowings.github.io/p/bcache/</guid><description>&lt;h1 id="how-to-operate-becache">How to operate becache&lt;/h1>
+&lt;p>Recently I just try to add bcache with zfs and ceph. So I just wirte down it.&lt;/p>
+&lt;h2 id="install-bcache-tools">Install bcache-tools&lt;/h2>
+&lt;p>Since bcache implement in Linux kernel. So it will default enabled. We just need to install &lt;code>bcache-tools&lt;/code> to operate bcache.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">apt install -y bcache-tools
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="configure-bcache">Configure bcache&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># make a cache disk for bcache .It must be a ssd disk.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make-bcache -C /dev/nvme1n1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># make a disk as backend disk.It must be a slow sata/sas disk.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make-bcache -B /dev/sda
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#if you have a lot of disks like me.your can add backend disk as this.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make-bcache -B /dev/sd&lt;span class="o">{&lt;/span>a..f&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>###Check bcache status&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">lsblk
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="add-bcache-manually">Add bcache manually&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#show `cset.uuid&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">root@xa-autotest-hci01:~# bcache-super-show /dev/sda
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sb.magic ok
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sb.first_sector &lt;span class="m">8&lt;/span> &lt;span class="o">[&lt;/span>match&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sb.csum ED8FD98E20A2E91E &lt;span class="o">[&lt;/span>match&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sb.version &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>backing device&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dev.label &lt;span class="o">(&lt;/span>empty&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dev.uuid e7b350fe-3496-47e2-a276-5faa5637f8a5
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dev.sectors_per_block &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dev.sectors_per_bucket &lt;span class="m">1024&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dev.data.first_sector &lt;span class="m">16&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dev.data.cache_mode &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>writeback&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dev.data.cache_state &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>clean&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cset.uuid d3fcd781-a10a-453a-96dd-6eba13abfc5b
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>####Add cache disk&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;d3fcd781-a10a-453a-96dd-6eba13abfc5b&amp;#34;&lt;/span> &amp;gt; /sys/block/bcache0/bcache/attach
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>if you have a lot of disk, you can add it with for loop.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> i in range&lt;span class="o">{&lt;/span>0..5&lt;span class="o">}&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="sb">`&lt;/span>&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;d3fcd781-a10a-453a-96dd-6eba13abfc5b&amp;#34;&lt;/span> &amp;gt; /sys/block/bcache&lt;span class="k">$(&lt;/span>expr &lt;span class="nv">$i&lt;/span>&lt;span class="k">)&lt;/span>/bcache/attach&lt;span class="sb">`&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">done&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="delete-cache-disk">Delete cache disk&lt;/h4>
+&lt;p>if you want to delete bcache disk&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;d3fcd781-a10a-453a-96dd-6eba13abfc5b&amp;#34;&lt;/span> &amp;gt; /sys/block/bcache0/bcache/detach
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># delete a lot disk &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> i in range&lt;span class="o">{&lt;/span>0..5&lt;span class="o">}&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="sb">`&lt;/span>&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;d3fcd781-a10a-453a-96dd-6eba13abfc5b&amp;#34;&lt;/span> &amp;gt; /sys/block/bcache&lt;span class="k">$(&lt;/span>expr &lt;span class="nv">$i&lt;/span>&lt;span class="k">)&lt;/span>/bcache/detach&lt;span class="sb">`&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">done&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="unrigister-cache-disk">unrigister cache disk&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">umount /dev/bcach0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="m">1&lt;/span> &amp;gt; /sys/block/bcache0/bcache/stop
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>If you onle have one nvme disk and you can add them all in one
+make-bcache -C /dev/nvme1n1 -B /dev/sd{a..f} &amp;ndash;writeback&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">## Change bcache write policy
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">```bash
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make-bcache -B/dev/
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="manually-resigter-udev-disk">Manually resigter udev disk&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> /dev/sdb &amp;gt; /sys/fs/bcache/register
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="change-bcache-write-mode">Change bcache write mode&lt;/h2>
+&lt;p>When you run command like &lt;code>make-bcache -C /dev/nvme1n1 -B /dev/sda&lt;/code> it will be set &lt;code>write through&lt;/code> mode. If you have UPS and you can change it to &lt;code>writeback&lt;/code> mode.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> writeback &amp;gt; /sys/block/bcache0/bcache/cache_mode
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="check-bcache-status">Check bcache status&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cat /sys/block/bcache0/bcache/state
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">no cache: this means you have not attached a caching device to your backing bcache device&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">clean: this means everything is ok. The cache is clean&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dirty: this means everything is setup fine and that you have enabled writeback and that the cache is dirty&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">inconsistent: you are in trouble because the backing device is not in sync with the caching device&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">bcache-status
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lsblk
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="bcache-optimized">bcache optimized&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#modify cache policy &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cat /sys/block/bcache0/bcache/cache_mode
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> writeback &amp;gt; /sys/block/bcache0/bcache/cache_mode
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Disable ip track&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="m">0&lt;/span> &amp;gt; /sys/fs/bcache/&lt;span class="nv">$CacheSetUUID&lt;/span>/congested_read_threshold_us
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="m">0&lt;/span> &amp;gt; /sys/fs/bcache/&lt;span class="nv">$CacheSetUUID&lt;/span>/congested_write_threshold_us
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="disable-bcache">disable bcache&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#check `CACHE_SET_UUID`&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ls /sys/fs/bcache
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Unregister ssd cache disk&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="m">1&lt;/span> &amp;gt;/sys/fs/bcache/06e33354-7c21-4c52-990d-1a653617ab20/unregister
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#disable backend disk&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="m">1&lt;/span> &amp;gt; /sys/block/sdb/bcache/stop
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#write back cache to backend disk&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="m">0&lt;/span> &amp;gt; /sys/block/bcache0/bcache/writeback_percent
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>##Reference&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.geek-share.com/detail/2719485821.html" target="_blank" rel="noopener"
+>A block layer cache (bcache)&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.itread01.com/content/1548985342.html" target="_blank" rel="noopener"
+>bcache狀態和配置檔案詳細介紹(翻譯自官網）&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://webcache.googleusercontent.com/search?q=cache:9eiyDtuwt9AJ:https://wiki2.xbits.net:4430/storage:%25E7%25BC%2593%25E5%25AD%2598%25E6%258A%2580%25E6%259C%25AF:bcache:bcache%25E6%2589%258B%25E5%2586%258C&amp;#43;&amp;amp;cd=1&amp;amp;hl=en&amp;amp;ct=clnk&amp;amp;gl=hk" target="_blank" rel="noopener"
+>bcache手册&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.mr-mao.cn/archives/linux-bcache-performance-testing.html" target="_blank" rel="noopener"
+>Linux下SSD缓存加速之bcache试用&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://billtian.github.io/digoal.blog/2016/09/19/01.html" target="_blank" rel="noopener"
+>bcache / 如何使用bcache构建LVM,软RAID / 如何优化bcache&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

@@ -1,86 +1,67 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>catalina on Steve&#39;s Blog</title>
-        <link>https://echowings.github.io/tags/catalina/</link>
-        <description>Recent content in catalina on Steve&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <lastBuildDate>Fri, 27 Dec 2019 11:20:00 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/catalina/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>How to Enable Ntfs Read and Write in Macos Catalina 10.15</title>
-        <link>https://echowings.github.io/p/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/</link>
-        <pubDate>Fri, 27 Dec 2019 11:20:00 +0800</pubDate>
-        
-        <guid>https://echowings.github.io/p/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/</guid>
-        <description>&lt;h1 id=&#34;how-to-enable-ntfs-read-and-write-in-macos-catalina-1015&#34;&gt;How to enable NTFS Read and Write in Macos Catalina 10.15&lt;/h1&gt;
-&lt;p&gt;For a long time. It was much trouble to enable ntfs write mode in macos. Today I  done it about enable ntfs wirte support with fuse and ntfs-3g.&lt;/p&gt;
-&lt;h2 id=&#34;install-fuse-for-macos&#34;&gt;Install FUSE for macos&lt;/h2&gt;
-&lt;p&gt;You can download latest FUSE for macOS from here: &lt;a class=&#34;link&#34; href=&#34;https://github.com/osxfuse/osxfuse/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;FUSE for macOS&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Then you can install it by yourself.&lt;/p&gt;
-&lt;h2 id=&#34;install-ntfs-3g&#34;&gt;Install ntfs-3g&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install ntfs-3g
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;replace-ntfs-3g&#34;&gt;Replace ntfs-3g&lt;/h2&gt;
-&lt;p&gt;Since from OS X 10.11 version ,macos enabled  system integrity protection we need to disable it to replace the &lt;code&gt;ntfs_mount&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;So we gonna to disable System integrity Protection in Recovery mode ,then boot to normal mode to replace &lt;code&gt;ntfs_mount&lt;/code&gt;, at last we need to boot to recovery mode again to enable system integrity protection.&lt;/p&gt;
-&lt;h3 id=&#34;1-disable-system-integrity-protection&#34;&gt;1. Disable system integrity protection&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Shutdown your macos&lt;/li&gt;
-&lt;li&gt;Press &lt;code&gt;Command + R&lt;/code&gt;,the press power buttion to start macos and enter the recovery mode.&lt;/li&gt;
-&lt;li&gt;After enter &lt;code&gt;recovery mode&lt;/code&gt;, then we can open Terminal.&lt;/li&gt;
-&lt;li&gt;Run command in Terminal &lt;code&gt;csrutil disable&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Reboot macos.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;2-replace-mount_ntfs&#34;&gt;2. Replace &lt;code&gt;mount_ntfs&lt;/code&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Open &lt;code&gt;Terminal&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Enter commands as show below&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo mount -uw /
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo mv /sbin/mount_ntfs /sbin/mount_ntfs.original
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ln -s /usr/local/sbin/mount_ntfs /sbin/mount_ntfs
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;Then shutdown your. macos.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;3-enable-system-integrity-protection&#34;&gt;3. Enable system integrity protection&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Press &lt;code&gt;Command + R&lt;/code&gt;,the press power buttion to start macos and enter the recovery mode.&lt;/li&gt;
-&lt;li&gt;After enter &lt;code&gt;recovery mode&lt;/code&gt;, then we can open Terminal.
-Run command in Terminal &lt;code&gt;csrutil enble&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Reboot macos.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;4-follow-the-system-notification-to-enable-fuse-ntfs&#34;&gt;4. Follow the system notification to enable fuse ntfs&lt;/h3&gt;
-&lt;p&gt;After we boot macos normally, we need follow the system notification to enable permission for fuse ntfs.&lt;/p&gt;
-&lt;h2 id=&#34;pro-and-cons&#34;&gt;Pro and Cons&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Pro:&lt;/strong&gt; We can write ntfs format disk for free.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Cons:&lt;/strong&gt; We need to do it again when we upgrade macos to a new major release.&lt;/p&gt;
-&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://medium.com/macoclock/enabling-ntfs-write-in-macos-10-15-catalina-the-open-source-way-a5fd0d1cb32e&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Enabling NTFS write in macOS 10.15 Catalina the Open source way&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://support.apple.com/en-hk/HT204899&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;About System Integrity Protection on your Mac&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        </item>
-        
-    </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>catalina on Steve's Blog</title><link>https://echowings.github.io/tags/catalina/</link><description>Recent content in catalina on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 27 Dec 2019 11:20:00 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/catalina/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Enable Ntfs Read and Write in Macos Catalina 10.15</title><link>https://echowings.github.io/p/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/</link><pubDate>Fri, 27 Dec 2019 11:20:00 +0800</pubDate><guid>https://echowings.github.io/p/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/</guid><description>&lt;h1 id="how-to-enable-ntfs-read-and-write-in-macos-catalina-1015">How to enable NTFS Read and Write in Macos Catalina 10.15&lt;/h1>
+&lt;p>For a long time. It was much trouble to enable ntfs write mode in macos. Today I done it about enable ntfs wirte support with fuse and ntfs-3g.&lt;/p>
+&lt;h2 id="install-fuse-for-macos">Install FUSE for macos&lt;/h2>
+&lt;p>You can download latest FUSE for macOS from here: &lt;a class="link" href="https://github.com/osxfuse/osxfuse/releases" target="_blank" rel="noopener"
+>FUSE for macOS&lt;/a>&lt;/p>
+&lt;p>Then you can install it by yourself.&lt;/p>
+&lt;h2 id="install-ntfs-3g">Install ntfs-3g&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">brew install ntfs-3g
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="replace-ntfs-3g">Replace ntfs-3g&lt;/h2>
+&lt;p>Since from OS X 10.11 version ,macos enabled system integrity protection we need to disable it to replace the &lt;code>ntfs_mount&lt;/code>.&lt;/p>
+&lt;p>So we gonna to disable System integrity Protection in Recovery mode ,then boot to normal mode to replace &lt;code>ntfs_mount&lt;/code>, at last we need to boot to recovery mode again to enable system integrity protection.&lt;/p>
+&lt;h3 id="1-disable-system-integrity-protection">1. Disable system integrity protection&lt;/h3>
+&lt;ul>
+&lt;li>Shutdown your macos&lt;/li>
+&lt;li>Press &lt;code>Command + R&lt;/code>,the press power buttion to start macos and enter the recovery mode.&lt;/li>
+&lt;li>After enter &lt;code>recovery mode&lt;/code>, then we can open Terminal.&lt;/li>
+&lt;li>Run command in Terminal &lt;code>csrutil disable&lt;/code>.&lt;/li>
+&lt;li>Reboot macos.&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-replace-mount_ntfs">2. Replace &lt;code>mount_ntfs&lt;/code>&lt;/h3>
+&lt;ul>
+&lt;li>Open &lt;code>Terminal&lt;/code>&lt;/li>
+&lt;li>Enter commands as show below&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo mount -uw /
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo mv /sbin/mount_ntfs /sbin/mount_ntfs.original
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo ln -s /usr/local/sbin/mount_ntfs /sbin/mount_ntfs
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Then shutdown your. macos.&lt;/li>
+&lt;/ul>
+&lt;h3 id="3-enable-system-integrity-protection">3. Enable system integrity protection&lt;/h3>
+&lt;ul>
+&lt;li>Press &lt;code>Command + R&lt;/code>,the press power buttion to start macos and enter the recovery mode.&lt;/li>
+&lt;li>After enter &lt;code>recovery mode&lt;/code>, then we can open Terminal.
+Run command in Terminal &lt;code>csrutil enble&lt;/code>.&lt;/li>
+&lt;li>Reboot macos.&lt;/li>
+&lt;/ul>
+&lt;h3 id="4-follow-the-system-notification-to-enable-fuse-ntfs">4. Follow the system notification to enable fuse ntfs&lt;/h3>
+&lt;p>After we boot macos normally, we need follow the system notification to enable permission for fuse ntfs.&lt;/p>
+&lt;h2 id="pro-and-cons">Pro and Cons&lt;/h2>
+&lt;p>&lt;strong>Pro:&lt;/strong> We can write ntfs format disk for free.&lt;/p>
+&lt;p>&lt;strong>Cons:&lt;/strong> We need to do it again when we upgrade macos to a new major release.&lt;/p>
+&lt;h2 id="reference">Reference&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://medium.com/macoclock/enabling-ntfs-write-in-macos-10-15-catalina-the-open-source-way-a5fd0d1cb32e" target="_blank" rel="noopener"
+>Enabling NTFS write in macOS 10.15 Catalina the Open source way&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://support.apple.com/en-hk/HT204899" target="_blank" rel="noopener"
+>About System Integrity Protection on your Mac&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>
