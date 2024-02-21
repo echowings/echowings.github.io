@@ -52,7 +52,7 @@ cd vyos-vm-images
 
   - commit download-iso on qemu.yaml
   ```shell
-  vi  qemu.yml
+  vi qemu.yml
   ```
   then commit `- download-iso`
   ```yaml
