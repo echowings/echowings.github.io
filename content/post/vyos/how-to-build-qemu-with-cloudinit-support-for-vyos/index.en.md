@@ -64,7 +64,7 @@ cd vyos-vm-images
 
 ```shell
 mkdir tmp
-curl -fsSL https://cdn.vyos.io/1.3.6/generic-iso/70f425dd-4814-5f9e-8680-5ad1dab23beb/vyos-1.3.6-amd64.iso -o tmp/vyos-1.3.6-amd64.iso
+curl -fsSL https://xxxxxxx/vyos-1.3.6-amd64.iso -o tmp/vyos-1.3.6-amd64.iso
 ls /tmp/*.iso
 ```
 
