@@ -4,7 +4,8 @@ date: 2024-02-21T17:24:06+08:00
 draft: false
 image: https://picsum.photos/800/600.webp?random=16de454a
 categories:
-  - Blog
+  - pve
+  - vyos
 tags:
   - vyos
   - pve
