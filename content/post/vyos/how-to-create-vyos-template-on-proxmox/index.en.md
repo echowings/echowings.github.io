@@ -119,7 +119,7 @@ export ID="9001"
 export TEMPLATE_VM_NAME="template-vyos-1.3.6"
 export VYOS_QEMU_IMAGE="vyos-1.3.6-cloud-init-2G-qemu.qcow2"
 export VM_IMAGE_FOLDER="/var/lib/vz/template"
-export VM_DOWNLOAD_URL="https://xxxxx.xxxx.xxx/vyos-1.3.5-amd64.qcow2"
+export VM_DOWNLOAD_URL="https://xxxxx.xxxx.xxx/vyos-1.3.6-amd64.qcow2"
 
 tee $ssh_keyfile << "EOF"
 ssh-rsa MODIFY_TO_YOUR_SSH.PUB
