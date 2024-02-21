@@ -1,7 +1,7 @@
 ---
 title: "How to Deploy Vyos With Terraform on Proxmox Ve"
 date: 2024-02-21T17:30:09+08:00
-draft: true
+draft: false
 image: https://picsum.photos/800/600.webp?random=e7e0ad45
 categories:
   - proxmox ve
