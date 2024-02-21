@@ -38,7 +38,7 @@ sudo systemctl enable docker
 ## Install software
 
 ```shell
-apt install -y wget curl git-core
+apt install -y git-core
 ```
 
 
@@ -51,12 +51,14 @@ cd vyos-vm-images
 ```
 
   - commit download-iso on qemu.yaml
-```qemu.yml
-...
+  ```shell
+  vi  qemu.yml
+  ```
+  then commit `- download-iso`
+  ```yaml
 - install-packages
 # - download-iso
 - mount-iso
-...
 ```
 
 
@@ -67,7 +69,7 @@ mkdir tmp
 curl -fsSL https://xxxxxxx/vyos-1.3.6-amd64.iso -o tmp/vyos-1.3.6-amd64.iso
 ls /tmp/*.iso
 ```
-
+## Build qcow2 image
 ```shell
 wget https://raw.githubusercontent.com/vyos/vyos-vm-images/current/Dockerfile
 docker run --rm -it --privileged -v $(pwd):/vm-build -v $(pwd)/images:/images -w /vm-build vyos-vm-images:latest bash
