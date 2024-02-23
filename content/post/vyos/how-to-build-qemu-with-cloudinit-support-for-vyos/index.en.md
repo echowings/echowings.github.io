@@ -4,7 +4,8 @@ date: 2024-02-21T16:17:56+08:00
 draft: false
 image: https://picsum.photos/800/600.webp?random=d09996cd
 categories:
-  - Blog
+  - vyos
+  - pve
 tags:
   - vyos
   - qemu
