@@ -23,53 +23,55 @@ license: CC BY-NC-ND
 For me I perfer to Debian linux
 
 ## Install docker
-```shell
-apt install -y wget curl 
-cp /etc/apt/sources.list /etc/apt/sources.list-bak
-wget https://mirrors.ustc.edu.cn/repogen/conf/debian-https-4-bullseye -O /etc/apt/sources.list
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update
-sudo apt install docker-ce docker-ce-cli containerd.io
-sudo systemctl start docker
-sudo systemctl enable docker
-```
+  - Install docker
+    ```shell
+    apt install -y wget curl 
+    cp /etc/apt/sources.list /etc/apt/sources.list-bak
+    wget https://mirrors.ustc.edu.cn/repogen/conf/debian-https-4-bullseye -O /etc/apt/sources.list
+    sudo apt install apt-transport-https ca-certificates curl software-properties-common
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt update
+    sudo apt install docker-ce docker-ce-cli containerd.io
+    sudo systemctl start docker
+    sudo systemctl enable docker
+    ```
 
 ## Install software
-
-```shell
-apt install -y git-core
-```
+  - Install git
+    ```shell
+    apt install -y git-core
+    ```
 
 
 ## Git Repository
 
   - git pull 
-```shell
-git clone https://github.com/vyos/vyos-vm-images.git
-cd vyos-vm-images
-```
+    ```shell
+    git clone https://github.com/vyos/vyos-vm-images.git
+    cd vyos-vm-images
+    ```
 
   - commit download-iso on qemu.yaml
-  ```shell
-  vi qemu.yml
-  ```
-  then commit `- download-iso`
-  ```yaml
-- install-packages
-# - download-iso
-- mount-iso
-```
+      - Edit `qemu.yml`
+        ```shell
+        vi qemu.yml
+        ```
+      - commit `- download-iso`
+        ```yaml
+        - install-packages
+        # - download-iso
+        - mount-iso
+        ```
 
 
 ## Download vyos iso file
-
-```shell
-mkdir tmp
-curl -fsSL https://xxxxxxx/vyos-1.3.6-amd64.iso -o tmp/vyos-1.3.6-amd64.iso
-ls /tmp/*.iso
-```
+  - Build or copy iso image to local
+    ```shell
+    mkdir tmp
+    curl -fsSL https://xxxxxxx/vyos-1.3.6-amd64.iso -o tmp/vyos-1.3.6-amd64.iso
+    ls /tmp/*.iso
+    ```
 ## Build qcow2 image
   - Run docker
     ```shell
