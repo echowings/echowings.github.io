@@ -71,26 +71,56 @@ curl -fsSL https://xxxxxxx/vyos-1.3.6-amd64.iso -o tmp/vyos-1.3.6-amd64.iso
 ls /tmp/*.iso
 ```
 ## Build qcow2 image
-```shell
-wget https://raw.githubusercontent.com/vyos/vyos-vm-images/current/Dockerfile
-docker run --rm -it --privileged -v $(pwd):/vm-build -v $(pwd)/images:/images -w /vm-build vyos-vm-images:latest bash
+  - Run docker
+    ```shell
+    #Downlaod dockerfile and run build environment in docker 
+    wget https://raw.githubusercontent.com/vyos/vyos-vm-images/current/Dockerfile
+    docker run --rm -it --privileged -v $(pwd):/vm-build -v $(pwd)/images:/images -w /vm-build vyos-vm-images:latest bash
+    ```
 
-sudo ansible-playbook qemu.yml   \
-     -e disk_size=2   \
-     -e iso_local=tmp/vyos-1.3.6-amd64.iso    \
-     -e grub_console=serial   \
-     -e cloud_init=true    \
-     -e cloud_init_ds=NoCloud    \
-     -e guest_agent=qemu    \
-     -e enable_ssh=true
-```
+  - Build qcow2 image
+    ```shell
+    ansible-playbook qemu.yml   \
+      -e disk_size=2   \
+      -e iso_local=tmp/vyos-1.3.6-amd64.iso    \
+      -e grub_console=serial   \
+      -e cloud_init=true    \
+      -e cloud_init_ds=NoCloud    \
+      -e guest_agent=qemu    \
+      -e enable_ssh=true
+      ```
+## Build image with custome files
+### copy qcow2 file to `files/custom_files`
 
-## copy qcow2 file to `tmp`
+`opt/vyatta/etc/config` stand for /config folder
 
-```shell
-ls /tmp/*.qcow2
-cp /tmp/vyos-1.3.6-cloud-init-2G-qemu.qcow2 tmp/
-```
+### Add file with `x` excute permission
+  - Edit `roles/copy-custom-files/tasks/main.yml` add `mode: a+x`
+    ```shell
+    - name: Copy custom files to the system, preserving paths
+      become: true
+      copy:
+        src: "files/custom_files/"
+        dest: "{{ vyos_install_root }}"
+        force: true
+        mode: a+x
+      when: custom_files is defined
+    ```
+  - Build qcow2 image with custom_files option
+
+    ```shell
+    ansible-playbook qemu.yml     \
+      -e disk_size=2    \
+      -e iso_local=tmp/vyos-1.3.6-amd64.iso    \
+      -e grub_console=serial    \
+      -e cloud_init=true    \
+      -e cloud_init_ds=NoCloud    \
+      -e guest_agent=qemu    \
+      -e enable_ssh=true \
+      -e custom_files=true
+
+    ```
+
 
 
 ## Reference
