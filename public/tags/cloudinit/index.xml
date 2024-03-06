@@ -1,109 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>cloudinit on Steve's Blog</title><link>https://echowings.github.io/tags/cloudinit/</link><description>Recent content in cloudinit on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 20 Sep 2020 14:56:48 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/cloudinit/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Create Debian10 With Cloudinit for Pve</title><link>https://echowings.github.io/p/how-to-create-debian10-with-cloudinit-for-pve/</link><pubDate>Sun, 20 Sep 2020 14:56:48 +0800</pubDate><guid>https://echowings.github.io/p/how-to-create-debian10-with-cloudinit-for-pve/</guid><description>&lt;h1 id="how-to-create-debian10--template-with-cloudinit-for-pve">How to Create Debian10 template With Cloudinit for PVE&lt;/h1>
-&lt;hr>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;span class="lnt">24
-&lt;/span>&lt;span class="lnt">25
-&lt;/span>&lt;span class="lnt">26
-&lt;/span>&lt;span class="lnt">27
-&lt;/span>&lt;span class="lnt">28
-&lt;/span>&lt;span class="lnt">29
-&lt;/span>&lt;span class="lnt">30
-&lt;/span>&lt;span class="lnt">31
-&lt;/span>&lt;span class="lnt">32
-&lt;/span>&lt;span class="lnt">33
-&lt;/span>&lt;span class="lnt">34
-&lt;/span>&lt;span class="lnt">35
-&lt;/span>&lt;span class="lnt">36
-&lt;/span>&lt;span class="lnt">37
-&lt;/span>&lt;span class="lnt">38
-&lt;/span>&lt;span class="lnt">39
-&lt;/span>&lt;span class="lnt">40
-&lt;/span>&lt;span class="lnt">41
-&lt;/span>&lt;span class="lnt">42
-&lt;/span>&lt;span class="lnt">43
-&lt;/span>&lt;span class="lnt">44
-&lt;/span>&lt;span class="lnt">45
-&lt;/span>&lt;span class="lnt">46
-&lt;/span>&lt;span class="lnt">47
-&lt;/span>&lt;span class="lnt">48
-&lt;/span>&lt;span class="lnt">49
-&lt;/span>&lt;span class="lnt">50
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">VMID&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">9002&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">VM_NAME&lt;/span>&lt;span class="o">=&lt;/span>CentOS-7-x86_64-GenericCloud
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">VM_DOWNLOAD_URL&lt;/span>&lt;span class="o">=&lt;/span>http://mirrors.ustc.edu.cn/centos-cloud/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">TEMPLATE_VM_NAME&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>&lt;span class="nb">echo&lt;/span> &lt;span class="nv">$VM_NAME&lt;/span> &lt;span class="p">|&lt;/span> sed &lt;span class="s1">&amp;#39;s/_/-/g&amp;#39;&lt;/span>&lt;span class="k">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">STORAGE_PATH&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nb">local&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">DEFAULT_PVE_PATH&lt;/span>&lt;span class="o">=&lt;/span>/var/lib/vz/images
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Change directory to `local`&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> /var/lib/vz/images
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Download centos 7 cloud images on proxmox ve&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget &lt;span class="nv">$VM_DOWNLOAD_URL&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#unzip the file&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#xz -z (to zip file)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#xz -k( to keep original file and valur `-0` to `-9` to set zip rate, default zip rate is -6&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#xz -d (to unzip file)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># xz -k (to keep zipped file not deleted)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">xz -d -k &lt;span class="nv">$VM_NAME&lt;/span>.qcow2.xz
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">qm create &lt;span class="nv">$VMID&lt;/span> --memory &lt;span class="m">4096&lt;/span> --net0 virtio,bridge&lt;span class="o">=&lt;/span>vmbr0 --name &lt;span class="nv">$TEMPLATE_VM_NAME&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">qm importdisk &lt;span class="nv">$VM_ID&lt;/span> &lt;span class="nv">$VM_NAME&lt;/span>.qcow2 &lt;span class="nv">$STORAGE_PATH&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">qm &lt;span class="nb">set&lt;/span> &lt;span class="nv">$VM_ID&lt;/span> --scsihw virtio-scsi-pci --scsi0 &lt;span class="nv">$STORAGE_PATH&lt;/span>:&lt;span class="nv">$VM_ID&lt;/span>/vm-&lt;span class="nv">$VM_ID&lt;/span>-disk-0.raw
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">qm &lt;span class="nb">set&lt;/span> &lt;span class="nv">$VM_ID&lt;/span> --scsihw virtio-scsi-pci --scsi0 &lt;span class="nv">$STORAGE_PATH&lt;/span>:&lt;span class="nv">$VM_ID&lt;/span>/vm-&lt;span class="nv">$VM_ID&lt;/span>-disk-0.raw
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">qm &lt;span class="nb">set&lt;/span> &lt;span class="nv">$VM_ID&lt;/span> --boot c --bootdisk scsi0
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">qm &lt;span class="nb">set&lt;/span> &lt;span class="nv">$VM_ID&lt;/span> --serial0 socket --vga serial0
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">qm &lt;span class="nb">set&lt;/span> &lt;span class="nv">$VM_ID&lt;/span> --agent &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">qemu-img convert -f raw &lt;span class="nv">$DEFAULT_PVE_PATH&lt;/span>/&lt;span class="nv">$VM_ID&lt;/span>/vm-&lt;span class="nv">$VM_ID&lt;/span>-disk-0.raw -O qcow2 &lt;span class="nv">$DEFAULT_PVE_PATH&lt;/span>/&lt;span class="nv">$VM_ID&lt;/span>/vm-&lt;span class="nv">$VM_ID&lt;/span>-disk-0.qcow2
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/.raw/.qcow2/g&amp;#39;&lt;/span> /etc/pve/qemu-server/&lt;span class="nv">$VM_ID&lt;/span>.conf
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">qm start &lt;span class="nv">$VM_ID&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">qm terminal &lt;span class="nv">$VM_ID&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Change yum source form offical to mirrors.ustc.edu.cn&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo sed -e &lt;span class="s1">&amp;#39;s|^mirrorlist=|#mirrorlist=|g&amp;#39;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -e &lt;span class="s1">&amp;#39;s|^#baseurl=http://mirror.centos.org/centos|baseurl=https://mirrors.ustc.edu.cn/centos|g&amp;#39;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -i.bak &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> /etc/yum.repos.d/CentOS-Base.repo
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yum makecache
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yum update
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yum upgrade
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cloudinit on Steve&#39;s Blog</title>
+    <link>https://echowings.github.io/tags/cloudinit/</link>
+    <description>Recent content in cloudinit on Steve&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 20 Sep 2020 14:56:48 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/cloudinit/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Create Debian10 With Cloudinit for Pve</title>
+      <link>https://echowings.github.io/p/how-to-create-debian10-with-cloudinit-for-pve/</link>
+      <pubDate>Sun, 20 Sep 2020 14:56:48 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-create-debian10-with-cloudinit-for-pve/</guid>
+      <description>How to Create Debian10 template With Cloudinit for PVE 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 VMID=9002 VM_NAME=CentOS-7-x86_64-GenericCloud VM_DOWNLOAD_URL=http://mirrors.ustc.edu.cn/centos-cloud/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz TEMPLATE_VM_NAME=$(echo $VM_NAME | sed &amp;#39;s/_/-/g&amp;#39;) STORAGE_PATH=local DEFAULT_PVE_PATH=/var/lib/vz/images #Change directory to `local` cd /var/lib/vz/images #Download centos 7 cloud images on proxmox ve wget $VM_DOWNLOAD_URL #unzip the file #xz -z (to zip file) #xz -k( to keep original file and valur `-0` to `-9` to set zip rate, default zip rate is -6 #xz -d (to unzip file) # xz -k (to keep zipped file not deleted) xz -d -k $VM_NAME.</description>
+    </item>
+    
+  </channel>
+</rss>

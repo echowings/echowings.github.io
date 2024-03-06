@@ -1,51 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vyos on わたしのBlog</title><link>https://echowings.github.io/ja/categories/vyos/</link><description>Recent content in vyos on わたしのBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 14 Nov 2022 09:09:33 +0800</lastBuildDate><atom:link href="https://echowings.github.io/ja/categories/vyos/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Install Sshpass on Vyos 1.3.x</title><link>https://echowings.github.io/ja/p/how-to-install-sshpass-on-vyos-1.3.x/</link><pubDate>Mon, 14 Nov 2022 09:09:33 +0800</pubDate><guid>https://echowings.github.io/ja/p/how-to-install-sshpass-on-vyos-1.3.x/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=81ff83c3" alt="Featured image of post How to Install Sshpass on Vyos 1.3.x" />&lt;h1 id="how-to-install-sshpass-on-vyos-13x">How to Install SSHPASS on VyOS 1.3.x&lt;/h1>
-&lt;p>how-to-install-sshpass-on-
-vyos-1.3.x
-Since vyos 1.3.x base on debian 10, so we can install sshpass 1.06 for debian on vyos 1.3.x&lt;/p>
-&lt;h2 id="download-and-install-sshpass-106-for-debian-10">Download and install sshpass 1.06 for debian 10&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl"> wget http://ftp.de.debian.org/debian/pool/main/s/sshpass/sshpass_1.06-1_amd64.deb
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo dpkg -i sshpass_1.06-1_amd64.deb
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="run-sshpass">Run sshpass&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># run command via ssh without inactively&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sshpass -p &lt;span class="s1">&amp;#39;ssh_password&amp;#39;&lt;/span> ssh -t root@ssh_host -p &lt;span class="m">22&lt;/span> &lt;span class="s1">&amp;#39;uptime&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Copy files to remote &lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sshpass -p &lt;span class="s1">&amp;#39;ssh_password&amp;#39;&lt;/span> scp -P &lt;span class="m">22&lt;/span> myfile.txt gcadmin@ssh_host
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># loop running command&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> i in 192.168.11.5&lt;span class="o">{&lt;/span>1..3&lt;span class="o">}&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="k">do&lt;/span> sshpass -p &lt;span class="s1">&amp;#39;ssh_password&amp;#39;&lt;/span> ssh -t root@&lt;span class="nv">$i&lt;/span> -p &lt;span class="m">22&lt;/span> &lt;span class="s1">&amp;#39;uptime&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="k">done&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Loop copy files&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> i in host1 host2 host3&lt;span class="p">;&lt;/span>&lt;span class="k">do&lt;/span> &lt;span class="nb">echo&lt;/span> &lt;span class="nv">$i&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> sshpass -p &lt;span class="s1">&amp;#39;ssh_password&amp;#39;&lt;/span> scp -P &lt;span class="m">22&lt;/span> myfile.txt gcadmin@&lt;span class="nv">$i&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="k">done&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vyos on わたしのBlog</title>
+    <link>https://echowings.github.io/ja/categories/vyos/</link>
+    <description>Recent content in vyos on わたしのBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 14 Nov 2022 09:09:33 +0800</lastBuildDate><atom:link href="https://echowings.github.io/ja/categories/vyos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Install Sshpass on Vyos 1.3.x</title>
+      <link>https://echowings.github.io/ja/p/how-to-install-sshpass-on-vyos-1.3.x/</link>
+      <pubDate>Mon, 14 Nov 2022 09:09:33 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/ja/p/how-to-install-sshpass-on-vyos-1.3.x/</guid>
+      <description>How to Install SSHPASS on VyOS 1.3.x how-to-install-sshpass-on- vyos-1.3.x Since vyos 1.3.x base on debian 10, so we can install sshpass 1.06 for debian on vyos 1.3.x
+Download and install sshpass 1.06 for debian 10 1 2 3 wget http://ftp.de.debian.org/debian/pool/main/s/sshpass/sshpass_1.06-1_amd64.deb sudo dpkg -i sshpass_1.06-1_amd64.deb Run sshpass 1 2 3 4 5 6 7 8 9 10 11 12 13 # run command via ssh without inactively sshpass -p &amp;#39;ssh_password&amp;#39; ssh -t root@ssh_host -p 22 &amp;#39;uptime&amp;#39; # Copy files to remote sshpass -p &amp;#39;ssh_password&amp;#39; scp -P 22 myfile.</description>
+    </item>
+    
+  </channel>
+</rss>

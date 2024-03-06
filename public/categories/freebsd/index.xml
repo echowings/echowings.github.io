@@ -1,73 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>freebsd on Steve's Blog</title><link>https://echowings.github.io/categories/freebsd/</link><description>Recent content in freebsd on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 18 Dec 2018 00:51:47 +0800</lastBuildDate><atom:link href="https://echowings.github.io/categories/freebsd/index.xml" rel="self" type="application/rss+xml"/><item><title>Install PowerDNS and Mysql on Freebsd12</title><link>https://echowings.github.io/p/install-powerdns-and-mysql-on-freebsd12/</link><pubDate>Tue, 18 Dec 2018 00:51:47 +0800</pubDate><guid>https://echowings.github.io/p/install-powerdns-and-mysql-on-freebsd12/</guid><description>&lt;h1 id="install-powerdns-and-mysql-on-freebsd-12">Install PowerDNS and Mysql on FreeBSD 12&lt;/h1>
-&lt;h2 id="database-installation">Database Installation&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pkg install mysql56-server
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sysrc &lt;span class="nv">mysql_server&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;YES&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">service mysql-server restart
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="database-and-user-configuration">Database and User Configuration&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ mysql
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mysql&amp;gt; create database powerdns &lt;span class="nv">charset&lt;/span> &lt;span class="o">=&lt;/span> utf8&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mysql&amp;gt; CREATE USER &lt;span class="s1">&amp;#39;powerdns&amp;#39;&lt;/span>@&lt;span class="s1">&amp;#39;localhost&amp;#39;&lt;/span> IDENTIFIED BY &lt;span class="s1">&amp;#39;XianAdmin&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">###mysql&amp;gt; GRANT ALL PRIVILEGES ON powerdns.* TO &amp;#39;%&amp;#39; WITH GRANT OPTION;###&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mysql&amp;gt; grant all privileges on powerdns.* to &lt;span class="s1">&amp;#39;powerdns&amp;#39;&lt;/span>@&lt;span class="s1">&amp;#39;localhost&amp;#39;&lt;/span> IDENTIFIED BY &lt;span class="s1">&amp;#39;XianAdmin&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mysql&amp;gt; FLUSH PRIVILEGES&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#For security, we also give the main admin password&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ mysqladmin -u root password &lt;span class="s2">&amp;#34;PASSWORD_OF_ROOT&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="install-powerdns">Install powerdns&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pkg install powerdns
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="reference">Reference&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a class="link" href="https://www.a2hosting.com/kb/developer-corner/mysql/managing-mysql-databases-and-users-from-the-command-line" target="_blank" rel="noopener"
->How to manage MySQL databases and users from the command line&lt;/a>&lt;/li>
-&lt;li>&lt;a class="link" href="http://blog.v-live.pl/category/sieci/dns/" target="_blank" rel="noopener"
->PowerDNS, PowerAdmin with Mysql in Freebsd 10.1&lt;/a>&lt;/li>
-&lt;/ul></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>freebsd on Steve&#39;s Blog</title>
+    <link>https://echowings.github.io/categories/freebsd/</link>
+    <description>Recent content in freebsd on Steve&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 18 Dec 2018 00:51:47 +0800</lastBuildDate><atom:link href="https://echowings.github.io/categories/freebsd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Install PowerDNS and Mysql on Freebsd12</title>
+      <link>https://echowings.github.io/p/install-powerdns-and-mysql-on-freebsd12/</link>
+      <pubDate>Tue, 18 Dec 2018 00:51:47 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/install-powerdns-and-mysql-on-freebsd12/</guid>
+      <description>Install PowerDNS and Mysql on FreeBSD 12 Database Installation 1 2 3 4 5 pkg install mysql56-server sysrc mysql_server=&amp;#34;YES&amp;#34; service mysql-server restart Database and User Configuration 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 $ mysql mysql&amp;gt; create database powerdns charset = utf8; mysql&amp;gt; CREATE USER &amp;#39;powerdns&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;XianAdmin&amp;#39;; ###mysql&amp;gt; GRANT ALL PRIVILEGES ON powerdns.* TO &amp;#39;%&amp;#39; WITH GRANT OPTION;### mysql&amp;gt; grant all privileges on powerdns.</description>
+    </item>
+    
+  </channel>
+</rss>

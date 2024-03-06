@@ -1,297 +1,64 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>macos on Steve's Blog</title><link>https://echowings.github.io/tags/macos/</link><description>Recent content in macos on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 01 Dec 2022 12:55:48 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/macos/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Install and Configure Zsh and Zim</title><link>https://echowings.github.io/p/how-to-install-and-configure-zsh-and-zim/</link><pubDate>Thu, 01 Dec 2022 12:55:48 +0800</pubDate><guid>https://echowings.github.io/p/how-to-install-and-configure-zsh-and-zim/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=708fb2d3" alt="Featured image of post How to Install and Configure Zsh and Zim" />&lt;h1 id="how-to-install-zsh-zim-on-macos--debian">How to install zsh zim on macos &amp;amp; debian&lt;/h1>
-&lt;h2 id="install-and-configure-zsh-zim-iterm2-on-macos">Install and configure zsh zim iterm2 on macos&lt;/h2>
-&lt;h3 id="install-homebrew">Install homebrew&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">/bin/bash -c &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>curl -fsSL &amp;lt;https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh&amp;gt;&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="install-iterm2">Install iterm2&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">brew install --cask iterm2
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="install-zsh">Install zsh&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">brew install zsh
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="install-zim">Install zim&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">curl -fsSL &amp;lt;https://raw.githubusercontent.com/zimfw/install/master/install.zsh&amp;gt; &lt;span class="p">|&lt;/span> zsh
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="install-powerlevel10k">Install Powerlevel10k&lt;/h3>
-&lt;p>Add &lt;code>.zimrc&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-txt" data-lang="txt">&lt;span class="line">&lt;span class="cl">zmodule romkatv/powerlevel10k
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Change configure with shell script&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="sb">`&lt;/span>grep -c &lt;span class="s2">&amp;#34;zmodule\ romkatv\/powerlevel10k&amp;#34;&lt;/span> ~/.zimrc&lt;span class="sb">`&lt;/span> -ne &lt;span class="s1">&amp;#39;0&amp;#39;&lt;/span> &lt;span class="o">]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;exist&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;not exist&amp;#34;&lt;/span>&lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="nb">echo&lt;/span> zmodule&lt;span class="se">\ &lt;/span>romkatv/&lt;span class="se">\p&lt;/span>owerlevel10k &amp;gt;&amp;gt; ~/.zimrc&lt;span class="p">;&lt;/span> &lt;span class="k">fi&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Install zim modules&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">zimfw install
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="install-and-configure-zsh-zim-on-debian-11">Install and configure zsh zim on debian 11&lt;/h2>
-&lt;h3 id="install-zsh-zimfw">Install zsh zimfw&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">apt install -y zsh curl
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh &lt;span class="p">|&lt;/span> zsh
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="install-module">Install module&lt;/h3>
-&lt;h4 id="edit-zimrc">Edit &lt;code>~/.zimrc&lt;/code>&lt;/h4>
-&lt;p>Add follow text into &lt;code>~/.zimrc&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Zim theme&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">zmodule eriner
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#powerlevel10k&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">zmodule romkatv/powerlevel10k
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="install-modules">Install Modules&lt;/h4>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;span class="lnt">8
-&lt;/span>&lt;span class="lnt">9
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Install modules&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">zimfw install
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#update modules&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">zimfw update
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#uninstall modules&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># zimfw uninstall xxxx&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="reference">Reference&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a class="link" href="https://rainlay.medium.com/beautiful-your-mac-terminal-iterm2-zim-powerlevel10k-2f3dedde5b85" target="_blank" rel="noopener"
->Beautiful your mac terminal, iterm2 + zim + powerlevel10k&lt;/a>&lt;/li>
-&lt;li>&lt;a class="link" href="https://ithelp.ithome.com.tw/articles/10270581" target="_blank" rel="noopener"
->07 - Zim - Zsh 配置框架與它的插件&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>How to Extend Free Disk Space for Macos</title><link>https://echowings.github.io/p/how-to-extend-free-disk-space-for-macos/</link><pubDate>Mon, 04 Jan 2021 18:33:47 +0800</pubDate><guid>https://echowings.github.io/p/how-to-extend-free-disk-space-for-macos/</guid><description>&lt;h2 id="extend-disk-with-diskutils">Extend disk with diskutils&lt;/h2>
-&lt;p>Delete partition &amp;ldquo;Free Space&amp;rdquo; to extend disk to current macos partition.&lt;/p>
-&lt;h2 id="fixed-error-the-new-size-must-be-different-than-the-existing-size">Fixed Error “The new size must be different than the existing size”&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#repair (internal, disk0 - in your case)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">diskutil repairdisk disk0
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#resize (synthesized, disk1 - in your case with HS)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">diskutil apfs resizeContainer disk1 &lt;span class="m">0&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="reference">Reference&lt;/h2>
-&lt;hr>
-&lt;ol>
-&lt;li>&lt;a class="link" href="https://apple.stackexchange.com/questions/375136/cannot-resize-apfs-partition-the-new-size-must-be-different-than-the-existing" target="_blank" rel="noopener"
->Cannot resize APFS partition - “The new size must be different than the existing size”&lt;/a>&lt;/li>
-&lt;/ol></description></item><item><title>How to Install Squirrel on Macos</title><link>https://echowings.github.io/p/how-to-install-squirrel-on-macos/</link><pubDate>Fri, 20 Nov 2020 17:47:43 +0800</pubDate><guid>https://echowings.github.io/p/how-to-install-squirrel-on-macos/</guid><description>&lt;h1 id="how-to-install-squirrel-as-your-chinese-input-method-for-your-macos">How to install squirrel as your chinese input method for your macos&lt;/h1>
-&lt;h2 id="1-install-squirrel">1. Install squirrel&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">brew cask install squirrel
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="2-logout-and-login-or--reboot-your-mac">2. Logout and login or Reboot your mac&lt;/h2>
-&lt;p>Reboot your mac&lt;/p>
-&lt;h2 id="3-copy-squirrel-configuration-for-you">3. Copy squirrel configuration for you&lt;/h2>
-&lt;p>configuration file: &lt;a class="link" href="https://github.com/wongdean/rime-settings#" target="_blank" rel="noopener"
->https://github.com/wongdean/rime-settings#&lt;/a>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mkdir rime &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="nb">cd&lt;/span> rime
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git clone https://github.com/wongdean/rime-settings.git
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="4-configure-squrriel">4. configure squrriel&lt;/h2>
-&lt;ol>
-&lt;li>Press &lt;code>control&lt;/code> + &lt;code>space&lt;/code> key to enable &lt;code>squirrel&lt;/code>.&lt;/li>
-&lt;li>Then click &lt;code>settings...&lt;/code>&lt;/li>
-&lt;li>Copy all contents in &lt;code>rime-settings&lt;/code> expect &lt;code>fonts&lt;/code> folder to configure folder.&lt;/li>
-&lt;/ol></description></item><item><title>How to Enable Ntfs Read and Write in Macos Catalina 10.15</title><link>https://echowings.github.io/p/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/</link><pubDate>Fri, 27 Dec 2019 11:20:00 +0800</pubDate><guid>https://echowings.github.io/p/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/</guid><description>&lt;h1 id="how-to-enable-ntfs-read-and-write-in-macos-catalina-1015">How to enable NTFS Read and Write in Macos Catalina 10.15&lt;/h1>
-&lt;p>For a long time. It was much trouble to enable ntfs write mode in macos. Today I done it about enable ntfs wirte support with fuse and ntfs-3g.&lt;/p>
-&lt;h2 id="install-fuse-for-macos">Install FUSE for macos&lt;/h2>
-&lt;p>You can download latest FUSE for macOS from here: &lt;a class="link" href="https://github.com/osxfuse/osxfuse/releases" target="_blank" rel="noopener"
->FUSE for macOS&lt;/a>&lt;/p>
-&lt;p>Then you can install it by yourself.&lt;/p>
-&lt;h2 id="install-ntfs-3g">Install ntfs-3g&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">brew install ntfs-3g
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="replace-ntfs-3g">Replace ntfs-3g&lt;/h2>
-&lt;p>Since from OS X 10.11 version ,macos enabled system integrity protection we need to disable it to replace the &lt;code>ntfs_mount&lt;/code>.&lt;/p>
-&lt;p>So we gonna to disable System integrity Protection in Recovery mode ,then boot to normal mode to replace &lt;code>ntfs_mount&lt;/code>, at last we need to boot to recovery mode again to enable system integrity protection.&lt;/p>
-&lt;h3 id="1-disable-system-integrity-protection">1. Disable system integrity protection&lt;/h3>
-&lt;ul>
-&lt;li>Shutdown your macos&lt;/li>
-&lt;li>Press &lt;code>Command + R&lt;/code>,the press power buttion to start macos and enter the recovery mode.&lt;/li>
-&lt;li>After enter &lt;code>recovery mode&lt;/code>, then we can open Terminal.&lt;/li>
-&lt;li>Run command in Terminal &lt;code>csrutil disable&lt;/code>.&lt;/li>
-&lt;li>Reboot macos.&lt;/li>
-&lt;/ul>
-&lt;h3 id="2-replace-mount_ntfs">2. Replace &lt;code>mount_ntfs&lt;/code>&lt;/h3>
-&lt;ul>
-&lt;li>Open &lt;code>Terminal&lt;/code>&lt;/li>
-&lt;li>Enter commands as show below&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo mount -uw /
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo mv /sbin/mount_ntfs /sbin/mount_ntfs.original
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo ln -s /usr/local/sbin/mount_ntfs /sbin/mount_ntfs
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ul>
-&lt;li>Then shutdown your. macos.&lt;/li>
-&lt;/ul>
-&lt;h3 id="3-enable-system-integrity-protection">3. Enable system integrity protection&lt;/h3>
-&lt;ul>
-&lt;li>Press &lt;code>Command + R&lt;/code>,the press power buttion to start macos and enter the recovery mode.&lt;/li>
-&lt;li>After enter &lt;code>recovery mode&lt;/code>, then we can open Terminal.
-Run command in Terminal &lt;code>csrutil enble&lt;/code>.&lt;/li>
-&lt;li>Reboot macos.&lt;/li>
-&lt;/ul>
-&lt;h3 id="4-follow-the-system-notification-to-enable-fuse-ntfs">4. Follow the system notification to enable fuse ntfs&lt;/h3>
-&lt;p>After we boot macos normally, we need follow the system notification to enable permission for fuse ntfs.&lt;/p>
-&lt;h2 id="pro-and-cons">Pro and Cons&lt;/h2>
-&lt;p>&lt;strong>Pro:&lt;/strong> We can write ntfs format disk for free.&lt;/p>
-&lt;p>&lt;strong>Cons:&lt;/strong> We need to do it again when we upgrade macos to a new major release.&lt;/p>
-&lt;h2 id="reference">Reference&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a class="link" href="https://medium.com/macoclock/enabling-ntfs-write-in-macos-10-15-catalina-the-open-source-way-a5fd0d1cb32e" target="_blank" rel="noopener"
->Enabling NTFS write in macOS 10.15 Catalina the Open source way&lt;/a>&lt;/li>
-&lt;li>&lt;a class="link" href="https://support.apple.com/en-hk/HT204899" target="_blank" rel="noopener"
->About System Integrity Protection on your Mac&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Macos Update Time via Ntpserver</title><link>https://echowings.github.io/p/macos-update-time-via-ntpserver/</link><pubDate>Wed, 26 Dec 2018 09:26:04 +0800</pubDate><guid>https://echowings.github.io/p/macos-update-time-via-ntpserver/</guid><description>&lt;h1 id="how-to-update-time-via-ntpserver">How to update time via ntpserver&lt;/h1>
-&lt;p>Today, My MBP is out of power. I cannot surfing internet. and the brower tell me my time was wrong. Then I checked my time in my MBB, I&amp;rsquo;m back in time jan 1, 2018. Wow, I got extra whole year time!&lt;/p>
-&lt;h1 id="majove-update-time">Majove update time&lt;/h1>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo sntp -sS time.asia.apple.com
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>When you&amp;rsquo;re getting this error&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kod_init_kod_db&lt;span class="o">()&lt;/span>: Cannot open KoD db file /var/db/ntp-kod: No such file or directory
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>You can solved the problems with:&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo touch /var/db/ntp-kod
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo chmod &lt;span class="m">666&lt;/span> /var/db/ntp-kod
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="disable-no-subscription-warning">Disable No subscription warning&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sed -i.bak &lt;span class="s2">&amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34;&lt;/span> /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> systemctl restart pveproxy.service
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="reference">Reference&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a class="link" href="https://apple.stackexchange.com/questions/117864/how-can-i-tell-if-my-mac-is-keeping-the-clock-updated-properly?noredirect=1&amp;amp;lq=1" target="_blank" rel="noopener"
->How can I tell if my Mac is keeping the clock updated properly?&lt;/a>&lt;/li>
-&lt;/ul></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>macos on Steve&#39;s Blog</title>
+    <link>https://echowings.github.io/tags/macos/</link>
+    <description>Recent content in macos on Steve&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 01 Dec 2022 12:55:48 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Install and Configure Zsh and Zim</title>
+      <link>https://echowings.github.io/p/how-to-install-and-configure-zsh-and-zim/</link>
+      <pubDate>Thu, 01 Dec 2022 12:55:48 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-install-and-configure-zsh-and-zim/</guid>
+      <description>How to install zsh zim on macos &amp;amp; debian Install and configure zsh zim iterm2 on macos Install homebrew 1 /bin/bash -c &amp;#34;$(curl -fsSL &amp;lt;https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh&amp;gt;)&amp;#34; Install iterm2 1 brew install --cask iterm2 Install zsh 1 brew install zsh Install zim 1 curl -fsSL &amp;lt;https://raw.githubusercontent.com/zimfw/install/master/install.zsh&amp;gt; | zsh Install Powerlevel10k Add .zimrc 1 zmodule romkatv/powerlevel10k Change configure with shell script 1 if [ `grep -c &amp;#34;zmodule\ romkatv\/powerlevel10k&amp;#34; ~/.zimrc` -ne &amp;#39;0&amp;#39; ]; then</description>
+    </item>
+    
+    <item>
+      <title>How to Extend Free Disk Space for Macos</title>
+      <link>https://echowings.github.io/p/how-to-extend-free-disk-space-for-macos/</link>
+      <pubDate>Mon, 04 Jan 2021 18:33:47 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-extend-free-disk-space-for-macos/</guid>
+      <description>Extend disk with diskutils Delete partition &amp;ldquo;Free Space&amp;rdquo; to extend disk to current macos partition.
+Fixed Error “The new size must be different than the existing size” 1 2 3 4 5 #repair (internal, disk0 - in your case) diskutil repairdisk disk0 #resize (synthesized, disk1 - in your case with HS) diskutil apfs resizeContainer disk1 0 Reference Cannot resize APFS partition - “The new size must be different than the existing size” </description>
+    </item>
+    
+    <item>
+      <title>How to Install Squirrel on Macos</title>
+      <link>https://echowings.github.io/p/how-to-install-squirrel-on-macos/</link>
+      <pubDate>Fri, 20 Nov 2020 17:47:43 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-install-squirrel-on-macos/</guid>
+      <description>How to install squirrel as your chinese input method for your macos 1. Install squirrel 1 brew cask install squirrel 2. Logout and login or Reboot your mac Reboot your mac
+3. Copy squirrel configuration for you configuration file: https://github.com/wongdean/rime-settings#
+1 2 mkdir rime &amp;amp;&amp;amp; cd rime git clone https://github.com/wongdean/rime-settings.git 4. configure squrriel Press control + space key to enable squirrel. Then click settings... Copy all contents in rime-settings expect fonts folder to configure folder.</description>
+    </item>
+    
+    <item>
+      <title>How to Enable Ntfs Read and Write in Macos Catalina 10.15</title>
+      <link>https://echowings.github.io/p/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/</link>
+      <pubDate>Fri, 27 Dec 2019 11:20:00 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-enable-ntfs-read-and-write-in-macos-catalina-10.15/</guid>
+      <description>How to enable NTFS Read and Write in Macos Catalina 10.15 For a long time. It was much trouble to enable ntfs write mode in macos. Today I done it about enable ntfs wirte support with fuse and ntfs-3g.
+Install FUSE for macos You can download latest FUSE for macOS from here: FUSE for macOS
+Then you can install it by yourself.
+Install ntfs-3g 1 2 brew install ntfs-3g Replace ntfs-3g Since from OS X 10.</description>
+    </item>
+    
+    <item>
+      <title>Macos Update Time via Ntpserver</title>
+      <link>https://echowings.github.io/p/macos-update-time-via-ntpserver/</link>
+      <pubDate>Wed, 26 Dec 2018 09:26:04 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/macos-update-time-via-ntpserver/</guid>
+      <description>How to update time via ntpserver Today, My MBP is out of power. I cannot surfing internet. and the brower tell me my time was wrong. Then I checked my time in my MBB, I&amp;rsquo;m back in time jan 1, 2018. Wow, I got extra whole year time!
+Majove update time 1 sudo sntp -sS time.asia.apple.com When you&amp;rsquo;re getting this error
+1 2 kod_init_kod_db(): Cannot open KoD db file /var/db/ntp-kod: No such file or directory You can solved the problems with:</description>
+    </item>
+    
+  </channel>
+</rss>

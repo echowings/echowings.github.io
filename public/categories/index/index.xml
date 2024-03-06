@@ -1,134 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>index on Steve's Blog</title><link>https://echowings.github.io/categories/index/</link><description>Recent content in index on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 12 Jul 2019 14:04:03 +0800</lastBuildDate><atom:link href="https://echowings.github.io/categories/index/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Setup Cloud Init in Proxmoxve</title><link>https://echowings.github.io/p/how-to-setup-cloud-init-in-proxmoxve/</link><pubDate>Fri, 12 Jul 2019 14:04:03 +0800</pubDate><guid>https://echowings.github.io/p/how-to-setup-cloud-init-in-proxmoxve/</guid><description>&lt;h1 id="how-to-setup-cloud-init-in-prxmox-ve">How to setup cloud-init in prxmox ve&lt;/h1>
-&lt;p>Cloud-init can help us to deploy or change settings of linux virutal machine via api or manually by ourself.&lt;/p>
-&lt;p>There are two ways to setup cloud-init: command line or change settings in GUI.&lt;/p>
-&lt;h2 id="option-1-download-cloud-init-image-and-setup-with-shell">Option 1: Download cloud-init image and setup with shell&lt;/h2>
-&lt;p>Please reference my blog &lt;a class="link" href="../../post/build-ubuntu18.04-with-cloudinit-support" >Build Ubuntu 18.04 server with cloudinit support&lt;/a>&lt;/p>
-&lt;h2 id="option-2-manually-setup-cloud-init">Option 2: Manually Setup cloud-init&lt;/h2>
-&lt;p>We can do this with 2 steps. 1st step is to install linux(centos,debian,ubunt etc).&lt;/p>
-&lt;h3 id="install-a-linux">Install a linux&lt;/h3>
-&lt;p>I think this step is easy.&lt;/p>
-&lt;h3 id="install-and-setup-cloud-init">Install and setup cloud-init&lt;/h3>
-&lt;p>After installed an linux.&lt;/p>
-&lt;h4 id="debianubuntu">debian/ubuntu&lt;/h4>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">apt update &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> apt -y dist-upgrade
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt install -y cloud-init
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="rhelcentos">RHEL/Centos&lt;/h4>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">yum upate
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yum install -y cloud-init
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="create-a-cloud-init-boot-disk">Create a cloud-init boot disk&lt;/h3>
-&lt;ol>
-&lt;li>shutdown the vm &lt;code>shutdown -h now&lt;/code>&lt;/li>
-&lt;li>select the vm in PVE web GUI.&lt;/li>
-&lt;li>Then click &lt;code>Hardware&lt;/code>.&lt;/li>
-&lt;li>click &lt;code>Add&lt;/code> button and select &lt;code>Cloudinit drive&lt;/code>.&lt;/li>
-&lt;li>Select Storage on the storage.&lt;/li>
-&lt;li>Then Click &lt;code>Create&lt;/code> to create cloudinit drive.&lt;/li>
-&lt;li>Right click the VM and click &lt;code>start&lt;/code> to boot the VM.&lt;/li>
-&lt;/ol>
-&lt;h2 id="change-some-settings">Change some settings&lt;/h2>
-&lt;p>After setup cloud-init, Seem like it automatically reset your sourelist to default settings and we couldn&amp;rsquo;t login via ssh with password.&lt;/p>
-&lt;h3 id="enable-password-authentication">Enable password authentication&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo sed -i &lt;span class="s1">&amp;#39;s/PasswordAuthentication\ no/PasswordAuthentication\ yes/g&amp;#39;&lt;/span> /etc/ssh/sshd_config
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl daemon-reload
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl restart sshd
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="permit-root-can-loing-with-password">Permit root can loing with password&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo sed -i &lt;span class="s1">&amp;#39;s/#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/g&amp;#39;&lt;/span> /etc/ssh/sshd_config
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl daemon-reload
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl restart sshd
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="change-machine-id">Change machine-id&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">rm /var/lib/dbus/machine-id
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">truncate -s &lt;span class="m">0&lt;/span> /etc/machine-id
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ln -s /etc/machine-id /var/lib/dbus/machine-id
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="change-hostname-with-ubuntu-1804">change hostname with ubuntu 18.04&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/preserve_hostname:\ false/preserve_hostname:\ true/g&amp;#39;&lt;/span> /etc/cloud/cloud.cfg
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#check settings&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cat /etc/cloud/cloud.cfg &lt;span class="p">|&lt;/span>grep preserve_hostname
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># If it works and you will see:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#preserve_hostname: true&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Set hostname to myserver-forloadbalance2-node175&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">hostnamectl set-hostname myserver-forloadbalance2-node-175
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># reboot host&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">reboot now
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="permit-modified-sourelist">Permit modified sourelist&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo cat &lt;span class="s">&amp;lt;&amp;lt; EOF &amp;gt;&amp;gt; /etc/cloud/cloud.cfg
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">apt_preserve_sources_list: true
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">EOF&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Then you can change sourelist without worried about the sourcelist will be overwriten by cloud-init&lt;/p>
-&lt;h2 id="heading">&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a class="link" href="https://jaylacroix.com/fixing-ubuntu-18-04-virtual-machines-that-fight-over-the-same-ip-address/" target="_blank" rel="noopener"
->Machines that fight over the same IP address&lt;/a>&lt;/li>
-&lt;/ul></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>index on Steve&#39;s Blog</title>
+    <link>https://echowings.github.io/categories/index/</link>
+    <description>Recent content in index on Steve&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Jul 2019 14:04:03 +0800</lastBuildDate><atom:link href="https://echowings.github.io/categories/index/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Setup Cloud Init in Proxmoxve</title>
+      <link>https://echowings.github.io/p/how-to-setup-cloud-init-in-proxmoxve/</link>
+      <pubDate>Fri, 12 Jul 2019 14:04:03 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-setup-cloud-init-in-proxmoxve/</guid>
+      <description>How to setup cloud-init in prxmox ve Cloud-init can help us to deploy or change settings of linux virutal machine via api or manually by ourself.
+There are two ways to setup cloud-init: command line or change settings in GUI.
+Option 1: Download cloud-init image and setup with shell Please reference my blog Build Ubuntu 18.04 server with cloudinit support
+Option 2: Manually Setup cloud-init We can do this with 2 steps.</description>
+    </item>
+    
+  </channel>
+</rss>

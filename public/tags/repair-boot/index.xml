@@ -1,82 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>repair boot on Steve's Blog</title><link>https://echowings.github.io/tags/repair-boot/</link><description>Recent content in repair boot on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 29 Dec 2020 11:50:20 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/repair-boot/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Uninstall Windows Update Which Install Failed</title><link>https://echowings.github.io/p/how-to-uninstall-windows-update-which-install-failed/</link><pubDate>Tue, 29 Dec 2020 11:50:20 +0800</pubDate><guid>https://echowings.github.io/p/how-to-uninstall-windows-update-which-install-failed/</guid><description>&lt;h1 id="how-to-uninstlal-windows-update-which-install-failed">How to uninstlal windows update which install failed&lt;/h1>
-&lt;hr>
-&lt;h2 id="uninstall-failed-windows-update">Uninstall failed windows update&lt;/h2>
-&lt;ol>
-&lt;li>
-&lt;p>Reboot your pc or laptop and select &lt;code>troubleshoot&lt;/code>
-&lt;img src="https://blog.workinghardinit.work/wp-content/uploads/2017/10/image_thumb-1.png"
-loading="lazy"
->&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Select to open the command prompt and stay away from any other auto repair options.
-&lt;img src="https://blog.workinghardinit.work/wp-content/uploads/2017/10/image-2.png"
-loading="lazy"
->&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Loading the software rigistry.&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;span class="lnt">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Load the softeware registry hive as follows.&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">reg load hklm/temp c:&lt;span class="se">\w&lt;/span>indows&lt;span class="se">\s&lt;/span>ystem32&lt;span class="se">\c&lt;/span>onfig&lt;span class="se">\s&lt;/span>oftware
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Delete the sessionPending registry key, if it exists by running:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">reg delete &lt;span class="s2">&amp;#34;HKLM\temp\Microsoft\Windows\CurrentVersion\Component Based Servicing\SessionPending&amp;#34;&lt;/span> /v Exclusive
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Unload the software registry hive:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">reg unload HKLM&lt;span class="se">\t&lt;/span>emp
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="remove-failed-updates-with-dism-command">Remove failed updates with &lt;code>DISM&lt;/code> command&lt;/h2>
-&lt;ol>
-&lt;li>List failed updated.&lt;/li>
-&lt;/ol>
-&lt;p>The yellow one are the ones of interest and you can see the first one never even got an install time.&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#List updates installed that caused issue.&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dism /image:c:&lt;span class="se">\ &lt;/span>/get-packages
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://blog.workinghardinit.work/wp-content/uploads/2017/10/image-3.png"
-loading="lazy"
->
-2. Remove error udpates with &lt;code>DISM&lt;/code>.&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">dism /image:c:&lt;span class="se">\ &lt;/span>/remove-package /packagename:myproblematicpackagetoremove /scratchdir:c:&lt;span class="se">\t&lt;/span>emp
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://blog.workinghardinit.work/wp-content/uploads/2017/10/image-4.png"
-loading="lazy"
->
-3. After finished uninstall error updates,we can reboot your pc.&lt;/p>
-&lt;p>&lt;img src="https://blog.workinghardinit.work/wp-content/uploads/2017/10/image-5.png"
-loading="lazy"
->&lt;/p>
-&lt;h2 id="reference">Reference&lt;/h2>
-&lt;hr>
-&lt;ol>
-&lt;li>&lt;a class="link" href="https://blog.workinghardinit.work/2017/10/11/quick-fix-publish-vm-wont-boot-after-october-2017-updates-for-windows-server-2016-and-windows-10-kb4041691/" target="_blank" rel="noopener"
->Quick Fix Publish : VM won’t boot after October 2017 Updates for Windows Server 2016 and Windows 10 (KB4041691)&lt;/a>&lt;/li>
-&lt;/ol></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>repair boot on Steve&#39;s Blog</title>
+    <link>https://echowings.github.io/tags/repair-boot/</link>
+    <description>Recent content in repair boot on Steve&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 29 Dec 2020 11:50:20 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/repair-boot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Uninstall Windows Update Which Install Failed</title>
+      <link>https://echowings.github.io/p/how-to-uninstall-windows-update-which-install-failed/</link>
+      <pubDate>Tue, 29 Dec 2020 11:50:20 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-uninstall-windows-update-which-install-failed/</guid>
+      <description>How to uninstlal windows update which install failed Uninstall failed windows update Reboot your pc or laptop and select troubleshoot Select to open the command prompt and stay away from any other auto repair options. Loading the software rigistry.
+1 2 3 4 5 6 7 8 #Load the softeware registry hive as follows. reg load hklm/temp c:\windows\system32\config\software #Delete the sessionPending registry key, if it exists by running: reg delete &amp;#34;HKLM\temp\Microsoft\Windows\CurrentVersion\Component Based Servicing\SessionPending&amp;#34; /v Exclusive # Unload the software registry hive: reg unload HKLM\temp Remove failed updates with DISM command List failed updated.</description>
+    </item>
+    
+  </channel>
+</rss>

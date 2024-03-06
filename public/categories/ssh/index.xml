@@ -1,37 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ssh on Steve's Blog</title><link>https://echowings.github.io/categories/ssh/</link><description>Recent content in ssh on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 29 Dec 2018 12:19:12 +0800</lastBuildDate><atom:link href="https://echowings.github.io/categories/ssh/index.xml" rel="self" type="application/rss+xml"/><item><title>Cisco Ssh Error</title><link>https://echowings.github.io/p/cisco-ssh-error/</link><pubDate>Sat, 29 Dec 2018 12:19:12 +0800</pubDate><guid>https://echowings.github.io/p/cisco-ssh-error/</guid><description>&lt;h1 id="cisco-ssh-error">cisco ssh error&lt;/h1>
-&lt;p>When you met error like this:&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ssh cisco@10.32.3.1
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Solution:&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ ssh -l &amp;lt;USERNAME&amp;gt; -oHostKeyAlgorithms&lt;span class="o">=&lt;/span>+ssh-dss -oKexAlgorithms&lt;span class="o">=&lt;/span>+diffie-hellman-group1-sha1 &amp;lt;HOST&amp;gt;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>or&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ssh -l &amp;lt;username&amp;gt; -o &lt;span class="nv">HostKeyAlgorithms&lt;/span>&lt;span class="o">=&lt;/span>+ssh-dss -o &lt;span class="nv">KexAlgorithms&lt;/span>&lt;span class="o">=&lt;/span>+diffie-hellman-group1-sha1 -c 3des-cbc &amp;lt;hostname&amp;gt;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="reference">Reference&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a class="link" href="https://community.cisco.com/t5/vpn-and-anyconnect/ssh-failed-on-3750-switch/td-p/3043810" target="_blank" rel="noopener"
->SSH failed on 3750 switch&lt;/a>&lt;/li>
-&lt;li>&lt;a class="link" href="https://discussions.apple.com/thread/8196671" target="_blank" rel="noopener"
->SSH Not Working After Update To 10.13.2 (HighSierra)&lt;/a>&lt;/li>
-&lt;/ul></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ssh on Steve&#39;s Blog</title>
+    <link>https://echowings.github.io/categories/ssh/</link>
+    <description>Recent content in ssh on Steve&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Dec 2018 12:19:12 +0800</lastBuildDate><atom:link href="https://echowings.github.io/categories/ssh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cisco Ssh Error</title>
+      <link>https://echowings.github.io/p/cisco-ssh-error/</link>
+      <pubDate>Sat, 29 Dec 2018 12:19:12 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/cisco-ssh-error/</guid>
+      <description>cisco ssh error When you met error like this:
+1 2 ssh cisco@10.32.3.1 Unable to negotiate with 10.32.3.1 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1 Solution:
+1 $ ssh -l &amp;lt;USERNAME&amp;gt; -oHostKeyAlgorithms=+ssh-dss -oKexAlgorithms=+diffie-hellman-group1-sha1 &amp;lt;HOST&amp;gt; or
+1 ssh -l &amp;lt;username&amp;gt; -o HostKeyAlgorithms=+ssh-dss -o KexAlgorithms=+diffie-hellman-group1-sha1 -c 3des-cbc &amp;lt;hostname&amp;gt; Reference SSH failed on 3750 switch SSH Not Working After Update To 10.13.2 (HighSierra) </description>
+    </item>
+    
+  </channel>
+</rss>

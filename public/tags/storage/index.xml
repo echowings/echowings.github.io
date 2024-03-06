@@ -1,228 +1,32 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>storage on Steve's Blog</title><link>https://echowings.github.io/tags/storage/</link><description>Recent content in storage on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 05 Jun 2019 11:52:23 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/storage/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Install driver of Mellanox ConnetcX 3 10Gbps Network Adpater in Promxox-VE 5.x or Debian 9</title><link>https://echowings.github.io/p/how-to-install-driver-of-mellanox-connetcx-3-10gbps-network-adpater-in-promxox-ve-5.x-or-debian-9/</link><pubDate>Wed, 05 Jun 2019 11:52:23 +0800</pubDate><guid>https://echowings.github.io/p/how-to-install-driver-of-mellanox-connetcx-3-10gbps-network-adpater-in-promxox-ve-5.x-or-debian-9/</guid><description>&lt;h1 id="how-to-install-dirver-of-mellanox-connectx-3-10gbps-netowrk-adapter-in-proxmox-ve-5x-or-diban-9">How to install dirver of mellanox ConnectX 3 10Gbps netowrk adapter in proxmox-ve 5.x or diban 9&lt;/h1>
-&lt;p>To &lt;/p>
-&lt;h2 id="install-dependencies-software">Install dependencies software&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#dependencies&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt-get -y install debhelper autotools-dev dkms zlib1g-dev python
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget quilt python-libxml2 swig dpatch graphviz chrpath pve-headers
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="download-driver-for-mellanox-connectx-3-for-debian-96">Download driver for mellanox connectx 3 for debian 9.6&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">wget http://content.mellanox.com/ofed/MLNX_EN-4.6-1.0.1.1/mlnx-en-4.6-1.0.1.1-debian9.6-x86_64.tgz
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="install-drivers">Install drivers&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">tar -zxvf mlnx-en-4.6-1.0.1.1-debian9.6-x86_64.tgz
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> mlnx-en-4.6-1.0.1.1-debian9.6-x86_64
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">chmod +x install
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./install --skip-distro-check
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="swell">Swell&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a class="link" href="http://www.mellanox.com/page/products_dyn?product_family=27" target="_blank" rel="noopener"
->Mellanox EN Driver for Linux
-&lt;/a>&lt;/li>
-&lt;li>&lt;a class="link" href="https://forums.servethehome.com/index.php?resources/install-mellanox-driver-proxmox-ve-5-1.35/" target="_blank" rel="noopener"
->How-to Guide Install Mellanox Driver Proxmox VE 5.1&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>How to Extend Ubuntu No Lvm Disk in Proxmox VE</title><link>https://echowings.github.io/p/how-to-extend-ubuntu-no-lvm-disk-in-proxmox-ve/</link><pubDate>Tue, 28 May 2019 15:20:53 +0800</pubDate><guid>https://echowings.github.io/p/how-to-extend-ubuntu-no-lvm-disk-in-proxmox-ve/</guid><description>&lt;h1 id="how-to-resize--diskno-lvm-in-proxmox-ve">How to resize disk(no lvm) in proxmox ve&lt;/h1>
-&lt;p>Today I met a problem that I need to extend disk image for a ubuntu server which is a virtual machine hosted in proxmox ve.&lt;/p>
-&lt;h2 id="resizing-disk-images">Resizing disk images&lt;/h2>
-&lt;p>First thing first, I need resize the disk images of the virtual machine.I can do it both in command line or via web management interface.&lt;/p>
-&lt;ul>
-&lt;li>Extend disk size of virtual machine via shell command&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Extend disk size of virtual machine with vid 136 with 100G&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">qm resize &lt;span class="m">136&lt;/span> virtio0 +100G
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ul>
-&lt;li>Extend disk size of virtual machien via web interface&lt;/li>
-&lt;/ul>
-&lt;p>&lt;code>&amp;quot;Datacenter&amp;quot; | &amp;quot;$Node&amp;quot; | $VIRTUAL_MACHINE | &amp;quot;HARDWARE&amp;quot; | &amp;quot;HARD DISK(SCSI0)&amp;quot; | &amp;quot;RESIZE DISK&amp;quot; | &amp;quot;size Increment(GiB) | &amp;quot;100&amp;quot; | &amp;quot;Resize disk&amp;quot;&lt;/code>&lt;/p>
-&lt;h2 id="enlarge-the-partition-in-the-virtual-disk">Enlarge the partition in the virtual disk&lt;/h2>
-&lt;p>Login the virtual machine and run command as show below:&lt;/p>
-&lt;ul>
-&lt;li>Show disk partition&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># show disk device&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ls -al /dev/sda*
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ul>
-&lt;li>Run parted with command &lt;code>parted /dev/sda&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">root@xxx-xxxx-server:~# parted /dev/sda
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">GNU Parted 3.2
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Using /dev/sda
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Welcome to GNU Parted! Type &lt;span class="s1">&amp;#39;help&amp;#39;&lt;/span> to view a list of commands.
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ul>
-&lt;li>print partitions. &lt;code>print&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>parted&lt;span class="o">)&lt;/span> print
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Model: QEMU QEMU HARDDISK &lt;span class="o">(&lt;/span>scsi&lt;span class="o">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Disk /dev/sda: 389GB
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Sector size &lt;span class="o">(&lt;/span>logical/physical&lt;span class="o">)&lt;/span>: 512B/512B
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Partition Table: gpt
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Disk Flags:
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Number Start End Size File system Name Flags
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="m">1&lt;/span> 1049kB 2097kB 1049kB bios_grub
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="m">2&lt;/span> 30720kB 30GB 30GB ext4
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ul>
-&lt;li>Resize partition with command &lt;code>resizepart&lt;/code>.&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>parted&lt;span class="o">)&lt;/span> resizepart
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ul>
-&lt;li>select partition which I wanted to resize. &lt;code>2&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">Partition number? &lt;span class="m">2&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ul>
-&lt;li>Enter &lt;code>y&lt;/code> to continue.&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">Warning: Partition /dev/sda2 is being used. Are you sure you want to &lt;span class="k">continue&lt;/span>?
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Yes/No? y
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ul>
-&lt;li>Enter size &lt;code>200GB&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">End? &lt;span class="o">[&lt;/span>30GB&lt;span class="o">]&lt;/span>? 200GB
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>parted&lt;span class="o">)&lt;/span> print
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Model: QEMU QEMU HARDDISK &lt;span class="o">(&lt;/span>scsi&lt;span class="o">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Disk /dev/sda: 389GB
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Sector size &lt;span class="o">(&lt;/span>logical/physical&lt;span class="o">)&lt;/span>: 512B/512B
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Partition Table: gpt
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Disk Flags:
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Number Start End Size File system Name Flags
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="m">1&lt;/span> 1049kB 2097kB 1049kB bios_grub
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="m">2&lt;/span> 2097kB 200GB 200GB ext4
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ul>
-&lt;li>Quit parted with &lt;code>quit&lt;/code>.&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>parted&lt;span class="o">)&lt;/span> :quit
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="enlarge-partition-with-resize2f">Enlarge partition with &lt;code>resize2f&lt;/code>&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">resize2f /dev/sda2 99G
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Show size of partition&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">df -h
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="swell">Swell&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a class="link" href="https://pve.proxmox.com/wiki/Shrink_Qcow2_Disk_Files" target="_blank" rel="noopener"
->Shrink Qcow2 Disk Files&lt;/a>&lt;/li>
-&lt;li>&lt;a class="link" href="https://pve.proxmox.com/wiki/Resize_disks" target="_blank" rel="noopener"
->Resize disks&lt;/a>&lt;/li>
-&lt;li>&lt;a class="link" href="https://superuser.com/questions/441379/how-to-extend-primary-partition-dev-sda1-in-linux" target="_blank" rel="noopener"
->How to Extend primary partition(/dev/sda1) in linux?
-&lt;/a>&lt;/li>
-&lt;/ul></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>storage on Steve&#39;s Blog</title>
+    <link>https://echowings.github.io/tags/storage/</link>
+    <description>Recent content in storage on Steve&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 05 Jun 2019 11:52:23 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/storage/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Install driver of Mellanox ConnetcX 3 10Gbps Network Adpater in Promxox-VE 5.x or Debian 9</title>
+      <link>https://echowings.github.io/p/how-to-install-driver-of-mellanox-connetcx-3-10gbps-network-adpater-in-promxox-ve-5.x-or-debian-9/</link>
+      <pubDate>Wed, 05 Jun 2019 11:52:23 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-install-driver-of-mellanox-connetcx-3-10gbps-network-adpater-in-promxox-ve-5.x-or-debian-9/</guid>
+      <description>How to install dirver of mellanox ConnectX 3 10Gbps netowrk adapter in proxmox-ve 5.x or diban 9 To 
+Install dependencies software 1 2 3 #dependencies apt-get -y install debhelper autotools-dev dkms zlib1g-dev python wget quilt python-libxml2 swig dpatch graphviz chrpath pve-headers Download driver for mellanox connectx 3 for debian 9.6 1 wget http://content.mellanox.com/ofed/MLNX_EN-4.6-1.0.1.1/mlnx-en-4.6-1.0.1.1-debian9.6-x86_64.tgz Install drivers 1 2 3 4 tar -zxvf mlnx-en-4.6-1.0.1.1-debian9.6-x86_64.tgz cd mlnx-en-4.6-1.0.1.1-debian9.6-x86_64 chmod +x install ./install --skip-distro-check Swell Mellanox EN Driver for Linux How-to Guide Install Mellanox Driver Proxmox VE 5.</description>
+    </item>
+    
+    <item>
+      <title>How to Extend Ubuntu No Lvm Disk in Proxmox VE</title>
+      <link>https://echowings.github.io/p/how-to-extend-ubuntu-no-lvm-disk-in-proxmox-ve/</link>
+      <pubDate>Tue, 28 May 2019 15:20:53 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-extend-ubuntu-no-lvm-disk-in-proxmox-ve/</guid>
+      <description>How to resize disk(no lvm) in proxmox ve Today I met a problem that I need to extend disk image for a ubuntu server which is a virtual machine hosted in proxmox ve.
+Resizing disk images First thing first, I need resize the disk images of the virtual machine.I can do it both in command line or via web management interface.
+Extend disk size of virtual machine via shell command 1 2 # Extend disk size of virtual machine with vid 136 with 100G qm resize 136 virtio0 +100G Extend disk size of virtual machien via web interface &amp;quot;Datacenter&amp;quot; | &amp;quot;$Node&amp;quot; | $VIRTUAL_MACHINE | &amp;quot;HARDWARE&amp;quot; | &amp;quot;HARD DISK(SCSI0)&amp;quot; | &amp;quot;RESIZE DISK&amp;quot; | &amp;quot;size Increment(GiB) | &amp;quot;100&amp;quot; | &amp;quot;Resize disk&amp;quot;</description>
+    </item>
+    
+  </channel>
+</rss>

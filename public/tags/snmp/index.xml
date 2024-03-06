@@ -1,159 +1,30 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>snmp on Steve's Blog</title><link>https://echowings.github.io/tags/snmp/</link><description>Recent content in snmp on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 22 Jan 2021 13:31:14 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/snmp/index.xml" rel="self" type="application/rss+xml"/><item><title>Install and Configure Snmp on Debian 10</title><link>https://echowings.github.io/p/install-and-configure-snmp-on-debian-10/</link><pubDate>Fri, 22 Jan 2021 13:31:14 +0800</pubDate><guid>https://echowings.github.io/p/install-and-configure-snmp-on-debian-10/</guid><description>&lt;h1 id="install-and-configure-snmp-on-debian-10">Install and Configure snmp on debian 10&lt;/h1>
-&lt;h2 id="install-snmp">INSTALL SNMP&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt install -y snmpd snmp libsnmp-dev
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="configure-snmp-on-debian-10">CONFIGURE SNMP ON DEBIAN 10&lt;/h2>
-&lt;ul>
-&lt;li>backup original configure file. &lt;!-- raw HTML omitted -->&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cp /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.orig
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ul>
-&lt;li>Edit snmpd.conf&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">agentAddress udp:127.0.0.1:161,udp:192.168.1.1:161
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item><item><title>How to Install Snmp Service on Promxox VE</title><link>https://echowings.github.io/p/how-to-install-snmp-service-on-promxox-ve/</link><pubDate>Sat, 27 Apr 2019 20:29:36 +0800</pubDate><guid>https://echowings.github.io/p/how-to-install-snmp-service-on-promxox-ve/</guid><description>&lt;h1 id="how-to-install-snmp-service-on-proxmox-ve">How to install snmp service on proxmox ve&lt;/h1>
-&lt;p>How to setup snmp service to let us to use librenms to moniting our proxmox ve healthy status is very important for us.&lt;/p>
-&lt;h2 id="install-snmpd-on-proxmox-ve">Install snmpd on proxmox ve&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">apt update
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt install -y snmpd
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="configure-snmpdconf">Configure snmpd.conf&lt;/h2>
-&lt;ul>
-&lt;li>backup original configuration file.&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.backup
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ul>
-&lt;li>Create a new config file.&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">cat &amp;gt; /etc/snmp/snmpd.conf &lt;span class="s">&amp;lt;&amp;lt; EOF
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"># this create a SNMPv1/SNMPv2c community named &amp;#34;&amp;#34;
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"># and restricts access to LAN adresses 192.168.0.0/22 (last two 0&amp;#39;s are ranges)
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">rocommunity OkayWorld 192.168.0.0/22
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"># setup info
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">syslocation &amp;#34;rack 1, room 3, serverrroom&amp;#34;
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">syscontact &amp;#34;xxx@xxx.xxx&amp;#34;
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"># open up
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">agentAddress udp:161
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"># run as
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">agentuser root
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"># dont log connection from UDP:
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">dontLogTCPWrappersConnects yes
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"># fix for disks larger then 2TB
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">realStorageUnits 0
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">EOF&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="firewall-allow-lan-can-access">Firewall allow lan can access&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">iptables -A INPUT -s 192.168.0.0/22 -p udp --dport &lt;span class="m">161&lt;/span> -j ACCEPT
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="restart-snmpd-service-to-apply-settings">Restart snmpd service to apply settings&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">systemctl restart snmpd
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="testing">Testing&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">snmpwalk -c OkayWorld -v1 &lt;span class="nv">$servername&lt;/span>$ SNMPv2-MIB::sysDescr.0
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="qa">QA&lt;/h2>
-&lt;p>###1. error on subcontainer &amp;lsquo;ia_addr&amp;rsquo; insert (-1)
-After systemd migration starting from Debian 9 Stretch, you need to change &lt;code>/lib/systemd/system/snmpd.service&lt;/code> file, not &lt;code>/etc/default/snmpd&lt;/code> file:&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s2">&amp;#34;s|-Lsd|-LS6d|&amp;#34;&lt;/span> /lib/systemd/system/snmpd.service
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">systemctl daemon-reload
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">systemctl restart snmpd
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="reference">Reference&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a class="link" href="https://www.svennd.be/how-to-install-snmp-service-on-proxmox/" target="_blank" rel="noopener"
->how to install SNMP service on Proxmox&lt;/a>&lt;/li>
-&lt;li>&lt;a class="link" href="https://linux-tips.com/t/how-can-i-disable-snmpd-ia-addr-insert-messages/281/2" target="_blank" rel="noopener"
->How can I disable snmpd ia_addr insert messages?&lt;/a>&lt;/li>
-&lt;li>&lt;a class="link" href="http://www.leonli.co.uk/blog/487/solved-snmpd-gives-error-on-subcontainer-ia_addr-insert-1-warnings" target="_blank" rel="noopener"
->[Solved] snmpd gives “error on subcontainer” ‘ia_addr’ insert (-1) warnings
-&lt;/a>&lt;/li>
-&lt;/ul></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>snmp on Steve&#39;s Blog</title>
+    <link>https://echowings.github.io/tags/snmp/</link>
+    <description>Recent content in snmp on Steve&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 22 Jan 2021 13:31:14 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/snmp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Install and Configure Snmp on Debian 10</title>
+      <link>https://echowings.github.io/p/install-and-configure-snmp-on-debian-10/</link>
+      <pubDate>Fri, 22 Jan 2021 13:31:14 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/install-and-configure-snmp-on-debian-10/</guid>
+      <description>Install and Configure snmp on debian 10 INSTALL SNMP 1 2 apt install -y snmpd snmp libsnmp-dev CONFIGURE SNMP ON DEBIAN 10 backup original configure file. 1 cp /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.orig Edit snmpd.conf 1 2 agentAddress udp:127.0.0.1:161,udp:192.168.1.1:161 </description>
+    </item>
+    
+    <item>
+      <title>How to Install Snmp Service on Promxox VE</title>
+      <link>https://echowings.github.io/p/how-to-install-snmp-service-on-promxox-ve/</link>
+      <pubDate>Sat, 27 Apr 2019 20:29:36 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-install-snmp-service-on-promxox-ve/</guid>
+      <description>How to install snmp service on proxmox ve How to setup snmp service to let us to use librenms to moniting our proxmox ve healthy status is very important for us.
+Install snmpd on proxmox ve 1 2 apt update apt install -y snmpd Configure snmpd.conf backup original configuration file. 1 2 mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.backup Create a new config file. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 cat &amp;gt; /etc/snmp/snmpd.</description>
+    </item>
+    
+  </channel>
+</rss>

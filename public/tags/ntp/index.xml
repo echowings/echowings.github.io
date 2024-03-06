@@ -1,47 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ntp on Steve's Blog</title><link>https://echowings.github.io/tags/ntp/</link><description>Recent content in ntp on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 26 Dec 2018 09:26:04 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/ntp/index.xml" rel="self" type="application/rss+xml"/><item><title>Macos Update Time via Ntpserver</title><link>https://echowings.github.io/p/macos-update-time-via-ntpserver/</link><pubDate>Wed, 26 Dec 2018 09:26:04 +0800</pubDate><guid>https://echowings.github.io/p/macos-update-time-via-ntpserver/</guid><description>&lt;h1 id="how-to-update-time-via-ntpserver">How to update time via ntpserver&lt;/h1>
-&lt;p>Today, My MBP is out of power. I cannot surfing internet. and the brower tell me my time was wrong. Then I checked my time in my MBB, I&amp;rsquo;m back in time jan 1, 2018. Wow, I got extra whole year time!&lt;/p>
-&lt;h1 id="majove-update-time">Majove update time&lt;/h1>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo sntp -sS time.asia.apple.com
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>When you&amp;rsquo;re getting this error&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kod_init_kod_db&lt;span class="o">()&lt;/span>: Cannot open KoD db file /var/db/ntp-kod: No such file or directory
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>You can solved the problems with:&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo touch /var/db/ntp-kod
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo chmod &lt;span class="m">666&lt;/span> /var/db/ntp-kod
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="disable-no-subscription-warning">Disable No subscription warning&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sed -i.bak &lt;span class="s2">&amp;#34;s/data.status !== &amp;#39;Active&amp;#39;/false/g&amp;#34;&lt;/span> /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> systemctl restart pveproxy.service
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="reference">Reference&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a class="link" href="https://apple.stackexchange.com/questions/117864/how-can-i-tell-if-my-mac-is-keeping-the-clock-updated-properly?noredirect=1&amp;amp;lq=1" target="_blank" rel="noopener"
->How can I tell if my Mac is keeping the clock updated properly?&lt;/a>&lt;/li>
-&lt;/ul></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ntp on Steve&#39;s Blog</title>
+    <link>https://echowings.github.io/tags/ntp/</link>
+    <description>Recent content in ntp on Steve&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 26 Dec 2018 09:26:04 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/ntp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Macos Update Time via Ntpserver</title>
+      <link>https://echowings.github.io/p/macos-update-time-via-ntpserver/</link>
+      <pubDate>Wed, 26 Dec 2018 09:26:04 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/macos-update-time-via-ntpserver/</guid>
+      <description>How to update time via ntpserver Today, My MBP is out of power. I cannot surfing internet. and the brower tell me my time was wrong. Then I checked my time in my MBB, I&amp;rsquo;m back in time jan 1, 2018. Wow, I got extra whole year time!
+Majove update time 1 sudo sntp -sS time.asia.apple.com When you&amp;rsquo;re getting this error
+1 2 kod_init_kod_db(): Cannot open KoD db file /var/db/ntp-kod: No such file or directory You can solved the problems with:</description>
+    </item>
+    
+  </channel>
+</rss>

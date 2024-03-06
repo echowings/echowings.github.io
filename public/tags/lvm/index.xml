@@ -1,274 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>lvm on Steve's Blog</title><link>https://echowings.github.io/tags/lvm/</link><description>Recent content in lvm on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 04 Sep 2020 09:11:30 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/lvm/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Extend All Available Disk to Local Data</title><link>https://echowings.github.io/p/how-to-extend-all-available-disk-to-local-data/</link><pubDate>Fri, 04 Sep 2020 09:11:30 +0800</pubDate><guid>https://echowings.github.io/p/how-to-extend-all-available-disk-to-local-data/</guid><description>&lt;h1 id="how-to-extend-all-available-disk-to-local-data">How to extend all available disk to local-data&lt;/h1>
-&lt;p>After install Proxmove VE, the local-data only have about 50GB disk availabe. But how to let all availabld disk space to the local-data? Here we go:&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;span class="lnt">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Remove local-data&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lvremove /dev/pve/data
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Extend all available disk to /dev/pve/root&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lvresize -l +100%FREE /dev/pve/root
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#recreate pve-root&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">resize2fs /dev/mapper/pve-root
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="reference">Reference&lt;/h2>
-&lt;ul>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> &lt;a class="link" href="https://artofawareness.wordpress.com/2017/03/06/proxmox-remove-lvm-local-data/" target="_blank" rel="noopener"
->Proxmox – Remove LVM local-data&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>How to Extend Lvm Allocted PE With Freee PE</title><link>https://echowings.github.io/p/how-to-extend-lvm-allocted-pe-with-freee-pe/</link><pubDate>Tue, 08 Jan 2019 11:47:31 +0800</pubDate><guid>https://echowings.github.io/p/how-to-extend-lvm-allocted-pe-with-freee-pe/</guid><description>&lt;h2 id="lvm-extend">LVM EXTEND&lt;/h2>
-&lt;p>How to extend lvm size use free PE&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># show volume group information&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">vgdisplay
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --- Volume group ---
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> VG Name ubuntu-vg
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> System ID
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Format lvm2
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Metadata Areas &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Metadata Sequence No &lt;span class="m">2&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> VG Access read/write
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> VG Status resizable
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> MAX LV &lt;span class="m">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Cur LV &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Open LV &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Max PV &lt;span class="m">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Cur PV &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Act PV &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> VG Size &amp;lt;99.00 GiB
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> PE Size 4.00 MiB
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Total PE &lt;span class="m">25343&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Alloc PE / Size &lt;span class="m">1024&lt;/span> / 4.00 GiB
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Free PE / Size &lt;span class="m">24319&lt;/span> / &amp;lt;95.00 GiB
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> VG UUID KblInT-Z6k6-1NM3-ybyV-eufy-y1vc-BiIoEM
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Remember &lt;code>24319&lt;/code> from &lt;code>Free PE / Size 24319 / &amp;lt;95.00 GiB&lt;/code>&lt;/p>
-&lt;h2 id="list-logical-volume">list logical volume&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">lvdisplay
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl"> --- Logical volume ---
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> LV Path /dev/ubuntu-vg/ubuntu-lv
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> LV Name ubuntu-lv
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> VG Name ubuntu-vg
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> LV UUID Pi0Id7-riMg-BtmN-sfdF-gIjX-KrCp-TxxCBt
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> LV Write Access read/write
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> LV Creation host, &lt;span class="nb">time&lt;/span> ubuntu-server, 2018-12-12 03:43:02 +0000
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> LV Status available
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># open 1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> LV Size 4.00 GiB
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Current LE &lt;span class="m">1024&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Segments &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Allocation inherit
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Read ahead sectors auto
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - currently &lt;span class="nb">set&lt;/span> to &lt;span class="m">256&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Block device 253:0
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Remember LV Path: &lt;code>/dev/ubuntu-vg/ubuntu-lv&lt;/code>&lt;/p>
-&lt;h2 id="extend-free-pe-to-lvm">Extend Free PE to lvm&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">lvextend -l +24319 /dev/ubuntu-vg/ubuntu-lv
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;span class="lnt">24
-&lt;/span>&lt;span class="lnt">25
-&lt;/span>&lt;span class="lnt">26
-&lt;/span>&lt;span class="lnt">27
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">root@template-ubutu1804:/home/autotest# vgdisplay
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --- Volume group ---
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> VG Name ubuntu-vg
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> System ID
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Format lvm2
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Metadata Areas &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Metadata Sequence No &lt;span class="m">3&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> VG Access read/write
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> VG Status resizable
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> MAX LV &lt;span class="m">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Cur LV &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Open LV &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Max PV &lt;span class="m">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Cur PV &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Act PV &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> VG Size &amp;lt;99.00 GiB
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> PE Size 4.00 MiB
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Total PE &lt;span class="m">25343&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Alloc PE / Size &lt;span class="m">25343&lt;/span> / &amp;lt;99.00 GiB
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Free PE / Size &lt;span class="m">0&lt;/span> / &lt;span class="m">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> VG UUID KblInT-Z6k6-1NM3-ybyV-eufy-y1vc-BiIoEM
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">resize2fs /dev/ubuntu-vg/ubuntu-lv
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">resize2fs 1.44.1 &lt;span class="o">(&lt;/span>24-Mar-2018&lt;span class="o">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Filesystem at /dev/ubuntu-vg/ubuntu-lv is mounted on /&lt;span class="p">;&lt;/span> on-line resizing required
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">old_desc_blocks&lt;/span> &lt;span class="o">=&lt;/span> 1, &lt;span class="nv">new_desc_blocks&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">13&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">The filesystem on /dev/ubuntu-vg/ubuntu-lv is now &lt;span class="m">25951232&lt;/span> &lt;span class="o">(&lt;/span>4k&lt;span class="o">)&lt;/span> blocks long.
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="check-volume-group-information">Check volume group information&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vgdisplay
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">root@template-ubutu1804:/home/autotest# vgdisplay
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --- Volume group ---
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> VG Name ubuntu-vg
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> System ID
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Format lvm2
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Metadata Areas &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Metadata Sequence No &lt;span class="m">3&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> VG Access read/write
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> VG Status resizable
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> MAX LV &lt;span class="m">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Cur LV &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Open LV &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Max PV &lt;span class="m">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Cur PV &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Act PV &lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> VG Size &amp;lt;99.00 GiB
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> PE Size 4.00 MiB
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Total PE &lt;span class="m">25343&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Alloc PE / Size &lt;span class="m">25343&lt;/span> / &amp;lt;99.00 GiB
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Free PE / Size &lt;span class="m">0&lt;/span> / &lt;span class="m">0&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>You will see &lt;code>Alloc PE&lt;/code> size is &lt;code>25343&lt;/code>, size of &lt;code>Free PE&lt;/code> is &lt;code>0&lt;/code>.&lt;/p>
-&lt;h2 id="brief-of-command">Brief of command&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vgdisplay
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lvdisplay
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lvextend -l +24319 /dev/ubuntu-vg/ubuntu-lv
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">resize2fs /dev/ubuntu-vg/ubuntu-lv
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">vgdisplay
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lvdisplay
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>lvm on Steve&#39;s Blog</title>
+    <link>https://echowings.github.io/tags/lvm/</link>
+    <description>Recent content in lvm on Steve&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 04 Sep 2020 09:11:30 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/lvm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Extend All Available Disk to Local Data</title>
+      <link>https://echowings.github.io/p/how-to-extend-all-available-disk-to-local-data/</link>
+      <pubDate>Fri, 04 Sep 2020 09:11:30 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-extend-all-available-disk-to-local-data/</guid>
+      <description>How to extend all available disk to local-data After install Proxmove VE, the local-data only have about 50GB disk availabe. But how to let all availabld disk space to the local-data? Here we go:
+1 2 3 4 5 6 7 8 # Remove local-data lvremove /dev/pve/data # Extend all available disk to /dev/pve/root lvresize -l +100%FREE /dev/pve/root #recreate pve-root resize2fs /dev/mapper/pve-root Reference Proxmox – Remove LVM local-data </description>
+    </item>
+    
+    <item>
+      <title>How to Extend Lvm Allocted PE With Freee PE</title>
+      <link>https://echowings.github.io/p/how-to-extend-lvm-allocted-pe-with-freee-pe/</link>
+      <pubDate>Tue, 08 Jan 2019 11:47:31 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-extend-lvm-allocted-pe-with-freee-pe/</guid>
+      <description>LVM EXTEND How to extend lvm size use free PE
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 # show volume group information vgdisplay --- Volume group --- VG Name ubuntu-vg System ID Format lvm2 Metadata Areas 1 Metadata Sequence No 2 VG Access read/write VG Status resizable MAX LV 0 Cur LV 1 Open LV 1 Max PV 0 Cur PV 1 Act PV 1 VG Size &amp;lt;99.</description>
+    </item>
+    
+  </channel>
+</rss>

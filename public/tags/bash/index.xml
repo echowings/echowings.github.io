@@ -1,123 +1,30 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>bash on Steve's Blog</title><link>https://echowings.github.io/tags/bash/</link><description>Recent content in bash on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 04 Feb 2023 08:43:35 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml"/><item><title>Learning Shell Programming 1</title><link>https://echowings.github.io/p/learning-shell-programming-1/</link><pubDate>Sat, 04 Feb 2023 08:43:35 +0800</pubDate><guid>https://echowings.github.io/p/learning-shell-programming-1/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=bcffb920" alt="Featured image of post Learning Shell Programming 1" />&lt;h1 id="01shell-programming">01.Shell programming&lt;/h1>
-&lt;h2 id="shell-create-and-running">Shell create and running&lt;/h2>
-&lt;ol>
-&lt;li>The first line of the shell script is to set the shell interpter.&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/bash
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ol start="2">
-&lt;li>
-&lt;p>&lt;code>source script-name&lt;/code> or &amp;ldquo;.&amp;rdquo; is to read or load which shell variable in the shell script.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>sequeues to load variables in the shell scripts .
-When we use command &lt;code>source ./file&lt;/code> or &lt;code>. file&lt;/code> to load varialbe. the shell will excuted in the same shell as we just run it in the same shell.&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;p>when we run &lt;code>sh shell_script.sh&lt;/code>, it will open a new shell interpter to run it. when the shell excute end. the shell will ended. and the variable will not be read into current we excuted.&lt;/p>
-&lt;h2 id="shell-tips">shell tips&lt;/h2>
-&lt;ol>
-&lt;li>Indicator the shell interpter at the 1st line of the shell script&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/bash
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>or&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/sh
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ol start="2">
-&lt;li>shell Add more informaton in the comments&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Date: 17:25 CST 2023-2-3&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Author: Create by Steve Dong&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Blog: https://echowings.github.io&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Description: This scriptes funciton is ...&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Version 1.0&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="environment-variable-initial-and-loading-config-file-sequques">environment variable initial and loading config file sequques&lt;/h2>
-&lt;ul>
-&lt;li>system user login the shell&lt;/li>
-&lt;/ul>
-&lt;script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js">
-var config = {
-startOnLoad:true,
-theme:'neutral',
-align:'left'
-};
-mermaid.initialize(config);
-&lt;/script>
-&lt;div class="mermaid">
-graph TD
-A[ /etc/profile ] --> B( /etc/profile.d )
-B --> C[ $HOME/.bash_profile ]
-C --> D[ $HOME/.bashrc ]
-D --> E[ /etc/bashrc ]
-&lt;/div>
-&lt;ul>
-&lt;li>nolgin interactive shell&lt;/li>
-&lt;li>runing script without interactive shell&lt;/li>
-&lt;/ul>
-&lt;script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js">
-var config = {
-startOnLoad:true,
-theme:'neutral',
-align:'left'
-};
-mermaid.initialize(config);
-&lt;/script>
-&lt;div class="mermaid">
-graph TD
-A[ $HOME/.bashrc ] --> B[ /etc/bashrc ]
-&lt;/div></description></item><item><title>How to Rename Vm Id on Pve</title><link>https://echowings.github.io/p/how-to-rename-vm-id-on-pve/</link><pubDate>Fri, 26 Mar 2021 15:23:43 +0800</pubDate><guid>https://echowings.github.io/p/how-to-rename-vm-id-on-pve/</guid><description>&lt;h1 id="how-to-rename-vmid-on-pve">How to rename VMID on PVE&lt;/h1>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;span class="lnt">8
-&lt;/span>&lt;span class="lnt">9
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">VMID&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">121&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\ &lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">NEW_VMID&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1001&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> &lt;span class="nv">POOL_NAME&lt;/span>&lt;span class="o">=&lt;/span>tank &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> qm unlock &lt;span class="nv">$VMID&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> qm stop &lt;span class="nv">$VMID&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> sed -i &lt;span class="s2">&amp;#34;s/&lt;/span>&lt;span class="nv">$VMID&lt;/span>&lt;span class="s2">/&lt;/span>&lt;span class="nv">$NEW_VMID&lt;/span>&lt;span class="s2">/g&amp;#34;&lt;/span> /etc/pve/qemu-server/&lt;span class="nv">$VMID&lt;/span>.conf &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> mv /etc/pve/qemu-server/&lt;span class="nv">$VMID&lt;/span>.conf /etc/pve/qemu-server/&lt;span class="nv">$NEW_VMID&lt;/span>.conf &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> rbd --pool &lt;span class="nv">$POOL_NAME&lt;/span> rename vm-&lt;span class="nv">$VMID&lt;/span>-disk-0 vm-&lt;span class="nv">$NEW_VMID&lt;/span>-disk-0 &lt;span class="o">&amp;amp;&amp;amp;&lt;/span>&lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> qm start &lt;span class="nv">$NEW_VMID&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bash on Steve&#39;s Blog</title>
+    <link>https://echowings.github.io/tags/bash/</link>
+    <description>Recent content in bash on Steve&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 04 Feb 2023 08:43:35 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Learning Shell Programming 1</title>
+      <link>https://echowings.github.io/p/learning-shell-programming-1/</link>
+      <pubDate>Sat, 04 Feb 2023 08:43:35 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/learning-shell-programming-1/</guid>
+      <description>01.Shell programming Shell create and running The first line of the shell script is to set the shell interpter. 1 #!/bin/bash source script-name or &amp;ldquo;.&amp;rdquo; is to read or load which shell variable in the shell script.
+sequeues to load variables in the shell scripts . When we use command source ./file or . file to load varialbe. the shell will excuted in the same shell as we just run it in the same shell.</description>
+    </item>
+    
+    <item>
+      <title>How to Rename Vm Id on Pve</title>
+      <link>https://echowings.github.io/p/how-to-rename-vm-id-on-pve/</link>
+      <pubDate>Fri, 26 Mar 2021 15:23:43 +0800</pubDate>
+      
+      <guid>https://echowings.github.io/p/how-to-rename-vm-id-on-pve/</guid>
+      <description>How to rename VMID on PVE 1 2 3 4 5 6 7 8 9 VMID=121 &amp;amp;&amp;amp; \ NEW_VMID=1001 &amp;amp;&amp;amp; \ POOL_NAME=tank &amp;amp;&amp;amp; \ qm unlock $VMID &amp;amp;&amp;amp; \ qm stop $VMID &amp;amp;&amp;amp; \ sed -i &amp;#34;s/$VMID/$NEW_VMID/g&amp;#34; /etc/pve/qemu-server/$VMID.conf &amp;amp;&amp;amp; \ mv /etc/pve/qemu-server/$VMID.conf /etc/pve/qemu-server/$NEW_VMID.conf &amp;amp;&amp;amp; \ rbd --pool $POOL_NAME rename vm-$VMID-disk-0 vm-$NEW_VMID-disk-0 &amp;amp;&amp;amp;\ qm start $NEW_VMID </description>
+    </item>
+    
+  </channel>
+</rss>
