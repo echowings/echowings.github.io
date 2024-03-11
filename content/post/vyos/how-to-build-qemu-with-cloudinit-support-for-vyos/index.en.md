@@ -6,9 +6,14 @@ image: https://picsum.photos/800/600.webp?random=d09996cd
 categories:
   - vyos
   - pve
+  - cloudinit
 tags:
   - vyos
   - qemu
+  - cloudinit
+  - build
+  - docker
+  - qcow2
 slug:
   - vyos
 layout: 
@@ -65,13 +70,13 @@ For me I perfer to Debian linux
         ```
   - Change vyos_qemu_img path from `/tmp` to `tmp`
     ```shell
-    vi 
+    vi qemu.yml 
     ```
-    vi qemu.yml
+    Change
     ```yaml
     vyos_qemu_img: "/tmp/vyos-{{ vyos_version }}{{ ci_tag  | default() }}-{{vyos_disk_size}}G-qemu.qcow2"
     ```
-    Change value to:
+    to:
     ```yaml
     vyos_qemu_img: "tmp/vyos-{{ vyos_version }}{{ ci_tag  | default() }}-{{vyos_disk_size}}G-qemu.qcow2"
     ```
