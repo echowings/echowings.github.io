@@ -63,7 +63,18 @@ For me I perfer to Debian linux
         # - download-iso
         - mount-iso
         ```
-
+  - Change vyos_qemu_img path from `/tmp` to `tmp`
+    ```shell
+    vi 
+    ```
+    vi qemu.yml
+    ```yaml
+    vyos_qemu_img: "/tmp/vyos-{{ vyos_version }}{{ ci_tag  | default() }}-{{vyos_disk_size}}G-qemu.qcow2"
+    ```
+    Change value to:
+    ```yaml
+    vyos_qemu_img: "tmp/vyos-{{ vyos_version }}{{ ci_tag  | default() }}-{{vyos_disk_size}}G-qemu.qcow2"
+    ```
 
 ## Download vyos iso file
   - Build or copy iso image to local
@@ -72,11 +83,25 @@ For me I perfer to Debian linux
     curl -fsSL https://xxxxxxx/vyos-1.3.6-amd64.iso -o tmp/vyos-1.3.6-amd64.iso
     ls /tmp/*.iso
     ```
+
+
+## Copy customized files into
+  - Copy file into files
+    ```bash
+    make
+
+    ```
+
 ## Build qcow2 image
   - Run docker
     ```shell
     #Downlaod dockerfile and run build environment in docker 
     wget https://raw.githubusercontent.com/vyos/vyos-vm-images/current/Dockerfile
+    # Build docker iamges
+    docker build --tag vyos-vm-images:latest -f ./Dockerfile .
+    ```
+    Run docker
+    ```bash
     docker run --rm -it --privileged -v $(pwd):/vm-build -v $(pwd)/images:/images -w /vm-build vyos-vm-images:latest bash
     ```
 
@@ -111,9 +136,24 @@ For me I perfer to Debian linux
   - Build qcow2 image with custom_files option
 
     ```shell
+    # 1.3.6
     ansible-playbook qemu.yml     \
       -e disk_size=2    \
       -e iso_local=tmp/vyos-1.3.6-amd64.iso    \
+      -e grub_console=serial    \
+      -e cloud_init=true    \
+      -e cloud_init_ds=NoCloud    \
+      -e guest_agent=qemu    \
+      -e enable_ssh=true \
+      -e custom_files=true
+
+    ```
+
+    ```shell
+    # 1.4.0-eap1
+    ansible-playbook qemu.yml     \
+      -e disk_size=2    \
+      -e iso_local=tmp/vyos-1.4.0-epa1-amd64.iso    \
       -e grub_console=serial    \
       -e cloud_init=true    \
       -e cloud_init_ds=NoCloud    \
