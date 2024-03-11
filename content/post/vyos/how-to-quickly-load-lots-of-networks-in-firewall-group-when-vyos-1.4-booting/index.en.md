@@ -19,6 +19,7 @@ slug:
 
 license: CC BY-NC-ND
 ---
+
 ## Download  file `/config/scripts/chinaipranges.txt`
 
 ```shell
@@ -99,3 +100,6 @@ fi
 ```shell
 sudo nft list set ip vyos_filter N_china-ip-ranges
 ```
+
+## Reference
+  - [How to load networks from a file to add them into the firewall group in vyos 1.4 with ntf command to replace removed ipset ](https://forum.vyos.io/t/how-to-load-networks-from-a-file-to-add-them-into-the-firewall-group-in-vyos-1-4-with-ntf-command-to-replace-removed-ipset/13997/2)
