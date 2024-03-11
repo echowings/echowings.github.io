@@ -28,7 +28,7 @@ curl https://raw.githubusercontent.com/pmkol/easymosdns/rules/china_ip_list.txt 
 ## Create file `/config/scripts/add-firewall-group.py`
 
 ```shell
-tee /config/scripts/add-firewall-group.py << "EOF"
+tee  /config/scripts/add-firewall-group.py << "EOF"
 #!/usr/bin/env python3
 import subprocess
 import sys
@@ -86,8 +86,16 @@ EOF
 ## Add loading ip script in  `/config/scripts/vyos-postconfig-bootup.script`
 
 ```shell
-tee  /config/scripts/vyos-postconfig-bootup.script << "EOF"
-cd /config/scripts \ && 
-python3 add-firewall-group.py  N_china-ip-ranges chinaipranges.txt
-EOF
+if ! grep -q "cd /config/scripts &&python3 add-firewall-group.py  N_china-ip-ranges chinaipranges.txt"  /config/scripts/vyos-postconfig-bootup.script
+then
+  echo "Not existed, append file"
+  echo "cd /config/scripts &&python3 add-firewall-group.py  N_china-ip-ranges chinaipranges.txt" >> /config/scripts/vyos-postconfig-bootup.script
+else
+  echo "Already existed"
+fi
+```
+## Check  network group command
+
+```shell
+sudo nft list set ip vyos_filter N_china-ip-ranges
 ```
