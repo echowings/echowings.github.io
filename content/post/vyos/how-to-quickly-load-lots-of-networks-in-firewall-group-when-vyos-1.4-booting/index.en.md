@@ -36,7 +36,8 @@ import sys
 import time
 
 def add_networks_in_batches(set_name, filename, batch_size=1000):
-    table_name = "vyos_filter"  # Fixed table name
+    #table_name = "vyos_filter"  # Fixed table name
+    table_names = [""vyos_filter", "vyos_mangle", "vyos_nat", "vyos_conntrack]
     total_added = 0  # Initialize counter for total added IPs
 
     start_time = time.time()  # Record the start time
@@ -48,7 +49,8 @@ def add_networks_in_batches(set_name, filename, batch_size=1000):
         for i in range(0, len(networks), batch_size):
             batch_networks = networks[i:i+batch_size]
             networks_string = ', '.join(batch_networks)
-            command = f"nft add element ip {table_name} {set_name} {{ {networks_string} }}"
+            for table_name in table_names:
+              command = f"nft add element ip {table_name} {set_name} {{ {networks_string} }}"
 
             subprocess.run(command, check=True, shell=True)
             print(f"Successfully added batch of networks to {set_name}")
