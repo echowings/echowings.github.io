@@ -37,7 +37,7 @@ import time
 
 def add_networks_in_batches(set_name, filename, batch_size=1000):
     #table_name = "vyos_filter"  # Fixed table name
-    table_names = [""vyos_filter", "vyos_mangle", "vyos_nat", "vyos_conntrack]
+    table_names = ["vyos_filter", "vyos_mangle", "vyos_nat", "vyos_conntrack"]
     total_added = 0  # Initialize counter for total added IPs
 
     start_time = time.time()  # Record the start time
@@ -46,11 +46,11 @@ def add_networks_in_batches(set_name, filename, batch_size=1000):
         with open(filename, 'r') as file:
             networks = [line.strip() for line in file if line.strip()]
 
-        for i in range(0, len(networks), batch_size):
+        for table_name in table_names:
+          for i in range(0, len(networks), batch_size):
             batch_networks = networks[i:i+batch_size]
             networks_string = ', '.join(batch_networks)
-            for table_name in table_names:
-              command = f"nft add element ip {table_name} {set_name} {{ {networks_string} }}"
+            command = f"nft add element ip {table_name} {set_name} {{ {networks_string} }}"
 
             subprocess.run(command, check=True, shell=True)
             print(f"Successfully added batch of networks to {set_name}")
@@ -101,12 +101,15 @@ fi
 
 ```shell
 # List all tables has network-group
-sudo nft list sets | grep -B  1  xxx
+sudo nft list sets | grep -B  1  chatgpt-ip-ranges
+```
 
+```shell
 # List 
 sudo nft list set ip vyos_filter N_china-ip-ranges
-
-
+sudo nft list set ip vyos_mangle N_china-ip-ranges
+sudo nft list set ip vyos_nat N_china-ip-ranges
+sudo nft list set ip vyos_conntrack N_china-ip-ranges
 ```
 
 ## Reference
