@@ -100,7 +100,13 @@ fi
 ## Check  network group command
 
 ```shell
+# List all tables has network-group
+sudo nft list sets | grep -B  1  xxx
+
+# List 
 sudo nft list set ip vyos_filter N_china-ip-ranges
+
+
 ```
 
 ## Reference
