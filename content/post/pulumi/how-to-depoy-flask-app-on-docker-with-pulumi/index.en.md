@@ -122,6 +122,5 @@ pulumi stack rm dev --yes
 ```
 
 ## Reference
-
-  - [First Steps with Pulumi](https://readmedium.com/en/https:/levelup.gitconnected.com/first-steps-with-pulumi-e6025eecece4)
+  - [First Steps with Flask. A Quick Tutorial to Deploy a Flask… | by Tobias Wissmueller | Medium](https://twissmueller.medium.com/first-steps-with-flask-dcf7325ad2c6)
   - [First Steps with Pulumi. The most minimal and functional… | by Tobias Wissmueller | Level Up Coding](https://levelup.gitconnected.com/first-steps-with-pulumi-e6025eecece4)
