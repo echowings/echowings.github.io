@@ -1,7 +1,7 @@
 ---
 title: "How to Create Synthetic Monitor With Pulumi Python"
 date: 2024-03-17T11:39:49+08:00
-draft: true
+draft: false
 image: https://picsum.photos/800/600.webp?random=d16575c4
 categories:
   - IAC
