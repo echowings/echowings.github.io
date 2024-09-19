@@ -27,4 +27,3 @@ license: CC BY-NC-ND
 
 ## Reference
   - https://gist.github.com/skoqaq/3f3e8f28e23c881143cef9cf49d821ff
-  - https://gist.github.com/skoqaq/3f3e8f28e23c881143cef9cf49d821ff
