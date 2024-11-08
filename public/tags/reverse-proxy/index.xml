@@ -1,19 +1,99 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Reverse Proxy on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/tags/reverse-proxy/</link>
-    <description>Recent content in Reverse Proxy on Steve&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 22 Dec 2023 21:18:39 +0800</lastBuildDate>
-    <atom:link href="https://echowings.github.io/tags/reverse-proxy/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to Setup Reverse Proxy With Iis</title>
-      <link>https://echowings.github.io/p/how-to-setup-reverse-proxy-with-iis/</link>
-      <pubDate>Tue, 06 Nov 2018 23:26:18 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-setup-reverse-proxy-with-iis/</guid>
-      <description>How to Setup Reverse proxy with IIS I testing it on Server 2016 with IIS 10 Install IIS,URL _REWRITE, ARR Install IIS. Download and install URL Rewrite Module 2.1 Download and install ARR-Application-request-routing Setting Reverse Proxy Select Root level in IIS management Click ‘Application Request Routing Cache’,then in the</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Reverse Proxy on Steve's Blog</title><link>https://echowings.github.io/tags/reverse-proxy/</link><description>Recent content in Reverse Proxy on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 06 Nov 2018 23:26:18 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/reverse-proxy/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Setup Reverse Proxy With Iis</title><link>https://echowings.github.io/p/how-to-setup-reverse-proxy-with-iis/</link><pubDate>Tue, 06 Nov 2018 23:26:18 +0800</pubDate><guid>https://echowings.github.io/p/how-to-setup-reverse-proxy-with-iis/</guid><description>&lt;h1 id="how-to-setup-reverse-proxy-with-iis">How to Setup Reverse proxy with IIS&lt;/h1>
+&lt;p>I testing it on Server 2016 with IIS 10&lt;/p>
+&lt;h2 id="install-iisurl-_rewrite-arr">Install IIS,URL _REWRITE, ARR&lt;/h2>
+&lt;ul>
+&lt;li>Install IIS.&lt;/li>
+&lt;li>Download and install &lt;a class="link" href="https://www.iis.net/downloads/microsoft/url-rewrite" target="_blank" rel="noopener"
+>URL Rewrite Module 2.1&lt;/a>&lt;/li>
+&lt;li>Download and install &lt;a class="link" href="https://www.iis.net/downloads/microsoft/application-request-routing" target="_blank" rel="noopener"
+>ARR-Application-request-routing&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="setting-reverse-proxy">Setting Reverse Proxy&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>Select Root level in IIS management&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Click ‘Application Request Routing Cache’,then in the right side, click “proxy | Server proxy Settings | Check on “Enable proxy” | save config.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Select website in IIS.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Click URL Rewrite&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Add a black Rule&lt;/p>
+&lt;pre>&lt;code>* Match URL:
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Requested URL&lt;/th>
+&lt;th>Using&lt;/th>
+&lt;th>Pattern&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Matches the pattern&lt;/td>
+&lt;td>Regular Expressions&lt;/td>
+&lt;td>&lt;code>^(.*)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;pre>&lt;code> * Conditions:
+&lt;/code>&lt;/pre>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Type&lt;/th>
+&lt;th>Value&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Logical grouping&lt;/td>
+&lt;td>Match ALL&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>input&lt;/td>
+&lt;td>&lt;code>{HTTP_HOST}&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Type&lt;/td>
+&lt;td>Matches the Pattern&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Patern&lt;/td>
+&lt;td>&lt;code>^xa-sys-svr:8080$&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;pre>&lt;code> * Server Variables:
+&lt;/code>&lt;/pre>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Type&lt;/th>
+&lt;th>Value&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Action Type&lt;/td>
+&lt;td>Rewrite&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Rewrite URL&lt;/td>
+&lt;td>&lt;code>http://www.cnblog.com/{R:1}&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="reference">Reference&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://my.oschina.net/tanyixiu/blog/123832" target="_blank" rel="noopener"
+>用IIS配置反向代理&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

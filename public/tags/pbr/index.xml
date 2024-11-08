@@ -1,26 +1,284 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Pbr on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/tags/pbr/</link>
-    <description>Recent content in Pbr on Steve&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Sun, 05 May 2024 14:18:08 +0800</lastBuildDate>
-    <atom:link href="https://echowings.github.io/tags/pbr/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to Quickly Load Lots of Networks in Firewall Group When Vyos 1.4 Booting</title>
-      <link>https://echowings.github.io/p/how-to-quickly-load-lots-of-networks-in-firewall-group-when-vyos-1.4-booting/</link>
-      <pubDate>Mon, 11 Mar 2024 16:16:58 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-quickly-load-lots-of-networks-in-firewall-group-when-vyos-1.4-booting/</guid>
-      <description>Download file /config/scripts/chinaipranges.txt 1 curl https://raw.githubusercontent.com/pmkol/easymosdns/rules/china_ip_list.txt | sed -En &amp;#39;/([0-9]+\.){3}[0-9]+/{s,,&amp;amp;,p}&amp;#39; &amp;gt; /config/scripts/chinaipranges.txt Create file /config/scripts/add-firewall-group.py 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 tee /config/scripts/add-firewall-group.</description>
-    </item>
-    <item>
-      <title>How to make Destination Base Routing With Vyos</title>
-      <link>https://echowings.github.io/p/how-to-make-destination-base-routing-with-vyos/</link>
-      <pubDate>Thu, 03 Sep 2020 16:36:31 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-make-destination-base-routing-with-vyos/</guid>
-      <description>How to make Destination Base Routing with Vyos I have 2 network interfaces. one for user access inboard network,another for user to access network aboard. How to make it work with vyos?&#xA;Make a network group 1 2 3 4 5 #Define a netwrok-group set firewall group network-group china-ip-ranges #Define lan network group set firewall group network-group lan-net-group network &amp;#39;192.168.11.0/24&amp;#39; set policy 1 2 3 4 5 set policy route network-shunt rule 20 destination group network-group &amp;#39;china-ip-ranges&amp;#39; set policy route network-shunt rule 20 set table &amp;#39;20&amp;#39; set policy route network-shunt rule 20 source group network-group &amp;#39;lan-net-group&amp;#39; set policy route network-shunt rule 30 set table &amp;#39;30&amp;#39; set policy route network-shunt rule 30 source group network-group &amp;#39;lan-net-group&amp;#39; Download and set the network-group with ipset Download and make a list for network-group loading when booting.</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pbr on Steve's Blog</title><link>https://echowings.github.io/tags/pbr/</link><description>Recent content in Pbr on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 11 Mar 2024 16:16:58 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/pbr/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Quickly Load Lots of Networks in Firewall Group When Vyos 1.4 Booting</title><link>https://echowings.github.io/p/how-to-quickly-load-lots-of-networks-in-firewall-group-when-vyos-1.4-booting/</link><pubDate>Mon, 11 Mar 2024 16:16:58 +0800</pubDate><guid>https://echowings.github.io/p/how-to-quickly-load-lots-of-networks-in-firewall-group-when-vyos-1.4-booting/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=d8d1c543" alt="Featured image of post How to Quickly Load Lots of Networks in Firewall Group When Vyos 1.4 Booting" />&lt;h2 id="download--file-configscriptschinaiprangestxt">Download file &lt;code>/config/scripts/chinaipranges.txt&lt;/code>&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">curl https://raw.githubusercontent.com/pmkol/easymosdns/rules/china_ip_list.txt &lt;span class="p">|&lt;/span> sed -En &lt;span class="s1">&amp;#39;/([0-9]+\.){3}[0-9]+/{s,,&amp;amp;,p}&amp;#39;&lt;/span> &amp;gt; /config/scripts/chinaipranges.txt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="create-file-configscriptsadd-firewall-grouppy">Create file &lt;code>/config/scripts/add-firewall-group.py&lt;/code>&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">tee /config/scripts/add-firewall-group.py &amp;lt;&amp;lt; &lt;span class="s2">&amp;#34;EOF&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#!/usr/bin/env python3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">import subprocess
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">import sys
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">import &lt;span class="nb">time&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">def add_networks_in_batches&lt;span class="o">(&lt;/span>set_name, filename, &lt;span class="nv">batch_size&lt;/span>&lt;span class="o">=&lt;/span>1000&lt;span class="o">)&lt;/span>:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#table_name = &amp;#34;vyos_filter&amp;#34; # Fixed table name&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">table_names&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">[&lt;/span>&lt;span class="s2">&amp;#34;vyos_filter&amp;#34;&lt;/span>, &lt;span class="s2">&amp;#34;vyos_mangle&amp;#34;&lt;/span>, &lt;span class="s2">&amp;#34;vyos_nat&amp;#34;&lt;/span>, &lt;span class="s2">&amp;#34;vyos_conntrack&amp;#34;&lt;/span>&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">total_added&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="c1"># Initialize counter for total added IPs&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">start_time&lt;/span> &lt;span class="o">=&lt;/span> time.time&lt;span class="o">()&lt;/span> &lt;span class="c1"># Record the start time&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> try:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> with open&lt;span class="o">(&lt;/span>filename, &lt;span class="s1">&amp;#39;r&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span> as file:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">networks&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">[&lt;/span>line.strip&lt;span class="o">()&lt;/span> &lt;span class="k">for&lt;/span> line in file &lt;span class="k">if&lt;/span> line.strip&lt;span class="o">()]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> table_name in table_names:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> i in range&lt;span class="o">(&lt;/span>0, len&lt;span class="o">(&lt;/span>networks&lt;span class="o">)&lt;/span>, batch_size&lt;span class="o">)&lt;/span>:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">batch_networks&lt;/span> &lt;span class="o">=&lt;/span> networks&lt;span class="o">[&lt;/span>i:i+batch_size&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">networks_string&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;, &amp;#39;&lt;/span>.join&lt;span class="o">(&lt;/span>batch_networks&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">command&lt;/span> &lt;span class="o">=&lt;/span> f&lt;span class="s2">&amp;#34;nft add element ip {table_name} {set_name} {{ {networks_string} }}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> subprocess.run&lt;span class="o">(&lt;/span>command, &lt;span class="nv">check&lt;/span>&lt;span class="o">=&lt;/span>True, &lt;span class="nv">shell&lt;/span>&lt;span class="o">=&lt;/span>True&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> print&lt;span class="o">(&lt;/span>f&lt;span class="s2">&amp;#34;Successfully added batch of networks to {set_name}&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">total_added&lt;/span> &lt;span class="o">+=&lt;/span> len&lt;span class="o">(&lt;/span>batch_networks&lt;span class="o">)&lt;/span> &lt;span class="c1"># Update count of added IPs&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> except subprocess.CalledProcessError as e:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> print&lt;span class="o">(&lt;/span>f&lt;span class="s2">&amp;#34;Error adding networks to {set_name}: {e}&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> except FileNotFoundError:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> print&lt;span class="o">(&lt;/span>f&lt;span class="s2">&amp;#34;File {filename} not found&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> except Exception as e:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> print&lt;span class="o">(&lt;/span>f&lt;span class="s2">&amp;#34;An error occurred: {e}&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">end_time&lt;/span> &lt;span class="o">=&lt;/span> time.time&lt;span class="o">()&lt;/span> &lt;span class="c1"># Record the end time&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">elapsed_time&lt;/span> &lt;span class="o">=&lt;/span> end_time - start_time &lt;span class="c1"># Calculate elapsed time&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Print summary&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> print&lt;span class="o">(&lt;/span>f&lt;span class="s2">&amp;#34;\nTotal of {total_added} networks were added to {set_name}.&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> print&lt;span class="o">(&lt;/span>f&lt;span class="s2">&amp;#34;Process took {elapsed_time:.2f} seconds.&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">def main&lt;span class="o">()&lt;/span>:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> len&lt;span class="o">(&lt;/span>sys.argv&lt;span class="o">)&lt;/span> !&lt;span class="o">=&lt;/span> 3:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> print&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;Usage: python3 test.py &amp;lt;set name&amp;gt; &amp;lt;filename&amp;gt;&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> sys.exit&lt;span class="o">(&lt;/span>1&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">set_name&lt;/span> &lt;span class="o">=&lt;/span> sys.argv&lt;span class="o">[&lt;/span>1&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">filename&lt;/span> &lt;span class="o">=&lt;/span> sys.argv&lt;span class="o">[&lt;/span>2&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> add_networks_in_batches&lt;span class="o">(&lt;/span>set_name, filename&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="nv">__name__&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;__main__&amp;#34;&lt;/span>:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> main&lt;span class="o">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">EOF
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="add-loading-ip-script-in--configscriptsvyos-postconfig-bootupscript">Add loading ip script in &lt;code>/config/scripts/vyos-postconfig-bootup.script&lt;/code>&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> ! grep -q &lt;span class="s2">&amp;#34;cd /config/scripts &amp;amp;&amp;amp;python3 add-firewall-group.py N_china-ip-ranges chinaipranges.txt&amp;#34;&lt;/span> /config/scripts/vyos-postconfig-bootup.script
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;Not existed, append file&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;cd /config/scripts &amp;amp;&amp;amp;python3 add-firewall-group.py N_china-ip-ranges chinaipranges.txt&amp;#34;&lt;/span> &amp;gt;&amp;gt; /config/scripts/vyos-postconfig-bootup.script
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;Already existed&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="check--network-group-command">Check network group command&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># List all tables has network-group&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo nft list sets &lt;span class="p">|&lt;/span> grep -B &lt;span class="m">1&lt;/span> chatgpt-ip-ranges
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># List &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo nft list &lt;span class="nb">set&lt;/span> ip vyos_filter N_china-ip-ranges
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo nft list &lt;span class="nb">set&lt;/span> ip vyos_mangle N_china-ip-ranges
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo nft list &lt;span class="nb">set&lt;/span> ip vyos_nat N_china-ip-ranges
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo nft list &lt;span class="nb">set&lt;/span> ip vyos_conntrack N_china-ip-ranges
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="reference">Reference&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://forum.vyos.io/t/how-to-load-networks-from-a-file-to-add-them-into-the-firewall-group-in-vyos-1-4-with-ntf-command-to-replace-removed-ipset/13997/2" target="_blank" rel="noopener"
+>How to load networks from a file to add them into the firewall group in vyos 1.4 with ntf command to replace removed ipset &lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>How to make Destination Base Routing With Vyos</title><link>https://echowings.github.io/p/how-to-make-destination-base-routing-with-vyos/</link><pubDate>Thu, 03 Sep 2020 16:36:31 +0800</pubDate><guid>https://echowings.github.io/p/how-to-make-destination-base-routing-with-vyos/</guid><description>&lt;h1 id="how-to-make-destination-base-routing-with-vyos">How to make Destination Base Routing with Vyos&lt;/h1>
+&lt;p>I have 2 network interfaces. one for user access inboard network,another for user to access network aboard. How to make it work with vyos?&lt;/p>
+&lt;h2 id="make-a-network-group">Make a network group&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Define a netwrok-group&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> firewall group network-group china-ip-ranges
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Define lan network group&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> firewall group network-group lan-net-group network &lt;span class="s1">&amp;#39;192.168.11.0/24&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="set-policy">set policy&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> policy route network-shunt rule &lt;span class="m">20&lt;/span> destination group network-group &lt;span class="s1">&amp;#39;china-ip-ranges&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> policy route network-shunt rule &lt;span class="m">20&lt;/span> &lt;span class="nb">set&lt;/span> table &lt;span class="s1">&amp;#39;20&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> policy route network-shunt rule &lt;span class="m">20&lt;/span> &lt;span class="nb">source&lt;/span> group network-group &lt;span class="s1">&amp;#39;lan-net-group&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> policy route network-shunt rule &lt;span class="m">30&lt;/span> &lt;span class="nb">set&lt;/span> table &lt;span class="s1">&amp;#39;30&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> policy route network-shunt rule &lt;span class="m">30&lt;/span> &lt;span class="nb">source&lt;/span> group network-group &lt;span class="s1">&amp;#39;lan-net-group&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="download-and-set-the-network-group-with-ipset">Download and set the network-group with ipset&lt;/h2>
+&lt;ul>
+&lt;li>Download and make a list for network-group loading when booting.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#create the update shell script&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cat &amp;gt; /config/scripts/generate_china_ip_address.sh &lt;span class="s">&amp;lt;&amp;lt;EOF
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">#!/bin/sh
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">wget -c http://ftp.apnic.net/stats/apnic/delegated-apnic-latest -O - | cat | awk -F &amp;#39;|&amp;#39; &amp;#39;/CN/&amp;amp;&amp;amp;/ipv4/ {print $4 &amp;#34;/&amp;#34; 32-log($5)/log(2)}&amp;#39; | cat &amp;gt; /config/chinaiprange.txt
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">EOF&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># make the script an run&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">chmod +x /config/scripts/generate_china_ip_address.sh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Run the script&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/config/scripts/generate_china_ip_address.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Create boot loading script&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cat &amp;gt;&amp;gt; /config/scripts/vyos-postconfig-bootup.script &lt;span class="s">&amp;lt;&amp;lt; EOF
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">for l in `cat /config/chinaiprange.txt`; do sudo ipset add china-ip-ranges $l;done
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">EOF&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="set-protocol">Set protocol&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> protocols static interface-route 0.0.0.0/0 next-hop-interface pppoe0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> protocols static interface-route 172.16.131.0/24 next-hop-interface wg01
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> protocols static table &lt;span class="m">20&lt;/span> interface-route 0.0.0.0/0 next-hop-interface pppoe0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> protocols static table &lt;span class="m">30&lt;/span> route 0.0.0.0/0 next-hop 172.16.131.1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="apply-pbr-policy-on-lan-interface">Apply PBR Policy on lan interface&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> interfaces bridge br0 policy route network-shunt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

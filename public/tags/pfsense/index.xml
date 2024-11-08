@@ -1,19 +1,403 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Pfsense on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/tags/pfsense/</link>
-    <description>Recent content in Pfsense on Steve&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 22 Dec 2023 21:18:39 +0800</lastBuildDate>
-    <atom:link href="https://echowings.github.io/tags/pfsense/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to Build Ipsec Site to Site Vpn With Vyos and Pfsense</title>
-      <link>https://echowings.github.io/p/how-to-build-ipsec-site-to-site-vpn-with-vyos-and-pfsense/</link>
-      <pubDate>Thu, 19 Dec 2019 14:36:09 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-build-ipsec-site-to-site-vpn-with-vyos-and-pfsense/</guid>
-      <description>How to build ipse site-to-site VPN with vyos and pfsense Vyos VS pfsense For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:&#xA;Hard to upgrade version, it manybe crashed Didn&amp;rsquo;t support API. Heavy loading and low performance. After try to replace pfsense to build all functions with vyos. It has a lot of pros:&#xA;Easy upgrade and rollback Support http and python api Support ansible deploy Command line operation,just like juniper and cisco.</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pfsense on Steve's Blog</title><link>https://echowings.github.io/tags/pfsense/</link><description>Recent content in Pfsense on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 19 Dec 2019 14:36:09 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/pfsense/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Build Ipsec Site to Site Vpn With Vyos and Pfsense</title><link>https://echowings.github.io/p/how-to-build-ipsec-site-to-site-vpn-with-vyos-and-pfsense/</link><pubDate>Thu, 19 Dec 2019 14:36:09 +0800</pubDate><guid>https://echowings.github.io/p/how-to-build-ipsec-site-to-site-vpn-with-vyos-and-pfsense/</guid><description>&lt;h1 id="how-to-build-ipse-site-to-site-vpn-with-vyos-and-pfsense">How to build ipse site-to-site VPN with vyos and pfsense&lt;/h1>
+&lt;h2 id="vyos-vs-pfsense">Vyos VS pfsense&lt;/h2>
+&lt;p>For build all kinds of network functions like nat,firewall, site-to-site vpn , dial in vpn with pfsense.It works well. But it has some Crons:&lt;/p>
+&lt;ol>
+&lt;li>Hard to upgrade version, it manybe crashed&lt;/li>
+&lt;li>Didn&amp;rsquo;t support API.&lt;/li>
+&lt;li>Heavy loading and low performance.&lt;/li>
+&lt;/ol>
+&lt;p>After try to replace pfsense to build all functions with vyos. It has a lot of pros:&lt;/p>
+&lt;ol>
+&lt;li>Easy upgrade and rollback&lt;/li>
+&lt;li>Support http and python api&lt;/li>
+&lt;li>Support ansible deploy&lt;/li>
+&lt;li>Command line operation,just like juniper and cisco.&lt;/li>
+&lt;/ol>
+&lt;p>Today I will show you how to build ipsec site-to-site vpn with vyos and pfsense&lt;/p>
+&lt;h2 id="prerequest">Prerequest&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>SITE A&lt;/th>
+&lt;th>SITE B&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>WAN ADDRESS&lt;/td>
+&lt;td>&lt;code>1.1.1.1&lt;/code>&lt;/td>
+&lt;td>&lt;code>2.2.2.2&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>WAN Interface&lt;/td>
+&lt;td>&lt;code>eth0&lt;/code>&lt;/td>
+&lt;td>&lt;code>eth0&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>LAN ADDRESS&lt;/td>
+&lt;td>&lt;code>192.168.1.1/24&lt;/code>&lt;/td>
+&lt;td>&lt;code>192.168.2.1/24&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>LAN NETWORK&lt;/td>
+&lt;td>&lt;code>192.168.1.0/24&lt;/code>&lt;/td>
+&lt;td>&lt;code>192.168.2.0/24&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>LAN Interface&lt;/td>
+&lt;td>&lt;code>eth1&lt;/code>&lt;/td>
+&lt;td>&lt;code>eth1&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>OS&lt;/td>
+&lt;td>&lt;code>Vyos&lt;/code>&lt;/td>
+&lt;td>&lt;code>pfsense&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Pre-Shared Key&lt;/td>
+&lt;td>&lt;code>*#JCenaoewaoi0298J299*8&amp;amp;^(%9))_&amp;amp;&amp;amp;&lt;/code>&lt;/td>
+&lt;td>&lt;code>*#JCenaoewaoi0298J299*8&amp;amp;^(%9))_&amp;amp;&amp;amp;&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="configure-vyos">Configure vyos&lt;/h2>
+&lt;p>Configure &lt;code>Site A&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">configure
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec ipsec-interfaces interface eth0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec ike-group IKE-Default dead-peer-detection action &lt;span class="s1">&amp;#39;hold&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec ike-group IKE-Default dead-peer-detection interval &lt;span class="s1">&amp;#39;30&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec ike-group IKE-Default dead-peer-detection timeout &lt;span class="s1">&amp;#39;120&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec ike-group IKE-Default ikev2-reauth &lt;span class="s1">&amp;#39;no&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec ike-group IKE-Default key-exchange &lt;span class="s1">&amp;#39;ikev2&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec ike-group IKE-Default lifetime &lt;span class="s1">&amp;#39;10800&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec ike-group IKE-Default mobike &lt;span class="s1">&amp;#39;disable&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec ike-group IKE-Default proposal &lt;span class="m">1&lt;/span> dh-group &lt;span class="s1">&amp;#39;14&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec ike-group IKE-Default proposal &lt;span class="m">1&lt;/span> encryption &lt;span class="s1">&amp;#39;aes256gcm128&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec ike-group IKE-Default proposal &lt;span class="m">1&lt;/span> &lt;span class="nb">hash&lt;/span> &lt;span class="s1">&amp;#39;sha256&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec esp-group ESP-Default compression &lt;span class="s1">&amp;#39;disable&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec esp-group ESP-Default lifetime &lt;span class="s1">&amp;#39;3600&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec esp-group ESP-Default mode &lt;span class="s1">&amp;#39;tunnel&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec esp-group ESP-Default pfs &lt;span class="s1">&amp;#39;dh-group14&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec esp-group ESP-Default proposal &lt;span class="m">1&lt;/span> encryption &lt;span class="s1">&amp;#39;aes256gcm128&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec esp-group ESP-Default proposal &lt;span class="m">1&lt;/span> &lt;span class="nb">hash&lt;/span> &lt;span class="s1">&amp;#39;sha256&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec site-to-site peer 2.2.2.2 authentication id &lt;span class="s1">&amp;#39;1.1.1.1&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec site-to-site peer 2.2.2.2 authentication mode &lt;span class="s1">&amp;#39;pre-shared-secret&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec site-to-site peer 2.2.2.2 authentication pre-shared-secret &lt;span class="s1">&amp;#39;*#JCenaoewaoi0298J299*8&amp;amp;^(%9))_&amp;amp;&amp;amp;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec site-to-site peer 2.2.2.2 authentication remote-id &lt;span class="s1">&amp;#39;2.2.2.2&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec site-to-site peer 2.2.2.2 connection-type &lt;span class="s1">&amp;#39;initiate&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec site-to-site peer 2.2.2.2 ike-group &lt;span class="s1">&amp;#39;IKE-Default&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec site-to-site peer 2.2.2.2 ikev2-reauth &lt;span class="s1">&amp;#39;inherit&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec site-to-site peer 2.2.2.2 local-address &lt;span class="s1">&amp;#39;1.1.1.1&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec site-to-site peer 2.2.2.2 tunnel &lt;span class="m">0&lt;/span> esp-group &lt;span class="s1">&amp;#39;ESP-Default&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec site-to-site peer 2.2.2.2 tunnel &lt;span class="m">0&lt;/span> &lt;span class="nb">local&lt;/span> prefix &lt;span class="s1">&amp;#39;192.168.1.0/24&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> vpn ipsec site-to-site peer 2.2.2.2 tunnel &lt;span class="m">0&lt;/span> remote prefix &lt;span class="s1">&amp;#39;192.168.2.0/24&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="configure-pfsense">Configure pfsense&lt;/h2>
+&lt;p>Configure &lt;code>Site B&lt;/code>&lt;/p>
+&lt;ol>
+&lt;li>After login pfsense click &lt;code>VPN&lt;/code> | &lt;code>IPsec&lt;/code>;&lt;/li>
+&lt;li>Then click &amp;lsquo;Add P1` button.&lt;/li>
+&lt;li>configuraton as show below&lt;/li>
+&lt;/ol>
+&lt;h3 id="add-p1">Add P1&lt;/h3>
+&lt;h2 id="general-information">General Information&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Key&lt;/th>
+&lt;th>Value&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>Disabled&lt;/code>&lt;/td>
+&lt;td>uncheck&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Key Exchange version&lt;/code>&lt;/td>
+&lt;td>IKEv2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Internet Protocol&lt;/td>
+&lt;td>IPv4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Interfae&lt;/td>
+&lt;td>WAN&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Remote Gateway&lt;/td>
+&lt;td>1.1.1.1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Description&lt;/td>
+&lt;td>SITE-A-VPN&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="phase-1-proposal-authentication">Phase 1 Proposal (Authentication)&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Key&lt;/th>
+&lt;th>Value&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Authentication Method&lt;/td>
+&lt;td>Mutual PSK&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>My identifier&lt;/td>
+&lt;td>My IP address&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Peer identifier&lt;/td>
+&lt;td>Peer IP address&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Pre-Shared Key&lt;/td>
+&lt;td>&lt;code>*#JCenaoewaoi0298J299*8&amp;amp;^(%9))_&amp;amp;&amp;amp;&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="phase-1-proposalencryption-algorithm">Phase 1 Proposal(Encryption Algorithm)&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Key&lt;/th>
+&lt;th>Algorithm&lt;/th>
+&lt;th>Key length&lt;/th>
+&lt;th>Hash&lt;/th>
+&lt;th>DH Group&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Encryption Algorithm&lt;/td>
+&lt;td>AES256-GCM&lt;/td>
+&lt;td>128 bits&lt;/td>
+&lt;td>SHA256&lt;/td>
+&lt;td>14(2048bit)&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Key&lt;/th>
+&lt;th>Value&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Lifetime(Seconds)&lt;/td>
+&lt;td>28800&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="advanced-options">Advanced Options&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>KEY&lt;/th>
+&lt;th>VALUE&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Disable rekey&lt;/td>
+&lt;td>uncheck&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Margintime(Seconds&lt;/td>
+&lt;td>black&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Disable Reauth&lt;/td>
+&lt;td>uncheck&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Responder Only&lt;/td>
+&lt;td>Uncheck&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>MOBIKE&lt;/td>
+&lt;td>Disable&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Split connections&lt;/td>
+&lt;td>uncheck&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Dead Peer Dection&lt;/td>
+&lt;td>&amp;lsquo;Check on&amp;rsquo; Enable DPD&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Delay&lt;/td>
+&lt;td>120&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Max failures&lt;/td>
+&lt;td>30&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="add-p2">Add P2&lt;/h3>
+&lt;h2 id="general-information-1">General Information&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Key&lt;/th>
+&lt;th>Value&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Disable&lt;/td>
+&lt;td>unchecked&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Mode&lt;/td>
+&lt;td>Tunnel IPv4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Local network&lt;/td>
+&lt;td>Network 192.168.2.0/24&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>NAT/BINAT translation&lt;/td>
+&lt;td>None&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Remote Network&lt;/td>
+&lt;td>Network 192.168.1.0/24&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Description&lt;/td>
+&lt;td>Site A&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="phase-2-proposalsakey-exchange">Phase 2 Proposal(SA/Key Exchange)&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Key&lt;/th>
+&lt;th>Value&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Protocol&lt;/td>
+&lt;td>ESP&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Encryption Algorithms&lt;/td>
+&lt;td>AES256-GCM 128 bit&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hash Algorithms&lt;/td>
+&lt;td>SHA256&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>PFS key group&lt;/td>
+&lt;td>14(2048 bit)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Lifttime&lt;/td>
+&lt;td>3600&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="advanced-configuration">Advanced Configuration&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Key&lt;/th>
+&lt;th>Value&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Automatically ping host&lt;/td>
+&lt;td>192.168.1.1&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="change-firewall-to-allow-ipsec-vpn-connection">Change firewall to allow ipsec vpn connection&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Protocol&lt;/th>
+&lt;th>Source&lt;/th>
+&lt;th>Port&lt;/th>
+&lt;th>Destination&lt;/th>
+&lt;th>Port&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Ipv4 UDP&lt;/td>
+&lt;td>1.1.1.1&lt;/td>
+&lt;td>*&lt;/td>
+&lt;td>WAN address&lt;/td>
+&lt;td>500(ISAKMP)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>IPv4 UDP&lt;/td>
+&lt;td>1.1.1.1&lt;/td>
+&lt;td>*&lt;/td>
+&lt;td>WAN address&lt;/td>
+&lt;td>4500(IPsec NAT-T)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Ipv4 ESP&lt;/td>
+&lt;td>1.1.1.1&lt;/td>
+&lt;td>*&lt;/td>
+&lt;td>WAN address&lt;/td>
+&lt;td>*&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&amp;mdash;The End&amp;mdash;&lt;/p></description></item></channel></rss>

@@ -1,47 +1,924 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Python on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/tags/python/</link>
-    <description>Recent content in Python on Steve&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Sun, 05 May 2024 14:18:08 +0800</lastBuildDate>
-    <atom:link href="https://echowings.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to Create Synthetic Monitor With Pulumi Python</title>
-      <link>https://echowings.github.io/p/how-to-create-synthetic-monitor-with-pulumi-python/</link>
-      <pubDate>Sun, 17 Mar 2024 11:39:49 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-create-synthetic-monitor-with-pulumi-python/</guid>
-      <description>Prepared environment Install pulumi install python install poetry Create pulumi project Create pulumi project 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 ## create folder mkdir newrelic-pulumi-example &amp;amp;&amp;amp; cd newrelic-plumi-example # crate pulumi project without active python venv pulumi new python --name pulumi-newrelic-simple-mintor --stack dev --description &amp;#34;implement new relic sythetic simple monitoring&amp;#34; -y --generate-only --force ## Chang python virtual environment path sed -i &amp;#39;s/venv/.</description>
-    </item>
-    <item>
-      <title>How to Depoy Flask App on Docker With Pulumi</title>
-      <link>https://echowings.github.io/p/how-to-depoy-flask-app-on-docker-with-pulumi/</link>
-      <pubDate>Wed, 13 Mar 2024 16:08:20 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-depoy-flask-app-on-docker-with-pulumi/</guid>
-      <description>Create flask app Create project directory 1 mkdir -p pulumi-docker/flask-first-steps/app create Dockerfile 1 2 3 4 tee pulumi-docker/flask-first-steps/Dockerfile &amp;lt;&amp;lt; &amp;#34;EOF&amp;#34; FROM tiangolo/uwsgi-nginx-flask:python3.8 COPY ./app /app EOF Create main.py 1 2 3 4 5 6 7 8 9 10 11 12 tee pulumi-docker/flask-first-steps/app/main.py &amp;lt;&amp;lt; &amp;#34;EOF&amp;#34; from flask import Flask app = Flask(__name__) @app.route(&amp;#39;/&amp;#39;) def hello_world(): return &amp;#39;Hello, World!&amp;#39; if __name__ == &amp;#34;__main__&amp;#34;: # Only for debugging while developing app.run(host=&amp;#39;0.0.0.0&amp;#39;, debug=True, port=80) EOF Option: Run app in docker 1 2 3 4 cd docker build -t myflaskservice .</description>
-    </item>
-    <item>
-      <title>How to Send Email With Sendgrid Api</title>
-      <link>https://echowings.github.io/p/how-to-send-email-with-sendgrid-api/</link>
-      <pubDate>Thu, 07 Mar 2024 14:47:50 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-send-email-with-sendgrid-api/</guid>
-      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 import sendgrid #import os from sendgrid.helpers.mail import Mail, Email, To, Content #export SENDGRID_API_KEY=&amp;#34;API_KEY&amp;#34; #echo $SENDGRID_API_KEY SENDGRID_API_KEY=&amp;#34;API_KEY&amp;#34; print(SENDGRID_API_KEY) #sg = sendgrid.SendGridAPIClient(api_key=os.environ.get(SENDGRID_API_KEY)) sg = sendgrid.SendGridAPIClient(api_key=SENDGRID_API_KEY) from_email = Email(&amp;#34;sender@sender.com&amp;#34;) # Change to your verified sender to_email = To(&amp;#34;receiver@receiver.com&amp;#34;) # Change to your recipient subject = &amp;#34;Sending with SendGrid is Fun&amp;#34; content = Content(&amp;#34;text/plain&amp;#34;, &amp;#34;and easy to do anywhere, even with Python&amp;#34;) mail = Mail(from_email, to_email, subject, content) # Get a JSON-ready representation of the Mail object mail_json = mail.</description>
-    </item>
-    <item>
-      <title>Learning Flask 01</title>
-      <link>https://echowings.github.io/p/learning-flask-01/</link>
-      <pubDate>Tue, 25 Dec 2018 06:11:03 +0800</pubDate>
-      <guid>https://echowings.github.io/p/learning-flask-01/</guid>
-      <description>learning Flask 01 Installation and configure of anaconda Installaltion homebrew 1 ruby -e &amp;#34;$ (curl - fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;#34; Installation of pyenv 1 2 # Installing pyenv brew install pyenv Install anaconda 2 and anaconda 3 Download anaconda from here </description>
-    </item>
-    <item>
-      <title>Python Development 01</title>
-      <link>https://echowings.github.io/p/python-development-01/</link>
-      <pubDate>Thu, 29 Nov 2018 00:28:31 +0800</pubDate>
-      <guid>https://echowings.github.io/p/python-development-01/</guid>
-      <description>Python Development python开发笔记-01-python开发入门 安装ptyhon开发工具和包 安装ubuntu 16.04 &amp;hellip;pass&amp;hellip; 安装系统相关依赖包 build-essen</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on Steve's Blog</title><link>https://echowings.github.io/tags/python/</link><description>Recent content in Python on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 17 Mar 2024 11:39:49 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Create Synthetic Monitor With Pulumi Python</title><link>https://echowings.github.io/p/how-to-create-synthetic-monitor-with-pulumi-python/</link><pubDate>Sun, 17 Mar 2024 11:39:49 +0800</pubDate><guid>https://echowings.github.io/p/how-to-create-synthetic-monitor-with-pulumi-python/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=d16575c4" alt="Featured image of post How to Create Synthetic Monitor With Pulumi Python" />&lt;h2 id="prepared-environment">Prepared environment&lt;/h2>
+&lt;h3 id="install-pulumi">Install pulumi&lt;/h3>
+&lt;h3 id="install-python">install python&lt;/h3>
+&lt;h3 id="install-poetry">install poetry&lt;/h3>
+&lt;h2 id="create-pulumi-project">Create pulumi project&lt;/h2>
+&lt;h3 id="create-pulumi-project-1">Create pulumi project&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## create folder&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkdir newrelic-pulumi-example &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="nb">cd&lt;/span> newrelic-plumi-example
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># crate pulumi project without active python venv&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pulumi new python --name pulumi-newrelic-simple-mintor --stack dev --description &lt;span class="s2">&amp;#34;implement new relic sythetic simple monitoring&amp;#34;&lt;/span> -y --generate-only --force
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Chang python virtual environment path &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/venv/.venv/g&amp;#39;&lt;/span> Pulumi.yaml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># init poetry&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">poetry init
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># install pulumi-newrelic module&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">poetry add pulumi-newrelic
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Install poetry&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">poetry install --no-root
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># active virtual environment&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span> poetry env list --full-path &lt;span class="p">|&lt;/span> grep Activated &lt;span class="p">|&lt;/span> cut -d&lt;span class="s1">&amp;#39; &amp;#39;&lt;/span> -f1 &lt;span class="k">)&lt;/span>&lt;span class="s2">/bin/activate&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="modify-__main__py">Modify &lt;strong>main&lt;/strong>.py&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">tee __main__.py &amp;lt;&amp;lt; &lt;span class="s2">&amp;#34;EOF&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;A Python Pulumi program&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">import pulumi
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">import pulumi_newrelic as newrelic
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Create a New Relic Synthetic Monitor&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">synthetic_monitor&lt;/span> &lt;span class="o">=&lt;/span> newrelic.synthetics.Monitor&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;example-monitor&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">uri&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;https://echowings.github.io&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">type&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;SIMPLE&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">period&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;EVERY_MINUTE&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">status&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;ENABLED&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">locations_publics&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">[&lt;/span>&lt;span class="s2">&amp;#34;AWS_US_WEST_1&amp;#34;&lt;/span>, &lt;span class="s2">&amp;#34;AWS_EU_WEST_2&amp;#34;&lt;/span> &lt;span class="o">]&lt;/span> &lt;span class="c1"># Locations from where thechecks are mode&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Export the ID of the monitor&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pulumi.export&lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;monitor_id&amp;#39;&lt;/span>, synthetic_monitor.id&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">EOF
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="set-pulumi-api">Set pulumi api&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">pulumi config &lt;span class="nb">set&lt;/span> newrelic:apiKey xxxx
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pulumi config &lt;span class="nb">set&lt;/span> newrelic:accountId xxxx
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="create-dev-stack">Create dev stack&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">pulumi stack init dev --yes
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="preview-and-check-pulumi-code">Preview and check pulumi code&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">pulumi preview
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="pulumi-deploy">Pulumi deploy&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">pulumi up --yes
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="pulumi-destroy">Pulumi destroy&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">pulumi destroy --yes
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="pulumi-delete-stack">Pulumi delete stack&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">pulumi stack rm dev --yes
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="reference">Reference&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://stackoverflow.com/questions/60580332/poetry-virtual-environment-already-activated" target="_blank" rel="noopener"
+>how to active poetry venv&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.pulumi.com/registry/packages/newrelic/api-docs/synthetics/monitor/" target="_blank" rel="noopener"
+>pulumi synthetics example&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.pulumi.com/ai/answers/5MKZJ3agrJDTQQuXEsNFD6/creating-a-new-relic-monitor-using-python" target="_blank" rel="noopener"
+>create a new relic monitor using python&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>How to Depoy Flask App on Docker With Pulumi</title><link>https://echowings.github.io/p/how-to-depoy-flask-app-on-docker-with-pulumi/</link><pubDate>Wed, 13 Mar 2024 16:08:20 +0800</pubDate><guid>https://echowings.github.io/p/how-to-depoy-flask-app-on-docker-with-pulumi/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=99bb0d91" alt="Featured image of post How to Depoy Flask App on Docker With Pulumi" />&lt;h2 id="create-flask-app">Create flask app&lt;/h2>
+&lt;h3 id="create-project-directory">Create project directory&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">mkdir -p pulumi-docker/flask-first-steps/app
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="create-dockerfile">create Dockerfile&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">tee pulumi-docker/flask-first-steps/Dockerfile &amp;lt;&amp;lt; &lt;span class="s2">&amp;#34;EOF&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">FROM tiangolo/uwsgi-nginx-flask:python3.8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">COPY ./app /app
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">EOF
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="create-mainpy">Create main.py&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">tee pulumi-docker/flask-first-steps/app/main.py &amp;lt;&amp;lt; &lt;span class="s2">&amp;#34;EOF&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">from flask import Flask
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">app&lt;/span> &lt;span class="o">=&lt;/span> Flask&lt;span class="o">(&lt;/span>__name__&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">@app.route&lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;/&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">def hello_world&lt;span class="o">()&lt;/span>:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="s1">&amp;#39;Hello, World!&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="nv">__name__&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;__main__&amp;#34;&lt;/span>:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Only for debugging while developing&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> app.run&lt;span class="o">(&lt;/span>&lt;span class="nv">host&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;0.0.0.0&amp;#39;&lt;/span>, &lt;span class="nv">debug&lt;/span>&lt;span class="o">=&lt;/span>True, &lt;span class="nv">port&lt;/span>&lt;span class="o">=&lt;/span>80&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">EOF
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="option-run-app-in-docker">Option: Run app in docker&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker build -t myflaskservice .
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker run -d --name myflaskservice -p 8080:80 myflaskservice
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">curl 127.0.0.1:8080
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="create-pulumi-project">Create Pulumi project&lt;/h2>
+&lt;h3 id="create-pulumi-project-at-the-same-folder-level">Create pulumi project at the same folder level&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mkdir -p pulumi-docker/pulumi-first-steps/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> pulumi-docker/pulumi-first-steps/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pulumi login --local
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pulumi new python
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="change-requirementstxt">change requirements.txt&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">tee requirements.txt &amp;lt;&amp;lt; &lt;span class="s2">&amp;#34;EOF&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pulumi&amp;gt;&lt;span class="o">=&lt;/span>2.0.0,&amp;lt;3.0.0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pulumi-docker
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">protobuf&lt;/span>&lt;span class="o">==&lt;/span>3.20.*
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">EOF
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="active-venv-and-install-python-modules">Active venv and install python modules&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> venv/bin/activate
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pip3 install -r requirements.txt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="modify-__main__py">Modify &lt;code>__main__.py&lt;/code>&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">tee __main__.py &amp;lt;&amp;lt; &lt;span class="s2">&amp;#34;EOF&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;A Python Pulumi program&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">import pulumi
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">import pulumi_docker as docker
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">myapp_build&lt;/span> &lt;span class="o">=&lt;/span> docker.DockerBuild&lt;span class="o">(&lt;/span>&lt;span class="nv">context&lt;/span>&lt;span class="o">=&lt;/span>f&lt;span class="s1">&amp;#39;../flask-first-steps&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">myapp_image&lt;/span> &lt;span class="o">=&lt;/span> docker.Image&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;myapp_image&amp;#34;&lt;/span>, &lt;span class="nv">image_name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;myapp&amp;#39;&lt;/span>, &lt;span class="nv">build&lt;/span>&lt;span class="o">=&lt;/span>myapp_build, &lt;span class="nv">skip_push&lt;/span>&lt;span class="o">=&lt;/span>True&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">container_ports&lt;/span> &lt;span class="o">=&lt;/span> docker.ContainerPortArgs&lt;span class="o">(&lt;/span>&lt;span class="nv">internal&lt;/span>&lt;span class="o">=&lt;/span>80, &lt;span class="nv">external&lt;/span>&lt;span class="o">=&lt;/span>8080&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">myapp_container&lt;/span> &lt;span class="o">=&lt;/span> docker.Container&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;myapp_container&amp;#34;&lt;/span>, &lt;span class="nv">image&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;myapp&amp;#34;&lt;/span>, &lt;span class="nv">ports&lt;/span>&lt;span class="o">=[&lt;/span> container_ports&lt;span class="o">])&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">EOF
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="container-get-started">container get started&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">PULUMI_CONFIG_PASSPHRASE&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pulumi up --yes
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="check-docker">Check docker&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker ps
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">curl localhost:8080
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="clean-up">Clean up&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pulumi destroy --yes
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pulumi stack rm dev --yes
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="reference">Reference&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://twissmueller.medium.com/first-steps-with-flask-dcf7325ad2c6" target="_blank" rel="noopener"
+>First Steps with Flask. A Quick Tutorial to Deploy a Flask… | by Tobias Wissmueller | Medium&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://levelup.gitconnected.com/first-steps-with-pulumi-e6025eecece4" target="_blank" rel="noopener"
+>First Steps with Pulumi. The most minimal and functional… | by Tobias Wissmueller | Level Up Coding&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>How to Send Email With Sendgrid Api</title><link>https://echowings.github.io/p/how-to-send-email-with-sendgrid-api/</link><pubDate>Thu, 07 Mar 2024 14:47:50 +0800</pubDate><guid>https://echowings.github.io/p/how-to-send-email-with-sendgrid-api/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=240a31f5" alt="Featured image of post How to Send Email With Sendgrid Api" />&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">sendgrid&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#import os&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">sendgrid.helpers.mail&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">Mail&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Email&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">To&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Content&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#export SENDGRID_API_KEY=&amp;#34;API_KEY&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#echo $SENDGRID_API_KEY&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">SENDGRID_API_KEY&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;API_KEY&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">SENDGRID_API_KEY&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#sg = sendgrid.SendGridAPIClient(api_key=os.environ.get(SENDGRID_API_KEY))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">sg&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">sendgrid&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">SendGridAPIClient&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">api_key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">SENDGRID_API_KEY&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">from_email&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Email&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;sender@sender.com&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># Change to your verified sender&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">to_email&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">To&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;receiver@receiver.com&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># Change to your recipient&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">subject&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;Sending with SendGrid is Fun&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">content&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Content&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;text/plain&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;and easy to do anywhere, even with Python&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">mail&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Mail&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">from_email&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">to_email&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">subject&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">content&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Get a JSON-ready representation of the Mail object&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">mail_json&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mail&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Send an HTTP POST request to /mail/send&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">response&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">sg&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">mail&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">send&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">post&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">request_body&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">mail_json&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">status_code&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">headers&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Learning Flask 01</title><link>https://echowings.github.io/p/learning-flask-01/</link><pubDate>Tue, 25 Dec 2018 06:11:03 +0800</pubDate><guid>https://echowings.github.io/p/learning-flask-01/</guid><description>&lt;h1 id="learning-flask-01">learning Flask 01&lt;/h1>
+&lt;h2 id="installation-and-configure-of-anaconda">Installation and configure of anaconda&lt;/h2>
+&lt;h3 id="installaltion-homebrew">Installaltion homebrew&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ruby -e &lt;span class="s2">&amp;#34;&lt;/span>$&lt;span class="s2"> (curl - fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="installation-of-pyenv">Installation of pyenv&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Installing pyenv&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">brew install pyenv
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="install-anaconda-2-and-anaconda-3">Install anaconda 2 and anaconda 3&lt;/h3>
+&lt;ul>
+&lt;li>Download anaconda from &lt;a class="link" href="https://www.anaconda.com/download/" target="_blank" rel="noopener"
+>here&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Python Development 01</title><link>https://echowings.github.io/p/python-development-01/</link><pubDate>Thu, 29 Nov 2018 00:28:31 +0800</pubDate><guid>https://echowings.github.io/p/python-development-01/</guid><description>&lt;h1 id="python-development">Python Development&lt;/h1>
+&lt;h2 id="python开发笔记-01-python开发入门">python开发笔记-01-python开发入门&lt;/h2>
+&lt;h3 id="安装ptyhon开发工具和包">安装ptyhon开发工具和包&lt;/h3>
+&lt;h3 id="安装ubuntu-1604">安装ubuntu 16.04&lt;/h3>
+&lt;p>&amp;hellip;pass&amp;hellip;&lt;/p>
+&lt;h3 id="安装系统相关依赖包">安装系统相关依赖包&lt;/h3>
+&lt;p>build-essential包可以批量安装Python在Ubuntu上进行构建时所需的全部工具(gcc,make等).&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get -y update &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> sudo apt-get -y upgrade &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> sudo apt-get install -y build-essential &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> libsqlite3-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> libreadline6-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> libgdbm-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> zlib1g-dev &lt;span class="se">\ &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> libbz2-dev &lt;span class="se">\ &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> sqlite3 &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> tk-dev &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> zip &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> libssl-dev
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="安装python相关依赖包">安装python相关依赖包&lt;/h3>
+&lt;p>install python-dev和pip&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Install python-dev&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt-get -y install python-dev
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#install pip (before python 2.7.9)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://bootstrap.pypa.io/get-pip.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo python get-pip.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#在python 3.4和python2.7.9之后加入了 ensurepip模块,也就是安装python的时候默认捆绑安装pip,更新pip使用&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#python -m ensurepip -U&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo python -m pip install --upgrade pip
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>##使用get-pip.py来安装最新版本的pip&lt;/p>
+&lt;ul>
+&lt;li>查看python版本&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$python&lt;/span> -V
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Python 2.7.12
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>查看pip版本&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ pip --version
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pip 18.1 from /usr/local/lib/python2.7/dist-packages/pip &lt;span class="o">(&lt;/span>python 2.7&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>通过pip安装开发用的软件&lt;/li>
+&lt;li>安装virtualenv包&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$sudo&lt;/span> pip insetall virtualenv
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Collecting virtualenv
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Downloading https://files.pythonhosted.org/packages/7c/17/9b7b6cddfd255388b58c61e25b091047f6814183e1d63741c8df8dcd65a2/virtualenv-16.1.0-py2.py3-none-any.whl &lt;span class="o">(&lt;/span>1.9MB&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 100% &lt;span class="p">|&lt;/span>&lt;span class="c1">################################| 1.9MB 2.5MB/s&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Installing collected packages: virtualenv
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Successfully installed virtualenv-16.1.0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">virtualenv 的使用方法 virtualenv是搭建虚拟的python执行环境.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> $ virtualenv --version
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 16.1.0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>查看当前pip 安装的软件&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl"> $ pip freeze
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">ansible&lt;/span>&lt;span class="o">==&lt;/span>2.7.2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">asn1crypto&lt;/span>&lt;span class="o">==&lt;/span>0.24.0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">bcrypt&lt;/span>&lt;span class="o">==&lt;/span>3.1.4
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">cffi&lt;/span>&lt;span class="o">==&lt;/span>1.11.5
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">cryptography&lt;/span>&lt;span class="o">==&lt;/span>2.4.2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">enum34&lt;/span>&lt;span class="o">==&lt;/span>1.1.6
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">idna&lt;/span>&lt;span class="o">==&lt;/span>2.7
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ipaddress&lt;/span>&lt;span class="o">==&lt;/span>1.0.22
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">Jinja2&lt;/span>&lt;span class="o">==&lt;/span>2.10
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">MarkupSafe&lt;/span>&lt;span class="o">==&lt;/span>1.1.0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">paramiko&lt;/span>&lt;span class="o">==&lt;/span>2.4.2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">pyasn1&lt;/span>&lt;span class="o">==&lt;/span>0.4.4
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">pycparser&lt;/span>&lt;span class="o">==&lt;/span>2.19
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PyNaCl&lt;/span>&lt;span class="o">==&lt;/span>1.3.0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PyYAML&lt;/span>&lt;span class="o">==&lt;/span>3.13
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">six&lt;/span>&lt;span class="o">==&lt;/span>1.11.0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">virtualenv&lt;/span>&lt;span class="o">==&lt;/span>16.1.0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>搭建virtualenv环境&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">$mkdir&lt;/span> ~/work
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">$cd&lt;/span> ~/work
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">$virtualenv&lt;/span> venv
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> New python executable in /home/user1/work/venv/bin/python
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Installing setuptools, pip, wheel...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">done&lt;/span>.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>启动virtualenv 环境&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">$source&lt;/span> venv/bin/activate
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">(&lt;/span>venv&lt;span class="o">)&lt;/span> user1@python-dev-env:~/work$
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#使用pip freeze查看已经安装pip包为空&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">$pip&lt;/span> freeze
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>关闭virtualenv环境&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ deactivate
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>删除virtualenv&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">rm -R vienv
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="多python版本使用">多python版本使用&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">user1@python-dev-env:~/work$ python3 -V
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Python 3.5.2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">user1@python-dev-env:~/work$ python2 -V
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Python 2.7.12
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">使用virtualenv 设置不同版本的python
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkdir -p ~/work/venv-python2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkdir -p ~/work/venv-python3
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> ~/work
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">virtualenv --python&lt;span class="o">=&lt;/span>/usr/bin/python2 venv-python2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">virtualenv --python&lt;span class="o">=&lt;/span>/usr/bin/python3 venv-python3
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> venv-python2/bin/activate
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">python -V
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pip freeze
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">deactivate
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> venv-python3/bin/activate
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">python -V
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">deactivate
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="mercurial-为什么使用-mecurial-python编写易于上手内置web管理支持bitbucket用tortoisehg等gui客户端---安装mercurial">Mercurial 为什么使用 mecurial, python编写.易于上手.内置web管理,支持bitbucket,用TortoiseHg等GUI客户端. - 安装Mercurial&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$sudo&lt;/span> pip install mercurial
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Collecting mercurial
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Downloading https://files.pythonhosted.org/packages/6a/f4/4c3d3a2bf950f3261f506284952e23cee2b62e50eb8974aa961228a95e8a/mercurial-4.8.tar.gz &lt;span class="o">(&lt;/span>6.9MB&lt;span class="o">)&lt;/span> 100% &lt;span class="p">|&lt;/span>&lt;span class="c1">################################| 6.9MB 1.3MB/s Installing collected packages: mercurial Running setup.py install for mercurial … done Successfully installed mercurial-4.8 &lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>安装zsh&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt-get install zsh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sh -c &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># vi ~/.zhsrc&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">plugins&lt;/span>&lt;span class="o">=(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git bundler dotenv osx rake rbenv ruby mercurial &lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ZSH_THEME&lt;/span>&lt;span class="o">=&lt;/span>“agnoster”
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>查看Mercurial版本&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl"> user1@python-dev-env:~$ hg --version
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Mercurial Distributed SCM &lt;span class="o">(&lt;/span>version 4.8&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">(&lt;/span>see https://mercurial-scm.org &lt;span class="k">for&lt;/span> more information&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Copyright &lt;span class="o">(&lt;/span>C&lt;span class="o">)&lt;/span> 2005-2018 Matt Mackall and others
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> This is free software&lt;span class="p">;&lt;/span> see the &lt;span class="nb">source&lt;/span> &lt;span class="k">for&lt;/span> copying conditions. There is NO
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> warranty&lt;span class="p">;&lt;/span> not even &lt;span class="k">for&lt;/span> MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>创建版本库&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>创建Mercurial的环境设置文件.在主目录下创建.hgrc文件, 括号内的称为节(Section),如[ui]用来设置usernme的属性.username会想版本哭提交时候记录在日志里&lt;/li>
+&lt;li>[Extensions]用来激活Mercurial附属的扩展工具,将扩展工具名写入[extensions],我们就可以使用该工具了.有一些工具不但要在Extension中设置,还要在pager中设置pager属性&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vi ~/.hgrc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>[ui] username=bpbook bpbook@beproud.jp [extensions] color= pager= [pager] pager=LESS=‘FSRX’ less&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl"> &lt;span class="n">mercurial&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">mkdir&lt;/span> &lt;span class="o">~/&lt;/span>&lt;span class="n">hgtest&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">cd&lt;/span> &lt;span class="o">~/&lt;/span>&lt;span class="n">hgtest&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">hg&lt;/span> &lt;span class="n">init&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">touch&lt;/span> &lt;span class="n">test&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">txt&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">hg&lt;/span> &lt;span class="n">status&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">?&lt;/span> &lt;span class="n">test&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">txt&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># ？代表没有添加到hg库里、M标示修改, A标示有添加&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 添加文件　 hg add&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">hg&lt;/span> &lt;span class="n">add&lt;/span> &lt;span class="n">test&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">txt&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">hg&lt;/span> &lt;span class="n">status&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">A&lt;/span> &lt;span class="n">test&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">txt&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 提交文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">$&lt;/span>&lt;span class="n">hg&lt;/span> &lt;span class="n">commit&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">test&lt;/span> &lt;span class="n">commit&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#在打开的编辑器中,填写commit,然后保存退出,完成提交&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">修改&lt;/span>&lt;span class="o">~/.&lt;/span>&lt;span class="n">hgrc&lt;/span> &lt;span class="p">,&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="n">ui&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="n">节添加&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>&lt;span class="n">ui&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">editor&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">vim&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">$&lt;/span> &lt;span class="n">echo&lt;/span> &lt;span class="err">$&lt;/span>&lt;span class="n">EDITOR&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">vim&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># hg staus 查看提交后的状态&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">hg&lt;/span> &lt;span class="n">status&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#查看差别&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">$&lt;/span> &lt;span class="n">hg&lt;/span> &lt;span class="n">diff&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 撤销编辑(未提交的内容)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">$&lt;/span> &lt;span class="n">hg&lt;/span> &lt;span class="n">revert&lt;/span> &lt;span class="n">test&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">txt&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 撤销已经提交的内容&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">$&lt;/span> &lt;span class="n">hg&lt;/span> &lt;span class="n">commit&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="n">amend&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="python代码编辑器">python代码编辑器&lt;/h3>
+&lt;ul>
+&lt;li>vim&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-vim" data-lang="vim">&lt;span class="line">&lt;span class="cl">&lt;span class="c">&amp;#34; 将“Tab”替换为“空格”&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">setl&lt;/span> &lt;span class="nx">expandtab&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&amp;#34; 将“Tab”的“缩进幅度”改为 4&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">setl&lt;/span> &lt;span class="nx">tabstop&lt;/span>&lt;span class="p">=&lt;/span>&lt;span class="m">4&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">“ &lt;span class="nx">自动缩进时的&lt;/span>“&lt;span class="nx">缩进幅度&lt;/span>”&lt;span class="nx">改为&lt;/span> &lt;span class="m">4&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">setl&lt;/span> &lt;span class="nx">shiftwidth&lt;/span>&lt;span class="p">=&lt;/span>&lt;span class="m">4&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">“ &lt;span class="nx">按下键盘&lt;/span>“&lt;span class="nx">Tab&lt;/span>”&lt;span class="nx">键时插入的空格数&lt;/span> “ &lt;span class="nx">这里设置为&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="nx">就可以插入&lt;/span>“&lt;span class="nx">tabstop&lt;/span>”&lt;span class="nx">中设置的空格数了&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">setl&lt;/span> &lt;span class="nx">softtabstop&lt;/span>&lt;span class="p">=&lt;/span>&lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">“ &lt;span class="nx">保存时删除行尾的空格&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">autocmd&lt;/span> &lt;span class="nx">BufWritePre&lt;/span> * :%&lt;span class="nx">s&lt;/span>&lt;span class="sr">/\s+$/&lt;/span>/&lt;span class="nx">ge&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">“&lt;span class="m">80&lt;/span> &lt;span class="nx">个字符换行&lt;/span> &lt;span class="nx">setlocal&lt;/span> &lt;span class="nx">textwidth&lt;/span>&lt;span class="p">=&lt;/span>&lt;span class="m">80&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>install neobundle.vim&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">cd&lt;/span> ~
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh &lt;span class="p">|&lt;/span> sh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> vim ~/.vimrc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> NeoBundle &lt;span class="s1">&amp;#39;nvie/vim-flake8&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>pbd调试&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl"> def add&lt;span class="o">(&lt;/span>x, y&lt;span class="o">)&lt;/span>:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> x + y
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">x&lt;/span>&lt;span class="o">=&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> import pdb&lt;span class="p">;&lt;/span> pdb.set_trace&lt;span class="o">()&lt;/span> &lt;span class="nv">x&lt;/span> &lt;span class="o">=&lt;/span> add&lt;span class="o">(&lt;/span>1, 2&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$python&lt;/span> pdbtest.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;gt; pdbtest.py&lt;span class="o">(&lt;/span>7&lt;span class="o">)&lt;/span>&amp;lt;module&amp;gt;&lt;span class="o">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> -&amp;gt; &lt;span class="nv">x&lt;/span> &lt;span class="o">=&lt;/span> add&lt;span class="o">(&lt;/span>1, 2&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">(&lt;/span>Pdb&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

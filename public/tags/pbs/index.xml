@@ -1,26 +1,198 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Pbs on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/tags/pbs/</link>
-    <description>Recent content in Pbs on Steve&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 22 Dec 2023 21:18:39 +0800</lastBuildDate>
-    <atom:link href="https://echowings.github.io/tags/pbs/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to Install Pbs2.3 on Debian11</title>
-      <link>https://echowings.github.io/p/how-to-install-pbs2.3-on-debian11/</link>
-      <pubDate>Fri, 24 Mar 2023 11:10:21 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-install-pbs2.3-on-debian11/</guid>
-      <description>How-to-install-PBS-on-debian-11 Change network name from enp* to eth* 1 2 3 cp /etc/default/grub /etc/default/grub-bak sed -i &amp;#39;/GRUB_CMDLINE_LINUX=/s/&amp;#34;$/ net.ifnames=0 biosdevname=0&amp;#34;/&amp;#39; /etc/default/grub sed -i &amp;#39;s/enp1s0/eth0/&amp;#39; /etc/network/interfaces Then reboot your server&#xA;change sourcelist to utsc 1 2 3 4 5 6 cp /etc/apt/sources.list /etc/apt/sources.list-bak wget https://mirrors.ustc.edu.cn/repogen/conf/debian-https-4-bullseye -O /etc/apt/sources.list cat /etc/apt/sources.list apt update &amp;amp;&amp;amp; apt -y dist-upgrade apt install -y neovim net-tools 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 ipv4_addr=$(ip -4 route get 8.</description>
-    </item>
-    <item>
-      <title>How to Install Pbs on Debian 10</title>
-      <link>https://echowings.github.io/p/how-to-install-pbs-on-debian-10/</link>
-      <pubDate>Thu, 11 Mar 2021 16:58:45 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-install-pbs-on-debian-10/</guid>
-      <description>How to Install PBS on Debian 10 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF cat &amp;lt;&amp;lt; EOF &amp;gt; /etc/apt/sources.list deb https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free deb https://mirrors.</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pbs on Steve's Blog</title><link>https://echowings.github.io/tags/pbs/</link><description>Recent content in Pbs on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 24 Mar 2023 11:10:21 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/pbs/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Install Pbs2.3 on Debian11</title><link>https://echowings.github.io/p/how-to-install-pbs2.3-on-debian11/</link><pubDate>Fri, 24 Mar 2023 11:10:21 +0800</pubDate><guid>https://echowings.github.io/p/how-to-install-pbs2.3-on-debian11/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=244bc190" alt="Featured image of post How to Install Pbs2.3 on Debian11" />&lt;h1 id="how-to-install-pbs-on-debian-11">How-to-install-PBS-on-debian-11&lt;/h1>
+&lt;h2 id="change-network-name-from-enp-to-eth">Change network name from enp* to eth*&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cp /etc/default/grub /etc/default/grub-bak
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;/GRUB_CMDLINE_LINUX=/s/&amp;#34;$/ net.ifnames=0 biosdevname=0&amp;#34;/&amp;#39;&lt;/span> /etc/default/grub
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/enp1s0/eth0/&amp;#39;&lt;/span> /etc/network/interfaces
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Then reboot your server&lt;/p>
+&lt;h2 id="change-sourcelist-to-utsc">change sourcelist to utsc&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cp /etc/apt/sources.list /etc/apt/sources.list-bak
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://mirrors.ustc.edu.cn/repogen/conf/debian-https-4-bullseye -O /etc/apt/sources.list
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cat /etc/apt/sources.list
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt update &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> apt -y dist-upgrade
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt install -y neovim net-tools
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ipv4_addr&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>ip -4 route get 8.8.8.8 &lt;span class="p">|&lt;/span> awk &lt;span class="o">{&lt;/span>&lt;span class="s1">&amp;#39;print $7&amp;#39;&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="p">|&lt;/span> tr -d &lt;span class="s1">&amp;#39;\n&amp;#39;&lt;/span>&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="nv">$ipv4_addr&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s2">&amp;#34;s/127.0.1.1/&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">ipv4_addr&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/g&amp;#34;&lt;/span> /etc/hosts
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cat /etc/hosts
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">hostname --ip-address
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Add psb no subscriont list&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Option 1: Offical mirrors&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">tee /etc/apt/sources.list.d/pbs-no-subscription.list &amp;lt;&amp;lt; &lt;span class="s2">&amp;#34;EOF&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">deb http://download.proxmox.com/debian/pbs bullseye pbs-no-subscription
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">EOF
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Option 2: utsc mirros&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">tee /etc/apt/sources.list.d/pbs-no-subscription.list &amp;lt;&amp;lt; &lt;span class="s2">&amp;#34;EOF&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">deb https://mirrors.ustc.edu.cn/proxmox/debian/pbs bullseye pbs-no-subscription
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">EOF
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt update
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt -y dist-upgrade
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Install PBS server&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt install proxmox-backup
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Remove enterprise sourcelist&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rm -rf /etc/apt/sources.list.d/pbs-enterprise.list
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Disable subscription alert&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i.backup -z &lt;span class="s2">&amp;#34;s/res === null || res === undefined || \!res || res\n\t\t\t.data.status.toLowerCase() \!== &amp;#39;active&amp;#39;/false/g&amp;#34;&lt;/span> /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> systemctl restart proxmox-backup-proxy
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="reference">Reference&lt;/h2>
+&lt;ol>
+&lt;li>&lt;a class="link" href="https://www.vultr.com/docs/how-to-install-proxmox-backup-server-on-debian-11-2488/" target="_blank" rel="noopener"
+>How to Install Proxmox Backup Server on Debian 11&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://dannyda.com/2020/11/13/how-to-remove-you-do-not-have-a-valid-subscription-for-this-server-from-proxmox-backup-server-pbs-1-0-1/" target="_blank" rel="noopener"
+>How to: Remove “You do not have a valid subscription for this server….” from Proxmox Backup Server (PBS) 1.0-1 to 2.3-2 and up&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>How to Install Pbs on Debian 10</title><link>https://echowings.github.io/p/how-to-install-pbs-on-debian-10/</link><pubDate>Thu, 11 Mar 2021 16:58:45 +0800</pubDate><guid>https://echowings.github.io/p/how-to-install-pbs-on-debian-10/</guid><description>&lt;h1 id="how-to-install-pbs-on-debian-10">How to Install PBS on Debian 10&lt;/h1>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">LANGUAGE&lt;/span>&lt;span class="o">=&lt;/span>en_US.UTF-8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">LANG&lt;/span>&lt;span class="o">=&lt;/span>en_US.UTF-8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">LC_ALL&lt;/span>&lt;span class="o">=&lt;/span>en_US.UTF-8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#locale-gen en_US.UTF-8&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cat &amp;gt;&amp;gt; /etc/environment &lt;span class="s">&amp;lt;&amp;lt;EOF
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">LC_ALL=en_US.UTF-8
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">LANG=en_US.UTF-8
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">EOF&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cat &lt;span class="s">&amp;lt;&amp;lt; EOF &amp;gt; /etc/apt/sources.list
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">deb https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">deb-src https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">deb https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">deb-src https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">deb https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">deb-src https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">EOF&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt update &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> apt dist-upgrade -y
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt install -y net-tools dnsutils vim firmware-linux-nonfree
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">CODENAME&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="sb">`&lt;/span>cat /etc/os-release &lt;span class="p">|&lt;/span>grep CODENAME &lt;span class="p">|&lt;/span>cut -f &lt;span class="m">2&lt;/span> -d &lt;span class="s2">&amp;#34;=&amp;#34;&lt;/span>&lt;span class="sb">`&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;deb https://mirrors.ustc.edu.cn/proxmox/debian/pbs &lt;/span>&lt;span class="nv">$CODENAME&lt;/span>&lt;span class="s2"> pbs-no-subscription&amp;#34;&lt;/span> &amp;gt; /etc/apt/sources.list.d/pbs-no-subscription.list
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://mirrors.ustc.edu.cn/proxmox/debian/proxmox-ve-release-6.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-6.x.gpg
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt update &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> apt full-upgrade -y
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt install -y proxmox-backup-server
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rm -rf /etc/apt/sources.list.d/pbs-enterprise.list
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rm -rf /etc/apt/sources.list.d/ceph.list
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt update &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> apt -y dist-ugprade
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

@@ -1,26 +1,713 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Kubernetes on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/categories/kubernetes/</link>
-    <description>Recent content in Kubernetes on Steve&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 22 Dec 2023 21:18:39 +0800</lastBuildDate>
-    <atom:link href="https://echowings.github.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Application Scheduling and Lifecycle Mangement</title>
-      <link>https://echowings.github.io/p/application-scheduling-and-lifecycle-mangement/</link>
-      <pubDate>Thu, 17 Nov 2022 15:47:56 +0800</pubDate>
-      <guid>https://echowings.github.io/p/application-scheduling-and-lifecycle-mangement/</guid>
-      <description>This article describs how to use kubernetes deployments to deploy pods, scale pods, perform rolling updates and rollbacks, carry out resource management, and use ConfigMaps to configurepods using kubectl command and YAML definitions.&#xA;Run a container Cretae a pod using am imperative command Create pods with kubectl command 1 kubectl run &amp;lt;pod-name&amp;gt; --image=&amp;lt;image-name:image-tag&amp;gt; for instance:&#xA;1 kubectl run nginx-pod --image=nginx:alpine Check the pod&amp;rsquo;s status 1 kubectl describe pod nginx-pod Create pods with declarative management Create a yaml file</description>
-    </item>
-    <item>
-      <title>Working With Etcd</title>
-      <link>https://echowings.github.io/p/working-with-etcd/</link>
-      <pubDate>Tue, 15 Nov 2022 18:32:33 +0800</pubDate>
-      <guid>https://echowings.github.io/p/working-with-etcd/</guid>
-      <description>Working with Etcd Today, we will learn how to interactve with etcd . to backup and restore the etcd database. First thing first, let&amp;rsquo;s check the etcd pod name in our kubernetes cluster. Let&amp;rsquo;s go!&#xA;Check etcd pod name Run the command on master node to get the etcd pod name&#xA;1 kubectl get pods -n kube-system output:&#xA;1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 root@ubuntu-k8s-master:/home/ubuntu# kubectl get pods -n kube-system NAME READY STATUS RESTARTS AGE calico-kube-controllers-7b8458594b-5d84q 1/1 Running 86 (104m ago) 26h calico-node-2l8mt 1/1 Running 2 (104m ago) 2d17h calico-node-hrfjc 1/1 Running 2 (105m ago) 2d17h calico-node-rkwth 1/1 Running 5 (105m ago) 2d17h coredns-64897985d-cb85v 1/1 Running 1 (104m ago) 26h coredns-64897985d-fp25w 1/1 Running 1 (105m ago) 26h etcd-ubuntu-k8s-master 1/1 Running 73 (17m ago) 2d18h kube-apiserver-ubuntu-k8s-master 1/1 Running 63 (15m ago) 26h kube-controller-manager-ubuntu-k8s-master 1/1 Running 8 (105m ago) 26h kube-proxy-5xrhj 1/1 Running 2 (105m ago) 26h kube-proxy-qqkbz 1/1 Running 1 (105m ago) 26h kube-proxy-t7l2p 1/1 Running 1 (104m ago) 26h kube-scheduler-ubuntu-k8s-master 1/1 Running 7 (105m ago) 26h metrics-server-7cf8b65d65-wnvtd 1/1 Running 2 (105m ago) 2d17h My single kubernetes cluster has etcd pod named etcd-ubuntu-k8s-master</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubernetes on Steve's Blog</title><link>https://echowings.github.io/categories/kubernetes/</link><description>Recent content in Kubernetes on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 17 Nov 2022 15:47:56 +0800</lastBuildDate><atom:link href="https://echowings.github.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml"/><item><title>Application Scheduling and Lifecycle Mangement</title><link>https://echowings.github.io/p/application-scheduling-and-lifecycle-mangement/</link><pubDate>Thu, 17 Nov 2022 15:47:56 +0800</pubDate><guid>https://echowings.github.io/p/application-scheduling-and-lifecycle-mangement/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=0d188417" alt="Featured image of post Application Scheduling and Lifecycle Mangement" />&lt;p>This article describs how to use kubernetes deployments to deploy pods, scale pods, perform rolling updates and rollbacks, carry out resource management, and use ConfigMaps to configurepods using &lt;code>kubectl&lt;/code> command and YAML definitions.&lt;/p>
+&lt;h2 id="run-a-container">Run a container&lt;/h2>
+&lt;h3 id="cretae-a-pod-using-am-imperative-command">Cretae a pod using am imperative command&lt;/h3>
+&lt;h4 id="create-pods-with-kubectl-command">Create pods with &lt;code>kubectl&lt;/code> command&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubectl run &amp;lt;pod-name&amp;gt; --image&lt;span class="o">=&lt;/span>&amp;lt;image-name:image-tag&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>for instance:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubectl run nginx-pod --image&lt;span class="o">=&lt;/span>nginx:alpine
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="check-the-pods-status">Check the pod&amp;rsquo;s status&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubectl describe pod nginx-pod
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="create-pods-with-declarative-management">Create pods with declarative management&lt;/h3>
+&lt;p>Create a yaml file&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">apiVersion&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">v1&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">kind&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Pod&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">metadata&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">nginx&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">spec&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">containers&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">nginx&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">nginx:alpine&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">ports&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">containerPort&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="m">80&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>To create pods with kubectl apply -f file&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubectl apply -f &amp;lt;your-spec&amp;gt;.yaml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="run-busybox">run busybox&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubctl run busybox --rm -it --image&lt;span class="o">=&lt;/span>busybox /bin/sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="export-yaml-file-with---dry-run">export yaml file with &amp;ndash;dry-run&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubectl run nginx --image&lt;span class="o">=&lt;/span>nginx:alpine --dry-run -o yaml &amp;gt; nginx-sample.yaml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kubectl apply nginx-sample.yaml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="understanding-liveness-readiness-and-startup-probes">Understanding Liveness, readiness, and startup probes&lt;/h2>
+&lt;ul>
+&lt;li>Liveness probes&lt;/li>
+&lt;li>Readiness probes&lt;/li>
+&lt;li>Startup probes&lt;/li>
+&lt;/ul>
+&lt;h2 id="understanding-a-multi-conainter-pod">Understanding a multi-conainter pod&lt;/h2>
+&lt;p>Multi-container pods are simply pods with more than one container working together as a single unit. When it coms to multiple containers residing in a pod, a conainer ineracts with another in the following two ways:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>Shared networking:&lt;/strong> When two containers are running on the same host when they are in the same pod, they can access each other by simpley using localhost. All the listening ports are accessible to other containers in the pod, even if they&amp;rsquo;re not exposed outside the pod.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Shared storage volumes:&lt;/strong> We can mount the same volume to two different conainers so that they can both interact with the same data - it is possible to have one container write data to the volume and the other container read that data from the same volume. Some volumes even allow concurrent reading and writing.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="create-multiple-containers-in-a-pod">Create multiple containers in a pod:&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">apiVersion&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">v1&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">kind&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Pod&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">metadata&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">neme&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">multi-app-pod&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">labels&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">app&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">multi-app&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">spec&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">containers&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">nginx&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">nginx&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">ports&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">containerPort&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="m">80&lt;/span>&lt;span class="l">&amp;#34;wq&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">busybox-sidecar&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">busybox&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">command&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;sh&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;-c&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;while true; do sleep 3600; done;&amp;#39;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="understanding-an-init-container">Understanding an init container&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">apiVersion&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">v1&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">kind&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Pod&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">metadata&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">melon-pod&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">labels&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">melonapp&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">spec&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">containers&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">melonapp-container&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">busybox:latest&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">command&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;sh&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;-c&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;echo The melonapp is running! &amp;amp;&amp;amp; sleep 3600&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">initContainers&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">init-melonservice&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">busybox:latest&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">command&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;sh&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;-c&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;until nslookup melonservice; do echo waiting for melonserivce; sleep 2; done;&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">init-melondb&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">busybox:latest&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">command&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;sh&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;-c&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;until nslookup melondb; do echo waiting for melondb; sleep 2; done;&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="understanding-a-static-pod">Understanding a static Pod&lt;/h2></description></item><item><title>Working With Etcd</title><link>https://echowings.github.io/p/working-with-etcd/</link><pubDate>Tue, 15 Nov 2022 18:32:33 +0800</pubDate><guid>https://echowings.github.io/p/working-with-etcd/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=78542a6a" alt="Featured image of post Working With Etcd" />&lt;h1 id="working-with-etcd">Working with Etcd&lt;/h1>
+&lt;p>Today, we will learn how to interactve with etcd . to backup and restore the etcd database.
+First thing first, let&amp;rsquo;s check the etcd pod name in our kubernetes cluster. Let&amp;rsquo;s go!&lt;/p>
+&lt;h2 id="check-etcd-pod-name">Check etcd pod name&lt;/h2>
+&lt;p>Run the command on master node to get the etcd pod name&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubectl get pods -n kube-system
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>output:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">root@ubuntu-k8s-master:/home/ubuntu# kubectl get pods -n kube-system
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">NAME READY STATUS RESTARTS AGE
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">calico-kube-controllers-7b8458594b-5d84q 1/1 Running &lt;span class="m">86&lt;/span> &lt;span class="o">(&lt;/span>104m ago&lt;span class="o">)&lt;/span> 26h
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">calico-node-2l8mt 1/1 Running &lt;span class="m">2&lt;/span> &lt;span class="o">(&lt;/span>104m ago&lt;span class="o">)&lt;/span> 2d17h
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">calico-node-hrfjc 1/1 Running &lt;span class="m">2&lt;/span> &lt;span class="o">(&lt;/span>105m ago&lt;span class="o">)&lt;/span> 2d17h
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">calico-node-rkwth 1/1 Running &lt;span class="m">5&lt;/span> &lt;span class="o">(&lt;/span>105m ago&lt;span class="o">)&lt;/span> 2d17h
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">coredns-64897985d-cb85v 1/1 Running &lt;span class="m">1&lt;/span> &lt;span class="o">(&lt;/span>104m ago&lt;span class="o">)&lt;/span> 26h
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">coredns-64897985d-fp25w 1/1 Running &lt;span class="m">1&lt;/span> &lt;span class="o">(&lt;/span>105m ago&lt;span class="o">)&lt;/span> 26h
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">etcd-ubuntu-k8s-master 1/1 Running &lt;span class="m">73&lt;/span> &lt;span class="o">(&lt;/span>17m ago&lt;span class="o">)&lt;/span> 2d18h
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kube-apiserver-ubuntu-k8s-master 1/1 Running &lt;span class="m">63&lt;/span> &lt;span class="o">(&lt;/span>15m ago&lt;span class="o">)&lt;/span> 26h
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kube-controller-manager-ubuntu-k8s-master 1/1 Running &lt;span class="m">8&lt;/span> &lt;span class="o">(&lt;/span>105m ago&lt;span class="o">)&lt;/span> 26h
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kube-proxy-5xrhj 1/1 Running &lt;span class="m">2&lt;/span> &lt;span class="o">(&lt;/span>105m ago&lt;span class="o">)&lt;/span> 26h
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kube-proxy-qqkbz 1/1 Running &lt;span class="m">1&lt;/span> &lt;span class="o">(&lt;/span>105m ago&lt;span class="o">)&lt;/span> 26h
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kube-proxy-t7l2p 1/1 Running &lt;span class="m">1&lt;/span> &lt;span class="o">(&lt;/span>104m ago&lt;span class="o">)&lt;/span> 26h
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kube-scheduler-ubuntu-k8s-master 1/1 Running &lt;span class="m">7&lt;/span> &lt;span class="o">(&lt;/span>105m ago&lt;span class="o">)&lt;/span> 26h
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">metrics-server-7cf8b65d65-wnvtd 1/1 Running &lt;span class="m">2&lt;/span> &lt;span class="o">(&lt;/span>105m ago&lt;span class="o">)&lt;/span> 2d17h
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>My single kubernetes cluster has etcd pod named &lt;code>etcd-ubuntu-k8s-master&lt;/code>&lt;/p>
+&lt;h2 id="exporing-the-etcd-cluster-pod">Exporing the ETCD cluster pod&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># kubectl describe po &amp;lt;etcd-podnam&amp;gt; -n kube-system&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kubectl describe po etcd-ubuntu-k8s-master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>output:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;span class="lnt">55
+&lt;/span>&lt;span class="lnt">56
+&lt;/span>&lt;span class="lnt">57
+&lt;/span>&lt;span class="lnt">58
+&lt;/span>&lt;span class="lnt">59
+&lt;/span>&lt;span class="lnt">60
+&lt;/span>&lt;span class="lnt">61
+&lt;/span>&lt;span class="lnt">62
+&lt;/span>&lt;span class="lnt">63
+&lt;/span>&lt;span class="lnt">64
+&lt;/span>&lt;span class="lnt">65
+&lt;/span>&lt;span class="lnt">66
+&lt;/span>&lt;span class="lnt">67
+&lt;/span>&lt;span class="lnt">68
+&lt;/span>&lt;span class="lnt">69
+&lt;/span>&lt;span class="lnt">70
+&lt;/span>&lt;span class="lnt">71
+&lt;/span>&lt;span class="lnt">72
+&lt;/span>&lt;span class="lnt">73
+&lt;/span>&lt;span class="lnt">74
+&lt;/span>&lt;span class="lnt">75
+&lt;/span>&lt;span class="lnt">76
+&lt;/span>&lt;span class="lnt">77
+&lt;/span>&lt;span class="lnt">78
+&lt;/span>&lt;span class="lnt">79
+&lt;/span>&lt;span class="lnt">80
+&lt;/span>&lt;span class="lnt">81
+&lt;/span>&lt;span class="lnt">82
+&lt;/span>&lt;span class="lnt">83
+&lt;/span>&lt;span class="lnt">84
+&lt;/span>&lt;span class="lnt">85
+&lt;/span>&lt;span class="lnt">86
+&lt;/span>&lt;span class="lnt">87
+&lt;/span>&lt;span class="lnt">88
+&lt;/span>&lt;span class="lnt">89
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">root@ubuntu-k8s-master:/home/ubuntu# kubectl describe po etcd-ubuntu-k8s-master -n kube-system
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Name: etcd-ubuntu-k8s-master
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Namespace: kube-system
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Priority: &lt;span class="m">2000001000&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Priority Class Name: system-node-critical
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Node: ubuntu-k8s-master/192.168.11.71
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Start Time: Mon, &lt;span class="m">14&lt;/span> Nov &lt;span class="m">2022&lt;/span> 07:54:51 +0000
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Labels: &lt;span class="nv">component&lt;/span>&lt;span class="o">=&lt;/span>etcd
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">tier&lt;/span>&lt;span class="o">=&lt;/span>control-plane
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Annotations: kubeadm.kubernetes.io/etcd.advertise-client-urls: https://192.168.11.71:2379
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> kubernetes.io/config.hash: 0855baf22e98bdcfb39a80e74a5324cb
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> kubernetes.io/config.mirror: 0855baf22e98bdcfb39a80e74a5324cb
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> kubernetes.io/config.seen: 2022-11-12T16:24:44.452715208Z
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> kubernetes.io/config.source: file
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> seccomp.security.alpha.kubernetes.io/pod: runtime/default
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Status: Running
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">IP: 192.168.11.71
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">IPs:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> IP: 192.168.11.71
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Controlled By: Node/ubuntu-k8s-master
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Containers:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> etcd:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Container ID: containerd://65bbf08b85d61fe8ab3fef0224bce17dd48997fb59d6f2bc23a638ba729d00e0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Image: k8s.gcr.io/etcd:3.5.1-0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Image ID: k8s.gcr.io/etcd@sha256:64b9ea357325d5db9f8a723dcf503b5a449177b17ac87d69481e126bb724c263
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Port: &amp;lt;none&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Host Port: &amp;lt;none&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Command:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> etcd
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --advertise-client-urls&lt;span class="o">=&lt;/span>https://192.168.11.71:2379
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --cert-file&lt;span class="o">=&lt;/span>/etc/kubernetes/pki/etcd/server.crt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --client-cert-auth&lt;span class="o">=&lt;/span>&lt;span class="nb">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --data-dir&lt;span class="o">=&lt;/span>/var/lib/etcd
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --experimental-initial-corrupt-check&lt;span class="o">=&lt;/span>&lt;span class="nb">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --initial-advertise-peer-urls&lt;span class="o">=&lt;/span>https://192.168.11.71:2380
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --initial-cluster&lt;span class="o">=&lt;/span>ubuntu-k8s-master&lt;span class="o">=&lt;/span>https://192.168.11.71:2380
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --key-file&lt;span class="o">=&lt;/span>/etc/kubernetes/pki/etcd/server.key
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --listen-client-urls&lt;span class="o">=&lt;/span>https://127.0.0.1:2379,https://192.168.11.71:2379
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --listen-metrics-urls&lt;span class="o">=&lt;/span>http://127.0.0.1:2381
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --listen-peer-urls&lt;span class="o">=&lt;/span>https://192.168.11.71:2380
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --name&lt;span class="o">=&lt;/span>ubuntu-k8s-master
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --peer-cert-file&lt;span class="o">=&lt;/span>/etc/kubernetes/pki/etcd/peer.crt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --peer-client-cert-auth&lt;span class="o">=&lt;/span>&lt;span class="nb">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --peer-key-file&lt;span class="o">=&lt;/span>/etc/kubernetes/pki/etcd/peer.key
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --peer-trusted-ca-file&lt;span class="o">=&lt;/span>/etc/kubernetes/pki/etcd/ca.crt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --snapshot-count&lt;span class="o">=&lt;/span>&lt;span class="m">10000&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --trusted-ca-file&lt;span class="o">=&lt;/span>/etc/kubernetes/pki/etcd/ca.crt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> State: Running
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Started: Tue, &lt;span class="m">15&lt;/span> Nov &lt;span class="m">2022&lt;/span> 10:22:56 +0000
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Last State: Terminated
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Reason: Error
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Exit Code: &lt;span class="m">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Started: Tue, &lt;span class="m">15&lt;/span> Nov &lt;span class="m">2022&lt;/span> 10:17:48 +0000
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Finished: Tue, &lt;span class="m">15&lt;/span> Nov &lt;span class="m">2022&lt;/span> 10:17:48 +0000
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Ready: True
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Restart Count: &lt;span class="m">73&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Requests:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> cpu: 100m
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> memory: 100Mi
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Liveness: http-get http://127.0.0.1:2381/health &lt;span class="nv">delay&lt;/span>&lt;span class="o">=&lt;/span>10s &lt;span class="nv">timeout&lt;/span>&lt;span class="o">=&lt;/span>15s &lt;span class="nv">period&lt;/span>&lt;span class="o">=&lt;/span>10s &lt;span class="c1">#success=1 #failure=8&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Startup: http-get http://127.0.0.1:2381/health &lt;span class="nv">delay&lt;/span>&lt;span class="o">=&lt;/span>10s &lt;span class="nv">timeout&lt;/span>&lt;span class="o">=&lt;/span>15s &lt;span class="nv">period&lt;/span>&lt;span class="o">=&lt;/span>10s &lt;span class="c1">#success=1 #failure=24&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Environment: &amp;lt;none&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Mounts:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> /etc/kubernetes/pki/etcd from etcd-certs &lt;span class="o">(&lt;/span>rw&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> /var/lib/etcd from etcd-data &lt;span class="o">(&lt;/span>rw&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Conditions:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Type Status
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Initialized True
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Ready True
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ContainersReady True
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> PodScheduled True
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Volumes:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> etcd-certs:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Type: HostPath &lt;span class="o">(&lt;/span>bare host directory volume&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Path: /etc/kubernetes/pki/etcd
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> HostPathType: DirectoryOrCreate
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> etcd-data:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Type: HostPath &lt;span class="o">(&lt;/span>bare host directory volume&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Path: /var/lib/etcd
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> HostPathType: DirectoryOrCreate
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">QoS Class: Burstable
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Node-Selectors: &amp;lt;none&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Tolerations: :NoExecute &lt;span class="nv">op&lt;/span>&lt;span class="o">=&lt;/span>Exists
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Events:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Type Reason Age From Message
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ---- ------ ---- ---- -------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Normal Pulled 16m kubelet Container image &lt;span class="s2">&amp;#34;k8s.gcr.io/etcd:3.5.1-0&amp;#34;&lt;/span> already present on machine
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Normal Created 16m kubelet Created container etcd
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Normal Started 16m kubelet Started container etcd
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>We need remember&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># etcd data directory&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--data-dir&lt;span class="o">=&lt;/span>/var/lib/etcd
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Etcd endpoint&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--listen-client-urls&lt;span class="o">=&lt;/span>https://127.0.0.1:2379,https://192.168.11.71:2379
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="listing-etcd-cluster-members">Listing etcd cluster members&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubectl &lt;span class="nb">exec&lt;/span> etcd-ubuntu-k8s-master -n kube-system &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -- sh -c &lt;span class="s2">&amp;#34;ETCDCTL_API=3 etcdctl \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --endpoints=https://127.0.0.1:2379 \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --cert=/etc/kubernetes/pki/etcd/server.crt \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --key=/etc/kubernetes/pki/etcd/server.key \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --write-out=table \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> member list&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>output:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">+------------------+---------+-------------------+-----------------------+----------------------------+------------+
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> ID &lt;span class="p">|&lt;/span> STATUS &lt;span class="p">|&lt;/span> NAME &lt;span class="p">|&lt;/span> PEER ADDRS &lt;span class="p">|&lt;/span> CLIENT ADDRS &lt;span class="p">|&lt;/span> IS LEARNER &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">+------------------+---------+-------------------+-----------------------+----------------------------+------------+
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> 8e9e05c52164694d &lt;span class="p">|&lt;/span> started &lt;span class="p">|&lt;/span> ubuntu-k8s-master &lt;span class="p">|&lt;/span> http://localhost:2380 &lt;span class="p">|&lt;/span> https://192.168.11.71:2379 &lt;span class="p">|&lt;/span> &lt;span class="nb">false&lt;/span> &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">+------------------+---------+-------------------+-----------------------+----------------------------+------------+
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="checking-the-etcd-cluster-status">Checking the etcd cluster status&lt;/h2>
+&lt;p>&lt;code>ETCDCTL_API=3 etcdctl endpoint status&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubectl -n kube-system &lt;span class="nb">exec&lt;/span> etcd-ubuntu-k8s-master &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -- sh -c &lt;span class="s2">&amp;#34;ETCDCTL_API=3 etcdctl \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --endpoints=https://192.168.11.71:2379 \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --cert=/etc/kubernetes/pki/etcd/server.crt \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --key=/etc/kubernetes/pki/etcd/server.key \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --write-out=table \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> endpoint status&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>output:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">+----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> ENDPOINT &lt;span class="p">|&lt;/span> ID &lt;span class="p">|&lt;/span> VERSION &lt;span class="p">|&lt;/span> DB SIZE &lt;span class="p">|&lt;/span> IS LEADER &lt;span class="p">|&lt;/span> IS LEARNER &lt;span class="p">|&lt;/span> RAFT TERM &lt;span class="p">|&lt;/span> RAFT INDEX &lt;span class="p">|&lt;/span> RAFT APPLIED INDEX &lt;span class="p">|&lt;/span> ERRORS &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">+----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> https://192.168.11.71:2379 &lt;span class="p">|&lt;/span> 8e9e05c52164694d &lt;span class="p">|&lt;/span> 3.5.1 &lt;span class="p">|&lt;/span> &lt;span class="m">10&lt;/span> MB &lt;span class="p">|&lt;/span> &lt;span class="nb">true&lt;/span> &lt;span class="p">|&lt;/span> &lt;span class="nb">false&lt;/span> &lt;span class="p">|&lt;/span> &lt;span class="m">2&lt;/span> &lt;span class="p">|&lt;/span> &lt;span class="m">32504&lt;/span> &lt;span class="p">|&lt;/span> &lt;span class="m">32504&lt;/span> &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">+----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubectl -n kube-system &lt;span class="nb">exec&lt;/span> etcd-ubuntu-k8s-master &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -- sh -c &lt;span class="s2">&amp;#34;ETCDCTL_API=3 etcdctl \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --endpoints=https://192.168.11.71:2379 \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --cert=/etc/kubernetes/pki/etcd/server.crt\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --key=/etc/kubernetes/pki/etcd/server.key \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --write-out=table \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> endpoint health &amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>output:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">+----------------------------+--------+-------------+-------+
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> ENDPOINT &lt;span class="p">|&lt;/span> HEALTH &lt;span class="p">|&lt;/span> TOOK &lt;span class="p">|&lt;/span> ERROR &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">+----------------------------+--------+-------------+-------+
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> https://192.168.11.71:2379 &lt;span class="p">|&lt;/span> &lt;span class="nb">true&lt;/span> &lt;span class="p">|&lt;/span> 14.261475ms &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">+----------------------------+--------+-------------+-------+
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="installing-etcd">Installing etcd&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">wget https://github.com/etcd-io/etcd/releases/download/v3.5.5/etcd-v3.5.5-linux-amd64.tar.gz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">tar -zxvf etcd-v3.5.5-linux-amd64.tar.gz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo mv etcd-v3.5.5-linux-amd64/etcd* /usr/local/bin
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">etcdctl version
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>or&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubectl -n kube-system &lt;span class="nb">exec&lt;/span> etcd-ubuntu-k8s-master &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -- sh -c &lt;span class="s2">&amp;#34;ETCDCTL_API=3 etcdctl version&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="backing-up-etcd">Backing up etcd&lt;/h2>
+&lt;h3 id="ssh-to-the-etcd-cluster-node">SSH to the etcd cluster node.&lt;/h3>
+&lt;p>&amp;ndash;skip&amp;ndash;&lt;/p>
+&lt;h3 id="check-out-etcd-status">check out etcd status&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># kubectl describe &amp;lt;etcd-podname&amp;gt; &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kubectl describe etcd-ubuntu-k8s-master
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kubectl -n kube-system &lt;span class="nb">exec&lt;/span> etcd-ubuntu-k8s-master &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -- sh -c &lt;span class="s2">&amp;#34;ETCDCTL_API=3 etcdctl \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --endpoints=https://192.168.11.71:2379 \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --cert=/etc/kubernetes/pki/etcd/server.crt \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --key=/etc/kubernetes/pki/etcd/server.key \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --write-out=table endpoint status&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="perform-the-etcd-backup">Perform the etcd backup&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo kubectl -n kube-system &lt;span class="nb">exec&lt;/span> etcd-ubuntu-k8s-master. &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -- sh -c &lt;span class="s2">&amp;#34;ETCDCTL_API=3 etcdctl \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --endpoints=https://192.168.11.71:2379 \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --cert=/etc/kubernetes/pki/etcd/server.crt \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> --key=/etc/kubernetes/pki/etcd/server.key \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> snapshot save&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>output&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">snapshotdb&lt;span class="s2">&amp;#34;{&amp;#34;&lt;/span>level&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>info&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>ts&lt;span class="s2">&amp;#34;:1668525609.0965416,&amp;#34;&lt;/span>caller&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>snapshot/v3_snapshot.go:68&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>msg&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>created temporary db file&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>path&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>snapshotdb.part&lt;span class="s2">&amp;#34;}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">{&amp;#34;&lt;/span>level&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>info&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>ts&lt;span class="s2">&amp;#34;:1668525609.1151485,&amp;#34;&lt;/span>logger&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>client&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>caller&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>v3/maintenance.go:211&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>msg&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>opened snapshot stream&lt;span class="p">;&lt;/span> downloading&lt;span class="s2">&amp;#34;}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">{&amp;#34;&lt;/span>level&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>info&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>ts&lt;span class="s2">&amp;#34;:1668525609.115235,&amp;#34;&lt;/span>caller&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>snapshot/v3_snapshot.go:76&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>msg&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>fetching snapshot&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>endpoint&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>https://192.168.11.71:2379&lt;span class="s2">&amp;#34;}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">{&amp;#34;&lt;/span>level&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>info&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>ts&lt;span class="s2">&amp;#34;:1668525609.3567731,&amp;#34;&lt;/span>logger&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>client&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>caller&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>v3/maintenance.go:219&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>msg&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>completed snapshot read&lt;span class="p">;&lt;/span> closing&lt;span class="s2">&amp;#34;}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">{&amp;#34;&lt;/span>level&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>info&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>ts&lt;span class="s2">&amp;#34;:1668525609.393935,&amp;#34;&lt;/span>caller&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>snapshot/v3_snapshot.go:91&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>msg&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>fetched snapshot&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>endpoi:nt&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>https://192.168.11.71:2379&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>size&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>&lt;span class="m">10&lt;/span> MB&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>took&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>now&lt;span class="s2">&amp;#34;}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">{&amp;#34;&lt;/span>level&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>info&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>ts&lt;span class="s2">&amp;#34;:1668525609.3941526,&amp;#34;&lt;/span>caller&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>snapshot/v3_snapshot.go:100&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>msg&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>saved&lt;span class="s2">&amp;#34;,&amp;#34;&lt;/span>path&lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>snapshotdb&lt;span class="s2">&amp;#34;}
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="exit-the-master-nodes">Exit the master nodes&lt;/h3>
+&lt;h2 id="restoring-etcd">Restoring etcd&lt;/h2>
+&lt;h3 id="ssh-to-the-etcd-cluster-node-1">SSH to the etcd cluster node.&lt;/h3>
+&lt;p>&amp;ndash; skip &amp;ndash;&lt;/p>
+&lt;h3 id="check-the-etcd-status">Check the etcd status&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo &lt;span class="nv">ETCDCTL_API&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">3&lt;/span> etcdctl &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --endpoint https://192.168.11.71:2379 &lt;span class="se">\ &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --cacert&lt;span class="o">=&lt;/span>/etc/kubernetes/pki/etcd/ca.crt &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --cert&lt;span class="o">=&lt;/span>/etc/kubernetes/pki/etcd/server.crt &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --key&lt;span class="o">=&lt;/span>/etc/kubernetes/pki/etcd/server.key &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> restore snapshotdb
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="restore-the-etcd-backup">Restore the etcd backup&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo &lt;span class="nv">ETCDCTL_API&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">3&lt;/span> etcdctl --endpoint https://192.168.11.71:2379
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --cacert&lt;span class="o">=&lt;/span>/etc/kubernetes/pki/etcd/ca.crt &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --cert&lt;span class="o">=&lt;/span>/etc/kubernetes/pki/etcd/server.crt &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --key&lt;span class="o">=&lt;/span>/etc/kubernetes/pki/etcd/server.key &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --write-out&lt;span class="o">=&lt;/span>table &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> endpoint status
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="exit-the-master-node">Exit the master node&lt;/h3>
+&lt;p>&amp;ndash;skip&amp;ndash;&lt;/p></description></item></channel></rss>

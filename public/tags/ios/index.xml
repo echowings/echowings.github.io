@@ -1,19 +1,328 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Ios on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/tags/ios/</link>
-    <description>Recent content in Ios on Steve&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 22 Dec 2023 21:18:39 +0800</lastBuildDate>
-    <atom:link href="https://echowings.github.io/tags/ios/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to configure cisco catalyst switch</title>
-      <link>https://echowings.github.io/p/how-to-configure-cisco-catalyst-switch/</link>
-      <pubDate>Tue, 11 May 2021 11:29:28 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-configure-cisco-catalyst-switch/</guid>
-      <description>How to configure cisco catalyst switch Clean session 1 2 3 4 5 #Show current login users show users # terminal a user clear line vty 0 Set Session timeout exec timeout command is sused to specify the timeout for exec sessions[telnet/ssh] whereas session timeout command specifies the idle timeout period for all the sessions.&#xA;1 2 3 4 5 6 7 config t line vty 0 15 exec-timeout 10 session-timeout 10 #Check configure sh run | be line vty How to fix %Error opening tftp://255.</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ios on Steve's Blog</title><link>https://echowings.github.io/tags/ios/</link><description>Recent content in Ios on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 11 May 2021 11:29:28 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/ios/index.xml" rel="self" type="application/rss+xml"/><item><title>How to configure cisco catalyst switch</title><link>https://echowings.github.io/p/how-to-configure-cisco-catalyst-switch/</link><pubDate>Tue, 11 May 2021 11:29:28 +0800</pubDate><guid>https://echowings.github.io/p/how-to-configure-cisco-catalyst-switch/</guid><description>&lt;h1 id="how-to-configure-cisco-catalyst-switch">How to configure cisco catalyst switch&lt;/h1>
+&lt;h2 id="clean-session">Clean session&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Show current login users&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">show users
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># terminal a user&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">clear line vty &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="set-session-timeout">Set Session timeout&lt;/h2>
+&lt;p>exec timeout command is sused to specify the timeout for exec sessions[telnet/ssh] whereas session timeout command specifies the idle timeout period for all the sessions.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">config t
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">line vty &lt;span class="m">0&lt;/span> &lt;span class="m">15&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">exec-timeout &lt;span class="m">10&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">session-timeout &lt;span class="m">10&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Check configure&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sh run &lt;span class="p">|&lt;/span> be line vty
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="how-to-fix-error-opening-tftp255255255255network-confg-timed-out">How to fix &lt;code>%Error opening tftp://255.255.255.255/network-confg (Timed out)&lt;/code>&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">no service config
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="set-ip-address-and-default-gateway">Set ip address and default gateway&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ip default-gateway 192.168.0.1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">interface vlan &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ip address 192.168.0.2 255.255.255.0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="set-hostname-and-domain-name">Set hostname and domain-name&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">config t
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">hostname myswitch
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ip domain-name mydomain.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="enable-ssh-login">Enable ssh login&lt;/h2>
+&lt;h3 id="generate-the-rsa-keys">Generate the RSA keys&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">myswitch&lt;span class="o">(&lt;/span>config&lt;span class="o">)&lt;/span>&lt;span class="c1"># crypto key generate rsa&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> The name &lt;span class="k">for&lt;/span> the keys will be: myswitch.thegeekstuff.com
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Choose the size of the key modulus in the range of &lt;span class="m">360&lt;/span> to &lt;span class="m">2048&lt;/span> &lt;span class="k">for&lt;/span> your
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> General Purpose Keys. Choosing a key modulus greater than &lt;span class="m">512&lt;/span> may take
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> a few minutes.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">How many bits in the modulus &lt;span class="o">[&lt;/span>512&lt;span class="o">]&lt;/span>: &lt;span class="m">1024&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> % Generating &lt;span class="m">1024&lt;/span> bit RSA keys, keys will be non-exportable...&lt;span class="o">[&lt;/span>OK&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="setup-the-line-vty-configurations">Setup the line vty configurations&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">line vty &lt;span class="m">0&lt;/span> &lt;span class="m">4&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">session-timeout &lt;span class="m">10&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">transport input ssh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">login &lt;span class="nb">local&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">password &lt;span class="m">7&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">exit&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="set-the-console-line">Set the console line&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">line console &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">logging synchronus
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">login &lt;span class="nb">local&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="create-the-username-password">Create the username password&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">config t
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">username &lt;span class="nv">$USERNAME&lt;/span> password &lt;span class="nv">$MYPASSWORD&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">enable&lt;/span> secret &lt;span class="nv">$MYENABLEPASSWORD&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="enable-service-password-encryption">enable service password-encryption&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">service password-encryption
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="verify-ssh-access">Verify SSH access&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">show ip ssh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="configure">Configure&lt;/h2>
+&lt;h3 id="port-channel">port-channel&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">interface Port-channel1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> description testing
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> switchport trunk allowed vlan 4-12
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> switchport trunk encapsulation dot1q
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> switchport mode trunk
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># network port settings&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> interface GigabitEthernet1/0/27
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> description lacp-wifi-network
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> switchport trunk encapsulation dot1q
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> switchport mode trunk
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> channel-protocol lacp
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> channel-group &lt;span class="m">3&lt;/span> mode active
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">!
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">interface GigabitEthernet1/0/28
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> description lacp-wifi-network
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> switchport trunk encapsulation dot1q
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> switchport mode trunk
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> channel-protocol lacp
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> channel-group &lt;span class="m">3&lt;/span> mode active
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="access-mode">Access mode&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">interface GigabitEthernet1/0/29
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> switchport access vlan &lt;span class="m">60&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> switchport mode access
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="snmp">SNMP&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">snmp-server community public RO
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="ntp">NTP&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ntp &lt;span class="nb">source&lt;/span> vlan &lt;span class="m">20&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ntp server 10.32.0.2 &lt;span class="nb">source&lt;/span> vlan &lt;span class="m">20&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="pbr">PBR&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Enable PBR on cisco 3750x&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sdm prefer routing
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#save configuration&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">write
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Reload switch to let it works.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">reload
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#check sdm status&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">show sdm prefer
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Define access list&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ip access-list extended wifi
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> permit ip 10.32.200.0 0.0.0.255 any
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> deny ip any any
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#define reout-map and set routing policy&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">route-map wifi-2rd-gw permit &lt;span class="m">10&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> match ip address wifi
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">set&lt;/span> ip next-hop 192.168.99.2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#select a vlan to apply PBR&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> interface Vlan30
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ip policy route-map wifi-2rd-gw
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="reference">Reference:&lt;/h2>
+&lt;hr>
+&lt;ol>
+&lt;li>&lt;a class="link" href="https://community.cisco.com/t5/other-network-architecture/error-opening-tftp-255-255-255-255-network-confg-timed-out/td-p/258876" target="_blank" rel="noopener"
+>%Error opening tftp://255.255.255.255/network-confg (Timed out)&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://community.cisco.com/t5/wireless/to-increase-ssh-session-timeout/td-p/3098020" target="_blank" rel="noopener"
+>to increase SSH session timeout&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.thegeekstuff.com/2013/08/enable-ssh-cisco/" target="_blank" rel="noopener"
+>How to Enable SSH on Cisco Switch, Router and ASA&lt;/a>&lt;/li>
+&lt;/ol></description></item></channel></rss>

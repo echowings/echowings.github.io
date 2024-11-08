@@ -1,19 +1,458 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Lxc on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/tags/lxc/</link>
-    <description>Recent content in Lxc on Steve&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 22 Dec 2023 21:18:39 +0800</lastBuildDate>
-    <atom:link href="https://echowings.github.io/tags/lxc/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to Enable Docker in Lxc</title>
-      <link>https://echowings.github.io/p/how-to-enable-docker-in-lxc/</link>
-      <pubDate>Sat, 23 Mar 2019 12:08:34 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-enable-docker-in-lxc/</guid>
-      <description>How to install docker-ce in lxc container in pve At now, Proxmox is base debian and it can be install docker directly. To install docker in host without proxmox support. It will be lost HA function. Deploy a vm then install docker-ce in the vm, it works. but take a lot resource than directly install docker in proxmox. Is there a way to take less performance ,at the same time</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lxc on Steve's Blog</title><link>https://echowings.github.io/tags/lxc/</link><description>Recent content in Lxc on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 23 Mar 2019 12:08:34 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/lxc/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Enable Docker in Lxc</title><link>https://echowings.github.io/p/how-to-enable-docker-in-lxc/</link><pubDate>Sat, 23 Mar 2019 12:08:34 +0800</pubDate><guid>https://echowings.github.io/p/how-to-enable-docker-in-lxc/</guid><description>&lt;h1 id="how-to-install-docker-ce-in-lxc-container-in-pve">How to install docker-ce in lxc container in pve&lt;/h1>
+&lt;p>At now, Proxmox is base debian and it can be install docker directly. To install docker in host without proxmox support. It will be lost HA function.&lt;/p>
+&lt;p>Deploy a vm then install docker-ce in the vm, it works. but take a lot resource than directly install docker in proxmox.&lt;/p>
+&lt;p>Is there a way to take less performance ,at the same time we cant easly mange it with proxmox ?The answer is run docker in lxc.&lt;/p>
+&lt;h2 id="download-lxc-images">Download lxc images&lt;/h2>
+&lt;p>First thing first, Download Ubuntu 18.04.1 LXC images:&lt;/p>
+&lt;h3 id="option-1-download-lxc-images-from-gui">Option 1: Download LXC images from GUI&lt;/h3>
+&lt;ul>
+&lt;li>Login your PVE;&lt;/li>
+&lt;li>Follow the path to click the gui to redirect to the right lxc download page. &lt;code>&amp;quot;Datacenter&amp;quot; | &amp;quot;$PVE_HOST&amp;quot; | &amp;quot;Local(PVE Storage)&amp;quot; | &amp;quot;Content&amp;quot; | &amp;quot;Templates&amp;quot;&lt;/code>&lt;/li>
+&lt;li>select &amp;ldquo;ubuntu-18.04-standard&amp;rdquo;, then click download. wating for it finishd download the lxc image.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">Virtual Environment 5.3-9
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Search
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Storage &lt;span class="s1">&amp;#39;local&amp;#39;&lt;/span> on node &lt;span class="s1">&amp;#39;xa-sys-pve02&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Search:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Server View
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Logs
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">starting template download from: http://download.proxmox.com/images/system/ubuntu-18.04-standard_18.04.1-1_amd64.tar.gz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">target file: /var/lib/vz/template/cache/ubuntu-18.04-standard_18.04.1-1_amd64.tar.gz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--2019-04-08 13:44:03-- http://download.proxmox.com/images/system/ubuntu-18.04-standard_18.04.1-1_amd64.tar.gz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Resolving download.proxmox.com &lt;span class="o">(&lt;/span>download.proxmox.com&lt;span class="o">)&lt;/span>... 94.136.30.185, 2a01:7e0:0:424::249
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Connecting to download.proxmox.com &lt;span class="o">(&lt;/span>download.proxmox.com&lt;span class="o">)&lt;/span>&lt;span class="p">|&lt;/span>94.136.30.185&lt;span class="p">|&lt;/span>:80... connected.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">HTTP request sent, awaiting response... &lt;span class="m">200&lt;/span> OK
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Length: &lt;span class="m">213430501&lt;/span> &lt;span class="o">(&lt;/span>204M&lt;span class="o">)&lt;/span> &lt;span class="o">[&lt;/span>application/octet-stream&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Saving to: &lt;span class="s1">&amp;#39;/var/lib/vz/template/cache/ubuntu-18.04-standard_18.04.1-1_amd64.tar.gz.tmp.31383&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0K ........ ........ ........ ........ ........ ........ 1% 99.8K 34m17s
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 3072K ........ ........ ........ ........ ........ ........ 2% 220K 24m34s
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 6144K ........ ........ ........ ........ ........ ........ 4% 214K 21m18s
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">193536K ........ ........ ........ ........ ........ ........ 94% 180K 53s
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">196608K ........ ........ ........ ........ ........ ........ 95% 410K 39s
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">199680K ........ ........ ........ ........ ........ ........ 97% 206K 25s
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">202752K ........ ........ ........ ........ ........ ........ 98% 311K 11s
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">205824K ........ ........ ........ ........ ........ 100% &lt;span class="nv">338K&lt;/span>&lt;span class="o">=&lt;/span>15m15s
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2019-04-08 13:59:21 &lt;span class="o">(&lt;/span>&lt;span class="m">228&lt;/span> KB/s&lt;span class="o">)&lt;/span> - &lt;span class="s1">&amp;#39;/var/lib/vz/template/cache/ubuntu-18.04-standard_18.04.1-1_amd64.tar.gz.tmp.31383&amp;#39;&lt;/span> saved &lt;span class="o">[&lt;/span>213430501/213430501&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">download finished
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">TASK OK
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="option-2-download-lxc-with-shell">Option 2: Download LXC with shell&lt;/h3>
+&lt;p>####Fix Perl LC_ALL ERROR&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">LANGUAGE&lt;/span>&lt;span class="o">=&lt;/span>en_US.UTF-8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">LANG&lt;/span>&lt;span class="o">=&lt;/span>en_US.UTF-8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">LC_ALL&lt;/span>&lt;span class="o">=&lt;/span>en_US.UTF-8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#locale-gen en_US.UTF-8&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cat &amp;gt;&amp;gt; /etc/environment &lt;span class="s">&amp;lt;&amp;lt;EOF
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">LC_ALL=en_US.UTF-8
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">LANG=en_US.UTF-8
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">EOF&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>####list linux container&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pveam available --section system
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">system alpine-3.7-default_20180913_amd64.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">system alpine-3.8-default_20180913_amd64.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">system alpine-3.9-default_20190224_amd64.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">system archlinux-base_20190124-1_amd64.tar.gz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">system centos-6-default_20161207_amd64.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">system centos-7-default_20171212_amd64.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">system debian-8.0-standard_8.11-1_amd64.tar.gz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">system debian-9.0-standard_9.7-1_amd64.tar.gz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">system fedora-28-default_20180907_amd64.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">system fedora-29-default_20181126_amd64.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">system gentoo-current-default_20180906_amd64.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">system opensuse-15.0-default_20180907_amd64.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">system opensuse-42.3-default_20171214_amd64.tar.xz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">system ubuntu-14.04-standard_14.04.5-1_amd64.tar.gz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">system ubuntu-16.04-standard_16.04.5-1_amd64.tar.gz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">system ubuntu-18.04-standard_18.04.1-1_amd64.tar.gz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">system ubuntu-18.10-standard_18.10-2_amd64.tar.gz
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>####Download images&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pveam download &lt;span class="nb">local&lt;/span> debian-9.0-standard_9.7-1_amd64.tar.gz
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="list-local-images">List local images&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pveam list &lt;span class="nb">local&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="delete-local-image">Delete local image&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pveam remove local:vztmpl/debian-8.0-standard_8.0-1_amd64.tar.gz
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="option-3-create-a-lxc-from-image">Option 3: create a lxc from image&lt;/h3>
+&lt;ul>
+&lt;li>&amp;ldquo;Datacenter&amp;rdquo; | select &amp;ldquo;$PVENODE&amp;rdquo; then right click it. | &amp;ldquo;Create CT&amp;rdquo;.&lt;/li>
+&lt;li>Setup the LXC.
+&lt;ul>
+&lt;li>General: &amp;ldquo;Unprivileged container&amp;rdquo; checked.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>When create the LXC container,selecited the contiainer and doubule click &amp;ldquo;Options&amp;rdquo; | &amp;ldquo;Features&amp;rdquo;.then make keyctl/Nesting/Fuse option check on.&lt;/li>
+&lt;li>&amp;ldquo;Options&amp;rdquo; | &amp;ldquo;protecton&amp;rdquo; check on.&lt;/li>
+&lt;/ul>
+&lt;h3 id="option4-install-docker-in-lxc">Option4: Install docker in LXC&lt;/h3>
+&lt;ul>
+&lt;li>Boot the lxc container of ubuntu 18.04.&lt;/li>
+&lt;li>Change ubuntu 18.04 apt source to mirrors.utsc.edu.cn&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cat &amp;gt; /etc/apt/sources.list &lt;span class="s">&amp;lt;&amp;lt;EOF
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">## Not recommended
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"># deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"># deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">EOF&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt update &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> apt -y upgrade
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt install -y vim net-tools
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt remove -y vim-tiny
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Follow docker &lt;a class="link" href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank" rel="noopener"
+>offical document&lt;/a> to install docker-ce.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">apt-get install &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> apt-transport-https &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> ca-certificates &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> curl &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> gnupg-agent &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> software-properties-common &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -y
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">curl -fsSL https://download.docker.com/linux/ubuntu/gpg &lt;span class="p">|&lt;/span> sudo apt-key add -
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt-key fingerprint 0EBFCD88
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo add-apt-repository &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> &lt;span class="s2">&amp;#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> &lt;/span>&lt;span class="k">$(&lt;/span>lsb_release -cs&lt;span class="k">)&lt;/span>&lt;span class="s2"> \
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> stable&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/download.docker.com/mirrors.ustc.edu.cn\/docker-ce/g&amp;#39;&lt;/span> /etc/apt/sources.list
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt-get update
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt-get install -y docker-ce docker-ce-cli containerd.io
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>check docker&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">root@template-docker-in-lxc:/etc/apt# docker -v
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Docker version 18.09.4, build d14af54266
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker run hello-world
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>run hello-world&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">root@template-docker-in-lxc:/etc/apt# docker run hello-world
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Unable to find image &lt;span class="s1">&amp;#39;hello-world:latest&amp;#39;&lt;/span> locally
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">latest: Pulling from library/hello-world
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">1b930d010525: Pull &lt;span class="nb">complete&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Digest: sha256:2557e3c07ed1e38f26e389462d03ed943586f744621577a99efb77324b0fe535
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Status: Downloaded newer image &lt;span class="k">for&lt;/span> hello-world:latest
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Hello from Docker!
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">This message shows that your installation appears to be working correctly.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">To generate this message, Docker took the following steps:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1. The Docker client contacted the Docker daemon.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 2. The Docker daemon pulled the &lt;span class="s2">&amp;#34;hello-world&amp;#34;&lt;/span> image from the Docker Hub.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">(&lt;/span>amd64&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 3. The Docker daemon created a new container from that image which runs the
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> executable that produces the output you are currently reading.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 4. The Docker daemon streamed that output to the Docker client, which sent it
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> to your terminal.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">To try something more ambitious, you can run an Ubuntu container with:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> $ docker run -it ubuntu bash
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Share images, automate workflows, and more with a free Docker ID:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> https://hub.docker.com/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">For more examples and ideas, visit:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> https://docs.docker.com/get-started/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="install-docker-compose">Install docker-compose&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo curl -L &lt;span class="s2">&amp;#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-&lt;/span>&lt;span class="k">$(&lt;/span>uname -s&lt;span class="k">)&lt;/span>&lt;span class="s2">-&lt;/span>&lt;span class="k">$(&lt;/span>uname -m&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> -o /usr/local/bin/docker-compose
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo chmod +x /usr/local/bin/docker-compose
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="fixed-root-shell-path--cause-login-failed">Fixed root shell path cause login failed&lt;/h3>
+&lt;p>When I setup zsh and set wrong zsh.then I cannot login and ssh
+The error like this. I can not boot to single user mode.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">Welcome to Ubuntu 18.04.2 LTS &lt;span class="o">(&lt;/span>GNU/Linux 4.15.18-12-pve x86_64&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> * Documentation: https://help.ubuntu.com
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> * Management: https://landscape.canonical.com
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> * Support: https://ubuntu.com/advantage
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> * Ubuntu&lt;span class="err">&amp;#39;&lt;/span>s Kubernetes 1.14 distributions can bypass Docker and use containerd
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> directly, see https://bit.ly/ubuntu-containerd or try it now with
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> snap install microk8s --classic
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> * Canonical Livepatch is available &lt;span class="k">for&lt;/span> installation.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Reduce system reboots and improve kernel security. Activate at:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> https://ubuntu.com/livepatch
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Cannot execute zsh: No such file or directory
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Solution:&lt;/strong> I wounder that is a a command like docker command &lt;code>docker exec -it $dockername /bin/sh&lt;/code>
+Bingo! Here we go:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">lxc-attach -n &lt;span class="nv">$lxc_pid&lt;/span> /bin/sh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#for example:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lxc-attach -n &lt;span class="m">103&lt;/span> /bin/sh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">vi /etc/password
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#then change root shell path to /bin/sh&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>After reboot and I can login again.&lt;/p>
+&lt;h2 id="reference">Reference&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener"
+>Install Docker Compose&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://jin-yang.github.io/post/linux-container-lxc-introduce.html" target="_blank" rel="noopener"
+>LXC 简介&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

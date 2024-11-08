@@ -1,26 +1,160 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Vlmcsd on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/tags/vlmcsd/</link>
-    <description>Recent content in Vlmcsd on Steve&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 22 Dec 2023 21:18:39 +0800</lastBuildDate>
-    <atom:link href="https://echowings.github.io/tags/vlmcsd/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to Deploy Vlmcsd With Docker-Compose</title>
-      <link>https://echowings.github.io/p/how-to-deploy-vlmcsd-with-docker-compose/</link>
-      <pubDate>Sun, 22 Aug 2021 22:46:37 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-deploy-vlmcsd-with-docker-compose/</guid>
-      <description>How to deploy vlmcsd with docker-compose 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 FROM alpine:latest as builder WORKDIR /root RUN sed -i &amp;#39;s/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g&amp;#39; /etc/apk/repositories RUN apk add --no-cache git make build-base &amp;amp;&amp;amp; \ &amp;amp;&amp;amp; rm -rf /var/lib/apt/lists/* &amp;amp;&amp;amp; rm -rf /var/cache/apk/* &amp;amp;&amp;amp; \ git clone --branch master --single-branch https://github.com/Wind4/vlmcsd.git &amp;amp;&amp;amp; \ cd vlmcsd &amp;amp;&amp;amp; \ make FROM alpine:latest COPY --from=builder /root/vlmcsd/bin/vlmcsd /vlmcsd RUN apk add --no-cache tzdata EXPOSE 1688/tcp CMD [&amp;#34;/vlmcsd&amp;#34;, &amp;#34;-D&amp;#34;, &amp;#34;-d&amp;#34;, &amp;#34;-t&amp;#34;, &amp;#34;3&amp;#34;, &amp;#34;-e&amp;#34;, &amp;#34;-v&amp;#34;] </description>
-    </item>
-    <item>
-      <title>How to Install Vlmcsd on Debian</title>
-      <link>https://echowings.github.io/p/how-to-install-vlmcsd-on-debian/</link>
-      <pubDate>Tue, 02 Mar 2021 12:19:36 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-install-vlmcsd-on-debian/</guid>
-      <description>How to Install VLMCSD on debian VLMCSD vlmcsd-1113-2020-03-28-Hotbird64 Download and install 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 VLMCSD_VERSION=svn113 curl -fsSLO https://github.com/Wind4/vlmcsd/releases/download/$VLMCSD_VERSION/binaries.tar.gz tar -zxvf binaries.tar.gz sudo cp -af ./binaries/Linux/intel/glibc/vlmcsd-x64-glibc /usr/local/bin/ chown root:root /usr/local/bin/vlmcsd-x64-glibc chmod +x /usr/local/bin/vlmcsd-64-glibc sudo bash -c &amp;#39;cat &amp;gt; /lib/systemd/system/vlmcsd.service&amp;#39; &amp;lt;&amp;lt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Vlmcsd on Steve's Blog</title><link>https://echowings.github.io/tags/vlmcsd/</link><description>Recent content in Vlmcsd on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 22 Aug 2021 22:46:37 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/vlmcsd/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Deploy Vlmcsd With Docker-Compose</title><link>https://echowings.github.io/p/how-to-deploy-vlmcsd-with-docker-compose/</link><pubDate>Sun, 22 Aug 2021 22:46:37 +0800</pubDate><guid>https://echowings.github.io/p/how-to-deploy-vlmcsd-with-docker-compose/</guid><description>&lt;h1 id="how-to-deploy-vlmcsd-with-docker-compose">How to deploy vlmcsd with docker-compose&lt;/h1>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span class="line">&lt;span class="cl">&lt;span class="k">FROM&lt;/span>&lt;span class="s"> alpine:latest as builder&lt;/span>&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">WORKDIR&lt;/span>&lt;span class="s"> /root&lt;/span>&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> sed -i &lt;span class="s1">&amp;#39;s/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g&amp;#39;&lt;/span> /etc/apk/repositories&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> apk add --no-cache git make build-base &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> rm -rf /var/lib/apt/lists/* &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> rm -rf /var/cache/apk/* &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> git clone --branch master --single-branch https://github.com/Wind4/vlmcsd.git &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> &lt;span class="nb">cd&lt;/span> vlmcsd &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> make&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">FROM&lt;/span>&lt;span class="s"> alpine:latest&lt;/span>&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">COPY&lt;/span> --from&lt;span class="o">=&lt;/span>builder /root/vlmcsd/bin/vlmcsd /vlmcsd&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> apk add --no-cache tzdata&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">EXPOSE&lt;/span>&lt;span class="s"> 1688/tcp&lt;/span>&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">CMD&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;/vlmcsd&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;-D&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;-d&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;-t&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;3&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;-e&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;-v&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>How to Install Vlmcsd on Debian</title><link>https://echowings.github.io/p/how-to-install-vlmcsd-on-debian/</link><pubDate>Tue, 02 Mar 2021 12:19:36 +0800</pubDate><guid>https://echowings.github.io/p/how-to-install-vlmcsd-on-debian/</guid><description>&lt;h1 id="how-to-install-vlmcsd-on-debian">How to Install VLMCSD on debian&lt;/h1>
+&lt;h2 id="vlmcsd">VLMCSD&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://github.com/Wind4/vlmcsd/releases" target="_blank" rel="noopener"
+>vlmcsd-1113-2020-03-28-Hotbird64&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="download-and-install">Download and install&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">VLMCSD_VERSION&lt;/span>&lt;span class="o">=&lt;/span>svn113
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">curl -fsSLO https://github.com/Wind4/vlmcsd/releases/download/&lt;span class="nv">$VLMCSD_VERSION&lt;/span>/binaries.tar.gz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">tar -zxvf binaries.tar.gz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo cp -af ./binaries/Linux/intel/glibc/vlmcsd-x64-glibc /usr/local/bin/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">chown root:root /usr/local/bin/vlmcsd-x64-glibc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">chmod +x /usr/local/bin/vlmcsd-64-glibc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo bash -c &lt;span class="s1">&amp;#39;cat &amp;gt; /lib/systemd/system/vlmcsd.service&amp;#39;&lt;/span> &lt;span class="s">&amp;lt;&amp;lt; EOF
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">[Unit]
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">Description=vlmcsd service
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">[Service]
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">ExecStart=/usr/local/bin/vlmcsd-x64-glibc -l /var/log/vlmcsd-64-glibc.log &amp;gt; /dev/null 2&amp;gt;&amp;amp;1
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">Restart=on-failure
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">RestartSec=42s
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">[Install]
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">WantedBy=multi-user.target
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">EOF&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Reload systemctl daemon&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl daemon-reload
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Delete temp directory.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo rm -rf ./binaries
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo rm -rf ./binaries.tar.gz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Enable service of dcompass auto startup when system reboot&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl &lt;span class="nb">enable&lt;/span> vlmcsd
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Restart service of vlmcsd&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl restart vlmcsd
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Check dcompass status of freedns.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl status vlmcsd
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="bat-file-for-client">bat file for client&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bat" data-lang="bat">&lt;span class="line">&lt;span class="cl">&lt;span class="k">echo&lt;/span> &lt;span class="s2">&amp;#34;To active office&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">cd&lt;/span> &lt;span class="s2">&amp;#34;c:\Program Files\Microsoft Office\Office16&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cscript ospp.vbs /sethst:$HOTSNAMTORIP:$PORT
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cscript ospp.vbs /inpkey:NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cscript ospp.vbs /act
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">echo&lt;/span> &lt;span class="s2">&amp;#34;To active windows&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">slmgr /skms $HOSTNAMEORIP:$PORT
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">slmgr /ato
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">@&lt;/span>&lt;span class="k">pause&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="reference">Reference&lt;/h2>
+&lt;ol>
+&lt;li>&lt;a class="link" href="https://invictuscj.win/articles/os/win-kms/" target="_blank" rel="noopener"
+>在debian中搭建kms服务器&lt;/a>&lt;/li>
+&lt;/ol></description></item></channel></rss>

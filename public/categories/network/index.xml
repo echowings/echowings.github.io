@@ -1,40 +1,877 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Network on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/categories/network/</link>
-    <description>Recent content in Network on Steve&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Sun, 05 May 2024 14:18:08 +0800</lastBuildDate>
-    <atom:link href="https://echowings.github.io/categories/network/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to Quickly Load Lots of Networks in Firewall Group When Vyos 1.4 Booting</title>
-      <link>https://echowings.github.io/p/how-to-quickly-load-lots-of-networks-in-firewall-group-when-vyos-1.4-booting/</link>
-      <pubDate>Mon, 11 Mar 2024 16:16:58 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-quickly-load-lots-of-networks-in-firewall-group-when-vyos-1.4-booting/</guid>
-      <description>Download file /config/scripts/chinaipranges.txt 1 curl https://raw.githubusercontent.com/pmkol/easymosdns/rules/china_ip_list.txt | sed -En &amp;#39;/([0-9]+\.){3}[0-9]+/{s,,&amp;amp;,p}&amp;#39; &amp;gt; /config/scripts/chinaipranges.txt Create file /config/scripts/add-firewall-group.py 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 tee /config/scripts/add-firewall-group.</description>
-    </item>
-    <item>
-      <title>Shell Script to Update Cloudflare Ddns</title>
-      <link>https://echowings.github.io/p/shell-script-to-update-cloudflare-ddns/</link>
-      <pubDate>Sun, 09 Oct 2022 09:50:14 +0800</pubDate>
-      <guid>https://echowings.github.io/p/shell-script-to-update-cloudflare-ddns/</guid>
-      <description>Shell Script to Update Cloudflare Ddns Script 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 #!</description>
-    </item>
-    <item>
-      <title>How to Enable Http Api Service on VyOS</title>
-      <link>https://echowings.github.io/p/how-to-enable-http-api-service-on-vyos/</link>
-      <pubDate>Tue, 26 Apr 2022 00:17:15 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-enable-http-api-service-on-vyos/</guid>
-      <description>How to enable API serivce on VyOS&#xA;How to enable API serivce on VyOS After these days, I wrote some vyos shell script to auto detect network status and automatacally change some settings. In the way There will be new configuration to loading directly and hold the configuration mode for a longer time. This is not in a smart way.&#xA;Another better option, What if we can change settings of vyos with api?</description>
-    </item>
-    <item>
-      <title>How to configure cisco catalyst switch</title>
-      <link>https://echowings.github.io/p/how-to-configure-cisco-catalyst-switch/</link>
-      <pubDate>Tue, 11 May 2021 11:29:28 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-configure-cisco-catalyst-switch/</guid>
-      <description>How to configure cisco catalyst switch Clean session 1 2 3 4 5 #Show current login users show users # terminal a user clear line vty 0 Set Session timeout exec timeout command is sused to specify the timeout for exec sessions[telnet/ssh] whereas session timeout command specifies the idle timeout period for all the sessions.&#xA;1 2 3 4 5 6 7 config t line vty 0 15 exec-timeout 10 session-timeout 10 #Check configure sh run | be line vty How to fix %Error opening tftp://255.</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Network on Steve's Blog</title><link>https://echowings.github.io/categories/network/</link><description>Recent content in Network on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 11 Mar 2024 16:16:58 +0800</lastBuildDate><atom:link href="https://echowings.github.io/categories/network/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Quickly Load Lots of Networks in Firewall Group When Vyos 1.4 Booting</title><link>https://echowings.github.io/p/how-to-quickly-load-lots-of-networks-in-firewall-group-when-vyos-1.4-booting/</link><pubDate>Mon, 11 Mar 2024 16:16:58 +0800</pubDate><guid>https://echowings.github.io/p/how-to-quickly-load-lots-of-networks-in-firewall-group-when-vyos-1.4-booting/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=d8d1c543" alt="Featured image of post How to Quickly Load Lots of Networks in Firewall Group When Vyos 1.4 Booting" />&lt;h2 id="download--file-configscriptschinaiprangestxt">Download file &lt;code>/config/scripts/chinaipranges.txt&lt;/code>&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">curl https://raw.githubusercontent.com/pmkol/easymosdns/rules/china_ip_list.txt &lt;span class="p">|&lt;/span> sed -En &lt;span class="s1">&amp;#39;/([0-9]+\.){3}[0-9]+/{s,,&amp;amp;,p}&amp;#39;&lt;/span> &amp;gt; /config/scripts/chinaipranges.txt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="create-file-configscriptsadd-firewall-grouppy">Create file &lt;code>/config/scripts/add-firewall-group.py&lt;/code>&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">tee /config/scripts/add-firewall-group.py &amp;lt;&amp;lt; &lt;span class="s2">&amp;#34;EOF&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#!/usr/bin/env python3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">import subprocess
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">import sys
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">import &lt;span class="nb">time&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">def add_networks_in_batches&lt;span class="o">(&lt;/span>set_name, filename, &lt;span class="nv">batch_size&lt;/span>&lt;span class="o">=&lt;/span>1000&lt;span class="o">)&lt;/span>:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#table_name = &amp;#34;vyos_filter&amp;#34; # Fixed table name&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">table_names&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">[&lt;/span>&lt;span class="s2">&amp;#34;vyos_filter&amp;#34;&lt;/span>, &lt;span class="s2">&amp;#34;vyos_mangle&amp;#34;&lt;/span>, &lt;span class="s2">&amp;#34;vyos_nat&amp;#34;&lt;/span>, &lt;span class="s2">&amp;#34;vyos_conntrack&amp;#34;&lt;/span>&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">total_added&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="c1"># Initialize counter for total added IPs&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">start_time&lt;/span> &lt;span class="o">=&lt;/span> time.time&lt;span class="o">()&lt;/span> &lt;span class="c1"># Record the start time&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> try:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> with open&lt;span class="o">(&lt;/span>filename, &lt;span class="s1">&amp;#39;r&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span> as file:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">networks&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">[&lt;/span>line.strip&lt;span class="o">()&lt;/span> &lt;span class="k">for&lt;/span> line in file &lt;span class="k">if&lt;/span> line.strip&lt;span class="o">()]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> table_name in table_names:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> i in range&lt;span class="o">(&lt;/span>0, len&lt;span class="o">(&lt;/span>networks&lt;span class="o">)&lt;/span>, batch_size&lt;span class="o">)&lt;/span>:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">batch_networks&lt;/span> &lt;span class="o">=&lt;/span> networks&lt;span class="o">[&lt;/span>i:i+batch_size&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">networks_string&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;, &amp;#39;&lt;/span>.join&lt;span class="o">(&lt;/span>batch_networks&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">command&lt;/span> &lt;span class="o">=&lt;/span> f&lt;span class="s2">&amp;#34;nft add element ip {table_name} {set_name} {{ {networks_string} }}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> subprocess.run&lt;span class="o">(&lt;/span>command, &lt;span class="nv">check&lt;/span>&lt;span class="o">=&lt;/span>True, &lt;span class="nv">shell&lt;/span>&lt;span class="o">=&lt;/span>True&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> print&lt;span class="o">(&lt;/span>f&lt;span class="s2">&amp;#34;Successfully added batch of networks to {set_name}&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">total_added&lt;/span> &lt;span class="o">+=&lt;/span> len&lt;span class="o">(&lt;/span>batch_networks&lt;span class="o">)&lt;/span> &lt;span class="c1"># Update count of added IPs&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> except subprocess.CalledProcessError as e:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> print&lt;span class="o">(&lt;/span>f&lt;span class="s2">&amp;#34;Error adding networks to {set_name}: {e}&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> except FileNotFoundError:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> print&lt;span class="o">(&lt;/span>f&lt;span class="s2">&amp;#34;File {filename} not found&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> except Exception as e:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> print&lt;span class="o">(&lt;/span>f&lt;span class="s2">&amp;#34;An error occurred: {e}&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">end_time&lt;/span> &lt;span class="o">=&lt;/span> time.time&lt;span class="o">()&lt;/span> &lt;span class="c1"># Record the end time&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">elapsed_time&lt;/span> &lt;span class="o">=&lt;/span> end_time - start_time &lt;span class="c1"># Calculate elapsed time&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Print summary&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> print&lt;span class="o">(&lt;/span>f&lt;span class="s2">&amp;#34;\nTotal of {total_added} networks were added to {set_name}.&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> print&lt;span class="o">(&lt;/span>f&lt;span class="s2">&amp;#34;Process took {elapsed_time:.2f} seconds.&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">def main&lt;span class="o">()&lt;/span>:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> len&lt;span class="o">(&lt;/span>sys.argv&lt;span class="o">)&lt;/span> !&lt;span class="o">=&lt;/span> 3:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> print&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;Usage: python3 test.py &amp;lt;set name&amp;gt; &amp;lt;filename&amp;gt;&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> sys.exit&lt;span class="o">(&lt;/span>1&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">set_name&lt;/span> &lt;span class="o">=&lt;/span> sys.argv&lt;span class="o">[&lt;/span>1&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">filename&lt;/span> &lt;span class="o">=&lt;/span> sys.argv&lt;span class="o">[&lt;/span>2&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> add_networks_in_batches&lt;span class="o">(&lt;/span>set_name, filename&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="nv">__name__&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;__main__&amp;#34;&lt;/span>:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> main&lt;span class="o">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">EOF
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="add-loading-ip-script-in--configscriptsvyos-postconfig-bootupscript">Add loading ip script in &lt;code>/config/scripts/vyos-postconfig-bootup.script&lt;/code>&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> ! grep -q &lt;span class="s2">&amp;#34;cd /config/scripts &amp;amp;&amp;amp;python3 add-firewall-group.py N_china-ip-ranges chinaipranges.txt&amp;#34;&lt;/span> /config/scripts/vyos-postconfig-bootup.script
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;Not existed, append file&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;cd /config/scripts &amp;amp;&amp;amp;python3 add-firewall-group.py N_china-ip-ranges chinaipranges.txt&amp;#34;&lt;/span> &amp;gt;&amp;gt; /config/scripts/vyos-postconfig-bootup.script
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;Already existed&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="check--network-group-command">Check network group command&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># List all tables has network-group&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo nft list sets &lt;span class="p">|&lt;/span> grep -B &lt;span class="m">1&lt;/span> chatgpt-ip-ranges
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># List &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo nft list &lt;span class="nb">set&lt;/span> ip vyos_filter N_china-ip-ranges
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo nft list &lt;span class="nb">set&lt;/span> ip vyos_mangle N_china-ip-ranges
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo nft list &lt;span class="nb">set&lt;/span> ip vyos_nat N_china-ip-ranges
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo nft list &lt;span class="nb">set&lt;/span> ip vyos_conntrack N_china-ip-ranges
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="reference">Reference&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://forum.vyos.io/t/how-to-load-networks-from-a-file-to-add-them-into-the-firewall-group-in-vyos-1-4-with-ntf-command-to-replace-removed-ipset/13997/2" target="_blank" rel="noopener"
+>How to load networks from a file to add them into the firewall group in vyos 1.4 with ntf command to replace removed ipset &lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Shell Script to Update Cloudflare Ddns</title><link>https://echowings.github.io/p/shell-script-to-update-cloudflare-ddns/</link><pubDate>Sun, 09 Oct 2022 09:50:14 +0800</pubDate><guid>https://echowings.github.io/p/shell-script-to-update-cloudflare-ddns/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=7257319e" alt="Featured image of post Shell Script to Update Cloudflare Ddns" />&lt;h1 id="shell-script-to-update-cloudflare-ddns">Shell Script to Update Cloudflare Ddns&lt;/h1>
+&lt;h2 id="script">Script&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt"> 10
+&lt;/span>&lt;span class="lnt"> 11
+&lt;/span>&lt;span class="lnt"> 12
+&lt;/span>&lt;span class="lnt"> 13
+&lt;/span>&lt;span class="lnt"> 14
+&lt;/span>&lt;span class="lnt"> 15
+&lt;/span>&lt;span class="lnt"> 16
+&lt;/span>&lt;span class="lnt"> 17
+&lt;/span>&lt;span class="lnt"> 18
+&lt;/span>&lt;span class="lnt"> 19
+&lt;/span>&lt;span class="lnt"> 20
+&lt;/span>&lt;span class="lnt"> 21
+&lt;/span>&lt;span class="lnt"> 22
+&lt;/span>&lt;span class="lnt"> 23
+&lt;/span>&lt;span class="lnt"> 24
+&lt;/span>&lt;span class="lnt"> 25
+&lt;/span>&lt;span class="lnt"> 26
+&lt;/span>&lt;span class="lnt"> 27
+&lt;/span>&lt;span class="lnt"> 28
+&lt;/span>&lt;span class="lnt"> 29
+&lt;/span>&lt;span class="lnt"> 30
+&lt;/span>&lt;span class="lnt"> 31
+&lt;/span>&lt;span class="lnt"> 32
+&lt;/span>&lt;span class="lnt"> 33
+&lt;/span>&lt;span class="lnt"> 34
+&lt;/span>&lt;span class="lnt"> 35
+&lt;/span>&lt;span class="lnt"> 36
+&lt;/span>&lt;span class="lnt"> 37
+&lt;/span>&lt;span class="lnt"> 38
+&lt;/span>&lt;span class="lnt"> 39
+&lt;/span>&lt;span class="lnt"> 40
+&lt;/span>&lt;span class="lnt"> 41
+&lt;/span>&lt;span class="lnt"> 42
+&lt;/span>&lt;span class="lnt"> 43
+&lt;/span>&lt;span class="lnt"> 44
+&lt;/span>&lt;span class="lnt"> 45
+&lt;/span>&lt;span class="lnt"> 46
+&lt;/span>&lt;span class="lnt"> 47
+&lt;/span>&lt;span class="lnt"> 48
+&lt;/span>&lt;span class="lnt"> 49
+&lt;/span>&lt;span class="lnt"> 50
+&lt;/span>&lt;span class="lnt"> 51
+&lt;/span>&lt;span class="lnt"> 52
+&lt;/span>&lt;span class="lnt"> 53
+&lt;/span>&lt;span class="lnt"> 54
+&lt;/span>&lt;span class="lnt"> 55
+&lt;/span>&lt;span class="lnt"> 56
+&lt;/span>&lt;span class="lnt"> 57
+&lt;/span>&lt;span class="lnt"> 58
+&lt;/span>&lt;span class="lnt"> 59
+&lt;/span>&lt;span class="lnt"> 60
+&lt;/span>&lt;span class="lnt"> 61
+&lt;/span>&lt;span class="lnt"> 62
+&lt;/span>&lt;span class="lnt"> 63
+&lt;/span>&lt;span class="lnt"> 64
+&lt;/span>&lt;span class="lnt"> 65
+&lt;/span>&lt;span class="lnt"> 66
+&lt;/span>&lt;span class="lnt"> 67
+&lt;/span>&lt;span class="lnt"> 68
+&lt;/span>&lt;span class="lnt"> 69
+&lt;/span>&lt;span class="lnt"> 70
+&lt;/span>&lt;span class="lnt"> 71
+&lt;/span>&lt;span class="lnt"> 72
+&lt;/span>&lt;span class="lnt"> 73
+&lt;/span>&lt;span class="lnt"> 74
+&lt;/span>&lt;span class="lnt"> 75
+&lt;/span>&lt;span class="lnt"> 76
+&lt;/span>&lt;span class="lnt"> 77
+&lt;/span>&lt;span class="lnt"> 78
+&lt;/span>&lt;span class="lnt"> 79
+&lt;/span>&lt;span class="lnt"> 80
+&lt;/span>&lt;span class="lnt"> 81
+&lt;/span>&lt;span class="lnt"> 82
+&lt;/span>&lt;span class="lnt"> 83
+&lt;/span>&lt;span class="lnt"> 84
+&lt;/span>&lt;span class="lnt"> 85
+&lt;/span>&lt;span class="lnt"> 86
+&lt;/span>&lt;span class="lnt"> 87
+&lt;/span>&lt;span class="lnt"> 88
+&lt;/span>&lt;span class="lnt"> 89
+&lt;/span>&lt;span class="lnt"> 90
+&lt;/span>&lt;span class="lnt"> 91
+&lt;/span>&lt;span class="lnt"> 92
+&lt;/span>&lt;span class="lnt"> 93
+&lt;/span>&lt;span class="lnt"> 94
+&lt;/span>&lt;span class="lnt"> 95
+&lt;/span>&lt;span class="lnt"> 96
+&lt;/span>&lt;span class="lnt"> 97
+&lt;/span>&lt;span class="lnt"> 98
+&lt;/span>&lt;span class="lnt"> 99
+&lt;/span>&lt;span class="lnt">100
+&lt;/span>&lt;span class="lnt">101
+&lt;/span>&lt;span class="lnt">102
+&lt;/span>&lt;span class="lnt">103
+&lt;/span>&lt;span class="lnt">104
+&lt;/span>&lt;span class="lnt">105
+&lt;/span>&lt;span class="lnt">106
+&lt;/span>&lt;span class="lnt">107
+&lt;/span>&lt;span class="lnt">108
+&lt;/span>&lt;span class="lnt">109
+&lt;/span>&lt;span class="lnt">110
+&lt;/span>&lt;span class="lnt">111
+&lt;/span>&lt;span class="lnt">112
+&lt;/span>&lt;span class="lnt">113
+&lt;/span>&lt;span class="lnt">114
+&lt;/span>&lt;span class="lnt">115
+&lt;/span>&lt;span class="lnt">116
+&lt;/span>&lt;span class="lnt">117
+&lt;/span>&lt;span class="lnt">118
+&lt;/span>&lt;span class="lnt">119
+&lt;/span>&lt;span class="lnt">120
+&lt;/span>&lt;span class="lnt">121
+&lt;/span>&lt;span class="lnt">122
+&lt;/span>&lt;span class="lnt">123
+&lt;/span>&lt;span class="lnt">124
+&lt;/span>&lt;span class="lnt">125
+&lt;/span>&lt;span class="lnt">126
+&lt;/span>&lt;span class="lnt">127
+&lt;/span>&lt;span class="lnt">128
+&lt;/span>&lt;span class="lnt">129
+&lt;/span>&lt;span class="lnt">130
+&lt;/span>&lt;span class="lnt">131
+&lt;/span>&lt;span class="lnt">132
+&lt;/span>&lt;span class="lnt">133
+&lt;/span>&lt;span class="lnt">134
+&lt;/span>&lt;span class="lnt">135
+&lt;/span>&lt;span class="lnt">136
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/bash
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">############## User Configuration ###############&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Define programme path&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># location_path=&amp;#34;/config/scripts/ddns&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">location_path&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>dirname -- &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$0&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># You Registered CloudFlare Mail Account&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">auth_email&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># CloudFlare Global API Key&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">auth_key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Root Doman Name&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">zone_name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># IP Type，Enter &amp;#39;ipv4&amp;#39; or &amp;#39;ipv6&amp;#39; ,at here we got paramter from our input&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">type&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">$1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># DDNS Domain Name&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">record_name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">$2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># WAN INTERFACE&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">INTERFACE&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">############# Script ############&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># The before WAN IP &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ip_file&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$location_path&lt;/span>&lt;span class="s2">/&lt;/span>&lt;span class="nv">$1&lt;/span>&lt;span class="s2">_&lt;/span>&lt;span class="nv">$2&lt;/span>&lt;span class="s2">_ip.txt&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Domain id information&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Domain id information&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">id_file&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$location_path&lt;/span>&lt;span class="s2">/&lt;/span>&lt;span class="nv">$1&lt;/span>&lt;span class="s2">_&lt;/span>&lt;span class="nv">$2&lt;/span>&lt;span class="s2">_cloudflare.ids&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Log location&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">log_file&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$location_path&lt;/span>&lt;span class="s2">/cloudflare.log&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">################ Don&amp;#39;t change here ###############&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">################## Function ####################&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">record_type&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ip&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">zone_identifier&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">record_identifier&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">update&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Log function&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">log&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$1&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="o">]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> -e &lt;span class="s2">&amp;#34;[&lt;/span>&lt;span class="k">$(&lt;/span>date&lt;span class="k">)&lt;/span>&lt;span class="s2">] - &lt;/span>&lt;span class="nv">$1&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &amp;gt;&amp;gt; &lt;span class="nv">$log_file&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#To get local IP address&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">get_ip&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="nv">$type&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;ipv4&amp;#34;&lt;/span> &lt;span class="o">]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">record_type&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;A&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">ip&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>ip addr &lt;span class="p">|&lt;/span> grep &lt;span class="si">${&lt;/span>&lt;span class="nv">INTERFACE&lt;/span>&lt;span class="si">}&lt;/span> -A2 &lt;span class="p">|&lt;/span> grep inet &lt;span class="p">|&lt;/span> grep -v inet6 &lt;span class="p">|&lt;/span> awk &lt;span class="s1">&amp;#39;{print $2}&amp;#39;&lt;/span>&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">elif&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="nv">$type&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;ipv6&amp;#34;&lt;/span> &lt;span class="o">]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">record_type&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;AAAA&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">ip&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>ip addr &lt;span class="p">|&lt;/span> grep &lt;span class="si">${&lt;/span>&lt;span class="nv">INTERFACE&lt;/span>&lt;span class="si">}&lt;/span> -A2 &lt;span class="p">|&lt;/span> grep inet6 &lt;span class="p">|&lt;/span> awk &lt;span class="s1">&amp;#39;{print $2}&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> cut -d &lt;span class="s1">&amp;#39;/&amp;#39;&lt;/span> -f1&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;Type wrong&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> log &lt;span class="s2">&amp;#34;Type wrong&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">exit&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Check IP changed or not, if there&amp;#39;s no change, then terminal programme&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">check_ip_change&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> -f &lt;span class="nv">$ip_file&lt;/span> &lt;span class="o">]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">old_ip&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>cat &lt;span class="nv">$ip_file&lt;/span>&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$ip&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$old_ip&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="o">]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;IP has not changed.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> log &lt;span class="s2">&amp;#34;IP has not changed.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">exit&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Get zone_id subdomain ID&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">get_id&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> -f &lt;span class="nv">$id_file&lt;/span> &lt;span class="o">]&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="k">$(&lt;/span>wc -l &lt;span class="nv">$id_file&lt;/span> &lt;span class="p">|&lt;/span> cut -d &lt;span class="s2">&amp;#34; &amp;#34;&lt;/span> -f 1&lt;span class="k">)&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="m">2&lt;/span> &lt;span class="o">]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">zone_identifier&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>head -1 &lt;span class="nv">$id_file&lt;/span>&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">record_identifier&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>tail -1 &lt;span class="nv">$id_file&lt;/span>&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">zone_identifier&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>curl -s -X GET &lt;span class="s2">&amp;#34;https://api.cloudflare.com/client/v4/zones?name=&lt;/span>&lt;span class="nv">$zone_name&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> -H &lt;span class="s2">&amp;#34;X-Auth-Email: &lt;/span>&lt;span class="nv">$auth_email&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> -H &lt;span class="s2">&amp;#34;X-Auth-Key: &lt;/span>&lt;span class="nv">$auth_key&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> -H &lt;span class="s2">&amp;#34;Content-Type: application/json&amp;#34;&lt;/span> &lt;span class="p">|&lt;/span> grep -Po &lt;span class="s1">&amp;#39;(?&amp;lt;=&amp;#34;id&amp;#34;:&amp;#34;)[^&amp;#34;]*&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> head -1 &lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">rec_response_json&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="sb">`&lt;/span>curl -X GET &lt;span class="s2">&amp;#34;https://api.cloudflare.com/client/v4/zones/&lt;/span>&lt;span class="nv">$zone_identifier&lt;/span>&lt;span class="s2">/dns_records?name=&lt;/span>&lt;span class="nv">$record_name&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> -H &lt;span class="s2">&amp;#34;X-Auth-Email: &lt;/span>&lt;span class="nv">$auth_email&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> -H &lt;span class="s2">&amp;#34;X-Auth-Key: &lt;/span>&lt;span class="nv">$auth_key&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> -H &lt;span class="s2">&amp;#34;Content-Type: application/json&amp;#34;&lt;/span>&lt;span class="sb">`&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">record_identifier&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="sb">`&lt;/span>&lt;span class="nb">echo&lt;/span> &lt;span class="nv">$rec_response_json&lt;/span> &lt;span class="p">|&lt;/span> grep -Po &lt;span class="s1">&amp;#39;(?&amp;lt;=&amp;#34;id&amp;#34;:&amp;#34;)[^&amp;#34;]*&amp;#39;&lt;/span>&lt;span class="sb">`&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$zone_identifier&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &amp;gt; &lt;span class="nv">$id_file&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$record_identifier&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &amp;gt;&amp;gt; &lt;span class="nv">$id_file&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Update DNS record&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">update_dns&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">update&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>curl -s -X PUT &lt;span class="s2">&amp;#34;https://api.cloudflare.com/client/v4/zones/&lt;/span>&lt;span class="nv">$zone_identifier&lt;/span>&lt;span class="s2">/dns_records/&lt;/span>&lt;span class="nv">$record_identifier&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> -H &lt;span class="s2">&amp;#34;X-Auth-Email: &lt;/span>&lt;span class="nv">$auth_email&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> -H &lt;span class="s2">&amp;#34;X-Auth-Key: &lt;/span>&lt;span class="nv">$auth_key&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> -H &lt;span class="s2">&amp;#34;Content-Type: application/json&amp;#34;&lt;/span> --data &lt;span class="s2">&amp;#34;{\&amp;#34;id\&amp;#34;:\&amp;#34;&lt;/span>&lt;span class="nv">$zone_identifier&lt;/span>&lt;span class="s2">\&amp;#34;,\&amp;#34;type\&amp;#34;:\&amp;#34;&lt;/span>&lt;span class="nv">$record_type&lt;/span>&lt;span class="s2">\&amp;#34;,\&amp;#34;name\&amp;#34;:\&amp;#34;&lt;/span>&lt;span class="nv">$record_name&lt;/span>&lt;span class="s2">\&amp;#34;,\&amp;#34;content\&amp;#34;:\&amp;#34;&lt;/span>&lt;span class="nv">$ip&lt;/span>&lt;span class="s2">\&amp;#34;}&amp;#34;&lt;/span>&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">################### Main ###################&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">log &lt;span class="s2">&amp;#34;Script start.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Got IP Address&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">get_ip
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Check got the right ip address&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$ip&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;&amp;#34;&lt;/span> &lt;span class="o">]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;Can not get IP address.Please check your network connection.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> log &lt;span class="s2">&amp;#34;Can not get IP address.Please check your network connection.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">exit&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Check IP changed or not&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">check_ip_change
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Get zone_id and sumdomain record ID&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">get_id
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Check get ID successfully or not&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$zone_identifier&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;&amp;#34;&lt;/span> &lt;span class="o">]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;Can not get zone_id.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> log &lt;span class="s2">&amp;#34;Can not get zone_id.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">exit&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">elif&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$record_identifier&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;&amp;#34;&lt;/span> &lt;span class="o">]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;Can not get record_id.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> log &lt;span class="s2">&amp;#34;Can not get record_id.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">exit&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Update DNS Record&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">update_dns
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Check DNS record updated or not&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="o">[[&lt;/span> &lt;span class="nv">$update&lt;/span> &lt;span class="o">==&lt;/span> *&lt;span class="s2">&amp;#34;\&amp;#34;success\&amp;#34;:false&amp;#34;&lt;/span>* &lt;span class="o">]]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> log &lt;span class="s2">&amp;#34;API UPDATE FAILED. DUMPING RESULTS:\n&lt;/span>&lt;span class="nv">$update&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> -e &lt;span class="s2">&amp;#34;API UPDATE FAILED. DUMPING RESULTS:\n&lt;/span>&lt;span class="nv">$update&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">exit&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$ip&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &amp;gt; &lt;span class="nv">$ip_file&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> log &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$record_name&lt;/span>&lt;span class="s2"> IP changed to: &lt;/span>&lt;span class="nv">$ip&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$record_name&lt;/span>&lt;span class="s2"> IP changed to: &lt;/span>&lt;span class="nv">$ip&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="how-to-run-the-script">How to run the script&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#update A record&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo bash /config/scripts/ddns/cloudflare-ddns.sh ipv4 &amp;lt;MY_DOMAIN_NAME&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#update AAAA record&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo bash /config/scripts/ddns/cloudflare-ddns.sh ipv6 &amp;lt;MY_DOMAIN_NAME&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>How to Enable Http Api Service on VyOS</title><link>https://echowings.github.io/p/how-to-enable-http-api-service-on-vyos/</link><pubDate>Tue, 26 Apr 2022 00:17:15 +0800</pubDate><guid>https://echowings.github.io/p/how-to-enable-http-api-service-on-vyos/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=71ff97d5" alt="Featured image of post How to Enable Http Api Service on VyOS" />&lt;p>&lt;strong>How to enable API serivce on VyOS&lt;/strong>&lt;/p>
+&lt;h1 id="how-to-enable-api-serivce-on-vyos">How to enable API serivce on VyOS&lt;/h1>
+&lt;p>After these days, I wrote some vyos shell script to auto detect network status and automatacally change some settings. In the way There will be new configuration to loading directly and hold the configuration mode for a longer time. This is not in a smart way.&lt;/p>
+&lt;p>Another better option, What if we can change settings of vyos with api?&lt;/p>
+&lt;h2 id="enable-api-http-service-localy">Enable api http service localy&lt;/h2>
+&lt;h3 id="enable-apt-service-with-socket-mode">Enable apt service with socket mode&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https api socket
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="test-settings">Test settings&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">curl --unix-socket /run/api.sock -X POST -Fkey&lt;span class="o">=&lt;/span>qwerty -Fdata&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;{&amp;#34;op&amp;#34;: &amp;#34;showConfig&amp;#34;, &amp;#34;path&amp;#34;: []}&amp;#39;&lt;/span> http://localhost/retrieve
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="enable-api-https-service-with-lets-encryption-free-ssl">Enable api https service with let&amp;rsquo;s encryption free ssl&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/vbash
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="nb">source&lt;/span> /opt/vyatta/etc/functions/script-template
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">configure
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Define variable&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ID&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;my_id&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">APIKEY&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;12345&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">APIPORT&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;1234&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">VHOST&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;myvps&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">FULL_FQDN&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;xxx.xxx.xxx&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">LISTEN_ADDRESS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;IP ADDRESS&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">EMAIL&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;my@emal.com&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https api key id &lt;span class="nv">$ID&lt;/span> key &lt;span class="nv">$APIKEY&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https certificates certbot domain-name &lt;span class="nv">$FULL_FQDN&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https certificates certbot email &lt;span class="nv">$EMAIL&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https api strict
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https virtual-host &lt;span class="nv">$VHOST&lt;/span> listen-address &lt;span class="nv">$LISTEN_ADDRESS&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https virtual-host &lt;span class="nv">$VHOST&lt;/span> listen-port &lt;span class="nv">$APIPORT&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https virtual-host &lt;span class="nv">$VHOST&lt;/span> server-name &lt;span class="nv">$FULL_FQDN&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">commit
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">save
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">exit&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>How to configure cisco catalyst switch</title><link>https://echowings.github.io/p/how-to-configure-cisco-catalyst-switch/</link><pubDate>Tue, 11 May 2021 11:29:28 +0800</pubDate><guid>https://echowings.github.io/p/how-to-configure-cisco-catalyst-switch/</guid><description>&lt;h1 id="how-to-configure-cisco-catalyst-switch">How to configure cisco catalyst switch&lt;/h1>
+&lt;h2 id="clean-session">Clean session&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Show current login users&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">show users
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># terminal a user&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">clear line vty &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="set-session-timeout">Set Session timeout&lt;/h2>
+&lt;p>exec timeout command is sused to specify the timeout for exec sessions[telnet/ssh] whereas session timeout command specifies the idle timeout period for all the sessions.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">config t
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">line vty &lt;span class="m">0&lt;/span> &lt;span class="m">15&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">exec-timeout &lt;span class="m">10&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">session-timeout &lt;span class="m">10&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Check configure&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sh run &lt;span class="p">|&lt;/span> be line vty
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="how-to-fix-error-opening-tftp255255255255network-confg-timed-out">How to fix &lt;code>%Error opening tftp://255.255.255.255/network-confg (Timed out)&lt;/code>&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">no service config
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="set-ip-address-and-default-gateway">Set ip address and default gateway&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ip default-gateway 192.168.0.1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">interface vlan &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ip address 192.168.0.2 255.255.255.0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="set-hostname-and-domain-name">Set hostname and domain-name&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">config t
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">hostname myswitch
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ip domain-name mydomain.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="enable-ssh-login">Enable ssh login&lt;/h2>
+&lt;h3 id="generate-the-rsa-keys">Generate the RSA keys&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">myswitch&lt;span class="o">(&lt;/span>config&lt;span class="o">)&lt;/span>&lt;span class="c1"># crypto key generate rsa&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> The name &lt;span class="k">for&lt;/span> the keys will be: myswitch.thegeekstuff.com
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Choose the size of the key modulus in the range of &lt;span class="m">360&lt;/span> to &lt;span class="m">2048&lt;/span> &lt;span class="k">for&lt;/span> your
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> General Purpose Keys. Choosing a key modulus greater than &lt;span class="m">512&lt;/span> may take
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> a few minutes.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">How many bits in the modulus &lt;span class="o">[&lt;/span>512&lt;span class="o">]&lt;/span>: &lt;span class="m">1024&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> % Generating &lt;span class="m">1024&lt;/span> bit RSA keys, keys will be non-exportable...&lt;span class="o">[&lt;/span>OK&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="setup-the-line-vty-configurations">Setup the line vty configurations&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">line vty &lt;span class="m">0&lt;/span> &lt;span class="m">4&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">session-timeout &lt;span class="m">10&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">transport input ssh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">login &lt;span class="nb">local&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">password &lt;span class="m">7&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">exit&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="set-the-console-line">Set the console line&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">line console &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">logging synchronus
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">login &lt;span class="nb">local&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="create-the-username-password">Create the username password&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">config t
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">username &lt;span class="nv">$USERNAME&lt;/span> password &lt;span class="nv">$MYPASSWORD&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">enable&lt;/span> secret &lt;span class="nv">$MYENABLEPASSWORD&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="enable-service-password-encryption">enable service password-encryption&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">service password-encryption
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="verify-ssh-access">Verify SSH access&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">show ip ssh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="configure">Configure&lt;/h2>
+&lt;h3 id="port-channel">port-channel&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">interface Port-channel1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> description testing
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> switchport trunk allowed vlan 4-12
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> switchport trunk encapsulation dot1q
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> switchport mode trunk
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># network port settings&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> interface GigabitEthernet1/0/27
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> description lacp-wifi-network
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> switchport trunk encapsulation dot1q
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> switchport mode trunk
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> channel-protocol lacp
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> channel-group &lt;span class="m">3&lt;/span> mode active
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">!
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">interface GigabitEthernet1/0/28
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> description lacp-wifi-network
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> switchport trunk encapsulation dot1q
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> switchport mode trunk
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> channel-protocol lacp
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> channel-group &lt;span class="m">3&lt;/span> mode active
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="access-mode">Access mode&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">interface GigabitEthernet1/0/29
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> switchport access vlan &lt;span class="m">60&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> switchport mode access
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="snmp">SNMP&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">snmp-server community public RO
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="ntp">NTP&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ntp &lt;span class="nb">source&lt;/span> vlan &lt;span class="m">20&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ntp server 10.32.0.2 &lt;span class="nb">source&lt;/span> vlan &lt;span class="m">20&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="pbr">PBR&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Enable PBR on cisco 3750x&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sdm prefer routing
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#save configuration&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">write
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Reload switch to let it works.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">reload
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#check sdm status&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">show sdm prefer
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Define access list&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ip access-list extended wifi
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> permit ip 10.32.200.0 0.0.0.255 any
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> deny ip any any
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#define reout-map and set routing policy&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">route-map wifi-2rd-gw permit &lt;span class="m">10&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> match ip address wifi
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">set&lt;/span> ip next-hop 192.168.99.2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#select a vlan to apply PBR&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> interface Vlan30
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ip policy route-map wifi-2rd-gw
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="reference">Reference:&lt;/h2>
+&lt;hr>
+&lt;ol>
+&lt;li>&lt;a class="link" href="https://community.cisco.com/t5/other-network-architecture/error-opening-tftp-255-255-255-255-network-confg-timed-out/td-p/258876" target="_blank" rel="noopener"
+>%Error opening tftp://255.255.255.255/network-confg (Timed out)&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://community.cisco.com/t5/wireless/to-increase-ssh-session-timeout/td-p/3098020" target="_blank" rel="noopener"
+>to increase SSH session timeout&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.thegeekstuff.com/2013/08/enable-ssh-cisco/" target="_blank" rel="noopener"
+>How to Enable SSH on Cisco Switch, Router and ASA&lt;/a>&lt;/li>
+&lt;/ol></description></item></channel></rss>

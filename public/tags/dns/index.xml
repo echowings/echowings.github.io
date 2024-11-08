@@ -1,26 +1,420 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Dns on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/tags/dns/</link>
-    <description>Recent content in Dns on Steve&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Sun, 05 May 2024 14:18:08 +0800</lastBuildDate>
-    <atom:link href="https://echowings.github.io/tags/dns/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to Update Network Group Base Domain Name on VyOS</title>
-      <link>https://echowings.github.io/p/how-to-update-network-group-base-domain-name-on-vyos/</link>
-      <pubDate>Tue, 21 Feb 2023 22:16:02 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-update-network-group-base-domain-name-on-vyos/</guid>
-      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 #!</description>
-    </item>
-    <item>
-      <title>Deploy Overture With Docker and Freebsd</title>
-      <link>https://echowings.github.io/p/deploy-overture-with-docker-and-freebsd/</link>
-      <pubDate>Tue, 18 Dec 2018 00:44:13 +0800</pubDate>
-      <guid>https://echowings.github.io/p/deploy-overture-with-docker-and-freebsd/</guid>
-      <description>Run overture on Docker and FreeBSD 12 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 ENV foo /overture WORKDIR ${foo} RUN apt-get update &amp;amp;&amp;amp; apt-get install -y ca-certificates RUN printf &amp;#34;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dns on Steve's Blog</title><link>https://echowings.github.io/tags/dns/</link><description>Recent content in Dns on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 21 Feb 2023 22:16:02 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/dns/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Update Network Group Base Domain Name on VyOS</title><link>https://echowings.github.io/p/how-to-update-network-group-base-domain-name-on-vyos/</link><pubDate>Tue, 21 Feb 2023 22:16:02 +0800</pubDate><guid>https://echowings.github.io/p/how-to-update-network-group-base-domain-name-on-vyos/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=95b1deda" alt="Featured image of post How to Update Network Group Base Domain Name on VyOS" />&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt"> 10
+&lt;/span>&lt;span class="lnt"> 11
+&lt;/span>&lt;span class="lnt"> 12
+&lt;/span>&lt;span class="lnt"> 13
+&lt;/span>&lt;span class="lnt"> 14
+&lt;/span>&lt;span class="lnt"> 15
+&lt;/span>&lt;span class="lnt"> 16
+&lt;/span>&lt;span class="lnt"> 17
+&lt;/span>&lt;span class="lnt"> 18
+&lt;/span>&lt;span class="lnt"> 19
+&lt;/span>&lt;span class="lnt"> 20
+&lt;/span>&lt;span class="lnt"> 21
+&lt;/span>&lt;span class="lnt"> 22
+&lt;/span>&lt;span class="lnt"> 23
+&lt;/span>&lt;span class="lnt"> 24
+&lt;/span>&lt;span class="lnt"> 25
+&lt;/span>&lt;span class="lnt"> 26
+&lt;/span>&lt;span class="lnt"> 27
+&lt;/span>&lt;span class="lnt"> 28
+&lt;/span>&lt;span class="lnt"> 29
+&lt;/span>&lt;span class="lnt"> 30
+&lt;/span>&lt;span class="lnt"> 31
+&lt;/span>&lt;span class="lnt"> 32
+&lt;/span>&lt;span class="lnt"> 33
+&lt;/span>&lt;span class="lnt"> 34
+&lt;/span>&lt;span class="lnt"> 35
+&lt;/span>&lt;span class="lnt"> 36
+&lt;/span>&lt;span class="lnt"> 37
+&lt;/span>&lt;span class="lnt"> 38
+&lt;/span>&lt;span class="lnt"> 39
+&lt;/span>&lt;span class="lnt"> 40
+&lt;/span>&lt;span class="lnt"> 41
+&lt;/span>&lt;span class="lnt"> 42
+&lt;/span>&lt;span class="lnt"> 43
+&lt;/span>&lt;span class="lnt"> 44
+&lt;/span>&lt;span class="lnt"> 45
+&lt;/span>&lt;span class="lnt"> 46
+&lt;/span>&lt;span class="lnt"> 47
+&lt;/span>&lt;span class="lnt"> 48
+&lt;/span>&lt;span class="lnt"> 49
+&lt;/span>&lt;span class="lnt"> 50
+&lt;/span>&lt;span class="lnt"> 51
+&lt;/span>&lt;span class="lnt"> 52
+&lt;/span>&lt;span class="lnt"> 53
+&lt;/span>&lt;span class="lnt"> 54
+&lt;/span>&lt;span class="lnt"> 55
+&lt;/span>&lt;span class="lnt"> 56
+&lt;/span>&lt;span class="lnt"> 57
+&lt;/span>&lt;span class="lnt"> 58
+&lt;/span>&lt;span class="lnt"> 59
+&lt;/span>&lt;span class="lnt"> 60
+&lt;/span>&lt;span class="lnt"> 61
+&lt;/span>&lt;span class="lnt"> 62
+&lt;/span>&lt;span class="lnt"> 63
+&lt;/span>&lt;span class="lnt"> 64
+&lt;/span>&lt;span class="lnt"> 65
+&lt;/span>&lt;span class="lnt"> 66
+&lt;/span>&lt;span class="lnt"> 67
+&lt;/span>&lt;span class="lnt"> 68
+&lt;/span>&lt;span class="lnt"> 69
+&lt;/span>&lt;span class="lnt"> 70
+&lt;/span>&lt;span class="lnt"> 71
+&lt;/span>&lt;span class="lnt"> 72
+&lt;/span>&lt;span class="lnt"> 73
+&lt;/span>&lt;span class="lnt"> 74
+&lt;/span>&lt;span class="lnt"> 75
+&lt;/span>&lt;span class="lnt"> 76
+&lt;/span>&lt;span class="lnt"> 77
+&lt;/span>&lt;span class="lnt"> 78
+&lt;/span>&lt;span class="lnt"> 79
+&lt;/span>&lt;span class="lnt"> 80
+&lt;/span>&lt;span class="lnt"> 81
+&lt;/span>&lt;span class="lnt"> 82
+&lt;/span>&lt;span class="lnt"> 83
+&lt;/span>&lt;span class="lnt"> 84
+&lt;/span>&lt;span class="lnt"> 85
+&lt;/span>&lt;span class="lnt"> 86
+&lt;/span>&lt;span class="lnt"> 87
+&lt;/span>&lt;span class="lnt"> 88
+&lt;/span>&lt;span class="lnt"> 89
+&lt;/span>&lt;span class="lnt"> 90
+&lt;/span>&lt;span class="lnt"> 91
+&lt;/span>&lt;span class="lnt"> 92
+&lt;/span>&lt;span class="lnt"> 93
+&lt;/span>&lt;span class="lnt"> 94
+&lt;/span>&lt;span class="lnt"> 95
+&lt;/span>&lt;span class="lnt"> 96
+&lt;/span>&lt;span class="lnt"> 97
+&lt;/span>&lt;span class="lnt"> 98
+&lt;/span>&lt;span class="lnt"> 99
+&lt;/span>&lt;span class="lnt">100
+&lt;/span>&lt;span class="lnt">101
+&lt;/span>&lt;span class="lnt">102
+&lt;/span>&lt;span class="lnt">103
+&lt;/span>&lt;span class="lnt">104
+&lt;/span>&lt;span class="lnt">105
+&lt;/span>&lt;span class="lnt">106
+&lt;/span>&lt;span class="lnt">107
+&lt;/span>&lt;span class="lnt">108
+&lt;/span>&lt;span class="lnt">109
+&lt;/span>&lt;span class="lnt">110
+&lt;/span>&lt;span class="lnt">111
+&lt;/span>&lt;span class="lnt">112
+&lt;/span>&lt;span class="lnt">113
+&lt;/span>&lt;span class="lnt">114
+&lt;/span>&lt;span class="lnt">115
+&lt;/span>&lt;span class="lnt">116
+&lt;/span>&lt;span class="lnt">117
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/bash
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="nb">set&lt;/span> -e
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Domain list&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">domain_group&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;example-web&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">domain_list&lt;/span>&lt;span class="o">=(&lt;/span>auth0.example.com chat.example.com&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">dns_server&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;114.114.114.114&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">declare&lt;/span> -a &lt;span class="nv">resolved_ips&lt;/span>&lt;span class="o">=()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">TIMEOUT&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;10&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">LOCAL_SERVER&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;localhost&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">LOCAL_API_KEY&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;qwerty&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">REMOTE_SERVER&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;API.YOUR.SERVER&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">REMOTE_API_KEY&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;YOUR_API_KEY&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">REMOTE_PORT&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;443&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Pause function&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">function&lt;/span> pause&lt;span class="o">(){&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">read&lt;/span> -s -n &lt;span class="m">1&lt;/span> -p &lt;span class="s2">&amp;#34;Press any key to continue . . .&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;***************************************************&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;* Step 1. generate &lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">domain_group&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2"> domain to ip addresses *&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;***************************************************&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> domain in &lt;span class="si">${&lt;/span>&lt;span class="nv">domain_list&lt;/span>&lt;span class="p">[*]&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="k">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">ips&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>dig @&lt;span class="si">${&lt;/span>&lt;span class="nv">dns_server&lt;/span>&lt;span class="si">}&lt;/span> &lt;span class="nv">$domain&lt;/span> +short &lt;span class="p">|&lt;/span> grep &lt;span class="s1">&amp;#39;^[.0-9]*$&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> xargs&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> ip in &lt;span class="nv">$ips&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="k">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="nv">$ip&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">resolved_ips&lt;/span>&lt;span class="o">+=&lt;/span>&lt;span class="nv">$ip&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">resolved_ips&lt;/span>&lt;span class="o">+=&lt;/span>&lt;span class="s2">&amp;#34;/32 &amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">done&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">done&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;**************************************************************&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;* Step 2. Get &lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">domain_group&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2"> group in vyos with curl comman *&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;**************************************************************&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ips&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>curl -k -s --unix-socket /run/api.sock &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --connect-timeout &lt;span class="si">${&lt;/span>&lt;span class="nv">TIMEOUT&lt;/span>&lt;span class="si">}&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --location &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --request POST &lt;span class="s2">&amp;#34;http://&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">LOCAL_SERVER&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/retrieve&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --form &lt;span class="nv">data&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;{&amp;#34;op&amp;#34;: &amp;#34;showConfig&amp;#34;, &amp;#34;path&amp;#34;: [&amp;#34;firewall&amp;#34;,&amp;#34;group&amp;#34;,&amp;#34;network-group&amp;#34;,&amp;#34;&amp;#39;&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">domain_group&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="s1">&amp;#39;&amp;#34;,&amp;#34;network&amp;#34;]}&amp;#39;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --form &lt;span class="nv">key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">LOCAL_API_KEY&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="p">|&lt;/span> jq &lt;span class="s1">&amp;#39;.data.network&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> xargs&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">local_ips&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>&lt;span class="nb">echo&lt;/span> &lt;span class="nv">$ips&lt;/span> &lt;span class="p">|&lt;/span> sed -e &lt;span class="s1">&amp;#39;s/\[ //g&amp;#39;&lt;/span> -e &lt;span class="s1">&amp;#39;s/\ ]//g&amp;#39;&lt;/span> -e &lt;span class="s1">&amp;#39;s/\,//g&amp;#39;&lt;/span>&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;local_ips: &lt;/span>&lt;span class="nv">$local_ips&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ips&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>curl -k -s --connect-timeout &lt;span class="si">${&lt;/span>&lt;span class="nv">TIMEOUT&lt;/span>&lt;span class="si">}&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --location --request POST &lt;span class="s2">&amp;#34;https://&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">REMOTE_SERVER&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">:&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">REMOTE_PORT&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/retrieve&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --form &lt;span class="nv">data&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;{&amp;#34;op&amp;#34;: &amp;#34;showConfig&amp;#34;, &amp;#34;path&amp;#34;: [&amp;#34;firewall&amp;#34;,&amp;#34;group&amp;#34;,&amp;#34;network-group&amp;#34;,&amp;#34;&amp;#39;&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">domain_group&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="s1">&amp;#39;&amp;#34;,&amp;#34;network&amp;#34;]}&amp;#39;&lt;/span> --form &lt;span class="nv">key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">REMOTE_API_KEY&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="p">|&lt;/span> jq &lt;span class="s1">&amp;#39;.data.network&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> xargs&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">remote_ips&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>&lt;span class="nb">echo&lt;/span> &lt;span class="nv">$ips&lt;/span> &lt;span class="p">|&lt;/span> sed -e &lt;span class="s1">&amp;#39;s/\[ //g&amp;#39;&lt;/span> -e &lt;span class="s1">&amp;#39;s/\ ]//g&amp;#39;&lt;/span> -e &lt;span class="s1">&amp;#39;s/\,//g&amp;#39;&lt;/span>&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;Network group named &lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">domain_group&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2"> on remote server: &lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">remote_ips&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;*****************************************************&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;* Step 3. Update &lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">domain_group&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2"> with api operation *&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;*****************************************************&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># local_ips for vyos api returned chatgpt_group&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># remote_ips for vyos api retruned remote vyos chatgpt group&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># resolved_ips standard for dig return from dns server&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;local_ips: &lt;/span>&lt;span class="nv">$local_ips&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;resolved_ips: &lt;/span>&lt;span class="nv">$resolved_ips&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;remote_ips: &lt;/span>&lt;span class="nv">$remote_ips&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> ip_address in &lt;span class="si">${&lt;/span>&lt;span class="nv">resolved_ips&lt;/span>&lt;span class="p">[*]&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="k">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">[[&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">local_ips&lt;/span>&lt;span class="p">[@]&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="o">=&lt;/span>~ &lt;span class="si">${&lt;/span>&lt;span class="nv">ip_address&lt;/span>&lt;span class="si">}&lt;/span> &lt;span class="o">]]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> -e &lt;span class="s2">&amp;#34;included\n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> -e &lt;span class="s2">&amp;#34;Not included\n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;*********************************************************************&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;* Add &lt;/span>&lt;span class="nv">$ip_address&lt;/span>&lt;span class="s2"> into network group &lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">domain_group&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2"> on local VyOS *&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;*********************************************************************&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">LOCAL_SERVER&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> curl -k -s --connect-timeout &lt;span class="si">${&lt;/span>&lt;span class="nv">TIMEOUT&lt;/span>&lt;span class="si">}&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --unix-socket /run/api.sock &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --location &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -X POST &lt;span class="s2">&amp;#34;http://&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">LOCAL_SERVER&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/configure&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -F &lt;span class="nv">data&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;{&amp;#34;op&amp;#34;: &amp;#34;set&amp;#34;, &amp;#34;path&amp;#34;: [&amp;#34;firewall&amp;#34;,&amp;#34;group&amp;#34;,&amp;#34;network-group&amp;#34;,&amp;#34;&amp;#39;&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">domain_group&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="s1">&amp;#39;&amp;#34;,&amp;#34;network&amp;#34;, &amp;#34;&amp;#39;&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">ip_address&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="s1">&amp;#39;&amp;#34;]}&amp;#39;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -F &lt;span class="nv">key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">LOCAL_API_KEY&lt;/span>&lt;span class="si">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> -e &lt;span class="s2">&amp;#34;/nsave configure./n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> curl -k -s --connect-timeout &lt;span class="si">${&lt;/span>&lt;span class="nv">TIMEOUT&lt;/span>&lt;span class="si">}&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --unix-socket /run/api.sock &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --location &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -X POST &lt;span class="s2">&amp;#34;http://&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">LOCAL_SERVER&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/config-file&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -F &lt;span class="nv">data&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;{&amp;#34;op&amp;#34;: &amp;#34;save&amp;#34;}&amp;#39;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -F &lt;span class="nv">key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">LOCAL_API_KEY&lt;/span>&lt;span class="si">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> -e &lt;span class="s2">&amp;#34;/n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">[[&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">remote_ips&lt;/span>&lt;span class="p">[@]&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="o">=&lt;/span>~ &lt;span class="si">${&lt;/span>&lt;span class="nv">ip_address&lt;/span>&lt;span class="si">}&lt;/span> &lt;span class="o">]]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> -e &lt;span class="s2">&amp;#34;included\n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> -e &lt;span class="s2">&amp;#34;not included\n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;**********************************************************************&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;* Add &lt;/span>&lt;span class="nv">$ip_address&lt;/span>&lt;span class="s2"> into network group &lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">domain_group&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2"> on remote VyOS *&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;**********************************************************************&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Update ip address to the network group&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> curl -k -s --connect-timeout &lt;span class="si">${&lt;/span>&lt;span class="nv">TIMEOUT&lt;/span>&lt;span class="si">}&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -X POST -F &lt;span class="nv">key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">REMOTE_API_KEY&lt;/span>&lt;span class="si">}&lt;/span> -F &lt;span class="nv">data&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;{&amp;#34;op&amp;#34;: &amp;#34;set&amp;#34;, &amp;#34;path&amp;#34;: [&amp;#34;firewall&amp;#34;,&amp;#34;group&amp;#34;,&amp;#34;network-group&amp;#34;,&amp;#34;&amp;#39;&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">domain_group&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="s1">&amp;#39;&amp;#34;,&amp;#34;network&amp;#34;, &amp;#34;&amp;#39;&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">ip_address&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="s1">&amp;#39;&amp;#34;]}&amp;#39;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> https://&lt;span class="si">${&lt;/span>&lt;span class="nv">REMOTE_SERVER&lt;/span>&lt;span class="si">}&lt;/span>:&lt;span class="si">${&lt;/span>&lt;span class="nv">REMOTE_PORT&lt;/span>&lt;span class="si">}&lt;/span>/configure
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> -e &lt;span class="s2">&amp;#34;/nsave configure./n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Save configure to vyos&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> curl -k -s --connect-timeout &lt;span class="si">${&lt;/span>&lt;span class="nv">TIMEOUT&lt;/span>&lt;span class="si">}&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -X POST -F &lt;span class="nv">key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">REMOTE_API_KEY&lt;/span>&lt;span class="si">}&lt;/span> -F &lt;span class="nv">data&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;{&amp;#34;op&amp;#34;: &amp;#34;save&amp;#34;}&amp;#39;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> &lt;span class="s2">&amp;#34;https://&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">REMOTE_SERVER&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">:&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">REMOTE_PORT&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/config-file&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> -e &lt;span class="s2">&amp;#34;/n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">done&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Deploy Overture With Docker and Freebsd</title><link>https://echowings.github.io/p/deploy-overture-with-docker-and-freebsd/</link><pubDate>Tue, 18 Dec 2018 00:44:13 +0800</pubDate><guid>https://echowings.github.io/p/deploy-overture-with-docker-and-freebsd/</guid><description>&lt;h1 id="run-overture-on-docker-and-freebsd-12">Run overture on Docker and FreeBSD 12&lt;/h1>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span class="line">&lt;span class="cl">&lt;span class="k">ENV&lt;/span> foo /overture&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">WORKDIR&lt;/span>&lt;span class="s"> ${foo}&lt;/span>&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> apt-get update &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> apt-get install -y ca-certificates&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> &lt;span class="nb">printf&lt;/span> &lt;span class="s2">&amp;#34;deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse\n deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse\n deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse&amp;#34;&lt;/span> &amp;gt; /etc/apt/sources.list&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> apt-get update&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> apt-get upgrade -y&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> apt-get install -y wget curl unzip apt-utils vim&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> &lt;span class="nb">cd&lt;/span> /overture&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> wget https://github.com/shawn1m/overture/releases/download/v1.5-rc1/overture-linux-amd64.zip&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> unzip overture-linux-amd64.zip&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> curl https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt &lt;span class="p">|&lt;/span> base64 -d &lt;span class="p">|&lt;/span> sort -u &lt;span class="p">|&lt;/span> sed &lt;span class="s1">&amp;#39;/^$\|@@/d&amp;#39;&lt;/span>&lt;span class="p">|&lt;/span> sed &lt;span class="s1">&amp;#39;s#!.\+##; s#|##g; s#@##g; s#http:\/\/##; s#https:\/\/##;&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> sed &lt;span class="s1">&amp;#39;/\*/d; /apple\.com/d; /sina\.cn/d; /sina\.com\.cn/d; /baidu\.com/d; /qq\.com/d&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> sed &lt;span class="s1">&amp;#39;/^[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+$/d&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> grep &lt;span class="s1">&amp;#39;^[0-9a-zA-Z\.-]\+$&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> grep &lt;span class="s1">&amp;#39;\.&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> sed &lt;span class="s1">&amp;#39;s#^\.\+##&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> sort -u &amp;gt; /tmp/temp_gfwlist.txt&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> curl https://raw.githubusercontent.com/hq450/fancyss/master/rules/gfwlist.conf &lt;span class="p">|&lt;/span> sed &lt;span class="s1">&amp;#39;s/ipset=\/\.//g; s/\/gfwlist//g; /^server/d&amp;#39;&lt;/span> &amp;gt; /tmp/temp_koolshare.txt&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> cat /tmp/temp_gfwlist.txt /tmp/temp_koolshare.txt &lt;span class="p">|&lt;/span> sort -u &amp;gt; gfw_all_domain.txt&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> wget https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">RUN&lt;/span> &lt;span class="nb">printf&lt;/span> &lt;span class="s1">&amp;#39;{ \n &amp;#34;BindAddress&amp;#34;: &amp;#34;:53&amp;#34;,\n &amp;#34;PrimaryDNS&amp;#34;: [\n {\n &amp;#34;Name&amp;#34;: &amp;#34;DNSPod&amp;#34;,\n &amp;#34;Address&amp;#34;: &amp;#34;114.114.114.114:53&amp;#34;,\n &amp;#34;Protocol&amp;#34;: &amp;#34;udp&amp;#34;,\n &amp;#34;SOCKS5Address&amp;#34;: &amp;#34;&amp;#34;,\n &amp;#34;Timeout&amp;#34;: 6,\n &amp;#34;EDNSClientSubnet&amp;#34;: {\n &amp;#34;Policy&amp;#34;: &amp;#34;auto&amp;#34;,\n &amp;#34;ExternalIP&amp;#34;: &amp;#34;222.90.74.60&amp;#34;,\n &amp;#34;NoCookie&amp;#34;: true\n }\n }\n ],\n &amp;#34;AlternativeDNS&amp;#34;: [\n {\n &amp;#34;Name&amp;#34;: &amp;#34;OpenDNS&amp;#34;,\n &amp;#34;Address&amp;#34;: &amp;#34;208.67.222.222:443&amp;#34;,\n &amp;#34;Protocol&amp;#34;: &amp;#34;tcp&amp;#34;,\n &amp;#34;SOCKS5Address&amp;#34;: &amp;#34;&amp;#34;,\n &amp;#34;Timeout&amp;#34;: 6,\n &amp;#34;EDNSClientSubnet&amp;#34;: {\n &amp;#34;Policy&amp;#34;: &amp;#34;manual&amp;#34;,\n &amp;#34;ExternalIP&amp;#34;: &amp;#34;202.60.225.114&amp;#34;,\n &amp;#34;NoCookie&amp;#34;: true\n }\n }\n ],\n &amp;#34;OnlyPrimaryDNS&amp;#34;: false,\n &amp;#34;IPv6UseAlternativeDNS&amp;#34;: false,\n &amp;#34;IPNetworkFile&amp;#34;: {\n &amp;#34;Primary&amp;#34;: &amp;#34;./china_ip_list.txt&amp;#34;,\n &amp;#34;Alternative&amp;#34;: &amp;#34;./ip_network_alternative_sample&amp;#34;\n },\n &amp;#34;DomainFile&amp;#34;: {\n &amp;#34;Primary&amp;#34;: &amp;#34;./domain_primary_sample&amp;#34;,\n &amp;#34;Alternative&amp;#34;: &amp;#34;./gfw_all_domain.txt&amp;#34;\n },\n &amp;#34;HostsFile&amp;#34;: &amp;#34;./hosts_sample&amp;#34;,\n &amp;#34;MinimumTTL&amp;#34;: 0,\n &amp;#34;CacheSize&amp;#34; : 0,\n &amp;#34;RejectQtype&amp;#34;: [255]\n }&amp;#39;&lt;/span> &amp;gt; config.json&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="k">CMD&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;./overture-linux-amd64&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="c">#ENTRYPOINT [&amp;#34;./overture-linux-amd64&amp;#34;]&lt;/span>&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="freebsd-rcd-file">FreeBSD rc.d file&lt;/h2>
+&lt;p>&lt;code>cat /usr/local/etc/rc.d/overture&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;span class="lnt">55
+&lt;/span>&lt;span class="lnt">56
+&lt;/span>&lt;span class="lnt">57
+&lt;/span>&lt;span class="lnt">58
+&lt;/span>&lt;span class="lnt">59
+&lt;/span>&lt;span class="lnt">60
+&lt;/span>&lt;span class="lnt">61
+&lt;/span>&lt;span class="lnt">62
+&lt;/span>&lt;span class="lnt">63
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-rc.d" data-lang="rc.d">&lt;span class="line">&lt;span class="cl">&lt;span class="err">#&lt;/span>&lt;span class="o">!/&lt;/span>&lt;span class="n">bin&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">sh&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">#&lt;/span> &lt;span class="n">$FreeBSD&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">net&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">overture&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">files&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">overture&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">in&lt;/span> &lt;span class="mi">335066&lt;/span> &lt;span class="mi">2018&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">12&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">18&lt;/span> &lt;span class="mi">11&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="mi">33&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="mi">26&lt;/span>&lt;span class="n">z&lt;/span> &lt;span class="n">SteveDong&lt;/span> &lt;span class="n">$&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">#&lt;/span> &lt;span class="n">PROVIDE&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="n">overture&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">#&lt;/span> &lt;span class="n">REQUIRE&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="n">LOGIN&lt;/span> &lt;span class="n">cleanvar&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">#&lt;/span> &lt;span class="n">KEYWORD&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="n">shutdown&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">#&lt;/span> &lt;span class="n">Add&lt;/span> &lt;span class="n">the&lt;/span> &lt;span class="n">following&lt;/span> &lt;span class="n">lines&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">etc&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">rc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">conf&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="n">enable&lt;/span> &lt;span class="n">overture&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">#&lt;/span> &lt;span class="n">overture_enable&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="kt">bool&lt;/span>&lt;span class="o">):&lt;/span> &lt;span class="n">set&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="s">&amp;#34;NO&amp;#34;&lt;/span> &lt;span class="n">by&lt;/span> &lt;span class="k">default&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">#&lt;/span> &lt;span class="n">Set&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="s">&amp;#34;YES&amp;#34;&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="n">enable&lt;/span> &lt;span class="n">overture&lt;/span>&lt;span class="o">.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">#&lt;/span> &lt;span class="n">overture_config&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">):&lt;/span> &lt;span class="n">overture&lt;/span> &lt;span class="n">config&lt;/span> &lt;span class="n">file&lt;/span>&lt;span class="o">.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">#&lt;/span> &lt;span class="n">Default&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="s">&amp;#34;/usr/local/etc/overture/config.json&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">.&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">etc&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">rc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">subr&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;overture&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">rcvar&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">overture_enable&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">load_rc_config&lt;/span> &lt;span class="n">$name&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">:&lt;/span> &lt;span class="n">$&lt;/span>&lt;span class="o">{&lt;/span>&lt;span class="n">overture_enable&lt;/span>&lt;span class="o">:=&lt;/span>&lt;span class="s">&amp;#34;NO&amp;#34;&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">:&lt;/span> &lt;span class="n">$&lt;/span>&lt;span class="o">{&lt;/span>&lt;span class="n">overture_user&lt;/span>&lt;span class="o">:=&lt;/span>&lt;span class="s">&amp;#34;root&amp;#34;&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">:&lt;/span> &lt;span class="n">$&lt;/span>&lt;span class="o">{&lt;/span>&lt;span class="n">overture_group&lt;/span>&lt;span class="o">:=&lt;/span>&lt;span class="s">&amp;#34;nobody&amp;#34;&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">#&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="n">$&lt;/span>&lt;span class="o">{&lt;/span>&lt;span class="n">error_log_file&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;/var/log/overture_error&amp;#34;&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">#&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="n">$&lt;/span>&lt;span class="o">{&lt;/span>&lt;span class="n">overture_args&lt;/span>&lt;span class="o">:=&lt;/span>&lt;span class="s">&amp;#34;-p ${cpu_core} -c ${overture_config} -l ${logfile}&amp;#34;&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">:&lt;/span> &lt;span class="n">$&lt;/span>&lt;span class="o">{&lt;/span>&lt;span class="n">overture_config&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;/usr/local/etc/overture/config.json&amp;#34;&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">command&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;/usr/sbin/daemon&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">procname&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;/usr/local/bin/overture&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">pidfile&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;/var/run/overture.pid&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">logfile&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;/var/log/overture&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">error_log_file&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;/var/log/overture_error&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">requried_files&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;${overture_config}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">#&lt;/span> &lt;span class="n">find&lt;/span> &lt;span class="n">how&lt;/span> &lt;span class="n">many&lt;/span> &lt;span class="n">cores&lt;/span> &lt;span class="n">on&lt;/span> &lt;span class="n">your&lt;/span> &lt;span class="n">computer&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">cpu_core&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">$&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">cat&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">var&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">run&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">dmesg&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">boot&lt;/span> &lt;span class="o">|&lt;/span> &lt;span class="n">grep&lt;/span> &lt;span class="n">CPU&lt;/span> &lt;span class="o">|&lt;/span> &lt;span class="n">grep&lt;/span> &lt;span class="n">FreeBSD&lt;/span> &lt;span class="o">|&lt;/span> &lt;span class="n">awk&lt;/span> &lt;span class="o">{&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>&lt;span class="n">print&lt;/span> &lt;span class="n">$5&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>&lt;span class="o">})&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">overture_args&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;-p ${cpu_core} -c ${overture_config} -l ${logfile} 2&amp;gt;&amp;amp;1 &amp;gt; $error_log_file&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">command_args&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;-p ${pidfile} /usr/bin/env ${procname} ${overture_args}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">start_precmd&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">overture_startprecmd&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">overture_startprecmd&lt;/span>&lt;span class="o">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="o">!&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">e&lt;/span> &lt;span class="n">$&lt;/span>&lt;span class="o">{&lt;/span>&lt;span class="n">pidfile&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="o">];&lt;/span> &lt;span class="n">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">install&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">o&lt;/span> &lt;span class="n">$&lt;/span>&lt;span class="o">{&lt;/span>&lt;span class="n">overture_user&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">g&lt;/span> &lt;span class="n">$&lt;/span>&lt;span class="o">{&lt;/span>&lt;span class="n">overture_group&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">dev&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="kc">null&lt;/span> &lt;span class="n">$&lt;/span>&lt;span class="o">{&lt;/span>&lt;span class="n">pidfile&lt;/span>&lt;span class="o">};&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="o">!&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">e&lt;/span> &lt;span class="n">$&lt;/span>&lt;span class="o">{&lt;/span>&lt;span class="n">logfile&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="o">];&lt;/span> &lt;span class="n">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">install&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">o&lt;/span> &lt;span class="n">$&lt;/span>&lt;span class="o">{&lt;/span>&lt;span class="n">overture_user&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">g&lt;/span> &lt;span class="n">$&lt;/span>&lt;span class="o">{&lt;/span>&lt;span class="n">overture_group&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">dev&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="kc">null&lt;/span> &lt;span class="n">$&lt;/span>&lt;span class="o">{&lt;/span>&lt;span class="n">logfile&lt;/span>&lt;span class="o">};&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="o">!&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">e&lt;/span> &lt;span class="n">$&lt;/span>&lt;span class="o">{&lt;/span>&lt;span class="n">error_log_file&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="o">];&lt;/span> &lt;span class="n">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">install&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">o&lt;/span> &lt;span class="n">$&lt;/span>&lt;span class="o">{&lt;/span>&lt;span class="n">overture_user&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">g&lt;/span> &lt;span class="n">$&lt;/span>&lt;span class="o">{&lt;/span>&lt;span class="n">overture_group&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">dev&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="kc">null&lt;/span> &lt;span class="n">$&lt;/span>&lt;span class="o">{&lt;/span>&lt;span class="n">error_log_file&lt;/span>&lt;span class="o">};&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">load_rc_config&lt;/span> &lt;span class="n">$name&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">run_rc_command&lt;/span> &lt;span class="s">&amp;#34;$1&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

@@ -1,19 +1,90 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Monitoring on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/tags/monitoring/</link>
-    <description>Recent content in Monitoring on Steve&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 22 Dec 2023 21:18:39 +0800</lastBuildDate>
-    <atom:link href="https://echowings.github.io/tags/monitoring/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Librenms Deploy Librenms With Docker Container</title>
-      <link>https://echowings.github.io/p/librenms-deploy-librenms-with-docker-container/</link>
-      <pubDate>Tue, 16 Apr 2019 16:56:08 +0800</pubDate>
-      <guid>https://echowings.github.io/p/librenms-deploy-librenms-with-docker-container/</guid>
-      <description>How to deploy librenms monitoring system with docker container Librenms is a very light and easy handle moniting software. It is suitable for us to monitoring server,networdevice, printer etc via snmp.&#xA;At now, docker is easy for software deployment. After deploy librenms in ubuntu vm, I have a try to deploy librenms with docker-compose.&#xA;Install librenms with docker-compose 1 2 3 4 5 6 7 mkdir -p librenms-docker-compose cd ./librenms-docker-compose wget https://raw.</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Monitoring on Steve's Blog</title><link>https://echowings.github.io/tags/monitoring/</link><description>Recent content in Monitoring on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 16 Apr 2019 16:56:08 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/monitoring/index.xml" rel="self" type="application/rss+xml"/><item><title>Librenms Deploy Librenms With Docker Container</title><link>https://echowings.github.io/p/librenms-deploy-librenms-with-docker-container/</link><pubDate>Tue, 16 Apr 2019 16:56:08 +0800</pubDate><guid>https://echowings.github.io/p/librenms-deploy-librenms-with-docker-container/</guid><description>&lt;h1 id="how-to-deploy-librenms-monitoring-system-with-docker-container">How to deploy librenms monitoring system with docker container&lt;/h1>
+&lt;p>Librenms is a very light and easy handle moniting software. It is suitable for us to monitoring server,networdevice, printer etc via snmp.&lt;/p>
+&lt;p>At now, docker is easy for software deployment. After deploy librenms in ubuntu vm, I have a try to deploy librenms with docker-compose.&lt;/p>
+&lt;h2 id="install-librenms-with-docker-compose">Install librenms with docker-compose&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">mkdir -p librenms-docker-compose
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> ./librenms-docker-compose
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/.env
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/docker-compose.yml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/librenms.env
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">touch acme.json
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">chmod &lt;span class="m">600&lt;/span> acme.json
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="change-docker-composeyml">Change &lt;code>docker-compose.yml&lt;/code>&lt;/h3>
+&lt;p>&lt;code>vi docker-compose.yml&lt;/code>&lt;/p>
+&lt;ul>
+&lt;li>change &lt;code>services | traefik | command &lt;/code> section.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl"> - &lt;span class="s2">&amp;#34;--docker.domain=mydomain.net&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Change &lt;code>services | &lt;/code>&lt;/li>
+&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>KEY&lt;/th>
+&lt;th>VALUE&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>hostname&lt;/td>
+&lt;td>mylibrenms&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>domainname&lt;/td>
+&lt;td>mydomain.net&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;ul>
+&lt;li>Chang &lt;code>syslog-ng&lt;/code> section&lt;/li>
+&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>KEY&lt;/th>
+&lt;th>VALUE&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>hostname&lt;/td>
+&lt;td>mylibrenms&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>domainname&lt;/td>
+&lt;td>mydomain.net&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">docker-compose up -d
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker-compose logs -f
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

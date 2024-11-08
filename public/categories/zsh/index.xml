@@ -1,26 +1,198 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Zsh on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/categories/zsh/</link>
-    <description>Recent content in Zsh on Steve&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 22 Dec 2023 21:18:39 +0800</lastBuildDate>
-    <atom:link href="https://echowings.github.io/categories/zsh/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to Install and Configure Zsh and Zim</title>
-      <link>https://echowings.github.io/p/how-to-install-and-configure-zsh-and-zim/</link>
-      <pubDate>Thu, 01 Dec 2022 12:55:48 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-install-and-configure-zsh-and-zim/</guid>
-      <description>How to install zsh zim on macos &amp;amp; debian Install and configure zsh zim iterm2 on macos Install homebrew 1 /bin/bash -c &amp;#34;$(curl -fsSL &amp;lt;https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh&amp;gt;)&amp;#34; Install iterm2 1 brew install --cask iterm2 Install zsh 1 brew install zsh Install zim 1 curl -fsSL &amp;lt;https://raw.githubusercontent.com/zimfw/install/master/install.zsh&amp;gt; | zsh Install Powerlevel10k Add .zimrc 1 zmodule romkatv/powerlevel10k Change configure with shell script 1 if [ `grep -c &amp;#34;zmodule\ romkatv\/powerlevel10k&amp;#34; ~/.zimrc` -ne &amp;#39;0&amp;#39; ]; then</description>
-    </item>
-    <item>
-      <title>How to Setup Oh My Zsh</title>
-      <link>https://echowings.github.io/p/how-to-setup-oh-my-zsh/</link>
-      <pubDate>Wed, 10 Apr 2019 12:18:04 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-setup-oh-my-zsh/</guid>
-      <description>How to setup Oh-My-Zsh Install support application 1 apt install git curl wget zsh Install zsh via curl 1 sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;#34; via wget 1 sh -c &amp;#34;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&amp;#34; Change zsh settings change theme 1 2 #change theme froy robbyrussell to agnoster sed -i &amp;#39;s/ZSH_THEME=\&amp;#34;robbyrussell\&amp;#34;/ZSH_THEME=\&amp;#34;agnoster\&amp;#34;/g&amp;#39; ~/.zshrc change plugin support 1 sed -i &amp;#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\trbenv\n\truby\n\tpython\n)/g&amp;#39; ~/.zshrc Switch default bash to zsh 1 chsh -s /bin/zsh </description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zsh on Steve's Blog</title><link>https://echowings.github.io/categories/zsh/</link><description>Recent content in Zsh on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 01 Dec 2022 12:55:48 +0800</lastBuildDate><atom:link href="https://echowings.github.io/categories/zsh/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Install and Configure Zsh and Zim</title><link>https://echowings.github.io/p/how-to-install-and-configure-zsh-and-zim/</link><pubDate>Thu, 01 Dec 2022 12:55:48 +0800</pubDate><guid>https://echowings.github.io/p/how-to-install-and-configure-zsh-and-zim/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=708fb2d3" alt="Featured image of post How to Install and Configure Zsh and Zim" />&lt;h1 id="how-to-install-zsh-zim-on-macos--debian">How to install zsh zim on macos &amp;amp; debian&lt;/h1>
+&lt;h2 id="install-and-configure-zsh-zim-iterm2-on-macos">Install and configure zsh zim iterm2 on macos&lt;/h2>
+&lt;h3 id="install-homebrew">Install homebrew&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">/bin/bash -c &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>curl -fsSL &amp;lt;https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh&amp;gt;&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="install-iterm2">Install iterm2&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">brew install --cask iterm2
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="install-zsh">Install zsh&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">brew install zsh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="install-zim">Install zim&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">curl -fsSL &amp;lt;https://raw.githubusercontent.com/zimfw/install/master/install.zsh&amp;gt; &lt;span class="p">|&lt;/span> zsh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="install-powerlevel10k">Install Powerlevel10k&lt;/h3>
+&lt;p>Add &lt;code>.zimrc&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-txt" data-lang="txt">&lt;span class="line">&lt;span class="cl">zmodule romkatv/powerlevel10k
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Change configure with shell script&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="sb">`&lt;/span>grep -c &lt;span class="s2">&amp;#34;zmodule\ romkatv\/powerlevel10k&amp;#34;&lt;/span> ~/.zimrc&lt;span class="sb">`&lt;/span> -ne &lt;span class="s1">&amp;#39;0&amp;#39;&lt;/span> &lt;span class="o">]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;exist&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;not exist&amp;#34;&lt;/span>&lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="nb">echo&lt;/span> zmodule&lt;span class="se">\ &lt;/span>romkatv/&lt;span class="se">\p&lt;/span>owerlevel10k &amp;gt;&amp;gt; ~/.zimrc&lt;span class="p">;&lt;/span> &lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Install zim modules&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">zimfw install
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="install-and-configure-zsh-zim-on-debian-11">Install and configure zsh zim on debian 11&lt;/h2>
+&lt;h3 id="install-zsh-zimfw">Install zsh zimfw&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">apt install -y zsh curl
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh &lt;span class="p">|&lt;/span> zsh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="install-module">Install module&lt;/h3>
+&lt;h4 id="edit-zimrc">Edit &lt;code>~/.zimrc&lt;/code>&lt;/h4>
+&lt;p>Add follow text into &lt;code>~/.zimrc&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Zim theme&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">zmodule eriner
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#powerlevel10k&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">zmodule romkatv/powerlevel10k
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="install-modules">Install Modules&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Install modules&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">zimfw install
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#update modules&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">zimfw update
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#uninstall modules&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># zimfw uninstall xxxx&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="reference">Reference&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://rainlay.medium.com/beautiful-your-mac-terminal-iterm2-zim-powerlevel10k-2f3dedde5b85" target="_blank" rel="noopener"
+>Beautiful your mac terminal, iterm2 + zim + powerlevel10k&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://ithelp.ithome.com.tw/articles/10270581" target="_blank" rel="noopener"
+>07 - Zim - Zsh 配置框架與它的插件&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>How to Setup Oh My Zsh</title><link>https://echowings.github.io/p/how-to-setup-oh-my-zsh/</link><pubDate>Wed, 10 Apr 2019 12:18:04 +0800</pubDate><guid>https://echowings.github.io/p/how-to-setup-oh-my-zsh/</guid><description>&lt;h1 id="how-to-setup-oh-my-zsh">How to setup Oh-My-Zsh&lt;/h1>
+&lt;h2 id="install-support-application">Install support application&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">apt install git curl wget zsh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="install-zsh">Install zsh&lt;/h2>
+&lt;ul>
+&lt;li>via curl&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">sh -c &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>via wget&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">sh -c &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="change-zsh-settings">Change zsh settings&lt;/h2>
+&lt;ul>
+&lt;li>change theme&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#change theme froy robbyrussell to agnoster&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/ZSH_THEME=\&amp;#34;robbyrussell\&amp;#34;/ZSH_THEME=\&amp;#34;agnoster\&amp;#34;/g&amp;#39;&lt;/span> ~/.zshrc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>change plugin support&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/plugins=(git)/plugin=(\n\tgit\n\tboundler\n\tdotenv\n\trake\n\trbenv\n\truby\n\tpython\n)/g&amp;#39;&lt;/span> ~/.zshrc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="switch-default-bash-to-zsh">Switch default bash to zsh&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">chsh -s /bin/zsh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

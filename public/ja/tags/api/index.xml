@@ -1,19 +1,76 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Api on わたしのBlog</title>
-    <link>https://echowings.github.io/ja/tags/api/</link>
-    <description>Recent content in Api on わたしのBlog</description>
-    <generator>Hugo</generator>
-    <language>ja</language>
-    <lastBuildDate>Fri, 22 Dec 2023 21:18:39 +0800</lastBuildDate>
-    <atom:link href="https://echowings.github.io/ja/tags/api/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>VyOS で API サービスを有効にする方法</title>
-      <link>https://echowings.github.io/ja/p/how-to-enable-http-api-service-on-vyos/</link>
-      <pubDate>Tue, 26 Apr 2022 00:17:15 +0800</pubDate>
-      <guid>https://echowings.github.io/ja/p/how-to-enable-http-api-service-on-vyos/</guid>
-      <description>VyOS で API サービスを有効にする方法 最近になって、ネットワーク ステータスを自動検出し、いくつかの設定を自動的に変更する vyos シェル スクリプトを作成しま</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Api on わたしのBlog</title><link>https://echowings.github.io/ja/tags/api/</link><description>Recent content in Api on わたしのBlog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Tue, 26 Apr 2022 00:17:15 +0800</lastBuildDate><atom:link href="https://echowings.github.io/ja/tags/api/index.xml" rel="self" type="application/rss+xml"/><item><title>VyOS で API サービスを有効にする方法</title><link>https://echowings.github.io/ja/p/how-to-enable-http-api-service-on-vyos/</link><pubDate>Tue, 26 Apr 2022 00:17:15 +0800</pubDate><guid>https://echowings.github.io/ja/p/how-to-enable-http-api-service-on-vyos/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=71ff97d5" alt="Featured image of post VyOS で API サービスを有効にする方法" />&lt;h1 id="vyos-で-api-サービスを有効にする方法">VyOS で API サービスを有効にする方法&lt;/h1>
+&lt;p>最近になって、ネットワーク ステータスを自動検出し、いくつかの設定を自動的に変更する vyos シェル スクリプトを作成しました。 途中で、直接ロードするための新しい構成があり、構成モードをより長く保持します。 これは賢明な方法ではありません。&lt;/p>
+&lt;p>別のより良いオプションとして、API を使用して vyos の設定を変更できるとしたらどうでしょうか?&lt;/p>
+&lt;h2 id="api-https-サービスをローカルで有効にする">API https サービスをローカルで有効にする&lt;/h2>
+&lt;h3 id="ソケットモードで-apt-サービスを有効にする">ソケットモードで apt サービスを有効にする&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https api socket
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="テスト設定">テスト設定&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">curl --unix-socket /run/api.sock -X POST -Fkey&lt;span class="o">=&lt;/span>qwerty -Fdata&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;{&amp;#34;op&amp;#34;: &amp;#34;showConfig&amp;#34;, &amp;#34;path&amp;#34;: []}&amp;#39;&lt;/span> http://localhost/retrieve
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="lets暗号化フリーsslでapi-httpsサービスを有効にする">Let&amp;rsquo;s暗号化フリーsslでapi httpsサービスを有効にする&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/vbash
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="nb">source&lt;/span> /opt/vyatta/etc/functions/script-template
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">configure
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 変数の定義&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ID&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;my_id&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">APIKEY&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;12345&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">APIPORT&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;1234&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">VHOST&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;myvps&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">FULL_FQDN&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;xxx.xxx.xxx&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">LISTEN_ADDRESS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;IP ADDRESS&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">EMAIL&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;my@emal.com&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https api key id &lt;span class="nv">$ID&lt;/span> key &lt;span class="nv">$APIKEY&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https certificates certbot domain-name &lt;span class="nv">$FULL_FQDN&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https certificates certbot email &lt;span class="nv">$EMAIL&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https api strict
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https virtual-host &lt;span class="nv">$VHOST&lt;/span> listen-address &lt;span class="nv">$LISTEN_ADDRESS&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https virtual-host &lt;span class="nv">$VHOST&lt;/span> listen-port &lt;span class="nv">$APIPORT&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https virtual-host &lt;span class="nv">$VHOST&lt;/span> server-name &lt;span class="nv">$FULL_FQDN&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">commit
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">save
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">exit&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

@@ -1,33 +1,255 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Api on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/tags/api/</link>
-    <description>Recent content in Api on Steve&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Sun, 05 May 2024 14:18:08 +0800</lastBuildDate>
-    <atom:link href="https://echowings.github.io/tags/api/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to Send Email With Sendgrid Api</title>
-      <link>https://echowings.github.io/p/how-to-send-email-with-sendgrid-api/</link>
-      <pubDate>Thu, 07 Mar 2024 14:47:50 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-send-email-with-sendgrid-api/</guid>
-      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 import sendgrid #import os from sendgrid.helpers.mail import Mail, Email, To, Content #export SENDGRID_API_KEY=&amp;#34;API_KEY&amp;#34; #echo $SENDGRID_API_KEY SENDGRID_API_KEY=&amp;#34;API_KEY&amp;#34; print(SENDGRID_API_KEY) #sg = sendgrid.SendGridAPIClient(api_key=os.environ.get(SENDGRID_API_KEY)) sg = sendgrid.SendGridAPIClient(api_key=SENDGRID_API_KEY) from_email = Email(&amp;#34;sender@sender.com&amp;#34;) # Change to your verified sender to_email = To(&amp;#34;receiver@receiver.com&amp;#34;) # Change to your recipient subject = &amp;#34;Sending with SendGrid is Fun&amp;#34; content = Content(&amp;#34;text/plain&amp;#34;, &amp;#34;and easy to do anywhere, even with Python&amp;#34;) mail = Mail(from_email, to_email, subject, content) # Get a JSON-ready representation of the Mail object mail_json = mail.</description>
-    </item>
-    <item>
-      <title>How to Fix Http Api Async Not Support</title>
-      <link>https://echowings.github.io/p/how-to-fix-http-api-async-not-support/</link>
-      <pubDate>Fri, 14 Jul 2023 01:00:20 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-fix-http-api-async-not-support/</guid>
-      <description>For a long time ago, When I try to implement some automation job with vyos api, when mutiple client call a server side api, will make the server config.boot cut off. When the server of vyos reboot, the configuration will broken and not working anymore.&#xA;After report the bug to vyos developer team. They tell me that this is the miss configration of http-api issue. But it can be patch by modify the file/usr/libexec/vyos/services/vyos-http-api-server.</description>
-    </item>
-    <item>
-      <title>How to Enable Http Api Service on VyOS</title>
-      <link>https://echowings.github.io/p/how-to-enable-http-api-service-on-vyos/</link>
-      <pubDate>Tue, 26 Apr 2022 00:17:15 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-enable-http-api-service-on-vyos/</guid>
-      <description>How to enable API serivce on VyOS&#xA;How to enable API serivce on VyOS After these days, I wrote some vyos shell script to auto detect network status and automatacally change some settings. In the way There will be new configuration to loading directly and hold the configuration mode for a longer time. This is not in a smart way.&#xA;Another better option, What if we can change settings of vyos with api?</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Api on Steve's Blog</title><link>https://echowings.github.io/tags/api/</link><description>Recent content in Api on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 07 Mar 2024 14:47:50 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/api/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Send Email With Sendgrid Api</title><link>https://echowings.github.io/p/how-to-send-email-with-sendgrid-api/</link><pubDate>Thu, 07 Mar 2024 14:47:50 +0800</pubDate><guid>https://echowings.github.io/p/how-to-send-email-with-sendgrid-api/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=240a31f5" alt="Featured image of post How to Send Email With Sendgrid Api" />&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">sendgrid&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#import os&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">sendgrid.helpers.mail&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">Mail&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Email&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">To&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Content&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#export SENDGRID_API_KEY=&amp;#34;API_KEY&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#echo $SENDGRID_API_KEY&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">SENDGRID_API_KEY&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;API_KEY&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">SENDGRID_API_KEY&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#sg = sendgrid.SendGridAPIClient(api_key=os.environ.get(SENDGRID_API_KEY))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">sg&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">sendgrid&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">SendGridAPIClient&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">api_key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">SENDGRID_API_KEY&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">from_email&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Email&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;sender@sender.com&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># Change to your verified sender&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">to_email&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">To&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;receiver@receiver.com&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># Change to your recipient&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">subject&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;Sending with SendGrid is Fun&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">content&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Content&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;text/plain&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;and easy to do anywhere, even with Python&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">mail&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Mail&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">from_email&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">to_email&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">subject&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">content&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Get a JSON-ready representation of the Mail object&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">mail_json&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mail&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Send an HTTP POST request to /mail/send&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">response&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">sg&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">mail&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">send&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">post&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">request_body&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">mail_json&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">status_code&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">headers&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>How to Fix Http Api Async Not Support</title><link>https://echowings.github.io/p/how-to-fix-http-api-async-not-support/</link><pubDate>Fri, 14 Jul 2023 01:00:20 +0800</pubDate><guid>https://echowings.github.io/p/how-to-fix-http-api-async-not-support/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=660e7c8f" alt="Featured image of post How to Fix Http Api Async Not Support" />&lt;p>For a long time ago, When I try to implement some automation job with vyos api, when mutiple client call a server side api, will make the server &lt;code>config.boot&lt;/code> cut off.
+When the server of vyos reboot, the configuration will broken and not working anymore.&lt;/p>
+&lt;p>After report the bug to vyos developer team. They tell me that this is the miss configration of http-api issue. But it can be patch by modify the file&lt;code>/usr/libexec/vyos/services/vyos-http-api-server&lt;/code>.&lt;/p>
+&lt;p>After patch the api source code. it works well. Here is the solution.&lt;/p>
+&lt;h2 id="create-script">Create Script&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">tee /config/scripts/patch_api_trunk_bug.sh &amp;lt;&amp;lt; &lt;span class="s2">&amp;#34;EOF&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#!/bin/sh&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> -xe
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Define the string which we want to search&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">string&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;^def retrieve_op(data: RetrieveModel):&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Define the file path&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">file&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;/usr/libexec/vyos/services/vyos-http-api-server&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#To check the string is still there without modified&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">exist&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>grep -n &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$string&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="si">${&lt;/span>&lt;span class="nv">file&lt;/span>&lt;span class="si">}&lt;/span> &lt;span class="p">|&lt;/span> wc -l&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Print exist value&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="si">${&lt;/span>&lt;span class="nv">exist&lt;/span>&lt;span class="si">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Function of find and modify&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">function&lt;/span> find_and_modifiy &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Define line number of the string&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">lineno&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>grep -n &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$string&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="si">${&lt;/span>&lt;span class="nv">file&lt;/span>&lt;span class="si">}&lt;/span> &lt;span class="p">|&lt;/span> cut -d: -f1&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#Display line number&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="si">${&lt;/span>&lt;span class="nv">lineno&lt;/span>&lt;span class="si">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#define commit string&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">replace_string&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;#def retrieve_op(data: RetrieveModel):&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="si">${&lt;/span>&lt;span class="nv">replace_string&lt;/span>&lt;span class="si">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#Define the new string&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">new_string&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;async def retrieve_op(data: RetrieveModel):&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="si">${&lt;/span>&lt;span class="nv">new_string&lt;/span>&lt;span class="si">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Commit/replace the found line &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> sed -i &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">lineno&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">c&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">replace_string&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="si">${&lt;/span>&lt;span class="nv">file&lt;/span>&lt;span class="si">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Insert new line below current line&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> sed -i &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">lineno&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">a&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">new_string&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="si">${&lt;/span>&lt;span class="nv">file&lt;/span>&lt;span class="si">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Print the lines which modified&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> sed -n &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">lineno&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">,&lt;/span>&lt;span class="k">$(&lt;/span>expr &lt;span class="si">${&lt;/span>&lt;span class="nv">lineno&lt;/span>&lt;span class="si">}&lt;/span> + 1&lt;span class="k">)&lt;/span>&lt;span class="s2">p&amp;#34;&lt;/span> &lt;span class="si">${&lt;/span>&lt;span class="nv">file&lt;/span>&lt;span class="si">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Restart vyos-http-api service&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> systemctl restart vyos-http-api
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Check vyos-http-api serivce works or not&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> systemctl status vyos-http-api
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Check the bug fixed or not&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> &lt;span class="si">${&lt;/span>&lt;span class="nv">exist&lt;/span>&lt;span class="si">}&lt;/span> -ne &lt;span class="m">0&lt;/span> &lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;find it!&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> find_and_modifiy
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;not found!&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">EOF
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="run-script-to-fix-the-bug">Run script to fix the bug&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">sudo bash /config/scripts/patch_api_trunk_bug.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>How to Enable Http Api Service on VyOS</title><link>https://echowings.github.io/p/how-to-enable-http-api-service-on-vyos/</link><pubDate>Tue, 26 Apr 2022 00:17:15 +0800</pubDate><guid>https://echowings.github.io/p/how-to-enable-http-api-service-on-vyos/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=71ff97d5" alt="Featured image of post How to Enable Http Api Service on VyOS" />&lt;p>&lt;strong>How to enable API serivce on VyOS&lt;/strong>&lt;/p>
+&lt;h1 id="how-to-enable-api-serivce-on-vyos">How to enable API serivce on VyOS&lt;/h1>
+&lt;p>After these days, I wrote some vyos shell script to auto detect network status and automatacally change some settings. In the way There will be new configuration to loading directly and hold the configuration mode for a longer time. This is not in a smart way.&lt;/p>
+&lt;p>Another better option, What if we can change settings of vyos with api?&lt;/p>
+&lt;h2 id="enable-api-http-service-localy">Enable api http service localy&lt;/h2>
+&lt;h3 id="enable-apt-service-with-socket-mode">Enable apt service with socket mode&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https api socket
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="test-settings">Test settings&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">curl --unix-socket /run/api.sock -X POST -Fkey&lt;span class="o">=&lt;/span>qwerty -Fdata&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;{&amp;#34;op&amp;#34;: &amp;#34;showConfig&amp;#34;, &amp;#34;path&amp;#34;: []}&amp;#39;&lt;/span> http://localhost/retrieve
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="enable-api-https-service-with-lets-encryption-free-ssl">Enable api https service with let&amp;rsquo;s encryption free ssl&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/vbash
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="nb">source&lt;/span> /opt/vyatta/etc/functions/script-template
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">configure
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Define variable&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ID&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;my_id&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">APIKEY&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;12345&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">APIPORT&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;1234&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">VHOST&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;myvps&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">FULL_FQDN&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;xxx.xxx.xxx&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">LISTEN_ADDRESS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;IP ADDRESS&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">EMAIL&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;my@emal.com&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https api key id &lt;span class="nv">$ID&lt;/span> key &lt;span class="nv">$APIKEY&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https certificates certbot domain-name &lt;span class="nv">$FULL_FQDN&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https certificates certbot email &lt;span class="nv">$EMAIL&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https api strict
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https virtual-host &lt;span class="nv">$VHOST&lt;/span> listen-address &lt;span class="nv">$LISTEN_ADDRESS&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https virtual-host &lt;span class="nv">$VHOST&lt;/span> listen-port &lt;span class="nv">$APIPORT&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> service https virtual-host &lt;span class="nv">$VHOST&lt;/span> server-name &lt;span class="nv">$FULL_FQDN&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">commit
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">save
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">exit&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

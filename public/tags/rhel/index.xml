@@ -1,19 +1,141 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Rhel on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/tags/rhel/</link>
-    <description>Recent content in Rhel on Steve&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 22 Dec 2023 21:18:39 +0800</lastBuildDate>
-    <atom:link href="https://echowings.github.io/tags/rhel/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to upgrade RHEL6 with yum repo of centos </title>
-      <link>https://echowings.github.io/p/how-to-upgrade-rhel6-with-yum-repo-of-centos/</link>
-      <pubDate>Mon, 15 Jul 2019 17:07:51 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-upgrade-rhel6-with-yum-repo-of-centos/</guid>
-      <description>How to upgrade RHEL6 with yum repo of centos Today I will show you how to setup rhel6 at proxmox VE.&#xA;After installed REHL6.8,We didn&amp;rsquo;t have RHEL subscription,but how to get update and install software via yum ? The right answer is to change yum repo.&#xA;Fix perl error 1 2 3 4 5 6 7 8 export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Rhel on Steve's Blog</title><link>https://echowings.github.io/tags/rhel/</link><description>Recent content in Rhel on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 15 Jul 2019 17:07:51 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/rhel/index.xml" rel="self" type="application/rss+xml"/><item><title>How to upgrade RHEL6 with yum repo of centos</title><link>https://echowings.github.io/p/how-to-upgrade-rhel6-with-yum-repo-of-centos/</link><pubDate>Mon, 15 Jul 2019 17:07:51 +0800</pubDate><guid>https://echowings.github.io/p/how-to-upgrade-rhel6-with-yum-repo-of-centos/</guid><description>&lt;h1 id="how-to-upgrade-rhel6-with-yum-repo-of-centos">How to upgrade RHEL6 with yum repo of centos&lt;/h1>
+&lt;p>Today I will show you how to setup rhel6 at proxmox VE.&lt;/p>
+&lt;p>After installed REHL6.8,We didn&amp;rsquo;t have RHEL subscription,but how to get update and install software via yum ? The right answer is to change yum repo.&lt;/p>
+&lt;h2 id="fix-perl-error">Fix perl error&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">LANGUAGE&lt;/span>&lt;span class="o">=&lt;/span>en_US.UTF-8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">LANG&lt;/span>&lt;span class="o">=&lt;/span>en_US.UTF-8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">LC_ALL&lt;/span>&lt;span class="o">=&lt;/span>en_US.UTF-8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#locale-gen en_US.UTF-8&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cat &amp;gt;&amp;gt; /etc/environment &lt;span class="s">&amp;lt;&amp;lt;EOF
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">LC_ALL=en_US.UTF-8
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">LANG=en_US.UTF-8
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">EOF&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="disable-rhel-subsription">Disable RHEL subsription&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">subscription-manager config --rhsm.manage_repos&lt;span class="o">=&lt;/span>&lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="chang-yum-repo-to-centos-6">Chang yum repo to Centos 6&lt;/h2>
+&lt;ul>
+&lt;li>delete rhel yum software&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">rpm -qa &lt;span class="p">|&lt;/span> grep yum
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rpm -qa &lt;span class="p">|&lt;/span> grep yum &lt;span class="p">|&lt;/span> xargs rpm -e --nodeps
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Download centos yum software&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mkdir -p /tmp/yum
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> /tmp/yum
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget http://mirrors.163.com/centos/6/os/x86_64/Packages/python-iniparse-0.3.1-2.1.el6.noarch.rpm
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-3.2.29-81.el6.centos.noarch.rpm
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-metadata-parser-1.1.2-16.el6.x86_64.rpm
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-plugin-fastestmirror-1.1.30-41.el6.noarch.rpm
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Install centos yum software&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">rpm -ivh python-iniparse-0.3.1-2.1.el6.noarch.rpm
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rpm -ivh yum-metadata-parser-1.1.2-16.el6.x86_64.rpm
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rpm -ivh yum-3.2.29-81.el6.centos.noarch.rpm yum-plugin-fastestmirror-1.1.30-41.el6.noarch.rpm
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Delete other repos file&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">rm -rf /etc/yum.repos.d/*
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Download yum.repos file of centos.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS6-Base-163.repo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/$releasever/6/g&amp;#39;&lt;/span> CentOS-Base.repo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yum clean all
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yum makecache
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="install-cloud-ini-and-qemu-guest-agent">Install cloud-ini and qemu-guest-agent&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">yum update
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yum install cloud-init qemu-guest-agent
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Then enable qemu agent in &lt;code>option&lt;/code> and add a cloud-init disk in vm settings on proxmox ve.&lt;/p>
+&lt;h2 id="change-ssh-config-to-allow-user-login-with-password">Change SSH config to allow user login with password&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo sed -i &lt;span class="s1">&amp;#39;s/PasswordAuthentication\ no/PasswordAuthentication\ yes/g&amp;#39;&lt;/span> /etc/ssh/sshd_config
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo sed -i &lt;span class="s1">&amp;#39;s/#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/g&amp;#39;&lt;/span> /etc/ssh/sshd_config
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo service ssh restart
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo service sshd restart
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

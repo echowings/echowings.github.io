@@ -1,19 +1,205 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Cka on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/tags/cka/</link>
-    <description>Recent content in Cka on Steve&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 22 Dec 2023 21:18:39 +0800</lastBuildDate>
-    <atom:link href="https://echowings.github.io/tags/cka/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to Upgrade Kubernetes</title>
-      <link>https://echowings.github.io/p/how-to-upgrade-kubernetes/</link>
-      <pubDate>Mon, 14 Nov 2022 15:19:53 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-upgrade-kubernetes/</guid>
-      <description>How to upgrade kubernetes To upgrade kubernetes I will 2 steps to implement it.&#xA;Upgrade master node Upgrade worker nodes Master node upgrade process Check out the current kubeadm and kubelet version First thing first, login the master node with ssh.&#xA;1 2 3 4 5 6 7 8 kubeadm version kubectl --version ## Running result kubelet --version Kubernetes v1.23.10 kubeadm version kubeadm version: &amp;amp;version.Info{Major:&amp;#34;1&amp;#34;, Minor:&amp;#34;23&amp;#34;, GitVersion:&amp;#34;v1.23.10&amp;#34;, GitCommit:&amp;#34;7e54d50d3012cf3389e43b096ba35300f36e0817&amp;#34;, GitTreeState:&amp;#34;clean&amp;#34;, BuildDate:&amp;#34;2022-08-17T18:31:47Z&amp;#34;, GoVersion:&amp;#34;go1.</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cka on Steve's Blog</title><link>https://echowings.github.io/tags/cka/</link><description>Recent content in Cka on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 14 Nov 2022 15:19:53 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/cka/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Upgrade Kubernetes</title><link>https://echowings.github.io/p/how-to-upgrade-kubernetes/</link><pubDate>Mon, 14 Nov 2022 15:19:53 +0800</pubDate><guid>https://echowings.github.io/p/how-to-upgrade-kubernetes/</guid><description>&lt;img src="https://picsum.photos/800/600.webp?random=50442c4a" alt="Featured image of post How to Upgrade Kubernetes" />&lt;h1 id="how-to-upgrade-kubernetes">How to upgrade kubernetes&lt;/h1>
+&lt;p>To upgrade kubernetes I will 2 steps to implement it.&lt;/p>
+&lt;ol>
+&lt;li>Upgrade master node&lt;/li>
+&lt;li>Upgrade worker nodes&lt;/li>
+&lt;/ol>
+&lt;h2 id="master-node-upgrade-process">Master node upgrade process&lt;/h2>
+&lt;h3 id="check-out-the-current-kubeadm-and-kubelet-version">Check out the current kubeadm and kubelet version&lt;/h3>
+&lt;p>First thing first, login the master node with ssh.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubeadm version
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kubectl --version
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Running result&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kubelet --version
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Kubernetes v1.23.10
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kubeadm version
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kubeadm version: &lt;span class="p">&amp;amp;&lt;/span>version.Info&lt;span class="o">{&lt;/span>Major:&lt;span class="s2">&amp;#34;1&amp;#34;&lt;/span>, Minor:&lt;span class="s2">&amp;#34;23&amp;#34;&lt;/span>, GitVersion:&lt;span class="s2">&amp;#34;v1.23.10&amp;#34;&lt;/span>, GitCommit:&lt;span class="s2">&amp;#34;7e54d50d3012cf3389e43b096ba35300f36e0817&amp;#34;&lt;/span>, GitTreeState:&lt;span class="s2">&amp;#34;clean&amp;#34;&lt;/span>, BuildDate:&lt;span class="s2">&amp;#34;2022-08-17T18:31:47Z&amp;#34;&lt;/span>, GoVersion:&lt;span class="s2">&amp;#34;go1.17.13&amp;#34;&lt;/span>, Compiler:&lt;span class="s2">&amp;#34;gc&amp;#34;&lt;/span>, Platform:&lt;span class="s2">&amp;#34;linux/amd64&amp;#34;&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="install-the-new-kubeadm-version">Install the new kubeadm version&lt;/h3>
+&lt;p>We will upgrade kubernetes from v1.23.10-00 to 1.23.11-00&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo su
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Update apt list&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt update
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Check the latest version available &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt-cache madison kubeadm
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt-mark unhold kubeadm &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>apt-get update &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> apt-get install -y &lt;span class="nv">kubeadm&lt;/span>&lt;span class="o">=&lt;/span>1.23.11-00 &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>apt-mark hold kubeadm
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Check kubeadm version&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kubeadm version
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="plan-the-kubeadm-upgrade">Plan the kubeadm upgrade&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubeadm upgrade plan
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="apply-the-kubeadm-upgrade">Apply the kubeadm upgrade&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubeadm upgrade apply v1.23.11
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="cordon-the-node">Cordon the node&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># check nodes name&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kubectl get nodes
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># drain the master nodes named &amp;#39;ubuntu-k8s-master&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kubectl drain ubuntu-k8s-master --ignore-daemonsets
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="upgrade-the-kubelet-and-kubectl">Upgrade the kubelet and kubectl&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">apt-mark unhold kubelet kubectl &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>apt-get update &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> apt-get install -y &lt;span class="nv">kubelet&lt;/span>&lt;span class="o">=&lt;/span>1.23.11-00 &lt;span class="nv">kubectl&lt;/span>&lt;span class="o">=&lt;/span>1.23.11-00 &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>apt-mark hold kubelet kubectl
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Restart the kubelet&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl daemon-reload
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl restart kubelet
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="uncordon-the-node">Uncordon the node&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubectl uncordon ubuntu-k8s-master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="upgrade-worker-nodes">Upgrade Worker Nodes&lt;/h2>
+&lt;h3 id="check-out-the-current-kubeadm-and-kubelet-version-1">Check out the current kubeadm and kubelet version&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubeadm version
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">kubelet --version
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="install-the-new-kubeadm-version-1">Install the new kubeadm version&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo su
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt-mark unhold kubeadm &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>apt-get update &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> apt-get install -y &lt;span class="nv">kubeadm&lt;/span>&lt;span class="o">=&lt;/span>1.23.11-00 &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>apt-mark hold kubeadm
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="plan-the-kubeadm-upgrade-1">Plan the kubeadm upgrade&lt;/h3>
+&lt;h3 id="apply-the-kubeadm-upgrade-1">Apply the kubeadm upgrade&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubeadm upgrade node
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="cordon-the-worker-node">cordon the worker node&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubectl drain ubuntu-k8s-node01
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="upgrade-the-kubelet">Upgrade the kubelet&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">apt-mark unhold kubelet kubectl &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>apt-get update &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> apt-get install -y &lt;span class="nv">kubelet&lt;/span>&lt;span class="o">=&lt;/span>1.23.11-00 &lt;span class="nv">kubectl&lt;/span>&lt;span class="o">=&lt;/span>1.23.11-00 &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>apt-mark hold kubelet kubectl
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Restart the kubelet for the changes to take effect:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl daemon-reload
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl restart kubelet
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="uncordon-the-node-1">uncordon the node&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubectl uncordon ubuntu-k8s-node01
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="exit-the-worker-node">Exit the worker node&lt;/h3></description></item></channel></rss>

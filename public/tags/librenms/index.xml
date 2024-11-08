@@ -1,33 +1,447 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Librenms on Steve&#39;s Blog</title>
-    <link>https://echowings.github.io/tags/librenms/</link>
-    <description>Recent content in Librenms on Steve&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 22 Dec 2023 21:18:39 +0800</lastBuildDate>
-    <atom:link href="https://echowings.github.io/tags/librenms/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to Deploy Librenms With Docker-compose</title>
-      <link>https://echowings.github.io/p/how-to-deploy-librenms-with-docker-compose/</link>
-      <pubDate>Wed, 05 Jun 2019 21:47:54 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-deploy-librenms-with-docker-compose/</guid>
-      <description>How to deploy librenms with docker-compsoe Librenms is a very light and easy handle moniting software. It is suitable for us to monitoring server,network device, printers etc. via snmp.&#xA;At now, docker is easy for software deployment. After deploy librenms in ubuntu vm, I have a try to deploy librenms with docker-compose.&#xA;Download config files 1 2 3 4 5 6 7 8 9 10 11 12 13 mkdir librenms-docker-compose cd librenms-docker-compose #Download .</description>
-    </item>
-    <item>
-      <title>How to Install Snmp Service on Promxox VE</title>
-      <link>https://echowings.github.io/p/how-to-install-snmp-service-on-promxox-ve/</link>
-      <pubDate>Sat, 27 Apr 2019 20:29:36 +0800</pubDate>
-      <guid>https://echowings.github.io/p/how-to-install-snmp-service-on-promxox-ve/</guid>
-      <description>How to install snmp service on proxmox ve How to setup snmp service to let us to use librenms to moniting our proxmox ve healthy status is very important for us.&#xA;Install snmpd on proxmox ve 1 2 apt update apt install -y snmpd Configure snmpd.conf backup original configuration file. 1 2 mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.backup Create a new config file. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 cat &amp;gt; /etc/snmp/snmpd.</description>
-    </item>
-    <item>
-      <title>Librenms Deploy Librenms With Docker Container</title>
-      <link>https://echowings.github.io/p/librenms-deploy-librenms-with-docker-container/</link>
-      <pubDate>Tue, 16 Apr 2019 16:56:08 +0800</pubDate>
-      <guid>https://echowings.github.io/p/librenms-deploy-librenms-with-docker-container/</guid>
-      <description>How to deploy librenms monitoring system with docker container Librenms is a very light and easy handle moniting software. It is suitable for us to monitoring server,networdevice, printer etc via snmp.&#xA;At now, docker is easy for software deployment. After deploy librenms in ubuntu vm, I have a try to deploy librenms with docker-compose.&#xA;Install librenms with docker-compose 1 2 3 4 5 6 7 mkdir -p librenms-docker-compose cd ./librenms-docker-compose wget https://raw.</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Librenms on Steve's Blog</title><link>https://echowings.github.io/tags/librenms/</link><description>Recent content in Librenms on Steve's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 05 Jun 2019 21:47:54 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/librenms/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Deploy Librenms With Docker-compose</title><link>https://echowings.github.io/p/how-to-deploy-librenms-with-docker-compose/</link><pubDate>Wed, 05 Jun 2019 21:47:54 +0800</pubDate><guid>https://echowings.github.io/p/how-to-deploy-librenms-with-docker-compose/</guid><description>&lt;h1 id="how-to-deploy-librenms-with-docker-compsoe">How to deploy librenms with docker-compsoe&lt;/h1>
+&lt;p>Librenms is a very light and easy handle moniting software. It is suitable for us to monitoring server,network device, printers etc. via snmp.&lt;/p>
+&lt;p>At now, docker is easy for software deployment. After deploy librenms in ubuntu vm, I have a try to deploy librenms with docker-compose.&lt;/p>
+&lt;h2 id="download-config-files">Download config files&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">mkdir librenms-docker-compose
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> librenms-docker-compose
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Download .env file&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/.env
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Download docker-compose file&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/docker-compose.yml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Download librenms.env file&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/librenms.env
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">touch acme.json
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">chmod &lt;span class="m">600&lt;/span> acme.json
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="librenms-server-configuration">librenms server configuration&lt;/h2>
+&lt;p>As show below , I will deploy a librenms via docker in my lan network. the host name is &lt;code>mylibrenms&lt;/code>,my local domain name is &lt;code>private.local&lt;/code>.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Type&lt;/th>
+&lt;th>value&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Librenms host name&lt;/td>
+&lt;td>&lt;code>mylibrenms&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Domain name&lt;/td>
+&lt;td>&lt;code>private.local&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Name&lt;/td>
+&lt;td>&lt;code>myname&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>mail account&lt;/td>
+&lt;td>&lt;code>myname@private.local&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>snmp community&lt;/td>
+&lt;td>&lt;code>public&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="modify-env">Modify &lt;code>.env&lt;/code>&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">vi .env
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Change configure :&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">MYSQL_DATABASE&lt;/span>&lt;span class="o">=&lt;/span>mylibrenms
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">MYSQL_USER&lt;/span>&lt;span class="o">=&lt;/span>mylibrenms
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">MYSQL_PASSWORD&lt;/span>&lt;span class="o">=&lt;/span>mylibrenmspassword
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">SMTP_SERVER&lt;/span>&lt;span class="o">=&lt;/span>smtp.private.local
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">SMTP_USERNAME&lt;/span>&lt;span class="o">=&lt;/span>myname@private.local
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">SMTP_PASSWORD&lt;/span>&lt;span class="o">=&lt;/span>myPassword
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">TZ&lt;/span>&lt;span class="o">=&lt;/span>Asia/Chongqing
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PUID&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1000&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">PGID&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1000&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="modify-docker-composeyml">Modify &lt;code>docker-compose.yml&lt;/code>&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">vi docker-compose.yml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="change-treafik-config">Change treafik config&lt;/h3>
+&lt;ul>
+&lt;li>Change &lt;code>services: | treafik: | command: | - &amp;quot;--docker.domain=&amp;quot;&lt;/code> to &lt;code>--docker.domain=private.local&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/\&amp;#34;--docker.domain=example.com\&amp;#34;/\&amp;#34;--docker.domain=private.local\&amp;#34;/g&amp;#39;&lt;/span> docker-compose.yml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Change &lt;code>services: | treafik: | command: | - &amp;quot;--acme.email=&amp;quot;&lt;/code> to &lt;code>- &amp;quot;--acme.email=&amp;quot;myname@private.local&amp;quot;&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/\&amp;#34;--acme.email=webmaster@example.com\&amp;#34;/\&amp;#34;--acme.email=myname@private.local\&amp;#34;/g&amp;#39;&lt;/span> docker-compose.yml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="change-smtp-config">Change smtp config&lt;/h3>
+&lt;ul>
+&lt;li>Change &lt;code>services: | smtp: | environment: | - &amp;quot;SERVER_HOSTNAME=&amp;quot;&lt;/code> to &lt;code>- &amp;quot;SERVER_HOSTNAME=mylibrenms.private.local&amp;quot;&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl"> sed -i &lt;span class="s1">&amp;#39;s/-\ \&amp;#34;SERVER_HOSTNAME=librenms.example.com\&amp;#34;/-\ \&amp;#34;SERVER_HOSTNAME=mylibrenms.private.local\&amp;#34;/g&amp;#39;&lt;/span> docker-compose.yml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="change-librenms-config">Change librenms config&lt;/h3>
+&lt;ul>
+&lt;li>Change &lt;code>services: | librenms: | domainname: &lt;/code> to &lt;code>domainname: private.local&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/domainname:\ example.com/domainname:\ private.local/g&amp;#39;&lt;/span> docker-compose.yml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Change &lt;code>services: | librenms: | hostname: &lt;/code> to &lt;code>hostname; mylibrenms&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/hostname:\ librenms/hostname:\ mylibrenms/g&amp;#39;&lt;/span> docker-compose.yml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Change &lt;code>services: | librenms: | labels: | - &amp;quot; traefik.frontend.rule=&amp;quot;&lt;/code> to &lt;code> - &amp;quot;traefik.frontend.rule=Host:mylibrenms&amp;quot;&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/-\ \&amp;#34;traefik.frontend.rule=Host:librenms.example.com\&amp;#34;/-\ \&amp;#34;traefik.frontend.rule=Host:mylibrenms.private.local\&amp;#34;/g&amp;#39;&lt;/span> docker-compose.yml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="change-cron-config">Change cron config&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>Change &lt;code>services: | cron: | domainname:&lt;/code> to &lt;code>domainname: private.local&lt;/code>.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Change &lt;code>services: | cron: | hostname:&lt;/code> to &lt;code>hostname: mylibrenms&lt;/code>.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="change-syslog-ng">Change syslog-ng:&lt;/h3>
+&lt;ol>
+&lt;li>Change &lt;code>services: | syslog-ng: | domainname: &lt;/code> to &lt;code>domainname: private.local&lt;/code>.&lt;/li>
+&lt;li>Change &lt;code>services: | syslog-ng: | hostname:&lt;/code> to &lt;code>hostname: mylibrenms&lt;/code>.&lt;/li>
+&lt;/ol>
+&lt;h2 id="modify-librenmsenv">Modify &lt;code>librenms.env&lt;/code>&lt;/h2>
+&lt;ul>
+&lt;li>Change &lt;code>LIBRENMS_SNMP_COMMUNITY=&lt;/code> to &lt;code>LIBRENMS_SNMP_COMMUNITY=public&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s1">&amp;#39;s/LIBRENMS_SNMP_COMMUNITY=librenmsdocker/LIBRENMS_SNMP_COMMUNITY=public/g&amp;#39;&lt;/span> librenms.env
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="run-docker-compose-to-up-librenms-containers">Run docker-compose to up librenms containers&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">docker-compose up -d
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="enable-proxmox-app-moniting">enable proxmox app moniting&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cat &lt;span class="s">&amp;lt;&amp;lt; EOF &amp;gt; librenms/config.php
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">&amp;lt;?php
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">$config[&amp;#39;enable_proxmox&amp;#39;] = true;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">EOF&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>How to Install Snmp Service on Promxox VE</title><link>https://echowings.github.io/p/how-to-install-snmp-service-on-promxox-ve/</link><pubDate>Sat, 27 Apr 2019 20:29:36 +0800</pubDate><guid>https://echowings.github.io/p/how-to-install-snmp-service-on-promxox-ve/</guid><description>&lt;h1 id="how-to-install-snmp-service-on-proxmox-ve">How to install snmp service on proxmox ve&lt;/h1>
+&lt;p>How to setup snmp service to let us to use librenms to moniting our proxmox ve healthy status is very important for us.&lt;/p>
+&lt;h2 id="install-snmpd-on-proxmox-ve">Install snmpd on proxmox ve&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">apt update
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">apt install -y snmpd
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="configure-snmpdconf">Configure snmpd.conf&lt;/h2>
+&lt;ul>
+&lt;li>backup original configuration file.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.backup
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Create a new config file.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">cat &amp;gt; /etc/snmp/snmpd.conf &lt;span class="s">&amp;lt;&amp;lt; EOF
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"># this create a SNMPv1/SNMPv2c community named &amp;#34;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"># and restricts access to LAN adresses 192.168.0.0/22 (last two 0&amp;#39;s are ranges)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">rocommunity OkayWorld 192.168.0.0/22
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"># setup info
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">syslocation &amp;#34;rack 1, room 3, serverrroom&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">syscontact &amp;#34;xxx@xxx.xxx&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"># open up
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">agentAddress udp:161
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"># run as
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">agentuser root
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"># dont log connection from UDP:
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">dontLogTCPWrappersConnects yes
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"># fix for disks larger then 2TB
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">realStorageUnits 0
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">EOF&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="firewall-allow-lan-can-access">Firewall allow lan can access&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">iptables -A INPUT -s 192.168.0.0/22 -p udp --dport &lt;span class="m">161&lt;/span> -j ACCEPT
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="restart-snmpd-service-to-apply-settings">Restart snmpd service to apply settings&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">systemctl restart snmpd
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="testing">Testing&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">snmpwalk -c OkayWorld -v1 &lt;span class="nv">$servername&lt;/span>$ SNMPv2-MIB::sysDescr.0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="qa">QA&lt;/h2>
+&lt;p>###1. error on subcontainer &amp;lsquo;ia_addr&amp;rsquo; insert (-1)
+After systemd migration starting from Debian 9 Stretch, you need to change &lt;code>/lib/systemd/system/snmpd.service&lt;/code> file, not &lt;code>/etc/default/snmpd&lt;/code> file:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s2">&amp;#34;s|-Lsd|-LS6d|&amp;#34;&lt;/span> /lib/systemd/system/snmpd.service
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">systemctl daemon-reload
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">systemctl restart snmpd
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="reference">Reference&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.svennd.be/how-to-install-snmp-service-on-proxmox/" target="_blank" rel="noopener"
+>how to install SNMP service on Proxmox&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://linux-tips.com/t/how-can-i-disable-snmpd-ia-addr-insert-messages/281/2" target="_blank" rel="noopener"
+>How can I disable snmpd ia_addr insert messages?&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="http://www.leonli.co.uk/blog/487/solved-snmpd-gives-error-on-subcontainer-ia_addr-insert-1-warnings" target="_blank" rel="noopener"
+>[Solved] snmpd gives “error on subcontainer” ‘ia_addr’ insert (-1) warnings
+&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Librenms Deploy Librenms With Docker Container</title><link>https://echowings.github.io/p/librenms-deploy-librenms-with-docker-container/</link><pubDate>Tue, 16 Apr 2019 16:56:08 +0800</pubDate><guid>https://echowings.github.io/p/librenms-deploy-librenms-with-docker-container/</guid><description>&lt;h1 id="how-to-deploy-librenms-monitoring-system-with-docker-container">How to deploy librenms monitoring system with docker container&lt;/h1>
+&lt;p>Librenms is a very light and easy handle moniting software. It is suitable for us to monitoring server,networdevice, printer etc via snmp.&lt;/p>
+&lt;p>At now, docker is easy for software deployment. After deploy librenms in ubuntu vm, I have a try to deploy librenms with docker-compose.&lt;/p>
+&lt;h2 id="install-librenms-with-docker-compose">Install librenms with docker-compose&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">mkdir -p librenms-docker-compose
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> ./librenms-docker-compose
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/.env
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/docker-compose.yml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://raw.githubusercontent.com/librenms/docker/master/examples/compose/librenms.env
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">touch acme.json
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">chmod &lt;span class="m">600&lt;/span> acme.json
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="change-docker-composeyml">Change &lt;code>docker-compose.yml&lt;/code>&lt;/h3>
+&lt;p>&lt;code>vi docker-compose.yml&lt;/code>&lt;/p>
+&lt;ul>
+&lt;li>change &lt;code>services | traefik | command &lt;/code> section.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl"> - &lt;span class="s2">&amp;#34;--docker.domain=mydomain.net&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Change &lt;code>services | &lt;/code>&lt;/li>
+&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>KEY&lt;/th>
+&lt;th>VALUE&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>hostname&lt;/td>
+&lt;td>mylibrenms&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>domainname&lt;/td>
+&lt;td>mydomain.net&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;ul>
+&lt;li>Chang &lt;code>syslog-ng&lt;/code> section&lt;/li>
+&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>KEY&lt;/th>
+&lt;th>VALUE&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>hostname&lt;/td>
+&lt;td>mylibrenms&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>domainname&lt;/td>
+&lt;td>mydomain.net&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">docker-compose up -d
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker-compose logs -f
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>
