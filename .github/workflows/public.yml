@@ -30,6 +30,7 @@ jobs:
 
       - name: Deploy Hugo
         uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
         with:
           personal_token: ${{ secrets.GITPAGE }}
           external_repository: echowings/echowings.github.io     
