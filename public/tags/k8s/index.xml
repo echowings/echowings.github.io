@@ -1,60 +1,54 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>k8s on Steve&#39;s Blog</title>
+    <title>K8s on Steve&#39;s Blog</title>
     <link>https://echowings.github.io/tags/k8s/</link>
-    <description>Recent content in k8s on Steve&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 26 Dec 2023 15:31:54 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in K8s on Steve&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 05 May 2024 14:18:08 +0800</lastBuildDate>
+    <atom:link href="https://echowings.github.io/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Login Aks in Debian 12</title>
+      <link>https://echowings.github.io/p/how-to-login-aks-in-debian-12/</link>
+      <pubDate>Wed, 06 Mar 2024 14:45:21 +0800</pubDate>
+      <guid>https://echowings.github.io/p/how-to-login-aks-in-debian-12/</guid>
+      <description>Install az-cli 1 2 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash zsh Install kubectl 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 #Install Kubectl if [ ! -f /usr/local/bin/kubectl ] then sudo curl -fsSL --progress-bar &amp;#34;https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl&amp;#34; -o /usr/local/bin/kubectl sudo chmod +x /usr/local/bin/kubectl fi #Reload zsh zsh #add alias into ~/.zshrd if ! sudo grep -q &amp;#34;kubectl&amp;#34; ~/.</description>
+    </item>
     <item>
       <title>How to Create Single Kubernetes Cluster With Talos on Bare Metal</title>
       <link>https://echowings.github.io/p/how-to-create-single-kubernetes-cluster-with-talos-on-bare-metal/</link>
       <pubDate>Tue, 26 Dec 2023 15:31:54 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-create-single-kubernetes-cluster-with-talos-on-bare-metal/</guid>
       <description>Install talosctl on your laptop or client Install talosctl on your system 1 curl -sL https://talos.dev/install | sh Setup the Talos Linux Nodes Download latest talos iso 1 2 3 4 5 6 7 ##For amd64 VER=$(curl -s https://api.github.com/repos/siderolabs/talos/releases/latest|grep tag_name|cut -d &amp;#39;&amp;#34;&amp;#39; -f 4|sed &amp;#39;s/v//&amp;#39;) echo $VER wget https://github.com/siderolabs/talos/releases/download/v${VER}/talos-amd64.iso ##For RM64 wget https://github.com/siderolabs/talos/releases/download/v${VER}/talos-arm64.iso Boot talos iso on bare metal server write talos on usb and boot it on usb live mode</description>
     </item>
-    
     <item>
       <title>Application Scheduling and Lifecycle Mangement</title>
       <link>https://echowings.github.io/p/application-scheduling-and-lifecycle-mangement/</link>
       <pubDate>Thu, 17 Nov 2022 15:47:56 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/application-scheduling-and-lifecycle-mangement/</guid>
-      <description>This article describs how to use kubernetes deployments to deploy pods, scale pods, perform rolling updates and rollbacks, carry out resource management, and use ConfigMaps to configurepods using kubectl command and YAML definitions.
-Run a container Cretae a pod using am imperative command Create pods with kubectl command 1 kubectl run &amp;lt;pod-name&amp;gt; --image=&amp;lt;image-name:image-tag&amp;gt; for instance:
-1 kubectl run nginx-pod --image=nginx:alpine Check the pod&amp;rsquo;s status 1 kubectl describe pod nginx-pod Create pods with declarative management Create a yaml file</description>
+      <description>This article describs how to use kubernetes deployments to deploy pods, scale pods, perform rolling updates and rollbacks, carry out resource management, and use ConfigMaps to configurepods using kubectl command and YAML definitions.&#xA;Run a container Cretae a pod using am imperative command Create pods with kubectl command 1 kubectl run &amp;lt;pod-name&amp;gt; --image=&amp;lt;image-name:image-tag&amp;gt; for instance:&#xA;1 kubectl run nginx-pod --image=nginx:alpine Check the pod&amp;rsquo;s status 1 kubectl describe pod nginx-pod Create pods with declarative management Create a yaml file</description>
     </item>
-    
     <item>
       <title>How to install kubernetes on ubuntu 20.04 with kubeadm</title>
       <link>https://echowings.github.io/p/how-to-install-kubernetes-on-ubuntu-20.04-with-kubeadm/</link>
       <pubDate>Sun, 13 Nov 2022 18:53:31 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-install-kubernetes-on-ubuntu-20.04-with-kubeadm/</guid>
-      <description>How to install kubernetes on ubuntu 20.04 Kubernetes is new linux os at nowadays. This is manually install kubernetes on ubuntu 20.04 with kubeadm. I have 3 proxmox ve servers. then I plan to install 3 ubuntu virtual machines on eache proxmox ve server.
-No. Name OS IP ADDRESS 01 ubuntu-k8s-master ubuntu 20.04 LTS 192.168.11.71 02 ubuntu-k8s-node01 ubuntu 20.04 LTS 192.168.11.72 03 ubuntu-k8s-node02 ubuntu 20.04 LTS 192.168.11.73 Here is my plan to install kubernetes:</description>
+      <description>How to install kubernetes on ubuntu 20.04 Kubernetes is new linux os at nowadays. This is manually install kubernetes on ubuntu 20.04 with kubeadm. I have 3 proxmox ve servers. then I plan to install 3 ubuntu virtual machines on eache proxmox ve server.&#xA;No. Name OS IP ADDRESS 01 ubuntu-k8s-master ubuntu 20.04 LTS 192.168.11.71 02 ubuntu-k8s-node01 ubuntu 20.04 LTS 192.168.11.72 03 ubuntu-k8s-node02 ubuntu 20.04 LTS 192.168.11.73 Here is my plan to install kubernetes:</description>
     </item>
-    
     <item>
       <title>How to Install K8S</title>
       <link>https://echowings.github.io/p/how-to-install-k8s/</link>
       <pubDate>Thu, 08 Apr 2021 18:03:14 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-install-k8s/</guid>
       <description>How to Install K8S [TOC] Prerequest 下载所需的yaml文件 下载地址:https://github.com/luckylucky421/kubernetes1.17.</description>
     </item>
-    
     <item>
       <title>Install Kubernetes on CentOS7</title>
       <link>https://echowings.github.io/p/install-kubernetes-on-centos7/</link>
       <pubDate>Wed, 01 May 2019 19:14:51 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/install-kubernetes-on-centos7/</guid>
-      <description>Install Kubernetes on Centos 7 Disable and stop firewall 1 2 3 4 5 # Disable firewall service systemctl disable firewalld # Stop firewall service systemctl stop firewalld Install etcd and kubernetes Install etcd and kubernetes and it will also install docker.
-1 yum install -y etcd kubernetes Start service in order 1 2 3 4 5 6 7 systemctl start etcd systemctl start docker systemctl start kube-apiserver systemctl start kube-controller-manager systemctl start kube-scheduler systemctl start kubelet systemctl start start kube-proxy </description>
+      <description>Install Kubernetes on Centos 7 Disable and stop firewall 1 2 3 4 5 # Disable firewall service systemctl disable firewalld # Stop firewall service systemctl stop firewalld Install etcd and kubernetes Install etcd and kubernetes and it will also install docker.&#xA;1 yum install -y etcd kubernetes Start service in order 1 2 3 4 5 6 7 systemctl start etcd systemctl start docker systemctl start kube-apiserver systemctl start kube-controller-manager systemctl start kube-scheduler systemctl start kubelet systemctl start start kube-proxy </description>
     </item>
-    
   </channel>
 </rss>

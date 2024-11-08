@@ -1,256 +1,201 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>debian on Steve&#39;s Blog</title>
+    <title>Debian on Steve&#39;s Blog</title>
     <link>https://echowings.github.io/tags/debian/</link>
-    <description>Recent content in debian on Steve&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 28 Dec 2023 19:03:56 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/debian/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Debian on Steve&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 05 May 2024 14:18:08 +0800</lastBuildDate>
+    <atom:link href="https://echowings.github.io/tags/debian/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Login Aks in Debian 12</title>
+      <link>https://echowings.github.io/p/how-to-login-aks-in-debian-12/</link>
+      <pubDate>Wed, 06 Mar 2024 14:45:21 +0800</pubDate>
+      <guid>https://echowings.github.io/p/how-to-login-aks-in-debian-12/</guid>
+      <description>Install az-cli 1 2 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash zsh Install kubectl 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 #Install Kubectl if [ ! -f /usr/local/bin/kubectl ] then sudo curl -fsSL --progress-bar &amp;#34;https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl&amp;#34; -o /usr/local/bin/kubectl sudo chmod +x /usr/local/bin/kubectl fi #Reload zsh zsh #add alias into ~/.zshrd if ! sudo grep -q &amp;#34;kubectl&amp;#34; ~/.</description>
+    </item>
     <item>
       <title>How to Enable NTP in Debian 12</title>
       <link>https://echowings.github.io/p/how-to-enable-ntp-in-debian-12/</link>
       <pubDate>Thu, 28 Dec 2023 19:03:56 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-enable-ntp-in-debian-12/</guid>
       <description>Install system-timesyncd Uninstall ntpd 1 sudo apt purget ntp Install timesyncd 1 sudo apt install -y systemd-timesyncd Start timesyncd service 1 sudo systemctl start systemd-timesyncd enable service auto started 1 sudo systemctl enable systemd-timesyncd Check the status: 1 sudo systemctl status system-timesyncd Disply the current time and date. 1 timedatectl Fix can&amp;rsquo;t start on wsl Modify config 1 2 3 4 5 6 7 8 9 10 #sudo sed -i &amp;#39;/ConditionVirtualization/c\ConditionVirtualization=&amp;#39; /etc/systemd/system/sysinit.</description>
     </item>
-    
     <item>
       <title>How to install proxmox ve 8 on debian 12</title>
       <link>https://echowings.github.io/p/how-to-install-proxmox-ve-8-on-debian-12/</link>
       <pubDate>Sat, 24 Jun 2023 18:17:00 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-install-proxmox-ve-8-on-debian-12/</guid>
       <description>How toinstall proxmox ve 8 on Debian 12 change sourcelist 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 # Backup /et/apt/source.list cp /etc/apt/sources.list /etc/apt/sources.list-bak #OPTION 1 tee /etc/apt/sources.list &amp;lt;&amp;lt; &amp;#34;EOF&amp;#34; deb http://deb.debian.org/debian bookworm main non-free-firmware deb-src http://deb.debian.org/debian bookworm main non-free-firmware deb http://deb.debian.org/debian-security/ bookworm-security main non-free-firmware deb-src http://deb.debian.org/debian-security/ bookworm-security main non-free-firmware deb http://deb.debian.org/debian bookworm-updates main non-free-firmware deb-src http://deb.</description>
     </item>
-    
     <item>
       <title>How to Upgrade Pve7.4 to Pve8</title>
       <link>https://echowings.github.io/p/how-to-upgrade-pve7.4-to-pve8/</link>
       <pubDate>Fri, 23 Jun 2023 10:02:06 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-upgrade-pve7.4-to-pve8/</guid>
-      <description>How to Upgrade Pve7.4 to Pve8 Last night, When I found that proxmox ve 8 has been released. Then I want to try it and I do it immediately. Here is what I did to upgrade pve.
-1 Backup 1.2 backup vms and containers &amp;ndash;skip&amp;ndash;
-1.2 Backup /etc/ folder &amp;ndash;skip&amp;ndash;
-Check upgrade status 1 2 3 4 5 6 7 8 # Upgrade to latest pve 7.4 apt update &amp;amp;&amp;amp; apt -y dist-upgrade # Reboot systemctl reboot # pve7to8 checklist script pve7to8 --full Change Sourcelist for debian 12 1 2 3 4 5 # Backup debian 11 sourcelist mv /etc/apt/sources.</description>
+      <description>How to Upgrade Pve7.4 to Pve8 Last night, When I found that proxmox ve 8 has been released. Then I want to try it and I do it immediately. Here is what I did to upgrade pve.&#xA;1 Backup 1.2 backup vms and containers &amp;ndash;skip&amp;ndash;&#xA;1.2 Backup /etc/ folder &amp;ndash;skip&amp;ndash;&#xA;Check upgrade status 1 2 3 4 5 6 7 8 # Upgrade to latest pve 7.4 apt update &amp;amp;&amp;amp; apt -y dist-upgrade # Reboot systemctl reboot # pve7to8 checklist script pve7to8 --full Change Sourcelist for debian 12 1 2 3 4 5 # Backup debian 11 sourcelist mv /etc/apt/sources.</description>
     </item>
-    
     <item>
       <title>How to Install Ansible on Debian 11</title>
       <link>https://echowings.github.io/p/how-to-install-ansible-on-debian-11/</link>
       <pubDate>Fri, 14 Apr 2023 18:20:02 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-install-ansible-on-debian-11/</guid>
       <description>Install ansible on debian11 Install ansible with apt 1 2 3 4 5 6 7 8 9 cat &amp;lt;&amp;lt; EOF &amp;gt; /etc/apt/sources.list.d/ansible.list deb http://ppa.launchpad.net/ansible/ansible/ubuntu focal main EOF sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 93C4A3FD7BB9C367 apt update apt install ansible -y ansible --version Install ansible using pip 1 2 apt-get install python3 python3-pip -y pip install ansible Reference how-to-install-and-use-ansible-on-debian-11 </description>
     </item>
-    
     <item>
       <title>How to Install Pbs2.3 on Debian11</title>
       <link>https://echowings.github.io/p/how-to-install-pbs2.3-on-debian11/</link>
       <pubDate>Fri, 24 Mar 2023 11:10:21 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-install-pbs2.3-on-debian11/</guid>
-      <description>How-to-install-PBS-on-debian-11 Change network name from enp* to eth* 1 2 3 cp /etc/default/grub /etc/default/grub-bak sed -i &amp;#39;/GRUB_CMDLINE_LINUX=/s/&amp;#34;$/ net.ifnames=0 biosdevname=0&amp;#34;/&amp;#39; /etc/default/grub sed -i &amp;#39;s/enp1s0/eth0/&amp;#39; /etc/network/interfaces Then reboot your server
-change sourcelist to utsc 1 2 3 4 5 6 cp /etc/apt/sources.list /etc/apt/sources.list-bak wget https://mirrors.ustc.edu.cn/repogen/conf/debian-https-4-bullseye -O /etc/apt/sources.list cat /etc/apt/sources.list apt update &amp;amp;&amp;amp; apt -y dist-upgrade apt install -y neovim net-tools 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 ipv4_addr=$(ip -4 route get 8.</description>
+      <description>How-to-install-PBS-on-debian-11 Change network name from enp* to eth* 1 2 3 cp /etc/default/grub /etc/default/grub-bak sed -i &amp;#39;/GRUB_CMDLINE_LINUX=/s/&amp;#34;$/ net.ifnames=0 biosdevname=0&amp;#34;/&amp;#39; /etc/default/grub sed -i &amp;#39;s/enp1s0/eth0/&amp;#39; /etc/network/interfaces Then reboot your server&#xA;change sourcelist to utsc 1 2 3 4 5 6 cp /etc/apt/sources.list /etc/apt/sources.list-bak wget https://mirrors.ustc.edu.cn/repogen/conf/debian-https-4-bullseye -O /etc/apt/sources.list cat /etc/apt/sources.list apt update &amp;amp;&amp;amp; apt -y dist-upgrade apt install -y neovim net-tools 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 ipv4_addr=$(ip -4 route get 8.</description>
     </item>
-    
     <item>
       <title>How to Install Pve7 on Debian11</title>
       <link>https://echowings.github.io/p/how-to-install-pve7-on-debian11/</link>
       <pubDate>Fri, 24 Mar 2023 11:07:19 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-install-pve7-on-debian11/</guid>
-      <description>how-to-install-pve-on-debian11 change sourcelist to utsc 1 2 3 4 5 6 cp /etc/apt/sources.list /etc/apt/sources.list-bak wget https://mirrors.ustc.edu.cn/repogen/conf/debian-https-4-bullseye -O /etc/apt/sources.list cat /etc/apt/sources.list apt update &amp;amp;&amp;amp; apt -y dist-upgrade apt install -y neovim net-tools Change network name from enp* to eth* 1 2 3 4 5 6 7 export PATH=$PATH:/usr/sbin:/home/$(whoami)/.local/bin echo &amp;#34;export PATH=$PATH:/usr/sbin:/home/$(whoami)/.local/bin&amp;#34; &amp;gt;&amp;gt; ~/.bashrc cp /etc/default/grub /etc/default/grub-bak sed -i &amp;#39;/GRUB_CMDLINE_LINUX=/s/&amp;#34;$/net.ifnames=0 biosdevname=0&amp;#34;/&amp;#39; /etc/default/grub sed -i &amp;#39;s/enp2s0/eth0/&amp;#39; /etc/network/interfaces update-grub Then reboot your server
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 ipv4_addr=$(ip -4 route get 8.</description>
+      <description>how-to-install-pve-on-debian11 change sourcelist to utsc 1 2 3 4 5 6 cp /etc/apt/sources.list /etc/apt/sources.list-bak wget https://mirrors.ustc.edu.cn/repogen/conf/debian-https-4-bullseye -O /etc/apt/sources.list cat /etc/apt/sources.list apt update &amp;amp;&amp;amp; apt -y dist-upgrade apt install -y neovim net-tools Change network name from enp* to eth* 1 2 3 4 5 6 7 export PATH=$PATH:/usr/sbin:/home/$(whoami)/.local/bin echo &amp;#34;export PATH=$PATH:/usr/sbin:/home/$(whoami)/.local/bin&amp;#34; &amp;gt;&amp;gt; ~/.bashrc cp /etc/default/grub /etc/default/grub-bak sed -i &amp;#39;/GRUB_CMDLINE_LINUX=/s/&amp;#34;$/net.ifnames=0 biosdevname=0&amp;#34;/&amp;#39; /etc/default/grub sed -i &amp;#39;s/enp2s0/eth0/&amp;#39; /etc/network/interfaces update-grub Then reboot your server&#xA;1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 ipv4_addr=$(ip -4 route get 8.</description>
     </item>
-    
     <item>
       <title>how to install docker and docker-compose on debian 11 or proxmox ve 7</title>
       <link>https://echowings.github.io/p/how-to-install-docker-and-docker-compose-on-debian-11-or-proxmox-ve-7/</link>
       <pubDate>Thu, 16 Mar 2023 17:32:08 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-install-docker-and-docker-compose-on-debian-11-or-proxmox-ve-7/</guid>
       <description>how to install docker and docker-compose on debian 11 or proxmox ve 7 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 apt-get update apt-get install -y sudo # append the required Docker dependencies to the Debian system using the following command: sudo apt -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common #Add Docker’s official GPG key: curl -fsSL https://download.</description>
     </item>
-    
     <item>
       <title>How to Install Vagrant on Debian 11</title>
       <link>https://echowings.github.io/p/how-to-install-vagrant-on-debian-11/</link>
       <pubDate>Thu, 16 Feb 2023 11:44:11 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-install-vagrant-on-debian-11/</guid>
       <description>Install vagrant work with libervit Update apt sourcelist 1 sudo apt update Install pre-request software packages 1 sudo apt install apt-transport-https ca-certificates curl software-properties-common Add vagrant repository 1 2 3 4 wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg echo &amp;#34;deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main&amp;#34; | sudo tee /etc/apt/sources.list.d/hashicorp.list sudo apt update &amp;amp;&amp;amp; sudo apt install vagrant vagrant version Add vagrant provider Option 1: Install libvirt as vagrant provider 1 2 3 4 5 6 apt install -y libvirt-dev systemctl stop nfs-kernel-server.</description>
     </item>
-    
     <item>
       <title>How to Install and Configure Zsh and Zim</title>
       <link>https://echowings.github.io/p/how-to-install-and-configure-zsh-and-zim/</link>
       <pubDate>Thu, 01 Dec 2022 12:55:48 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-install-and-configure-zsh-and-zim/</guid>
       <description>How to install zsh zim on macos &amp;amp; debian Install and configure zsh zim iterm2 on macos Install homebrew 1 /bin/bash -c &amp;#34;$(curl -fsSL &amp;lt;https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh&amp;gt;)&amp;#34; Install iterm2 1 brew install --cask iterm2 Install zsh 1 brew install zsh Install zim 1 curl -fsSL &amp;lt;https://raw.githubusercontent.com/zimfw/install/master/install.zsh&amp;gt; | zsh Install Powerlevel10k Add .zimrc 1 zmodule romkatv/powerlevel10k Change configure with shell script 1 if [ `grep -c &amp;#34;zmodule\ romkatv\/powerlevel10k&amp;#34; ~/.zimrc` -ne &amp;#39;0&amp;#39; ]; then</description>
     </item>
-    
     <item>
       <title>How to Install Sshpass on Vyos 1.3.x</title>
       <link>https://echowings.github.io/p/how-to-install-sshpass-on-vyos-1.3.x/</link>
       <pubDate>Mon, 14 Nov 2022 09:09:33 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-install-sshpass-on-vyos-1.3.x/</guid>
-      <description>How to Install SSHPASS on VyOS 1.3.x how-to-install-sshpass-on- vyos-1.3.x Since vyos 1.3.x base on debian 10, so we can install sshpass 1.06 for debian on vyos 1.3.x
-Download and install sshpass 1.06 for debian 10 1 2 3 wget http://ftp.de.debian.org/debian/pool/main/s/sshpass/sshpass_1.06-1_amd64.deb sudo dpkg -i sshpass_1.06-1_amd64.deb Run sshpass 1 2 3 4 5 6 7 8 9 10 11 12 13 # run command via ssh without inactively sshpass -p &amp;#39;ssh_password&amp;#39; ssh -t root@ssh_host -p 22 &amp;#39;uptime&amp;#39; # Copy files to remote sshpass -p &amp;#39;ssh_password&amp;#39; scp -P 22 myfile.</description>
+      <description>How to Install SSHPASS on VyOS 1.3.x how-to-install-sshpass-on- vyos-1.3.x Since vyos 1.3.x base on debian 10, so we can install sshpass 1.06 for debian on vyos 1.3.x&#xA;Download and install sshpass 1.06 for debian 10 1 2 3 wget http://ftp.de.debian.org/debian/pool/main/s/sshpass/sshpass_1.06-1_amd64.deb sudo dpkg -i sshpass_1.06-1_amd64.deb Run sshpass 1 2 3 4 5 6 7 8 9 10 11 12 13 # run command via ssh without inactively sshpass -p &amp;#39;ssh_password&amp;#39; ssh -t root@ssh_host -p 22 &amp;#39;uptime&amp;#39; # Copy files to remote sshpass -p &amp;#39;ssh_password&amp;#39; scp -P 22 myfile.</description>
     </item>
-    
     <item>
       <title>How to Install Gitea With Docker-Compose</title>
       <link>https://echowings.github.io/p/how-to-install-gitea-with-docker-compose/</link>
       <pubDate>Wed, 31 Mar 2021 10:49:33 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-install-gitea-with-docker-compose/</guid>
       <description>How to Install Gitea with Docker-Compose 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 cat &amp;lt;&amp;lt; EOF &amp;gt;&amp;gt; docker-compose.yaml version: &amp;#34;3&amp;#34; networks: gitea: external: false services: server: image: gitea/gitea:1.13.6 container_name: gitea environment: - USER_UID=1000 - USER_GID=1000 - DB_TYPE=mysql - DB_HOST=db:3306 - DB_NAME=gitea - DB_USER=gitea - DB_PASSWD=gitea restart: always networks: - gitea volumes: - .</description>
     </item>
-    
     <item>
       <title>How to Install Pbs on Debian 10</title>
       <link>https://echowings.github.io/p/how-to-install-pbs-on-debian-10/</link>
       <pubDate>Thu, 11 Mar 2021 16:58:45 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-install-pbs-on-debian-10/</guid>
       <description>How to Install PBS on Debian 10 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 EOF cat &amp;lt;&amp;lt; EOF &amp;gt; /etc/apt/sources.list deb https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free deb-src https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free deb https://mirrors.</description>
     </item>
-    
     <item>
       <title>Bcache</title>
       <link>https://echowings.github.io/p/bcache/</link>
       <pubDate>Tue, 09 Mar 2021 16:20:42 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/bcache/</guid>
       <description>How to operate becache Recently I just try to add bcache with zfs and ceph. So I just wirte down it. Install bcache-tools Since bcache implement in Linux kernel. So it will default enabled. We just need to install bcache-tools to operate bcache. 1 apt install -y bcache-tools Configure bcache 1 2 3 4 5 6 7 # make a cache disk for bcache .It must be a ssd disk.</description>
     </item>
-    
     <item>
       <title>How to Install Vlmcsd on Debian</title>
       <link>https://echowings.github.io/p/how-to-install-vlmcsd-on-debian/</link>
       <pubDate>Tue, 02 Mar 2021 12:19:36 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-install-vlmcsd-on-debian/</guid>
       <description>How to Install VLMCSD on debian VLMCSD vlmcsd-1113-2020-03-28-Hotbird64 Download and install 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 VLMCSD_VERSION=svn113 curl -fsSLO https://github.com/Wind4/vlmcsd/releases/download/$VLMCSD_VERSION/binaries.tar.gz tar -zxvf binaries.tar.gz sudo cp -af ./binaries/Linux/intel/glibc/vlmcsd-x64-glibc /usr/local/bin/ chown root:root /usr/local/bin/vlmcsd-x64-glibc chmod +x /usr/local/bin/vlmcsd-64-glibc sudo bash -c &amp;#39;cat &amp;gt; /lib/systemd/system/vlmcsd.service&amp;#39; &amp;lt;&amp;lt;</description>
     </item>
-    
     <item>
       <title>How to Install Proxmox VE 6 on Debian 10</title>
       <link>https://echowings.github.io/p/how-to-install-proxmox-ve-6-on-debian-10/</link>
       <pubDate>Mon, 01 Mar 2021 13:28:01 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-install-proxmox-ve-6-on-debian-10/</guid>
       <description>How to Install Proxmox VE 6 on Debian 10 Install debian 10 Modifiy hostname and hosts file 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 export LANGUAGE=en_US.UTF-8 export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 #locale-gen en_US.UTF-8 cat &amp;gt;&amp;gt; /etc/environment &amp;lt;&amp;lt;EOF LC_ALL=en_US.</description>
     </item>
-    
     <item>
       <title>Install and Configure Snmp on Debian 10</title>
       <link>https://echowings.github.io/p/install-and-configure-snmp-on-debian-10/</link>
       <pubDate>Fri, 22 Jan 2021 13:31:14 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/install-and-configure-snmp-on-debian-10/</guid>
       <description>Install and Configure snmp on debian 10 INSTALL SNMP 1 2 apt install -y snmpd snmp libsnmp-dev CONFIGURE SNMP ON DEBIAN 10 backup original configure file. 1 cp /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.orig Edit snmpd.conf 1 2 agentAddress udp:127.0.0.1:161,udp:192.168.1.1:161 </description>
     </item>
-    
     <item>
       <title>How to Install Dcompass on Vyos</title>
       <link>https://echowings.github.io/p/how-to-install-dcompass-on-vyos/</link>
       <pubDate>Tue, 22 Dec 2020 02:57:46 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-install-dcompass-on-vyos/</guid>
       <description>Dcompass github address Dcompass Address Dcompass Release bianry 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 #Switch to root mode sudo su #Define dcompass version dcompass_version=build-20210803_1007 #Create dcompass temp folder sudo mkdir -p /tmp/dcompass # Swich to folder just we created.</description>
     </item>
-    
     <item>
       <title>How to Create Debian10 With Cloudinit for Pve</title>
       <link>https://echowings.github.io/p/how-to-create-debian10-with-cloudinit-for-pve/</link>
       <pubDate>Sun, 20 Sep 2020 14:56:48 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-create-debian10-with-cloudinit-for-pve/</guid>
       <description>How to Create Debian10 template With Cloudinit for PVE 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 VMID=9002 VM_NAME=CentOS-7-x86_64-GenericCloud VM_DOWNLOAD_URL=http://mirrors.ustc.edu.cn/centos-cloud/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz TEMPLATE_VM_NAME=$(echo $VM_NAME | sed &amp;#39;s/_/-/g&amp;#39;) STORAGE_PATH=local DEFAULT_PVE_PATH=/var/lib/vz/images #Change directory to `local` cd /var/lib/vz/images #Download centos 7 cloud images on proxmox ve wget $VM_DOWNLOAD_URL #unzip the file #xz -z (to zip file) #xz -k( to keep original file and valur `-0` to `-9` to set zip rate, default zip rate is -6 #xz -d (to unzip file) # xz -k (to keep zipped file not deleted) xz -d -k $VM_NAME.</description>
     </item>
-    
     <item>
       <title>How to Change Settings After Clone Debian 10 With Cloudinit Enable on Proxmox Ve</title>
       <link>https://echowings.github.io/p/how-to-change-settings-after-clone-debian-10-with-cloudinit-enable-on-proxmox-ve/</link>
       <pubDate>Wed, 27 Nov 2019 11:56:41 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-change-settings-after-clone-debian-10-with-cloudinit-enable-on-proxmox-ve/</guid>
-      <description>How to Change Settings After Clone Debian 10 With Cloudinit Enable on Proxmox VE Issue I found an issue about create a linux vm as a template with cloudinit enabled. Seem like after cloned the virtual machine, the cloud-init cd rom didn&amp;rsquo;t be created automatically. We need to delete it,then change setings again to apply the apt source.
-solution 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 #!</description>
+      <description>How to Change Settings After Clone Debian 10 With Cloudinit Enable on Proxmox VE Issue I found an issue about create a linux vm as a template with cloudinit enabled. Seem like after cloned the virtual machine, the cloud-init cd rom didn&amp;rsquo;t be created automatically. We need to delete it,then change setings again to apply the apt source.&#xA;solution 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 #!</description>
     </item>
-    
     <item>
       <title>How to Deploy Cloud Images on Pve</title>
       <link>https://echowings.github.io/p/how-to-deploy-cloud-images-on-pve/</link>
       <pubDate>Thu, 14 Nov 2019 13:40:56 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-deploy-cloud-images-on-pve/</guid>
-      <description>How to Deploy Cloud Images on PVE To deploy cloud images on pve has a lot of benifit, for example, auto expand disk capicity, auto update and auto deploy virtual machine.
-How to deploy debian 10 colud image on pve I perfer to debian as my first choice between all of the linux distributes. since it has light footprinting and more stable.</description>
+      <description>How to Deploy Cloud Images on PVE To deploy cloud images on pve has a lot of benifit, for example, auto expand disk capicity, auto update and auto deploy virtual machine.&#xA;How to deploy debian 10 colud image on pve I perfer to debian as my first choice between all of the linux distributes. since it has light footprinting and more stable.</description>
     </item>
-    
     <item>
       <title>How to Install and Configure Freeradius With Active Directory Allow Allow Specific Group of Users to Authenticate in Debian 10</title>
       <link>https://echowings.github.io/p/how-to-install-and-configure-freeradius-with-active-directory-allow-allow-specific-group-of-users-to-authenticate-in-debian-10/</link>
       <pubDate>Sun, 13 Oct 2019 14:52:31 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-install-and-configure-freeradius-with-active-directory-allow-allow-specific-group-of-users-to-authenticate-in-debian-10/</guid>
       <description>{% raw %} How to install and configure FreeRADIUS with Active Directory allow specific group of users to authenticate in Debian 10 serval years ago,I built freeradius server in centos 6 work with active directory. It works perfect with wifi authortication and ikev2 vpn authortication. But recently days, I found a bug that the radius server can not limit user access to a group in AD. So I&amp;rsquo;m trying to</description>
     </item>
-    
     <item>
       <title>How to Configure Debian 10 as a Docker Server</title>
       <link>https://echowings.github.io/p/how-to-configure-debian-10-as-a-docker-server/</link>
       <pubDate>Fri, 26 Jul 2019 16:58:29 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-configure-debian-10-as-a-docker-server/</guid>
-      <description>How to configure debian 10 as a docker server After try to install docker in LXC with proxmox ve, there will be some issues to make docker stop working. At last, I gave up and brance pure linux as docker sever.
-Install debian 10 in promxox ve Configure deiban 10 vm with &amp;lsquo;qemu-agent&amp;rsquo; checked.
-After install deiban 10 Change source list 1 2 3 4 5 6 7 mv /etc/apt/sources.list /etc/apt/sources.</description>
+      <description>How to configure debian 10 as a docker server After try to install docker in LXC with proxmox ve, there will be some issues to make docker stop working. At last, I gave up and brance pure linux as docker sever.&#xA;Install debian 10 in promxox ve Configure deiban 10 vm with &amp;lsquo;qemu-agent&amp;rsquo; checked.&#xA;After install deiban 10 Change source list 1 2 3 4 5 6 7 mv /etc/apt/sources.list /etc/apt/sources.</description>
     </item>
-    
     <item>
       <title>How to Deploy Docker in Debian 10</title>
       <link>https://echowings.github.io/p/how-to-deploy-docker-in-debian-10/</link>
       <pubDate>Fri, 19 Jul 2019 10:52:56 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-deploy-docker-in-debian-10/</guid>
       <description>How to deploy docker in debian 10 1 2 3 cat &amp;lt;&amp;lt; EOF &amp;gt; /etc/docker/aemon.json\n{\n &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://docker.mirrors.ustc.edu.cn/&amp;#34;]\n}\n\nEOF systemctl retart docker systemctl restart docker Install docker-compose 1 2 3 4 5 sudo curl -L &amp;#34;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)&amp;#34; -o /usr/local/bin/docker-compose sudo chmod +x /usr/local/bin/docker-compose sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose </description>
     </item>
-    
     <item>
       <title>Debian or Ubuntu Chinese Language Support</title>
       <link>https://echowings.github.io/p/debian-or-ubuntu-chinese-language-support/</link>
       <pubDate>Mon, 24 Dec 2018 00:39:51 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/debian-or-ubuntu-chinese-language-support/</guid>
       <description>Ubuntu Chinese Language Support 编辑/etc/environment如下: 1 vi /etc/environment 添加如下: 1 2 3 4 LC_ALL=&amp;#34;en_US.UTF-8&amp;#34; LANG=&amp;#34;zh_CN.UTF-8&amp;#34; UNZIP=&amp;#39;-O CP936&amp;#34; ZIPINFO=&amp;#34;-O CP936&amp;#34; 重新生成语言设置 1 2 sudo locale-gen en_US en_US.UTF-8 zh_CN zh_CN.UTF-8 sudo dpkg-reconfigure locales 1 2 3 4 5 6 7 8</description>
     </item>
-    
     <item>
       <title>How to install ProxmoxVE 5.x on Debian 9</title>
       <link>https://echowings.github.io/p/how-to-install-proxmoxve-5.x-on-debian-9/</link>
       <pubDate>Sat, 01 Dec 2018 00:02:28 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-install-proxmoxve-5.x-on-debian-9/</guid>
-      <description>How to Install Proxmox VE 5.x on Debian 9 Chang IP ADDRESS vi /etc/network/interfaces
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 # This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.</description>
+      <description>How to Install Proxmox VE 5.x on Debian 9 Chang IP ADDRESS vi /etc/network/interfaces&#xA;1 2 3 4 5 6 7 8 9 10 11 12 13 14 # This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback # The primary network interface #allow-hotplug eno1 auto eno1 #iface eno1 inet dhcp iface eno1 inet static address *.</description>
     </item>
-    
     <item>
       <title>How to Remove LC_CTYPE Error</title>
       <link>https://echowings.github.io/p/how-to-remove-lc_ctype-error/</link>
       <pubDate>Thu, 29 Nov 2018 23:48:32 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-remove-lc_ctype-error/</guid>
       <description> 1 2 3 4 apt-get autoremove export LC_ALL=en_US.UTF-8 echo &amp;#34;en_US.UTF-8 UTF-8&amp;#34; &amp;gt;&amp;gt; /etc/locale.gen locale-gen </description>
     </item>
-    
   </channel>
 </rss>

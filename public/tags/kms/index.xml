@@ -1,40 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>kms on Steve&#39;s Blog</title>
+    <title>Kms on Steve&#39;s Blog</title>
     <link>https://echowings.github.io/tags/kms/</link>
-    <description>Recent content in kms on Steve&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 22 Aug 2021 22:46:37 +0800</lastBuildDate><atom:link href="https://echowings.github.io/tags/kms/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Kms on Steve&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 22 Dec 2023 21:18:39 +0800</lastBuildDate>
+    <atom:link href="https://echowings.github.io/tags/kms/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to Deploy Vlmcsd With Docker-Compose</title>
       <link>https://echowings.github.io/p/how-to-deploy-vlmcsd-with-docker-compose/</link>
       <pubDate>Sun, 22 Aug 2021 22:46:37 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-deploy-vlmcsd-with-docker-compose/</guid>
       <description>How to deploy vlmcsd with docker-compose 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 FROM alpine:latest as builder WORKDIR /root RUN sed -i &amp;#39;s/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g&amp;#39; /etc/apk/repositories RUN apk add --no-cache git make build-base &amp;amp;&amp;amp; \ &amp;amp;&amp;amp; rm -rf /var/lib/apt/lists/* &amp;amp;&amp;amp; rm -rf /var/cache/apk/* &amp;amp;&amp;amp; \ git clone --branch master --single-branch https://github.com/Wind4/vlmcsd.git &amp;amp;&amp;amp; \ cd vlmcsd &amp;amp;&amp;amp; \ make FROM alpine:latest COPY --from=builder /root/vlmcsd/bin/vlmcsd /vlmcsd RUN apk add --no-cache tzdata EXPOSE 1688/tcp CMD [&amp;#34;/vlmcsd&amp;#34;, &amp;#34;-D&amp;#34;, &amp;#34;-d&amp;#34;, &amp;#34;-t&amp;#34;, &amp;#34;3&amp;#34;, &amp;#34;-e&amp;#34;, &amp;#34;-v&amp;#34;] </description>
     </item>
-    
     <item>
       <title>How to Install Vlmcsd on Debian</title>
       <link>https://echowings.github.io/p/how-to-install-vlmcsd-on-debian/</link>
       <pubDate>Tue, 02 Mar 2021 12:19:36 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-install-vlmcsd-on-debian/</guid>
       <description>How to Install VLMCSD on debian VLMCSD vlmcsd-1113-2020-03-28-Hotbird64 Download and install 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 VLMCSD_VERSION=svn113 curl -fsSLO https://github.com/Wind4/vlmcsd/releases/download/$VLMCSD_VERSION/binaries.tar.gz tar -zxvf binaries.tar.gz sudo cp -af ./binaries/Linux/intel/glibc/vlmcsd-x64-glibc /usr/local/bin/ chown root:root /usr/local/bin/vlmcsd-x64-glibc chmod +x /usr/local/bin/vlmcsd-64-glibc sudo bash -c &amp;#39;cat &amp;gt; /lib/systemd/system/vlmcsd.service&amp;#39; &amp;lt;&amp;lt;</description>
     </item>
-    
     <item>
       <title>How to Build a Kms Server</title>
       <link>https://echowings.github.io/p/how-to-build-a-kms-server/</link>
       <pubDate>Thu, 11 Apr 2019 00:17:37 +0800</pubDate>
-      
       <guid>https://echowings.github.io/p/how-to-build-a-kms-server/</guid>
-      <description>How to build a kms server Option 1: docker mode 1 2 3 4 5 docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername Option 2: docker compose docker-compose.yml
-1 2 3 4 5 6 7 8 9 10 version: &amp;#39;3&amp;#39; services: frontend: image: luodaoyi/kms-server container_name: mykms ports: - 1688:1688 restart: always docker-compose start the container
-1 docker-compose up -d Active Script 1 2 3 4 5 6 7 8 echo &amp;#34;To active office&amp;#34; cd &amp;#34;%programfiles%\Microsoft Office\Office16&amp;#34; cscript ospp.</description>
+      <description>How to build a kms server Option 1: docker mode 1 2 3 4 5 docker pull luodaoyi/kms-server docker run -itd -p 1688:1688 --name kms luodaoyi/kms-server docker update --restart=always $dockername Option 2: docker compose docker-compose.yml&#xA;1 2 3 4 5 6 7 8 9 10 version: &amp;#39;3&amp;#39; services: frontend: image: luodaoyi/kms-server container_name: mykms ports: - 1688:1688 restart: always docker-compose start the container&#xA;1 docker-compose up -d Active Script 1 2 3 4 5 6 7 8 echo &amp;#34;To active office&amp;#34; cd &amp;#34;%programfiles%\Microsoft Office\Office16&amp;#34; cscript ospp.</description>
     </item>
-    
   </channel>
 </rss>
