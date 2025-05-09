@@ -63,6 +63,9 @@ jobs:
             hugo-
       - name: Configure Git
         run: git config core.quotepath false
+      - name: git pull submoduel
+        run: |
+          git pull && git submodule init && git submodule update && git submodule status
       - name: Build with Hugo
         run: |
           hugo \
