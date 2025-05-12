@@ -80,7 +80,7 @@ Below is the master script that will create the monitoring script and set up the
 #   Running this script multiple times will overwrite existing files and
 #   re-enable/restart the timer.
 #
-# Current Date for Reference: Friday, May 9, 2025
+# Current Date for Reference: Monday, May 12, 2025
 # ==============================================================================
 
 # --- Configuration for the monitoring script (ADJUST THESE AS NEEDED) ---
@@ -88,8 +88,12 @@ MONITOR_DESIRED_SPEED_MBPS="1000"
 MONITOR_DESIRED_DUPLEX="full"
 MONITOR_AUTONEG_SETTING="off"
 # Define OK_SPEEDS_MBPS as a bash array for the master script
-MONITOR_OK_SPEEDS_MBPS_ARRAY=("1000" "2500")
-MONITOR_FORCE_CHANGE_IF_UNSURE="false"
+# Note: 10000 was added here based on previous logs, adjust if needed
+MONITOR_OK_SPEEDS_MBPS_ARRAY=("1000" "2500" "10000")
+# --- MODIFIED ---
+# Set to true to attempt speed change even if hardware support is uncertain
+MONITOR_FORCE_CHANGE_IF_UNSURE="true"
+# --- /MODIFIED ---
 MONITOR_ALERT_EMAIL="your_email@example.com" # IMPORTANT: Change this!
 MONITOR_ENABLE_EMAIL_ALERTS="false"         # Set to true to enable email alerts
 
@@ -147,6 +151,8 @@ main() {
     log_master "----------------------------------------------------------------------"
     log_master "Setup complete!"
     log_master "The NIC speed monitor service is configured and should be active."
+    log_master "FORCE_CHANGE_IF_UNSURE is now set to 'true'."
+    log_master "Interfaces starting with 'fwbr' will now be excluded from monitoring."
     log_master "To check timer status: sudo systemctl status $SYSTEMD_TIMER_NAME"
     log_master "To check service logs: sudo journalctl -u $SYSTEMD_SERVICE_NAME -f"
     log_master "Monitoring script is at: $MONITOR_SCRIPT_PATH"
@@ -165,9 +171,7 @@ create_monitoring_script() {
     # Convert MONITOR_OK_SPEEDS_MBPS_ARRAY to a string format suitable for the script
     local ok_speeds_string_for_script
     ok_speeds_string_for_script=$(printf '"%s" ' "${MONITOR_OK_SPEEDS_MBPS_ARRAY[@]}")
-    # Result: "1000" "2500" (note the trailing space)
-    ok_speeds_string_for_script="(${ok_speeds_string_for_script% })" # Add parentheses and remove last space
-    # Result: ("1000" "2500")
+    ok_speeds_string_for_script="(${ok_speeds_string_for_script% })"
 
     # Using a heredoc to write the script content.
     # Variables from this master script are expanded into the heredoc.
@@ -182,7 +186,7 @@ create_monitoring_script() {
 DESIRED_SPEED_MBPS="${MONITOR_DESIRED_SPEED_MBPS}"
 DESIRED_DUPLEX="${MONITOR_DESIRED_DUPLEX}"
 AUTONEG_SETTING="${MONITOR_AUTONEG_SETTING}"
-OK_SPEEDS_MBPS=${ok_speeds_string_for_script} # This will be like ("1000" "2500")
+OK_SPEEDS_MBPS=${ok_speeds_string_for_script} # This will be like ("1000" "2500" "10000")
 FORCE_CHANGE_IF_UNSURE="${MONITOR_FORCE_CHANGE_IF_UNSURE}"
 ALERT_EMAIL="${MONITOR_ALERT_EMAIL}"
 ENABLE_EMAIL_ALERTS="${MONITOR_ENABLE_EMAIL_ALERTS}"
@@ -225,21 +229,28 @@ if ! command -v ip &> /dev/null; then
 fi
 # This script is run by systemd as root, so no EUID check needed here.
 
-# 2. Get all network interfaces that are UP (excluding loopback, veth, and br-)
-log_msg "Discovering active (UP) network interfaces (excluding lo, veth*, and br-*)..."
+# 2. Get all network interfaces that are UP (excluding loopback, veth, br-, and fwbr*)
+# --- MODIFIED ---
+log_msg "Discovering active (UP) network interfaces (excluding lo, veth*, br-*, and fwbr*)..."
+# --- /MODIFIED ---
 UP_INTERFACES=()
 while IFS= read -r line; do
     IFACE=\$(echo "\$line" | awk '{print \$1}')
     STATE=\$(echo "\$line" | awk '{print \$2}')
-    if [[ "\$IFACE" != "lo" && "\$STATE" == "UP" && "\$IFACE" != veth* && "\$IFACE" != br-* ]]; then
+    # --- MODIFIED ---
+    # Skip loopback, interfaces not explicitly UP, AND interfaces starting with "veth", "br-", or "fwbr"
+    if [[ "\$IFACE" != "lo" && "\$STATE" == "UP" && "\$IFACE" != veth* && "\$IFACE" != br-* && "\$IFACE" != fwbr* ]]; then
+    # --- /MODIFIED ---
         UP_INTERFACES+=("\$IFACE")
     fi
 done < <(ip -br link)
 
+# --- MODIFIED ---
 if [ \${#UP_INTERFACES[@]} -eq 0 ]; then
-    log_msg "No suitable active (UP) network interfaces found (excluding lo, veth*, and br-*). Exiting."
+    log_msg "No suitable active (UP) network interfaces found (excluding lo, veth*, br-*, and fwbr*). Exiting."
     exit 0
 fi
+# --- /MODIFIED ---
 log_msg "Found suitable active interfaces to check: \${UP_INTERFACES[*]}"
 echo
 
@@ -309,7 +320,7 @@ for INTERFACE_NAME in "\${UP_INTERFACES[@]}"; do
             else
                 log_msg "FORCE_CHANGE_IF_UNSURE is false. Skipping speed change for \$INTERFACE_NAME."
                 log_msg "--- Finished processing interface: \$INTERFACE_NAME ---"; echo
-                continue
+                continue # Skip to the next interface
             fi
         fi
 
